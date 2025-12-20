@@ -1,0 +1,179 @@
+html {
+  font-size: 16px;
+}
+
+body{
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  user-select: none;
+
+  background: linear-gradient(rgb(0, 4, 86) 15%, rgb(129, 13, 152) 50%, rgb(0, 4, 86));
+    
+}
+
+* {
+
+  box-sizing: border-box;
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  font-family: monospace;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+
+  text-shadow: 0.0625rem 0.0625rem 0.25rem #ff69ebba,
+    -0.0625rem -0.0625rem 0.25rem #00ffffd5;
+
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+
+}
+
+
+
+/*Custom tags:*/
+
+
+/*Screens: */
+
+.ScreenContainer{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5rem;
+  gap: 5rem;
+
+}
+
+
+/*NavBar: */
+
+.NavBarContainer {
+
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding: 1.5rem 3rem;
+  gap: 3rem;
+
+  border-bottom: 0.25rem solid black;
+  background-color: rgb(96, 205, 255);
+  box-shadow: 0 0 1rem 0.5rem rgb(96, 205, 255);
+
+}
+
+
+.NavBarButton{
+
+  padding: 1rem 1.5rem;
+
+  border-left: 0.25rem solid black;
+  border-bottom: 0.25rem solid black;
+  border-right: 0.1rem solid black;
+  border-top: 0.1rem solid black;
+  background-color: rgb(202, 158, 255);
+
+}
+
+.NavBarButton:hover{
+
+  color: white;
+  background-color: rgb(58, 0, 102);
+
+}
+
+
+
+/*General Buttons: */
+
+.GeneralNavButton {
+
+  padding: 1rem 1.5rem;
+
+  border-left: 0.3rem solid black;
+  border-bottom: 0.3rem solid black;
+  border-top: 0.1rem solid black;
+  border-right: 0.1rem solid black;
+  background-color: rgb(187, 192, 255);
+
+  animation: GeneralNavButton-glow 3s infinite;
+  
+}
+
+.GeneralNavButton:hover {
+
+  color: white;
+  background-color: rgb(0, 31, 133);
+
+  animation: GeneralNavButton-hover-glow 3s infinite;
+  
+}
+
+
+/*Signs: */
+
+.header{
+
+  color: white;
+
+}
+
+
+
+/*animations: */
+
+@keyframes GeneralNavButton-glow {
+  0% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgb(187, 192, 255), 
+      0 0 2rem 0.3rem rgb(50, 64, 255);
+  }
+  50% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgb(187, 192, 255, 0.5),  
+      0 0 2rem 0.3rem rgb(50, 64, 255, 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 1rem 0.15rem rgb(187, 192, 255), 
+      0 0 2rem 0.3rem rgb(50, 64, 255);
+  }
+}
+
+
+@keyframes GeneralNavButton-hover-glow {
+  0% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgba(149, 165, 255, 0.75), 
+      0 0 2rem 0.3rem rgba(0, 55, 255, 0.75);   
+  }
+  50% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgba(149, 165, 255, 0.25),  
+      0 0 2rem 0.3rem rgba(0, 55, 255, 0.25);   
+  }
+  100% {
+    box-shadow:
+      0 0 1rem 0.15rem rgba(149, 165, 255, 0.75),  
+      0 0 2rem 0.3rem rgba(0, 55, 255, 0.75);       
+  }
+}
