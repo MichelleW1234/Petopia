@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import {useState} from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
+import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
 import PetSelector from "./HomescreenComponents/PetSelector.jsx";
 
@@ -10,10 +11,12 @@ import "./Homescreen.css";
 function Homescreen (){
 
     const {PetList, setPetList} = usePetList();
+    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
     const [petSelectorFlag, setPetSelectorFlag] = useState(false);
 
     const allowMorePets = PetList.every(item => item.length > 0);
+
 
 
     const viewPetOptions = () => {
@@ -27,6 +30,14 @@ function Homescreen (){
         setPetList([[], [], []]);
 
     }
+
+    const getPet = (index) => {
+
+        setActivePetNumber(index);
+        
+    }
+
+
 
 
     return (
@@ -69,12 +80,13 @@ function Homescreen (){
 
                             <div key = {index} className="PetSlotInnerContainer">
                                 <div className = "PetSlot"> 
-                                    <img src = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"/>
+                                    <img/>
                                     <p>Species: {pet[0]}</p>
                                     <p>Stage: {pet[1]}</p>
                                     <p>Health: {pet[2]}</p>
                                 </div>
-                                <Link to = "/pet" className = "GeneralNavButton"> Visit </Link>
+
+                                <Link to = {`/${pet[0]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
                             </div>
 
                         )

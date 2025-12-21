@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import "./Feedscreen.css";
+import "./FishFeedscreen.css";
 
-function Feedscreen (){
+function FishFeedscreen (){
 
     return (
 
@@ -10,6 +10,7 @@ function Feedscreen (){
             <div className="header">  
                 This is the feeding screen of your selected pet.      
             </div>
+            <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 
     );
@@ -17,4 +18,4 @@ function Feedscreen (){
 }
 
 
-export default Feedscreen;
+export default FishFeedscreen;

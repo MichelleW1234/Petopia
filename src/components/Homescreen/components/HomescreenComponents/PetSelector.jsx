@@ -8,7 +8,7 @@ function PetSelector ({setPetSelectorFlag}) {
 
     const {PetList, setPetList} = usePetList();
 
-    const petSpecies = ["Dog", "Cat", "Fish"];
+    const petSpecies = ["dog", "cat", "fish"];
     const [selectedPet, setSelectedPet] = useState(-1);
 
     const closePetOptions = () => {
@@ -20,15 +20,15 @@ function PetSelector ({setPetSelectorFlag}) {
 
             if (selectedPet === 0){
 
-                newPetList[firstOpenSlot] = ["woof"];
-                    
+                newPetList[firstOpenSlot] = ["dog", 0, 15, false, false, false];
+
             } else if (selectedPet === 1){
 
-                newPetList[firstOpenSlot] = ["meow"];
+                newPetList[firstOpenSlot] = ["cat", 0, 20, false, false, false];
 
             } else if (selectedPet === 2){
 
-                newPetList[firstOpenSlot] = ["glub"];
+                newPetList[firstOpenSlot] = ["fish", 0, 5, false, false];
 
             }
 
@@ -50,14 +50,14 @@ function PetSelector ({setPetSelectorFlag}) {
                         index === selectedPet ? (
 
                             <div className = "PetSelectorBoxActive" key = {index}> 
-                                <img src = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"/>
+                                <img/>
                                 <p>Species: {pet}</p>
                             </div>
 
                         ) : (
 
                             <button className = "PetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
-                                <img src = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"/>
+                                <img/>
                                 <p>Species: {pet}</p>
                             </button>
 

@@ -3,11 +3,12 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
 import {PetListProvider} from "./providers/PetListProvider.jsx";
+import { ActivePetNumberProvider } from './providers/ActivePetNumberProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <PetListProvider>
+    <PetListProvider><ActivePetNumberProvider>
       <App />
-    </PetListProvider>
+    </ActivePetNumberProvider></PetListProvider>
   </StrictMode>,
 )

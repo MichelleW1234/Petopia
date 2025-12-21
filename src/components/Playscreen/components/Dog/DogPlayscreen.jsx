@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import "./Playscreen.css";
+import "./DogPlayscreen.css";
 
-function Playscreen (){
+function DogPlayscreen (){
 
     return (
 
@@ -10,6 +10,7 @@ function Playscreen (){
             <div className="header">  
                 This is the playing screen of your selected pet.      
             </div>
+            <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 
     );
@@ -17,4 +18,4 @@ function Playscreen (){
 }
 
 
-export default Playscreen;
+export default DogPlayscreen;

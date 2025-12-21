@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import "./Washscreen.css";
+import "./FishWashscreen.css";
 
-function Washscreen (){
+function FishWashscreen (){
 
     return (
 
@@ -10,6 +10,7 @@ function Washscreen (){
             <div className = "header">  
                 This is the washing screen of your selected pet.      
             </div>
+            <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 
     );
@@ -17,4 +18,4 @@ function Washscreen (){
 }
 
 
-export default Washscreen;
+export default FishWashscreen;
