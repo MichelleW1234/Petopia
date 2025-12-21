@@ -8,30 +8,19 @@ function PetSelector ({setPetSelectorFlag}) {
 
     const {PetList, setPetList} = usePetList();
 
-    const petSpecies = ["dog", "cat", "fish"];
+    const speciesInfo = [["dog", 15, 3, [false, false, false]], ["cat", 20, 3, [false, false, false]], ["fish", 5, 3, [false, false]]];
+
     const [selectedPet, setSelectedPet] = useState(-1);
 
+
+    
     const closePetOptions = () => {
 
         if (selectedPet !== -1){
 
             const firstOpenSlot = PetList.findIndex(item => item.length === 0);
             const newPetList = [...PetList];
-
-            if (selectedPet === 0){
-
-                newPetList[firstOpenSlot] = ["dog", 0, 15, false, false, false];
-
-            } else if (selectedPet === 1){
-
-                newPetList[firstOpenSlot] = ["cat", 0, 20, false, false, false];
-
-            } else if (selectedPet === 2){
-
-                newPetList[firstOpenSlot] = ["fish", 0, 5, false, false];
-
-            }
-
+            newPetList[firstOpenSlot] = [[speciesInfo[selectedPet][0], ""], [0, speciesInfo[selectedPet][1]], speciesInfo[selectedPet][3]];
             setPetList(newPetList);
 
         }
@@ -40,25 +29,31 @@ function PetSelector ({setPetSelectorFlag}) {
 
     }
 
+
+
     return (
         <div className="FloatingFlagBackground">
             <div className="FloatingFlagContainer">
                 <h2 className="header"> Select a new Pet: </h2>
                 <div className = "PetSelectorContainer">
-                    {petSpecies.map((pet, index) => (
+                    {speciesInfo.map((pet, index) => (
 
                         index === selectedPet ? (
 
-                            <div className = "PetSelectorBoxActive" key = {index}> 
-                                <img/>
-                                <p>Species: {pet}</p>
+                            <div>
+                                <div className = "PetSelectorBoxActive" key = {index}> 
+                                    <p>Species: {pet[0]}</p>
+                                    <p>Vitality: {pet[1]}</p>
+                                    <p>Breeds: {pet[2]}</p>
+                                </div>
                             </div>
 
                         ) : (
 
                             <button className = "PetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
-                                <img/>
-                                <p>Species: {pet}</p>
+                                <p>Species: {pet[0]}</p>
+                                <p>Vitality: {pet[1]}</p>
+                                <p>Breeds: {pet[2]}</p>
                             </button>
 
                         )

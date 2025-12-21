@@ -1,11 +1,8 @@
 /*
   For each pet list element:
-  - 0 -> species: dog, cat, or fish
-  - 1 -> stage of growth: 1-3
-  - 2 -> Health (depends on feeding, bathing, and playing) varies for fish, cat, and dog
-  - 3 -> ate today: true or false
-  - 4 -> bathed today: true or false
-  - 5 -> played/attention today: true or false
+  - 0 -> general info: [species, pet image]
+  - 1 -> health: [stage of growth, health]
+  - 2 -> daily tasks: [ate?, bathed?, played?]
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
