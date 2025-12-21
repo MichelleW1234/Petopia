@@ -1,0 +1,83 @@
+.PetSelectorContainer {
+
+    width: 45vw;
+    max-width: 46rem; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+
+    gap: 3rem;
+    padding: 2rem;
+
+}
+
+
+.PetSelectorBox {
+
+    height: 15rem;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border-radius: 1rem;
+    gap: 1rem;
+    padding: 1rem;
+
+    border-left: 0.3rem solid black;
+    border-bottom: 0.3rem solid black;
+    border-top: 0.1rem solid black;
+    border-right: 0.1rem solid black;
+
+    background-color: rgb(175, 214, 255);
+
+    animation: FloatingFlagBox-glow 3s infinite;
+
+    img {
+
+        width: 80%;
+
+    }
+
+}
+
+
+.PetSelectorBox:hover {
+
+    color: white;
+    background-color: rgb(81, 81, 255);
+
+}
+
+.PetSelectorBoxActive {
+
+    height: 15rem;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border-radius: 1rem;
+    gap: 1rem;
+    padding: 1rem;
+
+    border-left: 0.3rem solid black;
+    border-bottom: 0.3rem solid black;
+    border-top: 0.1rem solid black;
+    border-right: 0.1rem solid black;
+    background-color: rgb(235, 138, 255);
+
+    animation: FloatingFlagBox-Active-glow 3s infinite;
+
+    img {
+
+        width: 80%;
+
+    }
+
+}

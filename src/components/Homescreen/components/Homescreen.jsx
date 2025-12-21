@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import {useState} from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
+
+import PetSelector from "./HomescreenComponents/PetSelector.jsx";
 
 import "./Homescreen.css";
 
@@ -8,12 +11,45 @@ function Homescreen (){
 
     const {PetList, setPetList} = usePetList();
 
+    const [petSelectorFlag, setPetSelectorFlag] = useState(false);
+
+    const allowMorePets = PetList.every(item => item.length > 0);
+
+
+    const viewPetOptions = () => {
+
+        setPetSelectorFlag(true);
+
+    }
+    
+    const restartGame = () => {
+
+        setPetList([[], [], []]);
+
+    }
+
+
     return (
 
         <>
+            {petSelectorFlag && 
+            <PetSelector
+                setPetSelectorFlag = {setPetSelectorFlag}
+            />}
+
             <div className="NavBarContainer">
-                <button className="NavBarButton"> Restart </button>
-                <button className="NavBarButton"> Choose a Pet </button>
+                <button className="NavBarButton" onClick = {() => restartGame()}> Restart </button>
+
+                {allowMorePets ? (
+
+                    <button className="NavBarButtonPlaceHolder"> Choose a Pet </button>
+
+                ) : (
+
+                    <button className="NavBarButton" onClick = {() => viewPetOptions()}> Choose a Pet </button>
+
+                )}
+                
             </div>
             <div className = "ScreenContainer">  
                 <h1 className="header"> Your Pets: </h1>
@@ -26,7 +62,7 @@ function Homescreen (){
                                 <div className="PetSlotInnerContainer">
                                     <div className = "PetSlot"> Empty Slot </div>
                                 </div>
-                                <Link to = "/pet" className = "GeneralNavButton"> Visit </Link>
+                                <div className = "GeneralNavButtonPlaceHolder"> Visit </div>
                             </div>
 
                         ) : (
