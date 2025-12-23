@@ -1,4 +1,4 @@
-.PetSlotContainer{
+.HomescreenPetSlotContainer{
 
     display: flex;
     flex-direction: row;
@@ -10,7 +10,7 @@
 
 }
 
-.PetSlotInnerContainer{
+.HomescreenPetSlotInnerContainer{
 
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
 
 }
 
-.PetSlot{
+.HomescreenPetSlot{
 
     height: 20rem;
     width: 15rem;

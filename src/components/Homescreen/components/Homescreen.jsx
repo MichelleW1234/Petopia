@@ -13,9 +13,9 @@ function Homescreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const [petSelectorFlag, setPetSelectorFlag] = useState(false);
-
     const allowMorePets = PetList.every(item => item.length > 0);
+
+    const [petSelectorFlag, setPetSelectorFlag] = useState(false);
 
 
 
@@ -64,23 +64,21 @@ function Homescreen (){
             </div>
             <div className = "ScreenContainer">  
                 <h1 className="header"> Your Pets: </h1>
-                <div className="PetSlotContainer">
+                <div className="HomescreenPetSlotContainer">
                     {PetList.map((pet, index) => (
 
                         pet.length === 0 ? (
 
-                            <div key = {index} className="PetSlotInnerContainer">
-                                <div className="PetSlotInnerContainer">
-                                    <div className = "PetSlot"> Empty Slot </div>
-                                </div>
+                            <div key = {index} className="HomescreenPetSlotInnerContainer">
+                                <div className = "HomescreenPetSlot"> Empty Slot </div>
                                 <div className = "GeneralNavButtonPlaceHolder"> Visit </div>
                             </div>
 
                         ) : (
 
-                            <div key = {index} className="PetSlotInnerContainer">
-                                <div className = "PetSlot"> 
-                                    <img src = {pet[0][1]}/>
+                            <div key = {index} className="HomescreenPetSlotInnerContainer">
+                                <div className = "HomescreenPetSlot"> 
+                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[0][1]}*//>
                                     <p>Species: {pet[0][0]}</p>
                                     <p>Stage: {pet[1][0]}</p>
                                     <p>Health: {pet[1][1]}</p>

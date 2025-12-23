@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {useState} from "react";
 
-import MainPetInnerscreen from "../MainPetscreenComponents/MainPetInnerscreen.jsx";
+import PetWindow from "../MainPetscreenComponents/PetWindow.jsx";
 
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
@@ -30,7 +30,7 @@ function DogMainPetscreen (){
                 <button></button>
             </div>
             <div className = "ScreenContainer">
-                <MainPetInnerscreen
+                <PetWindow
                     petNeed = {needs}
                     petEnergy = {300}
                 />

@@ -32,6 +32,7 @@ function PetSelector ({setPetSelectorFlag}) {
 
 
     return (
+
         <div className="FloatingFlagBackground">
             <div className="FloatingFlagContainer">
                 <h2 className="header"> Select a new Pet: </h2>
@@ -62,6 +63,7 @@ function PetSelector ({setPetSelectorFlag}) {
                 <button className = "FloatingFlagButton" onClick = {() => closePetOptions()}> Done </button>
             </div>
         </div>
+        
     );
 
 };
