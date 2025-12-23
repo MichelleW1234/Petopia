@@ -83,7 +83,7 @@ function MainPetInnerscreen ({petNeed, petEnergy}){
 
                             ) : quotationHere ? (
 
-                                loved === true ? (
+                                loved ? (
 
                                     <img src = {heart} className = "MainPetScreenQuotationCell"/>
 
