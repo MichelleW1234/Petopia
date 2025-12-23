@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import {useState} from "react";
+
+import MainPetInnerscreen from "../MainPetscreenComponents/MainPetInnerscreen.jsx";
 
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { resetActivePet } from '../../helpers/Helpers.js';
 
@@ -9,6 +13,11 @@ import "./FishMainPetscreen.css";
 function FishMainPetscreen (){
 
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {PetList, setPetList} = usePetList();
+
+    const [needs, setNeeds] = useState(-1);
+
+
 
     return (
 
@@ -18,11 +27,10 @@ function FishMainPetscreen (){
                 <Link to = "/fishwash" className="NavBarButton"> Clean Fish Tank </Link>
             </div>
             <div className = "ScreenContainer">
-                <div className="header">  
-                    This is the main screen of your selected pet. 
-                    You can check up on your pet's health and see how they are doing.
-                    From here is where you choose how to interact with them and tend to their needs.
-                </div>
+                <MainPetInnerscreen
+                    petNeed = {needs}
+                    petEnergy = {500}
+                />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>
         </>

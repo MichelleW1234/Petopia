@@ -1,0 +1,107 @@
+.MainPetInnerScreenborder {
+
+    padding: 3rem;
+    border-radius: 2rem;
+
+    border-left: 0.5rem solid black; 
+    border-bottom: 0.5rem solid black; 
+    border-top: 0.2rem solid black; 
+    border-right: 0.2rem solid black; 
+    background-color: rgb(12, 0, 182);
+
+}
+
+.MainPetInnerScreenborder-dog {
+
+    background-color: rgb(107, 55, 0);
+    box-shadow: 0 0 1rem 0.5rem  rgb(255, 192, 124);
+
+}
+
+.MainPetInnerScreenborder-cat {
+
+    background-color: rgb(0, 107, 23);
+    box-shadow: 0 0 1rem 0.5rem  rgb(152, 255, 124);
+
+}
+
+.MainPetInnerScreenborder-fish {
+
+    background-color: rgb(0, 5, 107);
+    box-shadow: 0 0 1rem 0.5rem  rgb(124, 200, 255);
+
+}
+
+
+
+
+.MainPetScreen {
+
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(8, 1fr);
+
+}
+
+.MainPetScreen-dog{
+
+    border: 0.5rem solid rgb(90, 132, 173);
+    background: linear-gradient(to bottom, #a159ff, #ffcf4b);
+
+}
+
+.MainPetScreen-cat{
+
+    border: 0.5rem solid rgb(90, 132, 173);
+    background: linear-gradient(to bottom, #a159ff, #ffcf4b);
+
+}
+
+
+.MainPetScreen-fish{
+
+    border: 0.5rem solid rgb(90, 132, 173);
+    background: linear-gradient(to bottom, #a159ff, #ffcf4b);
+
+}
+
+
+
+.MainPetScreenCell {
+
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.MainPetScreenPetCell {
+
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: aqua;
+
+}
+
+
+.MainPetScreenQuotationCell {
+
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgb(195, 214, 255);
+
+}
