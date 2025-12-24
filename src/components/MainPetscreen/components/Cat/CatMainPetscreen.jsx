@@ -24,7 +24,6 @@ function CatMainPetscreen (){
         <>
             <div className="NavBarContainer">
                 <Link to = "/catfeed" className="NavBarButton"> Feed Cat </Link>
-                <Link to = "/catwash" className="NavBarButton"> Bathe Cat </Link>
                 <Link to = "/catplay" className="NavBarButton"> Play With Cat </Link>
             </div>
             <div className = "ScreenContainer">

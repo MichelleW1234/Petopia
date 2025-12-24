@@ -8,7 +8,7 @@ function PetSelector ({setPetSelectorFlag}) {
 
     const {PetList, setPetList} = usePetList();
 
-    const speciesInfo = [["dog", 15, 3, [false, false, false]], ["cat", 20, 3, [false, false, false]], ["fish", 5, 3, [false, false]]];
+    const speciesInfo = [["dog", 15, 3], ["cat", 20, 3], ["fish", 5, 3]];
 
     const [selectedPet, setSelectedPet] = useState(-1);
 
@@ -20,7 +20,22 @@ function PetSelector ({setPetSelectorFlag}) {
 
             const firstOpenSlot = PetList.findIndex(item => item.length === 0);
             const newPetList = [...PetList];
-            newPetList[firstOpenSlot] = [[speciesInfo[selectedPet][0], ""], [0, speciesInfo[selectedPet][1]], speciesInfo[selectedPet][3]];
+            const startingTime = Date.now();
+
+            if (speciesInfo[selectedPet][0] === "dog"){
+
+                newPetList[firstOpenSlot] = [[speciesInfo[selectedPet][0], ""], [0, speciesInfo[selectedPet][1]], [startingTime, startingTime, startingTime]];
+
+            } else if (speciesInfo[selectedPet][0] === "cat"){
+
+                newPetList[firstOpenSlot] = [[speciesInfo[selectedPet][0], ""], [0, speciesInfo[selectedPet][1]], [startingTime, "X", startingTime]];
+
+            } else if (speciesInfo[selectedPet][0] === "fish"){
+
+                newPetList[firstOpenSlot] = [[speciesInfo[selectedPet][0], ""], [0, speciesInfo[selectedPet][1]], [startingTime, startingTime, "X"]];
+
+            }
+           
             setPetList(newPetList);
 
         }
@@ -41,12 +56,10 @@ function PetSelector ({setPetSelectorFlag}) {
 
                         index === selectedPet ? (
 
-                            <div>
-                                <div className = "PetSelectorBoxActive" key = {index}> 
-                                    <p>Species: {pet[0]}</p>
-                                    <p>Vitality: {pet[1]}</p>
-                                    <p>Breeds: {pet[2]}</p>
-                                </div>
+                            <div className = "PetSelectorBoxActive" key = {index}> 
+                                <p>Species: {pet[0]}</p>
+                                <p>Vitality: {pet[1]}</p>
+                                <p>Breeds: {pet[2]}</p>
                             </div>
 
                         ) : (

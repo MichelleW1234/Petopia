@@ -5,7 +5,6 @@ import Homescreen from "./components/Homescreen/components/Homescreen.jsx";
 import CatMainPetscreen from "./components/MainPetscreen/components/Cat/CatMainPetscreen.jsx";
 import CatFeedscreen from "./components/Feedscreen/components/Cat/CatFeedscreen.jsx";
 import CatPlayscreen from "./components/Playscreen/components/Cat/CatPlayscreen.jsx";
-import CatWashscreen from "./components/Washscreen/components/Cat/CatWashscreen.jsx";
 
 import DogMainPetscreen from "./components/MainPetscreen/components/Dog/DogMainPetscreen.jsx";
 import DogFeedscreen from "./components/Feedscreen/components/Dog/DogFeedscreen.jsx";
@@ -34,7 +33,6 @@ function App() {
           <Route path="/catpet" element={<CatMainPetscreen />}/>
           <Route path="/catfeed" element={<CatFeedscreen />}/>
           <Route path="/catplay" element={<CatPlayscreen />}/>
-          <Route path="/catwash" element={<CatWashscreen />}/>
 
           <Route path="/dogpet" element={<DogMainPetscreen />}/>
           <Route path="/dogfeed" element={<DogFeedscreen />}/>
