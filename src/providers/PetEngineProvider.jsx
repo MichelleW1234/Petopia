@@ -9,59 +9,43 @@ export function PetEngineProvider({ children }) {
 
     const millisInOneHour = 3600000; 
 
+    const PetTimeStampsRef = useRef(PetTimeStamps);
+    const PetListRef = useRef(PetList);
+
+    useEffect(() => {
+        PetTimeStampsRef.current =PetTimeStamps;
+    }, [PetTimeStamps]);
+
+    useEffect(() => {
+        PetListRef.current = PetList;
+    }, [PetList]);
+
     useEffect(() => {
 
         const runCheck = () => {
 
-            let newHealthArray = [];
-    
-            setPetTimeStamps(prev => {
-                
-                const updatedPetTimeStamps = prev.map(pet =>
-                                                pet.map(group =>
-                                                    [...group]
-                                                )
-                                            );
-                
-                
-                for (let i = 0; i< updatedPetTimeStamps.length; i++){
-
-                    if (updatedPetTimeStamps[i].length > 0) {
-
-                        const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
-                        updatedPetTimeStamps[i] = newPetTimeStamps;
-                        newHealthArray.push(healthAffected);
-
-                    } else {
-
-                        newHealthArray[i] = -1;
-
-                    }
-
-                };
-
-                return updatedPetTimeStamps;
+            const updatedPetTimeStamps = PetTimeStampsRef.current.map(pet =>
+                                            pet.map(group =>
+                                                [...group]
+                                            )
+                                        );
+            const updatedPetList = PetListRef.current.map(inner => [...inner]);
             
-            });
+            
+            for (let i = 0; i<updatedPetTimeStamps.length; i++){
 
+                if (updatedPetTimeStamps[i].length > 0) {
 
-            setPetList(prev => {
-
-                const petListCopy = prev.map(inner => [...inner]);
-
-                for (let i = 0; i < newHealthArray.length; i++){
-
-                    if (newHealthArray[i] !== -1){
-
-                        petListCopy[i][3] = Math.max(petListCopy[i][3] - newHealthArray[i], 0);
-
-                    }
+                    const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
+                    updatedPetTimeStamps[i] = newPetTimeStamps;
+                    updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
 
                 }
 
-                return petListCopy;
-
-            });
+            };
+    
+            setPetTimeStamps(updatedPetTimeStamps);
+            setPetList(updatedPetList);
 
         };
 
@@ -76,9 +60,9 @@ export function PetEngineProvider({ children }) {
 
 
 
-    const damageCheck = (petTimeStamps) => {
+    const damageCheck = (oldPetTimeStamps) => {
 
-        const newPetTimeStamps = petTimeStamps.map(inner => [...inner]);
+        const newPetTimeStamps = oldPetTimeStamps.map(inner => [...inner]);
         const damage = [4, 1, 2];
         let healthAffected = 0;
         let petTimeLimits;
@@ -87,16 +71,19 @@ export function PetEngineProvider({ children }) {
         // There is no element [-1] (dog)
 
             petTimeLimits = [46800000, 90000000, 46800000];
+            //petTimeLimits = [180000, 300000, 180000];
 
         } else if (newPetTimeStamps[1].length === 1 && newPetTimeStamps[1][0] === -1){
         // There is an element [-1] at index 1 (cat)
 
             petTimeLimits = [46800000, 0, 46800000];
+            //petTimeLimits = [180000, 0, 180000];
 
         } else if (newPetTimeStamps[2].length === 1 && newPetTimeStamps[2][0] === -1){
         // There is an element [-1] at index 2 (fish)
 
             petTimeLimits = [46800000, 90000000, 0];
+            //petTimeLimits = [180000, 300000, 0];
 
         }
 
