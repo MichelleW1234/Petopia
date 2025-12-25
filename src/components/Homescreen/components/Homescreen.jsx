@@ -78,13 +78,13 @@ function Homescreen (){
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[0][1]}*//>
-                                    <p>Species: {pet[0][0]}</p>
-                                    <p>Stage: {pet[1][0]}</p>
-                                    <p>Health: {pet[1][1]}</p>
+                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[1]}*//>
+                                    <p>Species: {pet[0]}</p>
+                                    <p>Stage: {pet[2]}</p>
+                                    <p>Health: {pet[3]}</p>
                                 </div>
 
-                                <Link to = {`/${pet[0][0]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
+                                <Link to = {`/${pet[0]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
                             </div>
 
                         )

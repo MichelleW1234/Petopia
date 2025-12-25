@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
-import { usePetList } from "./PetListProvider";
-import { useLastChecked } from "./LastCheckedProvider";
+import { usePetList } from "./PetListProvider.jsx";
+import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
 export function PetEngineProvider({ children }) {
 
-    const {LastChecked, setLastChecked} = useLastChecked();
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
     const millisInOneHour = 3600000; 
@@ -13,24 +13,47 @@ export function PetEngineProvider({ children }) {
 
         const runCheck = () => {
 
-            const now = Date.now();
+            let newHealthArray = [];
+    
+            setPetTimeStamps(prev => {
+                
+                const updatedPetTimeStamps = prev.map(pet =>
+                                                pet.map(group =>
+                                                    [...group]
+                                                )
+                                            );
+                
+                
+                for (let i = 0; i< updatedPetTimeStamps.length; i++){
 
-            setPetList(prevPetList => {
+                    if (updatedPetTimeStamps[i].length > 0) {
 
-                const petListCopy = prevPetList.map(pet =>
-                    pet.map(group =>
-                        [...group]
-                    )
-                );
+                        const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
+                        updatedPetTimeStamps[i] = newPetTimeStamps;
+                        newHealthArray.push(healthAffected);
 
-                for (let i = 0; i < prevPetList.length; i++){
+                    } else {
 
-                    if (prevPetList[i].length > 0){
+                        newHealthArray[i] = -1;
 
-                        const healthChange = damageCheck(prevPetList[i], now);
-                        petListCopy[i][1][1] = Math.max(petListCopy[i][1][1] - healthChange, 0);
+                    }
 
-                        console.log(healthChange);
+                };
+
+                return updatedPetTimeStamps;
+            
+            });
+
+
+            setPetList(prev => {
+
+                const petListCopy = prev.map(inner => [...inner]);
+
+                for (let i = 0; i < newHealthArray.length; i++){
+
+                    if (newHealthArray[i] !== -1){
+
+                        petListCopy[i][3] = Math.max(petListCopy[i][3] - newHealthArray[i], 0);
 
                     }
 
@@ -39,8 +62,6 @@ export function PetEngineProvider({ children }) {
                 return petListCopy;
 
             });
-
-            setLastChecked(now);
 
         };
 
@@ -54,86 +75,77 @@ export function PetEngineProvider({ children }) {
 
 
 
-    const damageCheck = (pet, now) => {
 
-        let underFed;
-        let underCleaned;
-        let underWorked;
+    const damageCheck = (petTimeStamps) => {
 
-        if (pet[0][0] === "dog"){
+        const newPetTimeStamps = petTimeStamps.map(inner => [...inner]);
+        const damage = [4, 1, 2];
+        let healthAffected = 0;
+        let petTimeLimits;
 
-            underFed = 46800000;
-            underCleaned = 90000000;
-            underWorked = 46800000;
+        if (!newPetTimeStamps.some(sub => sub.length === 1 && sub[0] === -1)){
+        // There is no element [-1] (dog)
 
-        } else if (pet[0][0] === "cat"){
+            petTimeLimits = [46800000, 90000000, 46800000];
 
-            underFed = 46800000;
-            underCleaned = 0;
-            underWorked = 46800000;
+        } else if (newPetTimeStamps[1].length === 1 && newPetTimeStamps[1][0] === -1){
+        // There is an element [-1] at index 1 (cat)
 
-        } else if (pet[0][0] === "fish"){
+            petTimeLimits = [46800000, 0, 46800000];
 
-            underFed = 46800000;
-            underCleaned = 90000000;
-            underWorked = 0;
+        } else if (newPetTimeStamps[2].length === 1 && newPetTimeStamps[2][0] === -1){
+        // There is an element [-1] at index 2 (fish)
+
+            petTimeLimits = [46800000, 90000000, 0];
 
         }
-    
-        
-        let healthAffected = 0;
 
-        for (let i=0; i<3; i++){
+        // Iterate through every activity of this pet to see how much health damage there is:
+        for (let i=0; i<petTimeLimits.length; i++){
 
-            if (pet[2][i] !== "X"){
+            if (petTimeLimits[i] === 0){
+            // [-1] so not applicable
 
-                let subtrahend = LastChecked; 
-
-                if (i === 0){
-                // Hunger damage
-
-                    if (LastChecked < pet[2][0]){
-                        subtrahend = pet[2][0];
-                    }
-
-                    if (now - subtrahend > underFed){
-                        const intervalsPassed = Math.floor((now - subtrahend) / subtrahend);
-                        healthAffected += 4*intervalsPassed;
-                    }
-
-                } else if (i === 1){
-                // Wash damage
-
-                    if (LastChecked < pet[2][1]){
-                        subtrahend = pet[2][1];
-                    }
-
-                    if (now - subtrahend > underCleaned){
-                        const intervalsPassed = Math.floor((now - subtrahend) / subtrahend);
-                        healthAffected += 1*intervalsPassed;
-                    }
-
-                } else if (i === 2){
-                // Play damage
-
-                    if (LastChecked < pet[2][2]){
-                        subtrahend = pet[2][2];
-                    }
-
-                    if (now - subtrahend > underWorked){
-                        const intervalsPassed = Math.floor((now - subtrahend) / subtrahend);
-                        healthAffected += 1*intervalsPassed;
-                    }
-
-                }
+                continue;
 
             }
 
+            let subtrahend = Math.max(newPetTimeStamps[i][0], newPetTimeStamps[i][1]); 
+
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(newPetTimeStamps[i][1], subtrahend, petTimeLimits[i], damage[i]);
+            newPetTimeStamps[i][1] = newPetTimeStamp;
+            healthAffected += addedHealthDamage;
+
         }
-        
-        return healthAffected;
+
+        return { healthAffected, newPetTimeStamps };
 
     }
+
+
+    const calculatingNewTimes = (oldPetTimeStamp, subtrahend, limit, damage) => {
+
+        let addedHealthDamage = 0;
+        let intervalsPassed = 0;
+        let newPetTimeStamp = oldPetTimeStamp; 
+        const timeElapsed = Date.now() - subtrahend;
+
+        if (timeElapsed > limit){
+            intervalsPassed = Math.floor(timeElapsed / limit);
+            addedHealthDamage = damage*intervalsPassed;
+        }
+
+        if (intervalsPassed > 0){
+        //the time between the last time this activity's damage was updated and the current time is long enough for another update:
+
+            newPetTimeStamp = subtrahend + intervalsPassed*limit;
+
+        }
+
+        return { addedHealthDamage, newPetTimeStamp };
+
+    }
+
 
     return children;
 

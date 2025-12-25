@@ -2,15 +2,15 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
-import { LastCheckedProvider } from './providers/LastCheckedProvider.jsx';
+import {PetTimeStampsProvider} from './providers/PetTimeStampsProvider.jsx';
 import {PetListProvider} from "./providers/PetListProvider.jsx";
 import {PetEngineProvider} from "./providers/PetEngineProvider.jsx";
 import { ActivePetNumberProvider } from './providers/ActivePetNumberProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <LastCheckedProvider><PetListProvider><PetEngineProvider><ActivePetNumberProvider>
+    <PetListProvider><PetTimeStampsProvider><PetEngineProvider><ActivePetNumberProvider>
       <App />
-    </ActivePetNumberProvider></PetEngineProvider></PetListProvider></LastCheckedProvider>
+    </ActivePetNumberProvider></PetEngineProvider></PetTimeStampsProvider></PetListProvider>
   </StrictMode>,
 )

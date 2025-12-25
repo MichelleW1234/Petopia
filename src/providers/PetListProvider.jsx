@@ -1,8 +1,10 @@
 /*
   For each pet list element:
-  - 0 -> general info: [species, pet image]
-  - 1 -> health: [stage of growth, health]
-  - 2 -> daily tasks: [ate?, bathed?, played?]
+  - 0 -> species
+  - 1 -> pet image
+  - 2 -> stage of growth
+  - 3 -> health
+  - 4 -> birth date (milliseconds)
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
