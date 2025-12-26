@@ -21,29 +21,43 @@ function PetSelector ({setPetSelectorFlag}) {
         if (selectedPet !== -1){
 
             const firstOpenSlot = PetList.findIndex(item => item.length === 0);
-            const newPetList = PetList.map(inner => [...inner]);
-            const newPetTimeStampsList = PetTimeStamps.map(inner => [...inner]);
             const startingTime = Date.now();
 
-            if (speciesInfo[selectedPet][0] === "dog"){
+            setPetList(prev => {
 
-                newPetList[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 0, speciesInfo[selectedPet][1], startingTime];
-                newPetTimeStampsList[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [startingTime, startingTime]];
+                const newCopy = prev.map(inner => [...inner]);
 
-            } else if (speciesInfo[selectedPet][0] === "cat"){
+                newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 0, speciesInfo[selectedPet][1], startingTime];
+                                
+                return newCopy;
 
-                newPetList[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 0, speciesInfo[selectedPet][1], startingTime];
-                newPetTimeStampsList[firstOpenSlot] = [[startingTime, startingTime], [-1], [startingTime, startingTime]];
-
-            } else if (speciesInfo[selectedPet][0] === "fish"){
-
-                newPetList[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 0, speciesInfo[selectedPet][1], startingTime];
-                newPetTimeStampsList[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [-1]];
-
-            }
+            });
            
-            setPetTimeStamps(newPetTimeStampsList);
-            setPetList(newPetList);
+            setPetTimeStamps(prev => {
+
+                const newCopy = prev.map(pet =>
+                    pet.map(group =>
+                        [...group]
+                    )
+                );
+
+                if (selectedPet === 0){
+
+                    newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [startingTime, startingTime]];
+
+                } else if (selectedPet === 1){
+
+                    newCopy[firstOpenSlot] = [[startingTime, startingTime], [-1], [startingTime, startingTime]];
+
+                } else if (selectedPet === 2){
+
+                    newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [-1]];
+
+                }
+
+                return newCopy;
+
+            })
 
         }
        

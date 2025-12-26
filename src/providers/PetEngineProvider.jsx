@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
+
 
 export function PetEngineProvider({ children }) {
 
@@ -13,7 +14,7 @@ export function PetEngineProvider({ children }) {
     const PetListRef = useRef(PetList);
 
     useEffect(() => {
-        PetTimeStampsRef.current =PetTimeStamps;
+        PetTimeStampsRef.current = PetTimeStamps;
     }, [PetTimeStamps]);
 
     useEffect(() => {
@@ -34,7 +35,7 @@ export function PetEngineProvider({ children }) {
             
             for (let i = 0; i<updatedPetTimeStamps.length; i++){
 
-                if (updatedPetTimeStamps[i].length > 0) {
+                if (updatedPetTimeStamps[i].length > 0 && updatedPetList[i].length > 0) {
 
                     const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
                     updatedPetTimeStamps[i] = newPetTimeStamps;
@@ -51,7 +52,7 @@ export function PetEngineProvider({ children }) {
 
         runCheck();
 
-        const interval = setInterval(runCheck, millisInOneHour);
+        const interval = setInterval(runCheck, 60000);
 
         return () => clearInterval(interval);
 
@@ -71,19 +72,19 @@ export function PetEngineProvider({ children }) {
         // There is no element [-1] (dog)
 
             petTimeLimits = [46800000, 90000000, 46800000];
-            //petTimeLimits = [180000, 300000, 180000];
+            petTimeLimits = [180000, 300000, 180000];
 
         } else if (newPetTimeStamps[1].length === 1 && newPetTimeStamps[1][0] === -1){
         // There is an element [-1] at index 1 (cat)
 
             petTimeLimits = [46800000, 0, 46800000];
-            //petTimeLimits = [180000, 0, 180000];
+            petTimeLimits = [180000, 0, 180000];
 
         } else if (newPetTimeStamps[2].length === 1 && newPetTimeStamps[2][0] === -1){
         // There is an element [-1] at index 2 (fish)
 
             petTimeLimits = [46800000, 90000000, 0];
-            //petTimeLimits = [180000, 300000, 0];
+            petTimeLimits = [180000, 300000, 0];
 
         }
 
@@ -132,7 +133,6 @@ export function PetEngineProvider({ children }) {
         return { addedHealthDamage, newPetTimeStamp };
 
     }
-
 
     return children;
 
