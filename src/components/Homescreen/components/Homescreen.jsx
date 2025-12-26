@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import {useState} from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
+import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
 import PetSelector from "./HomescreenComponents/PetSelector.jsx";
@@ -10,6 +11,7 @@ import "./Homescreen.css";
 
 function Homescreen (){
 
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
@@ -28,6 +30,7 @@ function Homescreen (){
     const restartGame = () => {
 
         setPetList([[], [], []]);
+        setPetTimeStamps([[], [], []]);
 
     }
 

@@ -3,6 +3,7 @@ import {useState} from "react";
 
 import PetWindow from "../MainPetscreenComponents/PetWindow.jsx";
 
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
@@ -12,23 +13,29 @@ import "./FishMainPetscreen.css";
 
 function FishMainPetscreen (){
 
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
 
-    const [needs, setNeeds] = useState(-1);
-
+    const now = Date.now();
+    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) > 86400000 ? true 
+                        : false
+                    : false;
+    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) > 86400000 ? true 
+                        : false
+                    : false;
+    
 
 
     return (
 
         <>
             <div className="NavBarContainer">
-                <Link to = "/fishfeed" className="NavBarButton"> Feed Fish </Link>
-                <Link to = "/fishwash" className="NavBarButton"> Clean Fish Tank </Link>
+                <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
+                <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
             </div>
             <div className = "ScreenContainer">
                 <PetWindow
-                    petNeed = {needs}
                     petEnergy = {500}
                 />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>

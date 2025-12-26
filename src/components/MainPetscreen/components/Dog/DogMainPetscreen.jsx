@@ -3,6 +3,7 @@ import {useState} from "react";
 
 import PetWindow from "../MainPetscreenComponents/PetWindow.jsx";
 
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
@@ -12,26 +13,32 @@ import "./DogMainPetscreen.css";
 
 function DogMainPetscreen (){
 
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
-
-    const [needs, setNeeds] = useState(-1);
     
-
+    const now = Date.now();
+    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) > 43200000 ? true 
+                        : false
+                    : false;
+    const dirty = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][1][0]) > 86400000 ? true
+                        : false
+                    : false;
+    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) > 43200000 ? true 
+                        : false
+                    : false;
 
     
     return (
         
         <>
             <div className="NavBarContainer">
-                <Link to = "/dogfeed" className="NavBarButton"> Feed Dog </Link>
-                <Link to = "/dogwash" className="NavBarButton"> Bathe Dog </Link>
-                <Link to = "/dogplay" className="NavBarButton"> Play With Dog </Link>
-                <button></button>
+                <Link to = "/dogfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Dog </Link>
+                <Link to = "/dogwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Bathe Dog </Link>
+                <Link to = "/dogplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Dog </Link>
             </div>
             <div className = "ScreenContainer">
                 <PetWindow
-                    petNeed = {needs}
                     petEnergy = {300}
                 />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>

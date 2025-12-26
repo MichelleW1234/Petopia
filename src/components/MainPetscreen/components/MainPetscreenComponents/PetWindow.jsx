@@ -4,20 +4,31 @@ import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import heart from "../../../../images/placeholderheart.png";
-import mood from "../../../../images/placeholderhappy.jpg";
+import happy from "../../../../images/placeholderhappy.jpg";
+import neutral from "../../../../images/placeholderneutral.jpg";
+import sad from "../../../../images/placeholdersad.png";
+import verySad from "../../../../images/placeholderverysad.png";
 
 import "./PetWindow.css";
 
-function PetWindow ({petNeed, petEnergy}){
+function PetWindow ({petEnergy}){
+
 
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
 
     // 10 rows x 15 columns
     const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
+    const allHealthCapacities = [[12, 10, 5], [15, 10, 5], [4, 3, 2]];
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][0] ? 0
+                                            : PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][1] ? 1
+                                            : PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][2] ? 2
+                                            : 3
+                                        : -1;
 
     const [loved, setLoved] = useState(false);
     const [petCurrentSpace, setPetCurrentSpace] = useState(Math.floor(Math.random() * 8));
+
 
     const petCurrentSpaceRef = useRef(petCurrentSpace);
     const petDirectionRef = useRef(0);
@@ -39,13 +50,13 @@ function PetWindow ({petNeed, petEnergy}){
 
             const interval = setInterval(() => {
                 petPositionChange();
-            }, petEnergy);
+            }, petEnergy + mood*20);
 
             return () => clearInterval(interval);
 
         }
 
-    }, [ActivePetNumber]);
+    }, [ActivePetNumber, mood]);
 
 
 
@@ -106,8 +117,8 @@ function PetWindow ({petNeed, petEnergy}){
 
     return (
         
-        <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetNumber]?.[0]?.[0] || "default"}`}>
-            <div className= {`PetWindowGrid PetWindowGrid-${PetList[ActivePetNumber]?.[0]?.[0] || "default"}`}>  
+        <div className = {`PetWindowBorder PetWindowBorder-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>
+            <div className= {`PetWindowGrid PetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>  
                 {innerScreenSpace.map((row, rowIndex) => (
                     row.map((__, colIndex) => {
 
@@ -128,13 +139,21 @@ function PetWindow ({petNeed, petEnergy}){
 
                                 ) : (
 
-                                    petNeed === -1 ? (
+                                    mood === 0 ? (
 
-                                        <img key={rowIndex + "," + colIndex} src = {mood} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {happy} className = "PetWindowGridQuotationCell"/>
+
+                                    ) : mood === 1 ? (
+
+                                        <img key={rowIndex + "," + colIndex} src = {neutral} className = "PetWindowGridQuotationCell"/>
+
+                                    ) : mood === 2 ? (
+
+                                        <img key={rowIndex + "," + colIndex} src = {sad} className = "PetWindowGridQuotationCell"/>
 
                                     ) : (
 
-                                        <img key={rowIndex + "," + colIndex} src = {mood} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {verySad} className = "PetWindowGridQuotationCell"/>
 
                                     )
 

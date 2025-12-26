@@ -102,10 +102,34 @@ button {
 
 }
 
+
 .NavBarButton:hover{
 
   color: white;
   background-color: rgb(85, 0, 150);
+
+}
+
+.NavBarButtonUrgent{
+
+  padding: 1rem 1.5rem;
+
+  border-left: 0.25rem solid black;
+  border-bottom: 0.25rem solid black;
+  border-right: 0.1rem solid black;
+  border-top: 0.1rem solid black;
+  background-color: rgb(255, 154, 255);
+
+  animation: NavBarButtonUrgent-glow 3s infinite;
+
+}
+
+.NavBarButtonUrgent:hover{
+
+  color: white;
+  background-color: rgb(86, 0, 107);
+
+  animation: NavBarButtonUrgent-hover-glow 3s infinite;
 
 }
 
@@ -277,6 +301,43 @@ button {
     box-shadow:
       0 0 1rem 0.15rem rgba(149, 165, 255, 0.75),  
       0 0 2rem 0.3rem rgba(0, 55, 255, 0.75);       
+  }
+}
+
+
+@keyframes NavBarButtonUrgent-glow {
+  0% {
+    box-shadow: 
+      0 0 2rem 0.3rem rgb(255, 50, 176), 
+      0 0 2rem 0.3rem rgb(132, 50, 255);
+  }
+  50% {
+    box-shadow: 
+      0 0 2rem 0.3rem rgb(255, 50, 176, 0.5), 
+      0 0 2rem 0.3rem rgb(132, 50, 255, 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 2rem 0.3rem rgb(255, 50, 176), 
+      0 0 2rem 0.3rem rgb(132, 50, 255);
+  }
+}
+
+@keyframes NavBarButtonUrgent-hover-glow {
+  0% {
+    box-shadow: 
+      0 0 2rem 0.3rem rgba(198, 76, 151, 0.75), 
+      0 0 2rem 0.3rem rgba(139, 98, 201, 0.75);
+  }
+  50% {
+    box-shadow: 
+      0 0 2rem 0.3rem rgba(198, 76, 151, 0.25), 
+      0 0 2rem 0.3rem rgba(139, 98, 201, 0.25);
+  }
+  100% {
+    box-shadow:
+      0 0 2rem 0.3rem rgba(198, 76, 151, 0.75), 
+      0 0 2rem 0.3rem rgba(139, 98, 201, 0.75);
   }
 }
 
