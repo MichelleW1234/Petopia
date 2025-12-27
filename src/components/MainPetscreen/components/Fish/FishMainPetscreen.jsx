@@ -24,7 +24,12 @@ function FishMainPetscreen (){
     const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) > 86400000 ? true 
                         : false
                     : false;
-    
+
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > 4 ? 0
+                                    : PetList[ActivePetNumber][3] > 3 ? 1
+                                    : PetList[ActivePetNumber][3] > 2 ? 2
+                                    : 3
+                                : -1;
 
 
     return (
@@ -37,6 +42,7 @@ function FishMainPetscreen (){
             <div className = "ScreenContainer">
                 <PetWindow
                     petEnergy = {500}
+                    mood = {mood}
                 />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>

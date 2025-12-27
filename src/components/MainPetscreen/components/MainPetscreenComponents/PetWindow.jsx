@@ -11,7 +11,7 @@ import verySad from "../../../../images/placeholderverysad.png";
 
 import "./PetWindow.css";
 
-function PetWindow ({petEnergy}){
+function PetWindow ({petEnergy, mood}){
 
 
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
@@ -19,16 +19,9 @@ function PetWindow ({petEnergy}){
 
     // 10 rows x 15 columns
     const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
-    const allHealthCapacities = [[12, 10, 5], [15, 10, 5], [4, 3, 2]];
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][0] ? 0
-                                            : PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][1] ? 1
-                                            : PetList[ActivePetNumber][3] > allHealthCapacities[ActivePetNumber][2] ? 2
-                                            : 3
-                                        : -1;
 
     const [loved, setLoved] = useState(false);
     const [petCurrentSpace, setPetCurrentSpace] = useState(Math.floor(Math.random() * 8));
-
 
     const petCurrentSpaceRef = useRef(petCurrentSpace);
     const petDirectionRef = useRef(0);
@@ -50,13 +43,13 @@ function PetWindow ({petEnergy}){
 
             const interval = setInterval(() => {
                 petPositionChange();
-            }, petEnergy + mood*20);
+            }, petEnergy + mood*100);
 
             return () => clearInterval(interval);
 
         }
 
-    }, [ActivePetNumber, mood]);
+    }, [mood, ActivePetNumber]);
 
 
 

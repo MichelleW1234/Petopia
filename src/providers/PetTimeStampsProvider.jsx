@@ -2,7 +2,7 @@
     For each pet list element: 
     - 0 -> feeding timestamps: [lastfed, lastfeddamageupdate];
     - 1 -> bathing timestamps: [lastbathed, lastbatheddamagepdate];
-    - 2 -> playoing timestamps: [lastplayed, lastplayeddamagepdate];
+    - 2 -> playing timestamps: [lastplayed, lastplayeddamagepdate];
 */
 
 import { createContext, useContext, useState, useEffect } from "react";

@@ -26,6 +26,11 @@ function CatMainPetscreen (){
                         : false
                     : false;
 
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > 15 ? 0
+                                            : PetList[ActivePetNumber][3] > 10 ? 1
+                                            : PetList[ActivePetNumber][3] > 5 ? 2
+                                            : 3
+                                        : -1;
 
 
     return (
@@ -38,6 +43,7 @@ function CatMainPetscreen (){
             <div className = "ScreenContainer">
                 <PetWindow
                     petEnergy = {700}
+                    mood = {mood}
                 />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>

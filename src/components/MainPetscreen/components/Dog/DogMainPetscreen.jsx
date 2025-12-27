@@ -28,6 +28,11 @@ function DogMainPetscreen (){
                         : false
                     : false;
 
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > 12 ? 0
+                                        : PetList[ActivePetNumber][3] > 8 ? 1
+                                        : PetList[ActivePetNumber][3] > 4 ? 2
+                                        : 3
+                                    : -1;
     
     return (
         
@@ -40,6 +45,7 @@ function DogMainPetscreen (){
             <div className = "ScreenContainer">
                 <PetWindow
                     petEnergy = {300}
+                    mood = {mood}
                 />
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>
