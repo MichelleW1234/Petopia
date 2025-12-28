@@ -19,10 +19,10 @@ function CatMainPetscreen (){
 
     const now = Date.now();
     
-    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) > 28800000 ? true 
+    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) >= 14400000 ? true 
                         : false
                     : false;
-    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) > 86400000 ? true 
+    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) >= 43200000 ? true 
                         : false
                     : false;
 

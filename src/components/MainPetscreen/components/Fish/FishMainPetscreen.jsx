@@ -18,10 +18,10 @@ function FishMainPetscreen (){
     const {PetList, setPetList} = usePetList();
 
     const now = Date.now();
-    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) > 86400000 ? true 
+    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) >= 43200000 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) > 86400000 ? true 
+    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= 43200000 ? true 
                         : false
                     : false;
 
