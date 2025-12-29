@@ -1,11 +1,11 @@
 import {useState} from "react";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
-import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider";
+import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import "./PetSelector.css";
+import "./HomePetSelector.css";
 
-function PetSelector ({setPetSelectorFlag}) {
+function HomePetSelector ({setPetSelectorFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -72,12 +72,12 @@ function PetSelector ({setPetSelectorFlag}) {
         <div className="FloatingFlagBackground">
             <div className="FloatingFlagContainer">
                 <h2 className="header"> Select a new Pet: </h2>
-                <div className = "PetSelectorContainer">
+                <div className = "HomePetSelectorContainer">
                     {speciesInfo.map((pet, index) => (
 
                         index === selectedPet ? (
 
-                            <div className = "PetSelectorBoxActive" key = {index}> 
+                            <div className = "HomePetSelectorBoxActive" key = {index}> 
                                 <p>Species: {pet[0]}</p>
                                 <p>Vitality: {pet[1]}</p>
                                 <p>Breeds: {pet[2]}</p>
@@ -85,7 +85,7 @@ function PetSelector ({setPetSelectorFlag}) {
 
                         ) : (
 
-                            <button className = "PetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
+                            <button className = "HomePetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
                                 <p>Species: {pet[0]}</p>
                                 <p>Vitality: {pet[1]}</p>
                                 <p>Breeds: {pet[2]}</p>
@@ -102,4 +102,4 @@ function PetSelector ({setPetSelectorFlag}) {
 
 };
 
-export default PetSelector;
+export default HomePetSelector;

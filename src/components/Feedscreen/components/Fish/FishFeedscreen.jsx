@@ -15,16 +15,32 @@ function FishFeedscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimeFed = new Date(PetTimeStamps[ActivePetNumber][0][0]);
-    const nextTimeFed = new Date(PetTimeStamps[ActivePetNumber][0][0] + 86400000);
+    const lastTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0]);
+    const lastTimeFed = lastTimeFedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0] + 86400000);
+    const nextTimeFed = nextTimeFedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+
 
     return (
 
         <div className = "ScreenContainer">
-            <h1 className="header">Pet Health: {PetList[ActivePetNumber][3]}</h1>
-            <h1 className="header"> Last fed: {lastTimeFed.toLocaleString()}</h1>
-            <h1 className="header"> Feed before: {nextTimeFed.toLocaleString()}</h1>
-            <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 0)}>Feed me!</button>
+            <div className="PetWindowBorder PetWindowBorder-fish">
+                <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> {lastTimeFed} | {nextTimeFed} </h2>
+                <div className = "filler"> </div>
+                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 0)}>Feed me!</button>
+            </div>
             <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 

@@ -14,16 +14,33 @@ function FishWashscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimeWashed = new Date(PetTimeStamps[ActivePetNumber][1][0]);
-    const nextTimeWashed = new Date(PetTimeStamps[ActivePetNumber][1][0] + 86400000);
+    const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber][1][0]);
+    const lastTimeWashed = lastTimeWashedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber][1][0] + 86400000);
+    const nextTimeWashed = nextTimeWashedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
 
+
+        
     return (
 
         <div className = "ScreenContainer">
-            <h1 className="header">Pet Health: {PetList[ActivePetNumber][3]}</h1>
-            <h1 className="header"> Last Played: {lastTimeWashed.toLocaleString()}</h1>
-            <h1 className="header"> Play before: {nextTimeWashed.toLocaleString()}</h1>
-            <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 1)}>Play!</button>
+            <div className="PetWindowBorder PetWindowBorder-fish">
+                <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> {lastTimeWashed} | {nextTimeWashed} </h2>
+                <div className = "filler"> </div>
+                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 1)}>Play!</button>
+            </div>
             <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 

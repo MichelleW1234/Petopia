@@ -1,4 +1,4 @@
-.PetSelectorContainer {
+.HomePetSelectorContainer {
 
     width: 45vw;
     max-width: 46rem; 
@@ -13,7 +13,7 @@
 }
 
 
-.PetSelectorBox {
+.HomePetSelectorBox {
 
     height: 15rem;
     width: 12rem;
@@ -45,14 +45,14 @@
 }
 
 
-.PetSelectorBox:hover {
+.HomePetSelectorBox:hover {
 
     color: white;
     background-color: rgb(81, 81, 255);
 
 }
 
-.PetSelectorBoxActive {
+.HomePetSelectorBoxActive {
 
     height: 15rem;
     width: 12rem;

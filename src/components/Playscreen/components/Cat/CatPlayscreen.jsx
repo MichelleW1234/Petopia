@@ -14,16 +14,31 @@ function CatPlayscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimePlayed = new Date(PetTimeStamps[ActivePetNumber][2][0]);
-    const nextTimePlayed = new Date(PetTimeStamps[ActivePetNumber][2][0] + 86400000);
+    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0]);
+    const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0] + 86400000);
+    const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
 
     return (
 
         <div className = "ScreenContainer">
-            <h1 className="header">Pet Health: {PetList[ActivePetNumber][3]}</h1>
-            <h1 className="header"> Last Played: {lastTimePlayed.toLocaleString()}</h1>
-            <h1 className="header"> Play before: {nextTimePlayed.toLocaleString()}</h1>
-            <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 2)}>Play!</button>
+            <div className="PetWindowBorder PetWindowBorder-cat">
+                <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> {lastTimePlayed} | {nextTimePlayed} </h2>
+                <div className = "filler"> </div>
+                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 43200000, 2)}>Play!</button>
+            </div>
             <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
         </div>
 

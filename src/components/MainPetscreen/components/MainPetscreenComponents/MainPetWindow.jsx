@@ -4,12 +4,13 @@ import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import heart from "../../../../images/placeholderheart.png";
+import anger from "../../../../images/placeholderangry.png";
 import happy from "../../../../images/placeholderhappy.jpg";
 import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
-import "./PetWindow.css";
+import "./MainPetWindow.css";
 
 function PetWindow ({petEnergy, mood}){
 
@@ -20,7 +21,7 @@ function PetWindow ({petEnergy, mood}){
     // 10 rows x 15 columns
     const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const [loved, setLoved] = useState(false);
+    const [attention, setAttention] = useState(false);
     const [petCurrentSpace, setPetCurrentSpace] = useState(Math.floor(Math.random() * 8));
 
     const petCurrentSpaceRef = useRef(petCurrentSpace);
@@ -80,7 +81,7 @@ function PetWindow ({petEnergy, mood}){
     }
 
 
-    const showLove = () => {
+    const showAttention = () => {
 
         if (ActivePetNumber === -1){
 
@@ -88,7 +89,7 @@ function PetWindow ({petEnergy, mood}){
 
         } else {
                  
-            setLoved(true);
+            setAttention(true);
 
             // Cancels any existing timers:
             if (timeoutRef.current) {
@@ -97,9 +98,9 @@ function PetWindow ({petEnergy, mood}){
 
             // Starts a fresh 3s timer:
             timeoutRef.current = setTimeout(() => {
-                setLoved(false);
+                setAttention(false);
                 timeoutRef.current = null;
-            }, 3000);
+            }, 2000);
 
         }
         
@@ -111,7 +112,8 @@ function PetWindow ({petEnergy, mood}){
     return (
         
         <div className = {`PetWindowBorder PetWindowBorder-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>
-            <div className= {`PetWindowGrid PetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>  
+            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> Pet Health: {ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] : -1}</h2>
+            <div className= {`MainPetWindowGrid MainPetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>  
                 {innerScreenSpace.map((row, rowIndex) => (
                     row.map((__, colIndex) => {
 
@@ -122,39 +124,32 @@ function PetWindow ({petEnergy, mood}){
 
                             petHere ? (
 
-                                <div key={rowIndex + "," + colIndex} className = "PetWindowGridPetCell"  onMouseEnter={() => showLove()}></div>
+                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell"  onMouseEnter={() => showAttention()}></div>
 
                             ) : quotationHere ? (
 
-                                loved ? (
-
-                                    <img key={rowIndex + "," + colIndex} src = {heart} className = "PetWindowGridQuotationCell"/>
-
-                                ) : (
-
                                     mood === 0 ? (
 
-                                        <img key={rowIndex + "," + colIndex} src = {happy} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {attention ? heart: happy} className = "MainPetWindowGridQuotationCell"/>
 
                                     ) : mood === 1 ? (
 
-                                        <img key={rowIndex + "," + colIndex} src = {neutral} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {attention ? heart: neutral} className = "MainPetWindowGridQuotationCell"/>
 
                                     ) : mood === 2 ? (
 
-                                        <img key={rowIndex + "," + colIndex} src = {sad} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {attention ?  anger: sad} className = "MainPetWindowGridQuotationCell"/>
 
                                     ) : (
 
-                                        <img key={rowIndex + "," + colIndex} src = {verySad} className = "PetWindowGridQuotationCell"/>
+                                        <img key={rowIndex + "," + colIndex} src = {attention ? anger: verySad} className = "MainPetWindowGridQuotationCell"/>
 
                                     )
 
-                                )
 
                             ) : (
 
-                                <div key={rowIndex + "," + colIndex} className = "PetWindowGridCell"></div>
+                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
 
                             )
 

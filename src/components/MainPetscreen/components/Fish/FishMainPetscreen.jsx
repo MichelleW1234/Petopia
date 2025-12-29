@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {useState} from "react";
 
-import PetWindow from "../MainPetscreenComponents/PetWindow.jsx";
+import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
@@ -38,9 +38,10 @@ function FishMainPetscreen (){
             <div className="NavBarContainer">
                 <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
                 <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
+                <Link to = "/home" className="NavBarButton"> Buy Medicine </Link>
             </div>
             <div className = "ScreenContainer">
-                <PetWindow
+                <MainPetWindow
                     petEnergy = {500}
                     mood = {mood}
                 />

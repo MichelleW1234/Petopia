@@ -265,6 +265,104 @@ button {
 
 
 
+
+/*Pet windows:*/
+
+.PetWindowBorder {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+  padding: 3rem;
+  border-radius: 2rem;
+
+  border-left: 0.5rem solid black; 
+  border-bottom: 0.5rem solid black; 
+  border-top: 0.2rem solid black; 
+  border-right: 0.2rem solid black; 
+
+}
+
+.PetWindowBorder-default {
+
+  background-color: rgb(103, 106, 116);
+  box-shadow: 0 0 1rem 0.5rem  rgb(176, 180, 196);
+
+}
+
+
+.PetWindowBorder-dog {
+
+  background: linear-gradient(rgb(158, 82, 0), rgb(47, 24, 0));
+  box-shadow: 0 0 1rem 0.5rem  rgb(255, 192, 124);
+
+}
+
+.PetWindowBorder-cat {
+
+  background: linear-gradient( rgb(104, 0, 183),  rgb(27, 0, 48));
+  box-shadow: 0 0 1rem 0.5rem  rgb(203, 124, 255);
+
+}
+
+.PetWindowBorder-fish {
+
+  background: linear-gradient(rgb(0, 9, 185), rgb(0, 2, 44));
+  box-shadow: 0 0 1rem 0.5rem  rgb(124, 161, 255);
+
+}
+
+.PetWindowSign {
+
+  padding: 1rem 1.5rem;
+  border-radius: 5rem;
+  color: rgb(255, 255, 255);
+
+}
+
+.PetWindowSign-default {
+
+  background-color: rgb(153, 157, 170);
+  border: 0.5rem solid rgb(212, 217, 237, 0.5);
+
+}
+
+
+.PetWindowSign-dog {
+
+  border: 0.5rem solid rgba(255, 204, 137, 0.5);
+  background-color: rgb(203, 128, 48);
+  
+  animation: PetWindowSign-dog-glow 3s infinite;
+
+}
+
+.PetWindowSign-cat {
+
+  border: 0.5rem solid rgba(213, 161, 255, 0.5);
+  background-color: rgb(162, 40, 255);
+
+  animation: PetWindowSign-cat-glow 3s infinite;
+
+}
+
+
+.PetWindowSign-fish {
+
+  background-color: rgb(33, 81, 255);
+  border: 0.5rem solid rgba(111, 178, 255, 0.5);
+
+  animation: PetWindowSign-fish-glow 3s infinite;
+
+}
+
+
+
+
+
 /*animations: */
 
 @keyframes GeneralNavButton-glow {
@@ -382,3 +480,75 @@ button {
 }
 
 
+
+
+@keyframes PetWindowSign-dog-glow {
+  0% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(255, 217, 128), 
+      0 0 1rem 0.5rem rgb(255, 241, 169);     
+  }
+  50% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(255, 217, 128, 0.5), 
+      0 0 1rem 0.5rem rgb(255, 241, 169, 0.5);   
+  }
+  100% {
+    box-shadow:
+      0 0 0.5rem 0.25rem rgb(255, 217, 128), 
+      0 0 1rem 0.5rem rgb(255, 241, 169);      
+  }
+}
+
+
+
+
+@keyframes PetWindowSign-cat-glow {
+  0% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(183, 128, 255), 
+      0 0 1rem 0.5rem rgb(222, 181, 255);     
+  }
+  50% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(183, 128, 255, 0.5), 
+      0 0 1rem 0.5rem rgb(222, 181, 255, 0.5); 
+  }
+  100% {
+    box-shadow:
+      0 0 0.5rem 0.25rem rgb(183, 128, 255), 
+      0 0 1rem 0.5rem rgb(222, 181, 255);       
+  }
+}
+
+
+
+
+@keyframes PetWindowSign-fish-glow {
+  0% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(117, 170, 255), 
+      0 0 1rem 0.5rem rgb(173, 214, 255);     
+  }
+  50% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(117, 170, 255, 0.5), 
+      0 0 1rem 0.5rem rgb(173, 214, 255, 0.5);         
+  }
+  100% {
+    box-shadow:
+      0 0 0.5rem 0.25rem rgb(117, 170, 255), 
+      0 0 1rem 0.5rem rgb(173, 214, 255);      
+  }
+}
+
+
+
+
+.filler {
+
+  height: 20rem;
+  width: 43rem;
+  background-color: rgb(198, 212, 253);
+
+}

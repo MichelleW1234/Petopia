@@ -5,7 +5,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
-import PetSelector from "./HomescreenComponents/PetSelector.jsx";
+import HomePetSelector from "./HomescreenComponents/HomePetSelector.jsx";
 
 import "./Homescreen.css";
 
@@ -47,7 +47,7 @@ function Homescreen (){
 
         <>
             {petSelectorFlag && 
-            <PetSelector
+            <HomePetSelector
                 setPetSelectorFlag = {setPetSelectorFlag}
             />}
 
