@@ -84,8 +84,8 @@ button {
   gap: 3rem;
 
   border-bottom: 0.25rem solid black;
-  background-color: rgb(96, 205, 255);
-  box-shadow: 0 0 1rem 0.5rem rgb(96, 205, 255);
+  background: linear-gradient(#bbf6ff, rgb(39, 0, 116));
+  box-shadow: 0 0 1rem 0.5rem rgb(168, 242, 255);
 
 }
 
