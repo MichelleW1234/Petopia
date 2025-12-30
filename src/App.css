@@ -303,14 +303,14 @@ button {
 
 .PetWindowBorder-cat {
 
-  background: linear-gradient( rgb(104, 0, 183),  rgb(27, 0, 48));
+  background: linear-gradient( rgb(114, 0, 201),  rgb(27, 0, 48));
   box-shadow: 0 0 1rem 0.5rem  rgb(203, 124, 255);
 
 }
 
 .PetWindowBorder-fish {
 
-  background: linear-gradient(rgb(0, 9, 185), rgb(0, 2, 44));
+  background: linear-gradient(rgb(0, 10, 202), rgb(0, 2, 37));
   box-shadow: 0 0 1rem 0.5rem  rgb(124, 161, 255);
 
 }

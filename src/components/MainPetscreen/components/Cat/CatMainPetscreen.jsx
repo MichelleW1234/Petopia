@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
@@ -40,7 +40,7 @@ function CatMainPetscreen (){
             <div className="NavBarContainer">
                 <Link to = "/catfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
                 <Link to = "/catplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
-                <Link to = "/home" className="NavBarButton"> Buy Medicine </Link>
+                <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>
             </div>
             <div className = "ScreenContainer">
                 <MainPetWindow

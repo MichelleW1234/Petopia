@@ -38,7 +38,7 @@ function DogFeedscreen (){
 
         <div className = "ScreenContainer">
             <div className="PetWindowBorder PetWindowBorder-dog">
-            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> {lastTimeFed} | {nextTimeFed} </h2>
+            <h2 className="PetWindowSign PetWindowSign-dog"> {lastTimeFed} | {nextTimeFed} </h2>
             <div className = "filler"> </div>
             <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, dogTimeLimits[0]/2, 0)}>Feed me!</button>
         </div>

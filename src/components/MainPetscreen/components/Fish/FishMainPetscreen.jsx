@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import {useState} from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
@@ -25,9 +24,7 @@ function FishMainPetscreen (){
     const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= fishTimeLimits[1]/2 ? true 
                         : false
                     : false;
-
-
- const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/fishHealthCap >= 0.75 ? 0
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/fishHealthCap >= 0.75 ? 0
                                     : PetList[ActivePetNumber][3]/fishHealthCap >= 0.5 ? 1
                                     : PetList[ActivePetNumber][3]/fishHealthCap >= 0.25 ? 2
                                     : 3
@@ -40,7 +37,7 @@ function FishMainPetscreen (){
             <div className="NavBarContainer">
                 <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
                 <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
-                <Link to = "/home" className="NavBarButton"> Buy Medicine </Link>
+                <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
             </div>
             <div className = "ScreenContainer">
                 <MainPetWindow
