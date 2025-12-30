@@ -7,9 +7,10 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
+import { catHealthCap, catTimeLimits } from '../../../../constants/Constants.js';
+
 import { resetActivePet} from '../../helpers/Helpers.js';
 
-import "./CatMainPetscreen.css";
 
 function CatMainPetscreen (){
 
@@ -19,16 +20,16 @@ function CatMainPetscreen (){
 
     const now = Date.now();
     
-    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) >= 14400000 ? true 
+    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) >= catTimeLimits[0]/2 ? true 
                         : false
                     : false;
-    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) >= 43200000 ? true 
+    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) >= catTimeLimits[2]/2 ? true 
                         : false
                     : false;
 
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > 15 ? 0
-                                            : PetList[ActivePetNumber][3] > 10 ? 1
-                                            : PetList[ActivePetNumber][3] > 5 ? 2
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/catHealthCap >= 0.75 ? 0
+                                            : PetList[ActivePetNumber][3]/catHealthCap >= 0.5 ? 1
+                                            : PetList[ActivePetNumber][3]/catHealthCap >= 0.25 ? 2
                                             : 3
                                         : -1;
 

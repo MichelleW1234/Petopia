@@ -7,9 +7,10 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
+import { fishHealthCap, fishTimeLimits } from '../../../../constants/Constants.js';
+
 import { resetActivePet } from '../../helpers/Helpers.js';
 
-import "./FishMainPetscreen.css";
 
 function FishMainPetscreen (){
 
@@ -18,16 +19,17 @@ function FishMainPetscreen (){
     const {PetList, setPetList} = usePetList();
 
     const now = Date.now();
-    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) >= 43200000 ? true 
+    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) >= fishTimeLimits[0]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= 43200000 ? true 
+    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= fishTimeLimits[1]/2 ? true 
                         : false
                     : false;
 
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] > 4 ? 0
-                                    : PetList[ActivePetNumber][3] > 3 ? 1
-                                    : PetList[ActivePetNumber][3] > 2 ? 2
+
+ const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/fishHealthCap >= 0.75 ? 0
+                                    : PetList[ActivePetNumber][3]/fishHealthCap >= 0.5 ? 1
+                                    : PetList[ActivePetNumber][3]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
 

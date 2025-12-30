@@ -4,6 +4,8 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 
+import { dogTimeLimits } from '../../../../constants/Constants.js';
+
 import { CheckPetHealth } from '../../../../helpers/Helpers.js';
 
 import "./DogFeedscreen.css";
@@ -22,7 +24,7 @@ function DogFeedscreen (){
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0] + 28800000);
+    const nextTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0] + dogTimeLimits[0]);
     const nextTimeFed = nextTimeFedRaw.toLocaleString([], {
         year: "numeric",
         month: "2-digit",
@@ -38,7 +40,7 @@ function DogFeedscreen (){
             <div className="PetWindowBorder PetWindowBorder-dog">
             <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> {lastTimeFed} | {nextTimeFed} </h2>
             <div className = "filler"> </div>
-            <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, 21600000, 0)}>Feed me!</button>
+            <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, dogTimeLimits[0]/2, 0)}>Feed me!</button>
         </div>
             <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
         </div>

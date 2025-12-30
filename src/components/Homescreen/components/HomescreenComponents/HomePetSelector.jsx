@@ -3,6 +3,8 @@ import {useState} from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
+import {dogHealthCap, catHealthCap, fishHealthCap} from "../../../../constants/Constants.js";
+
 import "./HomePetSelector.css";
 
 function HomePetSelector ({setPetSelectorFlag}) {
@@ -10,7 +12,7 @@ function HomePetSelector ({setPetSelectorFlag}) {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
-    const speciesInfo = [["dog", 15, 3], ["cat", 20, 3], ["fish", 5, 3]];
+    const speciesInfo = [["dog", dogHealthCap, 3], ["cat", catHealthCap, 3], ["fish", fishHealthCap, 3]];
 
     const [selectedPet, setSelectedPet] = useState(-1);
 

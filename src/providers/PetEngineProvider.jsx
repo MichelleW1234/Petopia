@@ -2,6 +2,8 @@ import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
+import { dogTimeLimits, catTimeLimits, fishTimeLimits } from "../constants/Constants.js";
+
 
 export function PetEngineProvider({ children }) {
 
@@ -70,24 +72,18 @@ export function PetEngineProvider({ children }) {
 
         if (!newPetTimeStamps.some(sub => sub.length === 1 && sub[0] === -1)){
         // There is no element [-1] (dog)
-        //[eat 2 times a day, bath 1 time a day, play 2 times a day]
 
-            petTimeLimits = [43200000, 86400000, 43200000];
-            //petTimeLimits = [180000, 300000, 180000]; //for testing purposes
+            petTimeLimits = dogTimeLimits;
 
         } else if (newPetTimeStamps[1].length === 1 && newPetTimeStamps[1][0] === -1){
         // There is an element [-1] at index 1 (cat)
-        //[eat 3 times a day, doesn't need baths, play 1 time a day]
 
-            petTimeLimits = [28800000, 0, 86400000];
-            //petTimeLimits = [180000, 0, 180000]; //for testing purposes
+            petTimeLimits = catTimeLimits;
 
         } else if (newPetTimeStamps[2].length === 1 && newPetTimeStamps[2][0] === -1){
         // There is an element [-1] at index 2 (fish)
-        //[eat 1 time a day, clean fish tank 1 time a day, doesn't need to play]
 
-            petTimeLimits = [86400000, 86400000, 0];
-            //petTimeLimits = [180000, 300000, 0]; //for testing purposes
+            petTimeLimits = fishTimeLimits;
 
         }
 
