@@ -47,6 +47,13 @@ export function PetEngineProvider({ children }) {
                         updatedPetTimeStamps[i] = newPetTimeStamps;
                         updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
 
+                        // Update pet growth stage:
+                        if (updatedPetList[i][3] > 0){
+
+                            updatedPetList[i][2] = petAgeCheck(updatedPetList[i]);
+
+                        }
+
                     }
 
                 }
@@ -140,6 +147,72 @@ export function PetEngineProvider({ children }) {
         }
 
         return { addedHealthDamage, newPetTimeStamp };
+
+    }
+
+
+    const petAgeCheck = (pet) => {
+
+        const dogAges = [432000000, 864000000];
+        // Grows every 5 days
+
+        const catAges = [604800000, 1209600000];
+        // Grows every week
+
+        const fishAges = [259200000, 518400000];
+        // Grows every 3 days
+
+        const difference = Date.now() - pet[4];
+
+        if(pet[0] === "dog"){
+
+            if (difference > dogAges[1]){
+
+                return 3;
+
+            } else if (difference > dogAges[0]){
+
+                return 2;
+
+            } else {
+
+                return 1;
+
+            }
+
+        } else if (pet[0] === "cat"){
+
+            if (difference > catAges[1]){
+
+                return 3;
+
+            } else if (difference > catAges[0]){
+
+                return 2;
+
+            } else {
+
+                return 1;
+
+            }
+
+        } else if (pet[0] === "fish"){
+
+            if (difference > fishAges[1]){
+
+                return 3;
+
+            } else if (difference > fishAges[0]){
+
+                return 2;
+
+            } else {
+
+                return 1;
+
+            }
+
+        }
 
     }
 

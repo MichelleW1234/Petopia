@@ -29,7 +29,7 @@ function HomePetSelector ({setPetSelectorFlag}) {
 
                 const newCopy = prev.map(inner => [...inner]);
 
-                newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 0, speciesInfo[selectedPet][1], startingTime, 0];
+                newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 1, speciesInfo[selectedPet][1], startingTime, 0];
                                 
                 return newCopy;
 
