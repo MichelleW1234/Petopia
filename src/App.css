@@ -38,7 +38,6 @@ a:active {
   
   display: inline-block;
   text-decoration: none;
-  color: inherit;
   font-size: 1rem;
 
 }
@@ -94,6 +93,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
@@ -114,6 +114,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
@@ -138,6 +139,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
@@ -196,6 +198,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
@@ -223,6 +226,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-top: 0.1rem solid black;
@@ -246,6 +250,7 @@ button {
 
   padding: 1rem 1.5rem;
 
+  color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-top: 0.1rem solid black;

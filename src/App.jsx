@@ -1,4 +1,4 @@
-import {HashRouter, Routes, Route} from 'react-router-dom';
+import {HashRouter, Routes, Route} from "react-router-dom";
 
 import Homescreen from "./components/Homescreen/components/Homescreen.jsx";
 
@@ -20,7 +20,7 @@ import FishMedicinescreen from "./components/Medicinescreen/components/Fish/Fish
 
 import NoPage from "./components/NoPage.jsx";
 
-import './App.css';
+import "./App.css";
 
 
 function App() {

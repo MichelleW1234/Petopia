@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {useState} from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
@@ -40,6 +40,34 @@ function Homescreen (){
         
     }
 
+    const clearPet = (index) => {
+
+        setPetTimeStamps(prev => {
+
+            const updatedPetTimeStamps = prev.map(pet =>
+                                    pet.map(group =>
+                                        [...group]
+                                    )
+                                );
+
+            updatedPetTimeStamps[index] = [];
+
+            return updatedPetTimeStamps;
+
+        });
+
+        setPetList(prev => {
+
+            const updatedPetList = prev.map(inner => [...inner]);
+
+            updatedPetList[index] = [];
+
+            return updatedPetList;
+
+        });
+
+    }
+
 
 
 
@@ -77,7 +105,7 @@ function Homescreen (){
                                 <div className = "GeneralNavButtonPlaceHolder"> Visit </div>
                             </div>
 
-                        ) : (
+                        ) : pet[3] > 0 ? (
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
@@ -88,6 +116,19 @@ function Homescreen (){
                                 </div>
 
                                 <Link to = {`/${pet[0]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
+                            </div>
+
+                        ) : (
+
+                            <div key = {index} className="HomescreenPetSlotInnerContainer">
+                                <div className = "HomescreenPetSlot"> 
+                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[1]}*//>
+                                    <p>Species: {pet[0]}</p>
+                                    <p>Stage: -- </p>
+                                    <p>Health: -- </p>
+                                </div>
+
+                                <button className = "GeneralNavButton" onClick = {() => clearPet(index)}> Clear </button>
                             </div>
 
                         )

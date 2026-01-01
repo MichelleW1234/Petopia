@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {useState} from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
@@ -7,9 +7,9 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { catHealthCap, catTimeLimits } from '../../../../constants/Constants.js';
+import { catHealthCap, catTimeLimits } from "../../../../constants/Constants.js";
 
-import { resetActivePet} from '../../helpers/Helpers.js';
+import { resetActivePet} from "../../helpers/Helpers.js";
 
 
 function CatMainPetscreen (){

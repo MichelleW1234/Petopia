@@ -37,11 +37,17 @@ export function PetEngineProvider({ children }) {
             
             for (let i = 0; i<updatedPetTimeStamps.length; i++){
 
+                // Checking for existence of pet:
                 if (updatedPetTimeStamps[i].length > 0 && updatedPetList[i].length > 0) {
 
-                    const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
-                    updatedPetTimeStamps[i] = newPetTimeStamps;
-                    updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
+                    // Checking for if pet is alive:
+                    if (updatedPetList[i][3] > 0) {
+
+                        const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
+                        updatedPetTimeStamps[i] = newPetTimeStamps;
+                        updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
+
+                    }
 
                 }
 

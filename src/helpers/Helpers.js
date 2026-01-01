@@ -1,36 +1,47 @@
-export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, minimum, activity) => {
-
-    const updatedPetTimeStamps = PetTimeStamps.map(pet =>
-                                    pet.map(group =>
-                                        [...group]
-                                    )
-                                );
-    const updatedPetList = PetList.map(inner => [...inner]);
+export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, minimum, activity) => {
 
     const now = Date.now();
 
-    if (now - updatedPetTimeStamps[ActivePetNumber][activity][0] < minimum){
-    //Over fed
+    setPetList(prev => {
 
-        if (activity === 0){
+        const updatedPetList = prev.map(inner => [...inner]);
 
-            updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 3, 0);
+        if (now - PetTimeStamps[ActivePetNumber][activity][0] < minimum){
+        //Over fed
 
-        } else if (activity === 1){
+            if (activity === 0){
 
-            updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 1, 0);
+                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 3, 0);
 
-        } else if (activity === 2){
+            } else if (activity === 1){
 
-            updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 2, 0);
+                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 1, 0);
 
-        }
-       
-    }
+            } else if (activity === 2){
 
-    updatedPetTimeStamps[ActivePetNumber][activity][0] = now;
+                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 2, 0);
 
-    setPetTimeStamps(updatedPetTimeStamps);
-    setPetList(updatedPetList);
+            }
         
+        }
+
+        return updatedPetList;
+
+    });
+
+
+    setPetTimeStamps(prev => {
+
+        const updatedPetTimeStamps = prev.map(pet =>
+                                pet.map(group =>
+                                    [...group]
+                                )
+                            );
+
+        updatedPetTimeStamps[ActivePetNumber][activity][0] = now;
+
+        return updatedPetTimeStamps;
+
+    });
+
 }

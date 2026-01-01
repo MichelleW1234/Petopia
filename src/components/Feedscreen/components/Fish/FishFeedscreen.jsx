@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 
-import { fishTimeLimits } from '../../../../constants/Constants.js';
+import { fishTimeLimits } from "../../../../constants/Constants.js";
 
-import { CheckPetHealth } from '../../../../helpers/Helpers.js';
+import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
 import "./FishFeedscreen.css";
 
@@ -41,7 +41,7 @@ function FishFeedscreen (){
             <div className="PetWindowBorder PetWindowBorder-fish">
                 <h2 className="PetWindowSign PetWindowSign-fish"> {lastTimeFed} | {nextTimeFed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
+                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
             </div>
             <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>

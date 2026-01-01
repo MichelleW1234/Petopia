@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
@@ -6,9 +6,9 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { fishHealthCap, fishTimeLimits } from '../../../../constants/Constants.js';
+import { fishHealthCap, fishTimeLimits } from "../../../../constants/Constants.js";
 
-import { resetActivePet } from '../../helpers/Helpers.js';
+import { resetActivePet } from "../../helpers/Helpers.js";
 
 
 function FishMainPetscreen (){
