@@ -2,7 +2,7 @@ import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import { dogTimeLimits, catTimeLimits, fishTimeLimits } from "../constants/Constants.js";
+import { dogTimeLimits, catTimeLimits, fishTimeLimits, petImages } from "../constants/Constants.js";
 
 
 export function PetEngineProvider({ children }) {
@@ -50,7 +50,14 @@ export function PetEngineProvider({ children }) {
                         // Update pet growth stage:
                         if (updatedPetList[i][3] > 0){
 
-                            updatedPetList[i][2] = petAgeCheck(updatedPetList[i]);
+                            const currentStage = petAgeCheck(updatedPetList[i]);
+
+                            if (currentStage !== updatedPetList[i][2]){
+
+                                updatedPetList[i][2] = currentStage;
+                                updatedPetList[i][1] = petImages[updatedPetList[i][0]][currentStage-1];                                
+
+                            }
 
                         }
 

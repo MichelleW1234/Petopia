@@ -3,7 +3,7 @@ import {useState} from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import {dogHealthCap, catHealthCap, fishHealthCap} from "../../../../constants/Constants.js";
+import {dogHealthCap, catHealthCap, fishHealthCap, petImages} from "../../../../constants/Constants.js";
 
 import "./HomePetSelector.css";
 
@@ -29,7 +29,7 @@ function HomePetSelector ({setPetSelectorFlag}) {
 
                 const newCopy = prev.map(inner => [...inner]);
 
-                newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], "", 1, speciesInfo[selectedPet][1], startingTime, 0];
+                newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], petImages[speciesInfo[selectedPet][0]][0], 1, speciesInfo[selectedPet][1], startingTime, 0];
                                 
                 return newCopy;
 

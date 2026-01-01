@@ -1,3 +1,25 @@
+import dogOne from "../images/placeholderstage1.jpeg";
+import dogTwo from "../images/placeholderstage2.jpg";
+import dogThree from "../images/placeholderstage3.jpg";
+
+import catOne from "../images/placeholderstage1.jpeg";
+import catTwo from "../images/placeholderstage2.jpg";
+import catThree from "../images/placeholderstage3.jpg";
+
+import fishOne from "../images/placeholderstage1.jpeg";
+import fishTwo from "../images/placeholderstage2.jpg";
+import fishThree from "../images/placeholderstage3.jpg";
+
+
+export const petImages = {
+
+    "dog": [dogOne, dogTwo, dogThree],
+    "cat": [catOne, catTwo, catThree],
+    "fish": [fishOne, fishTwo, fishThree]
+
+}
+
+
 export const dogHealthCap = 15;
 export const catHealthCap = 20;
 export const fishHealthCap = 5;

@@ -109,7 +109,7 @@ function Homescreen (){
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[1]}*//>
+                                    <img src = {pet[1]}/>
                                     <p>Species: {pet[0]}</p>
                                     <p>Stage: {pet[2]}</p>
                                     <p>Health: {pet[3]}</p>
@@ -122,7 +122,7 @@ function Homescreen (){
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img  src = {"https://vetmed.illinois.edu/wp-content/uploads/2021/04/pc-keller-hedgehog.jpg"} /*src = {pet[1]}*//>
+                                    <img  src = {pet[1]}/>
                                     <p>Species: {pet[0]}</p>
                                     <p>Stage: -- </p>
                                     <p>Health: -- </p>
