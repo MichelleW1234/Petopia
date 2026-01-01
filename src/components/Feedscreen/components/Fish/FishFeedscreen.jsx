@@ -41,7 +41,17 @@ function FishFeedscreen (){
             <div className="PetWindowBorder PetWindowBorder-fish">
                 <h2 className="PetWindowSign PetWindowSign-fish"> {lastTimeFed} | {nextTimeFed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
+
+                {PetList[ActivePetNumber][3] > 0 ? (
+
+                    <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
+
+                ) : (
+
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish">Feed me!</button>
+
+                )}
+                
             </div>
             <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>

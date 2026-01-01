@@ -41,7 +41,17 @@ function DogPlayscreen (){
             <div className="PetWindowBorder PetWindowBorder-dog">
                 <h2 className="PetWindowSign PetWindowSign-dog"> {lastTimePlayed} | {nextTimePlayed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[2]/2, 2)}>Play!</button>
+
+                {PetList[ActivePetNumber][3] > 0 ? (
+
+                    <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[2]/2, 2)}>Play!</button>
+
+                ) : (
+
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-dog">Play!</button>
+
+                )}
+
             </div>
             <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
         </div>

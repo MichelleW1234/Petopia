@@ -27,11 +27,11 @@ function FishMedicinescreen() {
                 <div className = "filler"></div>
                 {canReceiveDose ? (
 
-                    <button className = "GeneralNavButton" onClick = {() => healPet(setPetList, ActivePetNumber, fishHealthCap)}> Give Medicine </button>
+                    <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => healPet(setPetList, ActivePetNumber, fishHealthCap)}> Give Medicine </button>
 
                 ) : (
 
-                    <button className = "GeneralNavButtonPlaceHolder"> Give Medicine </button>
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish"> Give Medicine </button>
 
                 )}
             </div>

@@ -39,7 +39,17 @@ function CatPlayscreen (){
             <div className="PetWindowBorder PetWindowBorder-cat">
                 <h2 className="PetWindowSign PetWindowSign-cat"> {lastTimePlayed} | {nextTimePlayed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[2]/2, 2)}>Play!</button>
+
+                {PetList[ActivePetNumber][3] > 0 ? (
+                    
+                    <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[2]/2, 2)}>Play!</button>
+
+                ) : (
+
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-cat">Play!</button>
+
+                )}
+
             </div>
             <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
         </div>

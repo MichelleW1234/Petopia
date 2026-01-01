@@ -41,7 +41,17 @@ function FishWashscreen (){
             <div className="PetWindowBorder PetWindowBorder-fish">
                 <h2 className="PetWindowSign PetWindowSign-fish"> {lastTimeWashed} | {nextTimeWashed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[1]/2, 1)}>Play!</button>
+
+                {PetList[ActivePetNumber][3] > 0 ? (
+
+                    <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[1]/2, 1)}>Wash!</button>
+
+                ) : (
+
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish">Wash!</button>
+
+                )}
+
             </div>
             <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
         </div>

@@ -40,7 +40,17 @@ function CatFeedscreen (){
             <div className="PetWindowBorder PetWindowBorder-cat">
                 <h2 className="PetWindowSign PetWindowSign-cat"> {lastTimeFed} | {nextTimeFed} </h2>
                 <div className = "filler"> </div>
-                <button className = "GeneralNavButton" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[0]/2, 0)}>Feed me!</button>
+
+                {PetList[ActivePetNumber][3] > 0 ? (
+
+                    <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[0]/2, 0)}>Feed me!</button>
+
+                ) : (
+
+                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-cat">Feed me!</button>
+
+                )}
+                
             </div>
             <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
         </div>
