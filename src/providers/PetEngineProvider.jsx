@@ -41,20 +41,21 @@ export function PetEngineProvider({ children }) {
                 if (updatedPetTimeStamps[i].length > 0 && updatedPetList[i].length > 0) {
 
                     // Checking for if pet is alive:
-                    if (updatedPetList[i][3] > 0) {
+                    if (updatedPetList[i][4] > 0) {
 
                         const healthAffected = damageCheck(updatedPetTimeStamps[i]);
-                        updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
+                        updatedPetList[i][4] = Math.max(updatedPetList[i][4] - healthAffected, 0);
 
-                        // Update pet growth stage:
-                        if (updatedPetList[i][3] > 0){
+                        // Update pet growth stage if pet is still alive:
+                        if (updatedPetList[i][4] > 0){
 
                             const currentStage = petAgeCheck(updatedPetList[i]);
+                            console.log("checking four: " + currentStage);
 
-                            if (currentStage !== updatedPetList[i][2]){
+                            if (currentStage !== updatedPetList[i][3]){
 
-                                updatedPetList[i][2] = currentStage;
-                                updatedPetList[i][1] = petImages[updatedPetList[i][0]][currentStage-1];                                
+                                updatedPetList[i][3] = currentStage;
+                                updatedPetList[i][2] = petImages[updatedPetList[i][1]][currentStage-1];                                
 
                             }
 
@@ -168,9 +169,9 @@ export function PetEngineProvider({ children }) {
         const fishAges = [259200000, 518400000];
         // Grows every 3 days
 
-        const difference = Date.now() - pet[4];
+        const difference = Date.now() - pet[5];
 
-        if(pet[0] === "dog"){
+        if(pet[1] === "dog"){
 
             if (difference > dogAges[1]){
 
@@ -186,7 +187,7 @@ export function PetEngineProvider({ children }) {
 
             }
 
-        } else if (pet[0] === "cat"){
+        } else if (pet[1] === "cat"){
 
             if (difference > catAges[1]){
 
@@ -202,7 +203,7 @@ export function PetEngineProvider({ children }) {
 
             }
 
-        } else if (pet[0] === "fish"){
+        } else if (pet[1] === "fish"){
 
             if (difference > fishAges[1]){
 

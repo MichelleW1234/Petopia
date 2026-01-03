@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import {useState} from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
-import HomePetSelector from "./HomescreenComponents/HomePetSelector.jsx";
-
 import "./Homescreen.css";
+
+
 
 function Homescreen (){
 
@@ -15,17 +14,9 @@ function Homescreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const allowMorePets = PetList.every(item => item.length > 0);
-
-    const [petSelectorFlag, setPetSelectorFlag] = useState(false);
+    const noMorePets = PetList.every(item => item.length > 0);
 
 
-
-    const viewPetOptions = () => {
-
-        setPetSelectorFlag(true);
-
-    }
     
     const restartGame = () => {
 
@@ -66,21 +57,17 @@ function Homescreen (){
     return (
 
         <>
-            {petSelectorFlag && 
-            <HomePetSelector
-                setPetSelectorFlag = {setPetSelectorFlag}
-            />}
 
             <div className="NavBarContainer">
                 <button className="NavBarButton" onClick = {() => restartGame()}> Restart </button>
 
-                {allowMorePets ? (
+                {noMorePets ? (
 
-                    <button className="NavBarButtonPlaceHolder"> Choose a Pet </button>
+                   <button className="NavBarButtonPlaceHolder"> Choose a Pet </button>
 
                 ) : (
 
-                    <button className="NavBarButton" onClick = {() => viewPetOptions()}> Choose a Pet </button>
+                    <Link to ="/select" className="NavBarButton"> Choose a Pet </Link>
 
                 )}
                 
@@ -97,25 +84,25 @@ function Homescreen (){
                                 <div className = "GeneralNavButtonPlaceHolder"> Visit </div>
                             </div>
 
-                        ) : pet[3] > 0 ? (
+                        ) : pet[4] > 0 ? (
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img src = {pet[1]}/>
-                                    <p>Species: {pet[0]}</p>
-                                    <p>Stage: {pet[2]}</p>
-                                    <p>Health: {pet[3]}</p>
+                                    <img src = {pet[2]}/>
+                                    <p>{pet[0]}</p>
+                                    <p>Stage: {pet[3]}</p>
+                                    <p>Health: {pet[4]}</p>
                                 </div>
 
-                                <Link to = {`/${pet[0]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
+                                <Link to = {`/${pet[1]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
                             </div>
 
                         ) : (
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img  src = {pet[1]}/>
-                                    <p>Species: {pet[0]}</p>
+                                    <img  src = {pet[2]}/>
+                                    <p> {pet[0]}</p>
                                     <p>Stage: -- </p>
                                     <p>Health: -- </p>
                                 </div>

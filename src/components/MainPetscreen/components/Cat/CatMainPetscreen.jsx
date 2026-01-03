@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import {useState} from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
@@ -27,9 +26,9 @@ function CatMainPetscreen (){
                         : false
                     : false;
 
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/catHealthCap >= 0.75 ? 0
-                                            : PetList[ActivePetNumber][3]/catHealthCap >= 0.5 ? 1
-                                            : PetList[ActivePetNumber][3]/catHealthCap >= 0.25 ? 2
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][4]/catHealthCap >= 0.75 ? 0
+                                            : PetList[ActivePetNumber][4]/catHealthCap >= 0.5 ? 1
+                                            : PetList[ActivePetNumber][4]/catHealthCap >= 0.25 ? 2
                                             : 3
                                         : -1;
 

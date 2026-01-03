@@ -41,7 +41,7 @@ function CatFeedscreen (){
                 <h2 className="PetWindowSign PetWindowSign-cat"> {lastTimeFed} | {nextTimeFed} </h2>
                 <div className = "filler"> </div>
 
-                {PetList[ActivePetNumber][3] > 0 ? (
+                {PetList[ActivePetNumber][4] > 0 ? (
 
                     <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[0]/2, 0)}>Feed me!</button>
 

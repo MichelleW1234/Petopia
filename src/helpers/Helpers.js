@@ -11,15 +11,15 @@ export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, setPetList, Acti
 
             if (activity === 0){
 
-                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 3, 0);
+                updatedPetList[ActivePetNumber][4] = Math.max(updatedPetList[ActivePetNumber][4] - 3, 0);
 
             } else if (activity === 1){
 
-                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 1, 0);
+                updatedPetList[ActivePetNumber][4] = Math.max(updatedPetList[ActivePetNumber][4] - 1, 0);
 
             } else if (activity === 2){
 
-                updatedPetList[ActivePetNumber][3] = Math.max(updatedPetList[ActivePetNumber][3] - 2, 0);
+                updatedPetList[ActivePetNumber][4] = Math.max(updatedPetList[ActivePetNumber][4] - 2, 0);
 
             }
         

@@ -1,11 +1,10 @@
 .HomePetSelectorContainer {
 
-    width: 45vw;
-    max-width: 46rem; 
     display: flex;
     flex-direction: row;
     align-items: center;
     overflow-x: auto;
+    flex-wrap: wrap;
 
     gap: 3rem;
     padding: 2rem;
@@ -79,5 +78,18 @@
         width: 80%;
 
     }
+
+}
+
+.HomePetSelectorNameInput{
+
+    background-color: aliceblue;
+    padding: 1rem;
+
+}
+
+.HomePetSelectorNameInputError{
+
+    height: 1rem;
 
 }

@@ -15,7 +15,7 @@ function DogMedicinescreen() {
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
 
-    const canReceiveDose = Date.now() - PetList[ActivePetNumber][5] > 86400000 ? true
+    const canReceiveDose = Date.now() - PetList[ActivePetNumber][6] > 86400000 ? true
                                                                     : false;
 
 
@@ -23,7 +23,7 @@ function DogMedicinescreen() {
     return (
         <div className="ScreenContainer">
             <div className="PetWindowBorder PetWindowBorder-dog">
-                <h2 className="PetWindowSign PetWindowSign-dog"> Health: {PetList[ActivePetNumber][3]} </h2>
+                <h2 className="PetWindowSign PetWindowSign-dog"> Health: {PetList[ActivePetNumber][4]} </h2>
                 <div className = "filler"></div>
                 {canReceiveDose ? (
 

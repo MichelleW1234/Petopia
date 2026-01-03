@@ -111,9 +111,9 @@ function PetWindow ({petEnergy, mood}){
 
     return (
         
-        <div className = {`PetWindowBorder PetWindowBorder-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>
-            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}> Pet Health: {ActivePetNumber !== -1 ? PetList[ActivePetNumber][3] : -1}</h2>
-            <div className= {`MainPetWindowGrid MainPetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][0] : "default"}`}>  
+        <div className = {`PetWindowBorder PetWindowBorder-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}>
+            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}> Pet Health: {ActivePetNumber !== -1 ? PetList[ActivePetNumber][4] : -1}</h2>
+            <div className= {`MainPetWindowGrid MainPetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}>  
                 {innerScreenSpace.map((row, rowIndex) => (
                     row.map((__, colIndex) => {
 

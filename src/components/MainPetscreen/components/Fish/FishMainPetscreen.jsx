@@ -24,9 +24,9 @@ function FishMainPetscreen (){
     const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= fishTimeLimits[1]/2 ? true 
                         : false
                     : false;
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][3]/fishHealthCap >= 0.75 ? 0
-                                    : PetList[ActivePetNumber][3]/fishHealthCap >= 0.5 ? 1
-                                    : PetList[ActivePetNumber][3]/fishHealthCap >= 0.25 ? 2
+    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][4]/fishHealthCap >= 0.75 ? 0
+                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.5 ? 1
+                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
 
