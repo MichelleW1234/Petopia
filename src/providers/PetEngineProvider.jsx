@@ -43,8 +43,7 @@ export function PetEngineProvider({ children }) {
                     // Checking for if pet is alive:
                     if (updatedPetList[i][3] > 0) {
 
-                        const { healthAffected, newPetTimeStamps } = damageCheck(updatedPetTimeStamps[i]);
-                        updatedPetTimeStamps[i] = newPetTimeStamps;
+                        const healthAffected = damageCheck(updatedPetTimeStamps[i]);
                         updatedPetList[i][3] = Math.max(updatedPetList[i][3] - healthAffected, 0);
 
                         // Update pet growth stage:
@@ -83,29 +82,29 @@ export function PetEngineProvider({ children }) {
 
 
 
-    const damageCheck = (oldPetTimeStamps) => {
+    const damageCheck = (currPetTimeStamps) => {
 
-        const newPetTimeStamps = oldPetTimeStamps.map(inner => [...inner]);
-        const damage = [4, 1, 2];
-        let healthAffected = 0;
         let petTimeLimits;
 
-        if (!newPetTimeStamps.some(sub => sub.length === 1 && sub[0] === -1)){
+        if (!currPetTimeStamps.some(sub => sub.length === 1 && sub[0] === -1)){
         // There is no element [-1] (dog)
 
             petTimeLimits = dogTimeLimits;
 
-        } else if (newPetTimeStamps[1].length === 1 && newPetTimeStamps[1][0] === -1){
+        } else if (currPetTimeStamps[1].length === 1 && currPetTimeStamps[1][0] === -1){
         // There is an element [-1] at index 1 (cat)
 
             petTimeLimits = catTimeLimits;
 
-        } else if (newPetTimeStamps[2].length === 1 && newPetTimeStamps[2][0] === -1){
+        } else if (currPetTimeStamps[2].length === 1 && currPetTimeStamps[2][0] === -1){
         // There is an element [-1] at index 2 (fish)
 
             petTimeLimits = fishTimeLimits;
 
         }
+
+        const damage = [4, 1, 2];
+        let healthAffected = 0;
 
         // Iterate through every activity of this pet to see how much health damage there is:
         for (let i=0; i<petTimeLimits.length; i++){
@@ -117,15 +116,15 @@ export function PetEngineProvider({ children }) {
 
             }
 
-            let subtrahend = Math.max(newPetTimeStamps[i][0], newPetTimeStamps[i][1]); 
+            let subtrahend = Math.max(currPetTimeStamps[i][0], currPetTimeStamps[i][1]); 
 
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(newPetTimeStamps[i][1], subtrahend, petTimeLimits[i], damage[i]);
-            newPetTimeStamps[i][1] = newPetTimeStamp;
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currPetTimeStamps[i][1], subtrahend, petTimeLimits[i], damage[i]);
+            currPetTimeStamps[i][1] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
         }
 
-        return { healthAffected, newPetTimeStamps };
+        return healthAffected;
 
     }
 

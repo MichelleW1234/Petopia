@@ -44,24 +44,16 @@ function Homescreen (){
 
         setPetTimeStamps(prev => {
 
-            const updatedPetTimeStamps = prev.map(pet =>
-                                    pet.map(group =>
-                                        [...group]
-                                    )
-                                );
-
+            const updatedPetTimeStamps = [...prev];
             updatedPetTimeStamps[index] = [];
-
             return updatedPetTimeStamps;
 
         });
 
         setPetList(prev => {
 
-            const updatedPetList = prev.map(inner => [...inner]);
-
+            const updatedPetList = [...prev];
             updatedPetList[index] = [];
-
             return updatedPetList;
 
         });

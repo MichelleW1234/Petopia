@@ -27,21 +27,15 @@ function HomePetSelector ({setPetSelectorFlag}) {
 
             setPetList(prev => {
 
-                const newCopy = prev.map(inner => [...inner]);
-
+                const newCopy = [...prev];
                 newCopy[firstOpenSlot] = [speciesInfo[selectedPet][0], petImages[speciesInfo[selectedPet][0]][0], 1, speciesInfo[selectedPet][1], startingTime, 0];
-                                
                 return newCopy;
 
             });
            
             setPetTimeStamps(prev => {
 
-                const newCopy = prev.map(pet =>
-                    pet.map(group =>
-                        [...group]
-                    )
-                );
+                const newCopy = [...prev];
 
                 if (selectedPet === 0){
 

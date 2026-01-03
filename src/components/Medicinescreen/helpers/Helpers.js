@@ -5,7 +5,7 @@ export const healPet = (setPetList, ActivePetNumber, currentPetHealthCap) => {
         const updatedPetList = prev.map(inner => [...inner]);
 
         const currentHour = new Date().getHours();
-        if (currentHour >= 20){
+        if (currentHour <= 6 || currentHour >= 20){
 
             updatedPetList[ActivePetNumber][3] = Math.min(updatedPetList[ActivePetNumber][3] + 4, currentPetHealthCap);
 
