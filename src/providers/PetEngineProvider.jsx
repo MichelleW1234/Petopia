@@ -50,7 +50,6 @@ export function PetEngineProvider({ children }) {
                         if (updatedPetList[i][4] > 0){
 
                             const currentStage = petAgeCheck(updatedPetList[i]);
-                            console.log("checking four: " + currentStage);
 
                             if (currentStage !== updatedPetList[i][3]){
 

@@ -6,7 +6,7 @@
   - 3 -> stage of growth
   - 4 -> health
   - 5 -> birth date (milliseconds)
-  - 6 -> time since last dose of medicine (milliseconds)
+  - 6 -> last dose of medicine (milliseconds)
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
