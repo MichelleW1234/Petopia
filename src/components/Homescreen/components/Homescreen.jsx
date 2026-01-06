@@ -4,6 +4,8 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
+import { petImages } from "../../../constants/Constants.js";
+
 import "./Homescreen.css";
 
 
@@ -88,7 +90,7 @@ function Homescreen (){
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img src = {pet[2]}/>
+                                    <img src = {petImages[pet[1]][pet[2]][pet[3]-1]}/>
                                     <p>{pet[0]}</p>
                                     <p>Stage: {pet[3]}</p>
                                     <p>Health: {pet[4]}</p>
@@ -101,7 +103,7 @@ function Homescreen (){
 
                             <div key = {index} className="HomescreenPetSlotInnerContainer">
                                 <div className = "HomescreenPetSlot"> 
-                                    <img  src = {pet[2]}/>
+                                    <img  src = {petImages[pet[1]][pet[2]][pet[3]-1]}/>
                                     <p> {pet[0]}</p>
                                     <p>Stage: -- </p>
                                     <p>Health: -- </p>

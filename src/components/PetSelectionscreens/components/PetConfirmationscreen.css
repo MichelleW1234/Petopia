@@ -1,0 +1,79 @@
+.HomePetSelectorNameInputContainer{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 1rem 2rem;
+    gap: 2rem;
+    border-radius: 1rem;
+
+    color: white;
+    border-left: 0.25rem solid black; 
+    border-bottom: 0.25rem solid black; 
+    border-top: 0.1rem solid black; 
+    border-right: 0.1rem solid black;
+    background-color: rgb(91, 107, 255);
+    box-shadow: 0 0 1rem 0.25rem rgb(174, 189, 255);
+
+}
+
+.HomePetSelectorNameInput{
+
+    padding: 1rem;
+
+    border-left: 0.25rem solid black; 
+    border-bottom: 0.25rem solid black; 
+    border-top: 0.1rem solid black; 
+    border-right: 0.1rem solid black;
+    background-color: rgb(200, 206, 255); 
+    
+    animation: Input-glow 3s infinite;
+
+}
+
+
+.HomePetSelectorPetWindow{
+
+    height: 20rem;
+    width: 43rem;
+    background-color: rgb(255, 255, 255);
+
+    img {
+
+        height: 50%;
+        width: 50%;
+
+    }
+
+}
+
+
+.HomePetSelectorPetWindowBorder{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+    padding: 3rem;
+    border-radius: 2rem;
+
+    border-left: 0.5rem solid black; 
+    border-bottom: 0.5rem solid black; 
+    border-top: 0.2rem solid black; 
+    border-right: 0.2rem solid black; 
+    background: linear-gradient(rgb(204, 0, 255), rgb(27, 0, 34));
+    box-shadow: 0 0 1rem 0.5rem  rgb(251, 165, 255);
+
+}
+
+.HomePetSelectorNameInputError{
+
+    height: 1rem;
+    color: rgb(255, 229, 255);
+
+}

@@ -35,12 +35,6 @@
 
     animation: FloatingFlagBox-glow 3s infinite;
 
-    img {
-
-        width: 80%;
-
-    }
-
 }
 
 
@@ -72,24 +66,5 @@
     background-color: rgb(235, 138, 255);
 
     animation: FloatingFlagBox-Active-glow 3s infinite;
-
-    img {
-
-        width: 80%;
-
-    }
-
-}
-
-.HomePetSelectorNameInput{
-
-    background-color: aliceblue;
-    padding: 1rem;
-
-}
-
-.HomePetSelectorNameInputError{
-
-    height: 1rem;
 
 }

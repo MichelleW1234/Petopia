@@ -27,6 +27,8 @@ export function PetEngineProvider({ children }) {
 
         const runCheck = () => {
 
+            console.log("checking");
+
             const updatedPetTimeStamps = PetTimeStampsRef.current.map(pet =>
                                             pet.map(group =>
                                                 [...group]
@@ -53,8 +55,7 @@ export function PetEngineProvider({ children }) {
 
                             if (currentStage !== updatedPetList[i][3]){
 
-                                updatedPetList[i][3] = currentStage;
-                                updatedPetList[i][2] = petImages[updatedPetList[i][1]][currentStage-1];                                
+                                updatedPetList[i][3] = currentStage;                             
 
                             }
 
@@ -118,7 +119,7 @@ export function PetEngineProvider({ children }) {
 
             let subtrahend = Math.max(currPetTimeStamps[i][0], currPetTimeStamps[i][1]); 
 
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currPetTimeStamps[i][1], subtrahend, petTimeLimits[i], damage[i]);
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(subtrahend, petTimeLimits[i], damage[i]);
             currPetTimeStamps[i][1] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
@@ -129,26 +130,24 @@ export function PetEngineProvider({ children }) {
     }
 
 
-    const calculatingNewTimes = (oldPetTimeStamp, subtrahend, limit, damage) => {
+    const calculatingNewTimes = (subtrahend, limit, damage) => {
 
         let addedHealthDamage = 0;
         let intervalsPassed = 0;
-        let newPetTimeStamp = oldPetTimeStamp; 
+        let newPetTimeStamp = subtrahend; 
         const timeElapsed = Date.now() - subtrahend;
 
         if (timeElapsed > limit){
+
             intervalsPassed = Math.floor(timeElapsed / limit);
-            addedHealthDamage = damage*intervalsPassed;
-        }
 
-        if (intervalsPassed > 0){
-        //the time between the last time this activity's damage was updated and the current time is long enough for another update:
+            if (intervalsPassed > 0){
+            //the time between the last time this activity's damage was updated and the current time is long enough for another damaage and tiemstamp update:
 
-            newPetTimeStamp = subtrahend + intervalsPassed*limit;
+                addedHealthDamage = damage*intervalsPassed;
+                newPetTimeStamp = subtrahend + intervalsPassed*limit;
 
-        } else {
-
-            newPetTimeStamp = subtrahend;
+            }
 
         }
 

@@ -259,6 +259,17 @@ button {
 
 }
 
+.GeneralNavButtonContainer{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+  gap: 4rem;
+
+}
+
 
 /*Signs: */
 
@@ -694,6 +705,30 @@ button {
       0 0 1rem 0.5rem rgb(173, 214, 255, 0.75);      
   }
 }
+
+
+
+@keyframes Input-glow {
+  0% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(226, 223, 255), 
+      0 0 1rem 0.75rem rgb(162, 155, 255);   
+  }
+  50% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(226, 223, 255, 0.5), 
+      0 0 1rem 0.75rem rgb(162, 155, 255, 0.5);   
+  }
+  100% {
+    box-shadow:
+      0 0 0.5rem 0.25rem rgb(226, 223, 255), 
+      0 0 1rem 0.75rem rgb(162, 155, 255);           
+  }
+}
+
+
+
+
 
 
 

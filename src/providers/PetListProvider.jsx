@@ -2,7 +2,7 @@
   For each pet list element:
   - 0 -> name
   - 1 -> species
-  - 2 -> pet image
+  - 2 -> pet variant
   - 3 -> stage of growth
   - 4 -> health
   - 5 -> birth date (milliseconds)

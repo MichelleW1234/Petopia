@@ -6,11 +6,14 @@ import {PetTimeStampsProvider} from "./providers/PetTimeStampsProvider.jsx";
 import {PetListProvider} from "./providers/PetListProvider.jsx";
 import {PetEngineProvider} from "./providers/PetEngineProvider.jsx";
 import { ActivePetNumberProvider } from "./providers/ActivePetNumberProvider.jsx";
+import { FinalPetSelectionProvider } from "./components/PetSelectionscreens/providers/FinalPetSelectionProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <PetListProvider><PetTimeStampsProvider><PetEngineProvider><ActivePetNumberProvider>
-      <App />
-    </ActivePetNumberProvider></PetEngineProvider></PetTimeStampsProvider></PetListProvider>
+    <PetListProvider><PetTimeStampsProvider><PetEngineProvider>
+      <ActivePetNumberProvider><FinalPetSelectionProvider>
+        <App />
+      </FinalPetSelectionProvider></ActivePetNumberProvider>
+    </PetEngineProvider></PetTimeStampsProvider></PetListProvider>
   </StrictMode>,
 )
