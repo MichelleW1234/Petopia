@@ -17,7 +17,7 @@ function PetConfirmationscreen () {
 
 
     const [petName, setPetName] = useState("");
-    const [nameError, setNameError] = useState(false);
+    const [info, setInfo] = useState("You are about to adopt this pet:");
 
     const timeoutRef = useRef(null);
 
@@ -28,11 +28,11 @@ function PetConfirmationscreen () {
 
         if (petName === ""){
 
-            setNameError("Please enter a name for your new pet.");
+            setInfo("Enter a name for your new pet.");
 
         } else if (petName.length > 15){
 
-            setNameError("Please shorten the name to 10 characters or less.");
+            setInfo("Shorten the name to 15 characters max.");
 
         }
 
@@ -41,14 +41,14 @@ function PetConfirmationscreen () {
         }
 
         timeoutRef.current = setTimeout(() => {
-            setNameError("");
+            setInfo("You are about to adopt this pet:");
             timeoutRef.current = null;
         }, 5000);
 
     }
 
     
-    const closePetOptions = () => {
+    const adoptPet = () => {
 
         const firstOpenSlot = PetList.findIndex(item => item.length === 0);
         const startingTime = Date.now();
@@ -100,23 +100,22 @@ function PetConfirmationscreen () {
 
         <div className="ScreenContainer">
 
-            <div className="HomePetSelectorPetWindowBorder">
-                <div className="HomePetSelectorNameInputContainer">
-                    <h2 className="HomePetSelectorNameInputSign"> Name:</h2>
+            <div className="PetWindowBorder PetWindowBorder-newpet">
+                <h2 className="PetWindowSign PetWindowSign-newpet">{info}</h2>
+                <div className="HomePetSelectorPetWindow">
+                    <img src = {FinalPetSelection.length > 0 ? petImages[FinalPetSelection[0]][FinalPetSelection[2]][0] : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }/>
+                </div>
+                 <div className="HomePetSelectorNameInputContainer">
+                    <h2 className="header"> Pet Name:</h2>
                     <input 
                         className = "HomePetSelectorNameInput"
                         type="text"
                         value={petName}
                         onChange={(e) => {setPetName(e.target.value)}}
-                        placeholder="Enter pet name..."
+                        placeholder="Enter a name..."
                     />
                 </div>
-                <div className="HomePetSelectorPetWindow">
-                    <img src = {FinalPetSelection.length > 0 ? petImages[FinalPetSelection[0]][FinalPetSelection[2]][0] : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }/>
-                </div>
             </div>
-
-            <p className = "HomePetSelectorNameInputError">{nameError}</p>
 
             <div className="GeneralNavButtonContainer">
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => deletePet()}>Quit</Link>
@@ -131,13 +130,13 @@ function PetConfirmationscreen () {
 
                                                                             } else {
 
-                                                                                closePetOptions();
+                                                                                adoptPet();
 
                                                                             }
                                                                         
                                                                         }}
 
-                                                                    > Confirm Pet </Link>
+                                                                    > Adopt </Link>
 
             </div>
         </div>

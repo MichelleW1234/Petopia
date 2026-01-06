@@ -302,6 +302,14 @@ button {
 
 }
 
+.PetWindowBorder-newpet {
+
+  background: linear-gradient(rgb(180, 0, 208), rgb(26, 0, 30));
+  box-shadow: 0 0 1rem 0.5rem  rgb(250, 155, 255);
+
+}
+
+
 .PetWindowBorder-default {
 
   background-color: rgb(103, 106, 116);
@@ -339,10 +347,21 @@ button {
 
 }
 
+
+.PetWindowSign-newpet {
+
+  border: 0.5rem solid rgba(242, 154, 255, 0.5);
+  background-color: rgb(229, 81, 255);
+
+  animation: PetWindowComponent-newpet-glow 3s infinite;
+
+}
+
+
 .PetWindowSign-default {
 
-  background-color: rgb(153, 157, 170);
   border: 0.5rem solid rgb(212, 217, 237, 0.5);
+  background-color: rgb(153, 157, 170);
 
 }
 
@@ -433,31 +452,21 @@ button {
 
 }
 
-.PetWindowButtonPlaceholder {
 
-  padding: 1rem 1.5rem;
 
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-top: 0.1rem solid black;
-  border-right: 0.1rem solid black;
-
-}
-
-.PetWindowButtonPlaceholder-cat {
+.PetWindowButton-placeholdercat {
 
   background-color: rgb(124, 84, 155);
 
 }
 
-.PetWindowButtonPlaceholder-dog {
+.PetWindowButton-placeholderdog {
 
   background-color: rgb(155, 119, 80);
 
 }
 
-.PetWindowButtonPlaceholder-fish {
+.PetWindowButton-placeholderfish {
 
   background-color: rgb(76, 98, 176);
 
@@ -586,6 +595,24 @@ button {
 
 
 
+@keyframes PetWindowComponent-newpet-glow {
+  0% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(249, 128, 255), 
+      0 0 1rem 0.5rem rgb(246, 169, 255);     
+  }
+  50% {
+    box-shadow: 
+      0 0 0.5rem 0.25rem rgb(249, 128, 255, 0.5), 
+      0 0 1rem 0.5rem rgb(246, 169, 255, 0.5);    
+  }
+  100% {
+    box-shadow:
+      0 0 0.5rem 0.25rem rgb(249, 128, 255), 
+      0 0 1rem 0.5rem rgb(246, 169, 255);       
+  }
+}
+
 
 @keyframes PetWindowComponent-dog-glow {
   0% {
@@ -711,18 +738,18 @@ button {
 @keyframes Input-glow {
   0% {
     box-shadow: 
-      0 0 0.5rem 0.25rem rgb(226, 223, 255), 
-      0 0 1rem 0.75rem rgb(162, 155, 255);   
+      0 0 0.5rem 0.25rem rgb(206, 201, 255), 
+      0 0 1rem 0.5rem rgb(143, 135, 255);   
   }
   50% {
     box-shadow: 
-      0 0 0.5rem 0.25rem rgb(226, 223, 255, 0.5), 
-      0 0 1rem 0.75rem rgb(162, 155, 255, 0.5);   
+      0 0 0.5rem 0.25rem rgb(206, 201, 255, 0.5), 
+      0 0 1rem 0.5rem rgb(143, 135, 255, 0.5);    
   }
   100% {
     box-shadow:
-      0 0 0.5rem 0.25rem rgb(226, 223, 255), 
-      0 0 1rem 0.75rem rgb(162, 155, 255);           
+      0 0 0.5rem 0.25rem rgb(206, 201, 255), 
+      0 0 1rem 0.5rem rgb(143, 135, 255);             
   }
 }
 

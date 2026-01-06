@@ -3,7 +3,7 @@ import {useState} from "react";
 
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
-import {dogHealthCap, catHealthCap, fishHealthCap, petImages} from "../../../constants/Constants.js";
+import {dogHealthCap, catHealthCap, fishHealthCap} from "../../../constants/Constants.js";
 
 import "./PetSelectionscreen.css";
 

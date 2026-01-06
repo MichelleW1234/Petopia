@@ -48,7 +48,7 @@ function DogPlayscreen (){
 
                 ) : (
 
-                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-dog">Play!</button>
+                    <button className = "PetWindowButton PetWindowButton-placeholderdog">Play!</button>
 
                 )}
 

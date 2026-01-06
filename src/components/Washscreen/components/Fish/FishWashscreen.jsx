@@ -48,7 +48,7 @@ function FishWashscreen (){
 
                 ) : (
 
-                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish">Wash!</button>
+                    <button className = "PetWindowButton PetWindowButton-placeholderfish">Wash!</button>
 
                 )}
 

@@ -48,7 +48,7 @@ function FishFeedscreen (){
 
                 ) : (
 
-                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish">Feed me!</button>
+                    <button className = "PetWindowButton PetWindowButton-placeholderfish">Feed me!</button>
 
                 )}
                 

@@ -31,7 +31,7 @@ function FishMedicinescreen() {
 
                 ) : (
 
-                    <button className = "PetWindowButtonPlaceholder PetWindowButtonPlaceholder-fish"> Give Medicine </button>
+                    <button className = "PetWindowButton PetWindowButton-placeholderfish"> Give Medicine </button>
 
                 )}
             </div>
