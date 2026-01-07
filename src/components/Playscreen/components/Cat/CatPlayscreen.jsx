@@ -32,6 +32,7 @@ function CatPlayscreen (){
                 timeLimits={catTimeLimits[2]}
             />}
             <div className="NavBarContainer">
+                <Link to = "/catpet" className = "NavBarButton"> Back </Link> 
                 {PetList[ActivePetNumber][4] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenCatScheduleFlag(true)}>Check Playing Schedule</button>
@@ -58,7 +59,6 @@ function CatPlayscreen (){
                     )}
 
                 </div>
-                <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
             </div>
         </>
 

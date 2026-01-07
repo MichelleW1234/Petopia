@@ -37,6 +37,7 @@ function CatMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
+                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
                 <Link to = "/catfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
                 <Link to = "/catplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
                 <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>
@@ -46,7 +47,6 @@ function CatMainPetscreen (){
                     petEnergy = {700}
                     mood = {mood}
                 />
-                <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>
         </>
 

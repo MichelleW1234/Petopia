@@ -35,6 +35,7 @@ function FishMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
+                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
                 <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
                 <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
                 <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
@@ -44,7 +45,6 @@ function FishMainPetscreen (){
                     petEnergy = {500}
                     mood = {mood}
                 />
-                <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>
         </>
 

@@ -33,6 +33,8 @@ function FishWashscreen (){
                 timeLimits={fishTimeLimits[1]}
             />}
             <div className="NavBarContainer">
+                <Link to = "/fishpet" className = "NavBarButton"> Back </Link> 
+
                 {PetList[ActivePetNumber][4] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenFishScheduleFlag(true)}>Check Playing Schedule</button>
@@ -59,7 +61,6 @@ function FishWashscreen (){
                     )}
 
                 </div>
-                <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
             </div>
         </>
 

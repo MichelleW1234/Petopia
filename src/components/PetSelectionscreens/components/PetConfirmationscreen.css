@@ -14,8 +14,8 @@
     border-bottom: 0.25rem solid black; 
     border-top: 0.1rem solid black; 
     border-right: 0.1rem solid black;
-    background-color: rgb(68, 0, 132);
-    box-shadow: 0 0 1rem 0.25rem rgb(192, 133, 255);
+    background: linear-gradient(#bf77ff, rgb(27, 0, 55));
+    box-shadow: 0 0 1rem 0.25rem rgb(204, 121, 255);
 
 }
 
@@ -27,7 +27,7 @@
     border-bottom: 0.25rem solid black; 
     border-top: 0.1rem solid black; 
     border-right: 0.1rem solid black;
-    background-color: rgb(202, 208, 255); 
+    background-color: rgb(202, 221, 255); 
     
     animation: Input-glow 3s infinite;
 

@@ -39,6 +39,7 @@ function DogMainPetscreen (){
         
         <>
             <div className="NavBarContainer">
+                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
                 <Link to = "/dogfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Dog </Link>
                 <Link to = "/dogwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Bathe Dog </Link>
                 <Link to = "/dogplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Dog </Link>
@@ -49,7 +50,6 @@ function DogMainPetscreen (){
                     petEnergy = {300}
                     mood = {mood}
                 />
-                <Link to = "/home" className = "GeneralNavButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
             </div>
         </>
 

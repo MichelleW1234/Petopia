@@ -29,7 +29,7 @@ function PetSelectionscreen () {
 
     return (
 
-        <div className="ScreenContainer">
+        <div className="ScreenContainer ScreenContainer-petselector">
             <h2 className="header"> Select a new Pet: </h2>
 
             <div className = "HomePetSelectorContainer">

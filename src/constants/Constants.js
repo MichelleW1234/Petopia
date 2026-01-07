@@ -68,3 +68,7 @@ export const catTimeLimits = [28800000, 0, 86400000];
 //[eat 1 time a day, clean fish tank 1 time a day, doesn't need to play]
 export const fishTimeLimits = [86400000, 86400000, 0];
 // [180000, 300000, 0]; //for testing purposes
+
+
+
+export const medicineDoseTimeGap = 86400000;

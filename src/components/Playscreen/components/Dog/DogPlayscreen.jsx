@@ -32,6 +32,8 @@ function DogPlayscreen (){
                 timeLimits={dogTimeLimits[2]}
             />}
             <div className="NavBarContainer">
+                <Link to = "/dogpet" className = "NavBarButton"> Back </Link> 
+
                 {PetList[ActivePetNumber][4] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Playing Schedule</button>
@@ -58,7 +60,6 @@ function DogPlayscreen (){
                     )}
 
                 </div>
-                <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
             </div>
         </>
 

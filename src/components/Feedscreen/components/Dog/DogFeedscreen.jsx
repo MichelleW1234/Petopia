@@ -31,6 +31,7 @@ function DogFeedscreen (){
                 timeLimits={dogTimeLimits[0]}
             />}
             <div className="NavBarContainer">
+                <Link to = "/dogpet" className = "NavBarButton"> Back </Link> 
                 {PetList[ActivePetNumber][4] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Feeding Schedule</button>
@@ -43,22 +44,20 @@ function DogFeedscreen (){
             </div>
             <div className = "ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-dog">
-                <h2 className="PetWindowSign PetWindowSign-dog"> Health: {PetList[ActivePetNumber][4]} </h2>
-                <div className = "filler"> </div>
+                    <h2 className="PetWindowSign PetWindowSign-dog"> {PetList[ActivePetNumber][0]}'s Health: {PetList[ActivePetNumber][4]} </h2>
+                    <div className = "filler"> </div>
 
-                {PetList[ActivePetNumber][4] > 0 ? (
+                    {PetList[ActivePetNumber][4] > 0 ? (
 
-                    <button className ="PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[0]/2, 0)}>Feed me!</button>
+                        <button className ="PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[0]/2, 0)}>Feed me!</button>
 
-                ) : (
+                    ) : (
 
-                    <button className = "PetWindowButton PetWindowButton-placeholderdog">Feed me!</button>
+                        <button className = "PetWindowButton PetWindowButton-placeholderdog">Feed me!</button>
 
-                )}
+                    )}
 
-            </div>
-
-                <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
+                </div>
             </div>
 
         </>

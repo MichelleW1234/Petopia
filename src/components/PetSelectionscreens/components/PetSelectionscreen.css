@@ -26,12 +26,12 @@
     gap: 1rem;
     padding: 1rem;
 
+    color: white;
     border-left: 0.3rem solid black;
     border-bottom: 0.3rem solid black;
     border-top: 0.1rem solid black;
     border-right: 0.1rem solid black;
-
-    background-color: rgb(175, 214, 255);
+    background: linear-gradient(rgb(175, 200, 255), rgb(0, 16, 133));
 
     animation: FloatingFlagBox-glow 3s infinite;
 
@@ -40,8 +40,7 @@
 
 .HomePetSelectorBox:hover {
 
-    color: white;
-    background-color: rgb(81, 81, 255);
+    background: linear-gradient(rgb(0, 65, 206), rgb(0, 6, 55));
 
 }
 
@@ -59,11 +58,12 @@
     gap: 1rem;
     padding: 1rem;
 
+    color: white;
     border-left: 0.3rem solid black;
     border-bottom: 0.3rem solid black;
     border-top: 0.1rem solid black;
     border-right: 0.1rem solid black;
-    background-color: rgb(235, 138, 255);
+    background: linear-gradient(rgb(237, 138, 255), rgb(54, 0, 57));
 
     animation: FloatingFlagBox-Active-glow 3s infinite;
 
