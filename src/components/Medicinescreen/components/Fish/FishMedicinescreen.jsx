@@ -48,7 +48,7 @@ function FishMedicinescreen() {
                 <div className="PetWindowBorder PetWindowBorder-fish">
                     <h2 className="PetWindowSign PetWindowSign-fish"> Health: {PetList[ActivePetNumber][4]} </h2>
                     <div className = "filler"></div>
-                    {canReceiveDose ? (
+                    {PetList[ActivePetNumber][4] > 0 && canReceiveDose ? (
 
                         <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => healPet(setPetList, ActivePetNumber, fishHealthCap)}> Give Medicine </button>
 
