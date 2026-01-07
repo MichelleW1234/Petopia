@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import {useState} from "react";
+
+import FeedSchedule from "../FeedscreenComponents/FeedSchedule.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -17,44 +20,47 @@ function FishFeedscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0]);
-    const lastTimeFed = lastTimeFedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    const nextTimeFedRaw = new Date(PetTimeStamps[ActivePetNumber][0][0] + fishTimeLimits[0]);
-    const nextTimeFed = nextTimeFedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
+    const [openFishScheduleFlag, setOpenFishScheduleFlag] = useState(false);
 
 
     return (
 
-        <div className = "ScreenContainer">
-            <div className="PetWindowBorder PetWindowBorder-fish">
-                <h2 className="PetWindowSign PetWindowSign-fish"> {lastTimeFed} | {nextTimeFed} </h2>
-                <div className = "filler"> </div>
-
+        <>
+            {openFishScheduleFlag && 
+            <FeedSchedule
+                setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
+                timeLimits={fishTimeLimits[0]}
+            />}
+            <div className="NavBarContainer">
                 {PetList[ActivePetNumber][4] > 0 ? (
 
-                    <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
+                    <button className ="NavBarButton" onClick = {() => setOpenFishScheduleFlag(true)}>Check Feeding Schedule</button>
 
                 ) : (
 
-                    <button className = "PetWindowButton PetWindowButton-placeholderfish">Feed me!</button>
+                    <button className ="NavBarButtonPlaceHolder">Check Feeding Schedule</button>
 
                 )}
-                
             </div>
-            <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
-        </div>
+            <div className = "ScreenContainer">
+                <div className="PetWindowBorder PetWindowBorder-fish">
+                    <h2 className="PetWindowSign PetWindowSign-fish"> Health: {PetList[ActivePetNumber][4]} </h2>
+                    <div className = "filler"> </div>
+
+                    {PetList[ActivePetNumber][4] > 0 ? (
+
+                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, 0)}>Feed me!</button>
+
+                    ) : (
+
+                        <button className = "PetWindowButton PetWindowButton-placeholderfish">Feed me!</button>
+
+                    )}
+                    
+                </div>
+                <Link to = "/fishpet" className = "GeneralNavButton"> Back </Link> 
+            </div>
+        </>
 
     );
 

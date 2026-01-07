@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import {useState} from "react";
+
+import PlaySchedule from "../PlayscreenComponents/PlaySchedule.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -16,45 +19,48 @@ function DogPlayscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0]);
-    const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0] + dogTimeLimits[2]);
-    const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
+    const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);
 
 
 
     return (
 
-        <div className = "ScreenContainer">
-            <div className="PetWindowBorder PetWindowBorder-dog">
-                <h2 className="PetWindowSign PetWindowSign-dog"> {lastTimePlayed} | {nextTimePlayed} </h2>
-                <div className = "filler"> </div>
-
+        <>
+            {openDogScheduleFlag && 
+            <PlaySchedule
+                setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
+                timeLimits={dogTimeLimits[2]}
+            />}
+            <div className="NavBarContainer">
                 {PetList[ActivePetNumber][4] > 0 ? (
 
-                    <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[2]/2, 2)}>Play!</button>
+                    <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Playing Schedule</button>
 
                 ) : (
 
-                    <button className = "PetWindowButton PetWindowButton-placeholderdog">Play!</button>
+                    <button className ="NavBarButtonPlaceHolder">Check Playing Schedule</button>
 
                 )}
-
             </div>
-            <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
-        </div>
+            <div className = "ScreenContainer">
+                <div className="PetWindowBorder PetWindowBorder-dog">
+                    <h2 className="PetWindowSign PetWindowSign-dog"> {PetList[ActivePetNumber][0]}'s Health: {PetList[ActivePetNumber][4]} </h2>
+                    <div className = "filler"> </div>
+
+                    {PetList[ActivePetNumber][4] > 0 ? (
+
+                        <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[2]/2, 2)}>Play!</button>
+
+                    ) : (
+
+                        <button className = "PetWindowButton PetWindowButton-placeholderdog">Play!</button>
+
+                    )}
+
+                </div>
+                <Link to = "/dogpet" className = "GeneralNavButton"> Back </Link> 
+            </div>
+        </>
 
     );
 

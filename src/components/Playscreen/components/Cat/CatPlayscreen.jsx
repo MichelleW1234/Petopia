@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import {useState} from "react";
+
+import PlaySchedule from "../PlayscreenComponents/PlaySchedule.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -16,43 +19,48 @@ function CatPlayscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0]);
-    const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0] + catTimeLimits[2]);
-    const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
+    const [openCatScheduleFlag, setOpenCatScheduleFlag] = useState(false);
+
+
 
     return (
 
-        <div className = "ScreenContainer">
-            <div className="PetWindowBorder PetWindowBorder-cat">
-                <h2 className="PetWindowSign PetWindowSign-cat"> {lastTimePlayed} | {nextTimePlayed} </h2>
-                <div className = "filler"> </div>
-
+        <>
+            {openCatScheduleFlag && 
+            <PlaySchedule
+                setOpenPetScheduleFlag = {setOpenCatScheduleFlag}
+                timeLimits={catTimeLimits[2]}
+            />}
+            <div className="NavBarContainer">
                 {PetList[ActivePetNumber][4] > 0 ? (
-                    
-                    <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[2]/2, 2)}>Play!</button>
+
+                    <button className ="NavBarButton" onClick = {() => setOpenCatScheduleFlag(true)}>Check Playing Schedule</button>
 
                 ) : (
 
-                    <button className = "PetWindowButton PetWindowButton-placeholdercat">Play!</button>
+                    <button className ="NavBarButtonPlaceHolder">Check Playing Schedule</button>
 
                 )}
-
             </div>
-            <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
-        </div>
+            <div className = "ScreenContainer">
+                <div className="PetWindowBorder PetWindowBorder-cat">
+                    <h2 className="PetWindowSign PetWindowSign-cat"> {PetList[ActivePetNumber][0]}'s Health: {PetList[ActivePetNumber][4]} </h2>
+                    <div className = "filler"> </div>
+
+                    {PetList[ActivePetNumber][4] > 0 ? (
+                        
+                        <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits[2]/2, 2)}>Play!</button>
+
+                    ) : (
+
+                        <button className = "PetWindowButton PetWindowButton-placeholdercat">Play!</button>
+
+                    )}
+
+                </div>
+                <Link to = "/catpet" className = "GeneralNavButton"> Back </Link> 
+            </div>
+        </>
 
     );
 
