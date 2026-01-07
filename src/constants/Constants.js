@@ -70,5 +70,4 @@ export const fishTimeLimits = [86400000, 86400000, 0];
 // [180000, 300000, 0]; //for testing purposes
 
 
-
 export const medicineDoseTimeGap = 86400000;
