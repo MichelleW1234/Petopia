@@ -10,6 +10,11 @@ import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
+import catLeftOne from "../../../../images/CatMovement/cat.svg";
+import catLeftTwo from "../../../../images/CatMovement/cat1.svg";
+import catRightOne from "../../../../images/CatMovement/cat2.svg";
+import catRightTwo from "../../../../images/CatMovement/cat3.svg";
+
 import "./MainPetWindow.css";
 
 function PetWindow ({petEnergy, mood}){
@@ -124,7 +129,31 @@ function PetWindow ({petEnergy, mood}){
 
                             petHere ? (
 
-                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell"  onMouseEnter={() => showAttention()}></div>
+                                petDirectionRef.current === 0 ? (
+
+                                    colIndex%2 === 0 ? (
+
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catLeftOne} onMouseEnter={() => showAttention()}/>
+
+                                    ):(
+
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catLeftTwo} onMouseEnter={() => showAttention()}/>
+
+                                    )
+
+                                ) : (
+
+                                    colIndex%2 === 1 ? (
+
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catRightOne} onMouseEnter={() => showAttention()}/>
+
+                                    ):(
+
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catRightTwo} onMouseEnter={() => showAttention()}/>
+
+                                    )
+
+                                )
 
                             ) : quotationHere ? (
 
