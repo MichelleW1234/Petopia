@@ -10,10 +10,7 @@ import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
-import catLeftOne from "../../../../images/CatMovement/cat.svg";
-import catLeftTwo from "../../../../images/CatMovement/cat1.svg";
-import catRightOne from "../../../../images/CatMovement/cat2.svg";
-import catRightTwo from "../../../../images/CatMovement/cat3.svg";
+import { petImages } from "../../../../constants/MainPetImages.js";
 
 import "./MainPetWindow.css";
 
@@ -32,6 +29,7 @@ function PetWindow ({petEnergy, mood}){
     const petCurrentSpaceRef = useRef(petCurrentSpace);
     const petDirectionRef = useRef(0);
     const timeoutRef = useRef(null);
+    
 
 
 
@@ -117,7 +115,7 @@ function PetWindow ({petEnergy, mood}){
     return (
         
         <div className = {`PetWindowBorder PetWindowBorder-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}>
-            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}> {PetList[ActivePetNumber][0]}'s Health: {ActivePetNumber !== -1 ? PetList[ActivePetNumber][4] : -1}</h2>
+            <h2 className={`PetWindowSign PetWindowSign-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}> {ActivePetNumber !== -1 ? `${PetList[ActivePetNumber][0]}'s Health` : " --- "} : {ActivePetNumber !== -1 ? PetList[ActivePetNumber][4] : -1}</h2>
             <div className= {`MainPetWindowGrid MainPetWindowGrid-${ActivePetNumber !== -1 ? PetList[ActivePetNumber][1] : "default"}`}>  
                 {innerScreenSpace.map((row, rowIndex) => (
                     row.map((__, colIndex) => {
@@ -133,11 +131,11 @@ function PetWindow ({petEnergy, mood}){
 
                                     colIndex%2 === 0 ? (
 
-                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catLeftOne} onMouseEnter={() => showAttention()}/>
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {ActivePetNumber !== -1 ? petImages[PetList[ActivePetNumber][1]][PetList[ActivePetNumber][2]][0] : heart} onMouseEnter={() => showAttention()}/>
 
                                     ):(
 
-                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catLeftTwo} onMouseEnter={() => showAttention()}/>
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {ActivePetNumber !== -1 ? petImages[PetList[ActivePetNumber][1]][PetList[ActivePetNumber][2]][1] : heart} onMouseEnter={() => showAttention()}/>
 
                                     )
 
@@ -145,11 +143,11 @@ function PetWindow ({petEnergy, mood}){
 
                                     colIndex%2 === 1 ? (
 
-                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catRightOne} onMouseEnter={() => showAttention()}/>
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {ActivePetNumber !== -1 ? petImages[PetList[ActivePetNumber][1]][PetList[ActivePetNumber][2]][2] : heart} onMouseEnter={() => showAttention()}/>
 
                                     ):(
 
-                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {catRightTwo} onMouseEnter={() => showAttention()}/>
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {ActivePetNumber !== -1 ? petImages[PetList[ActivePetNumber][1]][PetList[ActivePetNumber][2]][3]  : heart} onMouseEnter={() => showAttention()}/>
 
                                     )
 

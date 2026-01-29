@@ -5,7 +5,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
-import {petImages} from "../../../constants/Constants.js";
+import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./PetConfirmationscreen.css";
 

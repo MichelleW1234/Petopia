@@ -4,7 +4,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
 
-import { petImages } from "../../../constants/Constants.js";
+import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./Homescreen.css";
 

@@ -2,7 +2,7 @@ import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import { dogTimeLimits, catTimeLimits, fishTimeLimits, petImages } from "../constants/Constants.js";
+import { dogTimeLimits, catTimeLimits, fishTimeLimits} from "../constants/Constants.js";
 
 
 export function PetEngineProvider({ children }) {
