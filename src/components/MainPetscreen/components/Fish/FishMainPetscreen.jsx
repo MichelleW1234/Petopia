@@ -42,7 +42,7 @@ function FishMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
                 <MainPetWindow
-                    petEnergy = {500}
+                    petEnergy = {400}
                     mood = {mood}
                 />
             </div>

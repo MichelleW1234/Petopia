@@ -47,13 +47,13 @@ function PetWindow ({petEnergy, mood}){
 
             const interval = setInterval(() => {
                 petPositionChange();
-            }, petEnergy + mood*100);
+            }, petEnergy);
 
             return () => clearInterval(interval);
 
         }
 
-    }, [mood, ActivePetNumber]);
+    }, [ActivePetNumber]);
 
 
 
