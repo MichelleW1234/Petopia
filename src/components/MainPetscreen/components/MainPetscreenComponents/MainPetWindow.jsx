@@ -178,7 +178,7 @@ function PetWindow ({petEnergy, mood}){
 
                                 <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
 
-                            )
+                            ) 
 
                         )
                         
