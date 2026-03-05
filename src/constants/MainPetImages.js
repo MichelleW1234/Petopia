@@ -17,10 +17,20 @@ import s3CatRightTwo from "../images/CatMovement/3cat3.svg";
 
 // Dog variant 1 images:
 
-import dogLeftOne from "../images/DogMovement/dog.svg";
-import dogLeftTwo from "../images/DogMovement/dog1.svg";
-import dogRightOne from "../images/DogMovement/dog2.svg";
-import dogRightTwo from "../images/DogMovement/dog3.svg";
+import s1DogLeftOne from "../images/DogMovement/1dog.svg";
+import s1DogLeftTwo from "../images/DogMovement/1dog1.svg";
+import s1DogRightOne from "../images/DogMovement/1dog2.svg";
+import s1DogRightTwo from "../images/DogMovement/1dog3.svg";
+
+import s2DogLeftOne from "../images/DogMovement/2dog.svg";
+import s2DogLeftTwo from "../images/DogMovement/2dog1.svg";
+import s2DogRightOne from "../images/DogMovement/2dog2.svg";
+import s2DogRightTwo from "../images/DogMovement/2dog3.svg";
+
+import s3DogLeftOne from "../images/DogMovement/3dog.svg";
+import s3DogLeftTwo from "../images/DogMovement/3dog1.svg";
+import s3DogRightOne from "../images/DogMovement/3dog2.svg";
+import s3DogRightTwo from "../images/DogMovement/3dog3.svg";
 
 // Fish variant 1 images:
 
@@ -32,9 +42,9 @@ import fishRightTwo from "../images/FishMovement/fish3.svg";
 
 export const petImages = {
 
-    "dog": [[dogLeftOne, dogLeftTwo, dogRightOne, dogRightTwo],
-            [dogLeftOne, dogLeftTwo, dogRightOne, dogRightTwo],
-            [dogLeftOne, dogLeftTwo, dogRightOne, dogRightTwo]],
+    "dog": [[s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo],
+            [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo],
+            [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]],
 
     "cat": [[s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo],
             [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
