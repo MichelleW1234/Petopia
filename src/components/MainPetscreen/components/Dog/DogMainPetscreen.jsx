@@ -47,7 +47,7 @@ function DogMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
                 <MainPetWindow
-                    petEnergy = {300}
+                    petEnergy = {350}
                     mood = {mood}
                 />
             </div>

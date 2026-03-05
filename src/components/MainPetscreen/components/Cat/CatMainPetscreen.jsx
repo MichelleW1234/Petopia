@@ -44,7 +44,7 @@ function CatMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
                 <MainPetWindow
-                    petEnergy = {500}
+                    petEnergy = {450}
                     mood = {mood}
                 />
             </div>
