@@ -34,10 +34,20 @@ import s3DogRightTwo from "../images/DogMovement/3dog3.svg";
 
 // Fish variant 1 images:
 
-import fishLeftOne from "../images/FishMovement/fish.svg";
-import fishLeftTwo from "../images/FishMovement/fish1.svg";
-import fishRightOne from "../images/FishMovement/fish2.svg";
-import fishRightTwo from "../images/FishMovement/fish3.svg";
+import s1FishLeftOne from "../images/FishMovement/1fish.svg";
+import s1FishLeftTwo from "../images/FishMovement/1fish1.svg";
+import s1FishRightOne from "../images/FishMovement/1fish2.svg";
+import s1FishRightTwo from "../images/FishMovement/1fish3.svg";
+
+import s2FishLeftOne from "../images/FishMovement/2fish.svg";
+import s2FishLeftTwo from "../images/FishMovement/2fish1.svg";
+import s2FishRightOne from "../images/FishMovement/2fish2.svg";
+import s2FishRightTwo from "../images/FishMovement/2fish3.svg";
+
+import s3FishLeftOne from "../images/FishMovement/3fish.svg";
+import s3FishLeftTwo from "../images/FishMovement/3fish1.svg";
+import s3FishRightOne from "../images/FishMovement/3fish2.svg";
+import s3FishRightTwo from "../images/FishMovement/3fish3.svg";
 
 
 export const petImages = {
@@ -50,8 +60,8 @@ export const petImages = {
             [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
             [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]],
 
-    "fish": [[fishLeftOne, fishLeftTwo, fishRightOne, fishRightTwo],
-            [fishLeftOne, fishLeftTwo, fishRightOne, fishRightTwo],
-            [fishLeftOne, fishLeftTwo, fishRightOne, fishRightTwo]]
+    "fish": [[s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo],
+            [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo],
+            [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]]
 
 }
