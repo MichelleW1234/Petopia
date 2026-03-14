@@ -8,8 +8,6 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { catHealthCap, catTimeLimits } from "../../../../constants/Constants.js";
 
-import { resetActivePet} from "../../helpers/Helpers.js";
-
 
 function CatMainPetscreen (){
 
@@ -19,16 +17,16 @@ function CatMainPetscreen (){
 
     const now = Date.now();
     
-    const hungry = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][0][0]) >= catTimeLimits[0]/2 ? true 
+    const hungry = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= catTimeLimits[0]/2 ? true 
                         : false
                     : false;
-    const restless = ActivePetNumber !== -1 ? (now - PetTimeStamps[ActivePetNumber][2][0]) >= catTimeLimits[2]/2 ? true 
+    const restless = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["playing"][0]) >= catTimeLimits[2]/2 ? true 
                         : false
                     : false;
 
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][4]/catHealthCap >= 0.75 ? 0
-                                            : PetList[ActivePetNumber][4]/catHealthCap >= 0.5 ? 1
-                                            : PetList[ActivePetNumber][4]/catHealthCap >= 0.25 ? 2
+    const mood = ActivePetNumber !== "" ? PetList[ActivePetNumber]["health"]/catHealthCap >= 0.75 ? 0
+                                            : PetList[ActivePetNumber]["health"]/catHealthCap >= 0.5 ? 1
+                                            : PetList[ActivePetNumber]["health"]/catHealthCap >= 0.25 ? 2
                                             : 3
                                         : -1;
 
@@ -37,7 +35,7 @@ function CatMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
-                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
+                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetNumber("")}> Back to Home </Link>
                 <Link to = "/catfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
                 <Link to = "/catplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
                 <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>

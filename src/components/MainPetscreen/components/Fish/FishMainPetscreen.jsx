@@ -8,8 +8,6 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { fishHealthCap, fishTimeLimits } from "../../../../constants/Constants.js";
 
-import { resetActivePet } from "../../helpers/Helpers.js";
-
 
 function FishMainPetscreen (){
 
@@ -18,15 +16,16 @@ function FishMainPetscreen (){
     const {PetList, setPetList} = usePetList();
 
     const now = Date.now();
-    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) >= fishTimeLimits[0]/2 ? true 
+    const hungry = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= fishTimeLimits[0]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= fishTimeLimits[1]/2 ? true 
+    const dirty = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["bathing"][0]) >= fishTimeLimits[1]/2 ? true 
                         : false
                     : false;
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][4]/fishHealthCap >= 0.75 ? 0
-                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.5 ? 1
-                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.25 ? 2
+
+    const mood = ActivePetNumber !== "" ? PetList[ActivePetNumber]["health"]/fishHealthCap >= 0.75 ? 0
+                                    : PetList[ActivePetNumber]["health"]/fishHealthCap >= 0.5 ? 1
+                                    : PetList[ActivePetNumber]["health"]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
 
@@ -35,7 +34,7 @@ function FishMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
-                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
+                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetNumber("")}> Back to Home </Link>
                 <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
                 <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
                 <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>

@@ -1,24 +1,40 @@
 export const healPet = (setPetList, ActivePetNumber, currentPetHealthCap) => {
 
-    setPetList(prev => {
+    const currentHour = new Date().getHours();
 
-        const updatedPetList = prev.map(inner => [...inner]);
+    if (currentHour <= 6 || currentHour >= 20){
 
-        const currentHour = new Date().getHours();
-        if (currentHour <= 6 || currentHour >= 20){
+        setPetList(prev => ({
 
-            updatedPetList[ActivePetNumber][4] = Math.min(updatedPetList[ActivePetNumber][4] + 4, currentPetHealthCap);
+            ...prev,
+            
+            [ActivePetNumber]: {
 
-        } else {
+                ...prev[ActivePetNumber],
+                "health": Math.min(prev[ActivePetNumber]["health"] + 4, currentPetHealthCap),
+                "medicine": Date.now()
 
-            updatedPetList[ActivePetNumber][4] = Math.min(updatedPetList[ActivePetNumber][4] + 2, currentPetHealthCap);
+            }
 
-        }
+        })); 
 
-        updatedPetList[ActivePetNumber][6] = Date.now();
+    } else {
 
-        return updatedPetList;
+        setPetList(prev => ({
 
-    }); 
+            ...prev,
+
+            [ActivePetNumber]: {
+
+                ...prev[ActivePetNumber],
+                "health": Math.min(prev[ActivePetNumber]["health"] + 2, currentPetHealthCap),
+                "medicine": Date.now()
+
+            }
+
+        })); 
+
+    }
+   
 
 }

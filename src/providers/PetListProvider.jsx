@@ -1,12 +1,10 @@
 /*
   For each pet list element:
-  - 0 -> name
-  - 1 -> species
-  - 2 -> pet variant
-  - 3 -> stage of growth
-  - 4 -> health
-  - 5 -> birth date (milliseconds)
-  - 6 -> last dose of medicine (milliseconds)
+    - species -> dog/cat/fish
+    - stage -> 0-3
+    - health -> dog=15/cat=20/fish=5
+    - birthDate -> milliseconds
+    - medicine -> milliseconds
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -18,9 +16,9 @@ export function PetListProvider({ children }) {
   const [PetList, setPetList] = useState(() => {
     try {
       const stored = JSON.parse(localStorage.getItem("PetList"));
-      return Array.isArray(stored) ? stored : [[], [], []];
+      return stored && typeof stored === "object" ? stored : {};
     } catch {
-      return [[], [], []];
+      return {};
     }
   });
 

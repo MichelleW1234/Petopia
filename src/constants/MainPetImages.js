@@ -1,4 +1,4 @@
-// Cat variant 1 images:
+// Cat images:
 
 import s1CatLeftOne from "../images/CatMovement/1cat.svg";
 import s1CatLeftTwo from "../images/CatMovement/1cat1.svg";
@@ -15,7 +15,7 @@ import s3CatLeftTwo from "../images/CatMovement/3cat1.svg";
 import s3CatRightOne from "../images/CatMovement/3cat2.svg";
 import s3CatRightTwo from "../images/CatMovement/3cat3.svg";
 
-// Dog variant 1 images:
+// Dog images:
 
 import s1DogLeftOne from "../images/DogMovement/1dog.svg";
 import s1DogLeftTwo from "../images/DogMovement/1dog1.svg";
@@ -32,7 +32,7 @@ import s3DogLeftTwo from "../images/DogMovement/3dog1.svg";
 import s3DogRightOne from "../images/DogMovement/3dog2.svg";
 import s3DogRightTwo from "../images/DogMovement/3dog3.svg";
 
-// Fish variant 1 images:
+// Fish images:
 
 import s1FishLeftOne from "../images/FishMovement/1fish.svg";
 import s1FishLeftTwo from "../images/FishMovement/1fish1.svg";

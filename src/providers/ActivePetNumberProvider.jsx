@@ -11,9 +11,9 @@ export function ActivePetNumberProvider({ children }) {
     const [ActivePetNumber, setActivePetNumber] = useState(() => {
         try {
             const stored = JSON.parse(sessionStorage.getItem("ActivePetNumber"));
-            return stored !== null ? stored : -1; 
+            return stored !== null ? String(stored) : "";
         } catch {
-            return -1;
+            return "";
         }
     });
 

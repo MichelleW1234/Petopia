@@ -35,7 +35,7 @@ function DogWashscreen (){
             <div className="NavBarContainer">
                 <Link to = "/dogpet" className = "NavBarButton"> Back </Link> 
 
-                {PetList[ActivePetNumber][4] > 0 ? (
+                {PetList[ActivePetNumber]["health"] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Playing Schedule</button>
 
@@ -47,12 +47,12 @@ function DogWashscreen (){
             </div>
             <div className = "ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-dog">
-                    <h2 className="PetWindowSign PetWindowSign-dog"> {PetList[ActivePetNumber][0]}'s Health: {PetList[ActivePetNumber][4]} </h2>
+                    <h2 className="PetWindowSign PetWindowSign-dog"> {ActivePetNumber}'s Health: {PetList[ActivePetNumber]["health"]} </h2>
                     <div className = "filler"> </div>
 
-                    {PetList[ActivePetNumber][4] > 0 ? (
+                    {PetList[ActivePetNumber]["health"] > 0 ? (
 
-                        <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[1]/2, 1)}>Wash!</button>
+                        <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, dogTimeLimits[1]/2, "bathing")}>Wash!</button>
 
                     ) : (
 

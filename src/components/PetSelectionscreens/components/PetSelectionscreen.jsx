@@ -11,7 +11,7 @@ function PetSelectionscreen () {
 
     const {finalPetSelection, setFinalPetSelection} = useFinalPetSelection();
 
-    const speciesInfo = [["dog", dogHealthCap, 3], ["cat", catHealthCap, 3], ["fish", fishHealthCap, 3]];
+    const speciesInfo = [["dog", dogHealthCap], ["cat", catHealthCap], ["fish", fishHealthCap]];
 
     const [selectedPet, setSelectedPet] = useState(-1);
 
@@ -19,9 +19,7 @@ function PetSelectionscreen () {
 
     const createNewPet = () => {
 
-        const variant = Math.floor(Math.random() * (speciesInfo[selectedPet][2]));
-
-        setFinalPetSelection([speciesInfo[selectedPet][0], speciesInfo[selectedPet][1], variant]);
+        setFinalPetSelection(selectedPet);
 
     }
 
@@ -40,7 +38,6 @@ function PetSelectionscreen () {
                         <div className = "HomePetSelectorBoxActive" key = {index}> 
                             <p>Species: {pet[0]}</p>
                             <p>Vitality: {pet[1]}</p>
-                            <p>Variants: {pet[2]}</p>
                         </div>
 
                     ) : (
@@ -48,7 +45,6 @@ function PetSelectionscreen () {
                         <button className = "HomePetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
                             <p>Species: {pet[0]}</p>
                             <p>Vitality: {pet[1]}</p>
-                            <p>Variants: {pet[2]}</p>
                         </button>
 
                     )

@@ -34,6 +34,11 @@ function PetConfirmationscreen () {
 
             setInfo("Shorten the name to 15 characters max.");
 
+        } else {
+        //For testing purposes:
+
+            setInfo("Sorry, this pet name already exists.");
+
         }
 
         if (timeoutRef.current) {
@@ -47,7 +52,94 @@ function PetConfirmationscreen () {
 
     }
 
+
+    const adoptPet = () => {
+
+        if (petName in PetList && petName in PetTimeStamps){
+
+            showErrorMessage();
+            return;
+
+        }
+
+        const startingTime = Date.now();
+
+        if (FinalPetSelection === 0){
+
+            setPetList(prev => ({
+                ...prev,
+                [petName]: 
+                    { "species": "dog", 
+                      "stage": 1,
+                      "health": 15,
+                      "birthDate": startingTime,
+                      "medicine": 0
+                    }
+            }));
+
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [petName]:
+                    {
+                        "feeding": [startingTime, startingTime],
+                        "bathing": [startingTime, startingTime],
+                        "playing": [startingTime, startingTime]
+                    }
+            }));
+
+        } else if (FinalPetSelection === 1){
+
+            setPetList(prev => ({
+                ...prev,
+                [petName]: 
+                    { "species": "cat", 
+                      "stage": 1,
+                      "health": 20,
+                      "birthDate": startingTime,
+                      "medicine": 0
+                    }
+            }));
+
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [petName]:
+                    {
+                        "feeding": [startingTime, startingTime],
+                        "bathing": [-1],
+                        "playing": [startingTime, startingTime]
+                    }
+            }));
+
+        } else if (FinalPetSelection === 2){
+
+            setPetList(prev => ({
+                ...prev,
+                [petName]: 
+                    { "species": "fish", 
+                      "stage": 1,
+                      "health": 5,
+                      "birthDate": startingTime,
+                      "medicine": 0
+                    }
+            }));
+
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [petName]:
+                    {
+                        "feeding": [startingTime, startingTime],
+                        "bathing": [startingTime, startingTime],
+                        "playing": [-1]
+                    }
+            }));
+
+        }
+
+        setFinalPetSelection(-1);
+
+    }
     
+    /*
     const adoptPet = () => {
 
         const firstOpenSlot = PetList.findIndex(item => item.length === 0);
@@ -86,11 +178,12 @@ function PetConfirmationscreen () {
         setFinalPetSelection([]);
 
     }
+        */
 
 
     const deletePet = () => {
 
-        setFinalPetSelection([]);
+        setFinalPetSelection(-1);
 
     }
 
@@ -103,7 +196,12 @@ function PetConfirmationscreen () {
             <div className="PetWindowBorder PetWindowBorder-newpet">
                 <h2 className="PetWindowSign PetWindowSign-newpet">{info}</h2>
                 <div className="HomePetSelectorPetWindow">
-                    <img src = {FinalPetSelection.length > 0 ? petImages[FinalPetSelection[0]][FinalPetSelection[2]][0] : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }/>
+
+                    <img src = { FinalPetSelection === 0 ? petImages["dog"][0]
+                        : FinalPetSelection !== 1 ? petImages["cat"][0]
+                        : FinalPetSelection !== 2 ? petImages["fish"][0]
+                        : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }
+                    />
                 </div>
                 <div className="HomePetSelectorNameInputContainer">
                     <h2 className="header"> Pet Name:</h2>

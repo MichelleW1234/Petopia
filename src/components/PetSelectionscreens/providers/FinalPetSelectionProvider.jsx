@@ -1,6 +1,5 @@
 /*
-    0 -> pet species info
-    1 -> species variant (appearance)
+  Keeps track of which species the user selected
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -12,9 +11,9 @@ export function FinalPetSelectionProvider({ children }) {
   const [FinalPetSelection, setFinalPetSelection] = useState(() => {
     try {
       const stored = JSON.parse(sessionStorage.getItem("FinalPetSelection"));
-      return Array.isArray(stored) ? stored : [];
+      return typeof stored === "number" ? stored : -1;
     } catch {
-      return [];
+      return -1;
     }
   });
 

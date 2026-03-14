@@ -7,7 +7,7 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
 
-    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0]);
+    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber]["playing"][0]);
     const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
@@ -15,7 +15,7 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber][2][0] + timeLimits);
+    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetNumber]["playing"][0] + timeLimits);
     const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",

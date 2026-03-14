@@ -7,7 +7,7 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
 
-    const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber][1][0]);
+    const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber]["bathing"][0]);
     const lastTimeWashed = lastTimeWashedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
@@ -15,7 +15,7 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber][1][0] + timeLimits);
+    const nextTimeWashedRaw = new Date(PetTimeStamps[ActivePetNumber]["bathing"][0] + timeLimits);
     const nextTimeWashed = nextTimeWashedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",

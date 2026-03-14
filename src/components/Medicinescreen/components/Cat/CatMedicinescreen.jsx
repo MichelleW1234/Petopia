@@ -18,7 +18,7 @@ function CatMedicinescreen() {
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
 
-    const canReceiveDose = Date.now() - PetList[ActivePetNumber][6] > medicineDoseTimeGap ? true
+    const canReceiveDose = Date.now() - PetList[ActivePetNumber]["medicine"] > medicineDoseTimeGap ? true
                                                                     : false;
 
     const [openCatScheduleFlag, setOpenCatScheduleFlag] = useState(false);                                                            
@@ -34,7 +34,7 @@ function CatMedicinescreen() {
             />}
             <div className="NavBarContainer">
                 <Link to = "/catpet" className = "NavBarButton"> Back </Link> 
-                {PetList[ActivePetNumber][4] > 0 ? (
+                {PetList[ActivePetNumber]["health"] > 0 ? (
 
                     <button className ="NavBarButton" onClick = {() => setOpenCatScheduleFlag(true)}>Check Medicine Availability</button>
 
@@ -46,9 +46,9 @@ function CatMedicinescreen() {
             </div>
             <div className="ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-cat">
-                    <h2 className="PetWindowSign PetWindowSign-cat"> Health: {PetList[ActivePetNumber][4]} </h2>
+                    <h2 className="PetWindowSign PetWindowSign-cat"> Health: {PetList[ActivePetNumber]["health"]} </h2>
                     <div className = "filler"></div>
-                    {PetList[ActivePetNumber][4] > 0 && canReceiveDose ? (
+                    {PetList[ActivePetNumber]["health"] > 0 && canReceiveDose ? (
 
                         <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => healPet(setPetList, ActivePetNumber, catHealthCap)}> Give Medicine </button>
 

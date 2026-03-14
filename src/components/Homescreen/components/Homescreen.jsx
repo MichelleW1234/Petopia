@@ -16,38 +16,36 @@ function Homescreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
 
-    const noMorePets = PetList.every(item => item.length > 0);
-
+    const noMorePets = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
+                        : false;
 
     
     const restartGame = () => {
 
-        setPetList([[], [], []]);
-        setPetTimeStamps([[], [], []]);
+        setPetList({});
+        setPetTimeStamps({});
 
     }
 
-    const getPet = (index) => {
+    const getPet = (petToGet) => {
 
-        setActivePetNumber(index);
+        setActivePetNumber(petToGet);
         
     }
 
-    const clearPet = (index) => {
+    const clearPet = (petToRemove) => {
 
         setPetTimeStamps(prev => {
 
-            const updatedPetTimeStamps = [...prev];
-            updatedPetTimeStamps[index] = [];
-            return updatedPetTimeStamps;
+            const { [petToRemove]: _, ...rest } = prev;
+            return rest;
 
         });
 
         setPetList(prev => {
 
-            const updatedPetList = [...prev];
-            updatedPetList[index] = [];
-            return updatedPetList;
+            const { [petToRemove]: _, ...rest } = prev;
+            return rest;
 
         });
 
@@ -77,44 +75,49 @@ function Homescreen (){
             <div className = "ScreenContainer">  
                 <h1 className="header"> Your Pets: </h1>
                 <div className="HomescreenPetSlotContainer">
-                    {PetList.map((pet, index) => (
 
-                        pet.length === 0 ? (
+                    {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <div key = {index} className="HomescreenPetSlotInnerContainer">
-                                <div className = "HomescreenPetSlot"> Empty Slot </div>
-                                <div className = "GeneralNavButtonPlaceHolder"> Visit </div>
-                            </div>
+                        <div className="HomescreenPetSlotInnerContainer">
+                            <div className = "HomescreenPetSlot"> You currently have no pets. </div>
+                        </div>
 
-                        ) : pet[4] > 0 ? (
+                    ) : (
 
-                            <div key = {index} className="HomescreenPetSlotInnerContainer">
-                                <div className = "HomescreenPetSlot"> 
-                                    <img src = {petImages[pet[1]][pet[2]][pet[3]-1]}/>
-                                    <p>{pet[0]}</p>
-                                    <p>Stage: {pet[3]}</p>
-                                    <p>Health: {pet[4]}</p>
+                        Object.keys(PetList).map((key) => (
+
+                            PetList[key]["birthDate"] > 0 ? (
+
+                                <div key = {key} className="HomescreenPetSlotInnerContainer">
+                                    <div className = "HomescreenPetSlot"> 
+                                        <img src = {petImages[PetList[key]["species"]][PetList[key]["stage"]]}/>
+                                        <p>{key}</p>
+                                        <p>Stage: {PetList[key]["stage"]}</p>
+                                        <p>Health: {PetList[key]["health"]}</p>
+                                    </div>
+
+                                    <Link to = {`/${PetList[key]["species"]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
                                 </div>
 
-                                <Link to = {`/${pet[1]}pet`} className = "GeneralNavButton" onClick = {() => getPet(index)}> Visit </Link>
-                            </div>
+                            ) : (
+ 
+                                <div key = {key} className="HomescreenPetSlotInnerContainer">
+                                    <div className = "HomescreenPetSlot"> 
+                                        <img src = {petImages[PetList[key]["species"]][PetList[key]["stage"]]}/>
+                                        <p> {key}</p>
+                                        <p>Stage: -- </p>
+                                        <p>Health: -- </p>
+                                    </div>
 
-                        ) : (
-
-                            <div key = {index} className="HomescreenPetSlotInnerContainer">
-                                <div className = "HomescreenPetSlot"> 
-                                    <img  src = {petImages[pet[1]][pet[2]][pet[3]-1]}/>
-                                    <p> {pet[0]}</p>
-                                    <p>Stage: -- </p>
-                                    <p>Health: -- </p>
+                                    <button className = "GeneralNavButton" onClick = {() => clearPet(key)}> Clear </button>
                                 </div>
 
-                                <button className = "GeneralNavButton" onClick = {() => clearPet(index)}> Clear </button>
-                            </div>
+                            )
 
-                        )
+                        ))
 
-                    ))}
+                    )}
+                        
                 </div>
             </div>
         </>

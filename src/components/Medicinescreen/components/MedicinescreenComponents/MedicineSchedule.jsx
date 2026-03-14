@@ -8,8 +8,8 @@ function MedicineSchedule({setOpenPetScheduleFlag}) {
     const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
     const {PetList, setPetList} = usePetList();
 
-    const lastDoseRecievedRaw = new Date(PetList[ActivePetNumber][6]);
-    const lastDoseRecieved = PetList[ActivePetNumber][6] > 0 ? lastDoseRecievedRaw.toLocaleString([], {
+    const lastDoseRecievedRaw = new Date(PetList[ActivePetNumber]["medicine"]);
+    const lastDoseRecieved = PetList[ActivePetNumber]["medicine"] > 0 ? lastDoseRecievedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
@@ -18,8 +18,8 @@ function MedicineSchedule({setOpenPetScheduleFlag}) {
         }) 
         : "N/A";
 
-    const nextDoseAvailableRaw = new Date(PetList[ActivePetNumber][6] + medicineDoseTimeGap);
-    const nextDoseAvailable = PetList[ActivePetNumber][6] > 0 ? nextDoseAvailableRaw.toLocaleString([], {
+    const nextDoseAvailableRaw = new Date(PetList[ActivePetNumber]["medicine"] + medicineDoseTimeGap);
+    const nextDoseAvailable = PetList[ActivePetNumber]["medicine"] > 0 ? nextDoseAvailableRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
