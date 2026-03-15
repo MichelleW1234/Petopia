@@ -5,9 +5,9 @@ import PlaySchedule from "../PlayscreenComponents/PlaySchedule.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 
-import { catTimeLimits } from "../../../../constants/Constants.js";
+import { catTimeLimits, healthKey, playingKey } from "../../../../constants/Constants.js";
 
 import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
@@ -17,7 +17,7 @@ function CatPlayscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
 
     const [openCatScheduleFlag, setOpenCatScheduleFlag] = useState(false);
 
@@ -29,28 +29,22 @@ function CatPlayscreen (){
             {openCatScheduleFlag && 
             <PlaySchedule
                 setOpenPetScheduleFlag = {setOpenCatScheduleFlag}
-                timeLimits={catTimeLimits["playing"]}
+                timeLimits={catTimeLimits[playingKey]}
             />}
+
             <div className="NavBarContainer">
                 <Link to = "/catpet" className = "NavBarButton"> Back </Link> 
-                {PetList[ActivePetNumber]["health"] > 0 ? (
-
-                    <button className ="NavBarButton" onClick = {() => setOpenCatScheduleFlag(true)}>Check Playing Schedule</button>
-
-                ) : (
-
-                    <button className ="NavBarButtonPlaceHolder">Check Playing Schedule</button>
-
-                )}
+                <button className ="NavBarButton" onClick = {() => setOpenCatScheduleFlag(true)}>Check Playing Schedule</button>
             </div>
+            
             <div className = "ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-cat">
-                    <h2 className="PetWindowSign PetWindowSign-cat"> {ActivePetNumber}'s Health: {PetList[ActivePetNumber]["health"]} </h2>
+                    <h2 className="PetWindowSign PetWindowSign-cat"> {ActivePetName}'s Health: {PetList[ActivePetName][healthKey]} </h2>
                     <div className = "filler"> </div>
 
-                    {PetList[ActivePetNumber]["health"] > 0 ? (
+                    {PetList[ActivePetName][healthKey] > 0 ? (
                     
-                        <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, catTimeLimits["playing"]/2, "playing")}>Play!</button>
+                        <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetName, catTimeLimits[playingKey]/2, playingKey)}>Play!</button>
 
                     ) : (
 

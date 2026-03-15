@@ -1,4 +1,6 @@
-export const healPet = (setPetList, ActivePetNumber, currentPetHealthCap) => {
+import { healthKey, medicineKey } from "../../../constants/Constants";
+
+export const healPet = (setPetList, ActivePetName, currentPetHealthCap) => {
 
     const currentHour = new Date().getHours();
 
@@ -8,11 +10,11 @@ export const healPet = (setPetList, ActivePetNumber, currentPetHealthCap) => {
 
             ...prev,
             
-            [ActivePetNumber]: {
+            [ActivePetName]: {
 
-                ...prev[ActivePetNumber],
-                "health": Math.min(prev[ActivePetNumber]["health"] + 4, currentPetHealthCap),
-                "medicine": Date.now()
+                ...prev[ActivePetName],
+                [healthKey]: Math.min(prev[ActivePetName][healthKey] + 4, currentPetHealthCap),
+                [medicineKey]: Date.now()
 
             }
 
@@ -24,11 +26,11 @@ export const healPet = (setPetList, ActivePetNumber, currentPetHealthCap) => {
 
             ...prev,
 
-            [ActivePetNumber]: {
+            [ActivePetName]: {
 
-                ...prev[ActivePetNumber],
-                "health": Math.min(prev[ActivePetNumber]["health"] + 2, currentPetHealthCap),
-                "medicine": Date.now()
+                ...prev[ActivePetName],
+                [healthKey]: Math.min(prev[ActivePetName][healthKey] + 2, currentPetHealthCap),
+                [medicineKey]: Date.now()
 
             }
 

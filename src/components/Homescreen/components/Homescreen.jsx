@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetNumber} from "../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
 import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./Homescreen.css";
+import { birthDateKey, healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 
 
@@ -14,7 +15,7 @@ function Homescreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
 
     const noMorePets = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
                         : false;
@@ -29,7 +30,7 @@ function Homescreen (){
 
     const getPet = (petToGet) => {
 
-        setActivePetNumber(petToGet);
+        setActivePetName(petToGet);
         
     }
 
@@ -86,24 +87,24 @@ function Homescreen (){
 
                         Object.keys(PetList).map((key) => (
 
-                            PetList[key]["birthDate"] > 0 ? (
+                            PetList[key][healthKey] > 0 ? (
 
                                 <div key = {key} className="HomescreenPetSlotInnerContainer">
                                     <div className = "HomescreenPetSlot"> 
-                                        <img src = {petImages[PetList[key]["species"]][PetList[key]["stage"]]}/>
+                                        <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p>{key}</p>
-                                        <p>Stage: {PetList[key]["stage"]}</p>
-                                        <p>Health: {PetList[key]["health"]}</p>
+                                        <p>Stage: {PetList[key][stageKey]}</p>
+                                        <p>Health: {PetList[key][healthKey]}</p>
                                     </div>
 
-                                    <Link to = {`/${PetList[key]["species"]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
+                                    <Link to = {`/${PetList[key][speciesKey]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
                                 </div>
 
                             ) : (
  
                                 <div key = {key} className="HomescreenPetSlotInnerContainer">
                                     <div className = "HomescreenPetSlot"> 
-                                        <img src = {petImages[PetList[key]["species"]][PetList[key]["stage"]]}/>
+                                        <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p> {key}</p>
                                         <p>Stage: -- </p>
                                         <p>Health: -- </p>

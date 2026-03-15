@@ -3,7 +3,7 @@ import {useState} from "react";
 
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
-import {dogHealthCap, catHealthCap, fishHealthCap} from "../../../constants/Constants.js";
+import {dogHealthCap, catHealthCap, fishHealthCap, catSpecies, dogSpecies, fishSpecies} from "../../../constants/Constants.js";
 
 import "./PetSelectionscreen.css";
 
@@ -11,7 +11,7 @@ function PetSelectionscreen () {
 
     const {finalPetSelection, setFinalPetSelection} = useFinalPetSelection();
 
-    const speciesInfo = [["dog", dogHealthCap], ["cat", catHealthCap], ["fish", fishHealthCap]];
+    const speciesInfo = [[dogSpecies, dogHealthCap], [catSpecies, catHealthCap], [fishSpecies, fishHealthCap]];
 
     const [selectedPet, setSelectedPet] = useState(-1);
 

@@ -3,30 +3,30 @@ import { Link } from "react-router-dom";
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { catHealthCap, catTimeLimits } from "../../../../constants/Constants.js";
+import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey } from "../../../../constants/Constants.js";
 
 
 function CatMainPetscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
     const now = Date.now();
     
-    const hungry = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= catTimeLimits["feeding"]/2 ? true 
+    const hungry = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= catTimeLimits[feedingKey]/2 ? true 
                         : false
                     : false;
-    const restless = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["playing"][0]) >= catTimeLimits["playing"]/2 ? true 
+    const restless = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][playingKey][0]) >= catTimeLimits[playingKey]/2 ? true 
                         : false
                     : false;
 
-    const mood = ActivePetNumber !== "" ? PetList[ActivePetNumber]["health"]/catHealthCap >= 0.75 ? 0
-                                            : PetList[ActivePetNumber]["health"]/catHealthCap >= 0.5 ? 1
-                                            : PetList[ActivePetNumber]["health"]/catHealthCap >= 0.25 ? 2
+    const mood = ActivePetName !== "" ? PetList[ActivePetName][healthKey]/catHealthCap >= 0.75 ? 0
+                                            : PetList[ActivePetName][healthKey]/catHealthCap >= 0.5 ? 1
+                                            : PetList[ActivePetName][healthKey]/catHealthCap >= 0.25 ? 2
                                             : 3
                                         : -1;
 
@@ -35,7 +35,7 @@ function CatMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetNumber("")}> Back to Home </Link>
+                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
                 <Link to = "/catfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
                 <Link to = "/catplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
                 <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>

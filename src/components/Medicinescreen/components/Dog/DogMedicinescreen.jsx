@@ -3,10 +3,10 @@ import {useState} from "react";
 
 import MedicineSchedule from "../MedicinescreenComponents/MedicineSchedule.jsx";
 
-import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { dogHealthCap, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { dogHealthCap, healthKey, medicineDoseTimeGap, medicineKey } from "../../../../constants/Constants.js";
 
 import { healPet } from "../../helpers/Helpers.js";
 
@@ -15,10 +15,10 @@ import "./DogMedicinescreen.css";
 
 function DogMedicinescreen() {
 
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const canReceiveDose = Date.now() - PetList[ActivePetNumber]["medicine"] > medicineDoseTimeGap ? true
+    const canReceiveDose = Date.now() - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? true
                                                                     : false;
 
     const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);               
@@ -32,25 +32,19 @@ function DogMedicinescreen() {
             <MedicineSchedule
                 setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
             />}
+            
             <div className="NavBarContainer">
                 <Link to = "/dogpet" className = "NavBarButton"> Back </Link> 
-                {PetList[ActivePetNumber]["health"] > 0 ? (
-
-                    <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Medicine Availability</button>
-
-                ) : (
-
-                    <button className ="NavBarButtonPlaceHolder">Check Medicine Availability</button>
-
-                )}
+                <button className ="NavBarButton" onClick = {() => setOpenDogScheduleFlag(true)}>Check Medicine Availability</button>
             </div>
+
             <div className="ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-dog">
-                    <h2 className="PetWindowSign PetWindowSign-dog"> Health: {PetList[ActivePetNumber]["health"]} </h2>
+                    <h2 className="PetWindowSign PetWindowSign-dog"> Health: {PetList[ActivePetName][healthKey]} </h2>
                     <div className = "filler"></div>
-                    {PetList[ActivePetNumber]["health"] > 0 && canReceiveDose ? (
+                    {PetList[ActivePetName][healthKey] > 0 && canReceiveDose ? (
 
-                        <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => healPet(setPetList, ActivePetNumber, dogHealthCap)}> Give Medicine </button>
+                        <button className = "PetWindowButton PetWindowButton-dog" onClick = {() => healPet(setPetList, ActivePetName, dogHealthCap)}> Give Medicine </button>
 
                     ) : (
 

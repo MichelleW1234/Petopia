@@ -48,20 +48,21 @@ import s3FishLeftOne from "../images/FishMovement/3fish.svg";
 import s3FishLeftTwo from "../images/FishMovement/3fish1.svg";
 import s3FishRightOne from "../images/FishMovement/3fish2.svg";
 import s3FishRightTwo from "../images/FishMovement/3fish3.svg";
+import { catSpecies, dogSpecies, fishSpecies } from "./Constants";
 
 
 export const petImages = {
 
-    "dog": [[s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo],
-            [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo],
-            [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]],
+        [dogSpecies]:  [[s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo],
+                        [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo],
+                        [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]],
 
-    "cat": [[s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo],
-            [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
-            [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]],
+        [catSpecies]:  [[s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo],
+                        [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
+                        [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]],
 
-    "fish": [[s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo],
-            [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo],
-            [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]]
+        [fishSpecies]: [[s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo],
+                        [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo],
+                        [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]]
 
 }

@@ -5,9 +5,9 @@ import WashSchedule from "../WashscreenComponents/WashSchedule.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 
-import { fishTimeLimits } from "../../../../constants/Constants.js";
+import { bathingKey, fishTimeLimits, healthKey } from "../../../../constants/Constants.js";
 
 import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
@@ -18,7 +18,7 @@ function FishWashscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
 
     const [openFishScheduleFlag, setOpenFishScheduleFlag] = useState(false);
 
@@ -30,29 +30,22 @@ function FishWashscreen (){
             {openFishScheduleFlag && 
             <WashSchedule
                 setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
-                timeLimits={fishTimeLimits["bathing"]}
+                timeLimits={fishTimeLimits[bathingKey]}
             />}
+            
             <div className="NavBarContainer">
                 <Link to = "/fishpet" className = "NavBarButton"> Back </Link> 
-
-                {PetList[ActivePetNumber]["health"] > 0 ? (
-
-                    <button className ="NavBarButton" onClick = {() => setOpenFishScheduleFlag(true)}>Check Playing Schedule</button>
-
-                ) : (
-
-                    <button className ="NavBarButtonPlaceHolder">Check Playing Schedule</button>
-
-                )}
+                <button className ="NavBarButton" onClick = {() => setOpenFishScheduleFlag(true)}>Check Washing Schedule</button>
             </div>
+
             <div className = "ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-fish">
-                    <h2 className="PetWindowSign PetWindowSign-fish"> {ActivePetNumber}'s Health: {PetList[ActivePetNumber]["health"]} </h2>
+                    <h2 className="PetWindowSign PetWindowSign-fish"> {ActivePetName}'s Health: {PetList[ActivePetName][healthKey]} </h2>
                     <div className = "filler"> </div>
 
-                    {PetList[ActivePetNumber]["health"] > 0 ? (
+                    {PetList[ActivePetName][healthKey] > 0 ? (
 
-                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits["bathing"]/2, "bathing")}>Wash!</button>
+                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetName, fishTimeLimits[bathingKey]/2, bathingKey)}>Wash!</button>
 
                     ) : (
 

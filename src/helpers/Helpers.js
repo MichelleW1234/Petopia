@@ -1,54 +1,56 @@
-export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, minimum, activity) => {
+import { bathingKey, feedingKey, healthKey, playingKey } from "../constants/Constants";
+
+export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, setPetList, ActivePetName, minimum, activity) => {
 
     const now = Date.now();
 
-    if (now - PetTimeStamps[ActivePetNumber][activity][0] < minimum){
+    if (now - PetTimeStamps[ActivePetName][activity][0] < minimum){
     //Too much
 
-        if (activity === "feeding"){
+        if (activity === feedingKey){
 
             setPetList(prev => ({
 
                 ...prev,
 
-                [ActivePetNumber]: {
+                [ActivePetName]: {
 
-                    ...prev[ActivePetNumber],
-                    "health": Math.max(prev[ActivePetNumber]["health"] - 3, 0)
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 3, 0)
 
                 }
 
             }));
 
 
-        } else if (activity === "bathing") {
+        } else if (activity === bathingKey) {
 
 
             setPetList(prev => ({
 
                 ...prev,
                 
-                [ActivePetNumber]: {
+                [ActivePetName]: {
 
-                    ...prev[ActivePetNumber],
-                    "health": Math.max(prev[ActivePetNumber]["health"] - 1, 0)
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 1, 0)
 
                 }
 
             }));
 
 
-        } else if (activity === "playing"){
+        } else if (activity === playingKey){
 
 
             setPetList(prev => ({
 
                 ...prev,
                 
-                [ActivePetNumber]: {
+                [ActivePetName]: {
 
-                    ...prev[ActivePetNumber],
-                    "health": Math.max(prev[ActivePetNumber]["health"] - 2, 0)
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 2, 0)
 
                 }
 
@@ -64,10 +66,10 @@ export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, setPetList, Acti
 
         ...prev,
 
-        [ActivePetNumber]: {
+        [ActivePetName]: {
             
-            ...prev[ActivePetNumber],
-            [activity]: [now, prev[ActivePetNumber][activity][1]]
+            ...prev[ActivePetName],
+            [activity]: [now, prev[ActivePetName][activity][1]]
             
         }
 

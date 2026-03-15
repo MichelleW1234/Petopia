@@ -8,59 +8,69 @@ import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx
 import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./PetConfirmationscreen.css";
+import { bathingKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 function PetConfirmationscreen () {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {FinalPetSelection, setFinalPetSelection} = useFinalPetSelection();
-
+    
+    const defaultMessage = "You are about to adopt this pet:"
 
     const [petName, setPetName] = useState("");
-    const [info, setInfo] = useState("You are about to adopt this pet:");
+    const [info, setInfo] = useState(defaultMessage);
 
     const timeoutRef = useRef(null);
 
 
 
+    const nameChecking = (e) => {
 
-    const showErrorMessage = () => {
+        const trimmedPetName = petName.trim();
+        setPetName(trimmedPetName);
+            
+        if (trimmedPetName === "") {
 
-        if (petName === ""){
+            e.preventDefault();
+            showErrorMessage("Enter a name for your new pet.");
 
-            setInfo("Enter a name for your new pet.");
+        } else if (trimmedPetName.length > 15){
 
-        } else if (petName.length > 15){
+            e.preventDefault();
+            showErrorMessage("Shorten the name to 15 characters max.");
 
-            setInfo("Shorten the name to 15 characters max.");
+        } else if (trimmedPetName in PetList && trimmedPetName in PetTimeStamps) {
+
+            e.preventDefault();
+            showErrorMessage("This pet name already exists.");
 
         } else {
-        //For testing purposes:
 
-            setInfo("Sorry, this pet name already exists.");
+            adoptPet(trimmedPetName);
 
         }
+
+    }
+
+
+    const showErrorMessage = (message) => {
+
+        setInfo(message);
 
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
 
         timeoutRef.current = setTimeout(() => {
-            setInfo("You are about to adopt this pet:");
+            setInfo(defaultMessage);
             timeoutRef.current = null;
         }, 5000);
 
     }
 
 
-    const adoptPet = () => {
-
-        if (petName in PetList && petName in PetTimeStamps){
-
-            showErrorMessage();
-            return;
-
-        }
+    const adoptPet = (finalPetName) => {
 
         const startingTime = Date.now();
 
@@ -68,23 +78,23 @@ function PetConfirmationscreen () {
 
             setPetList(prev => ({
                 ...prev,
-                [petName]: 
+                [finalPetName]: 
                     { 
-                        "species": "dog", 
-                        "stage": 1,
-                        "health": 15,
-                        "birthDate": startingTime,
-                        "medicine": 0
+                        [speciesKey]: dogSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 15,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
                     }
             }));
 
             setPetTimeStamps(prev => ({
                 ...prev,
-                [petName]:
+                [finalPetName]:
                     {
-                        "feeding": [startingTime, startingTime],
-                        "bathing": [startingTime, startingTime],
-                        "playing": [startingTime, startingTime]
+                        [feedingKey]: [startingTime, startingTime],
+                        [bathingKey]: [startingTime, startingTime],
+                        [playingKey]: [startingTime, startingTime]
                     }
             }));
 
@@ -92,22 +102,22 @@ function PetConfirmationscreen () {
 
             setPetList(prev => ({
                 ...prev,
-                [petName]: 
+                [finalPetName]: 
                     { 
-                        "species": "cat", 
-                        "stage": 1,
-                        "health": 20,
-                        "birthDate": startingTime,
-                        "medicine": 0
+                        [speciesKey]: catSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 20,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
                     }
             }));
 
             setPetTimeStamps(prev => ({
                 ...prev,
-                [petName]:
+                [finalPetName]:
                     {
-                        "feeding": [startingTime, startingTime],
-                        "playing": [startingTime, startingTime]
+                        [feedingKey]: [startingTime, startingTime],
+                        [playingKey]: [startingTime, startingTime]
                     }
             }));
 
@@ -115,22 +125,22 @@ function PetConfirmationscreen () {
 
             setPetList(prev => ({
                 ...prev,
-                [petName]: 
+                [finalPetName]: 
                     { 
-                        "species": "fish", 
-                        "stage": 1,
-                        "health": 5,
-                        "birthDate": startingTime,
-                        "medicine": 0
+                        [speciesKey]: fishSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 5,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
                     }
             }));
 
             setPetTimeStamps(prev => ({
                 ...prev,
-                [petName]:
+                [finalPetName]:
                     {
-                        "feeding": [startingTime, startingTime],
-                        "bathing": [startingTime, startingTime],
+                        [feedingKey]: [startingTime, startingTime],
+                        [bathingKey]: [startingTime, startingTime],
                     }
             }));
 
@@ -157,9 +167,9 @@ function PetConfirmationscreen () {
                 <h2 className="PetWindowSign PetWindowSign-newpet">{info}</h2>
                 <div className="HomePetSelectorPetWindow">
 
-                    <img src = { FinalPetSelection === 0 ? petImages["dog"][0]
-                        : FinalPetSelection !== 1 ? petImages["cat"][0]
-                        : FinalPetSelection !== 2 ? petImages["fish"][0]
+                    <img src = { FinalPetSelection === 0 ? petImages[dogSpecies][0]
+                        : FinalPetSelection !== 1 ? petImages[catSpecies][0]
+                        : FinalPetSelection !== 2 ? petImages[fishSpecies][0]
                         : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }
                     />
                 </div>
@@ -178,23 +188,7 @@ function PetConfirmationscreen () {
             <div className="GeneralNavButtonContainer">
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => deletePet()}>Quit</Link>
                 <Link to = "/select" className = "GeneralNavButton" onClick = {() => deletePet()}>Reselect Pet</Link>
-                <Link to = "/home" className = "GeneralNavButton" onClick = {(e) => {
-
-                                                                            const preventNav = petName === "" || petName.length > 15;
-                                                                            if (preventNav) {
-
-                                                                                e.preventDefault();
-                                                                                showErrorMessage();
-
-                                                                            } else {
-
-                                                                                adoptPet();
-
-                                                                            }
-                                                                        
-                                                                        }}
-
-                                                                    > Adopt </Link>
+                <Link to = "/home" className = "GeneralNavButton" onClick = {(e) => nameChecking(e)}> Adopt </Link>
 
             </div>
         </div>
