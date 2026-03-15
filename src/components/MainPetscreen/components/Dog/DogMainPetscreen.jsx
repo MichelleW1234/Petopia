@@ -17,13 +17,13 @@ function DogMainPetscreen (){
     const {PetList, setPetList} = usePetList();
     
     const now = Date.now();
-    const hungry = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= dogTimeLimits[0]/2 ? true 
+    const hungry = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= dogTimeLimits["feeding"]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["bathing"][0]) >= dogTimeLimits[1]/2 ? true
+    const dirty = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["bathing"][0]) >= dogTimeLimits["bathing"]/2 ? true
                         : false
                     : false;
-    const restless = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["playing"][0]) >= dogTimeLimits[2]/2 ? true 
+    const restless = ActivePetNumber !== "" ? (now - PetTimeStamps[ActivePetNumber]["playing"][0]) >= dogTimeLimits["playing"]/2 ? true 
                         : false
                     : false;
 

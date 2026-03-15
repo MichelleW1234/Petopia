@@ -29,7 +29,7 @@ function FishFeedscreen (){
             {openFishScheduleFlag && 
             <FeedSchedule
                 setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
-                timeLimits={fishTimeLimits[0]}
+                timeLimits={fishTimeLimits["feeding"]}
             />}
             <div className="NavBarContainer">
                 <Link to = "/fishpet" className = "NavBarButton"> Back </Link> 
@@ -50,7 +50,7 @@ function FishFeedscreen (){
 
                     {PetList[ActivePetNumber]["health"] > 0 ? (
 
-                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[0]/2, "feeding")}>Feed me!</button>
+                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits["feeding"]/2, "feeding")}>Feed me!</button>
 
                     ) : (
 

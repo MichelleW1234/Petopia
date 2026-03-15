@@ -69,11 +69,12 @@ function PetConfirmationscreen () {
             setPetList(prev => ({
                 ...prev,
                 [petName]: 
-                    { "species": "dog", 
-                      "stage": 1,
-                      "health": 15,
-                      "birthDate": startingTime,
-                      "medicine": 0
+                    { 
+                        "species": "dog", 
+                        "stage": 1,
+                        "health": 15,
+                        "birthDate": startingTime,
+                        "medicine": 0
                     }
             }));
 
@@ -92,11 +93,12 @@ function PetConfirmationscreen () {
             setPetList(prev => ({
                 ...prev,
                 [petName]: 
-                    { "species": "cat", 
-                      "stage": 1,
-                      "health": 20,
-                      "birthDate": startingTime,
-                      "medicine": 0
+                    { 
+                        "species": "cat", 
+                        "stage": 1,
+                        "health": 20,
+                        "birthDate": startingTime,
+                        "medicine": 0
                     }
             }));
 
@@ -105,7 +107,6 @@ function PetConfirmationscreen () {
                 [petName]:
                     {
                         "feeding": [startingTime, startingTime],
-                        "bathing": [-1],
                         "playing": [startingTime, startingTime]
                     }
             }));
@@ -115,11 +116,12 @@ function PetConfirmationscreen () {
             setPetList(prev => ({
                 ...prev,
                 [petName]: 
-                    { "species": "fish", 
-                      "stage": 1,
-                      "health": 5,
-                      "birthDate": startingTime,
-                      "medicine": 0
+                    { 
+                        "species": "fish", 
+                        "stage": 1,
+                        "health": 5,
+                        "birthDate": startingTime,
+                        "medicine": 0
                     }
             }));
 
@@ -129,7 +131,6 @@ function PetConfirmationscreen () {
                     {
                         "feeding": [startingTime, startingTime],
                         "bathing": [startingTime, startingTime],
-                        "playing": [-1]
                     }
             }));
 
@@ -138,47 +139,6 @@ function PetConfirmationscreen () {
         setFinalPetSelection(-1);
 
     }
-    
-    /*
-    const adoptPet = () => {
-
-        const firstOpenSlot = PetList.findIndex(item => item.length === 0);
-        const startingTime = Date.now();
-
-        setPetList(prev => {
-
-            const newCopy = [...prev];
-            newCopy[firstOpenSlot] = [petName, FinalPetSelection[0], FinalPetSelection[2], 1, FinalPetSelection[1], startingTime, 0];
-            return newCopy;
-
-        });
-        
-        setPetTimeStamps(prev => {
-
-            const newCopy = [...prev];
-
-            if (FinalPetSelection[0] === "dog"){
-
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [startingTime, startingTime]];
-
-            } else if (FinalPetSelection[0] === "cat"){
-
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [-1], [startingTime, startingTime]];
-
-            } else if (FinalPetSelection[0] === "fish"){
-
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [-1]];
-
-            }
-
-            return newCopy;
-
-        });
-
-        setFinalPetSelection([]);
-
-    }
-        */
 
 
     const deletePet = () => {

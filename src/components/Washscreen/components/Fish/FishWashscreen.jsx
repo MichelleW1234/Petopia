@@ -30,7 +30,7 @@ function FishWashscreen (){
             {openFishScheduleFlag && 
             <WashSchedule
                 setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
-                timeLimits={fishTimeLimits[1]}
+                timeLimits={fishTimeLimits["bathing"]}
             />}
             <div className="NavBarContainer">
                 <Link to = "/fishpet" className = "NavBarButton"> Back </Link> 
@@ -52,7 +52,7 @@ function FishWashscreen (){
 
                     {PetList[ActivePetNumber]["health"] > 0 ? (
 
-                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits[1]/2, "bathing")}>Wash!</button>
+                        <button className = "PetWindowButton PetWindowButton-fish" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetNumber, fishTimeLimits["bathing"]/2, "bathing")}>Wash!</button>
 
                     ) : (
 

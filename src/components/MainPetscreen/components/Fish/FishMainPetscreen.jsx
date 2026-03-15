@@ -16,10 +16,10 @@ function FishMainPetscreen (){
     const {PetList, setPetList} = usePetList();
 
     const now = Date.now();
-    const hungry = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= fishTimeLimits[0]/2 ? true 
+    const hungry = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["feeding"][0]) >= fishTimeLimits["feeding"]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["bathing"][0]) >= fishTimeLimits[1]/2 ? true 
+    const dirty = ActivePetNumber !== "" ?  (now - PetTimeStamps[ActivePetNumber]["bathing"][0]) >= fishTimeLimits["bathing"]/2 ? true 
                         : false
                     : false;
 
