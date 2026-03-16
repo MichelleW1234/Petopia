@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
+import HomescreenClearPetsFlag from "./HomescreenComponents/HomescreenClearPetsFlag copy.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -7,7 +10,7 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./Homescreen.css";
-import { birthDateKey, healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 
 
@@ -19,6 +22,9 @@ function Homescreen (){
 
     const noMorePets = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
                         : false;
+
+
+    const [openClearPetsFlag, setOpenClearPetsFlag] = useState(false);
 
     
     const restartGame = () => {
@@ -34,24 +40,6 @@ function Homescreen (){
         
     }
 
-    const clearPet = (petToRemove) => {
-
-        setPetTimeStamps(prev => {
-
-            const { [petToRemove]: _, ...rest } = prev;
-            return rest;
-
-        });
-
-        setPetList(prev => {
-
-            const { [petToRemove]: _, ...rest } = prev;
-            return rest;
-
-        });
-
-    }
-
 
 
 
@@ -59,16 +47,31 @@ function Homescreen (){
 
         <>
 
+            {openClearPetsFlag &&
+            <HomescreenClearPetsFlag
+                setOpenClearPetsFlag={setOpenClearPetsFlag}
+            />}
+
             <div className="NavBarContainer">
-                <button className="NavBarButton" onClick = {() => restartGame()}> Restart </button>
+                <button className="NavBarButton" onClick = {() => restartGame()}> Restart Game </button>
 
                 {noMorePets ? (
 
-                   <button className="NavBarButtonPlaceHolder"> Choose a Pet </button>
+                   <button className="NavBarButtonPlaceHolder"> Add Pets </button>
 
                 ) : (
 
-                    <Link to ="/select" className="NavBarButton"> Choose a Pet </Link>
+                    <Link to ="/select" className="NavBarButton"> Add Pets </Link>
+
+                )}
+
+                {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
+
+                    <button className="NavBarButton" onClick = {() => setOpenClearPetsFlag(true)}> Clear Pets </button>
+
+                ) : (
+
+                    <button className="NavBarButtonPlaceHolder"> Clear Pets </button>
 
                 )}
                 
@@ -87,9 +90,10 @@ function Homescreen (){
 
                         Object.keys(PetList).map((key) => (
 
-                            PetList[key][healthKey] > 0 ? (
+                            <div key = {key} className="HomescreenPetSlotInnerContainer">
 
-                                <div key = {key} className="HomescreenPetSlotInnerContainer">
+                                {PetList[key][healthKey] > 0 ? (
+
                                     <div className = "HomescreenPetSlot"> 
                                         <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p>{key}</p>
@@ -97,12 +101,8 @@ function Homescreen (){
                                         <p>Health: {PetList[key][healthKey]}</p>
                                     </div>
 
-                                    <Link to = {`/${PetList[key][speciesKey]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
-                                </div>
+                                ) : (
 
-                            ) : (
- 
-                                <div key = {key} className="HomescreenPetSlotInnerContainer">
                                     <div className = "HomescreenPetSlot"> 
                                         <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p> {key}</p>
@@ -110,10 +110,11 @@ function Homescreen (){
                                         <p>Health: -- </p>
                                     </div>
 
-                                    <button className = "GeneralNavButton" onClick = {() => clearPet(key)}> Clear </button>
-                                </div>
+                                )}
 
-                            )
+                                <Link to = {`/${PetList[key][speciesKey]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
+                                
+                            </div>
 
                         ))
 
