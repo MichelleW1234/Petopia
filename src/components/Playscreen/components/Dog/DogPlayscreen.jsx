@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 
-import PlaySchedule from "../PlayscreenComponents/PlaySchedule.jsx";
+import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -13,6 +13,7 @@ import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
 import "./DogPlayscreen.css";
 
+
 function DogPlayscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -22,14 +23,41 @@ function DogPlayscreen (){
     const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);
 
 
+    const deadLine = PetTimeStamps[ActivePetName][playingKey][0] + dogTimeLimits[playingKey];
+
+    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetName][playingKey][0]);
+    const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimePlayedRaw = new Date(deadLine);
+    const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+
+    const currTime = Date.now();
+    const percentageUntilNextUpdate = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][playingKey][0])/dogTimeLimits[playingKey]) * 100)
+                                        : 100;
+
 
     return (
 
         <>
             {openDogScheduleFlag && 
-            <PlaySchedule
+            <SchedulingChart
+                activity = {playingKey}
+                lastActivityString = {lastTimePlayed}
+                nextActivityString = {nextTimePlayed}
+                percentageUntilNextUpdate={percentageUntilNextUpdate}
                 setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
-                timeLimits={dogTimeLimits[playingKey]}
             />}
 
             <div className="NavBarContainer">

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 
-import WashSchedule from "../WashscreenComponents/WashSchedule.jsx";
+import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -22,15 +22,42 @@ function DogWashscreen (){
 
     const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);
 
+    const deadLine = PetTimeStamps[ActivePetName][bathingKey][0] + dogTimeLimits[bathingKey];
+    
+    const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetName][bathingKey][0]);
+    const lastTimeWashed = lastTimeWashedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimeWashedRaw = new Date(deadLine);
+    const nextTimeWashed = nextTimeWashedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+
+    const currTime = Date.now();
+    const percentageUntilNextUpdate = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][bathingKey][0])/dogTimeLimits[bathingKey]) * 100)
+                                        : 100;
+
 
 
     return (
 
         <>
             {openDogScheduleFlag && 
-            <WashSchedule
+            <SchedulingChart
+                activity = {bathingKey}
+                lastActivityString = {lastTimeWashed}
+                nextActivityString = {nextTimeWashed}
+                percentageUntilNextUpdate={percentageUntilNextUpdate}
                 setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
-                timeLimits={dogTimeLimits[bathingKey]}
             />}
 
             <div className="NavBarContainer">

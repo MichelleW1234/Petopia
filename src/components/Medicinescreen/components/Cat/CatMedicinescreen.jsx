@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 
-import MedicineSchedule from "../MedicinescreenComponents/MedicineSchedule.jsx";
+import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
 
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
@@ -24,12 +24,46 @@ function CatMedicinescreen() {
     const [openCatScheduleFlag, setOpenCatScheduleFlag] = useState(false);                                                            
 
 
+    const reset = PetList[ActivePetName][medicineKey] + medicineDoseTimeGap;
+
+    const lastDoseRecievedRaw = new Date(PetList[ActivePetName][medicineKey]);
+    const lastDoseRecieved = PetList[ActivePetName][medicineKey] > 0 ? lastDoseRecievedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        }) 
+        : "N/A";
+
+    const nextDoseAvailableRaw = new Date(reset);
+    const nextDoseAvailable = PetList[ActivePetName][medicineKey] > 0 ? nextDoseAvailableRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        }) 
+        : "On Demand";
+
+
+    const currTime = Date.now();
+    const percentageUntilNextUpdate =  PetList[ActivePetName][medicineKey] === 0 ? 
+                                            100
+                                        : reset > currTime ? 
+                                            Math.round(((currTime -  PetList[ActivePetName][medicineKey])/medicineDoseTimeGap) * 100)
+                                        : 100;
+
 
     return (
 
         <>
             {openCatScheduleFlag && 
-            <MedicineSchedule
+            <SchedulingChart
+                activity = {medicineKey}
+                lastActivityString = {lastDoseRecieved}
+                nextActivityString = {nextDoseAvailable}
+                percentageUntilNextUpdate={percentageUntilNextUpdate}
                 setOpenPetScheduleFlag = {setOpenCatScheduleFlag}
             />}
 

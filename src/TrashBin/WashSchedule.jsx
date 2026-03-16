@@ -1,7 +1,8 @@
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import { bathingKey, healthKey } from "../../../../constants/Constants.js";
+import {usePetList} from "../providers/PetListProvider.jsx";
+import {usePetTimeStamps} from "../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../providers/ActivePetNameProvider.jsx";
+import { bathingKey, healthKey } from "../constants/Constants.js";
+import UpdateTrackingBar from "./UpdateTrackingBar.jsx";
 
 function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
 
@@ -9,6 +10,7 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
+    const deadLine = PetTimeStamps[ActivePetName][bathingKey][0] + timeLimits;
 
     const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetName][bathingKey][0]);
     const lastTimeWashed = lastTimeWashedRaw.toLocaleString([], {
@@ -18,7 +20,7 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimeWashedRaw = new Date(PetTimeStamps[ActivePetName][bathingKey][0] + timeLimits);
+    const nextTimeWashedRaw = new Date(deadLine);
     const nextTimeWashed = nextTimeWashedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
@@ -26,6 +28,11 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
+
+    const currTime = Date.now();
+    const percentageUntilNextRound = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][bathingKey][0])/timeLimits) * 100)
+                                        : 100;
 
         
     return (
@@ -51,6 +58,11 @@ function WashSchedule({setOpenPetScheduleFlag, timeLimits}) {
                     )}
 
                 </div>
+
+                <UpdateTrackingBar
+                    percentageUntilNextUpdate={percentageUntilNextRound}
+                />
+                
                 <button className="FloatingFlagButton" onClick={() => setOpenPetScheduleFlag(false)}>Close</button>
             </div>
         </div>

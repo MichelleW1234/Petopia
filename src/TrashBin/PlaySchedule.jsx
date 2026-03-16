@@ -1,7 +1,8 @@
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import { healthKey, playingKey } from "../../../../constants/Constants.js";
+import {usePetList} from "../providers/PetListProvider.jsx";
+import {usePetTimeStamps} from "../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../providers/ActivePetNameProvider.jsx";
+import { healthKey, playingKey } from "../constants/Constants.js";
+import UpdateTrackingBar from "./UpdateTrackingBar.jsx";
 
 function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
 
@@ -9,6 +10,7 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
+    const deadLine = PetTimeStamps[ActivePetName][playingKey][0] + timeLimits;
 
     const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetName][playingKey][0]);
     const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
@@ -18,7 +20,7 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimePlayedRaw = new Date(PetTimeStamps[ActivePetName][playingKey][0] + timeLimits);
+    const nextTimePlayedRaw = new Date(deadLine);
     const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
             year: "numeric",
             month: "2-digit",
@@ -27,6 +29,10 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
             minute: "2-digit",
         });
 
+    const currTime = Date.now();
+    const percentageUntilNextRound = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][playingKey][0])/timeLimits) * 100)
+                                        : 100;
 
 
     return (
@@ -51,6 +57,11 @@ function PlaySchedule({setOpenPetScheduleFlag, timeLimits}) {
                     )}
 
                 </div>
+
+                <UpdateTrackingBar
+                    percentageUntilNextUpdate={percentageUntilNextRound}
+                />
+
                 <button className="FloatingFlagButton" onClick={() => setOpenPetScheduleFlag(false)}>Close</button>
             </div>
         </div>

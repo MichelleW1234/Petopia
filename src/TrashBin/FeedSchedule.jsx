@@ -1,13 +1,19 @@
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+
+import UpdateTrackingBar from "../../../GlobalComponents/UpdateTrackingBar.jsx";
+
 import { feedingKey, healthKey } from "../../../../constants/Constants.js";
+
 
 function FeedSchedule({setOpenPetScheduleFlag, timeLimits}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
+
+    const deadLine = PetTimeStamps[ActivePetName][feedingKey][0] + timeLimits;
 
     const lastTimeFedRaw = new Date(PetTimeStamps[ActivePetName][feedingKey][0]);
     const lastTimeFed = lastTimeFedRaw.toLocaleString([], {
@@ -17,7 +23,7 @@ function FeedSchedule({setOpenPetScheduleFlag, timeLimits}) {
             hour: "2-digit",
             minute: "2-digit",
         });
-    const nextTimeFedRaw = new Date(PetTimeStamps[ActivePetName][feedingKey][0] + timeLimits);
+    const nextTimeFedRaw = new Date(deadLine);
     const nextTimeFed = nextTimeFedRaw.toLocaleString([], {
         year: "numeric",
         month: "2-digit",
@@ -25,6 +31,11 @@ function FeedSchedule({setOpenPetScheduleFlag, timeLimits}) {
         hour: "2-digit",
         minute: "2-digit",
     });
+
+    const currTime = Date.now();
+    const percentageUntilNextRound = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][feedingKey][0])/timeLimits) * 100)
+                                        : 100;
 
     return (
         <div className = "FloatingFlagBackground">
@@ -47,6 +58,11 @@ function FeedSchedule({setOpenPetScheduleFlag, timeLimits}) {
                     )}
 
                 </div>
+
+                <UpdateTrackingBar
+                    percentageUntilNextUpdate={percentageUntilNextRound}
+                />
+
                 <button className="FloatingFlagButton" onClick={() => setOpenPetScheduleFlag(false)}>Close</button>
             </div>
         </div>

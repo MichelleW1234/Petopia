@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 
-import FeedSchedule from "../FeedscreenComponents/FeedSchedule.jsx";
+import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -22,14 +22,41 @@ function FishFeedscreen (){
 
     const [openFishScheduleFlag, setOpenFishScheduleFlag] = useState(false);
 
+    const deadLine = PetTimeStamps[ActivePetName][feedingKey][0] + fishTimeLimits[feedingKey];
+
+    const lastTimeFedRaw = new Date(PetTimeStamps[ActivePetName][feedingKey][0]);
+    const lastTimeFed = lastTimeFedRaw.toLocaleString([], {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+        });
+    const nextTimeFedRaw = new Date(deadLine);
+    const nextTimeFed = nextTimeFedRaw.toLocaleString([], {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+
+    const currTime = Date.now();
+    const percentageUntilNextUpdate = deadLine > currTime ? 
+                                        Math.round(((currTime - PetTimeStamps[ActivePetName][feedingKey][0])/fishTimeLimits[feedingKey]) * 100)
+                                        : 100;
+
 
     return (
 
         <>
             {openFishScheduleFlag && 
-            <FeedSchedule
+            <SchedulingChart
+                activity = {feedingKey}
+                lastActivityString = {lastTimeFed}
+                nextActivityString = {nextTimeFed}
+                percentageUntilNextUpdate={percentageUntilNextUpdate}
                 setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
-                timeLimits={fishTimeLimits[feedingKey]}
             />}
 
             <div className="NavBarContainer">
