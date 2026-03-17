@@ -15,6 +15,11 @@ function DogMainPetscreen (){
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
+
+    const alive = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey] > 0 ? true
+                    : false
+                : false;
     
     const now = Date.now();
     const hungry = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= dogTimeLimits[feedingKey]/2 ? true 
@@ -39,9 +44,9 @@ function DogMainPetscreen (){
         <>
             <div className="NavBarContainer">
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <Link to = "/dogfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Dog </Link>
-                <Link to = "/dogwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Bathe Dog </Link>
-                <Link to = "/dogplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Dog </Link>
+                <Link to = "/dogfeed" className={alive && hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Dog </Link>
+                <Link to = "/dogwash" className={alive && dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Bathe Dog </Link>
+                <Link to = "/dogplay" className={alive && restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Dog </Link>
                 <Link to = "/dogmeds" className="NavBarButton"> Give Dog Medicine </Link>
             </div>
             <div className = "ScreenContainer">

@@ -490,40 +490,6 @@ button {
 }
 
 
-/*Progress lines: */
-
-.ProgressBar {
-
-  display: flex;
-  flex-direction: row;
-
-  box-shadow: 0 0 0.6rem 0.1rem rgb(255, 228, 118);
-
-}
-
-.ProgressCellLeft {
-
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgb(255, 233, 137);
-
-}
-
-.ProgressCellDone {
-
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgb(255, 0, 0);
-
-}
-
-.ProgressCellCancelled {
-
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgb(157, 157, 157);
-
-}
 
 
 

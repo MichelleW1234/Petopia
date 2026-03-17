@@ -15,8 +15,12 @@ function CatMainPetscreen (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const alive = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey] > 0 ? true
+                    : false
+                : false;
+
     const now = Date.now();
-    
     const hungry = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= catTimeLimits[feedingKey]/2 ? true 
                         : false
                     : false;
@@ -36,8 +40,8 @@ function CatMainPetscreen (){
         <>
             <div className="NavBarContainer">
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <Link to = "/catfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
-                <Link to = "/catplay" className={restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
+                <Link to = "/catfeed" className={alive &&  hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
+                <Link to = "/catplay" className={alive &&  restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
                 <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>
             </div>
             <div className = "ScreenContainer">

@@ -15,6 +15,11 @@ function FishMainPetscreen (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const alive = ActivePetName !== "" ? 
+                PetList[ActivePetName][healthKey] > 0 ? true
+                : false
+            : false;
+
     const now = Date.now();
     const hungry = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= fishTimeLimits[feedingKey]/2 ? true 
                         : false
@@ -35,8 +40,8 @@ function FishMainPetscreen (){
         <>
             <div className="NavBarContainer">
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
-                <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
+                <Link to = "/fishfeed" className={alive &&  hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
+                <Link to = "/fishwash" className={alive &&  dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
                 <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
             </div>
             <div className = "ScreenContainer">

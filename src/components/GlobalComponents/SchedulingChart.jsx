@@ -3,6 +3,8 @@ import {useActivePetName} from "../../providers/ActivePetNameProvider.jsx";
 
 import { healthKey, feedingKey, bathingKey, medicineKey, playingKey } from "../../constants/Constants.js";
 
+import "./SchedulingChart.css";
+
 
 function SchedulingChart({activity, lastActivityString, nextActivityString, percentageUntilNextUpdate, setOpenPetScheduleFlag}) {
 
@@ -51,30 +53,32 @@ function SchedulingChart({activity, lastActivityString, nextActivityString, perc
             
                 {PetList[ActivePetName][healthKey] === 0 ? (
 
-                    <div className = "ProgressBar">
+                    <div className = "SchedulingChartProgressBar">
+
                         {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                            <div key = {num} className = "ProgressCellCancelled"></div>
+                            <div key = {num} className = "SchedulingChartProgressCellCancelled"></div>
 
                         ))}
+                        
                     </div>
 
                 ) : (
 
-                    <div className = "ProgressBar">
+                    <div className = "SchedulingChartProgressBar">
+                        
                         {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                            num <= percentageUntilNextUpdate ? (
-
-                                <div key = {num} className = "ProgressCellDone"></div>
-
-                            ) : (
-
-                                <div key = {num} className = "ProgressCellLeft"></div>
-
-                            )
+                            <div key = {num} className = {num <= percentageUntilNextUpdate ? 
+                                                            percentageUntilNextUpdate <= 50 ?
+                                                                "SchedulingChartProgressCellDoneNotClose"
+                                                                : "SchedulingChartProgressCellDoneClose"
+                                                            : "SchedulingChartProgressCellLeft"
+                                                        }>           
+                            </div>
 
                         ))}
+
                     </div>
 
                 )} 
