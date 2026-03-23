@@ -1,15 +1,74 @@
-import {usePetList} from "../../providers/PetListProvider.jsx";
+import { useState, useEffect } from "react";
+
+import { usePetList} from "../../providers/PetListProvider.jsx";
+import { usePetTimeStamps } from "../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../providers/ActivePetNameProvider.jsx";
 
-import { healthKey, feedingKey, bathingKey, medicineKey, playingKey } from "../../constants/Constants.js";
+import { healthKey, feedingKey, bathingKey, playingKey, medicineKey } from "../../constants/Constants.js";
 
 import "./SchedulingChart.css";
 
 
-function SchedulingChart({activity, lastActivityString, nextActivityString, percentageUntilNextUpdate, setOpenPetScheduleFlag}) {
+function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
 
     const {PetList, setPetList} = usePetList();
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
+
+    const [currDate, setCurrDate] = useState(Date.now());
+
+
+    const deadLine = activityKey === medicineKey ? 
+                        PetList[ActivePetName][activityKey] + timeGap
+                    : PetTimeStamps[ActivePetName][activityKey][0] + timeGap;
+
+    const lastActivityString = activityKey === medicineKey ?
+                                    PetList[ActivePetName][activityKey] > 0 ? 
+                                        (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
+                                            year: "numeric",
+                                            month: "2-digit",
+                                            day: "2-digit",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                        })
+                                    : "N/A"
+                                :   (new Date(PetTimeStamps[ActivePetName][activityKey][0])).toLocaleString([], {
+                                        year: "numeric",
+                                        month: "2-digit",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    });
+
+    const nextActivityString = activityKey === medicineKey ?  
+                                    PetList[ActivePetName][activityKey] > 0 ? 
+                                        (new Date(deadLine)).toLocaleString([], {
+                                            year: "numeric",
+                                            month: "2-digit",
+                                            day: "2-digit",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                        }) 
+                                    : "On Demand"
+                                : 
+                                    (new Date(deadLine)).toLocaleString([], {
+                                        year: "numeric",
+                                        month: "2-digit",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    });
+
+    const percentageUntilNextUpdate = activityKey === medicineKey ?  
+                                            PetList[ActivePetName][activityKey] === 0 ? 
+                                                100
+                                            : deadLine > currDate ? 
+                                                Math.round(((currDate -  PetList[ActivePetName][activityKey])/timeGap) * 100)
+                                            : 100
+                                        :
+                                            deadLine > currDate ? 
+                                                Math.round(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)
+                                            : 100;
 
     const lastStrings = {
 
@@ -29,6 +88,18 @@ function SchedulingChart({activity, lastActivityString, nextActivityString, perc
 
     }
 
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setCurrDate(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, []);
+
+
+
     return (
         <div className = "FloatingFlagBackground">
             <div className="FloatingFlagContainer">
@@ -36,15 +107,15 @@ function SchedulingChart({activity, lastActivityString, nextActivityString, perc
                     {PetList[ActivePetName][healthKey] === 0 ? (
 
                         <>
-                            <h2>{lastStrings[activity] + lastActivityString}</h2>
-                            <h2>{nextStrings[activity] + "--"} </h2>
+                            <h2>{lastStrings[activityKey] + lastActivityString}</h2>
+                            <h2>{nextStrings[activityKey] + "--"} </h2>
                         </>
 
                     ) : (
 
                         <>
-                            <h2>{lastStrings[activity] + lastActivityString}</h2>
-                            <h2>{nextStrings[activity] + nextActivityString}</h2>
+                            <h2>{lastStrings[activityKey] + lastActivityString}</h2>
+                            <h2>{nextStrings[activityKey] + nextActivityString}</h2>
                         </>
 
                     )}

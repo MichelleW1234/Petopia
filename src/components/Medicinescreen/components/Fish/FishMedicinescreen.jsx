@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
 
@@ -18,52 +18,32 @@ function FishMedicinescreen() {
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const canReceiveDose = Date.now() - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? true
+    const [currDate, setCurrDate] = useState(Date.now());    
+    const [openFishScheduleFlag, setOpenFishScheduleFlag] = useState(false);      
+
+    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? true
                                                                 : false;
 
-    const [openFishScheduleFlag, setOpenFishScheduleFlag] = useState(false);         
 
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setCurrDate(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, []);
+
+                            
     
-    const reset = PetList[ActivePetName][medicineKey] + medicineDoseTimeGap;
-
-    const lastDoseRecievedRaw = new Date(PetList[ActivePetName][medicineKey]);
-    const lastDoseRecieved = PetList[ActivePetName][medicineKey] > 0 ? lastDoseRecievedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        }) 
-        : "N/A";
-
-    const nextDoseAvailableRaw = new Date(reset);
-    const nextDoseAvailable = PetList[ActivePetName][medicineKey] > 0 ? nextDoseAvailableRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        }) 
-        : "On Demand";
-
-
-    const currTime = Date.now();
-    const percentageUntilNextUpdate =  PetList[ActivePetName][medicineKey] === 0 ? 
-                                            100
-                                        : reset > currTime ? 
-                                            Math.round(((currTime -  PetList[ActivePetName][medicineKey])/medicineDoseTimeGap) * 100)
-                                        : 100;
-
-                                                                
     return (
 
         <>
             {openFishScheduleFlag && 
             <SchedulingChart
-                activity = {medicineKey}
-                lastActivityString = {lastDoseRecieved}
-                nextActivityString = {nextDoseAvailable}
-                percentageUntilNextUpdate={percentageUntilNextUpdate}
+                activityKey = {medicineKey}
+                timeGap={medicineDoseTimeGap}
                 setOpenPetScheduleFlag = {setOpenFishScheduleFlag}
             />}
 

@@ -22,30 +22,6 @@ function DogWashscreen (){
 
     const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);
 
-    const deadLine = PetTimeStamps[ActivePetName][bathingKey][0] + dogTimeLimits[bathingKey];
-    
-    const lastTimeWashedRaw = new Date(PetTimeStamps[ActivePetName][bathingKey][0]);
-    const lastTimeWashed = lastTimeWashedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    const nextTimeWashedRaw = new Date(deadLine);
-    const nextTimeWashed = nextTimeWashedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-
-    const currTime = Date.now();
-    const percentageUntilNextUpdate = deadLine > currTime ? 
-                                        Math.round(((currTime - PetTimeStamps[ActivePetName][bathingKey][0])/dogTimeLimits[bathingKey]) * 100)
-                                        : 100;
-
 
 
     return (
@@ -53,10 +29,8 @@ function DogWashscreen (){
         <>
             {openDogScheduleFlag && 
             <SchedulingChart
-                activity = {bathingKey}
-                lastActivityString = {lastTimeWashed}
-                nextActivityString = {nextTimeWashed}
-                percentageUntilNextUpdate={percentageUntilNextUpdate}
+                activityKey = {bathingKey}
+                timeGap = {dogTimeLimits[bathingKey]}
                 setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
             />}
 

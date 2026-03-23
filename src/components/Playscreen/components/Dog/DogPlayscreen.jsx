@@ -20,32 +20,8 @@ function DogPlayscreen (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
-    const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);
+    const [openDogScheduleFlag, setOpenDogScheduleFlag] = useState(false);            
 
-
-    const deadLine = PetTimeStamps[ActivePetName][playingKey][0] + dogTimeLimits[playingKey];
-
-    const lastTimePlayedRaw = new Date(PetTimeStamps[ActivePetName][playingKey][0]);
-    const lastTimePlayed = lastTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    const nextTimePlayedRaw = new Date(deadLine);
-    const nextTimePlayed = nextTimePlayedRaw.toLocaleString([], {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-
-    const currTime = Date.now();
-    const percentageUntilNextUpdate = deadLine > currTime ? 
-                                        Math.round(((currTime - PetTimeStamps[ActivePetName][playingKey][0])/dogTimeLimits[playingKey]) * 100)
-                                        : 100;
 
 
     return (
@@ -53,10 +29,8 @@ function DogPlayscreen (){
         <>
             {openDogScheduleFlag && 
             <SchedulingChart
-                activity = {playingKey}
-                lastActivityString = {lastTimePlayed}
-                nextActivityString = {nextTimePlayed}
-                percentageUntilNextUpdate={percentageUntilNextUpdate}
+                activityKey = {playingKey}
+                timeGap={dogTimeLimits[playingKey]}
                 setOpenPetScheduleFlag = {setOpenDogScheduleFlag}
             />}
 
