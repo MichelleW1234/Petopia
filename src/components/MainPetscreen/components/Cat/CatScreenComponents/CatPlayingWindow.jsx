@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 import ProgressBar from "../../../../GlobalComponents/ProgressBar.jsx";
 
@@ -11,7 +11,7 @@ import { healthKey, speciesKey, stageKey } from "../../../../../constants/Consta
 import "./CatPlayingWindow.css";
 
 
-function CatPlayingWindow ({gameOption, setActivePetActivity}){
+function CatPlayingWindow ({gameOption, setGameOption, setActivePetActivity}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();

@@ -39,6 +39,34 @@ function CatMainPetscreen (){
                                         : -1;
 
     const [activePetActivity, setActivePetActivity] = useState(-1);
+    const [menuOption, setMenuOption] = useState(-1);
+    const [gameOption, setGameOption] = useState(-1);
+
+
+    const initiateFeeding = () => {
+
+        if (hungry){
+
+            setMenuOption(Math.floor(Math.random() * 3));
+
+        }
+
+        setActivePetActivity(0);
+
+    }
+
+
+    const initiatePlaying = () => {
+
+        if (hungry){
+
+            setGameOption(Math.floor(Math.random() * 3));
+
+        }
+
+        setActivePetActivity(1)
+        
+    }
 
 
     return (
@@ -56,12 +84,12 @@ function CatMainPetscreen (){
                                         hungry ? 
                                             "NavBarButtonUrgent" 
                                             : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(0)}> Feed Cat </button>
+                                        : "NavBarButtonPlaceHolder"} onClick = {() => initiateFeeding()}> Feed Cat </button>
                 <button className={alive ? 
                                         restless ? 
                                             "NavBarButtonUrgent" 
                                             : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(1)}> Play With Cat </button>
+                                        : "NavBarButtonPlaceHolder"} onClick = {() => initiatePlaying()}> Play With Cat </button>
                 <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>
                 
             </div>
@@ -71,14 +99,16 @@ function CatMainPetscreen (){
                 {activePetActivity === 0 ? (
 
                     <CatFeedingWindow
-                        mealOption = {Math.floor(Math.random() * 3)}
+                        menuOption = {menuOption}
+                        setMenuOption = {setMenuOption}
                         setActivePetActivity = {setActivePetActivity}
                     />
 
                 ) : activePetActivity === 1 ? (
 
                     <CatPlayingWindow
-                        gameOption = {Math.floor(Math.random() * 3)}
+                        gameOption = {gameOption}
+                        setGameOption = {setGameOption}
                         setActivePetActivity = {setActivePetActivity}
                     />
 

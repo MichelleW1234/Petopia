@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState} from "react";
 
-import SchedulingChart from "../../../GlobalComponents/SchedulingChart.jsx";
+import SchedulingChart from "../../../../components/GlobalComponents/SchedulingChart.jsx";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
