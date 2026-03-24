@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
+import FishCleaningWindow from "./FishScreenComponents/FishCleaningWindow.jsx";
+import FishFeedingWindow from "./FishScreenComponents/FishFeedingWindow.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -34,21 +37,60 @@ function FishMainPetscreen (){
                                     : 3
                                 : -1;
 
+    const [activePetActivity, setActivePetActivity] = useState(-1);
+
 
     return (
 
         <>
             <div className="NavBarContainer">
+
+                {/*
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
                 <Link to = "/fishfeed" className={alive &&  hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
                 <Link to = "/fishwash" className={alive &&  dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
                 <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
+                */}
+
+                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                <button className={alive ? 
+                                        hungry ? 
+                                            "NavBarButtonUrgent" 
+                                            : "NavBarButton"
+                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(0)}> Feed Fish </button>
+                <button className={alive ? 
+                                        dirty ? 
+                                            "NavBarButtonUrgent" 
+                                            : "NavBarButton"
+                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(1)}> Clean Fish Tank </button>
+                <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
+
             </div>
             <div className = "ScreenContainer">
-                <MainPetWindow
-                    petEnergy = {400}
-                    mood = {mood}
-                />
+
+                {activePetActivity === 0 ? (
+
+                    <FishFeedingWindow
+                        menuOption={Math.floor(Math.random() * 3)}
+                        setActivePetActivity = {setActivePetActivity}
+                    />
+
+                ) : activePetActivity === 1 ? (
+
+                    <FishCleaningWindow
+                        soapOption={Math.floor(Math.random() * 3)}
+                        setActivePetActivity = {setActivePetActivity}
+                    />
+
+                ) : (
+
+                    <MainPetWindow
+                        petEnergy = {400}
+                        mood = {mood}
+                    />
+
+                )}
+
             </div>
         </>
 

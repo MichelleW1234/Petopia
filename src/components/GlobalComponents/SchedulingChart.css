@@ -11,7 +11,7 @@
 
   height: 0.75rem;
   width: 0.3rem;
-  background-color: rgb(166, 127, 0);
+  background-color: rgba(137, 105, 0, 0.539);
 
 }
 
@@ -36,6 +36,14 @@
 
   height: 0.75rem;
   width: 0.3rem;
-  background-color: rgb(95, 95, 95);
+  background-color: rgba(108, 108, 108, 0.439);
+
+}
+
+.SchedulingChartProgressCellLimitedReached {
+
+  height: 0.75rem;
+  width: 0.3rem;
+  background-color: rgb(166, 0, 0);
 
 }

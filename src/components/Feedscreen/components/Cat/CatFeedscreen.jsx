@@ -12,6 +12,7 @@ import { catTimeLimits, feedingKey, healthKey } from "../../../../constants/Cons
 import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
 import "./CatFeedscreen.css";
+import CatFeedscreenWindow from "./CatFeedscreenComponents/CatFeedscreenWindow.jsx";
 
 
 function CatFeedscreen (){
@@ -42,8 +43,9 @@ function CatFeedscreen (){
             <div className = "ScreenContainer">
                 <div className="PetWindowBorder PetWindowBorder-cat">
                     <h2 className="PetWindowSign PetWindowSign-cat"> {ActivePetName}'s Health: {PetList[ActivePetName][healthKey]} </h2>
-                    <div className = "filler"> </div>
+                    <CatFeedscreenWindow/>
 
+                    {/* FOR TESTING PURPOSES ONLY!!!!!! */}
                     {PetList[ActivePetName][healthKey] > 0 ? (
 
                         <button className = "PetWindowButton PetWindowButton-cat" onClick = {() => CheckPetHealth(PetTimeStamps, setPetTimeStamps, setPetList, ActivePetName, catTimeLimits[feedingKey]/2, feedingKey)}>Feed me!</button>

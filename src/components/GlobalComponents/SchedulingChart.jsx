@@ -134,6 +134,18 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
                         
                     </div>
 
+                ) : percentageUntilNextUpdate === 100 ? (
+
+                    <div className = "SchedulingChartProgressBar">
+
+                        {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                            <div key = {num} className = "SchedulingChartProgressCellLimitedReached"></div>
+
+                        ))}
+                        
+                    </div>
+
                 ) : (
 
                     <div className = "SchedulingChartProgressBar">
