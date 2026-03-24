@@ -73,11 +73,6 @@ function CatMainPetscreen (){
 
         <>
             <div className="NavBarContainer">
-                {/*
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <Link to = "/catfeed" className={alive &&  hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Cat </Link>
-                <Link to = "/catplay" className={alive &&  restless ? "NavBarButtonUrgent" : "NavBarButton"}> Play With Cat </Link>
-                */}
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
                 <button className={alive ? 
