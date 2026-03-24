@@ -38,6 +38,7 @@ function FishMainPetscreen (){
                                 : -1;
 
     const [activePetActivity, setActivePetActivity] = useState(-1);
+    const [activityInProgress, setActivityInProgress] = useState(false);
 
 
     return (
@@ -87,6 +88,7 @@ function FishMainPetscreen (){
                     <MainPetWindow
                         petEnergy = {400}
                         mood = {mood}
+                        activityInProgress={activityInProgress}
                     />
 
                 )}

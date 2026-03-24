@@ -43,6 +43,8 @@ function DogMainPetscreen (){
                                 : -1;
 
     const [activePetActivity, setActivePetActivity] = useState(-1);
+    const [activityInProgress, setActivityInProgress] = useState(false);
+
 
 
     
@@ -105,6 +107,7 @@ function DogMainPetscreen (){
                     <MainPetWindow
                         petEnergy = {350}
                         mood = {mood}
+                        activityInProgress={activityInProgress}
                     />
 
                 )}

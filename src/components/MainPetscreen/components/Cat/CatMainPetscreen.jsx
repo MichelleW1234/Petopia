@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
 import CatFeedingWindow from "./CatScreenComponents/CatFeedingWindow.jsx";
 import CatPlayingWindow from "./CatScreenComponents/CatPlayingWindow.jsx";
+import CatMedicineWindow from "./CatScreenComponents/CatMedicineWindow.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -38,10 +39,28 @@ function CatMainPetscreen (){
                                             : 3
                                         : -1;
 
-    const [activePetActivity, setActivePetActivity] = useState(-1);
     const [menuOption, setMenuOption] = useState(-1);
     const [gameOption, setGameOption] = useState(-1);
 
+    const [openFeedingFlag, setOpenFeedingFlag] = useState(false);
+    const [openPlayingFlag, setOpenPlayingFlag] = useState(false);
+    const [openMedicineFlag, setOpenMedicineFlag] = useState(false);
+    const [activityInProgress, setActivityInProgress] = useState(false);
+
+
+
+    useEffect(() => {
+    
+        if (openFeedingFlag || openPlayingFlag || openMedicineFlag) {
+            setActivityInProgress(true);
+        } else {
+            setActivityInProgress(false);
+        }
+
+    }, [openFeedingFlag, openPlayingFlag, openMedicineFlag]);
+
+
+    
 
     const initiateFeeding = () => {
 
@@ -51,7 +70,7 @@ function CatMainPetscreen (){
 
         }
 
-        setActivePetActivity(0);
+        setOpenFeedingFlag(true);
 
     }
 
@@ -64,7 +83,7 @@ function CatMainPetscreen (){
 
         }
 
-        setActivePetActivity(1)
+        setOpenPlayingFlag(true);
         
     }
 
@@ -72,49 +91,60 @@ function CatMainPetscreen (){
     return (
 
         <>
+
+            {openFeedingFlag &&
+            <CatFeedingWindow
+                menuOption = {menuOption}
+                setMenuOption = {setMenuOption}
+                setOpenFeedingFlag = {setOpenFeedingFlag}
+            />}
+
+            {openPlayingFlag &&
+            <CatPlayingWindow
+                gameOption = {gameOption}
+                setGameOption = {setGameOption}
+                setOpenPlayingFlag = {setOpenPlayingFlag}
+            />}
+
+            {openMedicineFlag &&
+            <CatMedicineWindow
+                setOpenMedicineFlag = {setOpenMedicineFlag}
+            />}
+
+
+
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <button className={alive ? 
-                                        hungry ? 
-                                            "NavBarButtonUrgent" 
-                                            : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => initiateFeeding()}> Feed Cat </button>
-                <button className={alive ? 
-                                        restless ? 
-                                            "NavBarButtonUrgent" 
-                                            : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => initiatePlaying()}> Play With Cat </button>
-                <Link to = "/catmeds" className="NavBarButton"> Give Cat Medicine </Link>
+
+                {alive ? (
+
+                    <>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Cat </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Cat </button>
+                        <button className="NavBarButton" onClick = {() => setOpenMedicineFlag(true)}> Give Cat Medicine </button>
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className="NavBarButtonPlaceHolder"> Feed Cat </button>
+                        <button className="NavBarButtonPlaceHolder"> Play With Cat </button>
+                        <button className="NavBarButtonPlaceHolder"> Give Cat Medicine </button>
+                    </>
+
+                )}
+                
                 
             </div>
             
             <div className = "ScreenContainer">
 
-                {activePetActivity === 0 ? (
-
-                    <CatFeedingWindow
-                        menuOption = {menuOption}
-                        setMenuOption = {setMenuOption}
-                        setActivePetActivity = {setActivePetActivity}
-                    />
-
-                ) : activePetActivity === 1 ? (
-
-                    <CatPlayingWindow
-                        gameOption = {gameOption}
-                        setGameOption = {setGameOption}
-                        setActivePetActivity = {setActivePetActivity}
-                    />
-
-                ) : (
-
-                    <MainPetWindow
-                        petEnergy = {450}
-                        mood = {mood}
-                    />
-
-                )}
+                <MainPetWindow
+                    petEnergy = {450}
+                    mood = {mood}
+                    activityInProgress = {activityInProgress}
+                />
     
             </div>
         </>

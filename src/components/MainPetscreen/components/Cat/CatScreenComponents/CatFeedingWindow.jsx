@@ -13,7 +13,7 @@ import {CheckPetHealth} from "../../../../../helpers/Helpers.js";
 import "./CatFeedingWindow.css";
 
 
-function CatFeedingWindow ({menuOption, setMenuOption, setActivePetActivity}){
+function CatFeedingWindow ({menuOption, setMenuOption, setOpenFeedingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -95,84 +95,97 @@ function CatFeedingWindow ({menuOption, setMenuOption, setActivePetActivity}){
         }
 
         setMenuOption(-1);
-        setActivePetActivity(-1);
+        setOpenFeedingFlag(false);
 
     }
 
 
 
     return (
+
+        <div className = "FloatingFlagBackground">
         
-        <div className = {`PetWindowBorder PetWindowBorder-cat`}>
+            <div className = {`PetWindowBorder PetWindowBorder-cat`}>
 
-            {selection === -1 ? (
-
-                <>
-                    <h2 className={`PetWindowSign PetWindowSign-cat`}> 
-                        option: {menuOption}
-                    </h2>
-                    <div className= "CatFeedingWindowSelectionContainer">  
-
-                        <button onClick = {() => setSelection(0)}> Option 1 </button>
-                        <button onClick = {() => setSelection(1)}> Option 2 </button>
-                        <button onClick = {() => setSelection(2)}> Option 3 </button>
-
-                    </div>
-                    <button onClick = {() => setActivePetActivity(-1)}>Quit</button>
-                </>
-        
-            ) : (
-
-                !done ? (
+                {selection === -1 ? (
 
                     <>
                         <h2 className={`PetWindowSign PetWindowSign-cat`}> 
-                            <ProgressBar
-                                percentageUntilNextUpdate={Math.round((secondsAte/10) * 100)}
-                            />
+                            option: {menuOption}
                         </h2>
-                        <div className= {`MainPetWindowGrid MainPetWindowGrid-cat`}>  
+                        <div className= "CatFeedingWindowSelectionContainer">  
 
-                            {innerScreenSpace.map((row, rowIndex) => (
-                                row.map((__, colIndex) => {
-
-                                    return (
-
-                                        rowIndex === 2 && colIndex === 3 ? (
-
-                                            <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][animationImage]} />
-
-                                        ) : (
-
-                                            <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
-
-                                        )
-
-                                    )
-                                
-                                })
-                            ))}
+                            <button onClick = {() => setSelection(0)}> Option 1 </button>
+                            <button onClick = {() => setSelection(1)}> Option 2 </button>
+                            <button onClick = {() => setSelection(2)}> Option 3 </button>
 
                         </div>
-                        <button onClick = {() => setActivePetActivity(-1)}>Quit</button>
                     </>
-
+            
                 ) : (
 
-                    <>
-                        <h2 className={`PetWindowSign PetWindowSign-cat`}> 
-                            <ProgressBar
-                                percentageUntilNextUpdate={Math.round((secondsAte/10) * 100)}
-                            />
-                        </h2>
-                        <div className= {`MainPetWindowGrid MainPetWindowGrid-cat`}>  
+                    !done ? (
 
-                            <button onClick = {() => manageHealth()}>Done</button>
+                        <>
+                            <h2 className={`PetWindowSign PetWindowSign-cat`}> 
+                                <ProgressBar
+                                    percentageUntilNextUpdate={Math.round((secondsAte/10) * 100)}
+                                />
+                            </h2>
+                            <div className= {`MainPetWindowGrid MainPetWindowGrid-cat`}>  
 
-                        </div>
-                    </>
+                                {innerScreenSpace.map((row, rowIndex) => (
+                                    row.map((__, colIndex) => {
 
-                )
+                                        return (
+
+                                            rowIndex === 2 && colIndex === 3 ? (
+
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][animationImage]} />
+
+                                            ) : (
+
+                                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
+
+                                            )
+
+                                        )
+                                    
+                                    })
+                                ))}
+
+                            </div>
+
+                        </>
+
+                    ) : (
+
+                        <>
+                            <h2 className={`PetWindowSign PetWindowSign-cat`}> 
+                                <ProgressBar
+                                    percentageUntilNextUpdate={Math.round((secondsAte/10) * 100)}
+                                />
+                            </h2>
+                            <div className= {`MainPetWindowGrid MainPetWindowGrid-cat`}>  
+
+                                Finished!!
+
+                            </div>
+                        </>
+
+                    )
+
+                )}
+
+            </div>
+
+            {selection === -1 || !done ? (
+
+                <button className = "GeneralNavButton" onClick = {() => setOpenFeedingFlag(false)}>Quit</button>
+
+            ) : (
+
+                <button className = "GeneralNavButton" onClick = {() => manageHealth()}>Done</button>
 
             )}
 

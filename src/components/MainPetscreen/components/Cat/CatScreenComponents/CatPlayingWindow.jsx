@@ -11,7 +11,7 @@ import { healthKey, speciesKey, stageKey } from "../../../../../constants/Consta
 import "./CatPlayingWindow.css";
 
 
-function CatPlayingWindow ({gameOption, setGameOption, setActivePetActivity}){
+function CatPlayingWindow ({gameOption, setGameOption, setOpenPlayingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -24,51 +24,58 @@ function CatPlayingWindow ({gameOption, setGameOption, setActivePetActivity}){
 
     return (
         
-        <div className = {`PetWindowBorder PetWindowBorder-cat`}>
-            <h2 className={`PetWindowSign PetWindowSign-cat`}> 
-                <ProgressBar
-                    percentageUntilNextUpdate={Math.round((scrubs/50) * 100)}
-                />
-            </h2>
+        <div className = "FloatingFlagBackground">
 
-            {ActivePetName === "" ? (
+            <div className = {`PetWindowBorder PetWindowBorder-cat`}>
+                <h2 className={`PetWindowSign PetWindowSign-cat`}> 
+                    <ProgressBar
+                        percentageUntilNextUpdate={Math.round((scrubs/50) * 100)}
+                    />
+                </h2>
 
-                <div className= {"MainPetWindowGrid MainPetWindowGrid-default"}></div> 
+                {ActivePetName === "" ? (
 
-            ) : PetList[ActivePetName][healthKey] === 0 ? (
+                    <div className= {"MainPetWindowGrid MainPetWindowGrid-default"}></div> 
 
-                <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
+                ) : PetList[ActivePetName][healthKey] === 0 ? (
 
-            ) : (
+                    <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
 
-                <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
+                ) : (
 
-                    {innerScreenSpace.map((row, rowIndex) => (
-                        row.map((__, colIndex) => {
+                    <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
-                            return (
+                        {innerScreenSpace.map((row, rowIndex) => (
+                            row.map((__, colIndex) => {
 
-                                rowIndex === 2 && colIndex === 3 ? (
+                                return (
 
-                                    <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
-                                        onMouseEnter={() => {
-                                            setScrubs(prev => prev + 1)
-                                        }}
-                                    />
+                                    rowIndex === 2 && colIndex === 3 ? (
 
-                                ) : (
+                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                                            onMouseEnter={() => {
+                                                setScrubs(prev => prev + 1)
+                                            }}
+                                        />
 
-                                    <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
+                                    ) : (
+
+                                        <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
+
+                                    )
 
                                 )
+                            
+                            })
+                        ))}
 
-                            )
-                        
-                        })
-                    ))}
-                </div>
+                    </div>
 
-            )}
+                )}
+
+            </div>
+
+            <button className = "GeneralNavButton" onClick = {() => setOpenPlayingFlag(false)}>Quit</button>
 
         </div>
 
