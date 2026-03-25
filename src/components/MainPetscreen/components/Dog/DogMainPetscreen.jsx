@@ -9,7 +9,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { bathingKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey } from "../../../../constants/Constants.js";
+import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey } from "../../../../constants/Constants.js";
 
 
 
@@ -28,7 +28,7 @@ function DogMainPetscreen (){
     const hungry = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= dogTimeLimits[feedingKey]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][bathingKey][0]) >= dogTimeLimits[bathingKey]/2 ? true
+    const dirty = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][cleaningKey][0]) >= dogTimeLimits[cleaningKey]/2 ? true
                         : false
                     : false;
     const restless = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][playingKey][0]) >= dogTimeLimits[playingKey]/2 ? true 

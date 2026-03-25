@@ -2,7 +2,7 @@ import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import { dogTimeLimits, catTimeLimits, fishTimeLimits, healthKey, stageKey, birthDateKey, speciesKey, feedingKey, bathingKey, playingKey, catSpecies, dogSpecies, fishSpecies} from "../constants/Constants.js";
+import { dogTimeLimits, catTimeLimits, fishTimeLimits, healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies} from "../constants/Constants.js";
 
 
 export function PetEngineProvider({ children }) {
@@ -83,7 +83,7 @@ export function PetEngineProvider({ children }) {
 
         let petTimeLimits = {};
 
-        if (feedingKey in currPetTimeStamps && bathingKey in currPetTimeStamps && playingKey in currPetTimeStamps){
+        if (feedingKey in currPetTimeStamps && cleaningKey in currPetTimeStamps && playingKey in currPetTimeStamps){
 
             petTimeLimits = dogTimeLimits;
 
@@ -91,7 +91,7 @@ export function PetEngineProvider({ children }) {
 
             petTimeLimits = catTimeLimits;
 
-        } else if (bathingKey in currPetTimeStamps){
+        } else if (cleaningKey in currPetTimeStamps){
 
             petTimeLimits = fishTimeLimits;
         
@@ -100,7 +100,7 @@ export function PetEngineProvider({ children }) {
         const damage = 
             {
                 [feedingKey]: 4, 
-                [bathingKey]: 1, 
+                [cleaningKey]: 1, 
                 [playingKey]: 2
             };
         let healthAffected = 0;

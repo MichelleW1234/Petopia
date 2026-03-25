@@ -4,7 +4,7 @@ import { usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 
-import { healthKey, feedingKey, bathingKey, playingKey, medicineKey } from "../../../../constants/Constants.js";
+import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey } from "../../../../constants/Constants.js";
 
 import "./SchedulingChart.css";
 
@@ -73,7 +73,7 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
     const lastStrings = {
 
         [feedingKey]: "Last Fed: ",
-        [bathingKey]: "Last Bathed: ",
+        [cleaningKey]: "Last Bathed: ",
         [playingKey]: "Last Player: ",
         [medicineKey]: "Last Dose Recieved: "
 
@@ -82,7 +82,7 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
     const nextStrings = {
 
         [feedingKey]: "Feed Before: ",
-        [bathingKey]: "Bath Before: ",
+        [cleaningKey]: "Bath Before: ",
         [playingKey]: "Play Before: ",
         [medicineKey]: "Next Dose Available: "
 

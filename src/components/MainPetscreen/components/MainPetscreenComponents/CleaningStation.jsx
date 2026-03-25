@@ -7,7 +7,7 @@ import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.js
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { bathingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { cleaningKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
 import "./CleaningStation.css";
@@ -70,7 +70,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setCleaningOption, se
 
     const manageHealth = () => {
 
-        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, bathingKey, desiredOption, selection);
+        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, selection);
 
         setCleaningOption(-1);
         setOpenCleaningFlag(false);

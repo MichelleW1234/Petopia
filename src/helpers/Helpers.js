@@ -1,4 +1,4 @@
-import { bathingKey, feedingKey, healthKey, playingKey, medicineKey } from "../constants/Constants";
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey } from "../constants/Constants";
 
 export const CheckPetHealth = (setPetTimeStamps, setPetList, ActivePetName, activity, desiredOption, selection) => {
 
@@ -21,7 +21,7 @@ export const CheckPetHealth = (setPetTimeStamps, setPetList, ActivePetName, acti
 
             }));
 
-        } else if (activity === bathingKey) {
+        } else if (activity === cleaningKey) {
 
             setPetList(prev => ({
 

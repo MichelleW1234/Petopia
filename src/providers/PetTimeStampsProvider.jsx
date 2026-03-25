@@ -3,7 +3,7 @@
 /*
   For each pet list element: 
     - feeding: [lastfed, lastfeddamageupdate];
-    - bathing: [lastbathed, lastbatheddamagepdate];
+    - cleaning: [lastcleaned, lastcleaneddamagepdate];
     - playing: [lastplayed, lastplayeddamagepdate];
 */
 

@@ -9,7 +9,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { bathingKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey } from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey } from "../../../../constants/Constants.js";
 
 
 function FishMainPetscreen (){
@@ -27,7 +27,7 @@ function FishMainPetscreen (){
     const hungry = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= fishTimeLimits[feedingKey]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][bathingKey][0]) >= fishTimeLimits[bathingKey]/2 ? true 
+    const dirty = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][cleaningKey][0]) >= fishTimeLimits[cleaningKey]/2 ? true 
                         : false
                     : false;
 

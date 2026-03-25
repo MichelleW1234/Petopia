@@ -1,5 +1,5 @@
 export const feedingKey = "feeding";
-export const bathingKey = "bathing";
+export const cleaningKey = "cleaning";
 export const playingKey = "playing";
 
 export const speciesKey = "species";
@@ -21,7 +21,7 @@ export const fishHealthCap = 5;
 export const dogTimeLimits = 
     {
         [feedingKey]: 43200000,
-        [bathingKey]: 86400000,
+        [cleaningKey]: 86400000,
         [playingKey]: 43200000
 
     }
@@ -40,7 +40,7 @@ export const catTimeLimits =
 export const fishTimeLimits = 
     {
         [feedingKey]: 86400000, 
-        [bathingKey]: 86400000, 
+        [cleaningKey]: 86400000, 
     }
 // [180000, 300000]; //for testing purposes
 

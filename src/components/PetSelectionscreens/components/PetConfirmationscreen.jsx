@@ -8,7 +8,7 @@ import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx
 import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./PetConfirmationscreen.css";
-import { bathingKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 function PetConfirmationscreen () {
 
@@ -93,7 +93,7 @@ function PetConfirmationscreen () {
                 [finalPetName]:
                     {
                         [feedingKey]: [startingTime, startingTime],
-                        [bathingKey]: [startingTime, startingTime],
+                        [cleaningKey]: [startingTime, startingTime],
                         [playingKey]: [startingTime, startingTime]
                     }
             }));
@@ -140,7 +140,7 @@ function PetConfirmationscreen () {
                 [finalPetName]:
                     {
                         [feedingKey]: [startingTime, startingTime],
-                        [bathingKey]: [startingTime, startingTime],
+                        [cleaningKey]: [startingTime, startingTime],
                     }
             }));
 
