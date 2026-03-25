@@ -55,16 +55,6 @@ function Homescreen (){
             <div className="NavBarContainer">
                 <button className="NavBarButton" onClick = {() => restartGame()}> Restart Game </button>
 
-                {noMorePets ? (
-
-                   <button className="NavBarButtonPlaceHolder"> Add Pets </button>
-
-                ) : (
-
-                    <Link to ="/select" className="NavBarButton"> Add Pets </Link>
-
-                )}
-
                 {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
                     <button className="NavBarButton" onClick = {() => setOpenClearPetsFlag(true)}> Clear Pets </button>
@@ -72,6 +62,16 @@ function Homescreen (){
                 ) : (
 
                     <button className="NavBarButtonPlaceHolder"> Clear Pets </button>
+
+                )}
+
+                {noMorePets ? (
+
+                   <button className="NavBarButtonPlaceHolder"> Add Pets </button>
+
+                ) : (
+
+                    <Link to ="/select" className="NavBarButton"> Add Pets </Link>
 
                 )}
                 

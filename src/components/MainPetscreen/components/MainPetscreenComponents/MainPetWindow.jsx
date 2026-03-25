@@ -207,6 +207,7 @@ function PetWindow ({petEnergy, mood, activityInProgress}){
 
                 ) : (
 
+                    // CHANGE THIS AFTER CREATING BACKGROUNDS FOR EACH PET
                     <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
 
                 )

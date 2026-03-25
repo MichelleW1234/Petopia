@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
-import CatFeedingWindow from "./CatScreenComponents/CatFeedingWindow.jsx";
+import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
 import CatPlayingWindow from "./CatScreenComponents/CatPlayingWindow.jsx";
 import CatMedicineWindow from "./CatScreenComponents/CatMedicineWindow.jsx";
 
@@ -39,52 +39,42 @@ function CatMainPetscreen (){
                                             : 3
                                         : -1;
 
-    const [menuOption, setMenuOption] = useState(-1);
-    const [gameOption, setGameOption] = useState(-1);
+    const catMenu = ["tuna", "chicken", "salmon"];
+    const catGames = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
 
-    const [openFeedingFlag, setOpenFeedingFlag] = useState(false);
-    const [openPlayingFlag, setOpenPlayingFlag] = useState(false);
-    const [openMedicineFlag, setOpenMedicineFlag] = useState(false);
     const [activityInProgress, setActivityInProgress] = useState(false);
+    const [catOpenFeedingFlag, setCatOpenFeedingFlag] = useState(false);
+    const [catOpenPlayingFlag, setCatOpenPlayingFlag] = useState(false);
+    const [catOpenMedicineFlag, setCatOpenMedicineFlag] = useState(false);
+    const [catChosenFeedingOption, setCatChosenFeedingOption] = useState(-1);
+    const [catChosenPlayingOption, setCatChosenPlayingOption] = useState(-1);
 
 
 
     useEffect(() => {
-    
-        if (openFeedingFlag || openPlayingFlag || openMedicineFlag) {
+        if (catOpenFeedingFlag || catOpenPlayingFlag || catOpenMedicineFlag) {
             setActivityInProgress(true);
         } else {
             setActivityInProgress(false);
         }
-
-    }, [openFeedingFlag, openPlayingFlag, openMedicineFlag]);
+    }, [catOpenFeedingFlag, catOpenPlayingFlag, catOpenMedicineFlag]);
 
 
     
 
     const initiateFeeding = () => {
-
         if (hungry){
-
-            setMenuOption(Math.floor(Math.random() * 3));
-
+            setCatChosenFeedingOption(Math.floor(Math.random() * catMenu.length));
         }
-
-        setOpenFeedingFlag(true);
-
+        setCatOpenFeedingFlag(true);
     }
 
 
     const initiatePlaying = () => {
-
-        if (hungry){
-
-            setGameOption(Math.floor(Math.random() * 3));
-
+        if (restless){
+            setCatChosenPlayingOption(Math.floor(Math.random() * catGames.length));
         }
-
-        setOpenPlayingFlag(true);
-        
+        setCatOpenPlayingFlag(true);
     }
 
 
@@ -92,23 +82,25 @@ function CatMainPetscreen (){
 
         <>
 
-            {openFeedingFlag &&
-            <CatFeedingWindow
-                menuOption = {menuOption}
-                setMenuOption = {setMenuOption}
-                setOpenFeedingFlag = {setOpenFeedingFlag}
+            {catOpenFeedingFlag &&
+            <FeedingStation
+                menuOptions={catMenu}
+                desiredOption = {catChosenFeedingOption}
+                setMenuOption = {setCatChosenFeedingOption}
+                setOpenFeedingFlag = {setCatOpenFeedingFlag}
             />}
 
-            {openPlayingFlag &&
+
+            {catOpenPlayingFlag &&
             <CatPlayingWindow
-                gameOption = {gameOption}
-                setGameOption = {setGameOption}
-                setOpenPlayingFlag = {setOpenPlayingFlag}
+                gameOption = {catChosenPlayingOption}
+                setGameOption = {setCatChosenPlayingOption}
+                setOpenPlayingFlag = {setCatOpenPlayingFlag}
             />}
 
-            {openMedicineFlag &&
+            {catOpenMedicineFlag &&
             <CatMedicineWindow
-                setOpenMedicineFlag = {setOpenMedicineFlag}
+                setOpenMedicineFlag = {setCatOpenMedicineFlag}
             />}
 
 
@@ -122,7 +114,7 @@ function CatMainPetscreen (){
                     <>
                         <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Cat </button>
                         <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Cat </button>
-                        <button className="NavBarButton" onClick = {() => setOpenMedicineFlag(true)}> Give Cat Medicine </button>
+                        <button className="NavBarButton" onClick = {() => setCatOpenMedicineFlag(true)}> Give Cat Medicine </button>
                     </>
 
                 ) : (

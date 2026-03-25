@@ -1,3 +1,5 @@
+import "./SchedulingChart.jsx";
+
 function ProgressBar({percentageUntilNextUpdate}) {
 
     return (

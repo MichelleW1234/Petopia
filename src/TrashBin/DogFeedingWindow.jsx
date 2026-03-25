@@ -1,17 +1,17 @@
 import {useState} from "react";
 
-import ProgressBar from "../../../../GlobalComponents/ProgressBar.jsx";
+import ProgressBar from "../components/GlobalComponents/ProgressBar.jsx";
 
-import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../../providers/PetListProvider.jsx";
+import {useActivePetName} from "../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../providers/PetListProvider.jsx";
 
-import { petImages } from "../../../../../constants/MainPetImages.js";
-import { healthKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { petImages } from "../constants/MainPetImages.js";
+import { healthKey, speciesKey, stageKey } from "../constants/Constants.js";
 
-import "./DogCleaningWindow.css";
+import "./DogFeedingWindow.css";
 
 
-function DogCleaningWindow ({soapOption, setActivePetActivity}){
+function DogFeedingWindow ({menuOption, setActivePetActivity}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -66,8 +66,8 @@ function DogCleaningWindow ({soapOption, setActivePetActivity}){
                         
                         })
                     ))}
-
                 </div>
+
 
             )}
 
@@ -78,4 +78,4 @@ function DogCleaningWindow ({soapOption, setActivePetActivity}){
 }
 
 
-export default DogCleaningWindow;
+export default DogFeedingWindow;

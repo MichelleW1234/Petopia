@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import { usePetList} from "../../providers/PetListProvider.jsx";
-import { usePetTimeStamps } from "../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../providers/ActivePetNameProvider.jsx";
+import { usePetList} from "../../../../providers/PetListProvider.jsx";
+import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 
-import { healthKey, feedingKey, bathingKey, playingKey, medicineKey } from "../../constants/Constants.js";
+import { healthKey, feedingKey, bathingKey, playingKey, medicineKey } from "../../../../constants/Constants.js";
 
 import "./SchedulingChart.css";
 

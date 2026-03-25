@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
-import FishCleaningWindow from "./FishScreenComponents/FishCleaningWindow.jsx";
-import FishFeedingWindow from "./FishScreenComponents/FishFeedingWindow.jsx";
+import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
+import CleaningStation from "../MainPetscreenComponents/CleaningStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -36,62 +36,96 @@ function FishMainPetscreen (){
                                     : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
+                                
+    const fishMenu = ["shrimp", "worms", "algae"];
+    const fishTools = ["sponge", "cloth"];
 
-    const [activePetActivity, setActivePetActivity] = useState(-1);
     const [activityInProgress, setActivityInProgress] = useState(false);
+    const [fishOpenFeedingFlag, setFishOpenFeedingFlag] = useState(false);
+    const [fishOpenCleaningFlag, setFishOpenCleaningFlag] = useState(false);
+    const [fishOpenMedicineFlag, setFishOpenMedicineFlag] = useState(false);
+    const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
+    const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
+
+
+
+    useEffect(() => {
+        if (fishOpenFeedingFlag || fishOpenCleaningFlag || fishOpenMedicineFlag) {
+            setActivityInProgress(true);
+        } else {
+            setActivityInProgress(false);
+        }
+    }, [fishOpenFeedingFlag, fishOpenCleaningFlag, fishOpenMedicineFlag]);
+
+    
+    
+    const initiateFeeding = () => {
+        if (hungry){
+            setFishChosenFeedingOption(Math.floor(Math.random() * fishMenu.length));
+        }
+        setFishOpenFeedingFlag(true);
+    }
+
+    const initiateCleaning = () => {
+        if (dirty){
+            setFishChosenCleaningOption(Math.floor(Math.random() * fishTools.length));
+        }
+        setFishOpenCleaningFlag(true);
+    }
+
 
 
     return (
 
         <>
+
+            {fishOpenFeedingFlag &&
+            <FeedingStation
+                menuOptions={fishMenu}
+                desiredOption = {fishChosenFeedingOption}
+                setMenuOption = {setFishChosenFeedingOption}
+                setOpenFeedingFlag = {setFishOpenFeedingFlag}
+            />}
+
+            {fishOpenCleaningFlag &&
+            <CleaningStation
+                cleaningOptions={fishTools}
+                desiredOption = {fishChosenCleaningOption}
+                setCleaningOption = {setFishChosenCleaningOption}
+                setOpenCleaningFlag = {setFishOpenCleaningFlag}
+            />}
+
+
             <div className="NavBarContainer">
 
-                {/*
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <Link to = "/fishfeed" className={alive &&  hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
-                <Link to = "/fishwash" className={alive &&  dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
-                <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
-                */}
 
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
-                <button className={alive ? 
-                                        hungry ? 
-                                            "NavBarButtonUrgent" 
-                                            : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(0)}> Feed Fish </button>
-                <button className={alive ? 
-                                        dirty ? 
-                                            "NavBarButtonUrgent" 
-                                            : "NavBarButton"
-                                        : "NavBarButtonPlaceHolder"} onClick = {() => setActivePetActivity(1)}> Clean Fish Tank </button>
-                <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
+                {alive ? (
+
+                    <>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Fish </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Clean Fish Tank </button>
+                        <button className="NavBarButton" onClick = {() => setFishOpenMedicineFlag(true)}> Give Fish Medicine </button>
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className="NavBarButtonPlaceHolder"> Feed Fish </button>
+                        <button className="NavBarButtonPlaceHolder"> Clean Fish Tank </button>
+                        <button className="NavBarButtonPlaceHolder"> Give Fish Medicine </button>
+                    </>
+
+                )}
 
             </div>
             <div className = "ScreenContainer">
 
-                {activePetActivity === 0 ? (
-
-                    <FishFeedingWindow
-                        menuOption={Math.floor(Math.random() * 3)}
-                        setActivePetActivity = {setActivePetActivity}
-                    />
-
-                ) : activePetActivity === 1 ? (
-
-                    <FishCleaningWindow
-                        soapOption={Math.floor(Math.random() * 3)}
-                        setActivePetActivity = {setActivePetActivity}
-                    />
-
-                ) : (
-
-                    <MainPetWindow
-                        petEnergy = {400}
-                        mood = {mood}
-                        activityInProgress={activityInProgress}
-                    />
-
-                )}
+                <MainPetWindow
+                    petEnergy = {400}
+                    mood = {mood}
+                    activityInProgress={activityInProgress}
+                />
 
             </div>
         </>

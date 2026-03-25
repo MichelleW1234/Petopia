@@ -1,49 +1,74 @@
 import { bathingKey, feedingKey, healthKey, playingKey, medicineKey } from "../constants/Constants";
 
-export const CheckPetHealth = (PetTimeStamps, setPetTimeStamps, PetList, setPetList, ActivePetName, minimum, activity, matchedSelection) => {
+export const CheckPetHealth = (setPetTimeStamps, setPetList, ActivePetName, activity, desiredOption, selection) => {
 
     const now = Date.now();
-    const updatedPetList = structuredClone(PetList);
 
-    if (now - PetTimeStamps[ActivePetName][activity][0] < minimum){
-    //Too much
+    if (desiredOption === -1){
+    //Too much (unwilling)
 
         if (activity === feedingKey){
 
-            updatedPetList[ActivePetName][healthKey] = Math.max(updatedPetList[ActivePetName][healthKey] - 3, 0);
+            setPetList(prev => ({
+
+                ...prev,
+
+                [ActivePetName]: {
+
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 3, 0)
+                }
+
+            }));
 
         } else if (activity === bathingKey) {
 
-            updatedPetList[ActivePetName][healthKey] = Math.max(updatedPetList[ActivePetName][healthKey] - 1, 0);
+            setPetList(prev => ({
+
+                ...prev,
+
+                [ActivePetName]: {
+
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 1, 0)
+
+                }
+
+            }));
 
         } else if (activity === playingKey){
 
-            updatedPetList[ActivePetName][healthKey] = Math.max(updatedPetList[ActivePetName][healthKey] - 2, 0);
+            setPetList(prev => ({
+
+                ...prev,
+
+                [ActivePetName]: {
+
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.max(prev[ActivePetName][healthKey] - 2, 0)
+
+                }
+
+            }));
 
         }
 
+    } else if (desiredOption !== selection && desiredOption !== -1){
+    // not desired option (willing)
+
+        setPetList(prev => ({
+
+            ...prev,
+
+            [ActivePetName]: {
+
+                ...prev[ActivePetName],
+                [healthKey]: Math.max(prev[ActivePetName][healthKey] - 1, 0)
+            }
+
+        }));
+
     }
-
-    if (matchedSelection === false){
-    // not desired option
-
-        updatedPetList[ActivePetName][healthKey] = Math.max(updatedPetList[ActivePetName][healthKey] - 1, 0);
-
-    }
-
-
-    setPetList(prev => ({
-
-        ...prev,
-
-        [ActivePetName]: {
-
-            ...prev[ActivePetName],
-            [healthKey]: updatedPetList[ActivePetName][healthKey]
-
-        }
-
-    }));
 
     setPetTimeStamps(prev => ({
 
@@ -98,6 +123,5 @@ export const healPet = (setPetList, ActivePetName, currentPetHealthCap) => {
         })); 
 
     }
-   
 
 }

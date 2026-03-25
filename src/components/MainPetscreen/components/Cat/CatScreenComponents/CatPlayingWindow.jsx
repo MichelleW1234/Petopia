@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-import ProgressBar from "../../../../GlobalComponents/ProgressBar.jsx";
+import ProgressBar from "../../GlobalComponents/ProgressBar.jsx";
 
 import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";

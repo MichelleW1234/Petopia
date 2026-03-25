@@ -31,7 +31,7 @@
 .MainPetWindowGrid-tomb{
 
     height: 23rem;
-    width: 41rem;
+    width: 38rem;
    
     border: 0.5rem solid rgb(90, 132, 173);
     background: linear-gradient(to bottom, rgb(79, 0, 182),#7c5b00);
@@ -42,7 +42,7 @@
 .MainPetWindowGrid-default{
 
     height: 23rem;
-    width: 41rem;
+    width: 38rem;
 
     border: 0.5rem solid rgb(181, 203, 224);
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
