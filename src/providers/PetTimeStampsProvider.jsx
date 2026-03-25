@@ -1,22 +1,25 @@
+
+
 /*
-    For each pet list element: 
-    - 0 -> feeding timestamps: [lastfed, lastfeddamageupdate];
-    - 1 -> bathing timestamps: [lastbathed, lastbatheddamagepdate];
-    - 2 -> playing timestamps: [lastplayed, lastplayeddamagepdate];
+  For each pet list element: 
+    - feeding: [lastfed, lastfeddamageupdate];
+    - cleaning: [lastcleaned, lastcleaneddamagepdate];
+    - playing: [lastplayed, lastplayeddamagepdate];
 */
+
 
 import { createContext, useContext, useState, useEffect } from "react";
 
 const PetTimeStampsContext = createContext();
 
-export function  PetTimeStampsProvider({ children }) {
+export function PetTimeStampsProvider({ children }) {
 
   const [PetTimeStamps, setPetTimeStamps] = useState(() => {
     try {
       const stored = JSON.parse(localStorage.getItem("PetTimeStamps"));
-      return Array.isArray(stored) ? stored : [[], [], []];
+      return stored && typeof stored === "object" ? stored : {};
     } catch {
-      return [[], [], []];
+      return {};
     }
   });
 
@@ -25,7 +28,7 @@ export function  PetTimeStampsProvider({ children }) {
   }, [PetTimeStamps]);
 
   return (
-    <PetTimeStampsContext.Provider value={{ PetTimeStamps, setPetTimeStamps}}>
+    <PetTimeStampsContext.Provider value={{ PetTimeStamps, setPetTimeStamps }}>
       {children}
     </PetTimeStampsContext.Provider>
   );

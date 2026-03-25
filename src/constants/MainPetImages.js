@@ -1,4 +1,4 @@
-// Cat variant 1 images:
+// Cat images:
 
 import s1CatLeftOne from "../images/CatMovement/1cat.svg";
 import s1CatLeftTwo from "../images/CatMovement/1cat1.svg";
@@ -15,7 +15,7 @@ import s3CatLeftTwo from "../images/CatMovement/3cat1.svg";
 import s3CatRightOne from "../images/CatMovement/3cat2.svg";
 import s3CatRightTwo from "../images/CatMovement/3cat3.svg";
 
-// Dog variant 1 images:
+// Dog images:
 
 import s1DogLeftOne from "../images/DogMovement/1dog.svg";
 import s1DogLeftTwo from "../images/DogMovement/1dog1.svg";
@@ -32,7 +32,7 @@ import s3DogLeftTwo from "../images/DogMovement/3dog1.svg";
 import s3DogRightOne from "../images/DogMovement/3dog2.svg";
 import s3DogRightTwo from "../images/DogMovement/3dog3.svg";
 
-// Fish variant 1 images:
+// Fish images:
 
 import s1FishLeftOne from "../images/FishMovement/1fish.svg";
 import s1FishLeftTwo from "../images/FishMovement/1fish1.svg";
@@ -48,20 +48,21 @@ import s3FishLeftOne from "../images/FishMovement/3fish.svg";
 import s3FishLeftTwo from "../images/FishMovement/3fish1.svg";
 import s3FishRightOne from "../images/FishMovement/3fish2.svg";
 import s3FishRightTwo from "../images/FishMovement/3fish3.svg";
+import { catSpecies, dogSpecies, fishSpecies } from "./Constants";
 
 
 export const petImages = {
 
-    "dog": [[s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo],
-            [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo],
-            [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]],
+        [dogSpecies]:  [[s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo],
+                        [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo],
+                        [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]],
 
-    "cat": [[s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo],
-            [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
-            [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]],
+        [catSpecies]:  [[s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo],
+                        [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo],
+                        [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]],
 
-    "fish": [[s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo],
-            [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo],
-            [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]]
+        [fishSpecies]: [[s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo],
+                        [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo],
+                        [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]]
 
 }

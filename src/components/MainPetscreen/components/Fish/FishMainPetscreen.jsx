@@ -1,50 +1,132 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
+import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
+import CleaningStation from "../MainPetscreenComponents/CleaningStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetNumber} from "../../../../providers/ActivePetNumberProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { fishHealthCap, fishTimeLimits } from "../../../../constants/Constants.js";
-
-import { resetActivePet } from "../../helpers/Helpers.js";
+import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey } from "../../../../constants/Constants.js";
 
 
 function FishMainPetscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
-    const {ActivePetNumber, setActivePetNumber} = useActivePetNumber();
+    const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const alive = ActivePetName !== "" ? 
+                PetList[ActivePetName][healthKey] > 0 ? true
+                : false
+            : false;
+
     const now = Date.now();
-    const hungry = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][0][0]) >= fishTimeLimits[0]/2 ? true 
+    const hungry = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= fishTimeLimits[feedingKey]/2 ? true 
                         : false
                     : false;
-    const dirty = ActivePetNumber !== -1 ?  (now - PetTimeStamps[ActivePetNumber][1][0]) >= fishTimeLimits[1]/2 ? true 
+    const dirty = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][cleaningKey][0]) >= fishTimeLimits[cleaningKey]/2 ? true 
                         : false
                     : false;
-    const mood = ActivePetNumber !== -1 ? PetList[ActivePetNumber][4]/fishHealthCap >= 0.75 ? 0
-                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.5 ? 1
-                                    : PetList[ActivePetNumber][4]/fishHealthCap >= 0.25 ? 2
+
+    const mood = ActivePetName !== "" ? PetList[ActivePetName][healthKey]/fishHealthCap >= 0.75 ? 0
+                                    : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.5 ? 1
+                                    : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
+                                
+    const fishMenu = ["shrimp", "worms", "algae"];
+    const fishTools = ["sponge", "cloth"];
+
+    const [activityInProgress, setActivityInProgress] = useState(false);
+    const [fishOpenFeedingFlag, setFishOpenFeedingFlag] = useState(false);
+    const [fishOpenCleaningFlag, setFishOpenCleaningFlag] = useState(false);
+    const [fishOpenMedicineFlag, setFishOpenMedicineFlag] = useState(false);
+    const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
+    const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
+
+
+
+    useEffect(() => {
+        if (fishOpenFeedingFlag || fishOpenCleaningFlag || fishOpenMedicineFlag) {
+            setActivityInProgress(true);
+        } else {
+            setActivityInProgress(false);
+        }
+    }, [fishOpenFeedingFlag, fishOpenCleaningFlag, fishOpenMedicineFlag]);
+
+    
+    
+    const initiateFeeding = () => {
+        if (hungry){
+            setFishChosenFeedingOption(Math.floor(Math.random() * fishMenu.length));
+        }
+        setFishOpenFeedingFlag(true);
+    }
+
+    const initiateCleaning = () => {
+        if (dirty){
+            setFishChosenCleaningOption(Math.floor(Math.random() * fishTools.length));
+        }
+        setFishOpenCleaningFlag(true);
+    }
+
 
 
     return (
 
         <>
+
+            {fishOpenFeedingFlag &&
+            <FeedingStation
+                menuOptions={fishMenu}
+                desiredOption = {fishChosenFeedingOption}
+                setMenuOption = {setFishChosenFeedingOption}
+                setOpenFeedingFlag = {setFishOpenFeedingFlag}
+            />}
+
+            {fishOpenCleaningFlag &&
+            <CleaningStation
+                cleaningOptions={fishTools}
+                desiredOption = {fishChosenCleaningOption}
+                setCleaningOption = {setFishChosenCleaningOption}
+                setOpenCleaningFlag = {setFishOpenCleaningFlag}
+            />}
+
+
             <div className="NavBarContainer">
-                <Link to = "/home" className = "NavBarButton" onClick = {() => resetActivePet(setActivePetNumber)}> Back to Home </Link>
-                <Link to = "/fishfeed" className={hungry ? "NavBarButtonUrgent" : "NavBarButton"}> Feed Fish </Link>
-                <Link to = "/fishwash" className={dirty ? "NavBarButtonUrgent" : "NavBarButton"}> Clean Fish Tank </Link>
-                <Link to = "/fishmeds" className="NavBarButton"> Give Fish Medicine </Link>
+
+                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
+
+                {alive ? (
+
+                    <>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Fish </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Clean Fish Tank </button>
+                        <button className="NavBarButton" onClick = {() => setFishOpenMedicineFlag(true)}> Give Fish Medicine </button>
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className="NavBarButtonPlaceHolder"> Feed Fish </button>
+                        <button className="NavBarButtonPlaceHolder"> Clean Fish Tank </button>
+                        <button className="NavBarButtonPlaceHolder"> Give Fish Medicine </button>
+                    </>
+
+                )}
+
             </div>
             <div className = "ScreenContainer">
+
                 <MainPetWindow
                     petEnergy = {400}
                     mood = {mood}
+                    activityInProgress={activityInProgress}
                 />
+
             </div>
         </>
 

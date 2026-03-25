@@ -8,89 +8,152 @@ import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx
 import { petImages } from "../../../constants/HomePetImages.js";
 
 import "./PetConfirmationscreen.css";
+import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 function PetConfirmationscreen () {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {FinalPetSelection, setFinalPetSelection} = useFinalPetSelection();
-
+    
+    const defaultMessage = "You are about to adopt this pet:"
 
     const [petName, setPetName] = useState("");
-    const [info, setInfo] = useState("You are about to adopt this pet:");
+    const [info, setInfo] = useState(defaultMessage);
 
     const timeoutRef = useRef(null);
 
 
 
+    const nameChecking = (e) => {
 
-    const showErrorMessage = () => {
+        const trimmedPetName = petName.trim();
+        setPetName(trimmedPetName);
+            
+        if (trimmedPetName === "") {
 
-        if (petName === ""){
+            e.preventDefault();
+            showErrorMessage("Enter a name for your new pet.");
 
-            setInfo("Enter a name for your new pet.");
+        } else if (trimmedPetName.length > 15){
 
-        } else if (petName.length > 15){
+            e.preventDefault();
+            showErrorMessage("Shorten the name to 15 characters max.");
 
-            setInfo("Shorten the name to 15 characters max.");
+        } else if (trimmedPetName in PetList && trimmedPetName in PetTimeStamps) {
+
+            e.preventDefault();
+            showErrorMessage("This pet name already exists.");
+
+        } else {
+
+            adoptPet(trimmedPetName);
 
         }
+
+    }
+
+
+    const showErrorMessage = (message) => {
+
+        setInfo(message);
 
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
         }
 
         timeoutRef.current = setTimeout(() => {
-            setInfo("You are about to adopt this pet:");
+            setInfo(defaultMessage);
             timeoutRef.current = null;
         }, 5000);
 
     }
 
-    
-    const adoptPet = () => {
 
-        const firstOpenSlot = PetList.findIndex(item => item.length === 0);
+    const adoptPet = (finalPetName) => {
+
         const startingTime = Date.now();
 
-        setPetList(prev => {
+        if (FinalPetSelection === 0){
 
-            const newCopy = [...prev];
-            newCopy[firstOpenSlot] = [petName, FinalPetSelection[0], FinalPetSelection[2], 1, FinalPetSelection[1], startingTime, 0];
-            return newCopy;
+            setPetList(prev => ({
+                ...prev,
+                [finalPetName]: 
+                    { 
+                        [speciesKey]: dogSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 15,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
+                    }
+            }));
 
-        });
-        
-        setPetTimeStamps(prev => {
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [finalPetName]:
+                    {
+                        [feedingKey]: [startingTime, startingTime],
+                        [cleaningKey]: [startingTime, startingTime],
+                        [playingKey]: [startingTime, startingTime]
+                    }
+            }));
 
-            const newCopy = [...prev];
+        } else if (FinalPetSelection === 1){
 
-            if (FinalPetSelection[0] === "dog"){
+            setPetList(prev => ({
+                ...prev,
+                [finalPetName]: 
+                    { 
+                        [speciesKey]: catSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 20,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
+                    }
+            }));
 
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [startingTime, startingTime]];
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [finalPetName]:
+                    {
+                        [feedingKey]: [startingTime, startingTime],
+                        [playingKey]: [startingTime, startingTime]
+                    }
+            }));
 
-            } else if (FinalPetSelection[0] === "cat"){
+        } else if (FinalPetSelection === 2){
 
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [-1], [startingTime, startingTime]];
+            setPetList(prev => ({
+                ...prev,
+                [finalPetName]: 
+                    { 
+                        [speciesKey]: fishSpecies, 
+                        [stageKey]: 1,
+                        [healthKey]: 5,
+                        [birthDateKey]: startingTime,
+                        [medicineKey]: 0
+                    }
+            }));
 
-            } else if (FinalPetSelection[0] === "fish"){
+            setPetTimeStamps(prev => ({
+                ...prev,
+                [finalPetName]:
+                    {
+                        [feedingKey]: [startingTime, startingTime],
+                        [cleaningKey]: [startingTime, startingTime],
+                    }
+            }));
 
-                newCopy[firstOpenSlot] = [[startingTime, startingTime], [startingTime, startingTime], [-1]];
+        }
 
-            }
-
-            return newCopy;
-
-        });
-
-        setFinalPetSelection([]);
+        setFinalPetSelection(-1);
 
     }
 
 
     const deletePet = () => {
 
-        setFinalPetSelection([]);
+        setFinalPetSelection(-1);
 
     }
 
@@ -103,7 +166,12 @@ function PetConfirmationscreen () {
             <div className="PetWindowBorder PetWindowBorder-newpet">
                 <h2 className="PetWindowSign PetWindowSign-newpet">{info}</h2>
                 <div className="HomePetSelectorPetWindow">
-                    <img src = {FinalPetSelection.length > 0 ? petImages[FinalPetSelection[0]][FinalPetSelection[2]][0] : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }/>
+
+                    <img src = { FinalPetSelection === 0 ? petImages[dogSpecies][0]
+                        : FinalPetSelection !== 1 ? petImages[catSpecies][0]
+                        : FinalPetSelection !== 2 ? petImages[fishSpecies][0]
+                        : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }
+                    />
                 </div>
                 <div className="HomePetSelectorNameInputContainer">
                     <h2 className="header"> Pet Name:</h2>
@@ -120,23 +188,7 @@ function PetConfirmationscreen () {
             <div className="GeneralNavButtonContainer">
                 <Link to = "/home" className = "GeneralNavButton" onClick = {() => deletePet()}>Quit</Link>
                 <Link to = "/select" className = "GeneralNavButton" onClick = {() => deletePet()}>Reselect Pet</Link>
-                <Link to = "/home" className = "GeneralNavButton" onClick = {(e) => {
-
-                                                                            const preventNav = petName === "" || petName.length > 15;
-                                                                            if (preventNav) {
-
-                                                                                e.preventDefault();
-                                                                                showErrorMessage();
-
-                                                                            } else {
-
-                                                                                adoptPet();
-
-                                                                            }
-                                                                        
-                                                                        }}
-
-                                                                    > Adopt </Link>
+                <Link to = "/home" className = "GeneralNavButton" onClick = {(e) => nameChecking(e)}> Adopt </Link>
 
             </div>
         </div>

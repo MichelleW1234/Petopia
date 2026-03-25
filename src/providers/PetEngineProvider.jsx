@@ -2,7 +2,7 @@ import {useEffect, useRef } from "react";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import { dogTimeLimits, catTimeLimits, fishTimeLimits} from "../constants/Constants.js";
+import { dogTimeLimits, catTimeLimits, fishTimeLimits, healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies} from "../constants/Constants.js";
 
 
 export function PetEngineProvider({ children }) {
@@ -25,56 +25,52 @@ export function PetEngineProvider({ children }) {
 
     useEffect(() => {
 
-        const runCheck = () => {
+        const runPetChecks = () => {
 
             console.log("checking");
 
-            const updatedPetTimeStamps = PetTimeStampsRef.current.map(pet =>
-                                            pet.map(group =>
-                                                [...group]
-                                            )
-                                        );
-            const updatedPetList = PetListRef.current.map(inner => [...inner]);
+            const updatedPetTimeStamps = structuredClone(PetTimeStampsRef.current);
+            const updatedPetList = structuredClone(PetListRef.current);
             
-            
-            for (let i = 0; i<updatedPetTimeStamps.length; i++){
+            // Loop for updating pet health:
+            for (const curPetKey in updatedPetTimeStamps){
 
-                // Checking for existence of pet:
-                if (updatedPetTimeStamps[i].length > 0 && updatedPetList[i].length > 0) {
+                // Checking for if pet is alive (not already dead and waiting to be cleared):
+                if (updatedPetList[curPetKey][healthKey] > 0) {
 
-                    // Checking for if pet is alive:
-                    if (updatedPetList[i][4] > 0) {
+                    const healthAffected = damageCheck(updatedPetTimeStamps[curPetKey]);
+                    updatedPetList[curPetKey][healthKey] = Math.max(updatedPetList[curPetKey][healthKey] - healthAffected, 0);
 
-                        const healthAffected = damageCheck(updatedPetTimeStamps[i]);
-                        updatedPetList[i][4] = Math.max(updatedPetList[i][4] - healthAffected, 0);
+                }
 
-                        // Update pet growth stage if pet is still alive:
-                        if (updatedPetList[i][4] > 0){
+            };
 
-                            const currentStage = petAgeCheck(updatedPetList[i]);
+            // Loop for updating pet stage:
+            for (const curPetKey in updatedPetList){
 
-                            if (currentStage !== updatedPetList[i][3]){
+                // Check pet growth stage if pet is still alive after health update:
+                if (updatedPetList[curPetKey][healthKey] > 0){
 
-                                updatedPetList[i][3] = currentStage;                             
+                    const currentStage = petAgeCheck(updatedPetList[curPetKey]);
 
-                            }
+                    if (currentStage !== updatedPetList[curPetKey][stageKey]){
 
-                        }
+                        updatedPetList[curPetKey][stageKey] = currentStage;                             
 
                     }
 
                 }
 
-            };
+            }
     
             setPetTimeStamps(updatedPetTimeStamps);
             setPetList(updatedPetList);
 
         };
 
-        runCheck();
+        runPetChecks();
 
-        const interval = setInterval(runCheck, millisInOneMinute);
+        const interval = setInterval(runPetChecks, millisInOneMinute);
 
         return () => clearInterval(interval);
 
@@ -85,42 +81,38 @@ export function PetEngineProvider({ children }) {
 
     const damageCheck = (currPetTimeStamps) => {
 
-        let petTimeLimits;
+        let petTimeLimits = {};
 
-        if (!currPetTimeStamps.some(sub => sub.length === 1 && sub[0] === -1)){
-        // There is no element [-1] (dog)
+        if (feedingKey in currPetTimeStamps && cleaningKey in currPetTimeStamps && playingKey in currPetTimeStamps){
 
             petTimeLimits = dogTimeLimits;
 
-        } else if (currPetTimeStamps[1].length === 1 && currPetTimeStamps[1][0] === -1){
-        // There is an element [-1] at index 1 (cat)
+        } else if (playingKey in currPetTimeStamps){
 
             petTimeLimits = catTimeLimits;
 
-        } else if (currPetTimeStamps[2].length === 1 && currPetTimeStamps[2][0] === -1){
-        // There is an element [-1] at index 2 (fish)
+        } else if (cleaningKey in currPetTimeStamps){
 
             petTimeLimits = fishTimeLimits;
-
+        
         }
 
-        const damage = [4, 1, 2];
+        const damage = 
+            {
+                [feedingKey]: 4, 
+                [cleaningKey]: 1, 
+                [playingKey]: 2
+            };
         let healthAffected = 0;
 
         // Iterate through every activity of this pet to see how much health damage there is:
-        for (let i=0; i<petTimeLimits.length; i++){
+        for (const curActivityKey in petTimeLimits){
 
-            if (petTimeLimits[i] === 0){
-            // [-1] so not applicable
+            // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another damage update:
+            let subtrahend = Math.max(currPetTimeStamps[curActivityKey][0], currPetTimeStamps[curActivityKey][1]); 
 
-                continue;
-
-            }
-
-            let subtrahend = Math.max(currPetTimeStamps[i][0], currPetTimeStamps[i][1]); 
-
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(subtrahend, petTimeLimits[i], damage[i]);
-            currPetTimeStamps[i][1] = newPetTimeStamp;
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(subtrahend, petTimeLimits[curActivityKey], damage[curActivityKey]);
+            currPetTimeStamps[curActivityKey][1] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
         }
@@ -134,20 +126,18 @@ export function PetEngineProvider({ children }) {
 
         let addedHealthDamage = 0;
         let intervalsPassed = 0;
-        let newPetTimeStamp = subtrahend; 
-        const timeElapsed = Date.now() - subtrahend;
+        let newPetTimeStamp = subtrahend;
 
-        if (timeElapsed > limit){
+        intervalsPassed = Math.floor((Date.now() - subtrahend) / limit);
+        // Calculating the number of times the limit has been passed since last check
 
-            intervalsPassed = Math.floor(timeElapsed / limit);
+        if (intervalsPassed > 0){
+        // The time between the last time this activity's damage was updated and the current time is long enough for another damaage and tiemstamp update:
 
-            if (intervalsPassed > 0){
-            //the time between the last time this activity's damage was updated and the current time is long enough for another damaage and tiemstamp update:
-
-                addedHealthDamage = damage*intervalsPassed;
-                newPetTimeStamp = subtrahend + intervalsPassed*limit;
-
-            }
+            addedHealthDamage = damage*intervalsPassed; 
+            // Amount of damage for current activity * intervals passed
+            newPetTimeStamp = subtrahend + intervalsPassed*limit; 
+            // Last health timestamp + number of intervals accounted for in new damage update
 
         }
 
@@ -158,56 +148,50 @@ export function PetEngineProvider({ children }) {
 
     const petAgeCheck = (pet) => {
 
-        const dogAges = [432000000, 864000000];
+        const difference = Date.now() - pet[birthDateKey];
+
+        if(pet[speciesKey] === dogSpecies){
         // Grows every 5 days
 
-        const catAges = [604800000, 1209600000];
+            if (difference > 864000000){
+
+                return 3;
+
+            } else if (difference > 432000000){
+
+                return 2;
+
+            } else {
+
+                return 1;
+
+            }
+
+        } else if (pet[speciesKey] === catSpecies){
         // Grows every week
 
-        const fishAges = [259200000, 518400000];
+            if (difference > 1209600000){
+
+                return 3;
+
+            } else if (difference > 604800000){
+
+                return 2;
+
+            } else {
+
+                return 1;
+
+            }
+
+        } else if (pet[speciesKey] === fishSpecies){
         // Grows every 3 days
 
-        const difference = Date.now() - pet[5];
-
-        if(pet[1] === "dog"){
-
-            if (difference > dogAges[1]){
+            if (difference > 518400000){
 
                 return 3;
 
-            } else if (difference > dogAges[0]){
-
-                return 2;
-
-            } else {
-
-                return 1;
-
-            }
-
-        } else if (pet[1] === "cat"){
-
-            if (difference > catAges[1]){
-
-                return 3;
-
-            } else if (difference > catAges[0]){
-
-                return 2;
-
-            } else {
-
-                return 1;
-
-            }
-
-        } else if (pet[1] === "fish"){
-
-            if (difference > fishAges[1]){
-
-                return 3;
-
-            } else if (difference > fishAges[0]){
+            } else if (difference > 259200000){
 
                 return 2;
 
@@ -221,6 +205,8 @@ export function PetEngineProvider({ children }) {
 
     }
 
+
     return children;
 
 }
+
