@@ -16,19 +16,19 @@ function SchedulingChart({timeLimits, setOpenScheduleFlag}) {
                 {Object.entries(timeLimits).map(([key, value]) => (
 
                     <SchedulingChartActivity
+                        key = {key}
                         activityKey = {key}
                         timeGap = {value}
                     />
 
                 ))}
 
-                    <SchedulingChartActivity
-                        activityKey = {medicineKey}
-                        timeGap = {medicineDoseTimeGap}
-                    />
+                <SchedulingChartActivity
+                    activityKey = {medicineKey}
+                    timeGap = {medicineDoseTimeGap}
+                />
 
-                </div>
-
+            </div>
 
             <button className="FloatingFlagButton" onClick={() => setOpenScheduleFlag(false)}>Close</button>
 

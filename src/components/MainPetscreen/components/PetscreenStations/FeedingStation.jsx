@@ -8,7 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
 import { feedingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import {CheckPetHealth} from "../../../../helpers/Helpers.js";
+import { manageHealth } from "../../helpers/Helpers.js";
 
 import "./FeedingStation.css";
 
@@ -80,17 +80,6 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
 
     }, [selection, done]);
 
-
-
-
-    const manageHealth = () => {
-
-        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, selection);
-
-        setDesiredOption(-1);
-        setOpenFeedingFlag(false);
-
-    }
 
 
 
@@ -182,7 +171,7 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth()}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, setDesiredOption, selection, setOpenFeedingFlag)}>Done</button>
 
             )}
 

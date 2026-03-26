@@ -82,7 +82,7 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
 
 
 
-    const manageHealth = () => {
+    const manageMedicineEffectiveness = () => {
 
         healPet(setPetList, ActivePetName, healthcap);
         setOpenMedicineFlag(false);
@@ -154,7 +154,7 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth()}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageMedicineEffectiveness()}>Done</button>
 
             )}
 

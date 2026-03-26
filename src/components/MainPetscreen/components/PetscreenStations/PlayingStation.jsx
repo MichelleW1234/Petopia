@@ -7,7 +7,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
 import { playingKey, speciesKey } from "../../../../constants/Constants.js";
-import { CheckPetHealth } from "../../../../helpers/Helpers.js";
+import { manageHealth } from "../../helpers/Helpers.js";
 
 import "./PlayingStation.css";
 
@@ -34,19 +34,6 @@ function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenP
         }
 
     }, [numberOfWins]);
-
-
-
-    const manageHealth = () => {
-
-        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, playingKey, desiredOption, selection);
-
-        setDesiredOption(-1);
-        setOpenPlayingFlag(false);
-
-    }
-
-
 
 
 
@@ -133,7 +120,7 @@ function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenP
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth()}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, playingKey, desiredOption, setDesiredOption, selection, setOpenPlayingFlag)}>Done</button>
 
             )}
 

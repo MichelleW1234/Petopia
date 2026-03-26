@@ -8,7 +8,7 @@ import { usePetList } from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
 import { cleaningKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { CheckPetHealth } from "../../../../helpers/Helpers.js";
+import { manageHealth } from "../../helpers/Helpers.js";
 
 import "./CleaningStation.css";
 
@@ -65,17 +65,6 @@ function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, set
 
     }, [selection, done]);
 
-
-
-
-    const manageHealth = () => {
-
-        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, selection);
-
-        setDesiredOption(-1);
-        setOpenCleaningFlag(false);
-
-    }
 
 
 
@@ -171,7 +160,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, set
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth()}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, setDesiredOption, selection, setOpenCleaningFlag)}>Done</button>
 
             )}
 

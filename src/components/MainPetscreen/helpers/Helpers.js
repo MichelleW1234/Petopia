@@ -1,3 +1,5 @@
+import { CheckPetHealth } from "../../../helpers/Helpers";
+
 export const initiateFeeding = (isHungry, setChosenFeedingOption, setOpenFeedingFlag, menuList) => {
 
     if (isHungry){
@@ -33,5 +35,15 @@ export const initiatePlaying = (isRestless, setChosenPlayingOption, setOpenPlayi
     }
 
     setOpenPlayingFlag(true);
+
+}
+
+
+export const manageHealth = (setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setOpenFlag) => {
+
+    CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, selection);
+
+    setDesiredOption(-1);
+    setOpenFlag(false);
 
 }
