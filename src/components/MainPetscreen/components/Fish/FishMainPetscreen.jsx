@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
-import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
-import CleaningStation from "../MainPetscreenComponents/CleaningStation.jsx";
+import HomeStation from "../PetscreenStations/HomeStation.jsx";
+import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
+import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
+import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey } from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
 
 
 function FishMainPetscreen (){
@@ -36,6 +37,12 @@ function FishMainPetscreen (){
                                     : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.25 ? 2
                                     : 3
                                 : -1;
+
+    const [currDate, setCurrDate] = useState(Date.now()); 
+    
+    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                                                    true
+                                                                    : false;
                                 
     const fishMenu = ["shrimp", "worms", "algae"];
     const fishTools = ["sponge", "cloth"];
@@ -47,6 +54,17 @@ function FishMainPetscreen (){
     const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
     const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
 
+
+
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setCurrDate(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, []);
 
 
     useEffect(() => {
@@ -95,6 +113,11 @@ function FishMainPetscreen (){
                 setOpenCleaningFlag = {setFishOpenCleaningFlag}
             />}
 
+            {fishOpenMedicineFlag &&
+            <MedicineStation
+                healthcap = {fishHealthCap}
+                setOpenMedicineFlag = {setFishOpenMedicineFlag}
+            />}
 
             <div className="NavBarContainer">
 
@@ -105,7 +128,17 @@ function FishMainPetscreen (){
                     <>
                         <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Fish </button>
                         <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Clean Fish Tank </button>
-                        <button className="NavBarButton" onClick = {() => setFishOpenMedicineFlag(true)}> Give Fish Medicine </button>
+
+                        {canReceiveDose ? (
+
+                            <button className="NavBarButton" onClick = {() => setFishOpenMedicineFlag(true)}> Give Fish Medicine </button>
+
+                        ) : (
+
+                            <button className="NavBarButtonPlaceHolder"> Give Fish Medicine </button>
+
+                        )}
+
                     </>
 
                 ) : (
@@ -121,7 +154,7 @@ function FishMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
 
-                <MainPetWindow
+                <HomeStation
                     petEnergy = {400}
                     mood = {mood}
                     activityInProgress={activityInProgress}

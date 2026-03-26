@@ -1,19 +1,20 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "../GlobalComponents/ProgressBar.jsx";
+import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
 
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import { useActivePetName } from "../../../../providers/ActivePetNameProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import { usePetList } from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { feedingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import {CheckPetHealth} from "../../../../helpers/Helpers.js";
+import { cleaningKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { CheckPetHealth } from "../../../../helpers/Helpers.js";
 
-import "./FeedingStation.css";
+import "./CleaningStation.css";
 
 
-function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeedingFlag}){
+
+function CleaningStation ({cleaningOptions, desiredOption, setCleaningOption, setOpenCleaningFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -22,20 +23,16 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
     // 10 rows x 8 columns
     const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const totalSecsTillFull = 10;
+    const totalScrubsTillClean = 30;
 
-    const [secondsAte, setSecondsAte] = useState(0);
-    const [done, setDone] = useState(false);
     const [selection, setSelection] = useState(-1);
+    const [scrubs, setScrubs] = useState(0);
+    const [done, setDone] = useState(false);
     const [animationImage, setAnimationImage] = useState(0);
 
-    const secondsAteRef = useRef(secondsAte);
+
     const animationImageRef = useRef(animationImage);
 
-
-    useEffect(() => {
-        secondsAteRef.current = secondsAte;
-    }, [secondsAte]);
 
 
     useEffect(() => {
@@ -44,22 +41,10 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 
 
     useEffect(() => {
-
-        if (selection === -1 || done) {
-            return;
+        if (scrubs >= totalScrubsTillClean){
+            setDone(true);
         }
-
-        const interval = setInterval(() => {
-            const currSeconds = secondsAteRef.current + 1;
-            setSecondsAte(currSeconds);
-            if (currSeconds >= totalSecsTillFull){
-                setDone(true);
-            }
-        }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, [selection, done]);
+    }, [scrubs]);
 
 
     useEffect(() => {
@@ -85,19 +70,19 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 
     const manageHealth = () => {
 
-        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, selection);
+        CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, selection);
 
-        setMenuOption(-1);
-        setOpenFeedingFlag(false);
+        setCleaningOption(-1);
+        setOpenCleaningFlag(false);
 
     }
 
 
 
     return (
-
-        <div className = "FloatingFlagBackground">
         
+        <div className = "FloatingFlagBackground">
+
             <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                 {selection === -1 ? (
@@ -106,19 +91,19 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
                         {desiredOption === -1 ? (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: Not hungry
+                                Option: Not dirty
                             </h2>
 
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {menuOptions[desiredOption]}
+                                Option: {cleaningOptions[desiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {menuOptions.map((option, index) => (
+                            {cleaningOptions.map((option, index) => (
 
                                 <button key = {index} onClick = {() => setSelection(index)}> {option} </button>
 
@@ -126,15 +111,15 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 
                         </div>
                     </>
-            
+
                 ) : (
 
-                    <>
-                        <ProgressBar
-                            percentageUntilNextUpdate={Math.round((secondsAte/totalSecsTillFull) * 100)}
-                        />
+                    !done ? ( 
 
-                        {!done ? (
+                        <>
+                            <ProgressBar
+                                percentageUntilNextUpdate={Math.round((scrubs/totalScrubsTillClean) * 100)}
+                            />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
@@ -145,8 +130,9 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 
                                             rowIndex === 2 && colIndex === 3 ? (
 
-                                                // Change this when I create feeding-specific images for each species!!!!!!!!!!!!!
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][animationImage]} />
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][animationImage]} 
+                                                    onMouseEnter={() => setScrubs(prev => prev + 1)}
+                                                />
 
                                             ) : (
 
@@ -158,27 +144,30 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
                                     
                                     })
                                 ))}
-
                             </div>
+                        </>
 
-                        ) : (
+                    ) : (
+
+                        <>
+                            <ProgressBar
+                                    percentageUntilNextUpdate={Math.round((scrubs/totalScrubsTillClean) * 100)}
+                                />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
-
-                                Finished!!
-
+                                Done!!!!!!
                             </div>
+                        </>
 
-                        )}
-                    </>
+                    )
 
                 )}
-
+                
             </div>
 
             {selection === -1 || !done ? (
 
-                <button className = "FloatingFlagButton" onClick = {() => setOpenFeedingFlag(false)}>Quit</button>
+                <button className = "FloatingFlagButton" onClick = {() => setOpenCleaningFlag(false)}>Quit</button>
 
             ) : (
 
@@ -193,4 +182,4 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 }
 
 
-export default FeedingStation;
+export default CleaningStation;

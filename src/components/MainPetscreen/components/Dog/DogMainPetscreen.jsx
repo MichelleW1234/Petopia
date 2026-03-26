@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
-import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
-import CleaningStation from "../MainPetscreenComponents/CleaningStation.jsx";
+import HomeStation from "../PetscreenStations/HomeStation.jsx";
+import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
+import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
+import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey } from "../../../../constants/Constants.js";
+import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
 
 
 
@@ -41,6 +42,12 @@ function DogMainPetscreen (){
                                     : 3
                                 : -1;
 
+    const [currDate, setCurrDate] = useState(Date.now()); 
+
+    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                                                    true
+                                                                    : false;    
+
     const dogMenu = ["beef", "Turkey", "lamb"];
     const dogGames = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
     const dogTools = ["soap", "brush"];
@@ -54,6 +61,17 @@ function DogMainPetscreen (){
     const [dogChosenCleaningOption, setDogChosenCleaningOption] = useState(-1);
     const [dogChosenPlayingOption, setDogChosenPlayingOption] = useState(-1);
 
+
+
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setCurrDate(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, []);
 
 
     useEffect(() => {
@@ -109,6 +127,11 @@ function DogMainPetscreen (){
                 setOpenCleaningFlag = {setDogOpenCleaningFlag}
             />}
 
+            {dogOpenMedicineFlag &&
+            <MedicineStation
+                healthcap = {dogHealthCap}
+                setOpenMedicineFlag = {setDogOpenMedicineFlag}
+            />}
 
             <div className="NavBarContainer">
 
@@ -120,7 +143,17 @@ function DogMainPetscreen (){
                         <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Dog </button>
                         <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Bathe Dog </button>
                         <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Dog </button>
-                        <button className="NavBarButton" onClick = {() => setDogOpenMedicineFlag(true)}> Give Dog Medicine </button>
+
+                        {canReceiveDose ? (
+
+                            <button className="NavBarButton" onClick = {() => setDogOpenMedicineFlag(true)}> Give Dog Medicine </button>
+
+                        ) : (
+
+                            <button className="NavBarButtonPlaceHolder"> Give Dog Medicine </button>
+
+                        )}
+                      
                     </>
 
                 ) : (
@@ -137,7 +170,7 @@ function DogMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
 
-                <MainPetWindow
+                <HomeStation
                     petEnergy = {350}
                     mood = {mood}
                     activityInProgress={activityInProgress}

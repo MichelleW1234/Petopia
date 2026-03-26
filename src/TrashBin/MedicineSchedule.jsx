@@ -1,7 +1,7 @@
 import {usePetList} from "../providers/PetListProvider.jsx";
 import {useActivePetName} from "../providers/ActivePetNameProvider.jsx";
 
-import UpdateTrackingBar from "./UpdateTrackingBar.jsx";
+import UpdateTrackingBar from "./UpdateTrackingBar.js";
 
 import { healthKey, medicineDoseTimeGap, medicineKey } from "../constants/Constants.js";
 

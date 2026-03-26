@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import MainPetWindow from "../MainPetscreenComponents/MainPetWindow.jsx";
-import FeedingStation from "../MainPetscreenComponents/FeedingStation.jsx";
-import CatPlayingWindow from "./CatScreenComponents/CatPlayingWindow.jsx";
-import CatMedicineWindow from "./CatScreenComponents/CatMedicineWindow.jsx";
+
+import HomeStation from "../PetscreenStations/HomeStation.jsx";
+import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
+import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey } from "../../../../constants/Constants.js";
+import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
 
 
 function CatMainPetscreen (){
@@ -39,6 +39,12 @@ function CatMainPetscreen (){
                                             : 3
                                         : -1;
 
+    const [currDate, setCurrDate] = useState(Date.now()); 
+
+    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                                                    true
+                                                                    : false;    
+
     const catMenu = ["tuna", "chicken", "salmon"];
     const catGames = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
 
@@ -49,6 +55,18 @@ function CatMainPetscreen (){
     const [catChosenFeedingOption, setCatChosenFeedingOption] = useState(-1);
     const [catChosenPlayingOption, setCatChosenPlayingOption] = useState(-1);
 
+
+
+
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            setCurrDate(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+
+    }, []);
 
 
     useEffect(() => {
@@ -78,6 +96,7 @@ function CatMainPetscreen (){
     }
 
 
+    
     return (
 
         <>
@@ -90,7 +109,6 @@ function CatMainPetscreen (){
                 setOpenFeedingFlag = {setCatOpenFeedingFlag}
             />}
 
-
             {catOpenPlayingFlag &&
             <CatPlayingWindow
                 gameOption = {catChosenPlayingOption}
@@ -99,11 +117,10 @@ function CatMainPetscreen (){
             />}
 
             {catOpenMedicineFlag &&
-            <CatMedicineWindow
+            <MedicineStation
+                healthcap = {catHealthCap}
                 setOpenMedicineFlag = {setCatOpenMedicineFlag}
             />}
-
-
 
             <div className="NavBarContainer">
 
@@ -114,7 +131,17 @@ function CatMainPetscreen (){
                     <>
                         <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Cat </button>
                         <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Cat </button>
-                        <button className="NavBarButton" onClick = {() => setCatOpenMedicineFlag(true)}> Give Cat Medicine </button>
+
+                        {canReceiveDose ? (
+
+                            <button className="NavBarButton" onClick = {() => setCatOpenMedicineFlag(true)}> Cat Medicine Available </button>
+
+                        ) : (
+
+                            <button className="NavBarButtonPlaceHolder"> Cat Medicine Available </button>
+
+                        )}
+                       
                     </>
 
                 ) : (
@@ -132,7 +159,7 @@ function CatMainPetscreen (){
             
             <div className = "ScreenContainer">
 
-                <MainPetWindow
+                <HomeStation
                     petEnergy = {450}
                     mood = {mood}
                     activityInProgress = {activityInProgress}

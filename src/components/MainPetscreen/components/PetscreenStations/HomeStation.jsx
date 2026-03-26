@@ -11,11 +11,11 @@ import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-
-import "./MainPetWindow.css";
 import { healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
-function PetWindow ({petEnergy, mood, activityInProgress}){
+import "./HomeStation.css";
+
+function HomeStation ({petEnergy, mood, activityInProgress}){
 
 
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -221,4 +221,4 @@ function PetWindow ({petEnergy, mood, activityInProgress}){
 }
 
 
-export default PetWindow;
+export default HomeStation;

@@ -1,4 +1,4 @@
-import "./SchedulingChart.jsx";
+import "./ProgressBar.css";
 
 function ProgressBar({percentageUntilNextUpdate}) {
 

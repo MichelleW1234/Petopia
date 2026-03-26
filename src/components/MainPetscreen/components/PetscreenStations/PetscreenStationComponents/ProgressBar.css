@@ -1,0 +1,24 @@
+.SchedulingChartProgressBar {
+
+  display: flex;
+  flex-direction: row;
+
+  box-shadow: 0 0 0.5rem 0.1rem rgb(255, 238, 169);
+
+}
+
+.SchedulingChartProgressCellDoneNotClose {
+
+  height: 0.75rem;
+  width: 0.3rem;
+  background-color: rgb(55, 255, 0);
+
+}
+
+.SchedulingChartProgressCellLeft {
+
+  height: 0.75rem;
+  width: 0.3rem;
+  background-color: rgba(137, 105, 0, 0.539);
+
+}
