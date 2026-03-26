@@ -5,12 +5,14 @@ import HomeStation from "../PetscreenStations/HomeStation.jsx";
 import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
 import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
+import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { initiateFeeding, initiateCleaning } from "../../helpers/Helpers.js";
 
 
 function FishMainPetscreen (){
@@ -51,6 +53,7 @@ function FishMainPetscreen (){
     const [fishOpenFeedingFlag, setFishOpenFeedingFlag] = useState(false);
     const [fishOpenCleaningFlag, setFishOpenCleaningFlag] = useState(false);
     const [fishOpenMedicineFlag, setFishOpenMedicineFlag] = useState(false);
+    const [fishOpenScheduleFlag, setFishOpenScheduleFlag] = useState(false);
     const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
     const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
 
@@ -74,22 +77,7 @@ function FishMainPetscreen (){
             setActivityInProgress(false);
         }
     }, [fishOpenFeedingFlag, fishOpenCleaningFlag, fishOpenMedicineFlag]);
-
     
-    
-    const initiateFeeding = () => {
-        if (hungry){
-            setFishChosenFeedingOption(Math.floor(Math.random() * fishMenu.length));
-        }
-        setFishOpenFeedingFlag(true);
-    }
-
-    const initiateCleaning = () => {
-        if (dirty){
-            setFishChosenCleaningOption(Math.floor(Math.random() * fishTools.length));
-        }
-        setFishOpenCleaningFlag(true);
-    }
 
 
 
@@ -119,6 +107,12 @@ function FishMainPetscreen (){
                 setOpenMedicineFlag = {setFishOpenMedicineFlag}
             />}
 
+            {fishOpenScheduleFlag &&
+            <SchedulingChart
+                timeLimits={fishTimeLimits}
+                setOpenScheduleFlag={setFishOpenScheduleFlag}
+            />}
+
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
@@ -126,8 +120,8 @@ function FishMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Fish </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Clean Fish Tank </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setFishChosenFeedingOption, setFishOpenFeedingFlag, fishMenu)}> Feed Fish </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setFishChosenCleaningOption, setFishOpenCleaningFlag, fishTools)}> Clean Fish Tank </button>
 
                         {canReceiveDose ? (
 
@@ -150,6 +144,8 @@ function FishMainPetscreen (){
                     </>
 
                 )}
+
+                <button className="NavBarButton" onClick = {() => setFishOpenScheduleFlag(true)}> Check Schedule </button>
 
             </div>
             <div className = "ScreenContainer">

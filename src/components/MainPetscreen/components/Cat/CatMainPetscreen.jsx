@@ -5,12 +5,14 @@ import HomeStation from "../PetscreenStations/HomeStation.jsx";
 import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
 import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
+import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { initiateFeeding, initiatePlaying } from "../../helpers/Helpers.js";
 
 
 function CatMainPetscreen (){
@@ -52,6 +54,7 @@ function CatMainPetscreen (){
     const [catOpenFeedingFlag, setCatOpenFeedingFlag] = useState(false);
     const [catOpenPlayingFlag, setCatOpenPlayingFlag] = useState(false);
     const [catOpenMedicineFlag, setCatOpenMedicineFlag] = useState(false);
+    const [catOpenScheduleFlag, setCatOpenScheduleFlag] = useState(false);
     const [catChosenFeedingOption, setCatChosenFeedingOption] = useState(-1);
     const [catChosenPlayingOption, setCatChosenPlayingOption] = useState(-1);
 
@@ -80,23 +83,6 @@ function CatMainPetscreen (){
 
     
 
-    const initiateFeeding = () => {
-        if (hungry){
-            setCatChosenFeedingOption(Math.floor(Math.random() * catMenu.length));
-        }
-        setCatOpenFeedingFlag(true);
-    }
-
-
-    const initiatePlaying = () => {
-        if (restless){
-            setCatChosenPlayingOption(Math.floor(Math.random() * catGames.length));
-        }
-        setCatOpenPlayingFlag(true);
-    }
-
-
-    
     return (
 
         <>
@@ -123,6 +109,12 @@ function CatMainPetscreen (){
                 setOpenMedicineFlag = {setCatOpenMedicineFlag}
             />}
 
+            {catOpenScheduleFlag &&
+            <SchedulingChart
+                timeLimits={catTimeLimits}
+                setOpenScheduleFlag={setCatOpenScheduleFlag}
+            />}
+
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
@@ -130,8 +122,8 @@ function CatMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Cat </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Cat </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setCatChosenFeedingOption, setCatOpenFeedingFlag, catMenu)}> Feed Cat </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setCatChosenPlayingOption, setCatOpenPlayingFlag, catGames)}> Play With Cat </button>
 
                         {canReceiveDose ? (
 
@@ -154,7 +146,8 @@ function CatMainPetscreen (){
                     </>
 
                 )}
-                
+
+                <button className="NavBarButton" onClick = {() => setCatOpenScheduleFlag(true)}> Check Schedule </button>
                 
             </div>
             

@@ -6,12 +6,14 @@ import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
 import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
 import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
+import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { initiateFeeding, initiateCleaning, initiatePlaying } from "../../helpers/Helpers.js";
 
 
 
@@ -58,6 +60,7 @@ function DogMainPetscreen (){
     const [dogOpenCleaningFlag, setDogOpenCleaningFlag] = useState(false);
     const [dogOpenPlayingFlag, setDogOpenPlayingFlag] = useState(false);
     const [dogOpenMedicineFlag, setDogOpenMedicineFlag] = useState(false);
+    const [dogOpenScheduleFlag, setDogOpenScheduleFlag] = useState(false);
     const [dogChosenFeedingOption, setDogChosenFeedingOption] = useState(-1);
     const [dogChosenCleaningOption, setDogChosenCleaningOption] = useState(-1);
     const [dogChosenPlayingOption, setDogChosenPlayingOption] = useState(-1);
@@ -83,28 +86,6 @@ function DogMainPetscreen (){
         }
     }, [dogOpenFeedingFlag, dogOpenCleaningFlag, dogOpenPlayingFlag, dogOpenMedicineFlag]);
 
-    
-    
-    const initiateFeeding = () => {
-        if (hungry){
-            setDogChosenFeedingOption(Math.floor(Math.random() * dogMenu.length));
-        }
-        setDogOpenFeedingFlag(true);
-    }
-
-    const initiateCleaning = () => {
-        if (dirty){
-            setDogChosenCleaningOption(Math.floor(Math.random() * dogTools.length));
-        }
-        setDogOpenCleaningFlag(true);
-    }
-
-    const initiatePlaying = () => {
-        if (restless){
-            setDogChosenPlayingOption(Math.floor(Math.random() * dogGames.length));
-        }
-        setDogOpenPlayingFlag(true);
-    }
 
 
     
@@ -142,6 +123,12 @@ function DogMainPetscreen (){
                 setOpenMedicineFlag = {setDogOpenMedicineFlag}
             />}
 
+            {dogOpenScheduleFlag &&
+            <SchedulingChart
+                timeLimits={dogTimeLimits}
+                setOpenScheduleFlag={setDogOpenScheduleFlag}
+            />}
+
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
@@ -149,9 +136,9 @@ function DogMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding()}> Feed Dog </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning()}> Bathe Dog </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying()}> Play With Dog </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setDogChosenFeedingOption, setDogOpenFeedingFlag, dogMenu)}> Feed Dog </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setDogChosenCleaningOption, setDogOpenCleaningFlag, dogTools)}> Bathe Dog </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setDogChosenPlayingOption, setDogOpenPlayingFlag, dogGames)}> Play With Dog </button>
 
                         {canReceiveDose ? (
 
@@ -169,12 +156,14 @@ function DogMainPetscreen (){
 
                     <>
                         <button className="NavBarButtonPlaceHolder"> Feed Dog </button>
-                        <button className="NavBarButtonPlaceHolder"> Bathe Dog </button>
+                        <button className="NavBarButtonPlaceHolder"> Clean Dog </button>
                         <button className="NavBarButtonPlaceHolder"> Play With Dog </button>
                         <button className="NavBarButtonPlaceHolder"> Give Dog Medicine </button>
                     </>
 
                 )}
+
+                <button className="NavBarButton" onClick = {() => setDogOpenScheduleFlag(true)}> Check Schedule </button>
                
             </div>
             <div className = "ScreenContainer">

@@ -6,10 +6,10 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 
 import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey } from "../../../../constants/Constants.js";
 
-import "./SchedulingChart.css";
+import "./SchedulingChartActivity.css";
 
 
-function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
+function SchedulingChartActivity({activityKey, timeGap}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -73,8 +73,8 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
     const lastStrings = {
 
         [feedingKey]: "Last Fed: ",
-        [cleaningKey]: "Last Bathed: ",
-        [playingKey]: "Last Player: ",
+        [cleaningKey]: "Last Cleaned: ",
+        [playingKey]: "Last Played: ",
         [medicineKey]: "Last Dose Recieved: "
 
     }
@@ -82,7 +82,7 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
     const nextStrings = {
 
         [feedingKey]: "Feed Before: ",
-        [cleaningKey]: "Bath Before: ",
+        [cleaningKey]: "Clean Before: ",
         [playingKey]: "Play Before: ",
         [medicineKey]: "Next Dose Available: "
 
@@ -101,75 +101,71 @@ function SchedulingChart({activityKey, timeGap, setOpenPetScheduleFlag}) {
 
 
     return (
-        <div className = "FloatingFlagBackground">
-            <div className="FloatingFlagContainer">
-                <div className="FloatingFlagInfoContainer">
-                    {PetList[ActivePetName][healthKey] === 0 ? (
-
-                        <>
-                            <h2>{lastStrings[activityKey] + lastActivityString}</h2>
-                            <h2>{nextStrings[activityKey] + "--"} </h2>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <h2>{lastStrings[activityKey] + lastActivityString}</h2>
-                            <h2>{nextStrings[activityKey] + nextActivityString}</h2>
-                        </>
-
-                    )}
-
-                </div>
-            
+        <div className = "SchedulingChartActivityContainer">
+            <div>
                 {PetList[ActivePetName][healthKey] === 0 ? (
 
-                    <div className = "SchedulingChartProgressBar">
-
-                        {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                            <div key = {num} className = "SchedulingChartProgressCellCancelled"></div>
-
-                        ))}
-                        
-                    </div>
-
-                ) : percentageUntilNextUpdate === 100 ? (
-
-                    <div className = "SchedulingChartProgressBar">
-
-                        {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                            <div key = {num} className = "SchedulingChartProgressCellLimitedReached"></div>
-
-                        ))}
-                        
-                    </div>
+                    <>
+                        <h2>{lastStrings[activityKey] + lastActivityString}</h2>
+                        <h2>{nextStrings[activityKey] + "--"} </h2>
+                    </>
 
                 ) : (
 
-                    <div className = "SchedulingChartProgressBar">
-                        
-                        {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                    <>
+                        <h2>{lastStrings[activityKey] + lastActivityString}</h2>
+                        <h2>{nextStrings[activityKey] + nextActivityString}</h2>
+                    </>
 
-                            <div key = {num} className = {num <= percentageUntilNextUpdate ? 
-                                                            percentageUntilNextUpdate <= 50 ?
-                                                                "SchedulingChartProgressCellDoneNotClose"
-                                                                : "SchedulingChartProgressCellDoneClose"
-                                                            : "SchedulingChartProgressCellLeft"
-                                                        }>           
-                            </div>
+                )}
 
-                        ))}
-
-                    </div>
-
-                )} 
-
-                <button className="FloatingFlagButton" onClick={() => setOpenPetScheduleFlag(false)}>Close</button>
             </div>
+        
+            {PetList[ActivePetName][healthKey] === 0 ? (
+
+                <div className = "SchedulingChartProgressBar">
+
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                        <div key = {num} className = "SchedulingChartProgressCellCancelled"></div>
+
+                    ))}
+                    
+                </div>
+
+            ) : percentageUntilNextUpdate === 100 ? (
+
+                <div className = "SchedulingChartProgressBar">
+
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                        <div key = {num} className = "SchedulingChartProgressCellLimitedReached"></div>
+
+                    ))}
+                    
+                </div>
+
+            ) : (
+
+                <div className = "SchedulingChartProgressBar">
+                    
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                        <div key = {num} className = {num <= percentageUntilNextUpdate ? 
+                                                        percentageUntilNextUpdate <= 50 ?
+                                                            "SchedulingChartProgressCellDoneNotClose"
+                                                            : "SchedulingChartProgressCellDoneClose"
+                                                        : "SchedulingChartProgressCellLeft"
+                                                    }>           
+                        </div>
+
+                    ))}
+
+                </div>
+
+            )} 
         </div>
     )
 }
   
-export default SchedulingChart;
+export default SchedulingChartActivity;
