@@ -13,7 +13,7 @@ import {CheckPetHealth} from "../../../../helpers/Helpers.js";
 import "./FeedingStation.css";
 
 
-function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeedingFlag}){
+function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenFeedingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -87,7 +87,7 @@ function FeedingStation ({menuOptions, desiredOption, setMenuOption, setOpenFeed
 
         CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, selection);
 
-        setMenuOption(-1);
+        setDesiredOption(-1);
         setOpenFeedingFlag(false);
 
     }

@@ -14,7 +14,7 @@ import "./CleaningStation.css";
 
 
 
-function CleaningStation ({cleaningOptions, desiredOption, setCleaningOption, setOpenCleaningFlag}){
+function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, setOpenCleaningFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -72,7 +72,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setCleaningOption, se
 
         CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, selection);
 
-        setCleaningOption(-1);
+        setDesiredOption(-1);
         setOpenCleaningFlag(false);
 
     }

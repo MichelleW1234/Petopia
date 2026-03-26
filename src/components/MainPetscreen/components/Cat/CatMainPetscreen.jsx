@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-
 import HomeStation from "../PetscreenStations/HomeStation.jsx";
 import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
+import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -105,14 +105,15 @@ function CatMainPetscreen (){
             <FeedingStation
                 menuOptions={catMenu}
                 desiredOption = {catChosenFeedingOption}
-                setMenuOption = {setCatChosenFeedingOption}
+                setDesiredOption = {setCatChosenFeedingOption}
                 setOpenFeedingFlag = {setCatOpenFeedingFlag}
             />}
 
             {catOpenPlayingFlag &&
-            <CatPlayingWindow
-                gameOption = {catChosenPlayingOption}
-                setGameOption = {setCatChosenPlayingOption}
+            <PlayingStation
+                gameOptions = {catGames}
+                desiredOption = {catChosenPlayingOption}
+                setDesiredOption = {setCatChosenPlayingOption}
                 setOpenPlayingFlag = {setCatOpenPlayingFlag}
             />}
 

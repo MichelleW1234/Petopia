@@ -101,7 +101,7 @@ function FishMainPetscreen (){
             <FeedingStation
                 menuOptions={fishMenu}
                 desiredOption = {fishChosenFeedingOption}
-                setMenuOption = {setFishChosenFeedingOption}
+                setDesiredOption = {setFishChosenFeedingOption}
                 setOpenFeedingFlag = {setFishOpenFeedingFlag}
             />}
 
@@ -109,7 +109,7 @@ function FishMainPetscreen (){
             <CleaningStation
                 cleaningOptions={fishTools}
                 desiredOption = {fishChosenCleaningOption}
-                setCleaningOption = {setFishChosenCleaningOption}
+                setDesiredOption = {setFishChosenCleaningOption}
                 setOpenCleaningFlag = {setFishOpenCleaningFlag}
             />}
 

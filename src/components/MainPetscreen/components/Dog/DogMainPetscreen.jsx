@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import HomeStation from "../PetscreenStations/HomeStation.jsx";
 import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
 import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
+import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -99,7 +100,7 @@ function DogMainPetscreen (){
     }
 
     const initiatePlaying = () => {
-        if (dirty){
+        if (restless){
             setDogChosenPlayingOption(Math.floor(Math.random() * dogGames.length));
         }
         setDogOpenPlayingFlag(true);
@@ -115,7 +116,7 @@ function DogMainPetscreen (){
             <FeedingStation
                 menuOptions={dogMenu}
                 desiredOption = {dogChosenFeedingOption}
-                setMenuOption = {setDogChosenFeedingOption}
+                setDesiredOption = {setDogChosenFeedingOption}
                 setOpenFeedingFlag = {setDogOpenFeedingFlag}
             />}
 
@@ -123,8 +124,16 @@ function DogMainPetscreen (){
             <CleaningStation
                 cleaningOptions={dogTools}
                 desiredOption = {dogChosenCleaningOption}
-                setCleaningOption = {setDogChosenCleaningOption}
+                setDesiredOption = {setDogChosenCleaningOption}
                 setOpenCleaningFlag = {setDogOpenCleaningFlag}
+            />}
+
+            {dogOpenPlayingFlag &&
+            <PlayingStation
+                gameOptions = {dogGames}
+                desiredOption = {dogChosenPlayingOption}
+                setDesiredOption = {setDogChosenPlayingOption}
+                setOpenPlayingFlag = {setDogOpenPlayingFlag}
             />}
 
             {dogOpenMedicineFlag &&

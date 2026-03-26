@@ -51,7 +51,7 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
         const interval = setInterval(() => {
             const currSeconds = secondsDosedRef.current + 1;
             setSecondsDosed(currSeconds);
-            if (currSeconds >= 10){
+            if (currSeconds >= totalSecsTillDosed){
                 setDone(true);
             }
         }, 1000);
