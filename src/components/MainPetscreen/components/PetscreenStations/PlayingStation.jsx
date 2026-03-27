@@ -6,42 +6,26 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { catSpecies, dogSpecies, gameOptions, playingKey, speciesKey } from "../../../../constants/Constants.js";
+import { playingKey, speciesKey } from "../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 
 import "./PlayingStation.css";
 
 
-function PlayingStation ({desiredOption, setDesiredOption, setOpenPlayingFlag}){
+function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesiredOption, setOpenPlayingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
-
 
     const [totalWinsUntilTired, setTotalWinsUntilTired] = useState(10);
     const [done, setDone] = useState(false);
     const [selection, setSelection] = useState(-1);
     const [numberOfWins, setNumberOfWins] = useState(0);
 
-    const gameComponents = {
-
-        [dogSpecies] : [
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
-        ],
-        [catSpecies] : [
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
-            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
-        ]
-        /*
-        <ComponentA count={count} />,
-        <ComponentB count={count} />,
-        <ComponentC count={count} />
-        */
-    };
+    const selectedGameWindow = selection !== -1 ? 
+                                    gameComponents[selection]
+                                    : null;
 
 
 
@@ -75,14 +59,14 @@ function PlayingStation ({desiredOption, setDesiredOption, setOpenPlayingFlag}){
                     ) : (
 
                         <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
-                            option: {gameOptions[PetList[ActivePetName][speciesKey]][desiredOption]}
+                            option: {gameOptions[desiredOption]}
                         </h2>
 
                     )}
 
                     <div className= "FeedingWindowSelectionContainer">  
 
-                        {gameOptions[PetList[ActivePetName][speciesKey]].map((game, index) => (
+                        {gameOptions.map((game, index) => (
 
                             <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalWinsUntilTired*2, setTotalWinsUntilTired, setSelection)}> {game} </button>
                             
@@ -103,7 +87,22 @@ function PlayingStation ({desiredOption, setDesiredOption, setOpenPlayingFlag}){
                             percentageUntilNextUpdate={Math.round((numberOfWins/totalWinsUntilTired) * 100)}
                         />
 
-                        {gameComponents[PetList[ActivePetName][speciesKey]][selection]}
+                        {selectedGameWindow !== null ? (
+
+                            selectedGameWindow
+                            /*
+                            <selectedGameWindow
+                                setDone = {setDone}
+                                numberOfWins = {numberOfWins}
+                                setNumberOfWins = {setNumberOfWins}
+                            />
+                            */
+
+                        ) : (
+
+                            null /*Default window? */
+
+                        )}
 
                     </div>
 

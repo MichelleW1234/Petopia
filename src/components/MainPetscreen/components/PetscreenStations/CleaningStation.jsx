@@ -7,14 +7,14 @@ import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.js
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { cleaningKey, cleaningOptions, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { cleaningKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 
 import "./CleaningStation.css";
 
 
 
-function CleaningStation ({desiredOption, setDesiredOption, setOpenCleaningFlag}){
+function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, setOpenCleaningFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -84,13 +84,13 @@ function CleaningStation ({desiredOption, setDesiredOption, setOpenCleaningFlag}
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {cleaningOptions[PetList[ActivePetName][speciesKey]][desiredOption]}
+                                Option: {cleaningOptions[desiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {cleaningOptions[PetList[ActivePetName][speciesKey]].map((option, index) => (
+                            {cleaningOptions.map((option, index) => (
 
                                 <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalScrubsTillClean*2, setTotalScrubsTillClean, setSelection)}> {option} </button>
 

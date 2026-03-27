@@ -45,27 +45,3 @@ export const fishTimeLimits =                   // ?
 // [180000, 300000]; //for testing purposes
 
 export const medicineDoseTimeGap = 86400000;
-
-
-
-export const menuOptions = {
-
-    [dogSpecies] : ["beef", "Turkey", "lamb"],
-    [catSpecies] : ["tuna", "chicken", "salmon"],
-    [fishSpecies] : ["shrimp", "worms", "algae"]
-
-}
-
-export const cleaningOptions = {
-
-    [dogSpecies] : ["soap", "brush"],
-    [fishSpecies] : ["sponge", "cloth"]
-
-}
-
-export const gameOptions = {
-
-    [dogSpecies] : ["tuna", "chicken", "salmon"], // CHANGE THIS LATER!!!!!!!!!
-    [catSpecies] : ["tuna", "chicken", "salmon"] // CHANGE THIS LATER!!!!!!!!! 
-
-}

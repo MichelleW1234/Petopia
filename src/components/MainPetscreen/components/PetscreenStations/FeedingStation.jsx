@@ -7,13 +7,13 @@ import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.js
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { feedingKey, menuOptions, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { feedingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 
 import "./FeedingStation.css";
 
 
-function FeedingStation ({desiredOption, setDesiredOption, setOpenFeedingFlag}){
+function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenFeedingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -100,13 +100,13 @@ function FeedingStation ({desiredOption, setDesiredOption, setOpenFeedingFlag}){
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {menuOptions[PetList[ActivePetName][speciesKey]][desiredOption]}
+                                Option: {menuOptions[desiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {menuOptions[PetList[ActivePetName][speciesKey]].map((option, index) => (
+                            {menuOptions.map((option, index) => (
 
                                 <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalSecsTillFull*2, setTotalSecsTillFull, setSelection)}> {option} </button>
 

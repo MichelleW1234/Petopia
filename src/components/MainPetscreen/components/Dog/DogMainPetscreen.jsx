@@ -16,6 +16,12 @@ import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playin
 import { initiateFeeding, initiateCleaning, initiatePlaying } from "../../helpers/Helpers.js";
 
 
+// CHANGE THIS LATER!!!!!!!!!
+const dogGameComponents = [
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
+]
 
 function DogMainPetscreen (){
 
@@ -72,6 +78,10 @@ function DogMainPetscreen (){
                                     : false
                                 : false;
 
+    const dogMenuOptions = ["beef", "Turkey", "lamb"];
+    const dogCleaningOptions = ["soap", "brush"];
+    const dogGameOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
+
 
 
     useEffect(() => {
@@ -102,6 +112,7 @@ function DogMainPetscreen (){
 
             {dogOpenFeedingFlag &&
             <FeedingStation
+                menuOptions={dogMenuOptions}
                 desiredOption = {dogChosenFeedingOption}
                 setDesiredOption = {setDogChosenFeedingOption}
                 setOpenFeedingFlag = {setDogOpenFeedingFlag}
@@ -109,6 +120,7 @@ function DogMainPetscreen (){
 
             {dogOpenCleaningFlag &&
             <CleaningStation
+                cleaningOptions={dogCleaningOptions}
                 desiredOption = {dogChosenCleaningOption}
                 setDesiredOption = {setDogChosenCleaningOption}
                 setOpenCleaningFlag = {setDogOpenCleaningFlag}
@@ -116,6 +128,8 @@ function DogMainPetscreen (){
 
             {dogOpenPlayingFlag &&
             <PlayingStation
+                gameOptions={dogGameOptions}
+                gameComponents={dogGameComponents}
                 desiredOption = {dogChosenPlayingOption}
                 setDesiredOption = {setDogChosenPlayingOption}
                 setOpenPlayingFlag = {setDogOpenPlayingFlag}

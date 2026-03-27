@@ -62,6 +62,9 @@ function FishMainPetscreen (){
                                     true
                                     : false
                                 : false;
+    
+    const fishMenuOptions = ["shrimp", "worms", "algae"];
+    const fishCleaningOptions = ["sponge", "cloth"];
 
 
 
@@ -93,6 +96,7 @@ function FishMainPetscreen (){
 
             {fishOpenFeedingFlag &&
             <FeedingStation
+                menuOptions={fishMenuOptions}
                 desiredOption = {fishChosenFeedingOption}
                 setDesiredOption = {setFishChosenFeedingOption}
                 setOpenFeedingFlag = {setFishOpenFeedingFlag}
@@ -100,6 +104,7 @@ function FishMainPetscreen (){
 
             {fishOpenCleaningFlag &&
             <CleaningStation
+                cleaningOptions={fishCleaningOptions}
                 desiredOption = {fishChosenCleaningOption}
                 setDesiredOption = {setFishChosenCleaningOption}
                 setOpenCleaningFlag = {setFishOpenCleaningFlag}

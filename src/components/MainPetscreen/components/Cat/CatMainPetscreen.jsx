@@ -15,6 +15,13 @@ import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicin
 import { initiateFeeding, initiatePlaying } from "../../helpers/Helpers.js";
 
 
+// CHANGE THIS LATER!!!!!!!!!
+const catGameComponents = [
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
+    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
+]
+
 function CatMainPetscreen (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -63,6 +70,9 @@ function CatMainPetscreen (){
                                     : false
                                 : false;
 
+    const catMenuOptions = ["tuna", "chicken", "salmon"];
+    const catGameOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!! 
+
 
 
     useEffect(() => {
@@ -93,6 +103,7 @@ function CatMainPetscreen (){
 
             {catOpenFeedingFlag &&
             <FeedingStation
+                menuOptions={catMenuOptions}
                 desiredOption = {catChosenFeedingOption}
                 setDesiredOption = {setCatChosenFeedingOption}
                 setOpenFeedingFlag = {setCatOpenFeedingFlag}
@@ -100,6 +111,8 @@ function CatMainPetscreen (){
 
             {catOpenPlayingFlag &&
             <PlayingStation
+                gameOptions={catGameOptions}
+                gameComponents={catGameComponents}
                 desiredOption = {catChosenPlayingOption}
                 setDesiredOption = {setCatChosenPlayingOption}
                 setOpenPlayingFlag = {setCatOpenPlayingFlag}
