@@ -39,6 +39,20 @@ export const initiatePlaying = (isRestless, setChosenPlayingOption, setOpenPlayi
 }
 
 
+export const judgeSelection = (chosenOption, desiredOption, newNumber, setNumberTillDone, setSelection) => {
+
+    if (chosenOption !== desiredOption) {
+
+        setNumberTillDone(newNumber);
+
+    } 
+
+    setSelection(chosenOption);
+
+}
+
+
+
 export const manageHealth = (setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setOpenFlag) => {
 
     CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, selection);

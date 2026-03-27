@@ -11,7 +11,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, fishHealthCap, fishTimeLimits, healthKey, medicineKey, medicineDoseTimeGap, menuOptions, fishSpecies, cleaningOptions } from "../../../../constants/Constants.js";
 import { initiateFeeding, initiateCleaning } from "../../helpers/Helpers.js";
 
 
@@ -21,34 +21,6 @@ function FishMainPetscreen (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const alive = ActivePetName !== "" ? 
-                PetList[ActivePetName][healthKey] > 0 ? true
-                : false
-            : false;
-
-    const now = Date.now();
-    const hungry = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= fishTimeLimits[feedingKey]/2 ? true 
-                        : false
-                    : false;
-    const dirty = ActivePetName !== "" ?  (now - PetTimeStamps[ActivePetName][cleaningKey][0]) >= fishTimeLimits[cleaningKey]/2 ? true 
-                        : false
-                    : false;
-
-    const mood = ActivePetName !== "" ? PetList[ActivePetName][healthKey]/fishHealthCap >= 0.75 ? 0
-                                    : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.5 ? 1
-                                    : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.25 ? 2
-                                    : 3
-                                : -1;
-
-    const [currDate, setCurrDate] = useState(Date.now()); 
-    
-    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                                                    true
-                                                                    : false;
-                                
-    const fishMenu = ["shrimp", "worms", "algae"];
-    const fishTools = ["sponge", "cloth"];
-
     const [activityInProgress, setActivityInProgress] = useState(false);
     const [fishOpenFeedingFlag, setFishOpenFeedingFlag] = useState(false);
     const [fishOpenCleaningFlag, setFishOpenCleaningFlag] = useState(false);
@@ -56,6 +28,40 @@ function FishMainPetscreen (){
     const [fishOpenScheduleFlag, setFishOpenScheduleFlag] = useState(false);
     const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
     const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
+    const [currDate, setCurrDate] = useState(Date.now()); 
+
+    const alive = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey] > 0 ? 
+                        true
+                        : false
+                    : false;
+
+    const hungry = ActivePetName !== "" ?  
+                        (currDate - PetTimeStamps[ActivePetName][feedingKey][0]) >= fishTimeLimits[feedingKey]/2 ? 
+                            true 
+                            : false
+                        : false;
+    const dirty = ActivePetName !== "" ?  
+                        (currDate - PetTimeStamps[ActivePetName][cleaningKey][0]) >= fishTimeLimits[cleaningKey]/2 ? 
+                            true 
+                            : false
+                        : false;
+
+    const mood = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey]/fishHealthCap >= 0.75 ? 
+                        0
+                        : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.5 ? 
+                        1
+                        : PetList[ActivePetName][healthKey]/fishHealthCap >= 0.25 ? 
+                        2
+                        : 3
+                    : -1;
+    
+    const canReceiveDose = ActivePetName !== "" ? 
+                                currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                    true
+                                    : false
+                                : false;
 
 
 
@@ -87,7 +93,6 @@ function FishMainPetscreen (){
 
             {fishOpenFeedingFlag &&
             <FeedingStation
-                menuOptions={fishMenu}
                 desiredOption = {fishChosenFeedingOption}
                 setDesiredOption = {setFishChosenFeedingOption}
                 setOpenFeedingFlag = {setFishOpenFeedingFlag}
@@ -95,7 +100,6 @@ function FishMainPetscreen (){
 
             {fishOpenCleaningFlag &&
             <CleaningStation
-                cleaningOptions={fishTools}
                 desiredOption = {fishChosenCleaningOption}
                 setDesiredOption = {setFishChosenCleaningOption}
                 setOpenCleaningFlag = {setFishOpenCleaningFlag}
@@ -120,8 +124,8 @@ function FishMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setFishChosenFeedingOption, setFishOpenFeedingFlag, fishMenu)}> Feed Fish </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setFishChosenCleaningOption, setFishOpenCleaningFlag, fishTools)}> Clean Fish Tank </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setFishChosenFeedingOption, setFishOpenFeedingFlag, menuOptions[fishSpecies])}> Feed Fish </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setFishChosenCleaningOption, setFishOpenCleaningFlag, cleaningOptions[fishSpecies])}> Clean Fish Tank </button>
 
                         {canReceiveDose ? (
 

@@ -6,23 +6,43 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { playingKey, speciesKey } from "../../../../constants/Constants.js";
-import { manageHealth } from "../../helpers/Helpers.js";
+import { catSpecies, dogSpecies, gameOptions, playingKey, speciesKey } from "../../../../constants/Constants.js";
+import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 
 import "./PlayingStation.css";
 
 
-function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenPlayingFlag}){
+function PlayingStation ({desiredOption, setDesiredOption, setOpenPlayingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const totalWinsUntilTired = 10;
 
+    const [totalWinsUntilTired, setTotalWinsUntilTired] = useState(10);
     const [done, setDone] = useState(false);
     const [selection, setSelection] = useState(-1);
     const [numberOfWins, setNumberOfWins] = useState(0);
+
+    const gameComponents = {
+
+        [dogSpecies] : [
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
+        ],
+        [catSpecies] : [
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
+            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
+        ]
+        /*
+        <ComponentA count={count} />,
+        <ComponentB count={count} />,
+        <ComponentC count={count} />
+        */
+    };
+
 
 
     useEffect(() => {
@@ -34,6 +54,7 @@ function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenP
         }
 
     }, [numberOfWins]);
+
 
 
 
@@ -54,18 +75,18 @@ function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenP
                     ) : (
 
                         <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
-                            option: {gameOptions[desiredOption]}
+                            option: {gameOptions[PetList[ActivePetName][speciesKey]][desiredOption]}
                         </h2>
 
                     )}
 
                     <div className= "FeedingWindowSelectionContainer">  
 
-                            {gameOptions.map((game, index) => (
+                        {gameOptions[PetList[ActivePetName][speciesKey]].map((game, index) => (
 
-                                <button key = {index} onClick = {() => setSelection(index)}> {game} </button>
-                                
-                            ))}
+                            <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalWinsUntilTired*2, setTotalWinsUntilTired, setSelection)}> {game} </button>
+                            
+                        ))}
 
                     </div>
 
@@ -82,19 +103,7 @@ function PlayingStation ({gameOptions, desiredOption, setDesiredOption, setOpenP
                             percentageUntilNextUpdate={Math.round((numberOfWins/totalWinsUntilTired) * 100)}
                         />
 
-                        {selection === 0 ? (
-
-                            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>
-
-                        ) : selection ===  1 ? (
-
-                            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>
-
-                        ) : (
-
-                            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
-
-                        )}
+                        {gameComponents[PetList[ActivePetName][speciesKey]][selection]}
 
                     </div>
 

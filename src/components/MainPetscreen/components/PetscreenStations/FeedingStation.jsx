@@ -7,13 +7,13 @@ import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.js
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { feedingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { manageHealth } from "../../helpers/Helpers.js";
+import { feedingKey, menuOptions, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 
 import "./FeedingStation.css";
 
 
-function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenFeedingFlag}){
+function FeedingStation ({desiredOption, setDesiredOption, setOpenFeedingFlag}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -22,8 +22,7 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
     // 10 rows x 8 columns
     const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const totalSecsTillFull = 10;
-
+    const [totalSecsTillFull, setTotalSecsTillFull] = useState(10);
     const [secondsAte, setSecondsAte] = useState(0);
     const [done, setDone] = useState(false);
     const [selection, setSelection] = useState(-1);
@@ -101,15 +100,15 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {menuOptions[desiredOption]}
+                                Option: {menuOptions[PetList[ActivePetName][speciesKey]][desiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {menuOptions.map((option, index) => (
+                            {menuOptions[PetList[ActivePetName][speciesKey]].map((option, index) => (
 
-                                <button key = {index} onClick = {() => setSelection(index)}> {option} </button>
+                                <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalSecsTillFull*2, setTotalSecsTillFull, setSelection)}> {option} </button>
 
                             ))}
 

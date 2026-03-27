@@ -11,7 +11,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap } from "../../../../constants/Constants.js";
+import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, menuOptions, catSpecies, gameOptions } from "../../../../constants/Constants.js";
 import { initiateFeeding, initiatePlaying } from "../../helpers/Helpers.js";
 
 
@@ -21,35 +21,6 @@ function CatMainPetscreen (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-
-    const alive = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey] > 0 ? true
-                    : false
-                : false;
-
-    const now = Date.now();
-    const hungry = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][feedingKey][0]) >= catTimeLimits[feedingKey]/2 ? true 
-                        : false
-                    : false;
-    const restless = ActivePetName !== "" ? (now - PetTimeStamps[ActivePetName][playingKey][0]) >= catTimeLimits[playingKey]/2 ? true 
-                        : false
-                    : false;
-
-    const mood = ActivePetName !== "" ? PetList[ActivePetName][healthKey]/catHealthCap >= 0.75 ? 0
-                                            : PetList[ActivePetName][healthKey]/catHealthCap >= 0.5 ? 1
-                                            : PetList[ActivePetName][healthKey]/catHealthCap >= 0.25 ? 2
-                                            : 3
-                                        : -1;
-
-    const [currDate, setCurrDate] = useState(Date.now()); 
-
-    const canReceiveDose = currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                                                    true
-                                                                    : false;    
-
-    const catMenu = ["tuna", "chicken", "salmon"];
-    const catGames = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
-
     const [activityInProgress, setActivityInProgress] = useState(false);
     const [catOpenFeedingFlag, setCatOpenFeedingFlag] = useState(false);
     const [catOpenPlayingFlag, setCatOpenPlayingFlag] = useState(false);
@@ -57,7 +28,40 @@ function CatMainPetscreen (){
     const [catOpenScheduleFlag, setCatOpenScheduleFlag] = useState(false);
     const [catChosenFeedingOption, setCatChosenFeedingOption] = useState(-1);
     const [catChosenPlayingOption, setCatChosenPlayingOption] = useState(-1);
+    const [currDate, setCurrDate] = useState(Date.now()); 
 
+    const alive = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey] > 0 ? 
+                        true
+                        : false
+                    : false;
+
+    const hungry = ActivePetName !== "" ? 
+                        (currDate - PetTimeStamps[ActivePetName][feedingKey][0]) >= catTimeLimits[feedingKey]/2 ? 
+                            true 
+                            : false
+                        : false;
+    const restless = ActivePetName !== "" ? 
+                        (currDate - PetTimeStamps[ActivePetName][playingKey][0]) >= catTimeLimits[playingKey]/2 ? 
+                            true 
+                            : false
+                        : false;
+
+    const mood = ActivePetName !== "" ? 
+                    PetList[ActivePetName][healthKey]/catHealthCap >= 0.75 ? 
+                        0
+                        : PetList[ActivePetName][healthKey]/catHealthCap >= 0.5 ? 
+                        1
+                        : PetList[ActivePetName][healthKey]/catHealthCap >= 0.25 ? 
+                        2
+                        : 3
+                    : -1;
+
+    const canReceiveDose = ActivePetName !== "" ? 
+                                currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                    true
+                                    : false
+                                : false;
 
 
 
@@ -89,7 +93,6 @@ function CatMainPetscreen (){
 
             {catOpenFeedingFlag &&
             <FeedingStation
-                menuOptions={catMenu}
                 desiredOption = {catChosenFeedingOption}
                 setDesiredOption = {setCatChosenFeedingOption}
                 setOpenFeedingFlag = {setCatOpenFeedingFlag}
@@ -97,7 +100,6 @@ function CatMainPetscreen (){
 
             {catOpenPlayingFlag &&
             <PlayingStation
-                gameOptions = {catGames}
                 desiredOption = {catChosenPlayingOption}
                 setDesiredOption = {setCatChosenPlayingOption}
                 setOpenPlayingFlag = {setCatOpenPlayingFlag}
@@ -122,8 +124,8 @@ function CatMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setCatChosenFeedingOption, setCatOpenFeedingFlag, catMenu)}> Feed Cat </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setCatChosenPlayingOption, setCatOpenPlayingFlag, catGames)}> Play With Cat </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setCatChosenFeedingOption, setCatOpenFeedingFlag, menuOptions[catSpecies])}> Feed Cat </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setCatChosenPlayingOption, setCatOpenPlayingFlag, gameOptions[catSpecies])}> Play With Cat </button>
 
                         {canReceiveDose ? (
 
