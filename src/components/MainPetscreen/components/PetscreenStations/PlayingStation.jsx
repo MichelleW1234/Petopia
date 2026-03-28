@@ -14,33 +14,33 @@ import "./PlayingStation.css";
 
 
 
-function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesiredOption, setOpenPlayingFlag}){
+function PlayingStation ({playingOptions, playingComponents, playingDesiredOption, setPlayingDesiredOption, setPlayingOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [totalWinsUntilTired, setTotalWinsUntilTired] = useState(10);
-    const [done, setDone] = useState(false);
-    const [selection, setSelection] = useState(-1);
-    const [numberOfWins, setNumberOfWins] = useState(0);
+    const [playingTotal, setPlayingTotal] = useState(10);
+    const [playingDone, setPlayingDone] = useState(false);
+    const [playingSelection, setPlayingSelection] = useState(-1);
+    const [playingCurrNumber, setPlayingCurrNumber] = useState(0);
 
-    const selectedGameWindow = selection !== -1 ? 
-                                    gameComponents[selection]
-                                    : null;
+    const playingSelectedGameWindow = playingSelection !== -1 ? 
+                                        playingComponents[playingSelection]
+                                        : null;
 
 
 
     useEffect(() => {
 
-        if (numberOfWins >= totalWinsUntilTired){
+        if (playingCurrNumber >= playingTotal){
 
-            setDone(true);
+            setPlayingDone(true);
 
         }
 
-    }, [numberOfWins]);
+    }, [playingCurrNumber]);
 
 
 
@@ -49,11 +49,11 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
         
         <div className = "FloatingFlagBackground">
 
-            {selection === -1 ? (
+            {playingSelection === -1 ? (
 
                 <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
-                    {desiredOption === -1 ? (
+                    {playingDesiredOption === -1 ? (
 
                         <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
                             Option: Not restless
@@ -62,16 +62,16 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
                     ) : (
 
                         <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
-                            option: {gameOptions[desiredOption]}
+                            option: {playingOptions[playingDesiredOption]}
                         </h2>
 
                     )}
 
                     <div className= "FeedingWindowSelectionContainer">  
 
-                        {gameOptions.map((game, index) => (
+                        {playingOptions.map((game, index) => (
 
-                            <button key = {index} onClick = {() => judgeSelection(index, desiredOption, totalWinsUntilTired*2, setTotalWinsUntilTired, setSelection)}> {game} </button>
+                            <button key = {index} onClick = {() => judgeSelection(index, playingDesiredOption, playingTotal*2, setPlayingTotal, setPlayingSelection)}> {game} </button>
                             
                         ))}
 
@@ -82,22 +82,22 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
 
             ) : (
 
-                !done ? (
+                !playingDone ? (
 
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.round((numberOfWins/totalWinsUntilTired) * 100)}
+                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((playingCurrNumber/playingTotal) * 100)))}
                         />
 
-                        {selectedGameWindow !== null ? (
+                        {playingSelectedGameWindow !== null ? (
 
-                            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> {selectedGameWindow} </button>
+                            <button onClick = {() => setPlayingCurrNumber(prev => prev + 1)}> {playingSelectedGameWindow} </button>
                             /*
-                            <selectedGameWindow
-                                setDone = {setDone}
-                                numberOfWins = {numberOfWins}
-                                setNumberOfWins = {setNumberOfWins}
+                            <playingSelectedGameWindow
+                                setPlayingDone = {setPlayingDone}
+                                playingCurrNumber = {playingCurrNumber}
+                                setPlayingCurrNumber = {setPlayingCurrNumber}
                             />
                             */
 
@@ -114,7 +114,7 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.round((numberOfWins/totalWinsUntilTired) * 100)}
+                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((playingCurrNumber/playingTotal) * 100)))}
                         />
 
                         <h2>Finished!!!!</h2>
@@ -125,13 +125,13 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
 
             )}
            
-            {selection === -1 || !done ? (
+            {playingSelection === -1 || !playingDone ? (
 
-                <button className = "GeneralNavButton" onClick = {() => setOpenPlayingFlag(false)}>Quit</button>
+                <button className = "GeneralNavButton" onClick = {() => setPlayingOpenFlag(false)}>Quit</button>
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, desiredOption, setDesiredOption, selection, setOpenPlayingFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playingDesiredOption, setPlayingDesiredOption, playingSelection, setPlayingOpenFlag)}>Done</button>
 
             )}
 

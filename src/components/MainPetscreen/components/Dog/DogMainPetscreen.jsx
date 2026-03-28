@@ -115,11 +115,11 @@ function DogMainPetscreen (){
 
             {dogOpenPlayingFlag &&
             <PlayingStation
-                gameOptions={dogGameOptions}
-                gameComponents={dogGameComponents}
-                desiredOption = {dogChosenPlayingOption}
-                setDesiredOption = {setDogChosenPlayingOption}
-                setOpenPlayingFlag = {setDogOpenPlayingFlag}
+                playingOptions={dogGameOptions}
+                playingComponents={dogGameComponents}
+                playingDesiredOption = {dogChosenPlayingOption}
+                setPlayingDesiredOption = {setDogChosenPlayingOption}
+                setPlayingOpenFlag = {setDogOpenPlayingFlag}
             />}
 
             {dogOpenMedicineFlag &&

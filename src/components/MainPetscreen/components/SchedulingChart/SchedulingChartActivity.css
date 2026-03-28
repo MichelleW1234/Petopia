@@ -1,3 +1,15 @@
+.SchedulingChartActivityContainer{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+}
+
+
 .SchedulingChartProgressBar {
 
   display: flex;
@@ -16,7 +28,7 @@
 }
 
 
-.SchedulingChartProgressCellDoneClose {
+.SchedulingChartProgressCellHalfway {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -24,7 +36,7 @@
 
 }
 
-.SchedulingChartProgressCellDoneNotClose {
+.SchedulingChartProgressCellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -37,26 +49,5 @@
   height: 0.75rem;
   width: 0.3rem;
   background-color: rgba(108, 108, 108, 0.439);
-
-}
-
-.SchedulingChartProgressCellLimitedReached {
-
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgb(166, 0, 0);
-
-}
-
-
-
-.SchedulingChartActivityContainer{
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 2rem;
 
 }

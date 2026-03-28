@@ -100,11 +100,11 @@ function CatMainPetscreen (){
 
             {catOpenPlayingFlag &&
             <PlayingStation
-                gameOptions={catGameOptions}
-                gameComponents={catGameComponents}
-                desiredOption = {catChosenPlayingOption}
-                setDesiredOption = {setCatChosenPlayingOption}
-                setOpenPlayingFlag = {setCatOpenPlayingFlag}
+                playingOptions={catGameOptions}
+                playingComponents={catGameComponents}
+                playingDesiredOption = {catChosenPlayingOption}
+                setPlayingDesiredOption = {setCatChosenPlayingOption}
+                setPlayingOpenFlag = {setCatOpenPlayingFlag}
             />}
 
             {catOpenMedicineFlag &&

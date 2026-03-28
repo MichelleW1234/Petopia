@@ -61,13 +61,8 @@ function SchedulingChartActivity({activityKey, timeGap}) {
     const percentageUntilNextUpdate = activityKey === medicineKey ?  
                                             PetList[ActivePetName][activityKey] === 0 ? 
                                                 100
-                                            : deadLine > currDate ? 
-                                                Math.round(((currDate -  PetList[ActivePetName][activityKey])/timeGap) * 100)
-                                            : 100
-                                        :
-                                            deadLine > currDate ? 
-                                                Math.round(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)
-                                            : 100;
+                                            : Math.min(100, Math.max(0, Math.round(((currDate - PetList[ActivePetName][activityKey])/timeGap) * 100)))
+                                        : Math.min(100, Math.max(0, Math.round(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)));
 
     const lastStrings = {
 
@@ -121,30 +116,18 @@ function SchedulingChartActivity({activityKey, timeGap}) {
                     
                 </div>
 
-            ) : percentageUntilNextUpdate === 100 ? (
-
-                <div className = "SchedulingChartProgressBar">
-
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                        <div key = {num} className = "SchedulingChartProgressCellLimitedReached"></div>
-
-                    ))}
-                    
-                </div>
-
             ) : (
 
                 <div className = "SchedulingChartProgressBar">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = {num <= percentageUntilNextUpdate ? 
-                                                        percentageUntilNextUpdate <= 50 ?
-                                                            "SchedulingChartProgressCellDoneNotClose"
-                                                            : "SchedulingChartProgressCellDoneClose"
-                                                        : "SchedulingChartProgressCellLeft"
-                                                    }>           
+                        <div key = {num} className = {num === 50 ?
+                                                        "SchedulingChartProgressCellHalfway"
+                                                        : num <= percentageUntilNextUpdate ? 
+                                                            "SchedulingChartProgressCellDone"
+                                                            : "SchedulingChartProgressCellLeft"
+                                                        }>
                         </div>
 
                     ))}
