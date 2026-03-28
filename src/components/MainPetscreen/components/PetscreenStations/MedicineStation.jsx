@@ -2,18 +2,19 @@ import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
 
+import {useGlobalTimer} from "../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../providers/ActivePetNameProvider.jsx";;
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../constants/MainPetImages.js";
-import { healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { healPet } from "../../../../helpers/Helpers.js";
+import { healthCapList, healthKey, medicineKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./MedicineStation.css";
 
 
-function MedicineStation ({healthcap, setOpenMedicineFlag}){
+function MedicineStation ({setOpenMedicineFlag}){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
@@ -36,11 +37,9 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
         secondsDosedRef.current = secondsDosed;
     }, [secondsDosed]);
 
-
     useEffect(() => {
         animationImageRef.current = animationImage;
     }, [animationImage]);
-
 
     useEffect(() => {
 
@@ -59,7 +58,6 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
         return () => clearInterval(interval);
 
     }, [doseInitiated, done]);
-
 
     useEffect(() => {
 
@@ -84,7 +82,43 @@ function MedicineStation ({healthcap, setOpenMedicineFlag}){
 
     const manageMedicineEffectiveness = () => {
 
-        healPet(setPetList, ActivePetName, healthcap);
+        const currDate = GlobalTimer;
+        const currentHour = new Date(currDate).getHours();
+        
+        if (currentHour <= 6 || currentHour >= 20){
+    
+            setPetList(prev => ({
+    
+                ...prev,
+                
+                [ActivePetName]: {
+    
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 4, healthCapList[prev[ActivePetName][speciesKey]]),
+                    [medicineKey]: currDate
+    
+                }
+    
+            })); 
+    
+        } else {
+    
+            setPetList(prev => ({
+    
+                ...prev,
+    
+                [ActivePetName]: {
+    
+                    ...prev[ActivePetName],
+                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 2, healthCapList[prev[ActivePetName][speciesKey]]),
+                    [medicineKey]: currDate
+    
+                }
+    
+            })); 
+    
+        }
+    
         setOpenMedicineFlag(false);
 
     }

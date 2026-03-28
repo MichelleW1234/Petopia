@@ -1,4 +1,4 @@
-import { CheckPetHealth } from "../../../helpers/Helpers";
+import { cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
 
 export const initiateFeeding = (isHungry, setChosenFeedingOption, setOpenFeedingFlag, menuList) => {
 
@@ -53,11 +53,63 @@ export const judgeSelection = (chosenOption, desiredOption, newNumber, setNumber
 
 
 
-export const manageHealth = (setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setOpenFlag) => {
+export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setOpenFlag) => {
 
-    CheckPetHealth(setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, selection);
+    if (desiredOption === -1){
+    //Too much (unwilling)
+
+        const damageAmounts = {
+
+            [feedingKey] : 3,
+            [cleaningKey] : 1,
+            [playingKey] : 2
+
+        }
+
+        setPetList(prev => ({
+
+            ...prev,
+
+            [ActivePetName]: {
+
+                ...prev[ActivePetName],
+                [healthKey]: Math.max(prev[ActivePetName][healthKey] - damageAmounts[key], 0)
+            }
+
+        }));
+
+    } else if (desiredOption !== selection && desiredOption !== -1){
+    // not desired option (willing)
+
+        setPetList(prev => ({
+
+            ...prev,
+
+            [ActivePetName]: {
+
+                ...prev[ActivePetName],
+                [healthKey]: Math.max(prev[ActivePetName][healthKey] - 1, 0)
+            }
+
+        }));
+
+    }
+
+    setPetTimeStamps(prev => ({
+
+        ...prev,
+
+        [ActivePetName]: {
+            
+            ...prev[ActivePetName],
+            [key]: [GlobalTimer, prev[ActivePetName][key][1]]
+            
+        }
+
+    }));
 
     setDesiredOption(-1);
     setOpenFlag(false);
 
 }
+

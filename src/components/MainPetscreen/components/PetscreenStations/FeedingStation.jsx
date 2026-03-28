@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
@@ -13,8 +14,10 @@ import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 import "./FeedingStation.css";
 
 
+
 function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenFeedingFlag}){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
@@ -170,7 +173,7 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, setDesiredOption, selection, setOpenFeedingFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, feedingKey, desiredOption, setDesiredOption, selection, setOpenFeedingFlag)}>Done</button>
 
             )}
 

@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -11,11 +10,10 @@ import "./SchedulingChartActivity.css";
 
 function SchedulingChartActivity({activityKey, timeGap}) {
 
+    const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
-
-    const [currDate, setCurrDate] = useState(Date.now());
 
 
     const deadLine = activityKey === medicineKey ? 
@@ -59,6 +57,7 @@ function SchedulingChartActivity({activityKey, timeGap}) {
                                         minute: "2-digit",
                                     });
 
+    const currDate = GlobalTimer;
     const percentageUntilNextUpdate = activityKey === medicineKey ?  
                                             PetList[ActivePetName][activityKey] === 0 ? 
                                                 100
@@ -87,17 +86,6 @@ function SchedulingChartActivity({activityKey, timeGap}) {
         [medicineKey]: "Next Dose Available: "
 
     }
-
-    useEffect(() => {
-
-        const interval = setInterval(() => {
-            setCurrDate(Date.now());
-        }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, []);
-
 
 
     return (

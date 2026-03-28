@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 
 import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -12,8 +13,10 @@ import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
 import "./PlayingStation.css";
 
 
+
 function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesiredOption, setOpenPlayingFlag}){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
@@ -89,7 +92,7 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
 
                         {selectedGameWindow !== null ? (
 
-                            selectedGameWindow
+                            <button onClick = {() => setNumberOfWins(prev => prev + 1)}> {selectedGameWindow} </button>
                             /*
                             <selectedGameWindow
                                 setDone = {setDone}
@@ -128,7 +131,7 @@ function PlayingStation ({gameOptions, gameComponents, desiredOption, setDesired
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, playingKey, desiredOption, setDesiredOption, selection, setOpenPlayingFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, desiredOption, setDesiredOption, selection, setOpenPlayingFlag)}>Done</button>
 
             )}
 

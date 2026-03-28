@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
@@ -10,8 +11,10 @@ import { petImages } from "../../../constants/HomePetImages.js";
 import "./PetConfirmationscreen.css";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
+
 function PetConfirmationscreen () {
 
+    const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {FinalPetSelection, setFinalPetSelection} = useFinalPetSelection();
@@ -72,7 +75,7 @@ function PetConfirmationscreen () {
 
     const adoptPet = (finalPetName) => {
 
-        const startingTime = Date.now();
+        const startingTime = GlobalTimer;
 
         if (FinalPetSelection === 0){
 

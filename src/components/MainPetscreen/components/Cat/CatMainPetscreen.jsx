@@ -7,23 +7,22 @@ import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { catHealthCap, catTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, menuOptions, catSpecies, gameOptions } from "../../../../constants/Constants.js";
+import {feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
 import { initiateFeeding, initiatePlaying } from "../../helpers/Helpers.js";
 
 
+
 // CHANGE THIS LATER!!!!!!!!!
-const catGameComponents = [
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
-]
+//const catGameComponents = ["button 1", "button 2", "button 3"]
 
 function CatMainPetscreen (){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -35,7 +34,6 @@ function CatMainPetscreen (){
     const [catOpenScheduleFlag, setCatOpenScheduleFlag] = useState(false);
     const [catChosenFeedingOption, setCatChosenFeedingOption] = useState(-1);
     const [catChosenPlayingOption, setCatChosenPlayingOption] = useState(-1);
-    const [currDate, setCurrDate] = useState(Date.now()); 
 
     const alive = ActivePetName !== "" ? 
                     PetList[ActivePetName][healthKey] > 0 ? 
@@ -44,46 +42,37 @@ function CatMainPetscreen (){
                     : false;
 
     const hungry = ActivePetName !== "" ? 
-                        (currDate - PetTimeStamps[ActivePetName][feedingKey][0]) >= catTimeLimits[feedingKey]/2 ? 
+                        (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
                             true 
                             : false
                         : false;
     const restless = ActivePetName !== "" ? 
-                        (currDate - PetTimeStamps[ActivePetName][playingKey][0]) >= catTimeLimits[playingKey]/2 ? 
+                        (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[catSpecies][playingKey]/2 ? 
                             true 
                             : false
                         : false;
 
     const mood = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey]/catHealthCap >= 0.75 ? 
+                    PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.75 ? 
                         0
-                        : PetList[ActivePetName][healthKey]/catHealthCap >= 0.5 ? 
+                        : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.5 ? 
                         1
-                        : PetList[ActivePetName][healthKey]/catHealthCap >= 0.25 ? 
+                        : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.25 ? 
                         2
                         : 3
                     : -1;
 
     const canReceiveDose = ActivePetName !== "" ? 
-                                currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
                                     true
                                     : false
                                 : false;
 
     const catMenuOptions = ["tuna", "chicken", "salmon"];
     const catGameOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!! 
+    const catGameComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
 
 
-
-    useEffect(() => {
-
-        const interval = setInterval(() => {
-            setCurrDate(Date.now());
-        }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, []);
 
 
     useEffect(() => {
@@ -120,13 +109,11 @@ function CatMainPetscreen (){
 
             {catOpenMedicineFlag &&
             <MedicineStation
-                healthcap = {catHealthCap}
                 setOpenMedicineFlag = {setCatOpenMedicineFlag}
             />}
 
             {catOpenScheduleFlag &&
             <SchedulingChart
-                timeLimits={catTimeLimits}
                 setOpenScheduleFlag={setCatOpenScheduleFlag}
             />}
 
@@ -137,8 +124,8 @@ function CatMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setCatChosenFeedingOption, setCatOpenFeedingFlag, menuOptions[catSpecies])}> Feed Cat </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setCatChosenPlayingOption, setCatOpenPlayingFlag, gameOptions[catSpecies])}> Play With Cat </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setCatChosenFeedingOption, setCatOpenFeedingFlag, catMenuOptions)}> Feed Cat </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setCatChosenPlayingOption, setCatOpenPlayingFlag, catGameOptions)}> Play With Cat </button>
 
                         {canReceiveDose ? (
 

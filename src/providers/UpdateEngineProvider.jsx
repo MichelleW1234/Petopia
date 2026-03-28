@@ -1,19 +1,22 @@
-import {useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
+
+import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import { dogTimeLimits, catTimeLimits, fishTimeLimits, healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies} from "../constants/Constants.js";
+import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList} from "../constants/Constants.js";
 
 
-export function PetEngineProvider({ children }) {
+export function UpdateEngineProvider({ children }) {
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
-
-    const millisInOneMinute = 60000; 
+    const { GlobalTimer } = useGlobalTimer();
 
     const PetTimeStampsRef = useRef(PetTimeStamps);
     const PetListRef = useRef(PetList);
+
+
 
     useEffect(() => {
         PetTimeStampsRef.current = PetTimeStamps;
@@ -25,75 +28,73 @@ export function PetEngineProvider({ children }) {
 
     useEffect(() => {
 
-        const runPetChecks = () => {
+        const currDate = GlobalTimer;
+        allPetChecks(currDate);
 
-            console.log("checking");
+    }, [Math.floor(GlobalTimer / 60000)]);
 
-            const updatedPetTimeStamps = structuredClone(PetTimeStampsRef.current);
-            const updatedPetList = structuredClone(PetListRef.current);
-            
-            // Loop for updating pet health:
-            for (const curPetKey in updatedPetTimeStamps){
 
-                // Checking for if pet is alive (not already dead and waiting to be cleared):
-                if (updatedPetList[curPetKey][healthKey] > 0) {
 
-                    const healthAffected = damageCheck(updatedPetTimeStamps[curPetKey]);
-                    updatedPetList[curPetKey][healthKey] = Math.max(updatedPetList[curPetKey][healthKey] - healthAffected, 0);
 
-                }
+    const allPetChecks = (currDate) => {
 
-            };
+        console.log("checking");
 
-            // Loop for updating pet stage:
-            for (const curPetKey in updatedPetList){
+        const updatedPetTimeStamps = structuredClone(PetTimeStampsRef.current);
+        const updatedPetList = structuredClone(PetListRef.current);
+        
+        // Loop for updating pet health:
+        for (const curPetKey in updatedPetTimeStamps){
 
-                // Check pet growth stage if pet is still alive after health update:
-                if (updatedPetList[curPetKey][healthKey] > 0){
+            // Checking for if pet is alive (not already dead and waiting to be cleared):
+            if (updatedPetList[curPetKey][healthKey] > 0) {
 
-                    const currentStage = petAgeCheck(updatedPetList[curPetKey]);
+                const healthAffected = damageCheck(currDate, updatedPetTimeStamps[curPetKey]);
+                updatedPetList[curPetKey][healthKey] = Math.max(updatedPetList[curPetKey][healthKey] - healthAffected, 0);
 
-                    if (currentStage !== updatedPetList[curPetKey][stageKey]){
+            }
 
-                        updatedPetList[curPetKey][stageKey] = currentStage;                             
+        };
 
-                    }
+        // Loop for updating pet stage:
+        for (const curPetKey in updatedPetList){
+
+            // Check pet growth stage if pet is still alive after health update:
+            if (updatedPetList[curPetKey][healthKey] > 0){
+
+                const currentStage = petAgeCheck(currDate, updatedPetList[curPetKey]);
+
+                if (currentStage !== updatedPetList[curPetKey][stageKey]){
+
+                    updatedPetList[curPetKey][stageKey] = currentStage;                             
 
                 }
 
             }
-    
-            setPetTimeStamps(updatedPetTimeStamps);
-            setPetList(updatedPetList);
 
-        };
+        }
 
-        runPetChecks();
+        setPetTimeStamps(updatedPetTimeStamps);
+        setPetList(updatedPetList);
 
-        const interval = setInterval(runPetChecks, millisInOneMinute);
-
-        return () => clearInterval(interval);
-
-    }, []);
+    };
 
 
-
-
-    const damageCheck = (currPetTimeStamps) => {
+    const damageCheck = (currDate, currPetTimeStamps) => {
 
         let petTimeLimits = {};
 
         if (feedingKey in currPetTimeStamps && cleaningKey in currPetTimeStamps && playingKey in currPetTimeStamps){
 
-            petTimeLimits = dogTimeLimits;
+            petTimeLimits = timeLimitList[dogSpecies];
 
         } else if (playingKey in currPetTimeStamps){
 
-            petTimeLimits = catTimeLimits;
+            petTimeLimits = timeLimitList[catSpecies];
 
         } else if (cleaningKey in currPetTimeStamps){
 
-            petTimeLimits = fishTimeLimits;
+            petTimeLimits = timeLimitList[fishSpecies];
         
         }
 
@@ -111,7 +112,7 @@ export function PetEngineProvider({ children }) {
             // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another damage update:
             let subtrahend = Math.max(currPetTimeStamps[curActivityKey][0], currPetTimeStamps[curActivityKey][1]); 
 
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(subtrahend, petTimeLimits[curActivityKey], damage[curActivityKey]);
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], damage[curActivityKey]);
             currPetTimeStamps[curActivityKey][1] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
@@ -122,13 +123,13 @@ export function PetEngineProvider({ children }) {
     }
 
 
-    const calculatingNewTimes = (subtrahend, limit, damage) => {
+    const calculatingNewTimes = (currDate, subtrahend, limit, damage) => {
 
         let addedHealthDamage = 0;
         let intervalsPassed = 0;
         let newPetTimeStamp = subtrahend;
 
-        intervalsPassed = Math.floor((Date.now() - subtrahend) / limit);
+        intervalsPassed = Math.floor((currDate - subtrahend) / limit);
         // Calculating the number of times the limit has been passed since last check
 
         if (intervalsPassed > 0){
@@ -146,9 +147,9 @@ export function PetEngineProvider({ children }) {
     }
 
 
-    const petAgeCheck = (pet) => {
+    const petAgeCheck = (currDate, pet) => {
 
-        const difference = Date.now() - pet[birthDateKey];
+        const difference = currDate - pet[birthDateKey];
 
         if(pet[speciesKey] === dogSpecies){
         // Grows every 5 days
@@ -204,7 +205,6 @@ export function PetEngineProvider({ children }) {
         }
 
     }
-
 
     return children;
 

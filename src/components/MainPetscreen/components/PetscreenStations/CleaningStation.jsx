@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../providers/ActivePetNameProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
@@ -16,6 +17,7 @@ import "./CleaningStation.css";
 
 function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, setOpenCleaningFlag}){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
@@ -158,7 +160,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, set
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, setDesiredOption, selection, setOpenCleaningFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, desiredOption, setDesiredOption, selection, setOpenCleaningFlag)}>Done</button>
 
             )}
 

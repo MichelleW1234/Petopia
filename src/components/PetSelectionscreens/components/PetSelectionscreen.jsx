@@ -3,7 +3,7 @@ import {useState} from "react";
 
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
-import {dogHealthCap, catHealthCap, fishHealthCap, catSpecies, dogSpecies, fishSpecies} from "../../../constants/Constants.js";
+import {catSpecies, dogSpecies, fishSpecies, healthCapList} from "../../../constants/Constants.js";
 
 import "./PetSelectionscreen.css";
 
@@ -11,7 +11,7 @@ function PetSelectionscreen () {
 
     const {finalPetSelection, setFinalPetSelection} = useFinalPetSelection();
 
-    const speciesInfo = [[dogSpecies, dogHealthCap], [catSpecies, catHealthCap], [fishSpecies, fishHealthCap]];
+    const speciesList = [dogSpecies, catSpecies, fishSpecies];
 
     const [selectedPet, setSelectedPet] = useState(-1);
 
@@ -31,20 +31,20 @@ function PetSelectionscreen () {
             <h2 className="header"> Select a new Pet: </h2>
 
             <div className = "HomePetSelectorContainer">
-                {speciesInfo.map((pet, index) => (
+                {speciesList.map((species, index) => (
 
                     index === selectedPet ? (
 
                         <div className = "HomePetSelectorBoxActive" key = {index}> 
-                            <p>Species: {pet[0]}</p>
-                            <p>Vitality: {pet[1]}</p>
+                            <p>Species: {species}</p>
+                            <p>Vitality: {healthCapList[species]}</p>
                         </div>
 
                     ) : (
 
                         <button className = "HomePetSelectorBox" key = {index} onClick = {() => setSelectedPet(index)}> 
-                            <p>Species: {pet[0]}</p>
-                            <p>Vitality: {pet[1]}</p>
+                            <p>Species: {species}</p>
+                            <p>Vitality: {healthCapList[species]}</p>
                         </button>
 
                     )

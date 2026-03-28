@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import HomescreenClearPetsFlag from "./HomescreenComponents/HomescreenClearPetsFlag copy.jsx";
+import HomescreenClearPetsFlag from "./HomescreenComponents/HomescreenClearPetsFlag.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";

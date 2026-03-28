@@ -8,23 +8,21 @@ import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
 import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
 import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, dogHealthCap, dogTimeLimits, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, menuOptions, dogSpecies, cleaningOptions, gameOptions } from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
 import { initiateFeeding, initiateCleaning, initiatePlaying } from "../../helpers/Helpers.js";
 
 
 // CHANGE THIS LATER!!!!!!!!!
-const dogGameComponents = [
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 1 </button>,
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 2 </button>,
-    <button onClick = {() => setNumberOfWins(prev => prev + 1)}> Placeholder Button 3 </button>
-]
+//const dogGameComponents = ["button 1", "button 2", "button 3"]
 
 function DogMainPetscreen (){
 
+    const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -38,7 +36,6 @@ function DogMainPetscreen (){
     const [dogChosenFeedingOption, setDogChosenFeedingOption] = useState(-1);
     const [dogChosenCleaningOption, setDogChosenCleaningOption] = useState(-1);
     const [dogChosenPlayingOption, setDogChosenPlayingOption] = useState(-1);
-    const [currDate, setCurrDate] = useState(Date.now()); 
 
     const alive = ActivePetName !== "" ? 
                     PetList[ActivePetName][healthKey] > 0 ? 
@@ -47,33 +44,33 @@ function DogMainPetscreen (){
                     : false;
     
     const hungry = ActivePetName !== "" ? 
-                        (currDate - PetTimeStamps[ActivePetName][feedingKey][0]) >= dogTimeLimits[feedingKey]/2 ? 
+                        (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
                             true 
                             : false
                         : false;
     const dirty = ActivePetName !== "" ? 
-                        (currDate - PetTimeStamps[ActivePetName][cleaningKey][0]) >= dogTimeLimits[cleaningKey]/2 ? 
+                        (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
                             true
                             : false
                         : false;
     const restless = ActivePetName !== "" ? 
-                        (currDate - PetTimeStamps[ActivePetName][playingKey][0]) >= dogTimeLimits[playingKey]/2 ? 
+                        (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
                             true 
                             : false
                         : false;
 
     const mood = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey]/dogHealthCap >= 0.75 ? 
+                    PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.75 ? 
                         0
-                        : PetList[ActivePetName][healthKey]/dogHealthCap >= 0.5 ? 
+                        : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.5 ? 
                         1
-                        : PetList[ActivePetName][healthKey]/dogHealthCap >= 0.25 ? 
+                        : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.25 ? 
                         2
                         : 3
                     : -1;
 
     const canReceiveDose = ActivePetName !== "" ? 
-                                currDate - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
                                     true
                                     : false
                                 : false;
@@ -81,18 +78,8 @@ function DogMainPetscreen (){
     const dogMenuOptions = ["beef", "Turkey", "lamb"];
     const dogCleaningOptions = ["soap", "brush"];
     const dogGameOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
+    const dogGameComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
 
-
-
-    useEffect(() => {
-
-        const interval = setInterval(() => {
-            setCurrDate(Date.now());
-        }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, []);
 
 
     useEffect(() => {
@@ -137,13 +124,11 @@ function DogMainPetscreen (){
 
             {dogOpenMedicineFlag &&
             <MedicineStation
-                healthcap = {dogHealthCap}
                 setOpenMedicineFlag = {setDogOpenMedicineFlag}
             />}
 
             {dogOpenScheduleFlag &&
             <SchedulingChart
-                timeLimits={dogTimeLimits}
                 setOpenScheduleFlag={setDogOpenScheduleFlag}
             />}
 
@@ -154,9 +139,9 @@ function DogMainPetscreen (){
                 {alive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setDogChosenFeedingOption, setDogOpenFeedingFlag, menuOptions[dogSpecies])}> Feed Dog </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setDogChosenCleaningOption, setDogOpenCleaningFlag, cleaningOptions[dogSpecies])}> Bathe Dog </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setDogChosenPlayingOption, setDogOpenPlayingFlag, gameOptions[dogSpecies])}> Play With Dog </button>
+                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setDogChosenFeedingOption, setDogOpenFeedingFlag, dogMenuOptions)}> Feed Dog </button>
+                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setDogChosenCleaningOption, setDogOpenCleaningFlag, dogCleaningOptions)}> Bathe Dog </button>
+                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setDogChosenPlayingOption, setDogOpenPlayingFlag, dogGameOptions)}> Play With Dog </button>
 
                         {canReceiveDose ? (
 
