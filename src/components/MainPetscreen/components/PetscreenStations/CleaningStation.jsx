@@ -107,7 +107,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, set
 
                         <>
                             <ProgressBar
-                                percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((scrubs/totalScrubsTillClean) * 100)))}
+                                percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((scrubs/totalScrubsTillClean) * 100)))}
                             />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
@@ -140,7 +140,7 @@ function CleaningStation ({cleaningOptions, desiredOption, setDesiredOption, set
 
                         <>
                             <ProgressBar
-                                    percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((scrubs/totalScrubsTillClean) * 100)))}
+                                    percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((scrubs/totalScrubsTillClean) * 100)))}
                                 />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  

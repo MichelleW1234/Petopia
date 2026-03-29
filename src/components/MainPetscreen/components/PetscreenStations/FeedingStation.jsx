@@ -122,7 +122,7 @@ function FeedingStation ({menuOptions, desiredOption, setDesiredOption, setOpenF
 
                     <>
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((secondsAte/totalSecsTillFull) * 100)))}
+                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((secondsAte/totalSecsTillFull) * 100)))}
                         />
 
                         {!done ? (

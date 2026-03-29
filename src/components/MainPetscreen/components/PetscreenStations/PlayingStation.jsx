@@ -87,7 +87,7 @@ function PlayingStation ({playingOptions, playingComponents, playingDesiredOptio
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((playingCurrNumber/playingTotal) * 100)))}
+                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
                         />
 
                         {playingSelectedGameWindow !== null ? (
@@ -114,7 +114,7 @@ function PlayingStation ({playingOptions, playingComponents, playingDesiredOptio
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((playingCurrNumber/playingTotal) * 100)))}
+                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
                         />
 
                         <h2>Finished!!!!</h2>

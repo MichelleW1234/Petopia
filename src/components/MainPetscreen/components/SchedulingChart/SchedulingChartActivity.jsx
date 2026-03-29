@@ -61,8 +61,8 @@ function SchedulingChartActivity({activityKey, timeGap}) {
     const percentageUntilNextUpdate = activityKey === medicineKey ?  
                                             PetList[ActivePetName][activityKey] === 0 ? 
                                                 100
-                                            : Math.min(100, Math.max(0, Math.round(((currDate - PetList[ActivePetName][activityKey])/timeGap) * 100)))
-                                        : Math.min(100, Math.max(0, Math.round(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)));
+                                            : Math.min(100, Math.max(0, Math.floor(((currDate - PetList[ActivePetName][activityKey])/timeGap) * 100)))
+                                        : Math.min(100, Math.max(0, Math.floor(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)));
 
     const lastStrings = {
 

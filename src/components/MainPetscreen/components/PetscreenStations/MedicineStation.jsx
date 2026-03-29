@@ -142,7 +142,7 @@ function MedicineStation ({setOpenMedicineFlag}){
                 <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                     <ProgressBar
-                        percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.round((secondsDosed/totalSecsTillDosed) * 100)))}
+                        percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((secondsDosed/totalSecsTillDosed) * 100)))}
                     />
 
                     {!done ? (
