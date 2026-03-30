@@ -29,9 +29,14 @@ function Medicine ({setMedicineOpenFlag}){
 
     const [medicineAnimationImage, setAnimationImage] = useState(0);
 
+    const GlobalTimerRef = useRef(GlobalTimer);
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
+
+    useEffect(() => {
+        GlobalTimerRef.current = GlobalTimer;
+    }, [GlobalTimer]);
 
     useEffect(() => {
         medicineCurrNumberRef.current = medicineCurrNumber;
@@ -48,11 +53,16 @@ function Medicine ({setMedicineOpenFlag}){
         }
 
         const interval = setInterval(() => {
+
             const medicineCurrSeconds = medicineCurrNumberRef.current + 1;
             setMedicineCurrNumber(medicineCurrSeconds);
+
             if (medicineCurrSeconds >= medicineTotal){
+                clearInterval(interval);
                 setMedicineDone(true);
+                manageMedicineEffectiveness();
             }
+
         }, 1000);
 
         return () => clearInterval(interval);
@@ -82,7 +92,7 @@ function Medicine ({setMedicineOpenFlag}){
 
     const manageMedicineEffectiveness = () => {
 
-        const currDate = GlobalTimer;
+        const currDate = GlobalTimerRef.current;
         const currentHour = new Date(currDate).getHours();
         
         if (currentHour <= 6 || currentHour >= 20){
@@ -118,8 +128,6 @@ function Medicine ({setMedicineOpenFlag}){
             })); 
     
         }
-    
-        setMedicineOpenFlag(false);
 
     }
 
@@ -188,7 +196,7 @@ function Medicine ({setMedicineOpenFlag}){
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageMedicineEffectiveness()}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
 
             )}
 

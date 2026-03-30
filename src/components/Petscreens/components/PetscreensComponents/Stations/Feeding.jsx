@@ -31,9 +31,16 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
     const [feedingSelection, setFeedingSelection] = useState(-1);
     const [feedingAnimationImage, setFeedingAnimationImage] = useState(0);
 
+    const GlobalTimerRef = useRef(GlobalTimer);
     const feedingCurrNumberRef = useRef(feedingCurrNumber);
     const feedingAnimationImageRef = useRef(feedingAnimationImage);
 
+
+
+    useEffect(() => {
+        GlobalTimerRef.current = GlobalTimer;
+    }, [GlobalTimer]);
+    
 
     useEffect(() => {
         feedingCurrNumberRef.current = feedingCurrNumber;
@@ -52,11 +59,16 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
         }
 
         const interval = setInterval(() => {
+
             const feedingCurrSeconds = feedingCurrNumberRef.current + 1;
             setFeedingCurrNumber(feedingCurrSeconds);
+
             if (feedingCurrSeconds >= feedingTotal){
+                clearInterval(interval);
                 setFeedingDone(true);
+                manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedingDesiredOption, setFeedingDesiredOption, feedingSelection);
             }
+
         }, 1000);
 
         return () => clearInterval(interval);
@@ -173,7 +185,7 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedingDesiredOption, setFeedingDesiredOption, feedingSelection, setFeedingOpenFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setFeedingOpenFlag(false)}>Done</button>
 
             )}
 

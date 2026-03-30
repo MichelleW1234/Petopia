@@ -43,6 +43,7 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
     useEffect(() => {
         if (cleaningCurrNumber >= cleaningTotal){
             setCleaningDone(true);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleaningDesiredOption, setCleaningDesiredOption, cleaningSelection);
         }
     }, [cleaningCurrNumber]);
 
@@ -160,7 +161,7 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleaningDesiredOption, setCleaningDesiredOption, cleaningSelection, setCleaningOpenFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setCleaningOpenFlag(false)}>Done</button>
 
             )}
 

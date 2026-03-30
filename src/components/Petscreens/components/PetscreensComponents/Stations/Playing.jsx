@@ -37,6 +37,7 @@ function Playing ({playingOptions, playingComponents, playingDesiredOption, setP
         if (playingCurrNumber >= playingTotal){
 
             setPlayingDone(true);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playingDesiredOption, setPlayingDesiredOption, playingSelection);
 
         }
 
@@ -131,7 +132,7 @@ function Playing ({playingOptions, playingComponents, playingDesiredOption, setP
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playingDesiredOption, setPlayingDesiredOption, playingSelection, setPlayingOpenFlag)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setPlayingOpenFlag(false)}>Done</button>
 
             )}
 

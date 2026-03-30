@@ -53,7 +53,7 @@ export const judgeSelection = (chosenOption, desiredOption, newNumber, setNumber
 
 
 
-export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setOpenFlag) => {
+export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection) => {
 
     if (desiredOption === -1){
     //Too much (unwilling)
@@ -109,7 +109,8 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     }));
 
     setDesiredOption(-1);
-    setOpenFlag(false);
+
+    console.log("done!");
 
 }
 
