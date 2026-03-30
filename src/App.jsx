@@ -1,12 +1,12 @@
 import {HashRouter, Routes, Route} from "react-router-dom";
 
-import Homescreen from "./components/Homescreen/components/Homescreen.jsx";
-import PetSelectionscreen from "./components/PetSelectionscreens/components/PetSelectionscreen.jsx";
-import PetConfirmationscreen from "./components/PetSelectionscreens/components/PetConfirmationscreen.jsx";
+import Homescreen from "./components/Homescreen/components/Home.jsx";
+import Selectionscreen from "./components/PetSelectionscreens/components/Selection.jsx";
+import Confirmationscreen from "./components/PetSelectionscreens/components/Confirmation.jsx";
 
-import DogMainPetscreen from "./components/MainPetscreen/components/Dog/DogMainPetscreen.jsx";
-import CatMainPetscreen from "./components/MainPetscreen/components/Cat/CatMainPetscreen.jsx";
-import FishMainPetscreen from "./components/MainPetscreen/components/Fish/FishMainPetscreen.jsx";
+import Dogscreen from "./components/Petscreens/components/Dog.jsx";
+import Catscreen from "./components/Petscreens/components/Cat.jsx";
+import Fishscreen from "./components/Petscreens/components/Fish.jsx";
 
 import NoPage from "./components/NoPage.jsx";
 
@@ -22,12 +22,12 @@ function App() {
           <Route index element={<Homescreen/>}/>
             
           <Route path="/home" element={<Homescreen />}/>
-          <Route path="/select" element={<PetSelectionscreen/>}/>
-          <Route path="/confirm" element={<PetConfirmationscreen/>}/>
+          <Route path="/select" element={<Selectionscreen/>}/>
+          <Route path="/confirm" element={<Confirmationscreen/>}/>
 
-          <Route path="/dogpet" element={<DogMainPetscreen />}/>
-          <Route path="/catpet" element={<CatMainPetscreen />}/>
-          <Route path="/fishpet" element={<FishMainPetscreen />}/>
+          <Route path="/dog" element={<Dogscreen />}/>
+          <Route path="/cat" element={<Catscreen />}/>
+          <Route path="/fish" element={<Fishscreen />}/>
 
           <Route path="*" element={<NoPage />} />
         </Routes>

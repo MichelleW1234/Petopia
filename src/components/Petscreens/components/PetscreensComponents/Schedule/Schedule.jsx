@@ -1,15 +1,15 @@
-import SchedulingChartActivity from "./SchedulingChartActivity.jsx";
+import Activity from "./ScheduleComponents/Activity.jsx";
 
-import { useActivePetName } from "../../../../providers/ActivePetNameProvider.jsx";
-import { usePetList } from "../../../../providers/PetListProvider.jsx";
+import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
+import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
-import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../constants/Constants.js";
+import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../../constants/Constants.js";
 
-import "./SchedulingChart.css";
+import "./Schedule.css";
 
 
 
-function SchedulingChart({setOpenScheduleFlag}) {
+function Schedule({setOpenScheduleFlag}) {
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -21,7 +21,7 @@ function SchedulingChart({setOpenScheduleFlag}) {
                 
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
-                    <SchedulingChartActivity
+                    <Activity
                         key = {key}
                         activityKey = {key}
                         timeGap = {value}
@@ -29,7 +29,7 @@ function SchedulingChart({setOpenScheduleFlag}) {
 
                 ))}
 
-                <SchedulingChartActivity
+                <Activity
                     activityKey = {medicineKey}
                     timeGap = {medicineDoseTimeGap}
                 />
@@ -42,4 +42,4 @@ function SchedulingChart({setOpenScheduleFlag}) {
     )
 }
   
-export default SchedulingChart;
+export default Schedule;

@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import HomeStation from "../PetscreenStations/HomeStation.jsx";
-import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
-import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
-import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
-import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
-import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
+import Main from "./PetscreensComponents/Stations/Main.jsx";
+import Feeding from "./PetscreensComponents/Stations/Feeding.jsx";
+import Cleaning from "./PetscreensComponents/Stations/Cleaning.jsx";
+import Playing from "./PetscreensComponents/Stations/Playing.jsx";
+import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
 
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
-import { initiateFeeding, initiateCleaning, initiatePlaying } from "../../helpers/Helpers.js";
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import { initiateFeeding, initiateCleaning, initiatePlaying } from "../helpers/Helpers.js";
 
 
 // CHANGE THIS LATER!!!!!!!!!
 //const dogGameComponents = ["button 1", "button 2", "button 3"]
 
-function DogMainPetscreen (){
+function Dog (){
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -98,23 +98,23 @@ function DogMainPetscreen (){
         <>
 
             {dogOpenFeedingFlag &&
-            <FeedingStation
-                menuOptions={dogMenuOptions}
-                desiredOption = {dogChosenFeedingOption}
-                setDesiredOption = {setDogChosenFeedingOption}
-                setOpenFeedingFlag = {setDogOpenFeedingFlag}
+            <Feeding
+                feedingOptions={dogMenuOptions}
+                feedingDesiredOption = {dogChosenFeedingOption}
+                setFeedingDesiredOption = {setDogChosenFeedingOption}
+                setFeedingOpenFlag = {setDogOpenFeedingFlag}
             />}
 
             {dogOpenCleaningFlag &&
-            <CleaningStation
+            <Cleaning
                 cleaningOptions={dogCleaningOptions}
-                desiredOption = {dogChosenCleaningOption}
-                setDesiredOption = {setDogChosenCleaningOption}
-                setOpenCleaningFlag = {setDogOpenCleaningFlag}
+                cleaningDesiredOption = {dogChosenCleaningOption}
+                setCleaningDesiredOption = {setDogChosenCleaningOption}
+                setCleaningOpenFlag = {setDogOpenCleaningFlag}
             />}
 
             {dogOpenPlayingFlag &&
-            <PlayingStation
+            <Playing
                 playingOptions={dogGameOptions}
                 playingComponents={dogGameComponents}
                 playingDesiredOption = {dogChosenPlayingOption}
@@ -123,12 +123,12 @@ function DogMainPetscreen (){
             />}
 
             {dogOpenMedicineFlag &&
-            <MedicineStation
-                setOpenMedicineFlag = {setDogOpenMedicineFlag}
+            <Medicine
+                setMedicineOpenFlag = {setDogOpenMedicineFlag}
             />}
 
             {dogOpenScheduleFlag &&
-            <SchedulingChart
+            <Schedule
                 setOpenScheduleFlag={setDogOpenScheduleFlag}
             />}
 
@@ -171,10 +171,10 @@ function DogMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
 
-                <HomeStation
-                    petEnergy = {350}
-                    mood = {mood}
-                    activityInProgress={activityInProgress}
+                <Main
+                    homePetEnergy = {350}
+                    homePetMood = {mood}
+                    homeActivityInProgress={activityInProgress}
                 />
 
             </div>
@@ -185,4 +185,4 @@ function DogMainPetscreen (){
 }
 
 
-export default DogMainPetscreen;
+export default Dog;

@@ -3,9 +3,11 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import "./HomescreenClearPetsFlag.css";
+import "./PetDeletion.css";
 
-function HomescreenClearPetsFlag({setOpenClearPetsFlag}) {
+
+
+function PetDeletion({setOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -89,4 +91,4 @@ function HomescreenClearPetsFlag({setOpenClearPetsFlag}) {
     )
 }
   
-export default HomescreenClearPetsFlag;
+export default PetDeletion;

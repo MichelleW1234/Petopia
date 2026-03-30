@@ -5,9 +5,11 @@ import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx
 
 import {catSpecies, dogSpecies, fishSpecies, healthCapList} from "../../../constants/Constants.js";
 
-import "./PetSelectionscreen.css";
+import "./Selection.css";
 
-function PetSelectionscreen () {
+
+
+function Selection () {
 
     const {finalPetSelection, setFinalPetSelection} = useFinalPetSelection();
 
@@ -71,4 +73,4 @@ function PetSelectionscreen () {
 
 };
 
-export default PetSelectionscreen;
+export default Selection;

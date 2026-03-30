@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import HomescreenClearPetsFlag from "./HomescreenComponents/HomescreenClearPetsFlag.jsx";
+import PetDeletion from "./HomescreenComponents/PetDeletion.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
 import { petImages } from "../../../constants/HomePetImages.js";
-
-import "./Homescreen.css";
 import { healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
+import "./Home.css";
 
 
-function Homescreen (){
+
+function Home (){
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
@@ -48,7 +48,7 @@ function Homescreen (){
         <>
 
             {openClearPetsFlag &&
-            <HomescreenClearPetsFlag
+            <PetDeletion
                 setOpenClearPetsFlag={setOpenClearPetsFlag}
             />}
 
@@ -112,7 +112,7 @@ function Homescreen (){
 
                                 )}
 
-                                <Link to = {`/${PetList[key][speciesKey]}pet`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
+                                <Link to = {`/${PetList[key][speciesKey]}`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
                                 
                             </div>
 
@@ -129,4 +129,4 @@ function Homescreen (){
 }
 
 
-export default Homescreen;
+export default Home;

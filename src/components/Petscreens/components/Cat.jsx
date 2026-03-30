@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import HomeStation from "../PetscreenStations/HomeStation.jsx";
-import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
-import PlayingStation from "../PetscreenStations/PlayingStation.jsx";
-import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
-import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
+import Main from "./PetscreensComponents/Stations/Main.jsx";
+import Feeding from "./PetscreensComponents/Stations/Feeding.jsx";
+import Playing from "./PetscreensComponents/Stations/Playing.jsx";
+import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
 
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import {feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
-import { initiateFeeding, initiatePlaying } from "../../helpers/Helpers.js";
+import {feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import { initiateFeeding, initiatePlaying } from "../helpers/Helpers.js";
 
 
 
 // CHANGE THIS LATER!!!!!!!!!
 //const catGameComponents = ["button 1", "button 2", "button 3"]
 
-function CatMainPetscreen (){
+function Cat (){
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -91,15 +91,15 @@ function CatMainPetscreen (){
         <>
 
             {catOpenFeedingFlag &&
-            <FeedingStation
-                menuOptions={catMenuOptions}
-                desiredOption = {catChosenFeedingOption}
-                setDesiredOption = {setCatChosenFeedingOption}
-                setOpenFeedingFlag = {setCatOpenFeedingFlag}
+            <Feeding
+                feedingOptions={catMenuOptions}
+                feedingDesiredOption = {catChosenFeedingOption}
+                setFeedingDesiredOption = {setCatChosenFeedingOption}
+                setFeedingOpenFlag = {setCatOpenFeedingFlag}
             />}
 
             {catOpenPlayingFlag &&
-            <PlayingStation
+            <Playing
                 playingOptions={catGameOptions}
                 playingComponents={catGameComponents}
                 playingDesiredOption = {catChosenPlayingOption}
@@ -108,12 +108,12 @@ function CatMainPetscreen (){
             />}
 
             {catOpenMedicineFlag &&
-            <MedicineStation
-                setOpenMedicineFlag = {setCatOpenMedicineFlag}
+            <Medicine
+                setMedicineOpenFlag = {setCatOpenMedicineFlag}
             />}
 
             {catOpenScheduleFlag &&
-            <SchedulingChart
+            <Schedule
                 setOpenScheduleFlag={setCatOpenScheduleFlag}
             />}
 
@@ -155,10 +155,10 @@ function CatMainPetscreen (){
             
             <div className = "ScreenContainer">
 
-                <HomeStation
-                    petEnergy = {450}
-                    mood = {mood}
-                    activityInProgress = {activityInProgress}
+                <Main
+                    homePetEnergy = {450}
+                    homePetMood = {mood}
+                    homeActivityInProgress = {activityInProgress}
                 />
     
             </div>
@@ -169,4 +169,4 @@ function CatMainPetscreen (){
 }
 
 
-export default CatMainPetscreen;
+export default Cat;

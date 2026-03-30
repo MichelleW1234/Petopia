@@ -7,12 +7,13 @@ import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
 import { petImages } from "../../../constants/HomePetImages.js";
-
-import "./PetConfirmationscreen.css";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
+import "./Confirmation.css";
 
-function PetConfirmationscreen () {
+
+
+function Confirmation () {
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
@@ -200,4 +201,4 @@ function PetConfirmationscreen () {
 
 };
 
-export default PetConfirmationscreen;
+export default Confirmation;

@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import HomeStation from "../PetscreenStations/HomeStation.jsx";
-import FeedingStation from "../PetscreenStations/FeedingStation.jsx";
-import CleaningStation from "../PetscreenStations/CleaningStation.jsx";
-import MedicineStation from "../PetscreenStations/MedicineStation.jsx";
-import SchedulingChart from "../SchedulingChart/SchedulingChart.jsx";
+import Main from "./PetscreensComponents/Stations/Main.jsx";
+import Feeding from "./PetscreensComponents/Stations/Feeding.jsx";
+import Cleaning from "./PetscreensComponents/Stations/Cleaning.jsx";
+import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
 
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
-import { initiateFeeding, initiateCleaning } from "../../helpers/Helpers.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import { initiateFeeding, initiateCleaning } from "../helpers/Helpers.js";
 
 
 
-function FishMainPetscreen (){
+function Fish (){
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -86,28 +86,28 @@ function FishMainPetscreen (){
         <>
 
             {fishOpenFeedingFlag &&
-            <FeedingStation
-                menuOptions={fishMenuOptions}
-                desiredOption = {fishChosenFeedingOption}
-                setDesiredOption = {setFishChosenFeedingOption}
-                setOpenFeedingFlag = {setFishOpenFeedingFlag}
+            <Feeding
+                feedingOptions={fishMenuOptions}
+                feedingDesiredOption = {fishChosenFeedingOption}
+                setFeedingDesiredOption = {setFishChosenFeedingOption}
+                setFeedingOpenFlag = {setFishOpenFeedingFlag}
             />}
 
             {fishOpenCleaningFlag &&
-            <CleaningStation
+            <Cleaning
                 cleaningOptions={fishCleaningOptions}
-                desiredOption = {fishChosenCleaningOption}
-                setDesiredOption = {setFishChosenCleaningOption}
-                setOpenCleaningFlag = {setFishOpenCleaningFlag}
+                cleaningDesiredOption = {fishChosenCleaningOption}
+                setCleaningDesiredOption = {setFishChosenCleaningOption}
+                setCleaningOpenFlag = {setFishOpenCleaningFlag}
             />}
 
             {fishOpenMedicineFlag &&
-            <MedicineStation
-                setOpenMedicineFlag = {setFishOpenMedicineFlag}
+            <Medicine
+                setMedicineOpenFlag = {setFishOpenMedicineFlag}
             />}
 
             {fishOpenScheduleFlag &&
-            <SchedulingChart
+            <Schedule
                 setOpenScheduleFlag={setFishOpenScheduleFlag}
             />}
 
@@ -148,10 +148,10 @@ function FishMainPetscreen (){
             </div>
             <div className = "ScreenContainer">
 
-                <HomeStation
-                    petEnergy = {400}
-                    mood = {mood}
-                    activityInProgress={activityInProgress}
+                <Main
+                    homePetEnergy = {400}
+                    homePetMood = {mood}
+                    homeActivityInProgress={activityInProgress}
                 />
 
             </div>
@@ -162,4 +162,4 @@ function FishMainPetscreen (){
 }
 
 
-export default FishMainPetscreen;
+export default Fish;

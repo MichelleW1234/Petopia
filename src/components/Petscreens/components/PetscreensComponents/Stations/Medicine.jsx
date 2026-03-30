@@ -1,72 +1,72 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 
-import {useGlobalTimer} from "../../../../providers/GlobalTimerProvider.jsx";
-import { useActivePetName } from "../../../../providers/ActivePetNameProvider.jsx";;
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import {useGlobalTimer} from "../../../../../providers/GlobalTimerProvider.jsx";
+import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { petImages } from "../../../../constants/MainPetImages.js";
-import { healthCapList, healthKey, medicineKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { petImages } from "../../../../../constants/MainPetImages.js";
+import { healthCapList, healthKey, medicineKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 
-import "./MedicineStation.css";
+import "./Medicine.css";
 
 
-function MedicineStation ({setOpenMedicineFlag}){
+function Medicine ({setMedicineOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const totalSecsTillDosed = 10;
+    const medicineTotal = 10;
 
     // 10 rows x 8 columns
-    const innerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
+    const medicineInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const [doseInitiated, setDoseInitiated] = useState(false);
-    const [secondsDosed, setSecondsDosed] = useState(0);
-    const [done, setDone] = useState(false);
+    const [medicineStart, setMedicineStart] = useState(false);
+    const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
+    const [medicineDone, setMedicineDone] = useState(false);
 
-    const [animationImage, setAnimationImage] = useState(0);
+    const [medicineAnimationImage, setAnimationImage] = useState(0);
 
-    const secondsDosedRef = useRef(secondsDosed);
-    const animationImageRef = useRef(animationImage);
+    const medicineCurrNumberRef = useRef(medicineCurrNumber);
+    const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
-
-    useEffect(() => {
-        secondsDosedRef.current = secondsDosed;
-    }, [secondsDosed]);
 
     useEffect(() => {
-        animationImageRef.current = animationImage;
-    }, [animationImage]);
+        medicineCurrNumberRef.current = medicineCurrNumber;
+    }, [medicineCurrNumber]);
+
+    useEffect(() => {
+        medicineAnimationImageRef.current = medicineAnimationImage;
+    }, [medicineAnimationImage]);
 
     useEffect(() => {
 
-        if (!doseInitiated || done) {
+        if (!medicineStart || medicineDone) {
             return;
         }
 
         const interval = setInterval(() => {
-            const currSeconds = secondsDosedRef.current + 1;
-            setSecondsDosed(currSeconds);
-            if (currSeconds >= totalSecsTillDosed){
-                setDone(true);
+            const medicineCurrSeconds = medicineCurrNumberRef.current + 1;
+            setMedicineCurrNumber(medicineCurrSeconds);
+            if (medicineCurrSeconds >= medicineTotal){
+                setMedicineDone(true);
             }
         }, 1000);
 
         return () => clearInterval(interval);
 
-    }, [doseInitiated, done]);
+    }, [medicineStart, medicineDone]);
 
     useEffect(() => {
 
-        if (!doseInitiated || done) {
+        if (!medicineStart || medicineDone) {
             return;
         }
 
         const interval = setInterval(() => {
-            if (animationImageRef.current === 0) {
+            if (medicineAnimationImageRef.current === 0) {
                 setAnimationImage(1);
             } else {
                 setAnimationImage(0);
@@ -75,7 +75,7 @@ function MedicineStation ({setOpenMedicineFlag}){
 
         return () => clearInterval(interval);
 
-    }, [doseInitiated, done]);
+    }, [medicineStart, medicineDone]);
 
 
 
@@ -119,7 +119,7 @@ function MedicineStation ({setOpenMedicineFlag}){
     
         }
     
-        setOpenMedicineFlag(false);
+        setMedicineOpenFlag(false);
 
     }
 
@@ -130,11 +130,11 @@ function MedicineStation ({setOpenMedicineFlag}){
 
         <div className = "FloatingFlagBackground">
         
-            {!doseInitiated ? (
+            {!medicineStart ? (
 
                 <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
                     <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> Health: {PetList[ActivePetName][healthKey]} </h2>
-                    <button className = {`PetWindowButton PetWindowButton-${PetList[ActivePetName][speciesKey]}`} onClick = {() => setDoseInitiated(true)}> Give Medicine </button>
+                    <button className = {`PetWindowButton PetWindowButton-${PetList[ActivePetName][speciesKey]}`} onClick = {() => setMedicineStart(true)}> Give Medicine </button>
                 </div>
 
             ) : (
@@ -142,13 +142,13 @@ function MedicineStation ({setOpenMedicineFlag}){
                 <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                     <ProgressBar
-                        percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((secondsDosed/totalSecsTillDosed) * 100)))}
+                        progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
 
-                    {!done ? (
+                    {!medicineDone ? (
                         
                         <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
-                            {innerScreenSpace.map((row, rowIndex) => (
+                            {medicineInnerScreenSpace.map((row, rowIndex) => (
                                 row.map((__, colIndex) => {
 
                                     return (
@@ -156,7 +156,7 @@ function MedicineStation ({setOpenMedicineFlag}){
                                         rowIndex === 2 && colIndex === 3 ? (
 
                                             // Change this when I create feeding-specific images for each species!!!!!!!!!!!!!
-                                            <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][animationImage]} />
+                                            <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
 
                                         ) : (
 
@@ -182,9 +182,9 @@ function MedicineStation ({setOpenMedicineFlag}){
                 
             )}
 
-            {!doseInitiated || !done ? (
+            {!medicineStart || !medicineDone ? (
 
-                <button className = "GeneralNavButton" onClick = {() => setOpenMedicineFlag(false)}>Quit</button>
+                <button className = "GeneralNavButton" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
 
             ) : (
 
@@ -199,4 +199,4 @@ function MedicineStation ({setOpenMedicineFlag}){
 }
 
 
-export default MedicineStation;
+export default Medicine;

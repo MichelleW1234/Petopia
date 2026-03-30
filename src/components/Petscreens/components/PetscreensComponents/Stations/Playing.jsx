@@ -1,20 +1,20 @@
 import {useState, useEffect} from "react";
 
-import ProgressBar from "./PetscreenStationComponents/ProgressBar.jsx";
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
+import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
+import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../../providers/PetListProvider.jsx";
+import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
-import { playingKey, speciesKey } from "../../../../constants/Constants.js";
-import { judgeSelection, manageHealth } from "../../helpers/Helpers.js";
+import { playingKey, speciesKey } from "../../../../../constants/Constants.js";
+import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
-import "./PlayingStation.css";
+import "./Playing.css";
 
 
 
-function PlayingStation ({playingOptions, playingComponents, playingDesiredOption, setPlayingDesiredOption, setPlayingOpenFlag}){
+function Playing ({playingOptions, playingComponents, playingDesiredOption, setPlayingDesiredOption, setPlayingOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -87,7 +87,7 @@ function PlayingStation ({playingOptions, playingComponents, playingDesiredOptio
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
+                            progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
                         />
 
                         {playingSelectedGameWindow !== null ? (
@@ -114,7 +114,7 @@ function PlayingStation ({playingOptions, playingComponents, playingDesiredOptio
                     <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                         <ProgressBar
-                            percentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
+                            progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playingCurrNumber/playingTotal) * 100)))}
                         />
 
                         <h2>Finished!!!!</h2>
@@ -142,4 +142,4 @@ function PlayingStation ({playingOptions, playingComponents, playingDesiredOptio
 }
 
 
-export default PlayingStation;
+export default Playing;

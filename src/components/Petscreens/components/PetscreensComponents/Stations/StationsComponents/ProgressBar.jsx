@@ -1,6 +1,6 @@
 import "./ProgressBar.css";
 
-function ProgressBar({percentageUntilNextUpdate}) {
+function ProgressBar({progressPercentageUntilNextUpdate}) {
 
     return (
         <>
@@ -8,7 +8,7 @@ function ProgressBar({percentageUntilNextUpdate}) {
             <div className = "SchedulingChartProgressBar">
                 {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                    num <= percentageUntilNextUpdate ? (
+                    num <= progressPercentageUntilNextUpdate ? (
 
                         <div key = {num} className = "SchedulingChartProgressCellDoneNotClose"></div>
 
