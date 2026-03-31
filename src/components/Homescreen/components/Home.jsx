@@ -50,7 +50,7 @@ function Home (){
 
             {homeOpenClearPetsFlag &&
             <Deletion
-                setHomeOpenClearPetsFlag={setHomeOpenClearPetsFlag}
+                setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
             <div className="NavBarContainer">

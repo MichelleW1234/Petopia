@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Main from "./PetscreensComponents/Stations/Main.jsx";
+import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Clean from "./PetscreensComponents/Stations/Clean.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
@@ -119,7 +119,7 @@ function Fish (){
                 {fishAlive ? (
 
                     <>
-                        <button className={fishHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishHungry, setFishChosenFeedingOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
+                        <button className={fishHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
                         <button className={fishDirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
 
                         {fishCanReceiveDose ? (

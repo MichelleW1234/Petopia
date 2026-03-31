@@ -10,6 +10,7 @@ import { petImages } from "../../../../../constants/MainPetImages.js";
 import { healthCapList, healthKey, medicineKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 
 import "./Medicine.css";
+import "./Stations.css";
 
 
 function Medicine ({setMedicineOpenFlag}){
@@ -140,53 +141,37 @@ function Medicine ({setMedicineOpenFlag}){
         
             {!medicineStart ? (
 
-                <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+                <>
                     <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> Health: {PetList[ActivePetName][healthKey]} </h2>
                     <button className = {`PetWindowButton PetWindowButton-${PetList[ActivePetName][speciesKey]}`} onClick = {() => setMedicineStart(true)}> Give Medicine </button>
-                </div>
+                </>
 
             ) : (
 
-                <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+                <>
 
                     <ProgressBar
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
 
+
                     {!medicineDone ? (
-                        
-                        <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
-                            {medicineInnerScreenSpace.map((row, rowIndex) => (
-                                row.map((__, colIndex) => {
+                            
+                        <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
 
-                                    return (
-
-                                        rowIndex === 2 && colIndex === 3 ? (
-
-                                            // Change this when I create feeding-specific images for each species!!!!!!!!!!!!!
-                                            <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
-
-                                        ) : (
-
-                                            <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
-
-                                        )
-
-                                    )
-                                
-                                })
-
-                            ))}
                         </div>
-                        
 
                     ) : (
 
-                        <h2>Finished!!!!</h2>
+                        <div className="StationsInProgressWindow StationsInProgressWindow-Medicine"> 
+                            <h2>Finished!!!!</h2>
+                        </div>
                         
                     )}
 
-                </div>
+                </>
                 
             )}
 

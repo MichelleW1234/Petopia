@@ -7,7 +7,7 @@ import "./Deletion.css";
 
 
 
-function Deletion({setOpenClearPetsFlag}) {
+function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -58,7 +58,7 @@ function Deletion({setOpenClearPetsFlag}) {
 
         });
 
-        setOpenClearPetsFlag(false);
+        setDeletionOpenClearPetsFlag(false);
 
     }
 

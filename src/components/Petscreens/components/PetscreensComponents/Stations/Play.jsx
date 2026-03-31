@@ -11,6 +11,7 @@ import { playingKey, speciesKey } from "../../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Play.css";
+import "./Stations.css";
 
 
 
@@ -52,7 +53,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
             {playSelection === -1 ? (
 
-                <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+                <>
 
                     {playDesiredOption === -1 ? (
 
@@ -68,24 +69,23 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                     )}
 
-                    <div className= "FeedingWindowSelectionContainer">  
+                    <div className= "StationsWindowSelectionContainer">  
 
                         {playOptions.map((game, index) => (
 
-                            <button key = {index} onClick = {() => judgeSelection(index, playDesiredOption, playTotal*2, setPlayTotal, setPlaySelection)}> {game} </button>
+                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, playDesiredOption, playTotal*2, setPlayTotal, setPlaySelection)}> {game} </button>
                             
                         ))}
 
                     </div>
 
-
-                </div>
+                </>
 
             ) : (
 
                 !playDone ? (
 
-                    <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+                    <>
 
                         <ProgressBar
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
@@ -108,11 +108,11 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                         )}
 
-                    </div>
+                    </>
 
                 ) : (
 
-                    <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+                    <>
 
                         <ProgressBar
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
@@ -120,7 +120,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                         <h2>Finished!!!!</h2>
 
-                    </div>
+                    </>
 
                 )
 

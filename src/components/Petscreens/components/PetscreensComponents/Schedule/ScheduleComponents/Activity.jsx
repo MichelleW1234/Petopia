@@ -86,7 +86,7 @@ function Activity({activityKey, activityTimeGap}) {
 
 
     return (
-        <div className = "SchedulingChartActivityContainer">
+        <div className = "ActivityContainer">
             <div> 
                 <h2>{activityLastStrings[activityKey] + activityLastTimeString}</h2>
                 <h2>{activityNextStrings[activityKey] + activityNextTimeString}</h2>
@@ -94,15 +94,15 @@ function Activity({activityKey, activityTimeGap}) {
         
             {PetList[ActivePetName][healthKey] > 0 ? (
 
-                <div className = "SchedulingChartProgressBar">
+                <div className = "ActivityTimeBarContainer">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "SchedulingChartProgressCellHalfway"
+                                                        "ActivityTimeBarCellHalfway"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "SchedulingChartProgressCellDone"
-                                                            : "SchedulingChartProgressCellLeft"
+                                                            "ActivityTimeBarCellDone"
+                                                            : "ActivityTimeBarCellLeft"
                                                         }>
                         </div>
 
@@ -112,11 +112,11 @@ function Activity({activityKey, activityTimeGap}) {
 
             ) : (
 
-                <div className = "SchedulingChartProgressBar">
+                <div className = "ActivityTimeBarContainer">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "SchedulingChartProgressCellCancelled"></div>
+                        <div key = {num} className = "ActivityTimeBarCellCancelled"></div>
 
                     ))}
                     

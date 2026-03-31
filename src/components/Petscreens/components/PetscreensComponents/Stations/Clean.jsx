@@ -12,6 +12,7 @@ import { cleaningKey, speciesKey, stageKey } from "../../../../../constants/Cons
 import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Clean.css";
+import "./Stations.css";
 
 
 
@@ -73,87 +74,69 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
         
         <div className = "FloatingFlagBackground">
 
-            <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+            {cleanSelection === -1 ? (
 
-                {cleanSelection === -1 ? (
+                <>
+                    {cleanDesiredOption === -1 ? (
+
+                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
+                            Option: Not dirty
+                        </h2>
+
+                    ) : (
+
+                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
+                            Option: {cleanOptions[cleanDesiredOption]}
+                        </h2>
+
+                    )}
+                    <div className= "StationsWindowSelectionContainer">  
+
+                        {cleanOptions.map((option, index) => (
+
+                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, cleanDesiredOption, cleanTotal*2, setCleanTotal, setCleanSelection)}> {option} </button>
+
+                        ))}
+
+                    </div>
+                </>
+
+            ) : (
+
+                !cleanDone ? ( 
 
                     <>
-                        {cleanDesiredOption === -1 ? (
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                        />
 
-                            <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: Not dirty
-                            </h2>
-
-                        ) : (
-
-                            <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {cleanOptions[cleanDesiredOption]}
-                            </h2>
-
-                        )}
-                        <div className= "FeedingWindowSelectionContainer">  
-
-                            {cleanOptions.map((option, index) => (
-
-                                <button key = {index} onClick = {() => judgeSelection(index, cleanDesiredOption, cleanTotal*2, setCleanTotal, setCleanSelection)}> {option} </button>
-
-                            ))}
+                        <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
+                            
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img
+                                className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
+                                onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
+                            />
 
                         </div>
                     </>
 
                 ) : (
 
-                    !cleanDone ? ( 
+                    <>
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                        />
 
-                        <>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                            />
+                        <div className= "StationsInProgressWindow StationsInProgressWindow-Clean">  
+                            Done!!!!!!
+                        </div>
+                    </>
 
-                            <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
+                )
 
-                                {cleanInnerScreenSpace.map((row, rowIndex) => (
-                                    row.map((__, colIndex) => {
-
-                                        return (
-
-                                            rowIndex === 2 && colIndex === 3 ? (
-
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
-                                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
-                                                />
-
-                                            ) : (
-
-                                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
-
-                                            )
-
-                                        )
-                                    
-                                    })
-                                ))}
-                            </div>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <ProgressBar
-                                    progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                                />
-
-                            <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
-                                Done!!!!!!
-                            </div>
-                        </>
-
-                    )
-
-                )}
-                
-            </div>
+            )}
 
             {cleanSelection === -1 || !cleanDone ? (
 

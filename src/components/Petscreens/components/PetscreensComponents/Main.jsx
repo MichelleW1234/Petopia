@@ -1,17 +1,17 @@
 import {useState, useEffect, useRef} from "react";
 
-import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../../providers/PetListProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import heart from "../../../../../images/placeholderheart.png";
-import anger from "../../../../../images/placeholderangry.png";
-import happy from "../../../../../images/placeholderhappy.jpg";
-import neutral from "../../../../../images/placeholderneutral.jpg";
-import sad from "../../../../../images/placeholdersad.png";
-import verySad from "../../../../../images/placeholderverysad.png";
+import heart from "../../../../images/placeholderheart.png";
+import anger from "../../../../images/placeholderangry.png";
+import happy from "../../../../images/placeholderhappy.jpg";
+import neutral from "../../../../images/placeholderneutral.jpg";
+import sad from "../../../../images/placeholdersad.png";
+import verySad from "../../../../images/placeholderverysad.png";
 
-import { petImages } from "../../../../../constants/MainPetImages.js";
-import { healthKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { petImages } from "../../../../constants/MainPetImages.js";
+import { healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
 

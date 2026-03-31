@@ -1,4 +1,4 @@
-.SchedulingChartActivityContainer{
+.ActivityContainer{
 
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 
-.SchedulingChartProgressBar {
+.ActivityTimeBarContainer {
 
   display: flex;
   flex-direction: row;
@@ -19,16 +19,16 @@
 
 }
 
-.SchedulingChartProgressCellLeft {
+.ActivityTimeBarCellLeft {
 
   height: 0.75rem;
   width: 0.3rem;
-  background-color: rgba(137, 105, 0, 0.539);
+  background-color: rgba(0, 137, 11, 0.539);
 
 }
 
 
-.SchedulingChartProgressCellHalfway {
+.ActivityTimeBarCellHalfway {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -36,7 +36,7 @@
 
 }
 
-.SchedulingChartProgressCellDone {
+.ActivityTimeBarCellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -44,7 +44,7 @@
 
 }
 
-.SchedulingChartProgressCellCancelled {
+.ActivityTimeBarCellCancelled {
 
   height: 0.75rem;
   width: 0.3rem;

@@ -12,6 +12,7 @@ import { feedingKey, speciesKey, stageKey } from "../../../../../constants/Const
 import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Feed.css";
+import "./Stations.css";
 
 
 
@@ -101,83 +102,62 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
 
         <div className = "FloatingFlagBackground">
         
-            <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
+            {feedSelection === -1 ? (
 
-                {feedSelection === -1 ? (
+                <>
+                    {feedDesiredOption === -1 ? (
 
-                    <>
-                        {feedDesiredOption === -1 ? (
+                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
+                            Option: Not hungry
+                        </h2>
 
-                            <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: Not hungry
-                            </h2>
+                    ) : (
 
-                        ) : (
+                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
+                            Option: {feedOptions[feedDesiredOption]}
+                        </h2>
 
-                            <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {feedOptions[feedDesiredOption]}
-                            </h2>
+                    )}
+                    <div className= "StationsWindowSelectionContainer">  
 
-                        )}
-                        <div className= "FeedingWindowSelectionContainer">  
+                        {feedOptions.map((option, index) => (
 
-                            {feedOptions.map((option, index) => (
+                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, feedDesiredOption, feedTotal*2, setFeedTotal, setFeedSelection)}> {option} </button>
 
-                                <button key = {index} onClick = {() => judgeSelection(index, feedDesiredOption, feedTotal*2, setFeedTotal, setFeedSelection)}> {option} </button>
+                        ))}
 
-                            ))}
+                    </div>
+                </>
+        
+            ) : (
+
+                <>
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                    />
+
+                    {!feedDone ? (
+
+                        <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
+
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
 
                         </div>
-                    </>
-            
-                ) : (
 
-                    <>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
-                        />
+                    ) : (
 
-                        {!feedDone ? (
+                        <div className= "StationsInProgressWindow StationsInProgressWindow-Feed">  
 
-                            <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
+                            Finished!!
 
-                                {feedInnerScreenSpace.map((row, rowIndex) => (
-                                    row.map((__, colIndex) => {
+                        </div>
 
-                                        return (
+                    )}
+                </>
 
-                                            rowIndex === 2 && colIndex === 3 ? (
+            )}
 
-                                                // Change this when I create feeding-specific images for each species!!!!!!!!!!!!!
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
-
-                                            ) : (
-
-                                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
-
-                                            )
-
-                                        )
-                                    
-                                    })
-                                ))}
-
-                            </div>
-
-                        ) : (
-
-                            <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
-
-                                Finished!!
-
-                            </div>
-
-                        )}
-                    </>
-
-                )}
-
-            </div>
 
             {feedSelection === -1 || !feedDone ? (
 
