@@ -1,42 +1,17 @@
 import { cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
 
-export const initiateFeeding = (isHungry, setChosenFeedingOption, setOpenFeedingFlag, menuList) => {
+export const initiateActivity = (wantsTo, setDesiredOption, setOpenFlag, options) => {
 
-    if (isHungry){
+    if (wantsTo){
 
-        setChosenFeedingOption(Math.floor(Math.random() * menuList.length));
-
-    }
-
-    setOpenFeedingFlag(true);
-
-}
-
-
-export const initiateCleaning = (isDirty, setChosenCleaningOption, setOpenCleaningFlag, toolsList) => {
-
-    if (isDirty){
-
-        setChosenCleaningOption(Math.floor(Math.random() * toolsList.length));
+        setDesiredOption(Math.floor(Math.random() * options.length));
 
     }
 
-    setOpenCleaningFlag(true);
+    setOpenFlag(true);
 
 }
 
-
-export const initiatePlaying = (isRestless, setChosenPlayingOption, setOpenPlayingFlag, gamesList) => {
-
-    if (isRestless){
-
-        setChosenPlayingOption(Math.floor(Math.random() * gamesList.length));
-
-    }
-
-    setOpenPlayingFlag(true);
-
-}
 
 
 export const judgeSelection = (chosenOption, desiredOption, newNumber, setNumberTillDone, setSelection) => {

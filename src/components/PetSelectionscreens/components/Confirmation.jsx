@@ -20,19 +20,19 @@ function Confirmation () {
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {FinalPetSelection, setFinalPetSelection} = useFinalPetSelection();
     
-    const defaultMessage = "You are about to adopt this pet:"
+    const confirmationDefaultMessage = "You are about to adopt this pet:";
 
-    const [petName, setPetName] = useState("");
-    const [info, setInfo] = useState(defaultMessage);
+    const [confirmationPetName, setConfirmationPetName] = useState("");
+    const [confirmationInfo, setConfirmationInfo] = useState(confirmationDefaultMessage);
 
-    const timeoutRef = useRef(null);
+    const confirmationTimeoutRef = useRef(null);
 
 
 
     const nameChecking = (e) => {
 
-        const trimmedPetName = petName.trim();
-        setPetName(trimmedPetName);
+        const trimmedPetName = confirmationPetName.trim();
+        setConfirmationPetName(trimmedPetName);
             
         if (trimmedPetName === "") {
 
@@ -60,15 +60,15 @@ function Confirmation () {
 
     const showErrorMessage = (message) => {
 
-        setInfo(message);
+        setConfirmationInfo(message);
 
-        if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current);
+        if (confirmationTimeoutRef.current) {
+            clearTimeout(confirmationTimeoutRef.current);
         }
 
-        timeoutRef.current = setTimeout(() => {
-            setInfo(defaultMessage);
-            timeoutRef.current = null;
+        confirmationTimeoutRef.current = setTimeout(() => {
+            setConfirmationInfo(confirmationDefaultMessage);
+            confirmationTimeoutRef.current = null;
         }, 5000);
 
     }
@@ -168,7 +168,7 @@ function Confirmation () {
         <div className="ScreenContainer">
 
             <div className="PetWindowBorder PetWindowBorder-newpet">
-                <h2 className="PetWindowSign PetWindowSign-newpet">{info}</h2>
+                <h2 className="PetWindowSign PetWindowSign-newpet">{confirmationInfo}</h2>
                 <div className="HomePetSelectorPetWindow">
 
                     <img src = { FinalPetSelection === 0 ? petImages[dogSpecies][0]
@@ -182,8 +182,8 @@ function Confirmation () {
                     <input 
                         className = "HomePetSelectorNameInput"
                         type="text"
-                        value={petName}
-                        onChange={(e) => {setPetName(e.target.value)}}
+                        value={confirmationPetName}
+                        onChange={(e) => {setConfirmationPetName(e.target.value)}}
                         placeholder="Enter a name..."
                     />
                 </div>

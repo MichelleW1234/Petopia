@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Main from "./PetscreensComponents/Stations/Main.jsx";
-import Feeding from "./PetscreensComponents/Stations/Feeding.jsx";
-import Cleaning from "./PetscreensComponents/Stations/Cleaning.jsx";
+import Feed from "./PetscreensComponents/Stations/Feed.jsx";
+import Clean from "./PetscreensComponents/Stations/Clean.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
 
@@ -13,7 +13,7 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
-import { initiateFeeding, initiateCleaning } from "../helpers/Helpers.js";
+import { initiateActivity } from "../helpers/Helpers.js";
 
 
 
@@ -24,59 +24,60 @@ function Fish (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const [activityInProgress, setActivityInProgress] = useState(false);
-    const [fishOpenFeedingFlag, setFishOpenFeedingFlag] = useState(false);
-    const [fishOpenCleaningFlag, setFishOpenCleaningFlag] = useState(false);
-    const [fishOpenMedicineFlag, setFishOpenMedicineFlag] = useState(false);
-    const [fishOpenScheduleFlag, setFishOpenScheduleFlag] = useState(false);
-    const [fishChosenFeedingOption, setFishChosenFeedingOption] = useState(-1);
-    const [fishChosenCleaningOption, setFishChosenCleaningOption] = useState(-1);
+    const [fishActivityInProgress, setFishActivityInProgress] = useState(false);
+    const [fishFeedOpenFlag, setFishFeedOpenFlag] = useState(false);
+    const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
+    const [fishMedicineOpenFlag, setFishMedicineOpenFlag] = useState(false);
+    const [fishScheduleOpenFlag, setFishScheduleOpenFlag] = useState(false);
+    const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
+    const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
 
-    const alive = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey] > 0 ? 
-                        true
-                        : false
-                    : false;
+    const fishAlive = ActivePetName !== "" ? 
+                            PetList[ActivePetName][healthKey] > 0 ? 
+                                true
+                                : false
+                            : false;
 
-    const hungry = ActivePetName !== "" ?  
-                        (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
-                            true 
-                            : false
-                        : false;
-    const dirty = ActivePetName !== "" ?  
-                        (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
-                            true 
-                            : false
-                        : false;
+    const fishHungry = ActivePetName !== "" ?  
+                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
+                                true 
+                                : false
+                            : false;
+                            
+    const fishDirty = ActivePetName !== "" ?  
+                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
+                                true 
+                                : false
+                            : false;
 
-    const mood = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.75 ? 
-                        0
-                        : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.5 ? 
-                        1
-                        : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.25 ? 
-                        2
-                        : 3
-                    : -1;
+    const fishMood = ActivePetName !== "" ? 
+                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.75 ? 
+                                0
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.5 ? 
+                                1
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.25 ? 
+                                2
+                                : 3
+                            : -1;
     
-    const canReceiveDose = ActivePetName !== "" ? 
-                                GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                    true
-                                    : false
-                                : false;
+    const fishCanReceiveDose = ActivePetName !== "" ? 
+                                    GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                        true
+                                        : false
+                                    : false;
     
-    const fishMenuOptions = ["shrimp", "worms", "algae"];
-    const fishCleaningOptions = ["sponge", "cloth"];
+    const fishFeedOptions = ["shrimp", "worms", "algae"];
+    const fishCleanOptions = ["sponge", "cloth"];
 
 
 
     useEffect(() => {
-        if (fishOpenFeedingFlag || fishOpenCleaningFlag || fishOpenMedicineFlag) {
-            setActivityInProgress(true);
+        if (fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag) {
+            setFishActivityInProgress(true);
         } else {
-            setActivityInProgress(false);
+            setFishActivityInProgress(false);
         }
-    }, [fishOpenFeedingFlag, fishOpenCleaningFlag, fishOpenMedicineFlag]);
+    }, [fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
     
 
 
@@ -85,45 +86,45 @@ function Fish (){
 
         <>
 
-            {fishOpenFeedingFlag &&
-            <Feeding
-                feedingOptions={fishMenuOptions}
-                feedingDesiredOption = {fishChosenFeedingOption}
-                setFeedingDesiredOption = {setFishChosenFeedingOption}
-                setFeedingOpenFlag = {setFishOpenFeedingFlag}
+            {fishFeedOpenFlag &&
+            <Feed
+                feedOptions={fishFeedOptions}
+                feedDesiredOption = {fishFeedDesiredOption}
+                setFeedDesiredOption = {setFishFeedDesiredOption}
+                setFeedOpenFlag = {setFishFeedOpenFlag}
             />}
 
-            {fishOpenCleaningFlag &&
-            <Cleaning
-                cleaningOptions={fishCleaningOptions}
-                cleaningDesiredOption = {fishChosenCleaningOption}
-                setCleaningDesiredOption = {setFishChosenCleaningOption}
-                setCleaningOpenFlag = {setFishOpenCleaningFlag}
+            {fishCleanOpenFlag &&
+            <Clean
+                cleanOptions={fishCleanOptions}
+                cleanDesiredOption = {fishCleanDesiredOption}
+                setCleanDesiredOption = {setFishCleanDesiredOption}
+                setCleanOpenFlag = {setFishCleanOpenFlag}
             />}
 
-            {fishOpenMedicineFlag &&
+            {fishMedicineOpenFlag &&
             <Medicine
-                setMedicineOpenFlag = {setFishOpenMedicineFlag}
+                setMedicineOpenFlag = {setFishMedicineOpenFlag}
             />}
 
-            {fishOpenScheduleFlag &&
+            {fishScheduleOpenFlag &&
             <Schedule
-                setOpenScheduleFlag={setFishOpenScheduleFlag}
+                setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
-                {alive ? (
+                {fishAlive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setFishChosenFeedingOption, setFishOpenFeedingFlag, fishMenuOptions)}> Feed Fish </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setFishChosenCleaningOption, setFishOpenCleaningFlag, fishCleaningOptions)}> Clean Fish Tank </button>
+                        <button className={fishHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishHungry, setFishChosenFeedingOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
+                        <button className={fishDirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
 
-                        {canReceiveDose ? (
+                        {fishCanReceiveDose ? (
 
-                            <button className="NavBarButton" onClick = {() => setFishOpenMedicineFlag(true)}> Give Fish Medicine </button>
+                            <button className="NavBarButton" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
 
                         ) : (
 
@@ -143,15 +144,15 @@ function Fish (){
 
                 )}
 
-                <button className="NavBarButton" onClick = {() => setFishOpenScheduleFlag(true)}> Check Schedule </button>
+                <button className="NavBarButton" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
 
             </div>
             <div className = "ScreenContainer">
 
                 <Main
-                    homePetEnergy = {400}
-                    homePetMood = {mood}
-                    homeActivityInProgress={activityInProgress}
+                    mainPetEnergy = {400}
+                    mainPetMood = {fishMood}
+                    mainActivityInProgress={fishActivityInProgress}
                 />
 
             </div>

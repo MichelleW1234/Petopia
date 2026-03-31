@@ -11,11 +11,11 @@ import { petImages } from "../../../../../constants/MainPetImages.js";
 import { feedingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
-import "./Feeding.css";
+import "./Feed.css";
 
 
 
-function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption, setFeedingOpenFlag}){
+function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -23,76 +23,76 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
     const {PetList, setPetList} = usePetList();
 
     // 10 rows x 8 columns
-    const feedingInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
+    const feedInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const [feedingTotal, setFeedingTotal] = useState(10);
-    const [feedingCurrNumber, setFeedingCurrNumber] = useState(0);
-    const [feedingDone, setFeedingDone] = useState(false);
-    const [feedingSelection, setFeedingSelection] = useState(-1);
-    const [feedingAnimationImage, setFeedingAnimationImage] = useState(0);
+    const [feedTotal, setFeedTotal] = useState(10);
+    const [feedCurrNumber, setFeedCurrNumber] = useState(0);
+    const [feedDone, setFeedDone] = useState(false);
+    const [feedSelection, setFeedSelection] = useState(-1);
+    const [feedAnimationImage, setFeedAnimationImage] = useState(0);
 
-    const GlobalTimerRef = useRef(GlobalTimer);
-    const feedingCurrNumberRef = useRef(feedingCurrNumber);
-    const feedingAnimationImageRef = useRef(feedingAnimationImage);
+    const feedGlobalTimerRef = useRef(GlobalTimer);
+    const feedCurrNumberRef = useRef(feedCurrNumber);
+    const feedAnimationImageRef = useRef(feedAnimationImage);
 
 
 
     useEffect(() => {
-        GlobalTimerRef.current = GlobalTimer;
+        feedGlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);
     
 
     useEffect(() => {
-        feedingCurrNumberRef.current = feedingCurrNumber;
-    }, [feedingCurrNumber]);
+        feedCurrNumberRef.current = feedCurrNumber;
+    }, [feedCurrNumber]);
 
 
     useEffect(() => {
-        feedingAnimationImageRef.current = feedingAnimationImage;
-    }, [feedingAnimationImage]);
+        feedAnimationImageRef.current = feedAnimationImage;
+    }, [feedAnimationImage]);
 
 
     useEffect(() => {
 
-        if (feedingSelection === -1 || feedingDone) {
+        if (feedSelection === -1 || feedDone) {
             return;
         }
 
         const interval = setInterval(() => {
 
-            const feedingCurrSeconds = feedingCurrNumberRef.current + 1;
-            setFeedingCurrNumber(feedingCurrSeconds);
+            const currSeconds = feedCurrNumberRef.current + 1;
+            setFeedCurrNumber(currSeconds);
 
-            if (feedingCurrSeconds >= feedingTotal){
+            if (currSeconds >= feedTotal){
                 clearInterval(interval);
-                setFeedingDone(true);
-                manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedingDesiredOption, setFeedingDesiredOption, feedingSelection);
+                setFeedDone(true);
+                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedDesiredOption, setFeedDesiredOption, feedSelection);
             }
 
         }, 1000);
 
         return () => clearInterval(interval);
 
-    }, [feedingSelection, feedingDone]);
+    }, [feedSelection, feedDone]);
 
 
     useEffect(() => {
 
-        if (feedingSelection === -1 || feedingDone) {
+        if (feedSelection === -1 || feedDone) {
             return;
         }
 
         const interval = setInterval(() => {
-            if (feedingAnimationImageRef.current === 0) {
-                setFeedingAnimationImage(1);
+            if (feedAnimationImageRef.current === 0) {
+                setFeedAnimationImage(1);
             } else {
-                setFeedingAnimationImage(0);
+                setFeedAnimationImage(0);
             }
         }, 300);
 
         return () => clearInterval(interval);
 
-    }, [feedingSelection, feedingDone]);
+    }, [feedSelection, feedDone]);
 
 
 
@@ -103,10 +103,10 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
         
             <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
-                {feedingSelection === -1 ? (
+                {feedSelection === -1 ? (
 
                     <>
-                        {feedingDesiredOption === -1 ? (
+                        {feedDesiredOption === -1 ? (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
                                 Option: Not hungry
@@ -115,15 +115,15 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {feedingOptions[feedingDesiredOption]}
+                                Option: {feedOptions[feedDesiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {feedingOptions.map((option, index) => (
+                            {feedOptions.map((option, index) => (
 
-                                <button key = {index} onClick = {() => judgeSelection(index, feedingDesiredOption, feedingTotal*2, setFeedingTotal, setFeedingSelection)}> {option} </button>
+                                <button key = {index} onClick = {() => judgeSelection(index, feedDesiredOption, feedTotal*2, setFeedTotal, setFeedSelection)}> {option} </button>
 
                             ))}
 
@@ -134,14 +134,14 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
 
                     <>
                         <ProgressBar
-                            progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedingCurrNumber/feedingTotal) * 100)))}
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                         />
 
-                        {!feedingDone ? (
+                        {!feedDone ? (
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
-                                {feedingInnerScreenSpace.map((row, rowIndex) => (
+                                {feedInnerScreenSpace.map((row, rowIndex) => (
                                     row.map((__, colIndex) => {
 
                                         return (
@@ -149,7 +149,7 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
                                             rowIndex === 2 && colIndex === 3 ? (
 
                                                 // Change this when I create feeding-specific images for each species!!!!!!!!!!!!!
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedingAnimationImage]} />
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
 
                                             ) : (
 
@@ -179,13 +179,13 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
 
             </div>
 
-            {feedingSelection === -1 || !feedingDone ? (
+            {feedSelection === -1 || !feedDone ? (
 
-                <button className = "FloatingFlagButton" onClick = {() => setFeedingOpenFlag(false)}>Quit</button>
+                <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => setFeedingOpenFlag(false)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Done</button>
 
             )}
 
@@ -196,4 +196,4 @@ function Feeding ({feedingOptions, feedingDesiredOption, setFeedingDesiredOption
 }
 
 
-export default Feeding;
+export default Feed;

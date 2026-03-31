@@ -3,29 +3,29 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import "./PetDeletion.css";
+import "./Deletion.css";
 
 
 
-function PetDeletion({setOpenClearPetsFlag}) {
+function Deletion({setOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
-    const [selectedPetsList, setSelectedPetsList] = useState([]);
+    const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
 
 
 
     const addPet = (PetToAdd) => {
 
-        setSelectedPetsList(prev => [...prev, PetToAdd]);
+        setDeletionSelectedPets(prev => [...prev, PetToAdd]);
 
     }
 
 
     const removePet = (PetToRemove) => {
 
-        setSelectedPetsList(prev => prev.filter(pet => pet !== PetToRemove));
+        setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
 
@@ -36,7 +36,7 @@ function PetDeletion({setOpenClearPetsFlag}) {
 
             let updatedList = { ...prev };
 
-            selectedPetsList.forEach(petToRemove => {
+            deletionSelectedPets.forEach(petToRemove => {
                 const { [petToRemove]: _, ...rest } = updatedList;
                 updatedList = rest;
             });
@@ -49,7 +49,7 @@ function PetDeletion({setOpenClearPetsFlag}) {
 
             let updatedList = { ...prev };
 
-            selectedPetsList.forEach(petToRemove => {
+            deletionSelectedPets.forEach(petToRemove => {
                 const { [petToRemove]: _, ...rest } = updatedList;
                 updatedList = rest;
             });
@@ -71,7 +71,7 @@ function PetDeletion({setOpenClearPetsFlag}) {
                     <div className = "HomeScreenClearPetsFlagList">
                         {Object.keys(PetList).map((key) => (
 
-                            selectedPetsList.includes(key) ? (
+                            deletionSelectedPets.includes(key) ? (
 
                                 <button key = {key} className="HomeScreenClearPetsFlagButtonActive" onClick = {() => removePet(key)}> {key} </button>
 
@@ -91,4 +91,4 @@ function PetDeletion({setOpenClearPetsFlag}) {
     )
 }
   
-export default PetDeletion;
+export default Deletion;

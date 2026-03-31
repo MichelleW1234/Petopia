@@ -11,11 +11,11 @@ import { petImages } from "../../../../../constants/MainPetImages.js";
 import { cleaningKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
 
-import "./Cleaning.css";
+import "./Clean.css";
 
 
 
-function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOption, setCleaningOpenFlag}){
+function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCleanOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -23,48 +23,48 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
     const {PetList, setPetList} = usePetList();
 
     // 10 rows x 8 columns
-    const cleaningInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
+    const cleanInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const [cleaningTotal, setCleaningTotal] = useState(30);
-    const [cleaningSelection, setCleaningSelection] = useState(-1);
-    const [cleaningCurrNumber, setCleaningCurrNumber] = useState(0);
-    const [cleaningDone, setCleaningDone] = useState(false);
-    const [cleaningAnimationImage, setAnimationImage] = useState(0);
+    const [cleanTotal, setCleanTotal] = useState(30);
+    const [cleanSelection, setCleanSelection] = useState(-1);
+    const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
+    const [cleanDone, setCleanDone] = useState(false);
+    const [cleanAnimationImage, setCleanAnimationImage] = useState(0);
 
-    const cleaningAnimationImageRef = useRef(cleaningAnimationImage);
+    const cleanAnimationImageRef = useRef(cleanAnimationImage);
 
-
-
-    useEffect(() => {
-        cleaningAnimationImageRef.current = cleaningAnimationImage;
-    }, [cleaningAnimationImage]);
 
 
     useEffect(() => {
-        if (cleaningCurrNumber >= cleaningTotal){
-            setCleaningDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleaningDesiredOption, setCleaningDesiredOption, cleaningSelection);
+        cleanAnimationImageRef.current = cleanAnimationImage;
+    }, [cleanAnimationImage]);
+
+
+    useEffect(() => {
+        if (cleanCurrNumber >= cleanTotal){
+            setCleanDone(true);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection);
         }
-    }, [cleaningCurrNumber]);
+    }, [cleanCurrNumber]);
 
 
     useEffect(() => {
 
-        if (cleaningSelection === -1 || cleaningDone) {
+        if (cleanSelection === -1 || cleanDone) {
             return;
         }
 
         const interval = setInterval(() => {
-            if (cleaningAnimationImageRef.current === 0) {
-                setAnimationImage(1);
+            if (cleanAnimationImageRef.current === 0) {
+                setCleanAnimationImage(1);
             } else {
-                setAnimationImage(0);
+                setCleanAnimationImage(0);
             }
         }, 300);
 
         return () => clearInterval(interval);
 
-    }, [cleaningSelection, cleaningDone]);
+    }, [cleanSelection, cleanDone]);
 
 
 
@@ -75,10 +75,10 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
 
             <div className = {`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
-                {cleaningSelection === -1 ? (
+                {cleanSelection === -1 ? (
 
                     <>
-                        {cleaningDesiredOption === -1 ? (
+                        {cleanDesiredOption === -1 ? (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
                                 Option: Not dirty
@@ -87,15 +87,15 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
                         ) : (
 
                             <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                                Option: {cleaningOptions[cleaningDesiredOption]}
+                                Option: {cleanOptions[cleanDesiredOption]}
                             </h2>
 
                         )}
                         <div className= "FeedingWindowSelectionContainer">  
 
-                            {cleaningOptions.map((option, index) => (
+                            {cleanOptions.map((option, index) => (
 
-                                <button key = {index} onClick = {() => judgeSelection(index, cleaningDesiredOption, cleaningTotal*2, setCleaningTotal, setCleaningSelection)}> {option} </button>
+                                <button key = {index} onClick = {() => judgeSelection(index, cleanDesiredOption, cleanTotal*2, setCleanTotal, setCleanSelection)}> {option} </button>
 
                             ))}
 
@@ -104,24 +104,24 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
 
                 ) : (
 
-                    !cleaningDone ? ( 
+                    !cleanDone ? ( 
 
                         <>
                             <ProgressBar
-                                progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleaningCurrNumber/cleaningTotal) * 100)))}
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
-                                {cleaningInnerScreenSpace.map((row, rowIndex) => (
+                                {cleanInnerScreenSpace.map((row, rowIndex) => (
                                     row.map((__, colIndex) => {
 
                                         return (
 
                                             rowIndex === 2 && colIndex === 3 ? (
 
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleaningAnimationImage]} 
-                                                    onMouseEnter={() => setCleaningCurrNumber(prev => prev + 1)}
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
+                                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                                 />
 
                                             ) : (
@@ -141,7 +141,7 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
 
                         <>
                             <ProgressBar
-                                    progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleaningCurrNumber/cleaningTotal) * 100)))}
+                                    progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                                 />
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
@@ -155,13 +155,13 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
                 
             </div>
 
-            {cleaningSelection === -1 || !cleaningDone ? (
+            {cleanSelection === -1 || !cleanDone ? (
 
-                <button className = "FloatingFlagButton" onClick = {() => setCleaningOpenFlag(false)}>Quit</button>
+                <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
 
             ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => setCleaningOpenFlag(false)}>Done</button>
+                <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Done</button>
 
             )}
 
@@ -172,4 +172,4 @@ function Cleaning ({cleaningOptions, cleaningDesiredOption, setCleaningDesiredOp
 }
 
 
-export default Cleaning;
+export default Clean;

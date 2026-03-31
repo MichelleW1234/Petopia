@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Main from "./PetscreensComponents/Stations/Main.jsx";
-import Feeding from "./PetscreensComponents/Stations/Feeding.jsx";
-import Cleaning from "./PetscreensComponents/Stations/Cleaning.jsx";
-import Playing from "./PetscreensComponents/Stations/Playing.jsx";
+import Feed from "./PetscreensComponents/Stations/Feed.jsx";
+import Clean from "./PetscreensComponents/Stations/Clean.jsx";
+import Play from "./PetscreensComponents/Stations/Play.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
 
@@ -14,11 +14,11 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
-import { initiateFeeding, initiateCleaning, initiatePlaying } from "../helpers/Helpers.js";
+import { initiateActivity } from "../helpers/Helpers.js";
 
 
 // CHANGE THIS LATER!!!!!!!!!
-//const dogGameComponents = ["button 1", "button 2", "button 3"]
+//const dogPlayComponents = ["button 1", "button 2", "button 3"]
 
 function Dog (){
 
@@ -27,68 +27,70 @@ function Dog (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const [activityInProgress, setActivityInProgress] = useState(false);
-    const [dogOpenFeedingFlag, setDogOpenFeedingFlag] = useState(false);
-    const [dogOpenCleaningFlag, setDogOpenCleaningFlag] = useState(false);
-    const [dogOpenPlayingFlag, setDogOpenPlayingFlag] = useState(false);
-    const [dogOpenMedicineFlag, setDogOpenMedicineFlag] = useState(false);
-    const [dogOpenScheduleFlag, setDogOpenScheduleFlag] = useState(false);
-    const [dogChosenFeedingOption, setDogChosenFeedingOption] = useState(-1);
-    const [dogChosenCleaningOption, setDogChosenCleaningOption] = useState(-1);
-    const [dogChosenPlayingOption, setDogChosenPlayingOption] = useState(-1);
+    const [dogActivityInProgress, setDogActivityInProgress] = useState(false);
+    const [dogFeedOpenFlag, setDogFeedOpenFlag] = useState(false);
+    const [dogCleanOpenFlag, setDogCleanOpenFlag] = useState(false);
+    const [dogPlayOpenFlag, setDogPlayOpenFlag] = useState(false);
+    const [dogMedicineOpenFlag, setDogMedicineOpenFlag] = useState(false);
+    const [dogScheduleOpenFlag, setDogScheduleOpenFlag] = useState(false);
+    const [dogFeedDesiredOption, setDogFeedDesiredOption] = useState(-1);
+    const [dogCleanDesiredOption, setDogCleanDesiredOption] = useState(-1);
+    const [dogPlayDesiredOption, setDogPlayDesiredOption] = useState(-1);
 
-    const alive = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey] > 0 ? 
-                        true
-                        : false
-                    : false;
-    
-    const hungry = ActivePetName !== "" ? 
-                        (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
-                            true 
-                            : false
-                        : false;
-    const dirty = ActivePetName !== "" ? 
-                        (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
-                            true
-                            : false
-                        : false;
-    const restless = ActivePetName !== "" ? 
-                        (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
-                            true 
-                            : false
-                        : false;
+    const dogAlive = ActivePetName !== "" ? 
+                            PetList[ActivePetName][healthKey] > 0 ? 
+                                true
+                                : false
+                            : false;
 
-    const mood = ActivePetName !== "" ? 
-                    PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.75 ? 
-                        0
-                        : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.5 ? 
-                        1
-                        : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.25 ? 
-                        2
-                        : 3
-                    : -1;
+    const dogHungry = ActivePetName !== "" ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
+                                true 
+                                : false
+                            : false;
 
-    const canReceiveDose = ActivePetName !== "" ? 
-                                GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                    true
-                                    : false
-                                : false;
+    const dogDirty = ActivePetName !== "" ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
+                                true
+                                : false
+                            : false;
+                            
+    const dogRestless = ActivePetName !== "" ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
+                                true 
+                                : false
+                            : false;
 
-    const dogMenuOptions = ["beef", "Turkey", "lamb"];
-    const dogCleaningOptions = ["soap", "brush"];
-    const dogGameOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
-    const dogGameComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
+    const dogMood = ActivePetName !== "" ? 
+                        PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.75 ? 
+                            0
+                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.5 ? 
+                            1
+                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.25 ? 
+                            2
+                            : 3
+                        : -1;
+
+    const dogCanReceiveDose = ActivePetName !== "" ? 
+                                    GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
+                                        true
+                                        : false
+                                    : false;
+
+    const dogFeedOptions = ["beef", "Turkey", "lamb"];
+    const dogCleanOptions = ["soap", "brush"];
+    const dogPlayOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
+    const dogPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
 
 
 
     useEffect(() => {
-        if (dogOpenFeedingFlag || dogOpenCleaningFlag || dogOpenPlayingFlag || dogOpenMedicineFlag) {
-            setActivityInProgress(true);
+        if (dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag) {
+            setDogActivityInProgress(true);
         } else {
-            setActivityInProgress(false);
+            setDogActivityInProgress(false);
         }
-    }, [dogOpenFeedingFlag, dogOpenCleaningFlag, dogOpenPlayingFlag, dogOpenMedicineFlag]);
+    }, [dogFeedOpenFlag, dogCleanOpenFlag, dogPlayOpenFlag, dogMedicineOpenFlag]);
 
 
 
@@ -97,55 +99,55 @@ function Dog (){
         
         <>
 
-            {dogOpenFeedingFlag &&
-            <Feeding
-                feedingOptions={dogMenuOptions}
-                feedingDesiredOption = {dogChosenFeedingOption}
-                setFeedingDesiredOption = {setDogChosenFeedingOption}
-                setFeedingOpenFlag = {setDogOpenFeedingFlag}
+            {dogFeedOpenFlag &&
+            <Feed
+                feedOptions={dogFeedOptions}
+                feedDesiredOption = {dogFeedDesiredOption}
+                setFeedDesiredOption = {setDogFeedDesiredOption}
+                setFeedOpenFlag = {setDogFeedOpenFlag}
             />}
 
-            {dogOpenCleaningFlag &&
-            <Cleaning
-                cleaningOptions={dogCleaningOptions}
-                cleaningDesiredOption = {dogChosenCleaningOption}
-                setCleaningDesiredOption = {setDogChosenCleaningOption}
-                setCleaningOpenFlag = {setDogOpenCleaningFlag}
+            {dogCleanOpenFlag &&
+            <Clean
+                cleanOptions={dogCleanOptions}
+                cleanDesiredOption = {dogCleanDesiredOption}
+                setCleanDesiredOption = {setDogCleanDesiredOption}
+                setCleanOpenFlag = {setDogCleanOpenFlag}
             />}
 
-            {dogOpenPlayingFlag &&
-            <Playing
-                playingOptions={dogGameOptions}
-                playingComponents={dogGameComponents}
-                playingDesiredOption = {dogChosenPlayingOption}
-                setPlayingDesiredOption = {setDogChosenPlayingOption}
-                setPlayingOpenFlag = {setDogOpenPlayingFlag}
+            {dogPlayOpenFlag &&
+            <Play
+                playOptions={dogPlayOptions}
+                playComponents={dogPlayComponents}
+                playDesiredOption = {dogPlayDesiredOption}
+                setPlayDesiredOption = {setDogPlayDesiredOption}
+                setPlayOpenFlag = {setDogPlayOpenFlag}
             />}
 
-            {dogOpenMedicineFlag &&
+            {dogMedicineOpenFlag &&
             <Medicine
-                setMedicineOpenFlag = {setDogOpenMedicineFlag}
+                setMedicineOpenFlag = {setDogMedicineOpenFlag}
             />}
 
-            {dogOpenScheduleFlag &&
+            {dogScheduleOpenFlag &&
             <Schedule
-                setOpenScheduleFlag={setDogOpenScheduleFlag}
+                setScheduleOpenFlag={setDogScheduleOpenFlag}
             />}
 
             <div className="NavBarContainer">
 
                 <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
-                {alive ? (
+                {dogAlive ? (
 
                     <>
-                        <button className={hungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateFeeding(hungry, setDogChosenFeedingOption, setDogOpenFeedingFlag, dogMenuOptions)}> Feed Dog </button>
-                        <button className={dirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateCleaning(dirty, setDogChosenCleaningOption, setDogOpenCleaningFlag, dogCleaningOptions)}> Bathe Dog </button>
-                        <button className={restless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiatePlaying(restless, setDogChosenPlayingOption, setDogOpenPlayingFlag, dogGameOptions)}> Play With Dog </button>
+                        <button className={dogHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
+                        <button className={dogDirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
+                        <button className={dogRestless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
 
-                        {canReceiveDose ? (
+                        {dogCanReceiveDose ? (
 
-                            <button className="NavBarButton" onClick = {() => setDogOpenMedicineFlag(true)}> Give Dog Medicine </button>
+                            <button className="NavBarButton" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
 
                         ) : (
 
@@ -166,15 +168,15 @@ function Dog (){
 
                 )}
 
-                <button className="NavBarButton" onClick = {() => setDogOpenScheduleFlag(true)}> Check Schedule </button>
+                <button className="NavBarButton" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
                
             </div>
             <div className = "ScreenContainer">
 
                 <Main
-                    homePetEnergy = {350}
-                    homePetMood = {mood}
-                    homeActivityInProgress={activityInProgress}
+                    mainPetEnergy = {350}
+                    mainPetMood = {dogMood}
+                    mainActivityInProgress={dogActivityInProgress}
                 />
 
             </div>

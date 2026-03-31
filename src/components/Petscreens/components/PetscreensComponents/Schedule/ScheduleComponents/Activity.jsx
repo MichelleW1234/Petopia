@@ -8,7 +8,7 @@ import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey } from "../
 import "./Activity.css";
 
 
-function Activity({activityKey, timeGap}) {
+function Activity({activityKey, activityTimeGap}) {
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
@@ -16,11 +16,11 @@ function Activity({activityKey, timeGap}) {
     const {ActivePetName, setActivePetName} = useActivePetName();
 
 
-    const deadLine = activityKey === medicineKey ? 
-                            PetList[ActivePetName][activityKey] + timeGap
-                        : PetTimeStamps[ActivePetName][activityKey][0] + timeGap;
+    const activityDeadLine = activityKey === medicineKey ? 
+                            PetList[ActivePetName][activityKey] + activityTimeGap
+                        : PetTimeStamps[ActivePetName][activityKey][0] + activityTimeGap;
 
-    const lastActivityString = activityKey === medicineKey ?
+    const activityLastTimeString = activityKey === medicineKey ?
                                         PetList[ActivePetName][activityKey] > 0 ? 
                                             (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
                                                 year: "numeric",
@@ -38,10 +38,10 @@ function Activity({activityKey, timeGap}) {
                                             minute: "2-digit",
                                         });
 
-    const nextActivityString = PetList[ActivePetName][healthKey] > 0 ?
+    const activityNextTimeString = PetList[ActivePetName][healthKey] > 0 ?
                                         activityKey === medicineKey ?  
                                             PetList[ActivePetName][activityKey] > 0 ? 
-                                                (new Date(deadLine)).toLocaleString([], {
+                                                (new Date(activityDeadLine)).toLocaleString([], {
                                                     year: "numeric",
                                                     month: "2-digit",
                                                     day: "2-digit",
@@ -50,7 +50,7 @@ function Activity({activityKey, timeGap}) {
                                                 }) 
                                             : "On Demand"
                                         : 
-                                            (new Date(deadLine)).toLocaleString([], {
+                                            (new Date(activityDeadLine)).toLocaleString([], {
                                                 year: "numeric",
                                                 month: "2-digit",
                                                 day: "2-digit",
@@ -59,14 +59,14 @@ function Activity({activityKey, timeGap}) {
                                             })
                                     : "--";
 
-    const currDate = GlobalTimer;
-    const percentageUntilNextUpdate = activityKey === medicineKey ?  
+    const activityCurrDate = GlobalTimer;
+    const activityPercentUntilNextUpdate = activityKey === medicineKey ?  
                                                 PetList[ActivePetName][activityKey] === 0 ? 
                                                     100
-                                                : Math.min(100, Math.max(0, Math.floor(((currDate - PetList[ActivePetName][activityKey])/timeGap) * 100)))
-                                            : Math.min(100, Math.max(0, Math.floor(((currDate - PetTimeStamps[ActivePetName][activityKey][0])/timeGap) * 100)));
+                                                : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetList[ActivePetName][activityKey])/activityTimeGap) * 100)))
+                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][0])/activityTimeGap) * 100)));
 
-    const lastStrings = {
+    const activityLastStrings = {
 
         [feedingKey]: "Last Fed: ",
         [cleaningKey]: "Last Cleaned: ",
@@ -75,7 +75,7 @@ function Activity({activityKey, timeGap}) {
 
     }
 
-    const nextStrings = {
+    const activityNextStrings = {
 
         [feedingKey]: "Feed Before: ",
         [cleaningKey]: "Clean Before: ",
@@ -88,8 +88,8 @@ function Activity({activityKey, timeGap}) {
     return (
         <div className = "SchedulingChartActivityContainer">
             <div> 
-                <h2>{lastStrings[activityKey] + lastActivityString}</h2>
-                <h2>{nextStrings[activityKey] + nextActivityString}</h2>
+                <h2>{activityLastStrings[activityKey] + activityLastTimeString}</h2>
+                <h2>{activityNextStrings[activityKey] + activityNextTimeString}</h2>
             </div>
         
             {PetList[ActivePetName][healthKey] > 0 ? (
@@ -100,7 +100,7 @@ function Activity({activityKey, timeGap}) {
 
                         <div key = {num} className = {num === 50 ?
                                                         "SchedulingChartProgressCellHalfway"
-                                                        : num <= percentageUntilNextUpdate ? 
+                                                        : num <= activityPercentUntilNextUpdate ? 
                                                             "SchedulingChartProgressCellDone"
                                                             : "SchedulingChartProgressCellLeft"
                                                         }>

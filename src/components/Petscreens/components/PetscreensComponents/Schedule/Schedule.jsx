@@ -9,7 +9,7 @@ import "./Schedule.css";
 
 
 
-function Schedule({setOpenScheduleFlag}) {
+function Schedule({setScheduleOpenFlag}) {
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -24,19 +24,19 @@ function Schedule({setOpenScheduleFlag}) {
                     <Activity
                         key = {key}
                         activityKey = {key}
-                        timeGap = {value}
+                        activityTimeGap = {value}
                     />
 
                 ))}
 
                 <Activity
                     activityKey = {medicineKey}
-                    timeGap = {medicineDoseTimeGap}
+                    activityTimeGap = {medicineDoseTimeGap}
                 />
 
             </div>
 
-            <button className="FloatingFlagButton" onClick={() => setOpenScheduleFlag(false)}>Close</button>
+            <button className="FloatingFlagButton" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     )

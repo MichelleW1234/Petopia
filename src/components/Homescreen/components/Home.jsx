@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import PetDeletion from "./HomescreenComponents/PetDeletion.jsx";
+import Deletion from "./HomescreenComponents/Deletion.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -20,13 +20,14 @@ function Home (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
-    const noMorePets = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
-                        : false;
+    const homePetLimitReached = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
+                                    : false;
+
+    const [homeOpenClearPetsFlag, setHomeOpenClearPetsFlag] = useState(false);
 
 
-    const [openClearPetsFlag, setOpenClearPetsFlag] = useState(false);
 
-    
+
     const restartGame = () => {
 
         setPetList({});
@@ -47,9 +48,9 @@ function Home (){
 
         <>
 
-            {openClearPetsFlag &&
-            <PetDeletion
-                setOpenClearPetsFlag={setOpenClearPetsFlag}
+            {homeOpenClearPetsFlag &&
+            <Deletion
+                setHomeOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
             <div className="NavBarContainer">
@@ -57,7 +58,7 @@ function Home (){
 
                 {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
-                    <button className="NavBarButton" onClick = {() => setOpenClearPetsFlag(true)}> Clear Pets </button>
+                    <button className="NavBarButton" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
 
                 ) : (
 
@@ -65,7 +66,7 @@ function Home (){
 
                 )}
 
-                {noMorePets ? (
+                {homePetLimitReached ? (
 
                    <button className="NavBarButtonPlaceHolder"> Add Pets </button>
 

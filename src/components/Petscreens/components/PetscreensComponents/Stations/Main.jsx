@@ -15,28 +15,28 @@ import { healthKey, speciesKey, stageKey } from "../../../../../constants/Consta
 
 import "./Main.css";
 
-function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
+function Main ({mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
     // 10 rows x 8 columns
-    const homeInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
+    const mainInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
 
-    const [homeAttention, setHomeAttention] = useState(false);
-    const [homePetCurrentSpace, setHomePetCurrentSpace] = useState(Math.floor(Math.random() * 8));
+    const [mainAttention, setMainAttention] = useState(false);
+    const [mainPetCurrentSpace, setMainPetCurrentSpace] = useState(Math.floor(Math.random() * 8));
 
-    const homePetCurrentSpaceRef = useRef(homePetCurrentSpace);
-    const homePetDirectionRef = useRef(0);
-    const homeTimeoutRef = useRef(null);
+    const mainPetCurrentSpaceRef = useRef(mainPetCurrentSpace);
+    const mainPetDirectionRef = useRef(0);
+    const mainTimeoutRef = useRef(null);
     
 
 
 
     useEffect(() => {
-        homePetCurrentSpaceRef.current = homePetCurrentSpace;
-    }, [homePetCurrentSpace]);
+        mainPetCurrentSpaceRef.current = mainPetCurrentSpace;
+    }, [mainPetCurrentSpace]);
 
     useEffect(() => {
 
@@ -48,7 +48,7 @@ function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
 
             const interval = setInterval(() => {
                 petPositionChange();
-            }, homePetEnergy);
+            }, mainPetEnergy);
 
             return () => clearInterval(interval);
 
@@ -62,23 +62,23 @@ function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
 
     const petPositionChange = () => {
 
-        if (homePetCurrentSpaceRef.current === 0){
+        if (mainPetCurrentSpaceRef.current === 0){
 
-            setHomePetCurrentSpace(1);
-            homePetDirectionRef.current = 1;
+            setMainPetCurrentSpace(1);
+            mainPetDirectionRef.current = 1;
 
-        } else if (homePetCurrentSpaceRef.current === 7){
+        } else if (mainPetCurrentSpaceRef.current === 7){
 
-            setHomePetCurrentSpace(6);
-            homePetDirectionRef.current = 0;
+            setMainPetCurrentSpace(6);
+            mainPetDirectionRef.current = 0;
 
-        } else if (homePetDirectionRef.current === 0){
+        } else if (mainPetDirectionRef.current === 0){
 
-            setHomePetCurrentSpace(prev => prev-1);
+            setMainPetCurrentSpace(prev => prev-1);
 
-        } else if (homePetDirectionRef.current === 1){
+        } else if (mainPetDirectionRef.current === 1){
 
-            setHomePetCurrentSpace(prev => prev+1);
+            setMainPetCurrentSpace(prev => prev+1);
             
         }
 
@@ -93,17 +93,17 @@ function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
 
         } else {
                  
-            setHomeAttention(true);
+            setMainAttention(true);
 
             // Cancels any existing timers:
-            if (homeTimeoutRef.current) {
-                clearTimeout(homeTimeoutRef.current);
+            if (mainTimeoutRef.current) {
+                clearTimeout(mainTimeoutRef.current);
             }
 
             // Starts a fresh 3s timer:
-            homeTimeoutRef.current = setTimeout(() => {
-                setHomeAttention(false);
-                homeTimeoutRef.current = null;
+            mainTimeoutRef.current = setTimeout(() => {
+                setMainAttention(false);
+                mainTimeoutRef.current = null;
             }, 2000);
 
         }
@@ -129,21 +129,21 @@ function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
 
             ) : PetList[ActivePetName][healthKey] > 0 ? (
 
-                !homeActivityInProgress ? (
+                !mainActivityInProgress ? (
 
                     <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
-                        {homeInnerScreenSpace.map((row, rowIndex) => (
+                        {mainInnerScreenSpace.map((row, rowIndex) => (
                             row.map((__, colIndex) => {
 
-                                const petHere = rowIndex === 2 && homePetCurrentSpace === colIndex;
-                                const quotationHere = rowIndex === 1 && homePetCurrentSpace === colIndex;
+                                const petHere = rowIndex === 2 && mainPetCurrentSpace === colIndex;
+                                const quotationHere = rowIndex === 1 && mainPetCurrentSpace === colIndex;
                                 
                                 return (
 
                                     petHere ? (
 
-                                        homePetDirectionRef.current === 0 ? (
+                                        mainPetDirectionRef.current === 0 ? (
 
                                             colIndex%2 === 0 ? (
 
@@ -171,21 +171,21 @@ function Main ({homePetEnergy, homePetMood, homeActivityInProgress}){
 
                                     ) : quotationHere ? (
 
-                                        homePetMood === 0 ? (
+                                        mainPetMood === 0 ? (
 
-                                            <img key={rowIndex + "," + colIndex} src = {homeAttention ? heart: happy} className = "MainPetWindowGridQuotationCell"/>
+                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: happy} className = "MainPetWindowGridQuotationCell"/>
 
-                                        ) : homePetMood === 1 ? (
+                                        ) : mainPetMood === 1 ? (
 
-                                            <img key={rowIndex + "," + colIndex} src = {homeAttention ? heart: neutral} className = "MainPetWindowGridQuotationCell"/>
+                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: neutral} className = "MainPetWindowGridQuotationCell"/>
 
-                                        ) : homePetMood === 2 ? (
+                                        ) : mainPetMood === 2 ? (
 
-                                            <img key={rowIndex + "," + colIndex} src = {homeAttention ?  anger: sad} className = "MainPetWindowGridQuotationCell"/>
+                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ?  anger: sad} className = "MainPetWindowGridQuotationCell"/>
 
                                         ) : (
 
-                                            <img key={rowIndex + "," + colIndex} src = {homeAttention ? anger: verySad} className = "MainPetWindowGridQuotationCell"/>
+                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? anger: verySad} className = "MainPetWindowGridQuotationCell"/>
 
                                         )
 

@@ -27,15 +27,15 @@ function Medicine ({setMedicineOpenFlag}){
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
     const [medicineDone, setMedicineDone] = useState(false);
 
-    const [medicineAnimationImage, setAnimationImage] = useState(0);
+    const [medicineAnimationImage, setMedicineAnimationImage] = useState(0);
 
-    const GlobalTimerRef = useRef(GlobalTimer);
+    const medicineGlobalTimerRef = useRef(GlobalTimer);
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
 
     useEffect(() => {
-        GlobalTimerRef.current = GlobalTimer;
+        medicineGlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);
 
     useEffect(() => {
@@ -54,10 +54,10 @@ function Medicine ({setMedicineOpenFlag}){
 
         const interval = setInterval(() => {
 
-            const medicineCurrSeconds = medicineCurrNumberRef.current + 1;
-            setMedicineCurrNumber(medicineCurrSeconds);
+            const currSeconds = medicineCurrNumberRef.current + 1;
+            setMedicineCurrNumber(currSeconds);
 
-            if (medicineCurrSeconds >= medicineTotal){
+            if (currSeconds >= medicineTotal){
                 clearInterval(interval);
                 setMedicineDone(true);
                 manageMedicineEffectiveness();
@@ -77,9 +77,9 @@ function Medicine ({setMedicineOpenFlag}){
 
         const interval = setInterval(() => {
             if (medicineAnimationImageRef.current === 0) {
-                setAnimationImage(1);
+                setMedicineAnimationImage(1);
             } else {
-                setAnimationImage(0);
+                setMedicineAnimationImage(0);
             }
         }, 300);
 
@@ -92,7 +92,7 @@ function Medicine ({setMedicineOpenFlag}){
 
     const manageMedicineEffectiveness = () => {
 
-        const currDate = GlobalTimerRef.current;
+        const currDate = medicineGlobalTimerRef.current;
         const currentHour = new Date(currDate).getHours();
         
         if (currentHour <= 6 || currentHour >= 20){
@@ -150,7 +150,7 @@ function Medicine ({setMedicineOpenFlag}){
                 <div className={`PetWindowBorder PetWindowBorder-${PetList[ActivePetName][speciesKey]}`}>
 
                     <ProgressBar
-                        progressPercentageUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
 
                     {!medicineDone ? (
