@@ -13,21 +13,6 @@ export const initiateActivity = (wantsTo, setDesiredOption, setOpenFlag, options
 }
 
 
-
-export const judgeSelection = (chosenOption, desiredOption, newNumber, setNumberTillDone, setSelection) => {
-
-    if (chosenOption !== desiredOption) {
-
-        setNumberTillDone(newNumber);
-
-    } 
-
-    setSelection(chosenOption);
-
-}
-
-
-
 export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection) => {
 
     if (desiredOption === -1){

@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
 
 import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
@@ -9,7 +10,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../../constants/MainPetImages.js";
 import { cleaningKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
+import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Clean.css";
 import "./Stations.css";
@@ -76,30 +77,13 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
 
             {cleanSelection === -1 ? (
 
-                <>
-                    {cleanDesiredOption === -1 ? (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                            Option: Not dirty
-                        </h2>
-
-                    ) : (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                            Option: {cleanOptions[cleanDesiredOption]}
-                        </h2>
-
-                    )}
-                    <div className= "StationsWindowSelectionContainer">  
-
-                        {cleanOptions.map((option, index) => (
-
-                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, cleanDesiredOption, cleanTotal*2, setCleanTotal, setCleanSelection)}> {option} </button>
-
-                        ))}
-
-                    </div>
-                </>
+                <Options
+                    optionsActivityKey = {cleaningKey}
+                    optionsDesiredOption = {cleanDesiredOption}
+                    optionsList = {cleanOptions} 
+                    setOptionsTotal = {setCleanTotal}
+                    setOptionsSelection = {setCleanSelection}
+                />
 
             ) : (
 

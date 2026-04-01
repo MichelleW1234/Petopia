@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
 
 import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
 import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
@@ -9,7 +10,7 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
 import { petImages } from "../../../../../constants/MainPetImages.js";
 import { feedingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
+import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Feed.css";
 import "./Stations.css";
@@ -104,30 +105,13 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
         
             {feedSelection === -1 ? (
 
-                <>
-                    {feedDesiredOption === -1 ? (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                            Option: Not hungry
-                        </h2>
-
-                    ) : (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> 
-                            Option: {feedOptions[feedDesiredOption]}
-                        </h2>
-
-                    )}
-                    <div className= "StationsWindowSelectionContainer">  
-
-                        {feedOptions.map((option, index) => (
-
-                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, feedDesiredOption, feedTotal*2, setFeedTotal, setFeedSelection)}> {option} </button>
-
-                        ))}
-
-                    </div>
-                </>
+                <Options
+                    optionsActivityKey = {feedingKey}
+                    optionsDesiredOption = {feedDesiredOption}
+                    optionsList = {feedOptions} 
+                    setOptionsTotal = {setFeedTotal}
+                    setOptionsSelection = {setFeedSelection}
+                />
         
             ) : (
 

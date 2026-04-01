@@ -1,14 +1,15 @@
 import {useState, useEffect} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
 
 import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
 import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
-import { playingKey, speciesKey } from "../../../../../constants/Constants.js";
-import { judgeSelection, manageHealth } from "../../../helpers/Helpers.js";
+import { playingKey } from "../../../../../constants/Constants.js";
+import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Play.css";
 import "./Stations.css";
@@ -53,33 +54,13 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
             {playSelection === -1 ? (
 
-                <>
-
-                    {playDesiredOption === -1 ? (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
-                            Option: Not restless
-                        </h2>
-
-                    ) : (
-
-                        <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}>
-                            option: {playOptions[playDesiredOption]}
-                        </h2>
-
-                    )}
-
-                    <div className= "StationsWindowSelectionContainer">  
-
-                        {playOptions.map((game, index) => (
-
-                            <button key = {index} className = "StationsWindowSelectionOptionButton" onClick = {() => judgeSelection(index, playDesiredOption, playTotal*2, setPlayTotal, setPlaySelection)}> {game} </button>
-                            
-                        ))}
-
-                    </div>
-
-                </>
+                <Options
+                    optionsActivityKey = {playingKey}
+                    optionsDesiredOption = {playDesiredOption}
+                    optionsList = {playOptions} 
+                    setOptionsTotal = {setPlayTotal}
+                    setOptionsSelection = {setPlaySelection}
+                />
 
             ) : (
 
