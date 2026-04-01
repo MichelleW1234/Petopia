@@ -1,3 +1,16 @@
+.StationsFlagContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3rem;
+
+    color: white;
+
+}
+
 .StationsInProgressWindow {
 
     display: flex;
@@ -17,7 +30,7 @@
         rgba(120, 83, 255, 0.535) 60%,
         rgba(180, 160, 255, 0.103) 100%
     );
-    box-shadow: 0 0 2rem 0.75rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
 
 }
 
@@ -28,7 +41,7 @@
         rgba(120, 83, 255, 0.534) 60%,
         rgba(180, 160, 255, 0.148) 100%
     );
-    box-shadow: 0 0 2rem 0.75rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
 
 }
 
@@ -39,7 +52,7 @@
         rgba(120, 83, 255, 0.534) 60%,
         rgba(180, 160, 255, 0.148) 100%
     );
-    box-shadow: 0 0 2rem 0.75rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
 
 }
 
@@ -55,8 +68,8 @@
 
     filter: 
         drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 15px rgba(178, 156, 255))
-        drop-shadow(0 0 25px rgb(152, 123, 255));
+        drop-shadow(0 0 10px rgba(178, 156, 255))
+        drop-shadow(0 0 15px rgb(152, 123, 255));
 
 }
 
@@ -64,8 +77,8 @@
 
     filter: 
         drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 15px rgba(178, 156, 255))
-        drop-shadow(0 0 25px rgb(152, 123, 255));
+        drop-shadow(0 0 10px rgba(178, 156, 255))
+        drop-shadow(0 0 15px rgb(152, 123, 255));
 
 }
 
@@ -74,8 +87,8 @@
 
     filter: 
         drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 15px rgba(178, 156, 255))
-        drop-shadow(0 0 25px rgb(152, 123, 255));
+        drop-shadow(0 0 10px rgba(178, 156, 255))
+        drop-shadow(0 0 15px rgb(152, 123, 255));
 
 }
 

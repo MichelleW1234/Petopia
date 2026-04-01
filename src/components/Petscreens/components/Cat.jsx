@@ -69,7 +69,8 @@ function Cat (){
                                         : false
                                     : false;
 
-    const catFeedOptions = ["tuna", "chicken", "salmon"];
+    //May replace strings with images??
+    const catFeedOptions = ["tuna", "chicken", "salmon"]; 
     const catPlayOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!! 
     const catPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
 

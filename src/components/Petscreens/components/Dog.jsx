@@ -77,6 +77,7 @@ function Dog (){
                                         : false
                                     : false;
 
+    //May replace strings with images??
     const dogFeedOptions = ["beef", "Turkey", "lamb"];
     const dogCleanOptions = ["soap", "brush"];
     const dogPlayOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!

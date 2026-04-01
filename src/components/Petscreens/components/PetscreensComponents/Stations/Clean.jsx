@@ -24,9 +24,6 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    // 10 rows x 8 columns
-    const cleanInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
-
     const [cleanTotal, setCleanTotal] = useState(30);
     const [cleanSelection, setCleanSelection] = useState(-1);
     const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
@@ -75,62 +72,72 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
         
         <div className = "FloatingFlagBackground">
 
-            {cleanSelection === -1 ? (
+            <div className="StationsFlagContainer">
 
-                <Options
-                    optionsActivityKey = {cleaningKey}
-                    optionsDesiredOption = {cleanDesiredOption}
-                    optionsList = {cleanOptions} 
-                    setOptionsTotal = {setCleanTotal}
-                    setOptionsSelection = {setCleanSelection}
-                />
+                {cleanSelection === -1 ? (
 
-            ) : (
-
-                !cleanDone ? ( 
-
-                    <>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                        />
-
-                        <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
-                            
-                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img
-                                className = "StationsInProgressPet StationsInProgressPet-Clean" 
-                                src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
-                                onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
-                            />
-
-                        </div>
-                    </>
+                    <Options
+                        optionsActivityKey = {cleaningKey}
+                        optionsDesiredOption = {cleanDesiredOption}
+                        optionsList = {cleanOptions} 
+                        setOptionsTotal = {setCleanTotal}
+                        setOptionsSelection = {setCleanSelection}
+                    />
 
                 ) : (
 
-                    <>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                        />
+                    !cleanDone ? ( 
 
-                        <div className= "StationsInProgressWindow StationsInProgressWindow-Clean">  
-                            Done!!!!!!
-                        </div>
-                    </>
+                        <>
+                            <h2> Cleaning in progress... drag your cursor back and forth to clean!</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                            />
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
+                                
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img
+                                    className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
+                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
+                                />
 
-                )
+                            </div>
+                        </>
 
-            )}
+                    ) : (
 
-            {cleanSelection === -1 || !cleanDone ? (
+                        <>
+                            <h2> Done!!!!!!</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                            />
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
+                                
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img
+                                    className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                                />
 
-                <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                            </div>
+                        </>
 
-            ) : (
+                    )
 
-                <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                )}
 
-            )}
+                {cleanSelection === -1 || !cleanDone ? (
+
+                    <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+
+                ) : (
+
+                    <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+
+                )}
+
+            </div>
 
         </div>
 

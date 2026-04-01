@@ -1,20 +1,24 @@
 .OptionsDesiredOptionSign{
 
-    height: 20rem;
-    width: 40rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    border-radius: 1rem;
     gap: 2rem;
 
-    background-color: rgb(209, 215, 255);
+    color: white;
 
     img {
 
-        height: 8rem;
-        width: 8rem;
+        height: 10rem;
+        width: 10rem;
+
+        filter:
+            drop-shadow(0 0 5px rgb(207, 194, 255))
+            drop-shadow(0 0 15px rgba(178, 156, 255))
+            drop-shadow(0 0 25px rgb(152, 123, 255));
 
     }
 
@@ -32,13 +36,18 @@
 
 .OptionsListButton{
         
-    height: 10rem;
-    width: 10rem;
+    height: 15rem;
+    width: 12rem;
+
+    border-radius: 1rem;
+    padding: 2rem;
+
+    box-shadow: 0 0 0.5rem 0.1rem rgb(207, 194, 255);
 
     filter: 
-        drop-shadow(0 0 2px rgb(207, 194, 255))
+        drop-shadow(0 0 4px rgb(207, 194, 255))
         drop-shadow(0 0 8px rgba(178, 156, 255))
-        drop-shadow(0 0 14px rgb(152, 123, 255));
+        drop-shadow(0 0 12px rgb(152, 123, 255));
 
     transition: transform 0.3s ease;
 
@@ -46,10 +55,12 @@
 
 .OptionsListButton:hover{
 
+    box-shadow: 0 0 0.5rem 0.25rem rgb(207, 194, 255);
+
     filter: 
         drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 15px rgba(178, 156, 255))
-        drop-shadow(0 0 25px rgb(152, 123, 255));
+        drop-shadow(0 0 10px rgba(178, 156, 255))
+        drop-shadow(0 0 15px rgb(152, 123, 255));
 
     transform: scale(1.1);
 

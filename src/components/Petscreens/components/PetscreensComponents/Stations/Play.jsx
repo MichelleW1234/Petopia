@@ -8,8 +8,9 @@ import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.j
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
-import { playingKey } from "../../../../../constants/Constants.js";
+import { playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
+import { petImages } from "../../../../../constants/MainPetImages.js";
 
 import "./Play.css";
 import "./Stations.css";
@@ -66,8 +67,8 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                 !playDone ? (
 
-                    <>
-
+                    <div className="StationsFlagContainer">
+                        <h2>Game in progress...</h2>
                         <ProgressBar
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                         />
@@ -89,19 +90,19 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                         )}
 
-                    </>
+                    </div>
 
                 ) : (
 
-                    <>
+                    <div className="StationsFlagContainer">
 
+                        <h2>Finished!!!!</h2>
                         <ProgressBar
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                         />
+                        <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
-                        <h2>Finished!!!!</h2>
-
-                    </>
+                    </div>
 
                 )
 

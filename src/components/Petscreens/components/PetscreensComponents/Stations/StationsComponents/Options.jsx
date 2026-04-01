@@ -1,7 +1,7 @@
 import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { cleaningKey, feedingKey, playingKey, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, playingKey, speciesKey } from "../../../../../../constants/Constants.js";
 import { petImages } from "../../../../../../constants/MainPetImages.js";
 
 import "./Options.css";
@@ -15,9 +15,17 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
 
     const optionsNoneDesiredStrings = {
 
-        [feedingKey]: "Not hungry",
-        [cleaningKey]: "Not dirty",
-        [playingKey]: "Not restless"
+        [feedingKey]: `${ActivePetName} is not hungry`,
+        [cleaningKey]: `${ActivePetName} doesn't need to use these`,
+        [playingKey]: `${ActivePetName} is tired`
+
+    }
+
+    const optionsDesiredStrings = {
+
+        [feedingKey]: `${ActivePetName} wants ${optionsList[optionsDesiredOption]}`,
+        [cleaningKey]: `${ActivePetName} needs ${optionsList[optionsDesiredOption]}`,
+        [playingKey]: `${ActivePetName} wants to play ${optionsList[optionsDesiredOption]}`
 
     }
 
@@ -47,10 +55,9 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
                 {optionsDesiredOption === -1 ? (
 
                     <>
-
                         {/* Change this!!!!!!!!!!!!!*/}
                         <img />
-                        <h2>{optionsNoneDesiredStrings[optionsActivityKey]}</h2>
+                        <h2>{optionsNoneDesiredStrings[optionsActivityKey]}! Come back later. </h2>
                     </>
 
                 ) : (
@@ -58,7 +65,7 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
                     <>
                         {/* Change this!!!!!!!!!!!!!*/}
                         <img src = {petImages[PetList[ActivePetName][speciesKey]][0][optionsDesiredOption]}/>
-                        <h2>{optionsList[optionsDesiredOption]}</h2>
+                        <h2>{optionsDesiredStrings[optionsActivityKey]}! Select from the options below.</h2>
                     </>
 
                 )}
@@ -69,7 +76,7 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
                 {/* Change this!!!!!!!!!!!!!*/}
                 {optionsList.map((option, index) => (
 
-                    <img className = "OptionsListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][index]} onClick = {() => judgeSelection(index)}/>
+                    <img key = {index} className = "OptionsListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][index]} onClick = {() => judgeSelection(index)}/>
 
                 ))}
 

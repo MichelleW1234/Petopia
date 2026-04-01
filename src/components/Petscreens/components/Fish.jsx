@@ -66,6 +66,7 @@ function Fish (){
                                         : false
                                     : false;
     
+    //May replace strings with images??
     const fishFeedOptions = ["shrimp", "worms", "algae"];
     const fishCleanOptions = ["sponge", "cloth"];
 

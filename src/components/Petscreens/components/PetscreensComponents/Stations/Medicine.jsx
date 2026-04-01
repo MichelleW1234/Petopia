@@ -21,9 +21,6 @@ function Medicine ({setMedicineOpenFlag}){
 
     const medicineTotal = 10;
 
-    // 10 rows x 8 columns
-    const medicineInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
-
     const [medicineStart, setMedicineStart] = useState(false);
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
     const [medicineDone, setMedicineDone] = useState(false);
@@ -96,7 +93,7 @@ function Medicine ({setMedicineOpenFlag}){
         const currDate = medicineGlobalTimerRef.current;
         const currentHour = new Date(currDate).getHours();
         
-        if (currentHour <= 6 || currentHour >= 20){
+        if (currentHour < 6 || currentHour >= 20){
     
             setPetList(prev => ({
     
@@ -138,52 +135,79 @@ function Medicine ({setMedicineOpenFlag}){
     return (
 
         <div className = "FloatingFlagBackground">
+
+            <div className="StationsFlagContainer">
         
-            {!medicineStart ? (
+                {!medicineStart ? (
 
-                <>
-                    <h2 className={`PetWindowSign PetWindowSign-${PetList[ActivePetName][speciesKey]}`}> Health: {PetList[ActivePetName][healthKey]} </h2>
-                    <button className = {`PetWindowButton PetWindowButton-${PetList[ActivePetName][speciesKey]}`} onClick = {() => setMedicineStart(true)}> Give Medicine </button>
-                </>
+                    <>
+                        {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-            ) : (
+                            <>
+                                <h2> {ActivePetName} has {PetList[ActivePetName][healthKey]} health. Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
+                                {/* Change this!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            </>
 
-                <>
+                        ) : (
 
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
-                    />
+                            <>
+                                <h2> {ActivePetName} is at full health! No medicine is needed currently. </h2>
+                                {/* Change this!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            </>
 
+                        )}
+                        
+                        <button className = "GeneralNavButton" onClick = {() => setMedicineStart(true)}> Give Medicine </button>
 
-                    {!medicineDone ? (
-                            
-                        <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
-                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
+                    </>
 
-                        </div>
+                ) : (
+
+                    !medicineDone ? (
+
+                        <>
+                            <h2>Medicine in progress...</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                            />
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
+
+                            </div>
+                        </>
 
                     ) : (
 
-                        <div className="StationsInProgressWindow StationsInProgressWindow-Medicine"> 
+                        <>
                             <h2>Finished!!!!</h2>
-                        </div>
-                        
-                    )}
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                            />
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
-                </>
+                            </div>
+                        </>
+                    
+                    )
                 
-            )}
+                )}
 
-            {!medicineStart || !medicineDone ? (
+                {!medicineStart || !medicineDone ? (
 
-                <button className = "GeneralNavButton" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                    <button className = "GeneralNavButton" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
 
-            ) : (
+                ) : (
 
-                <button className = "FloatingFlagButton" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                    <button className = "FloatingFlagButton" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
 
-            )}
+                )}
+
+            </div>
 
         </div>
 

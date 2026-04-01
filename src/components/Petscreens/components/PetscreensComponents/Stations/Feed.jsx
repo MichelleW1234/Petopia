@@ -24,9 +24,6 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    // 10 rows x 8 columns
-    const feedInnerScreenSpace = Array.from({ length: 5 }, () => Array(8).fill(0));
-
     const [feedTotal, setFeedTotal] = useState(10);
     const [feedCurrNumber, setFeedCurrNumber] = useState(0);
     const [feedDone, setFeedDone] = useState(false);
@@ -102,56 +99,69 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
     return (
 
         <div className = "FloatingFlagBackground">
-        
-            {feedSelection === -1 ? (
 
-                <Options
-                    optionsActivityKey = {feedingKey}
-                    optionsDesiredOption = {feedDesiredOption}
-                    optionsList = {feedOptions} 
-                    setOptionsTotal = {setFeedTotal}
-                    setOptionsSelection = {setFeedSelection}
-                />
+            <div className = "StationsFlagContainer">
         
-            ) : (
+                {feedSelection === -1 ? (
 
-                <>
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                    <Options
+                        optionsActivityKey = {feedingKey}
+                        optionsDesiredOption = {feedDesiredOption}
+                        optionsList = {feedOptions} 
+                        setOptionsTotal = {setFeedTotal}
+                        setOptionsSelection = {setFeedSelection}
                     />
+            
+                ) : (
 
-                    {!feedDone ? (
+                    !feedDone ? (
 
-                        <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
+                        <>
+                            <h2> Feeding in progress...</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                            />
 
-                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
 
-                        </div>
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
+
+                            </div>
+                        </>
 
                     ) : (
 
-                        <div className= "StationsInProgressWindow StationsInProgressWindow-Feed">  
+                        <>
+                            <h2>Finished!!</h2>
 
-                            Finished!!
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                            />
 
-                        </div>
+                            <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
 
-                    )}
-                </>
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
-            )}
+                            </div>
+                        </>
 
+                    )
 
-            {feedSelection === -1 || !feedDone ? (
+                )}
 
-                <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                {feedSelection === -1 || !feedDone ? (
 
-            ) : (
+                    <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
 
-                <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                ) : (
 
-            )}
+                    <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+
+                )}
+
+            </div>
 
         </div>
 
