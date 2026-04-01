@@ -13,13 +13,15 @@
 
 .StationsInProgressWindow {
 
+    height: 25rem;
+    width: 35rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
-    padding: 8rem 10rem;
     border-radius: 5rem;
+    padding: 3rem;
 
 }
 

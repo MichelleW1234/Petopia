@@ -53,70 +53,71 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
         
         <div className = "FloatingFlagBackground">
 
-            {playSelection === -1 ? (
+            <div className="StationsFlagContainer">
 
-                <Options
-                    optionsActivityKey = {playingKey}
-                    optionsDesiredOption = {playDesiredOption}
-                    optionsList = {playOptions} 
-                    setOptionsTotal = {setPlayTotal}
-                    setOptionsSelection = {setPlaySelection}
-                />
+                {playSelection === -1 ? (
 
-            ) : (
-
-                !playDone ? (
-
-                    <div className="StationsFlagContainer">
-                        <h2>Game in progress...</h2>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
-                        />
-
-                        {playSelectedGameWindow !== null ? (
-
-                            <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
-                            /*
-                            <playSelectedGameWindow
-                                setPlayDone = {setPlayDone}
-                                playCurrNumber = {playCurrNumber}
-                                setPlayCurrNumber = {setPlayCurrNumber}
-                            />
-                            */
-
-                        ) : (
-
-                            null /*Default window? */
-
-                        )}
-
-                    </div>
+                    <Options
+                        optionsActivityKey = {playingKey}
+                        optionsDesiredOption = {playDesiredOption}
+                        optionsList = {playOptions} 
+                        setOptionsTotal = {setPlayTotal}
+                        setOptionsSelection = {setPlaySelection}
+                    />
 
                 ) : (
 
-                    <div className="StationsFlagContainer">
+                    !playDone ? (
 
-                        <h2>Finished!!!!</h2>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
-                        />
-                        <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                        <>
+                            <h2>Game in progress...</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
+                            />
 
-                    </div>
+                            {playSelectedGameWindow !== null ? (
 
-                )
+                                <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
+                                /*
+                                <playSelectedGameWindow
+                                    setPlayDone = {setPlayDone}
+                                    playCurrNumber = {playCurrNumber}
+                                    setPlayCurrNumber = {setPlayCurrNumber}
+                                />
+                                */
 
-            )}
-           
-            {playSelection === -1 || !playDone ? (
+                            ) : (
 
-                <button className = "GeneralNavButton" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                                null /*Default window? */
 
-            ) : (
+                            )}
 
-                <button className = "FloatingFlagButton" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                        </>
 
-            )}
+                    ) : (
+
+                        <>
+                            <h2>Finished!!!!</h2>
+                            <ProgressBar
+                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
+                            />
+                            <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                        </>
+
+                    )
+
+                )}
+            
+                {playSelection === -1 || !playDone ? (
+
+                    <button className = "GeneralNavButton" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+
+                ) : (
+
+                    <button className = "FloatingFlagButton" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+
+                )}
+            </div>
 
         </div>
 

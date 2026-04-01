@@ -186,11 +186,9 @@ function Medicine ({setMedicineOpenFlag}){
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                             />
-                            <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
-                            </div>
                         </>
                     
                     )

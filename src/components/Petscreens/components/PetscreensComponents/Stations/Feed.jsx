@@ -139,12 +139,9 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                             />
 
-                            <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsInProgressPet StationsInProgressPet-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-
-                            </div>
                         </>
 
                     )

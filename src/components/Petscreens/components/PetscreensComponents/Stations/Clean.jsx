@@ -89,12 +89,13 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                     !cleanDone ? ( 
 
                         <>
-                            <h2> Cleaning in progress... drag your cursor back and forth to clean!</h2>
+                            <h2> Cleaning in progress...</h2>
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
                             <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
                                 
+                                <h2> Drag your cursor back and forth</h2>
                                 {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                                 <img
                                     className = "StationsInProgressPet StationsInProgressPet-Clean" 
@@ -112,15 +113,12 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
-                            <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
-                                
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img
-                                    className = "StationsInProgressPet StationsInProgressPet-Clean" 
-                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
-                                />
+                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                            <img
+                                className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                            />
 
-                            </div>
                         </>
 
                     )
