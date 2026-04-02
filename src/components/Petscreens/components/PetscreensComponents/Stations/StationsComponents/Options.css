@@ -17,8 +17,8 @@
 
         filter:
             drop-shadow(0 0 5px rgb(207, 194, 255))
-            drop-shadow(0 0 15px rgba(178, 156, 255))
-            drop-shadow(0 0 25px rgb(152, 123, 255));
+            drop-shadow(0 0 10px rgba(178, 156, 255))
+            drop-shadow(0 0 15px rgb(152, 123, 255));
 
     }
 
@@ -42,7 +42,7 @@
     border-radius: 1rem;
     padding: 2rem;
 
-    box-shadow: 0 0 0.5rem 0.1rem rgb(207, 194, 255);
+    box-shadow: 0 0 0.25rem 0.15rem rgb(207, 194, 255);
 
     filter: 
         drop-shadow(0 0 4px rgb(207, 194, 255))
@@ -55,7 +55,7 @@
 
 .OptionsListButton:hover{
 
-    box-shadow: 0 0 0.5rem 0.25rem rgb(207, 194, 255);
+    box-shadow: 0 0 0.35rem 0.25rem rgb(207, 194, 255);
 
     filter: 
         drop-shadow(0 0 5px rgb(207, 194, 255))
