@@ -146,7 +146,7 @@ function Medicine ({setMedicineOpenFlag}){
                             <>
                                 <h2> {ActivePetName} has {PetList[ActivePetName][healthKey]} health. Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
                                 {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </>
 
                         ) : (
@@ -154,7 +154,7 @@ function Medicine ({setMedicineOpenFlag}){
                             <>
                                 <h2> {ActivePetName} is at full health! No medicine is needed currently. </h2>
                                 {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </>
 
                         )}
@@ -174,7 +174,7 @@ function Medicine ({setMedicineOpenFlag}){
                             />
                             <div className="StationsInProgressWindow StationsInProgressWindow-Medicine">  
                                 {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
+                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
 
                             </div>
                         </>
@@ -187,7 +187,7 @@ function Medicine ({setMedicineOpenFlag}){
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                             />
                             {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img className = "StationsInProgressPet StationsInProgressPet-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
 
                         </>
                     

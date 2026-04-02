@@ -98,7 +98,7 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                                 <h2> Drag your cursor back and forth</h2>
                                 {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                                 <img
-                                    className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                    className = "StationsImage StationsImage-Clean" 
                                     src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
                                     onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                 />
@@ -115,7 +115,7 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                             />
                             {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                             <img
-                                className = "StationsInProgressPet StationsInProgressPet-Clean" 
+                                className = "StationsImage StationsImage-Clean" 
                                 src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
                             />
 

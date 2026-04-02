@@ -22,43 +22,44 @@
 
     border-radius: 5rem;
     padding: 3rem;
+    gap: 2rem;
 
 }
 
 .StationsInProgressWindow-Feed {
 
     background: radial-gradient(circle,
-        rgb(55, 0, 253) 0%,
-        rgba(120, 83, 255, 0.535) 60%,
-        rgba(180, 160, 255, 0.103) 100%
+        rgb(183, 79, 0) 0%,
+        rgba(184, 104, 42, 0.535) 60%,
+        rgba(188, 134, 92, 0.103) 100%
     );
-    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1rem 0.5rem  rgb(255, 182, 126);
 
 }
 
 .StationsInProgressWindow-Clean {
 
     background: radial-gradient(circle,
-        rgb(55, 0, 253) 0%,
-        rgba(120, 83, 255, 0.534) 60%,
-        rgba(180, 160, 255, 0.148) 100%
+        rgb(38, 0, 174) 0%,
+        rgba(77, 51, 172, 0.534) 60%,
+        rgba(124, 107, 182, 0.148) 100%
     );
-    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1rem 0.5rem  rgb(175, 151, 255);
 
 }
 
 .StationsInProgressWindow-Medicine {
 
     background: radial-gradient(circle,
-        rgb(55, 0, 253) 0%,
-        rgba(120, 83, 255, 0.534) 60%,
-        rgba(180, 160, 255, 0.148) 100%
+        rgb(84, 0, 162) 0%,
+        rgba(107, 48, 162, 0.534) 60%,
+        rgba(126, 82, 167, 0.148) 100%
     );
-    box-shadow: 0 0 1.5rem 0.5rem  rgb(181, 160, 255);
+    box-shadow: 0 0 1rem 0.5rem  rgb(193, 128, 255);
 
 }
 
-.StationsInProgressPet {
+.StationsImage {
 
     height: 10rem;
     width: 10rem;
@@ -66,31 +67,31 @@
 }
 
 
-.StationsInProgressPet-Feed {
+.StationsImage-Feed {
 
     filter: 
-        drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 10px rgba(178, 156, 255))
-        drop-shadow(0 0 15px rgb(152, 123, 255));
+        drop-shadow(0 0 5px rgb(255, 182, 127))
+        drop-shadow(0 0 10px rgb(255, 144, 60))
+        drop-shadow(0 0 15px  rgb(255, 111, 0));
 
 }
 
-.StationsInProgressPet-Clean {
+.StationsImage-Clean {
 
     filter: 
-        drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 10px rgba(178, 156, 255))
-        drop-shadow(0 0 15px rgb(152, 123, 255));
+        drop-shadow(0 0 5px rgb(180, 160, 255))
+        drop-shadow(0 0 10px rgb(120, 83, 255))
+        drop-shadow(0 0 15px rgb(55, 0, 253));
 
 }
 
 
-.StationsInProgressPet-Medicine {
+.StationsImage-Medicine {
 
     filter: 
-        drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 10px rgba(178, 156, 255))
-        drop-shadow(0 0 15px rgb(152, 123, 255));
+        drop-shadow(0 0 5px rgb(202, 145, 255))
+        drop-shadow(0 0 10px rgba(169, 78, 255))
+        drop-shadow(0 0 15px rgb(131, 0, 253));
 
 }
 
