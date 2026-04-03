@@ -121,12 +121,9 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                             />
-
-                            <div className="StationsInProgressWindow StationsInProgressWindow-Feed">  
-
+                            <div className="StationsWindow StationsWindow-Feed">  
                                 {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                                 <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
-
                             </div>
                         </>
 
@@ -134,14 +131,13 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
 
                         <>
                             <h2>Finished!!</h2>
-
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                             />
-
-                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-
+                            <div className = "StationsWindow StationsWindow-Feed">
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            </div>
                         </>
 
                     )

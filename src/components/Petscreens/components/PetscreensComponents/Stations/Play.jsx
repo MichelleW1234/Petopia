@@ -74,24 +74,26 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                             />
+                            <div className="StationsWindow StationsWindow-Play">
+                                
+                                {playSelectedGameWindow !== null ? (
 
-                            {playSelectedGameWindow !== null ? (
+                                    <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
+                                    /*
+                                    <playSelectedGameWindow
+                                        setPlayDone = {setPlayDone}
+                                        playCurrNumber = {playCurrNumber}
+                                        setPlayCurrNumber = {setPlayCurrNumber}
+                                    />
+                                    */
 
-                                <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
-                                /*
-                                <playSelectedGameWindow
-                                    setPlayDone = {setPlayDone}
-                                    playCurrNumber = {playCurrNumber}
-                                    setPlayCurrNumber = {setPlayCurrNumber}
-                                />
-                                */
+                                ) : (
 
-                            ) : (
+                                    null /*Default window? */
 
-                                null /*Default window? */
+                                )}
 
-                            )}
-
+                            </div>
                         </>
 
                     ) : (
@@ -101,7 +103,9 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                             />
-                            <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            <div className="StationsWindow StationsWindow-Play">
+                                <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                            </div>
                         </>
 
                     )

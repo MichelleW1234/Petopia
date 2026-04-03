@@ -5,59 +5,70 @@
     align-items: center;
     justify-content: center;
 
+    border-radius: 5rem;
     gap: 3rem;
 
     color: white;
 
 }
 
-.StationsInProgressWindow {
+.StationsWindow {
 
-    height: 25rem;
-    width: 35rem;
+    height: 30rem;
+    width: 50rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     border-radius: 5rem;
     padding: 3rem;
-    gap: 2rem;
+    gap: 3rem;
 
 }
 
-.StationsInProgressWindow-Feed {
+.StationsWindow-Feed {
 
     background: radial-gradient(circle,
-        rgb(183, 79, 0) 0%,
-        rgba(184, 104, 42, 0.535) 60%,
-        rgba(188, 134, 92, 0.103) 100%
+        rgb(182, 79, 0) 0%,
+        rgba(182, 79, 0, 0) 100%
     );
-    box-shadow: 0 0 1rem 0.5rem  rgb(255, 182, 126);
+    box-shadow: 0 0 1rem 0.5rem  rgb(255, 196, 151);
 
 }
 
-.StationsInProgressWindow-Clean {
+.StationsWindow-Clean {
 
     background: radial-gradient(circle,
-        rgb(38, 0, 174) 0%,
-        rgba(77, 51, 172, 0.534) 60%,
-        rgba(124, 107, 182, 0.148) 100%
+        rgb(0, 146, 186) 0%,
+        rgb(0, 146, 186, 0) 100%
     );
-    box-shadow: 0 0 1rem 0.5rem  rgb(175, 151, 255);
+    box-shadow: 0 0 1rem 0.5rem rgb(169, 236, 255);
 
 }
 
-.StationsInProgressWindow-Medicine {
+
+.StationsWindow-Play {
 
     background: radial-gradient(circle,
-        rgb(84, 0, 162) 0%,
-        rgba(107, 48, 162, 0.534) 60%,
-        rgba(126, 82, 167, 0.148) 100%
+        rgb(0, 184, 28) 0%,
+        rgb(0, 184, 28, 0) 100%
     );
-    box-shadow: 0 0 1rem 0.5rem  rgb(193, 128, 255);
+    box-shadow: 0 0 1rem 0.5rem rgb(159, 255, 173);
 
 }
+
+
+.StationsWindow-Medicine {
+
+    background: radial-gradient(circle,
+        rgb(122, 0, 192) 0%,
+        rgb(122, 0, 192, 0) 100%
+    );
+    box-shadow: 0 0 1rem 0.5rem rgb(223, 167, 255);
+
+}
+
 
 .StationsImage {
 
@@ -70,8 +81,8 @@
 .StationsImage-Feed {
 
     filter: 
-        drop-shadow(0 0 5px rgb(255, 182, 127))
-        drop-shadow(0 0 10px rgb(255, 144, 60))
+        drop-shadow(0 0 5px rgb(255, 213, 180))
+        drop-shadow(0 0 10px rgb(255, 163, 93))
         drop-shadow(0 0 15px  rgb(255, 111, 0));
 
 }
@@ -79,9 +90,19 @@
 .StationsImage-Clean {
 
     filter: 
-        drop-shadow(0 0 5px rgb(180, 160, 255))
-        drop-shadow(0 0 10px rgb(120, 83, 255))
-        drop-shadow(0 0 15px rgb(55, 0, 253));
+        drop-shadow(0 0 5px rgb(174, 237, 255))
+        drop-shadow(0 0 10px rgb(94, 220, 255))
+        drop-shadow(0 0 15px rgb(0, 200, 255));
+
+}
+
+
+.StationsImage-Play {
+
+    filter: 
+        drop-shadow(0 0 5px rgb(169, 255, 182))
+        drop-shadow(0 0 10px rgb(94, 255, 118))
+        drop-shadow(0 0 15px rgb(0, 255, 38));
 
 }
 
@@ -89,9 +110,9 @@
 .StationsImage-Medicine {
 
     filter: 
-        drop-shadow(0 0 5px rgb(202, 145, 255))
-        drop-shadow(0 0 10px rgba(169, 78, 255))
-        drop-shadow(0 0 15px rgb(131, 0, 253));
+        drop-shadow(0 0 5px rgb(225, 174, 255))
+        drop-shadow(0 0 10px rgb(198, 101, 255))
+        drop-shadow(0 0 15px rgb(162, 0, 255));
 
 }
 

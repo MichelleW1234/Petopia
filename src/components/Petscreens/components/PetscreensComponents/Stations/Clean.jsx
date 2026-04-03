@@ -85,7 +85,7 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                     />
 
                 ) : (
-
+ 
                     !cleanDone ? ( 
 
                         <>
@@ -93,8 +93,7 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
-                            <div className="StationsInProgressWindow StationsInProgressWindow-Clean">  
-                                
+                            <div className="StationsWindow StationsWindow-Clean">
                                 <h2> Drag your cursor back and forth</h2>
                                 {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                                 <img
@@ -102,7 +101,6 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                                     src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
                                     onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                 />
-
                             </div>
                         </>
 
@@ -113,15 +111,17 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                             <ProgressBar
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
-                            {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                            <img
-                                className = "StationsImage StationsImage-Clean" 
-                                src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
-                            />
-
+                            <div className="StationsWindow StationsWindow-Clean">
+                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                <img
+                                    className = "StationsImage StationsImage-Clean" 
+                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                                />
+                            </div>
                         </>
 
                     )
+
 
                 )}
 
