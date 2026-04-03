@@ -104,7 +104,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Play">
-                                <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Play" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </div>
                         </>
 
