@@ -4,7 +4,7 @@ import { useActivePetName } from "../../../../../../providers/ActivePetNameProvi
 import { cleaningKey, feedingKey, playingKey, speciesKey } from "../../../../../../constants/Constants.js";
 import { petImages } from "../../../../../../constants/MainPetImages.js";
 
-import "./Options.css";
+import "../Stations.css";
 
 
 
@@ -50,7 +50,7 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
 
         <>
 
-            <div className="OptionsDesiredOptionSign"> 
+            <div className="StationsDesiredOptionSign"> 
 
                 {optionsDesiredOption === -1 ? (
 
@@ -71,12 +71,12 @@ function Options({optionsActivityKey, optionsDesiredOption, optionsList, setOpti
                 )}
 
             </div>
-            <div className= "OptionsListContainer">  
+            <div className= "StationsOptionListContainer">  
 
                 {/* Change this!!!!!!!!!!!!!*/}
                 {optionsList.map((option, index) => (
 
-                    <img key = {index} className = "OptionsListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][index]} onClick = {() => judgeSelection(index)}/>
+                    <img key = {index} className = "StationsOptionListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][index]} onClick = {() => judgeSelection(index)}/>
 
                 ))}
 

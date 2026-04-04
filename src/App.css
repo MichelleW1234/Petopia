@@ -27,6 +27,7 @@ body{
   word-break: break-word;
   white-space: normal;
 
+
   text-shadow: 0.0625rem 0.0625rem 0.25rem #ff69ebba,
     -0.0625rem -0.0625rem 0.25rem #00ffffd5;
 
@@ -64,7 +65,7 @@ button {
   align-items: center;
   justify-content: center;
 
-  padding: 5rem;
+  padding: 3rem;
   gap: 5rem;
 
 }
@@ -80,47 +81,49 @@ button {
   align-items: center;
   flex-wrap: wrap;
 
-  padding: 1.5rem 3rem;
+  padding: 3rem;
   gap: 3rem;
-
-  border-bottom: 0.25rem solid black;
-  background: linear-gradient(#bbf6ff, rgb(39, 0, 116));
-  box-shadow: 0 0 1rem 0.5rem rgb(168, 242, 255);
 
 }
 
 
 .NavBarButton{
 
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
 
   color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
   border-top: 0.1rem solid black;
-  background-color: rgb(202, 158, 255);
+  background: linear-gradient(rgb(149, 0, 255), rgb(249, 190, 255));
+
+  animation: GeneralNavButton-glow 4s infinite;
 
 }
 
 
 .NavBarButton:hover{
 
-  color: white;
-  background-color: rgb(85, 0, 150);
+  color: rgb(255, 255, 255);
+  background: linear-gradient(rgb(96, 0, 165), rgb(181, 138, 186));
+
+  animation: GeneralNavButton-glow 4s infinite;
 
 }
 
 .NavBarButtonUrgent{
 
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
 
   color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
   border-top: 0.1rem solid black;
-  background-color: rgb(255, 154, 255);
+  background: linear-gradient(rgb(255, 0, 195), rgb(255, 190, 227));
 
   animation: NavBarButtonUrgent-glow 3s infinite;
 
@@ -129,7 +132,7 @@ button {
 .NavBarButtonUrgent:hover{
 
   color: white;
-  background-color: rgb(86, 0, 107);
+  background: linear-gradient(rgb(177, 0, 136), rgb(190, 142, 170));
 
   animation: NavBarButtonUrgent-hover-glow 3s infinite;
 
@@ -138,14 +141,15 @@ button {
 
 .NavBarButtonPlaceHolder{
 
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
 
   color: black;
   border-left: 0.25rem solid black;
   border-bottom: 0.25rem solid black;
   border-right: 0.1rem solid black;
   border-top: 0.1rem solid black;
-  background-color: rgb(139, 109, 177);
+  background: linear-gradient(rgba(149, 0, 255, 0.654), rgba(248, 190, 255, 0.65));
 
 }
 

@@ -141,25 +141,33 @@ function Medicine ({setMedicineOpenFlag}){
                 {!medicineStart ? (
 
                     <>
-                        {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-                            <>
-                                <h2> {ActivePetName} has {PetList[ActivePetName][healthKey]} health. Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
-                                {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-                            </>
+                        <div className="StationsDesiredOptionSign">
 
-                        ) : (
+                            {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-                            <>
-                                <h2> {ActivePetName} is at full health! No medicine is needed currently. </h2>
-                                {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-                            </>
+                                <>
+                                    {/* Change this!!!!!!!!!!!!!*/}
+                                    <img src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                    <h2> {ActivePetName} has {PetList[ActivePetName][healthKey]} health. Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
+                                </>
 
-                        )}
+                            ) : (
+
+                                <>
+                                    {/* Change this!!!!!!!!!!!!!*/}
+                                    <img src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                    <h2> {ActivePetName} is at full health! No medicine is needed currently. </h2>
+                                </>
+
+                            )}
                         
-                        <button className = "GeneralNavButton" onClick = {() => setMedicineStart(true)}> Give Medicine </button>
+                        </div>
+                            
+                        <div className = "StationsOptionListContainer">
+                            {/* Change this!!!!!!!!!!!!!*/}
+                            <img className = "StationsOptionListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][0]} onClick = {() => setMedicineStart(true)}/>
+                        </div>
 
                     </>
 

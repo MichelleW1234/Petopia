@@ -1,3 +1,72 @@
+.StationsDesiredOptionSign{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 1rem;
+    gap: 2rem;
+
+    color: white;
+
+    img {
+
+        height: 10rem;
+        width: 10rem;
+
+        filter:
+            drop-shadow(0 0 5px rgb(207, 194, 255))
+            drop-shadow(0 0 10px rgba(178, 156, 255))
+            drop-shadow(0 0 15px rgb(152, 123, 255));
+
+    }
+
+}
+
+.StationsOptionListContainer{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    gap: 4rem;
+
+}
+
+.StationsOptionListButton{
+        
+    height: 15rem;
+    width: 12rem;
+
+    border-radius: 1rem;
+    padding: 2rem;
+
+    box-shadow: 0 0 0.25rem 0.15rem rgb(207, 194, 255);
+
+    filter: 
+        drop-shadow(0 0 4px rgb(207, 194, 255))
+        drop-shadow(0 0 8px rgba(178, 156, 255))
+        drop-shadow(0 0 12px rgb(152, 123, 255));
+
+    transition: transform 0.3s ease;
+
+}
+
+.StationsOptionListButton:hover{
+
+    box-shadow: 0 0 0.35rem 0.25rem rgb(207, 194, 255);
+
+    filter: 
+        drop-shadow(0 0 5px rgb(207, 194, 255))
+        drop-shadow(0 0 10px rgba(178, 156, 255))
+        drop-shadow(0 0 15px rgb(152, 123, 255));
+
+    transform: scale(1.1);
+
+}
+
+
 .StationsFlagContainer{
 
     display: flex;
