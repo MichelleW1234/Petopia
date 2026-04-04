@@ -68,16 +68,16 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                 <div className="FloatingFlagInfoContainer">
                     <h2>Select pet(s) to clear:</h2>
 
-                    <div className = "HomeScreenClearPetsFlagList">
+                    <div className = "DeletionClearPetsFlagList">
                         {Object.keys(PetList).map((key) => (
 
                             deletionSelectedPets.includes(key) ? (
 
-                                <button key = {key} className="HomeScreenClearPetsFlagButtonActive" onClick = {() => removePet(key)}> {key} </button>
+                                <button key = {key} className="DeletionClearPetsFlagButtonActive" onClick = {() => removePet(key)}> {key} </button>
 
                             ) : (
 
-                                <button key = {key} className="HomeScreenClearPetsFlagButton" onClick = {() => addPet(key)}> {key} </button>
+                                <button key = {key} className="DeletionClearPetsFlagButton" onClick = {() => addPet(key)}> {key} </button>
 
                             )
 

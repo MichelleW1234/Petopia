@@ -1,4 +1,4 @@
-.HomeScreenClearPetsFlagList {
+.DeletionClearPetsFlagList {
 
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
 
 }
 
-.HomeScreenClearPetsFlagButton {
+.DeletionClearPetsFlagButton {
 
     padding: 1rem 2rem;
     border-radius: 2rem;
@@ -21,7 +21,7 @@
 }
 
 
-.HomeScreenClearPetsFlagButton:hover {
+.DeletionClearPetsFlagButton:hover {
 
     color: white;
     background-color: rgb(0, 8, 255);
@@ -29,7 +29,7 @@
 }
 
 
-.HomeScreenClearPetsFlagButtonActive {
+.DeletionClearPetsFlagButtonActive {
 
     padding: 1rem 2rem;
     border-radius: 2rem;
@@ -43,7 +43,7 @@
 }
 
 
-.HomeScreenClearPetsFlagButtonActive:hover {
+.DeletionClearPetsFlagButtonActive:hover {
 
     color: white;
     background-color: rgb(154, 0, 165);
