@@ -8,8 +8,7 @@ import { useActivePetName } from "../../../../../providers/ActivePetNameProvider
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
-import { petImages } from "../../../../../constants/MainPetImages.js";
-import { cleaningKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { cleaningKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Clean.css";
@@ -17,7 +16,7 @@ import "./Stations.css";
 
 
 
-function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCleanOpenFlag}){
+function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCleanOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -77,7 +76,6 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                 {cleanSelection === -1 ? (
 
                     <Options
-                        optionsActivityKey = {cleaningKey}
                         optionsDesiredOption = {cleanDesiredOption}
                         optionsList = {cleanOptions} 
                         setOptionsTotal = {setCleanTotal}
@@ -95,10 +93,9 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                             />
                             <div className="StationsWindow StationsWindow-Clean">
                                 <h2> Drag your cursor back and forth</h2>
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
                                 <img
                                     className = "StationsImage StationsImage-Clean" 
-                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][cleanAnimationImage]} 
+                                    src = {cleanAnimationImages[cleanAnimationImage]} 
                                     onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                 />
                             </div>
@@ -112,10 +109,10 @@ function Clean ({cleanOptions, cleanDesiredOption, setCleanDesiredOption, setCle
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Clean">
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
+                                {/* Change this later!!!!!!!!!!!!!*/}
                                 <img
                                     className = "StationsImage StationsImage-Clean" 
-                                    src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                                    src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
                                 />
                             </div>
                         </>

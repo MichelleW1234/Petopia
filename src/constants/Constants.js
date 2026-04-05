@@ -1,3 +1,41 @@
+import catStageOne from "../images/placeholderstage1.jpeg";
+import catStageTwo from "../images/placeholderstage2.jpg";
+import catStageThree from "../images/placeholderstage3.jpg";
+
+import dogStageOne from "../images/placeholderstage1.jpeg";
+import dogStageTwo from "../images/placeholderstage2.jpg";
+import dogStageThree from "../images/placeholderstage3.jpg";
+
+import fishStageOne from "../images/placeholderstage1.jpeg";
+import fishStageTwo from "../images/placeholderstage2.jpg";
+import fishStageThree from "../images/placeholderstage3.jpg";
+
+
+import s1CatHappy from "../images/placeholderstage1.jpeg";
+import s1CatSad from "../images/placeholderstage1.jpeg";
+import s2CatHappy from "../images/placeholderstage2.jpg";
+import s2CatSad from "../images/placeholderstage2.jpg";
+import s3CatHappy from "../images/placeholderstage3.jpg";
+import s3CatSad from "../images/placeholderstage3.jpg";
+
+import s1DogHappy from "../images/placeholderstage1.jpeg";
+import s1DogSad from "../images/placeholderstage1.jpeg";
+import s2DogHappy from "../images/placeholderstage2.jpg";
+import s2DogSad from "../images/placeholderstage2.jpg";
+import s3DogHappy from "../images/placeholderstage3.jpg";
+import s3DogSad from "../images/placeholderstage3.jpg";
+
+import s1FishHappy from "../images/placeholderstage1.jpeg";
+import s1FishSad from "../images/placeholderstage1.jpeg";
+import s2FishHappy from "../images/placeholderstage2.jpg";
+import s2FishSad from "../images/placeholderstage2.jpg";
+import s3FishHappy from "../images/placeholderstage3.jpg";
+import s3FishSad from "../images/placeholderstage3.jpg";
+
+
+
+
+
 export const feedingKey = "feeding";
 export const cleaningKey = "cleaning";
 export const playingKey = "playing";
@@ -52,3 +90,25 @@ export const timeLimitList = {
 }
 
 export const medicineDoseTimeGap = 86400000;
+
+
+export const portraitPetImages = {
+    [dogSpecies]: [dogStageOne, dogStageTwo, dogStageThree],
+    [catSpecies]: [catStageOne, catStageTwo, catStageThree],
+    [fishSpecies]: [fishStageOne, fishStageTwo, fishStageThree]
+}
+
+
+export const moodPetImages = {
+
+    [dogSpecies]: [[s1DogHappy, s1DogSad], 
+                    [s2DogHappy, s2DogSad], 
+                    [s3DogHappy, s3DogSad]],
+    [catSpecies]: [[s1CatHappy, s1CatSad], 
+                    [s2CatHappy, s2CatSad], 
+                    [s3CatHappy, s3CatSad]],
+    [fishSpecies]: [[s1FishHappy, s1FishSad], 
+                    [s2FishHappy, s2FishSad],
+                    [s3FishHappy, s3FishSad]]
+
+}

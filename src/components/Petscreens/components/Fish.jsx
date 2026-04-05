@@ -1,6 +1,52 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+
+
+import s1FishLeftOne from "../../../images/Fish/Main/1fish.svg";
+import s1FishLeftTwo from "../../../images/Fish/Main/1fish1.svg";
+import s1FishRightOne from "../../../images/Fish/Main/1fish2.svg";
+import s1FishRightTwo from "../../../images/Fish/Main/1fish3.svg";
+
+import s2FishLeftOne from "../../../images/Fish/Main/2fish.svg";
+import s2FishLeftTwo from "../../../images/Fish/Main/2fish1.svg";
+import s2FishRightOne from "../../../images/Fish/Main/2fish2.svg";
+import s2FishRightTwo from "../../../images/Fish/Main/2fish3.svg";
+
+import s3FishLeftOne from "../../../images/Fish/Main/3fish.svg";
+import s3FishLeftTwo from "../../../images/Fish/Main/3fish1.svg";
+import s3FishRightOne from "../../../images/Fish/Main/3fish2.svg";
+import s3FishRightTwo from "../../../images/Fish/Main/3fish3.svg";
+
+
+import s1FishFeedOne from "../../../images/Fish/Main/1fish.svg";
+import s1FishFeedTwo from "../../../images/Fish/Main/1fish1.svg";
+import s2FishFeedOne from "../../../images/Fish/Main/2fish.svg";
+import s2FishFeedTwo from "../../../images/Fish/Main/2fish1.svg";
+import s3FishFeedOne from "../../../images/Fish/Main/3fish.svg";
+import s3FishFeedTwo from "../../../images/Fish/Main/3fish1.svg";
+
+
+import fishCleanOne from "../../../images/Fish/Main/1fish.svg";
+import fishCleanTwo from "../../../images/Fish/Main/1fish1.svg";
+
+
+import s1FishMedOne from "../../../images/Fish/Main/1fish.svg";
+import s1FishMedTwo from "../../../images/Fish/Main/1fish1.svg";
+import s2FishMedOne from "../../../images/Fish/Main/2fish.svg";
+import s2FishMedTwo from "../../../images/Fish/Main/2fish1.svg";
+import s3FishMedOne from "../../../images/Fish/Main/3fish.svg";
+import s3FishMedTwo from "../../../images/Fish/Main/3fish1.svg";
+
+
+import shrimp from "../../../images/Fish/Main/1fish.svg";
+import worms from "../../../images/Fish/Main/1fish1.svg";
+import algae from "../../../images/Fish/Main/1fish2.svg";
+import sponge from "../../../images/Fish/Main/1fish.svg";
+import cloth from "../../../images/Fish/Main/1fish1.svg";
+import pill from "../../../images/Fish/Main/1fish.svg";
+
+
 import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Clean from "./PetscreensComponents/Stations/Clean.jsx";
@@ -12,9 +58,8 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, speciesKey, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
-
 
 
 function Fish (){
@@ -65,12 +110,36 @@ function Fish (){
                                         true
                                         : false
                                     : false;
+
+
+    const fishMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]
+                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo]
+                            : [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo];
+
     
-    //May replace strings with images??
-    const fishFeedOptions = ["shrimp", "worms", "algae"];
-    const fishCleanOptions = ["sponge", "cloth"];
+    const fishFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1FishFeedOne, s1FishFeedTwo]
+                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2FishFeedOne, s2FishFeedTwo]
+                            : [s3FishFeedOne, s3FishFeedTwo];
+
+    const fishCleanImages = [fishCleanOne, fishCleanTwo];
+
+    const fishMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1FishMedOne, s1FishMedTwo]
+                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2FishMedOne, s2FishMedTwo]
+                            : [s3FishMedOne, s3FishMedTwo];
+
+    const fishFeedOptions = [shrimp, worms, algae];
+    const fishCleanOptions = [sponge, cloth];
+    const fishMedicineOptions = [pill];
 
 
+
+    
 
     useEffect(() => {
         if (fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag) {
@@ -89,6 +158,7 @@ function Fish (){
 
             {fishFeedOpenFlag &&
             <Feed
+                feedAnimationImages={fishFeedImages}
                 feedOptions={fishFeedOptions}
                 feedDesiredOption = {fishFeedDesiredOption}
                 setFeedDesiredOption = {setFishFeedDesiredOption}
@@ -97,6 +167,7 @@ function Fish (){
 
             {fishCleanOpenFlag &&
             <Clean
+                cleanAnimationImages={fishCleanImages}
                 cleanOptions={fishCleanOptions}
                 cleanDesiredOption = {fishCleanDesiredOption}
                 setCleanDesiredOption = {setFishCleanDesiredOption}
@@ -105,6 +176,8 @@ function Fish (){
 
             {fishMedicineOpenFlag &&
             <Medicine
+                medicineAnimationImages={fishMedicineImages}
+                medicineOptions = {fishMedicineOptions}
                 setMedicineOpenFlag = {setFishMedicineOpenFlag}
             />}
 
@@ -151,6 +224,7 @@ function Fish (){
             <div className = "ScreenContainer">
 
                 <Main
+                    mainAnimationImages={fishMainImages}
                     mainPetEnergy = {400}
                     mainPetMood = {fishMood}
                     mainActivityInProgress={fishActivityInProgress}

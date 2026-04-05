@@ -1,6 +1,45 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+import s1CatLeftOne from "../../../images/Cat/Main/1cat.svg";
+import s1CatLeftTwo from "../../../images/Cat/Main/1cat1.svg";
+import s1CatRightOne from "../../../images/Cat/Main/1cat2.svg";
+import s1CatRightTwo from "../../../images/Cat/Main/1cat3.svg";
+
+import s2CatLeftOne from "../../../images/Cat/Main/2cat.svg";
+import s2CatLeftTwo from "../../../images/Cat/Main/2cat1.svg";
+import s2CatRightOne from "../../../images/Cat/Main/2cat2.svg";
+import s2CatRightTwo from "../../../images/Cat/Main/2cat3.svg";
+
+import s3CatLeftOne from "../../../images/Cat/Main/3cat.svg";
+import s3CatLeftTwo from "../../../images/Cat/Main/3cat1.svg";
+import s3CatRightOne from "../../../images/Cat/Main/3cat2.svg";
+import s3CatRightTwo from "../../../images/Cat/Main/3cat3.svg";
+
+
+import s1CatFeedOne from "../../../images/Cat/Main/1cat.svg";
+import s1CatFeedTwo from "../../../images/Cat/Main/1cat1.svg";
+import s2CatFeedOne from "../../../images/Cat/Main/2cat.svg";
+import s2CatFeedTwo from "../../../images/Cat/Main/2cat1.svg";
+import s3CatFeedOne from "../../../images/Cat/Main/3cat.svg";
+import s3CatFeedTwo from "../../../images/Cat/Main/3cat1.svg";
+
+
+import s1CatMedOne from "../../../images/Cat/Main/1cat.svg";
+import s1CatMedTwo from "../../../images/Cat/Main/1cat1.svg";
+import s2CatMedOne from "../../../images/Cat/Main/2cat.svg";
+import s2CatMedTwo from "../../../images/Cat/Main/2cat1.svg";
+import s3CatMedOne from "../../../images/Cat/Main/3cat.svg";
+import s3CatMedTwo from "../../../images/Cat/Main/3cat1.svg";
+
+
+import tuna from "../../../images/Cat/Main/1cat.svg";
+import chicken from "../../../images/Cat/Main/1cat1.svg";
+import salmon from "../../../images/Cat/Main/1cat2.svg";
+import pill from "../../../images/Cat/Main/1cat.svg";
+
+
+
 import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Play from "./PetscreensComponents/Stations/Play.jsx";
@@ -12,7 +51,7 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import {feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import {stageKey, speciesKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
 
@@ -69,10 +108,30 @@ function Cat (){
                                         : false
                                     : false;
 
-    //May replace strings with images??
-    const catFeedOptions = ["tuna", "chicken", "salmon"]; 
-    const catPlayOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!! 
-    const catPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
+    const catMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo]
+                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo]
+                          : [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo];
+
+    const catFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1CatFeedOne, s1CatFeedTwo]
+                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2CatFeedOne, s2CatFeedTwo]
+                          : [s3CatFeedOne, s3CatFeedTwo];
+
+    const catMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1CatMedOne, s1CatMedTwo]
+                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2CatMedOne, s2CatMedTwo]
+                          : [s3CatMedOne, s3CatMedTwo];
+
+
+    const catFeedOptions = [tuna, chicken, salmon]; 
+    const catPlayOptions = [tuna, chicken, salmon]; // CHANGE THIS LATER!!!!!!!!! 
+    const catPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER!!!!!!!
+    const catMedicineOptions = [pill];
+
 
 
 
@@ -94,6 +153,7 @@ function Cat (){
 
             {catFeedOpenFlag &&
             <Feed
+                feedAnimationImages={catFeedImages}
                 feedOptions={catFeedOptions}
                 feedDesiredOption = {catFeedDesiredOption}
                 setFeedDesiredOption = {setCatFeedDesiredOption}
@@ -111,6 +171,8 @@ function Cat (){
 
             {catMedicineOpenFlag &&
             <Medicine
+                medicineAnimationImages={catMedicineImages}
+                medicineOptions={catMedicineOptions}
                 setMedicineOpenFlag = {setCatMedicineOpenFlag}
             />}
 
@@ -158,6 +220,7 @@ function Cat (){
             <div className = "ScreenContainer">
 
                 <Main
+                    mainAnimationImages={catMainImages}
                     mainPetEnergy = {450}
                     mainPetMood = {catMood}
                     mainActivityInProgress = {catActivityInProgress}

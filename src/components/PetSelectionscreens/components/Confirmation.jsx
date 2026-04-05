@@ -6,7 +6,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useFinalPetSelection } from "../providers/FinalPetSelectionProvider.jsx";
 
-import { petImages } from "../../../constants/HomePetImages.js";
+import { portraitPetImages } from "../../../constants/Constants.js";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 import "./Confirmation.css";
@@ -171,9 +171,9 @@ function Confirmation () {
                 <h2 className="PetWindowSign PetWindowSign-newpet">{confirmationInfo}</h2>
                 <div className="HomePetSelectorPetWindow">
 
-                    <img src = { FinalPetSelection === 0 ? petImages[dogSpecies][0]
-                        : FinalPetSelection !== 1 ? petImages[catSpecies][0]
-                        : FinalPetSelection !== 2 ? petImages[fishSpecies][0]
+                    <img src = { FinalPetSelection === 0 ? portraitPetImages[dogSpecies][0]
+                        : FinalPetSelection !== 1 ? portraitPetImages[catSpecies][0]
+                        : FinalPetSelection !== 2 ? portraitPetImages[fishSpecies][0]
                         : "https://i.redd.it/i-got-bored-so-i-decided-to-draw-a-random-image-on-the-v0-4ig97vv85vjb1.png?width=1280&format=png&auto=webp&s=7177756d1f393b6e093596d06e1ba539f723264b" }
                     />
                 </div>

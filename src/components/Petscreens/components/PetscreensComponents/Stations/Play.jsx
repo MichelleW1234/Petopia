@@ -8,9 +8,8 @@ import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.j
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
-import { playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { moodPetImages, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
-import { petImages } from "../../../../../constants/MainPetImages.js";
 
 import "./Play.css";
 import "./Stations.css";
@@ -58,7 +57,6 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                 {playSelection === -1 ? (
 
                     <Options
-                        optionsActivityKey = {playingKey}
                         optionsDesiredOption = {playDesiredOption}
                         optionsList = {playOptions} 
                         setOptionsTotal = {setPlayTotal}
@@ -104,7 +102,8 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Play">
-                                <img className = "StationsImage StationsImage-Play" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                {/*CHANGE THIS LATER!!!!!!!!!!!!!!!*/}
+                                <img className = "StationsImage StationsImage-Play" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </div>
                         </>
 

@@ -1,6 +1,54 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+
+import s1DogLeftOne from "../../../images/Dog/Main/1dog.svg";
+import s1DogLeftTwo from "../../../images/Dog/Main/1dog1.svg";
+import s1DogRightOne from "../../../images/Dog/Main/1dog2.svg";
+import s1DogRightTwo from "../../../images/Dog/Main/1dog3.svg";
+
+import s2DogLeftOne from "../../../images/Dog/Main/2dog.svg";
+import s2DogLeftTwo from "../../../images/Dog/Main/2dog1.svg";
+import s2DogRightOne from "../../../images/Dog/Main/2dog2.svg";
+import s2DogRightTwo from "../../../images/Dog/Main/2dog3.svg";
+
+import s3DogLeftOne from "../../../images/Dog/Main/3dog.svg";
+import s3DogLeftTwo from "../../../images/Dog/Main/3dog1.svg";
+import s3DogRightOne from "../../../images/Dog/Main/3dog2.svg";
+import s3DogRightTwo from "../../../images/Dog/Main/3dog3.svg";
+
+
+import s1DogFeedOne from "../../../images/Dog/Main/1dog.svg";
+import s1DogFeedTwo from "../../../images/Dog/Main/1dog1.svg";
+import s2DogFeedOne from "../../../images/Dog/Main/2dog.svg";
+import s2DogFeedTwo from "../../../images/Dog/Main/2dog1.svg";
+import s3DogFeedOne from "../../../images/Dog/Main/3dog.svg";
+import s3DogFeedTwo from "../../../images/Dog/Main/3dog1.svg";
+
+
+import s1DogCleanOne from "../../../images/Dog/Main/1dog.svg";
+import s1DogCleanTwo from "../../../images/Dog/Main/1dog1.svg";
+import s2DogCleanOne from "../../../images/Dog/Main/2dog.svg";
+import s2DogCleanTwo from "../../../images/Dog/Main/2dog1.svg";
+import s3DogCleanOne from "../../../images/Dog/Main/3dog.svg";
+import s3DogCleanTwo from "../../../images/Dog/Main/3dog1.svg";
+
+
+import s1DogMedOne from "../../../images/Dog/Main/1dog.svg";
+import s1DogMedTwo from "../../../images/Dog/Main/1dog1.svg";
+import s2DogMedOne from "../../../images/Dog/Main/2dog.svg";
+import s2DogMedTwo from "../../../images/Dog/Main/2dog1.svg";
+import s3DogMedOne from "../../../images/Dog/Main/3dog.svg";
+import s3DogMedTwo from "../../../images/Dog/Main/3dog1.svg";
+
+
+import beef from "../../../images/Dog/Main/1dog.svg";
+import turkey from "../../../images/Dog/Main/1dog1.svg";
+import lamb from "../../../images/Dog/Main/1dog2.svg";
+import soap from "../../../images/Dog/Main/1dog.svg";
+import brush from "../../../images/Dog/Main/1dog1.svg";
+import pill from "../../../images/Dog/Main/1dog.svg";
+
 import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Clean from "./PetscreensComponents/Stations/Clean.jsx";
@@ -13,7 +61,7 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, speciesKey, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
 
@@ -77,12 +125,39 @@ function Dog (){
                                         : false
                                     : false;
 
-    //May replace strings with images??
-    const dogFeedOptions = ["beef", "Turkey", "lamb"];
-    const dogCleanOptions = ["soap", "brush"];
-    const dogPlayOptions = ["tuna", "chicken", "salmon"]; // CHANGE THIS LATER!!!!!!!!!
-    const dogPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
 
+    const dogMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                                [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo]
+                              : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                                [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo]
+                              : [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo];
+
+    const dogFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1DogFeedOne, s1DogFeedTwo]
+                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2DogFeedOne, s2DogFeedTwo]
+                          : [s3DogFeedOne, s3DogFeedTwo];
+
+
+    const dogCleanImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1DogCleanOne, s1DogCleanTwo]
+                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2DogCleanOne, s2DogCleanTwo]
+                          : [s3DogCleanOne, s3DogCleanTwo];
+
+    const dogMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+                            [s1DogMedOne, s1DogMedTwo]
+                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            [s2DogMedOne, s2DogMedTwo]
+                            : [s3DogMedOne, s3DogMedTwo];
+
+    const dogFeedOptions = [beef, turkey, lamb]; 
+    const dogCleanOptions = [soap, brush];
+    const dogPlayOptions = [beef, turkey, lamb]; // CHANGE THIS LATER!!!!!!!!!
+    const dogPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
+    const dogMedicineOptions = [pill];
+
+    
 
 
     useEffect(() => {
@@ -102,6 +177,7 @@ function Dog (){
 
             {dogFeedOpenFlag &&
             <Feed
+                feedAnimationImages={dogFeedImages}
                 feedOptions={dogFeedOptions}
                 feedDesiredOption = {dogFeedDesiredOption}
                 setFeedDesiredOption = {setDogFeedDesiredOption}
@@ -110,6 +186,7 @@ function Dog (){
 
             {dogCleanOpenFlag &&
             <Clean
+                cleanAnimationImages={dogCleanImages}
                 cleanOptions={dogCleanOptions}
                 cleanDesiredOption = {dogCleanDesiredOption}
                 setCleanDesiredOption = {setDogCleanDesiredOption}
@@ -127,6 +204,8 @@ function Dog (){
 
             {dogMedicineOpenFlag &&
             <Medicine
+                medicineAnimationImages={dogMedicineImages}
+                medicineOptions={dogMedicineOptions}
                 setMedicineOpenFlag = {setDogMedicineOpenFlag}
             />}
 
@@ -175,6 +254,7 @@ function Dog (){
             <div className = "ScreenContainer">
 
                 <Main
+                    mainAnimationImages={dogMainImages}
                     mainPetEnergy = {350}
                     mainPetMood = {dogMood}
                     mainActivityInProgress={dogActivityInProgress}

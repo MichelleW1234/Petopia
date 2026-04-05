@@ -7,7 +7,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { petImages } from "../../../constants/HomePetImages.js";
+import { portraitPetImages } from "../../../constants/Constants.js";
 import { healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 import "./Home.css";
@@ -96,7 +96,7 @@ function Home (){
                                 {PetList[key][healthKey] > 0 ? (
 
                                     <div className = "HomescreenPetSlot"> 
-                                        <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p>{key}</p>
                                         <p>Stage: {PetList[key][stageKey]}</p>
                                         <p>Health: {PetList[key][healthKey]}</p>
@@ -105,7 +105,7 @@ function Home (){
                                 ) : (
 
                                     <div className = "HomescreenPetSlot"> 
-                                        <img src = {petImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                         <p> {key}</p>
                                         <p>Stage: -- </p>
                                         <p>Health: -- </p>

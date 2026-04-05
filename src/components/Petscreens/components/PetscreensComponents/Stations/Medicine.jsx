@@ -1,30 +1,28 @@
 import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
 
 import {useGlobalTimer} from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { petImages } from "../../../../../constants/MainPetImages.js";
-import { healthCapList, healthKey, medicineKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { healthCapList, healthKey, medicineKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 
 import "./Medicine.css";
 import "./Stations.css";
 
 
-function Medicine ({setMedicineOpenFlag}){
+function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const medicineTotal = 10;
-
-    const [medicineStart, setMedicineStart] = useState(false);
+    const [medicineTotal, setMedicineTotal] = useState(10);
+    const [medicineSelection, setMedicineSelection] = useState(-1);
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
     const [medicineDone, setMedicineDone] = useState(false);
-
     const [medicineAnimationImage, setMedicineAnimationImage] = useState(0);
 
     const medicineGlobalTimerRef = useRef(GlobalTimer);
@@ -46,7 +44,7 @@ function Medicine ({setMedicineOpenFlag}){
 
     useEffect(() => {
 
-        if (!medicineStart || medicineDone) {
+        if (medicineSelection === -1 || medicineDone) {
             return;
         }
 
@@ -65,11 +63,11 @@ function Medicine ({setMedicineOpenFlag}){
 
         return () => clearInterval(interval);
 
-    }, [medicineStart, medicineDone]);
+    }, [medicineSelection, medicineDone]);
 
     useEffect(() => {
 
-        if (!medicineStart || medicineDone) {
+        if (medicineSelection === -1 || medicineDone) {
             return;
         }
 
@@ -83,7 +81,7 @@ function Medicine ({setMedicineOpenFlag}){
 
         return () => clearInterval(interval);
 
-    }, [medicineStart, medicineDone]);
+    }, [medicineSelection, medicineDone]);
 
 
 
@@ -138,37 +136,32 @@ function Medicine ({setMedicineOpenFlag}){
 
             <div className="StationsFlagContainer">
         
-                {!medicineStart ? (
+                {medicineSelection === -1 ? (
 
                     <>
 
-                        <div className="StationsDesiredOptionSign">
+                        {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-                            {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
+                            <Options
+                                optionsDesiredOption = {0}
+                                optionsList = {medicineOptions} 
+                                setOptionsTotal = {setMedicineTotal}
+                                setOptionsSelection = {setMedicineSelection}
+                            />
 
-                                <>
-                                    {/* Change this!!!!!!!!!!!!!*/}
-                                    <img src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-                                    <h2> {ActivePetName} has {PetList[ActivePetName][healthKey]} health. Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
-                                </>
+                        ) : (
 
-                            ) : (
+                            <Options
+                                optionsDesiredOption = {-1}
+                                optionsList = {medicineOptions} 
+                                setOptionsTotal = {setMedicineTotal}
+                                setOptionsSelection = {setMedicineSelection}
+                            />
 
-                                <>
-                                    {/* Change this!!!!!!!!!!!!!*/}
-                                    <img src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
-                                    <h2> {ActivePetName} is at full health! No medicine is needed currently. </h2>
-                                </>
+                        )}
 
-                            )}
+                        <h2> Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
                         
-                        </div>
-                            
-                        <div className = "StationsOptionListContainer">
-                            {/* Change this!!!!!!!!!!!!!*/}
-                            <img className = "StationsOptionListButton" src = {petImages[PetList[ActivePetName][speciesKey]][0][0]} onClick = {() => setMedicineStart(true)}/>
-                        </div>
-
                     </>
 
                 ) : (
@@ -181,8 +174,7 @@ function Medicine ({setMedicineOpenFlag}){
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Medicine">
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][medicineAnimationImage]} />
+                                <img className = "StationsImage StationsImage-Medicine" src = {medicineAnimationImages[medicineAnimationImage]} />
                             </div>
                         </>
 
@@ -194,8 +186,8 @@ function Medicine ({setMedicineOpenFlag}){
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Medicine">
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                {/* Change this later!!!!!!!!!!!!!*/}
+                                <img className = "StationsImage StationsImage-Medicine" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </div>
                         </>
                     
@@ -203,7 +195,7 @@ function Medicine ({setMedicineOpenFlag}){
                 
                 )}
 
-                {!medicineStart || !medicineDone ? (
+                {medicineSelection === -1 || !medicineDone ? (
 
                     <button className = "GeneralNavButton" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
 

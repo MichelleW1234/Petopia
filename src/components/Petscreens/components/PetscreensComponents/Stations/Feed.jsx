@@ -8,8 +8,7 @@ import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.j
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { petImages } from "../../../../../constants/MainPetImages.js";
-import { feedingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { feedingKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Feed.css";
@@ -17,7 +16,7 @@ import "./Stations.css";
 
 
 
-function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpenFlag}){
+function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -105,7 +104,6 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
                 {feedSelection === -1 ? (
 
                     <Options
-                        optionsActivityKey = {feedingKey}
                         optionsDesiredOption = {feedDesiredOption}
                         optionsList = {feedOptions} 
                         setOptionsTotal = {setFeedTotal}
@@ -122,8 +120,7 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                             />
                             <div className="StationsWindow StationsWindow-Feed">  
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][feedAnimationImage]} />
+                                <img className = "StationsImage StationsImage-Feed" src = {feedAnimationImages[feedAnimationImage]} />
                             </div>
                         </>
 
@@ -135,8 +132,8 @@ function Feed ({feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpe
                                 progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                             />
                             <div className = "StationsWindow StationsWindow-Feed">
-                                {/* Change this when I create feeding-specific images for each species!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Feed" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                {/* Change this!!!!!!!!!!!!!*/}
+                                <img className = "StationsImage StationsImage-Feed" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
                             </div>
                         </>
 

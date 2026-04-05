@@ -10,12 +10,11 @@ import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
-import { petImages } from "../../../../constants/MainPetImages.js";
 import { healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
 
-function Main ({mainPetEnergy, mainPetMood, mainActivityInProgress}){
+function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
 
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -147,11 +146,11 @@ function Main ({mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
                                             colIndex%2 === 0 ? (
 
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} onMouseEnter={() => showAttention()}/>
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[0]} onMouseEnter={() => showAttention()}/>
 
                                             ):(
 
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][1]} onMouseEnter={() => showAttention()}/>
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[1]} onMouseEnter={() => showAttention()}/>
 
                                             )
 
@@ -159,11 +158,11 @@ function Main ({mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
                                             colIndex%2 === 1 ? (
 
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][2]} onMouseEnter={() => showAttention()}/>
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[2]} onMouseEnter={() => showAttention()}/>
 
                                             ):(
 
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {petImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][3]} onMouseEnter={() => showAttention()}/>
+                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[3]} onMouseEnter={() => showAttention()}/>
 
                                             )
 
