@@ -10,7 +10,10 @@ body{
 
   user-select: none;
 
-  background: linear-gradient(rgb(0, 4, 86) 15%, rgb(129, 13, 152) 50%, rgb(0, 4, 86));
+  /*background: linear-gradient(rgb(0, 4, 86) 15%, rgb(129, 13, 152) 50%, rgb(0, 4, 86));*/
+
+  background: linear-gradient(rgb(59, 0, 102) 15%, rgb(148, 0, 164) 50%, rgb(59, 0, 102) 85%);
+
     
 }
 
@@ -27,10 +30,6 @@ body{
   word-break: break-word;
   white-space: normal;
 
-
-  text-shadow: 0.0625rem 0.0625rem 0.25rem #ff69ebba,
-    -0.0625rem -0.0625rem 0.25rem #00ffffd5;
-
 }
 
 a:link,
@@ -38,7 +37,6 @@ a:visited,
 a:hover,
 a:active {
   
-  display: inline-block;
   text-decoration: none;
   font-size: 1rem;
 
@@ -92,24 +90,24 @@ button {
   padding: 1.5rem 2rem;
   border-radius: 3rem;
 
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-right: 0.1rem solid black;
-  border-top: 0.1rem solid black;
-  background: linear-gradient(rgb(149, 0, 255), rgb(249, 190, 255));
+  color: rgb(59, 0, 67);
+  border-left: 0.25rem solid rgb(123, 0, 139);
+  border-bottom: 0.25rem solid rgb(123, 0, 139);
+  border-right: 0.1rem solid rgb(123, 0, 139);
+  border-top: 0.1rem solid rgb(123, 0, 139);
+  background: linear-gradient(rgb(169, 49, 255), rgb(250, 205, 255));
+  box-shadow: 0 0 1rem 0.1rem rgb(141, 116, 144);
 
-  animation: GeneralNavButton-glow 4s infinite;
+  transition: transform 0.3s ease;
 
 }
 
 
 .NavBarButton:hover{
 
-  color: rgb(255, 255, 255);
-  background: linear-gradient(rgb(96, 0, 165), rgb(181, 138, 186));
+  box-shadow: 0 0 1rem 0.25rem rgb(250, 205, 255);
 
-  animation: GeneralNavButton-glow 4s infinite;
+  transform: scale(1.1);
 
 }
 
@@ -118,23 +116,22 @@ button {
   padding: 1.5rem 2rem;
   border-radius: 3rem;
 
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-right: 0.1rem solid black;
-  border-top: 0.1rem solid black;
+  color: rgb(80, 0, 91);
+  border-left: 0.25rem solid rgb(123, 0, 139);
+  border-bottom: 0.25rem solid rgb(123, 0, 139);
+  border-right: 0.1rem solid rgb(123, 0, 139);
+  border-top: 0.1rem solid rgb(123, 0, 139);
   background: linear-gradient(rgb(255, 0, 195), rgb(255, 190, 227));
-
-  animation: NavBarButtonUrgent-glow 3s infinite;
+  box-shadow: 0 0 1rem 0.1rem rgb(144, 116, 143);
 
 }
 
 .NavBarButtonUrgent:hover{
 
-  color: white;
-  background: linear-gradient(rgb(177, 0, 136), rgb(190, 142, 170));
+  box-shadow: 0 0 1rem 0.25rem rgb(254, 205, 255);
 
-  animation: NavBarButtonUrgent-hover-glow 3s infinite;
+  transform: scale(1.1);
+
 
 }
 
@@ -144,18 +141,18 @@ button {
   padding: 1.5rem 2rem;
   border-radius: 3rem;
 
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-right: 0.1rem solid black;
-  border-top: 0.1rem solid black;
-  background: linear-gradient(rgba(149, 0, 255, 0.654), rgba(248, 190, 255, 0.65));
+  color: rgb(0, 0, 0);
+  border-left: 0.25rem solid rgb(54, 0, 61);
+  border-bottom: 0.25rem solid rgb(54, 0, 61);
+  border-right: 0.1rem solid rgb(54, 0, 61);
+  border-top: 0.1rem solid rgb(54, 0, 61);
+  background: linear-gradient(rgb(116, 34, 175), rgb(178, 146, 182));
 
 }
 
 
 
-/*Floating Flags: */
+/*Floating Flags: STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 
 .FloatingFlagBackground{
@@ -499,6 +496,25 @@ button {
 
 
 /*animations: */
+
+@keyframes lightPink-glow{
+
+
+
+}
+
+
+@keyframes lightPink-glow{
+
+
+  
+}
+
+
+
+
+
+
 
 @keyframes GeneralNavButton-glow {
   0% {

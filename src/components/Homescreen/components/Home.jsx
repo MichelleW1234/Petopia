@@ -83,39 +83,41 @@ function Home (){
 
                     {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                        <div className="HomescreenPetSlotInnerContainer">
-                            <div className = "HomescreenPetSlot"> You currently have no pets. </div>
-                        </div>
+                        <div className = "HomescreenPetSlot"> You currently have no pets. </div>
 
                     ) : (
 
                         Object.keys(PetList).map((key) => (
 
-                            <div key = {key} className="HomescreenPetSlotInnerContainer">
+                            PetList[key][healthKey] > 0 ? (
 
-                                {PetList[key][healthKey] > 0 ? (
+                                <Link 
+                                    key = {key}
+                                    to = {`/${PetList[key][speciesKey]}`}
+                                    className = "HomescreenPetSlot"
+                                    onClick = {() => getPet(key)}
+                                >
+                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                    <p>{key}</p>
+                                    <p>Stage: {PetList[key][stageKey]}</p>
+                                    <p>Health: {PetList[key][healthKey]}</p>
+                                </Link>
 
-                                    <div className = "HomescreenPetSlot"> 
-                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                        <p>{key}</p>
-                                        <p>Stage: {PetList[key][stageKey]}</p>
-                                        <p>Health: {PetList[key][healthKey]}</p>
-                                    </div>
+                            ) : (
 
-                                ) : (
+                                <Link 
+                                    key = {key}
+                                    to = {`/${PetList[key][speciesKey]}`}
+                                    className = "HomescreenPetSlot"
+                                    onClick = {() => getPet(key)}
+                                > 
+                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                    <p> {key}</p>
+                                    <p>Stage: -- </p>
+                                    <p>Health: -- </p>
+                                </Link>
 
-                                    <div className = "HomescreenPetSlot"> 
-                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                        <p> {key}</p>
-                                        <p>Stage: -- </p>
-                                        <p>Health: -- </p>
-                                    </div>
-
-                                )}
-
-                                <Link to = {`/${PetList[key][speciesKey]}`} className = "GeneralNavButton" onClick = {() => getPet(key)}> Visit </Link>
-                                
-                            </div>
+                            )
 
                         ))
 

@@ -10,16 +10,6 @@
 
 }
 
-.HomescreenPetSlotInnerContainer{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 4rem;
-
-}
 
 .HomescreenPetSlot{
 
@@ -30,22 +20,34 @@
     align-items: center;
     justify-content: center; 
 
-    border-radius: 1rem;
+    border-radius: 10rem;
     padding: 2rem;
     gap: 1rem;
 
-    color: rgb(255, 255, 255);
-    border-left: 0.25rem solid black;
-    border-bottom: 0.25rem solid black;
-    border-right: 0.1rem solid black;
-    border-top: 0.1rem solid black;
-    background: linear-gradient(rgb(147, 181, 255), rgb(0, 0, 99));
-    box-shadow: 0 0 1rem 0.4rem rgb(164, 178, 255);
+    color: rgb(96, 17, 135);
+    border-left: 0.25rem solid rgb(96, 17, 135);
+    border-bottom: 0.25rem solid rgb(96, 17, 135);
+    border-right: 0.1rem solid rgb(96, 17, 135);
+    border-top: 0.1rem solid rgb(96, 17, 135);
+    background: radial-gradient(circle, rgb(245, 226, 255) 0%, rgb(180, 31, 255) 100%);
+    box-shadow: 0 0 1rem 0.1rem rgb(187, 172, 194);
+
+    transition: transform 0.3s ease;
 
     img {
 
-        width: 90%;
+        width: 75%;
 
     }
+
+}
+
+
+
+.HomescreenPetSlot:hover{
+
+    box-shadow: 0 0 1rem 0.25rem rgb(245, 226, 255);
+
+    transform: scale(1.1);
 
 }
