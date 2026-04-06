@@ -10,9 +10,7 @@ body{
 
   user-select: none;
 
-  /*background: linear-gradient(rgb(0, 4, 86) 15%, rgb(129, 13, 152) 50%, rgb(0, 4, 86));*/
-
-  background: linear-gradient(rgb(59, 0, 102) 15%, rgb(148, 0, 164) 50%, rgb(59, 0, 102) 85%);
+  background: linear-gradient(rgb(59, 0, 102) 15%, rgb(140, 0, 156) 50%, rgb(59, 0, 102) 85%);
 
     
 }
@@ -121,14 +119,16 @@ button {
   border-bottom: 0.25rem solid rgb(123, 0, 139);
   border-right: 0.1rem solid rgb(123, 0, 139);
   border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(255, 0, 195), rgb(255, 190, 227));
-  box-shadow: 0 0 1rem 0.1rem rgb(144, 116, 143);
+  background: linear-gradient(rgb(255, 41, 244), rgb(255, 206, 234));
+  box-shadow: 0 0 1rem 0.1rem rgb(151, 122, 138);
+
+  transition: transform 0.3s ease;
 
 }
 
 .NavBarButtonUrgent:hover{
 
-  box-shadow: 0 0 1rem 0.25rem rgb(254, 205, 255);
+  box-shadow: 0 0 1rem 0.25rem rgb(255, 206, 234);
 
   transform: scale(1.1);
 

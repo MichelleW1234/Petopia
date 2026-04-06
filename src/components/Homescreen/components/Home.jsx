@@ -7,7 +7,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { portraitPetImages } from "../../../constants/Constants.js";
+import { healthCapList, portraitPetImages } from "../../../constants/Constants.js";
 import { healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 import "./Home.css";
@@ -87,39 +87,113 @@ function Home (){
 
                     ) : (
 
-                        Object.keys(PetList).map((key) => (
+                        Object.keys(PetList).map((key) => {
 
-                            PetList[key][healthKey] > 0 ? (
+                            const currPetHealth = Math.min(100, Math.max(0, Math.floor(((PetList[key][healthKey])/healthCapList[PetList[key][speciesKey]]) * 100)));
 
-                                <Link 
-                                    key = {key}
-                                    to = {`/${PetList[key][speciesKey]}`}
-                                    className = "HomescreenPetSlot"
-                                    onClick = {() => getPet(key)}
-                                >
-                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                    <p>{key}</p>
-                                    <p>Stage: {PetList[key][stageKey]}</p>
-                                    <p>Health: {PetList[key][healthKey]}</p>
-                                </Link>
+                            return (
 
-                            ) : (
+                                <div className="HomescreenPetSlotInnerContainer">
 
-                                <Link 
-                                    key = {key}
-                                    to = {`/${PetList[key][speciesKey]}`}
-                                    className = "HomescreenPetSlot"
-                                    onClick = {() => getPet(key)}
-                                > 
-                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                    <p> {key}</p>
-                                    <p>Stage: -- </p>
-                                    <p>Health: -- </p>
-                                </Link>
+                                    {currPetHealth > 0 ? (
+
+                                        <>
+                                            <Link 
+                                                key = {key}
+                                                to = {`/${PetList[key][speciesKey]}`}
+                                                className = "HomescreenPetSlot"
+                                                onClick = {() => getPet(key)}
+                                            >
+                                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                                <p>{key}</p>
+                                            </Link>
+
+                                            <div className = "HomescreenPetSlotHealthBarContainer">
+
+                                                {currPetHealth > 75 ? (
+
+                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                                                        <div key = {num} className = {num <= currPetHealth ? 
+                                                                                            "HomescreenPetSlotHealthBarCellDoneGood"
+                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                    }>
+                                                        </div>
+
+                                                    ))
+
+                                                ) : currPetHealth > 50 ? (
+
+                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                                                        <div key = {num} className = {num <= currPetHealth ? 
+                                                                                            "HomescreenPetSlotHealthBarCellDoneOkay"
+                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                    }>
+                                                        </div>
+
+                                                    ))
+
+                                                ) : currPetHealth > 25 ? (
+
+                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                                                        <div key = {num} className = {num <= currPetHealth ? 
+                                                                                            "HomescreenPetSlotHealthBarCellDoneBad"
+                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                    }>
+                                                        </div>
+
+                                                    ))
+
+                                                ) : (
+
+                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                                                        <div key = {num} className = {num <= currPetHealth ? 
+                                                                                            "HomescreenPetSlotHealthBarCellDoneVeryBad"
+                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                    }>
+                                                        </div>
+
+                                                    ))
+
+                                                )}
+                                                
+                                            </div>
+                                        </>
+
+                                    ) : (
+
+                                        <>
+                                            <Link 
+                                                key = {key}
+                                                to = {`/${PetList[key][speciesKey]}`}
+                                                className = "HomescreenPetSlot"
+                                                onClick = {() => getPet(key)}
+                                            > 
+                                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                                <p> {key}</p>
+                                            </Link>
+
+                                            <div className = "HomescreenPetSlotHealthBarContainer">
+
+                                                {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                                                    <div key = {num} className = "HomescreenPetSlotHealthBarCellDead"></div>
+
+                                                ))}
+                                                
+                                            </div>
+                                        </>
+
+                                    )}
+
+                                </div>
 
                             )
 
-                        ))
+                        })
 
                     )}
                         

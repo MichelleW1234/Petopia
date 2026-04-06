@@ -1,44 +1,58 @@
 .HomescreenPetSlotContainer{
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 
-    gap: 5rem;
+  gap: 5rem;
+
+}
+
+.HomescreenPetSlotInnerContainer{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 3rem;
+
 
 }
 
 
 .HomescreenPetSlot{
 
-    height: 20rem;
-    width: 15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
+  height: 20rem;
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
 
-    border-radius: 10rem;
-    padding: 2rem;
-    gap: 1rem;
+  border-radius: 10rem;
+  padding: 3rem;
+  gap: 2rem;
 
-    color: rgb(96, 17, 135);
-    border-left: 0.25rem solid rgb(96, 17, 135);
-    border-bottom: 0.25rem solid rgb(96, 17, 135);
-    border-right: 0.1rem solid rgb(96, 17, 135);
-    border-top: 0.1rem solid rgb(96, 17, 135);
-    background: radial-gradient(circle, rgb(245, 226, 255) 0%, rgb(180, 31, 255) 100%);
-    box-shadow: 0 0 1rem 0.1rem rgb(187, 172, 194);
+  color: rgb(21, 8, 66);
+  border-left: 0.35rem solid rgb(42, 15, 138);
+  border-bottom: 0.35rem solid rgb(42, 15, 138);
+  border-right: 0.15rem solid rgb(42, 15, 138);
+  border-top: 0.15rem solid rgb(42, 15, 138);
+  background: radial-gradient(circle, rgb(237, 232, 255) 0%, rgb(75, 25, 255) 100%);
+  box-shadow: 0 0 1rem 0.15rem rgb(146, 142, 157);
 
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
 
-    img {
+  img {
 
-        width: 75%;
+    width: 75%;
+    border-radius: 1rem;
 
-    }
+    background-color: rgb(151, 202, 255);
+
+  }
 
 }
 
@@ -46,8 +60,71 @@
 
 .HomescreenPetSlot:hover{
 
-    box-shadow: 0 0 1rem 0.25rem rgb(245, 226, 255);
+  box-shadow: 0 0 1rem 0.3rem rgb(237, 232, 255);
 
-    transform: scale(1.1);
+  transform: scale(1.1);
+
+}
+
+
+.HomescreenPetSlotHealthBarContainer {
+
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+
+  box-shadow: 0 0 0.5rem 0.05rem rgb(254, 251, 233);
+
+}
+
+
+
+.HomescreenPetSlotHealthBarCellLeft {
+
+  height: 0.5rem;
+  width: 0.1rem;
+
+}
+
+.HomescreenPetSlotHealthBarCellDoneGood {
+
+  height: 0.5rem;
+  width: 0.1rem;
+  background-color: rgb(30, 255, 0);
+
+}
+
+
+.HomescreenPetSlotHealthBarCellDoneOkay {
+
+  height: 0.5rem;
+  width: 0.1rem;
+  background-color: rgb(238, 255, 0);
+
+}
+
+
+.HomescreenPetSlotHealthBarCellDoneBad {
+
+  height: 0.5rem;
+  width: 0.1rem;
+  background-color: rgb(255, 132, 0);
+
+}
+
+
+.HomescreenPetSlotHealthBarCellDoneVeryBad {
+
+  height: 0.5rem;
+  width: 0.1rem;
+  background-color: rgb(255, 0, 0);
+
+}
+
+.HomescreenPetSlotHealthBarCellDead {
+
+  height: 0.5rem;
+  width: 0.1rem;
+  background-color: rgba(108, 108, 108, 0.4);
 
 }
