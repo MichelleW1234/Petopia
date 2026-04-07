@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import Deletion from "./HomescreenComponents/Deletion.jsx";
+import Restart from "./HomescreenComponents/Restart.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -20,20 +21,11 @@ function Home (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
-    const homePetLimitReached = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? true
-                                    : false;
-
     const [homeOpenClearPetsFlag, setHomeOpenClearPetsFlag] = useState(false);
+    const [homeOpenRestartFlag, setHomeOpenRestartFlag] = useState(false);
 
 
 
-
-    const restartGame = () => {
-
-        setPetList({});
-        setPetTimeStamps({});
-
-    }
 
     const getPet = (petToGet) => {
 
@@ -48,25 +40,35 @@ function Home (){
 
         <>
 
+            {homeOpenRestartFlag &&
+            <Restart
+                setRestartOpenFlag={setHomeOpenRestartFlag}
+            />}
+
             {homeOpenClearPetsFlag &&
             <Deletion
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
             <div className="NavBarContainer">
-                <button className="NavBarButton" onClick = {() => restartGame()}> Restart Game </button>
 
                 {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
-                    <button className="NavBarButton" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                    <>
+                        <button className="NavBarButton" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
+                        <button className="NavBarButton" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                    </>
 
                 ) : (
 
-                    <button className="NavBarButtonPlaceHolder"> Clear Pets </button>
+                    <>
+                        <button className="NavBarButtonPlaceHolder" > Restart Game </button>
+                        <button className="NavBarButtonPlaceHolder"> Clear Pets </button>
+                    </>
 
                 )}
 
-                {homePetLimitReached ? (
+                {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
                    <button className="NavBarButtonPlaceHolder"> Add Pets </button>
 
