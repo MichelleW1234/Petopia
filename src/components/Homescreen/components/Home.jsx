@@ -85,7 +85,7 @@ function Home (){
 
                     {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                        <div className = "HomescreenPetSlot"> You currently have no pets. </div>
+                        <h2 className = "HomescreenNoPetsSign"> Your pet(s) will appear here when added. </h2>
 
                     ) : (
 
@@ -107,9 +107,8 @@ function Home (){
                                                 onClick = {() => getPet(key)}
                                             >
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                                <p>{key}</p>
                                             </Link>
-
+                                            <p>{key}</p>
                                             <div className = "HomescreenPetSlotHealthBarContainer">
 
                                                 {currPetHealth > 75 ? (
@@ -175,9 +174,8 @@ function Home (){
                                                 onClick = {() => getPet(key)}
                                             > 
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                                <p> {key}</p>
                                             </Link>
-
+                                            <p>{key}</p>
                                             <div className = "HomescreenPetSlotHealthBarContainer">
 
                                                 {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (

@@ -93,8 +93,8 @@ button {
   border-bottom: 0.25rem solid rgb(123, 0, 139);
   border-right: 0.1rem solid rgb(123, 0, 139);
   border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(169, 49, 255), rgb(250, 205, 255));
-  box-shadow: 0 0 1rem 0.1rem rgb(141, 116, 144);
+  background: linear-gradient(rgb(169, 49, 255) 0%, rgb(250, 205, 255) 100%);
+  box-shadow: 0 0 1rem 0.1rem rgb(250, 205, 255);
 
   transition: transform 0.3s ease;
 
@@ -103,7 +103,7 @@ button {
 
 .NavBarButton:hover{
 
-  box-shadow: 0 0 1rem 0.25rem rgb(250, 205, 255);
+  box-shadow: 0 0 1rem 0.5rem rgb(250, 205, 255);
 
   transform: scale(1.1);
 
@@ -119,8 +119,8 @@ button {
   border-bottom: 0.25rem solid rgb(123, 0, 139);
   border-right: 0.1rem solid rgb(123, 0, 139);
   border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(255, 41, 244), rgb(255, 206, 234));
-  box-shadow: 0 0 1rem 0.1rem rgb(151, 122, 138);
+  background: linear-gradient(rgb(255, 41, 244) 0%, rgb(255, 206, 234) 100%);
+  box-shadow: 0 0 1rem 0.1rem rgb(255, 206, 234);
 
   transition: transform 0.3s ease;
 
@@ -128,7 +128,7 @@ button {
 
 .NavBarButtonUrgent:hover{
 
-  box-shadow: 0 0 1rem 0.25rem rgb(255, 206, 234);
+  box-shadow: 0 0 1rem 0.5rem rgb(255, 206, 234);
 
   transform: scale(1.1);
 
@@ -146,7 +146,7 @@ button {
   border-bottom: 0.25rem solid rgb(54, 0, 61);
   border-right: 0.1rem solid rgb(54, 0, 61);
   border-top: 0.1rem solid rgb(54, 0, 61);
-  background: linear-gradient(rgb(116, 34, 175), rgb(178, 146, 182));
+  background: linear-gradient(rgb(116, 34, 175) 0%, rgb(178, 146, 182) 100%);
 
 }
 
