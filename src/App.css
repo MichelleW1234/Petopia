@@ -52,19 +52,21 @@ button {
 /*Custom tags:*/
 
 
-/*Screens: */
+/*Screens:*/
 
-.ScreenContainer{
+.ScreenContainer {
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 3rem;
+  margin-top: 10vh;
   gap: 5rem;
-
+  
 }
+
+
 
 
 /*NavBar: */

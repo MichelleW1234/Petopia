@@ -7,7 +7,7 @@ import {PetTimeStampsProvider} from "./providers/PetTimeStampsProvider.jsx";
 import {PetListProvider} from "./providers/PetListProvider.jsx";
 import {UpdateEngineProvider} from "./providers/UpdateEngineProvider.jsx";
 import { ActivePetNameProvider } from "./providers/ActivePetNameProvider.jsx";
-import { FinalPetSelectionProvider } from "./components/PetSelectionscreens/providers/FinalPetSelectionProvider.jsx";
+import { FinalPetSelectionProvider } from "./components/PetSelectionscreen/providers/FinalPetSelectionProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

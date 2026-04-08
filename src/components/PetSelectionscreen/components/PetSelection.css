@@ -1,0 +1,103 @@
+.SelectionContainer {
+
+    display: flex;
+    flex-direction: row;
+
+    gap: 3rem;
+
+}
+
+
+.HomePetSelectorBox {
+
+    height: 20rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border-radius: 2rem;
+    gap: 1rem;
+    padding: 1rem;
+
+    color: white;
+    border-left: 0.3rem solid black;
+    border-bottom: 0.3rem solid black;
+    border-top: 0.1rem solid black;
+    border-right: 0.1rem solid black;
+    /*background: linear-gradient(rgb(175, 200, 255), rgb(0, 16, 133));*/
+    background-color: blue;
+
+}
+
+
+.HomePetSelectorBox:hover {
+
+    /*background: linear-gradient(rgb(0, 65, 206), rgb(0, 6, 55));*/
+    background-color: rgb(0, 0, 122);
+
+}
+
+.HomePetSelectorBoxActive {
+
+    height: 20rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    border-radius: 2rem;
+    gap: 1rem;
+    padding: 1rem;
+
+    color: white;
+    border-left: 0.3rem solid black;
+    border-bottom: 0.3rem solid black;
+    border-top: 0.1rem solid black;
+    border-right: 0.1rem solid black;
+    /*background: linear-gradient(rgb(237, 138, 255), rgb(54, 0, 57));*/
+    background-color: rgb(216, 98, 255);
+
+}
+
+
+
+.HomePetSelectorNameInputContainer{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    padding: 1rem 2rem;
+    gap: 2rem;
+    border-radius: 1rem;
+
+    border-left: 0.25rem solid black; 
+    border-bottom: 0.25rem solid black; 
+    border-top: 0.1rem solid black; 
+    border-right: 0.1rem solid black;
+    background: linear-gradient(#bf77ff, rgb(27, 0, 55));
+    box-shadow: 0 0 1rem 0.25rem rgb(204, 121, 255);
+
+}
+
+.HomePetSelectorNameInput{
+
+    border-radius: 2rem;
+    padding: 1rem;
+
+    border-left: 0.25rem solid black; 
+    border-bottom: 0.25rem solid black; 
+    border-top: 0.1rem solid black; 
+    border-right: 0.1rem solid black;
+    background-color: rgb(202, 221, 255); 
+    
+    animation: Input-glow 3s infinite;
+
+}
