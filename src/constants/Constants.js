@@ -1,14 +1,14 @@
-import catStageOne from "../images/placeholderstage1.jpeg";
-import catStageTwo from "../images/placeholderstage2.jpg";
-import catStageThree from "../images/placeholderstage3.jpg";
+import catStageOne from "../images/Cat/Main/1cat.svg";
+import catStageTwo from "../images/Cat/Main/2cat.svg";
+import catStageThree from "../images/Cat/Main/3cat.svg";
 
-import dogStageOne from "../images/placeholderstage1.jpeg";
-import dogStageTwo from "../images/placeholderstage2.jpg";
-import dogStageThree from "../images/placeholderstage3.jpg";
+import dogStageOne from "../images/Dog/Main/1dog.svg";
+import dogStageTwo from "../images/Dog/Main/2dog.svg";
+import dogStageThree from "../images/Dog/Main/3dog.svg";
 
-import fishStageOne from "../images/placeholderstage1.jpeg";
-import fishStageTwo from "../images/placeholderstage2.jpg";
-import fishStageThree from "../images/placeholderstage3.jpg";
+import fishStageOne from "../images/Fish/Main/1fish.svg";
+import fishStageTwo from "../images/Fish/Main/2fish.svg";
+import fishStageThree from "../images/Fish/Main/3fish.svg";
 
 
 import s1CatHappy from "../images/placeholderstage1.jpeg";

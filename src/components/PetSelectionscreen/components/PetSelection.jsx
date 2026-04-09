@@ -176,15 +176,15 @@ function PetSelection () {
 
                         key === selectionSelectedPet ? (
 
-                            <div className = "HomePetSelectorBoxActive" key = {key}> 
+                            <div key = {key} className = "HomePetSelectorBoxActive">
                                 <img src = {portraitPetImages[key][0]}/>
                             </div>
-
+    
                         ) : (
 
-                            <button className = "HomePetSelectorBox" key = {key} onClick = {() => setSelectionSelectedPet(key)}> 
-                                <img src = {portraitPetImages[key][0]}/>
-                            </button>
+                            <div key = {key} className = "HomePetSelectorBox" onClick = {() => setSelectionSelectedPet(key)}>
+                                <img src = {portraitPetImages[key][0]} />
+                            </div>
 
                         )
 
@@ -192,15 +192,14 @@ function PetSelection () {
 
                 </div>
 
-                <div className = "SelectionContainer">
+                <div className = "NameContainer">
                     <div className="HomePetSelectorNameInputContainer">
-                        <h2 className="header"> Pet Name:</h2>
                         <input 
                             className = "HomePetSelectorNameInput"
                             type="text"
                             value={confirmationPetName}
                             onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                            placeholder="Enter a name..."
+                            placeholder="Hello, my name is..."
                         />
                     </div>
 
