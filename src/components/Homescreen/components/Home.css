@@ -1,4 +1,4 @@
-.HomescreenPetSlotContainer{
+.HomePetSlotContainer{
 
   display: flex;
   flex-direction: row;
@@ -6,11 +6,11 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  gap: 5rem;
+  gap: 3rem;
 
 }
 
-.HomescreenNoPetsSign {
+.HomeNoPets {
 
   padding: 5rem 10rem;
   border-radius: 1rem;
@@ -24,7 +24,7 @@
   
 }
 
-.HomescreenPetSlotInnerContainer{
+.HomePetSlot{
 
   display: flex;
   flex-direction: column;
@@ -42,56 +42,53 @@
   background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(144, 0, 255, 0.5) 100%);
   box-shadow: 0 0 1rem 0.1rem rgb(171, 147, 189);
 
-}
+  a {
 
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
 
-.HomescreenPetSlot{
+    border-radius: 50%;
+    padding: 2rem;
 
-  height: 12rem;
-  width: 12rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
+    border-left: 0.3rem solid rgb(105, 0, 137);
+    border-bottom: 0.3rem solid rgb(105, 0, 137);
+    border-right: 0.15rem solid rgb(105, 0, 137);
+    border-top: 0.15rem solid rgb(105, 0, 137);
+    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(195, 0, 255, 0.75) 100%);
+    box-shadow: 0 0 1rem 0.1rem rgb(239, 187, 255);
 
-  border-radius: 50%;
-  padding: 2rem;
+    transition: transform 0.3s ease;
 
-  border-left: 0.3rem solid rgb(105, 0, 137);
-  border-bottom: 0.3rem solid rgb(105, 0, 137);
-  border-right: 0.15rem solid rgb(105, 0, 137);
-  border-top: 0.15rem solid rgb(105, 0, 137);
-  background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(195, 0, 255, 0.75) 100%);
-  box-shadow: 0 0 1rem 0.1rem rgb(239, 187, 255);
+    img {
 
-  transition: transform 0.3s ease;
+      width: 90%;
+      height: 90%;
 
-  img {
+      filter: 
+        drop-shadow(0 0 5px rgb(195, 0, 255))
+        drop-shadow(0 0 10px rgb(220, 107, 255))
+        drop-shadow(0 0 15px rgb(239, 187, 255));
 
-    width: 90%;
-    height: 90%;
+    }
 
-    filter: 
-      drop-shadow(0 0 5px rgb(195, 0, 255))
-      drop-shadow(0 0 10px rgb(220, 107, 255))
-      drop-shadow(0 0 15px rgb(239, 187, 255));
+  }
+
+  a:hover {
+
+    box-shadow: 0 0 1rem 0.5rem rgb(239, 187, 255);
+
+    transform: scale(1.1);
 
   }
 
 }
 
 
-
-.HomescreenPetSlot:hover{
-
-  box-shadow: 0 0 1rem 0.5rem rgb(239, 187, 255);
-
-  transform: scale(1.1);
-
-}
-
-
-.HomescreenPetSlotHealthBarContainer {
+.HomePetSlotHealthBarContainer {
 
   display: flex;
   flex-direction: row;
@@ -101,16 +98,14 @@
 
 }
 
-
-
-.HomescreenPetSlotHealthBarCellLeft {
+.HomePetSlotHealthBarCellLeft {
 
   height: 0.5rem;
   width: 0.1rem;
 
 }
 
-.HomescreenPetSlotHealthBarCellDoneGood {
+.HomePetSlotHealthBarCellDoneGood {
 
   height: 0.5rem;
   width: 0.1rem;
@@ -119,7 +114,7 @@
 }
 
 
-.HomescreenPetSlotHealthBarCellDoneOkay {
+.HomePetSlotHealthBarCellDoneOkay {
 
   height: 0.5rem;
   width: 0.1rem;
@@ -128,7 +123,7 @@
 }
 
 
-.HomescreenPetSlotHealthBarCellDoneBad {
+.HomePetSlotHealthBarCellDoneBad {
 
   height: 0.5rem;
   width: 0.1rem;
@@ -137,7 +132,7 @@
 }
 
 
-.HomescreenPetSlotHealthBarCellDoneVeryBad {
+.HomePetSlotHealthBarCellDoneVeryBad {
 
   height: 0.5rem;
   width: 0.1rem;
@@ -145,7 +140,7 @@
 
 }
 
-.HomescreenPetSlotHealthBarCellDead {
+.HomePetSlotHealthBarCellDead {
 
   height: 0.5rem;
   width: 0.1rem;

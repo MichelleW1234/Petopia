@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import PetGuide from "./PetSelectionscreenComponents/PetGuide.jsx";
+import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
 
 import {useGlobalTimer} from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
@@ -10,11 +10,11 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { portraitPetImages } from "../../../constants/Constants.js";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
-import "./PetSelection.css";
+import "./Adoption.css";
 
 
 
-function PetSelection () {
+function Adoption () {
 
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
@@ -175,21 +175,21 @@ function PetSelection () {
 
                 <h1 className="header"> Select a new Pet: </h1>
 
-                <div className = "OuterContainer">
+                <div className = "AdoptionOuterContainer">
 
-                    <div className = "SelectionContainer">
+                    <div className = "AdoptionSelectionContainer">
 
                         {Object.keys(portraitPetImages).map((key) => (
 
                             key === selectionSelectedPet ? (
 
-                                <div key = {key} className = "HomePetSelectorBoxActive">
+                                <div key = {key} className = "AdoptionSelectionPetOptionActive">
                                     <img src = {portraitPetImages[key][0]}/>
                                 </div>
         
                             ) : (
 
-                                <div key = {key} className = "HomePetSelectorBox" onClick = {() => setSelectionSelectedPet(key)}>
+                                <div key = {key} className = "AdoptionSelectionPetOption" onClick = {() => setSelectionSelectedPet(key)}>
                                     <img src = {portraitPetImages[key][0]} />
                                 </div>
 
@@ -199,13 +199,12 @@ function PetSelection () {
 
                     </div>
                 
-                    <p className = "errorMessage">{errorMessage}</p>
+                    <p className = "AdoptionNameError">{errorMessage}</p>
 
-                    <div className = "NameContainer">
+                    <div className = "AdoptionNameContainer">
 
-                        <div className="HomePetSelectorNameInputContainer">
+                        <div className="AdoptionNameInputBox">
                             <input 
-                                className = "HomePetSelectorNameInput"
                                 type="text"
                                 value={confirmationPetName}
                                 onChange={(e) => {setConfirmationPetName(e.target.value)}}
@@ -215,11 +214,11 @@ function PetSelection () {
 
                         {selectionSelectedPet !== "" ? (
 
-                            <Link to = "/home" className = "adoptButton" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
+                            <Link to = "/home" className = "AdoptionAdoptButton" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
 
                         ) : (
 
-                            <button className = "adoptButtonPlaceholder"> Adopt New Pet </button>
+                            <button className = "AdoptionAdoptButtonPlaceholder"> Adopt New Pet </button>
 
                         )}
                         
@@ -234,4 +233,4 @@ function PetSelection () {
 
 };
 
-export default PetSelection;
+export default Adoption;

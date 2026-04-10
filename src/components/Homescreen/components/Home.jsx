@@ -74,18 +74,18 @@ function Home (){
 
                 ) : (
 
-                    <Link to ="/select" className="NavBarButton"> Add Pets </Link>
+                    <Link to ="/adopt" className="NavBarButton"> Add Pets </Link>
 
                 )}
                 
             </div>
             <div className = "ScreenContainer">  
                 <h1 className="header"> Your Pets: </h1>
-                <div className="HomescreenPetSlotContainer">
+                <div className="HomePetSlotContainer">
 
                     {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                        <h2 className = "HomescreenNoPetsSign"> Your pet(s) will appear here when added. </h2>
+                        <h2 className = "HomeNoPets"> Your pet(s) will appear here when added. </h2>
 
                     ) : (
 
@@ -95,7 +95,7 @@ function Home (){
 
                             return (
 
-                                <div className="HomescreenPetSlotInnerContainer">
+                                <div className="HomePetSlot">
 
                                     {currPetHealth > 0 ? (
 
@@ -103,21 +103,20 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className = "HomescreenPetSlot"
                                                 onClick = {() => getPet(key)}
                                             >
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                             </Link>
                                             <p>{key}</p>
-                                            <div className = "HomescreenPetSlotHealthBarContainer">
+                                            <div className = "HomePetSlotHealthBarContainer">
 
                                                 {currPetHealth > 75 ? (
 
                                                     Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                                                         <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomescreenPetSlotHealthBarCellDoneGood"
-                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                            "HomePetSlotHealthBarCellDoneGood"
+                                                                                        : "HomePetSlotHealthBarCellLeft"
                                                                                     }>
                                                         </div>
 
@@ -128,8 +127,8 @@ function Home (){
                                                     Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                                                         <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomescreenPetSlotHealthBarCellDoneOkay"
-                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                            "HomePetSlotHealthBarCellDoneOkay"
+                                                                                        : "HomePetSlotHealthBarCellLeft"
                                                                                     }>
                                                         </div>
 
@@ -140,8 +139,8 @@ function Home (){
                                                     Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                                                         <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomescreenPetSlotHealthBarCellDoneBad"
-                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                            "HomePetSlotHealthBarCellDoneBad"
+                                                                                        : "HomePetSlotHealthBarCellLeft"
                                                                                     }>
                                                         </div>
 
@@ -152,8 +151,8 @@ function Home (){
                                                     Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                                                         <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomescreenPetSlotHealthBarCellDoneVeryBad"
-                                                                                        : "HomescreenPetSlotHealthBarCellLeft"
+                                                                                            "HomePetSlotHealthBarCellDoneVeryBad"
+                                                                                        : "HomePetSlotHealthBarCellLeft"
                                                                                     }>
                                                         </div>
 
@@ -170,17 +169,16 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className = "HomescreenPetSlot"
                                                 onClick = {() => getPet(key)}
                                             > 
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
                                             </Link>
                                             <p>{key}</p>
-                                            <div className = "HomescreenPetSlotHealthBarContainer">
+                                            <div className = "HomePetSlotHealthBarContainer">
 
                                                 {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                                    <div key = {num} className = "HomescreenPetSlotHealthBarCellDead"></div>
+                                                    <div key = {num} className = "HomePetSlotHealthBarCellDead"></div>
 
                                                 ))}
                                                 

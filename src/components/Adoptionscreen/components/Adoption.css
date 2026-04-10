@@ -1,0 +1,209 @@
+.AdoptionOuterContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+
+}
+
+.AdoptionSelectionContainer {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 3rem;
+    padding: 3rem;
+    border-radius: 2rem;
+
+    border-left: 0.4rem solid rgb(64, 0, 113);
+    border-bottom: 0.4rem solid rgb(64, 0, 113);
+    border-top: 0.15rem solid rgb(64, 0, 113);
+    border-right: 0.15rem solid rgb(64, 0, 113);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(144, 0, 255, 0.5) 100%);
+    box-shadow: 0 0 1rem 0.1rem rgb(171, 147, 189);
+
+}
+
+
+.AdoptionSelectionPetOption {
+
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    padding: 2rem;
+
+    border-left: 0.3rem solid rgb(105, 0, 137);
+    border-bottom: 0.3rem solid rgb(105, 0, 137);
+    border-right: 0.15rem solid rgb(105, 0, 137);
+    border-top: 0.15rem solid rgb(105, 0, 137);
+    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(195, 0, 255, 0.75) 100%);
+    box-shadow: 0 0 1rem 0.1rem rgb(239, 187, 255);
+
+    transition: transform 0.3s ease;
+
+    img {
+
+        width: 90%;
+        height: 90%;
+
+        filter: 
+            drop-shadow(0 0 4px rgb(195, 0, 255))
+            drop-shadow(0 0 8px rgb(220, 107, 255))
+            drop-shadow(0 0 12px rgb(239, 187, 255));
+
+    }
+
+}
+
+
+.AdoptionSelectionPetOption:hover {
+
+    box-shadow: 0 0 1rem 0.5rem rgb(239, 187, 255);
+
+    transform: scale(1.1);
+
+}
+
+.AdoptionSelectionPetOptionActive {
+
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    padding: 2rem;
+
+    border-left: 0.3rem solid rgb(105, 0, 137);
+    border-bottom: 0.3rem solid rgb(105, 0, 137);
+    border-right: 0.15rem solid rgb(105, 0, 137);
+    border-top: 0.15rem solid rgb(105, 0, 137);
+    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(195, 0, 255, 0.75) 100%);
+    box-shadow: 0 0 1rem 0.75rem rgb(239, 187, 255);
+
+    transition: transform 0.3s ease;
+
+    img {
+
+        width: 90%;
+        height: 90%;
+
+        filter: 
+            drop-shadow(0 0 4px rgb(195, 0, 255))
+            drop-shadow(0 0 8px rgb(220, 107, 255))
+            drop-shadow(0 0 12px rgb(239, 187, 255));
+
+    }
+
+}
+
+
+.AdoptionNameContainer {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 4rem;
+
+}
+
+
+.AdoptionNameInputBox{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+
+    border-left: 0.25rem solid rgb(64, 0, 113);
+    border-bottom: 0.25rem solid rgb(64, 0, 113);
+    border-top: 0.1rem solid rgb(64, 0, 113);
+    border-right: 0.1rem solid rgb(64, 0, 113);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(144, 0, 255, 0.5) 100%);
+    box-shadow: 0 0 1rem 0.1rem rgb(171, 147, 189);
+
+    input {
+
+        border-radius: 2rem;
+        padding: 1.5rem 2rem;
+
+        border-left: 0.2rem solid rgb(60, 0, 106); 
+        border-bottom: 0.2rem solid rgb(60, 0, 106);
+        border-top: 0.1rem solid rgb(60, 0, 106);
+        border-right: 0.1rem solid rgb(60, 0, 106);
+        background-color: rgb(219, 173, 255); 
+        box-shadow: 0 0 1rem 0.1rem rgb(219, 173, 255);
+
+    }
+
+}
+
+
+
+.AdoptionAdoptButton{
+
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
+
+  color: rgb(55, 0, 66);
+  border-left: 0.25rem solid rgb(111, 0, 133);
+  border-bottom: 0.25rem solid rgb(111, 0, 133);
+  border-right: 0.1rem solid rgb(111, 0, 133);
+  border-top: 0.1rem solid rgb(111, 0, 133);
+  background: linear-gradient(rgba(144, 0, 255) 0%, rgb(247, 205, 255) 100%);
+  box-shadow: 0 0 1rem 0.1rem rgb(247, 205, 255);
+
+  transition: transform 0.3s ease;
+
+}
+
+
+.AdoptionAdoptButton:hover{
+
+  box-shadow: 0 0 1rem 0.5rem rgb(247, 205, 255);
+
+  transform: scale(1.1);
+
+}
+
+
+.AdoptionAdoptButtonPlaceholder{
+
+    padding: 1.5rem 2rem;
+    border-radius: 3rem;
+
+    color: rgb(36, 0, 64);
+    border-left: 0.25rem solid rgb(54, 0, 65);
+    border-bottom: 0.25rem solid rgb(54, 0, 65);
+    border-right: 0.1rem solid rgb(54, 0, 65);
+    border-top: 0.1rem solid rgb(54, 0, 65);
+    background: linear-gradient(rgb(98, 0, 174) 0%, rgb(181, 150, 187) 100%);
+
+
+}
+
+
+.AdoptionNameError {
+
+    height: 1rem;
+    
+    color: rgb(255, 0, 128);
+
+}

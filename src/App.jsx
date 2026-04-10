@@ -1,7 +1,7 @@
 import {HashRouter, Routes, Route} from "react-router-dom";
 
 import Homescreen from "./components/Homescreen/components/Home.jsx";
-import PetSelectionscreen from "./components/PetSelectionscreen/components/PetSelection.jsx";
+import Adoptionscreen from "./components/Adoptionscreen/components/Adoption.jsx";
 
 import Dogscreen from "./components/Petscreens/components/Dog.jsx";
 import Catscreen from "./components/Petscreens/components/Cat.jsx";
@@ -21,7 +21,7 @@ function App() {
           <Route index element={<Homescreen/>}/>
             
           <Route path="/home" element={<Homescreen />}/>
-          <Route path="/select" element={<PetSelectionscreen/>}/>
+          <Route path="/adopt" element={<Adoptionscreen/>}/>
 
           <Route path="/dog" element={<Dogscreen />}/>
           <Route path="/cat" element={<Catscreen />}/>
