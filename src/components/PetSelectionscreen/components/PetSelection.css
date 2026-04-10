@@ -1,41 +1,52 @@
+.OuterContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+
+}
+
 .SelectionContainer {
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    gap: 4rem;
+    gap: 3rem;
     padding: 3rem;
     border-radius: 2rem;
 
-    border-left: 0.35rem solid rgb(49, 0, 128);
-    border-bottom: 0.35rem solid rgb(49, 0, 128);
-    border-top: 0.15rem solid rgb(49, 0, 128);
-    border-right: 0.15rem solid rgb(49, 0, 128);
-    box-shadow: 0 0 1rem 0.1rem  rgb(216, 191, 255);
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(98, 0, 255, 0.5) 100%);
+    border-left: 0.4rem solid rgb(64, 0, 113);
+    border-bottom: 0.4rem solid rgb(64, 0, 113);
+    border-top: 0.15rem solid rgb(64, 0, 113);
+    border-right: 0.15rem solid rgb(64, 0, 113);
+    box-shadow: 0 0 1rem 0.1rem rgb(171, 147, 189);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(144, 0, 255, 0.5) 100%);
 
 }
 
 
 .HomePetSelectorBox {
 
-    height: 18rem;
-    width: 18rem;
+    height: 12rem;
+    width: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
-    padding: 1rem;
+    padding: 2rem;
 
-    border-left: 0.4rem solid rgb(80, 0, 126);
-    border-bottom: 0.4rem solid rgb(80, 0, 126);
-    border-top: 0.15rem solid rgb(80, 0, 126);
-    border-right: 0.15rem solid rgb(80, 0, 126);
-    box-shadow: 0 0 1rem 0.25rem rgb(223, 185, 255);
-    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(140, 0, 255, 0.75) 100%);
+    border-left: 0.3rem solid rgb(102, 0, 127);
+    border-bottom: 0.3rem solid rgb(102, 0, 127);
+    border-top: 0.15rem solid rgb(102, 0, 127);
+    border-right: 0.15rem solid rgb(102, 0, 127);
+    box-shadow: 0 0 1rem 0.1rem rgb(234, 148, 255);
+    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(204, 0, 255, 0.75) 100%);
 
     transition: transform 0.3s ease;
 
@@ -44,13 +55,10 @@
         width: 90%;
         height: 90%;
 
-        padding: 2rem;
-        border-radius: 50%;
-
         filter: 
-            drop-shadow(0 0 4px rgba(140, 0, 255))
-            drop-shadow(0 0 8px rgb(182, 94, 255))
-            drop-shadow(0 0 12px rgb(223, 185, 255));
+            drop-shadow(0 0 4px rgba(204, 0, 255))
+            drop-shadow(0 0 8px rgb(223, 94, 255))
+            drop-shadow(0 0 12px rgb(244, 200, 255));
 
     }
 
@@ -59,7 +67,7 @@
 
 .HomePetSelectorBox:hover {
 
-    box-shadow: 0 0 1rem 0.5rem rgb(223, 185, 255);
+    box-shadow: 0 0 1rem 0.5rem rgb(234, 148, 255);
 
     transform: scale(1.1);
 
@@ -67,22 +75,22 @@
 
 .HomePetSelectorBoxActive {
 
-    height: 18rem;
-    width: 18rem;
+    height: 12rem;
+    width: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
-    padding: 1rem;
+    padding: 2rem;
 
-    border-left: 0.4rem solid rgb(80, 0, 126);
-    border-bottom: 0.4rem solid rgb(80, 0, 126);
-    border-top: 0.15rem solid rgb(80, 0, 126);
-    border-right: 0.15rem solid rgb(80, 0, 126);
-    box-shadow: 0 0 1rem 0.25rem rgb(223, 185, 255);
-    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(140, 0, 255, 0.75) 100%);
+    border-left: 0.3rem solid rgb(102, 0, 127);
+    border-bottom: 0.3rem solid rgb(102, 0, 127);
+    border-top: 0.15rem solid rgb(102, 0, 127);
+    border-right: 0.15rem solid rgb(102, 0, 127);
+    box-shadow: 0 0 1rem 0.5rem rgb(244, 200, 255);
+    background: radial-gradient(circle, rgb(255, 255, 255, 0.75) 10%, rgba(204, 0, 255, 0.75) 100%);
 
     transition: transform 0.3s ease;
 
@@ -91,13 +99,10 @@
         width: 90%;
         height: 90%;
 
-        padding: 2rem;
-        border-radius: 50%;
-
         filter: 
-            drop-shadow(0 0 4px rgba(140, 0, 255))
-            drop-shadow(0 0 8px rgb(182, 94, 255))
-            drop-shadow(0 0 12px rgb(223, 185, 255));
+            drop-shadow(0 0 4px rgba(204, 0, 255))
+            drop-shadow(0 0 8px rgb(223, 94, 255))
+            drop-shadow(0 0 12px rgb(244, 200, 255));
 
     }
 
@@ -113,30 +118,29 @@
     align-items: center;
     justify-content: center;
 
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     border-radius: 1rem;
 
-    border-left: 0.25rem solid black; 
-    border-bottom: 0.25rem solid black; 
-    border-top: 0.1rem solid black; 
-    border-right: 0.1rem solid black;
-
-    box-shadow: 0 0 1rem 0.25rem rgb(187, 169, 255);
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(98, 0, 255, 0.5) 100%);
+    border-left: 0.25rem solid rgb(64, 0, 113);
+    border-bottom: 0.25rem solid rgb(64, 0, 113);
+    border-top: 0.1rem solid rgb(64, 0, 113);
+    border-right: 0.1rem solid rgb(64, 0, 113);
+    box-shadow: 0 0 1rem 0.1rem rgb(171, 147, 189);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(144, 0, 255, 0.5) 100%);
 
 }
 
 .HomePetSelectorNameInput{
 
     border-radius: 2rem;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
 
-    border-left: 0.2rem solid black; 
-    border-bottom: 0.2rem solid black; 
-    border-top: 0.1rem solid black; 
-    border-right: 0.1rem solid black;
-    background-color: rgb(202, 221, 255); 
-    box-shadow: 0 0 1rem 0.1rem rgb(202, 221, 255);
+    border-left: 0.2rem solid rgb(60, 0, 106); 
+    border-bottom: 0.2rem solid rgb(60, 0, 106);
+    border-top: 0.1rem solid rgb(60, 0, 106);
+    border-right: 0.1rem solid rgb(60, 0, 106);
+    background-color: rgb(219, 173, 255); 
+    box-shadow: 0 0 1rem 0.1rem rgb(219, 173, 255);
 
 }
 
@@ -144,21 +148,54 @@
 .NameContainer {
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 
-    gap: 2rem;
+    gap: 4rem;
+
+}
+
+.adoptButton{
+
+  padding: 1.5rem 2rem;
+  border-radius: 3rem;
+
+  color: rgb(44, 0, 78);
+  border-left: 0.25rem solid rgb(80, 0, 142);
+  border-bottom: 0.25rem solid rgb(80, 0, 142);
+  border-right: 0.1rem solid rgb(80, 0, 142);
+  border-top: 0.1rem solid rgb(80, 0, 142);
+  background: linear-gradient(rgba(144, 0, 255) 0%, rgb(233, 205, 255) 100%);
+  box-shadow: 0 0 1rem 0.1rem rgb(233, 205, 255);
+
+  transition: transform 0.3s ease;
 
 }
 
 
-.NameInnerContainer {
+.adoptButton:hover{
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  box-shadow: 0 0 1rem 0.5rem rgb(233, 205, 255);
 
-    gap: 5rem;
+  transform: scale(1.1);
+
+}
+
+
+.adoptButtonPlaceholder{
+
+    padding: 1.5rem 2rem;
+    border-radius: 3rem;
+
+    color: rgb(36, 0, 64);
+    border-left: 0.25rem solid rgb(61, 0, 108);
+    border-bottom: 0.25rem solid rgb(61, 0, 108);
+    border-right: 0.1rem solid rgb(61, 0, 108);
+    border-top: 0.1rem solid rgb(61, 0, 108);
+    background: linear-gradient(rgb(98, 0, 174) 0%, rgb(171, 150, 187) 100%);
+
 
 }
 
@@ -168,31 +205,5 @@
     height: 1rem;
     
     color: rgb(255, 0, 128);
-
-}
-
-.adoptButton{
-
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
-
-  color: rgb(59, 0, 67);
-  border-left: 0.25rem solid rgb(123, 0, 139);
-  border-bottom: 0.25rem solid rgb(123, 0, 139);
-  border-right: 0.1rem solid rgb(123, 0, 139);
-  border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(169, 49, 255) 0%, rgb(250, 205, 255) 100%);
-  box-shadow: 0 0 1rem 0.1rem rgb(250, 205, 255);
-
-  transition: transform 0.3s ease;
-
-}
-
-
-.adoptButton:hover{
-
-  box-shadow: 0 0 1rem 0.5rem rgb(250, 205, 255);
-
-  transform: scale(1.1);
 
 }
