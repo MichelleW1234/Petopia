@@ -3,6 +3,9 @@ import {useState, useRef} from "react";
 
 import PetGuide from "./PetSelectionscreenComponents/PetGuide.jsx";
 
+import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
+import {usePetList} from "../../../providers/PetListProvider.jsx";
+
 import { portraitPetImages } from "../../../constants/Constants.js";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
@@ -12,12 +15,13 @@ import "./PetSelection.css";
 
 function PetSelection () {
 
-    const confirmationDefaultMessage = "You are about to adopt this pet:";
-    
+    const {PetList, setPetList} = usePetList();
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+
+    const [errorMessage, setErrorMessage] = useState("");
     const [petGuideOpenFlag, setPetGuideOpenFlag] = useState(false);
     const [selectionSelectedPet, setSelectionSelectedPet] = useState("");
     const [confirmationPetName, setConfirmationPetName] = useState("");
-    const [confirmationInfo, setConfirmationInfo] = useState(confirmationDefaultMessage);
 
 
     const confirmationTimeoutRef = useRef(null);
@@ -33,17 +37,17 @@ function PetSelection () {
         if (trimmedPetName === "") {
 
             e.preventDefault();
-            showErrorMessage("Enter a name for your new pet.");
+            showError("Enter a name for your pet.");
 
         } else if (trimmedPetName.length > 15){
 
             e.preventDefault();
-            showErrorMessage("Shorten the name to 15 characters max.");
+            showError("Shorten the name to 15 characters max.");
 
         } else if (trimmedPetName in PetList && trimmedPetName in PetTimeStamps) {
 
             e.preventDefault();
-            showErrorMessage("This pet name already exists.");
+            showError("This name already exists.");
 
         } else {
 
@@ -54,16 +58,16 @@ function PetSelection () {
     }
 
 
-    const showErrorMessage = (message) => {
+    const showError = (message) => {
 
-        setConfirmationInfo(message);
+        setErrorMessage(message);
 
         if (confirmationTimeoutRef.current) {
             clearTimeout(confirmationTimeoutRef.current);
         }
 
         confirmationTimeoutRef.current = setTimeout(() => {
-            setConfirmationInfo(confirmationDefaultMessage);
+            setErrorMessage("");
             confirmationTimeoutRef.current = null;
         }, 5000);
 
@@ -193,25 +197,28 @@ function PetSelection () {
                 </div>
 
                 <div className = "NameContainer">
-                    <div className="HomePetSelectorNameInputContainer">
-                        <input 
-                            className = "HomePetSelectorNameInput"
-                            type="text"
-                            value={confirmationPetName}
-                            onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                            placeholder="Hello, my name is..."
-                        />
+                    <p className = "errorMessage">{errorMessage}</p>
+                    <div className = "NameInnerContainer">
+                        <div className="HomePetSelectorNameInputContainer">
+                            <input 
+                                className = "HomePetSelectorNameInput"
+                                type="text"
+                                value={confirmationPetName}
+                                onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                                placeholder="Hello, my name is..."
+                            />
+                        </div>
+
+                        {selectionSelectedPet !== "" ? (
+
+                            <Link to = "/home" className = "adoptButton" onClick = {(e) => nameChecking(e)}> Adopt </Link>
+
+                        ) : (
+
+                            <button className = "adoptButton"> Adopt </button>
+
+                        )}
                     </div>
-
-                    {selectionSelectedPet !== "" ? (
-
-                        <Link to = "/home" className = "GeneralNavButton" onClick = {(e) => nameChecking(e)}> Adopt </Link>
-
-                    ) : (
-
-                        <button className = "GeneralNavButtonPlaceHolder"> Adopt </button>
-
-                    )}
                 </div>
 
             </div>

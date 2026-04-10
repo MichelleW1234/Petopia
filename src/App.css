@@ -35,6 +35,11 @@ a:visited,
 a:hover,
 a:active {
   
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   text-decoration: none;
   font-size: 1rem;
 
@@ -62,7 +67,7 @@ button {
   justify-content: center;
 
   margin-top: 10vh;
-  gap: 5rem;
+  gap: 4rem;
   
 }
 
