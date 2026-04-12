@@ -177,19 +177,19 @@ function Adoption () {
 
                 <div className = "AdoptionOuterContainer">
 
-                    <div className = "AdoptionSelectionContainer">
+                    <div className = "screenInteractiveBackgroundContainer AdoptionSelectionContainer">
 
                         {Object.keys(portraitPetImages).map((key) => (
 
                             key === selectionSelectedPet ? (
 
-                                <div key = {key} className = "AdoptionSelectionPetOptionActive">
+                                <div key = {key} className = "screenInteractiveOptionButtonActive">
                                     <img src = {portraitPetImages[key][0]}/>
                                 </div>
         
                             ) : (
 
-                                <div key = {key} className = "AdoptionSelectionPetOption" onClick = {() => setSelectionSelectedPet(key)}>
+                                <div key = {key} className = "screenInteractiveOptionButton" onClick = {() => setSelectionSelectedPet(key)}>
                                     <img src = {portraitPetImages[key][0]} />
                                 </div>
 
@@ -203,7 +203,7 @@ function Adoption () {
 
                     <div className = "AdoptionNameContainer">
 
-                        <div className="AdoptionNameInputBox">
+                        <div className="screenInteractiveBackgroundContainer AdoptionNameInputBox">
                             <input 
                                 type="text"
                                 value={confirmationPetName}

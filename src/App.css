@@ -1,3 +1,69 @@
+:root {
+
+  --linear_grad_button_padding: 1.5rem 2rem;
+  --linear_grad_button_border_radius: 3rem;
+
+
+
+  --radial_grad_button_sat_shadow_color: 100%;
+  --radial_grad_button_light_shadow_color: 85%;
+
+
+
+  --linear_grad_sat_font_color: 100%; 
+  --linear_grad_light_font_color: 25%;
+
+  --linear_grad_sat_top_color: 100%;
+  --linear_grad_light_top_color: 60%;
+
+  --linear_grad_sat_bottom_color: 100%;
+  --linear_grad_light_bottom_color: 90%;
+
+  --linear_grad_sat_border_color: 100%;
+  --linear_grad_light_border_color: 25%;
+
+
+
+  --linear_grad_ph_sat_font_color: 100%; 
+  --linear_grad_ph_light_font_color: 12.5%;
+
+  --linear_grad_ph_sat_top_color: 80%;
+  --linear_grad_ph_light_top_color: 40%;
+
+  --linear_grad_ph_sat_bottom_color: 25%;
+  --linear_grad_ph_light_bottom_color: 65%;
+
+  --linear_grad_ph_sat_border_color: 100%;
+  --linear_grad_ph_light_border_color: 12.5%;
+
+
+
+  --radial_grad_sat_outer_color: 100%;
+  --radial_grad_light_outer_color: 50%;
+
+  --radial_grad_sat_inner_color: 0%;
+  --radial_grad_light_inner_color: 100%;
+
+  --radial_grad_sat_border_color: 100%;
+  --radial_grad_light_border_color: 25;
+
+  --radial_grad_sat_shadow_color: 30%;
+  --radial_grad_light_shadow_color: 70%;
+
+
+
+  --image_sat_inner_color: 100%;
+  --image_light_inner_color: 55%;
+
+  --image_sat_middle_color: 100%;
+  --image_light_middle_color: 70%;
+
+  --image_sat_outer_color: 100%;
+  --image_light_outer_color: 85%;
+
+}
+
+
 html {
   font-size: 16px;
 }
@@ -92,16 +158,16 @@ button {
 
 .NavBarButton{
 
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
+  padding: var(--linear_grad_button_padding);
+  border-radius: var(--linear_grad_button_border_radius);
 
-  color: rgb(59, 0, 67);
-  border-left: 0.25rem solid rgb(123, 0, 139);
-  border-bottom: 0.25rem solid rgb(123, 0, 139);
-  border-right: 0.1rem solid rgb(123, 0, 139);
-  border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(169, 49, 255) 0%, rgb(250, 205, 255) 100%);
-  box-shadow: 0 0 1rem 0.1rem rgb(250, 205, 255);
+  color: hsl(294 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-left: 0.25rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-bottom: 0.25rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-right: 0.1rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-top: 0.1rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(275 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transition: transform 0.3s ease;
 
@@ -110,7 +176,7 @@ button {
 
 .NavBarButton:hover{
 
-  box-shadow: 0 0 1rem 0.5rem rgb(250, 205, 255);
+  box-shadow: 0 0 1rem 0.5rem hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transform: scale(1.1);
 
@@ -118,16 +184,16 @@ button {
 
 .NavBarButtonUrgent{
 
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
+  padding: var(--linear_grad_button_padding);
+  border-radius: var(--linear_grad_button_border_radius);
 
-  color: rgb(80, 0, 91);
-  border-left: 0.25rem solid rgb(123, 0, 139);
-  border-bottom: 0.25rem solid rgb(123, 0, 139);
-  border-right: 0.1rem solid rgb(123, 0, 139);
-  border-top: 0.1rem solid rgb(123, 0, 139);
-  background: linear-gradient(rgb(255, 41, 244) 0%, rgb(255, 206, 234) 100%);
-  box-shadow: 0 0 1rem 0.1rem rgb(255, 206, 234);
+  color: hsl(326 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-left: 0.25rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-bottom: 0.25rem solid hsl(326 var(--linear_grad_border_color) var(--linear_grad_light_border_color));
+  border-right: 0.1rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-top: 0.1rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(303 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transition: transform 0.3s ease;
 
@@ -135,27 +201,130 @@ button {
 
 .NavBarButtonUrgent:hover{
 
-  box-shadow: 0 0 1rem 0.5rem rgb(255, 206, 234);
+  box-shadow: 0 0 1rem 0.5rem hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transform: scale(1.1);
-
 
 }
 
 
 .NavBarButtonPlaceHolder{
 
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
+  padding: var(--linear_grad_button_padding);
+  border-radius: var(--linear_grad_button_border_radius);
 
-  color: rgb(0, 0, 0);
-  border-left: 0.25rem solid rgb(54, 0, 61);
-  border-bottom: 0.25rem solid rgb(54, 0, 61);
-  border-right: 0.1rem solid rgb(54, 0, 61);
-  border-top: 0.1rem solid rgb(54, 0, 61);
-  background: linear-gradient(rgb(116, 34, 175) 0%, rgb(178, 146, 182) 100%);
+  color: hsl(294 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
+  border-left: 0.25rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-bottom: 0.25rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-right: 0.1rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-top: 0.1rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  background: linear-gradient(hsl(275 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(294 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
 
 }
+
+
+
+/* Screen Interactive components: */
+
+.screenInteractiveBackgroundContainer{
+
+  color: white;
+  border-top: 0.15rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: 0.15rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-left: 0.35rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: 0.35rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 10%, hsl(274 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(274 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+
+}
+
+
+.screenInteractiveOptionButton{
+
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+
+  border-radius: 50%;
+  padding: 2rem;
+
+  border-left: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-top: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(286 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+
+  transition: transform 0.3s ease;
+
+  img {
+
+    width: 90%;
+    height: 90%;
+
+    filter: 
+      drop-shadow(0 0 5px hsl(286 var(--image_sat_inner_color) var(--image_light_inner_color)))
+      drop-shadow(0 0 10px hsl(286 var(--image_sat_middle_color) var(--image_light_middle_color)))
+      drop-shadow(0 0 15px hsl(286 var(--image_sat_outer_color) var(--image_light_outer_color)));
+
+  }
+
+}
+
+.screenInteractiveOptionButton:hover {
+
+  box-shadow: 0 0 1rem 0.5rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+
+  transform: scale(1.1);
+
+}
+
+.screenInteractiveOptionButtonActive{
+
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+
+  border-radius: 50%;
+  padding: 2rem;
+
+  border-left: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-top: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(286 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  box-shadow: 0 0 1rem 0.75rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+
+  transition: transform 0.3s ease;
+
+  img {
+
+    width: 90%;
+    height: 90%;
+
+    filter: 
+      drop-shadow(0 0 5px hsl(286 var(--image_sat_inner_color) var(--image_light_inner_color)))
+      drop-shadow(0 0 10px hsl(286 var(--image_sat_middle_color) var(--image_light_middle_color)))
+      drop-shadow(0 0 15px hsl(286 var(--image_sat_outer_color) var(--image_light_outer_color)));
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
 
 
 

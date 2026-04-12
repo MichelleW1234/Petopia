@@ -95,7 +95,7 @@ function Home (){
 
                             return (
 
-                                <div className="HomePetSlot">
+                                <div className="screenInteractiveBackgroundContainer HomePetSlot">
 
                                     {currPetHealth > 0 ? (
 
@@ -103,6 +103,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
+                                                className="screenInteractiveOptionButton"
                                                 onClick = {() => getPet(key)}
                                             >
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
@@ -169,6 +170,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
+                                                className="screenInteractiveOptionButton"
                                                 onClick = {() => getPet(key)}
                                             > 
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
