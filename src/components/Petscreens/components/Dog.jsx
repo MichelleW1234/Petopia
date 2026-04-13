@@ -214,7 +214,7 @@ function Dog (){
                 setScheduleOpenFlag={setDogScheduleOpenFlag}
             />}
 
-            <div className="NavBarContainer">
+            <div className="navbarContainer">
 
                 <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
@@ -251,7 +251,7 @@ function Dog (){
                 <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
                
             </div>
-            <div className = "ScreenContainer">
+            <div className = "screenLayout">
 
                 <Main
                     mainAnimationImages={dogMainImages}

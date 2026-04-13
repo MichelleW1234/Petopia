@@ -181,7 +181,7 @@ function Cat (){
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
 
-            <div className="NavBarContainer">
+            <div className="navbarContainer">
 
                 <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
@@ -217,7 +217,7 @@ function Cat (){
                 
             </div>
             
-            <div className = "ScreenContainer">
+            <div className = "screenLayout">
 
                 <Main
                     mainAnimationImages={catMainImages}

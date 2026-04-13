@@ -14,16 +14,6 @@
 
 
 
-  --linear_grad_button_padding: 1.5rem 2rem;
-  --linear_grad_button_border_radius: 3rem;
-
-
-
-  --radial_grad_button_sat_shadow_color: 100%;
-  --radial_grad_button_light_shadow_color: 85%;
-
-
-
   --linear_grad_sat_font_color: 100%; 
   --linear_grad_light_font_color: 25%;
 
@@ -50,6 +40,9 @@
   --linear_grad_ph_sat_border_color: 100%;
   --linear_grad_ph_light_border_color: 12.5%;
 
+  --linear_grad_button_padding: 1.5rem 2rem;
+  --linear_grad_button_border_radius: 3rem;
+
 
 
   --radial_grad_sat_outer_color: 100%;
@@ -61,8 +54,11 @@
   --radial_grad_sat_border_color: 100%;
   --radial_grad_light_border_color: 25;
 
-  --radial_grad_sat_shadow_color: 30%;
-  --radial_grad_light_shadow_color: 70%;
+  --radial_grad_container_sat_shadow_color: 25%;
+  --radial_grad_container_light_shadow_color: 75%;
+
+  --radial_grad_button_sat_shadow_color: 100%;
+  --radial_grad_button_light_shadow_color: 85%;
 
 
 
@@ -91,7 +87,7 @@ body{
   user-select: none;
 
   background: linear-gradient(rgb(59, 0, 102) 15%, rgb(140, 0, 156) 50%, rgb(59, 0, 102) 85%);
-
+  background: linear-gradient(rgb(75, 0, 125) 15%, rgb(175, 0, 175) 50%, rgb(75, 0, 125) 85%);
     
 }
 
@@ -136,22 +132,8 @@ p, a, button, input {
 /*Custom tags:*/
 
 
-/*Screens:*/
 
-.ScreenContainer {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: 5vh;
-  gap: 4rem;
-  
-}
-
-
-/*Button Structures:*/
+/* Button Structures: */
 
 .linearGradientButtonStructure{
 
@@ -232,9 +214,9 @@ p, a, button, input {
 
 
 
-/* NavBar: */
+/* NavBar components: */
 
-.NavBarContainer {
+.navbarContainer {
 
   width: 100vw;
   display: flex;
@@ -265,7 +247,6 @@ p, a, button, input {
 }
 
 
-
 .navbarButtonColorUrgent{
 
   color: hsl(330 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
@@ -292,58 +273,69 @@ p, a, button, input {
 
 
 
-/* Screen Interactive components: */
+/* screen components: */
 
+.screenLayout {
 
-.screenInteractiveBackgroundContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5vh;
+  gap: 4rem;
+  
+}
+
+.screenGeneralContainerTemplate{
 
   color: white;
   border-top: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
   border-right: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
   border-left: var(--container_left_bottom_border_width)solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
   border-bottom: var(--container_left_bottom_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(275 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 10%, hsl(275 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(275 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  background: radial-gradient(circle, hsl(275 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 5%, hsl(275 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(275 var(--radial_grad_container_sat_shadow_color) var(--radial_grad_container_light_shadow_color));
 
 }
 
 
-.screenInteractiveOptionButtonColor{
+.screenOptionButtonColor{
 
   border-color: hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 5%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
   box-shadow: 0 0 1rem 0.1rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_1) var(--image_light_color_1)));
+    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_2) var(--image_light_color_2)));
 
   }
 
 }
 
-.screenInteractiveOptionButtonColor:hover {
+.screenOptionButtonColor:hover {
 
   box-shadow: 0 0 1rem 0.5rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
 }
 
-.screenInteractiveOptionButtonColorActive{
+.screenOptionButtonColorActive{
 
   border-color: hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 5%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
   box-shadow: 0 0 1rem 0.75rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_1) var(--image_light_color_1)));
+    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_2) var(--image_light_color_2)));
 
   }
 
 }
 
 
-.screenButtonColor {
+.screenGeneralButtonColor {
 
   color: hsl(285 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
   border-color: hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
@@ -354,14 +346,14 @@ p, a, button, input {
 
 
 
-.screenButtonColor:hover{
+.screenGeneralButtonColor:hover{
 
   box-shadow: 0 0 1rem 0.5rem hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
 }
 
 
-.screenButtonPlaceholderColor{
+.screenGeneralButtonPlaceholderColor{
 
   color: hsl(285 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
   border-color: hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));

@@ -167,29 +167,29 @@ function Adoption () {
                 />
             }
 
-            <div className="NavBarContainer">
+            <div className="navbarContainer">
                 <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit </Link>
                 <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
             </div>
-            <div className="ScreenContainer">
+            <div className="screenLayout">
 
                 <h1 className="header"> Select a new Pet: </h1>
 
                 <div className = "AdoptionOuterContainer">
 
-                    <div className = "screenInteractiveBackgroundContainer AdoptionSelectionContainer">
+                    <div className = "screenGeneralContainerTemplate AdoptionSelectionContainer">
 
                         {Object.keys(portraitPetImages).map((key) => (
 
                             key === selectionSelectedPet ? (
 
-                                <div key = {key} className = "radialGradientButtonStructure screenInteractiveOptionButtonColorActive">
+                                <div key = {key} className = "radialGradientButtonStructure screenOptionButtonColorActive">
                                     <img src = {portraitPetImages[key][0]}/>
                                 </div>
         
                             ) : (
 
-                                <div key = {key} className = "radialGradientButtonStructure screenInteractiveOptionButtonColor" onClick = {() => setSelectionSelectedPet(key)}>
+                                <div key = {key} className = "radialGradientButtonStructure screenOptionButtonColor" onClick = {() => setSelectionSelectedPet(key)}>
                                     <img src = {portraitPetImages[key][0]} />
                                 </div>
 
@@ -203,7 +203,7 @@ function Adoption () {
 
                     <div className = "AdoptionNameContainer">
 
-                        <div className="screenInteractiveBackgroundContainer AdoptionNameInputBox">
+                        <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
                             <input 
                                 type="text"
                                 value={confirmationPetName}
@@ -214,11 +214,11 @@ function Adoption () {
 
                         {selectionSelectedPet !== "" ? (
 
-                            <Link to = "/home" className = "linearGradientButtonStructure screenButtonColor" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
+                            <Link to = "/home" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
 
                         ) : (
 
-                            <button className = "linearGradientButtonPlaceholderStructure screenButtonPlaceholderColor"> Adopt New Pet </button>
+                            <button className = "linearGradientButtonPlaceholderStructure screenGeneralButtonPlaceholderColor"> Adopt New Pet </button>
 
                         )}
                         

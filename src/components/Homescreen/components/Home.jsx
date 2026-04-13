@@ -50,7 +50,7 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            <div className="NavBarContainer">
+            <div className="navbarContainer">
 
                 {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
@@ -79,7 +79,7 @@ function Home (){
                 )}
                 
             </div>
-            <div className = "ScreenContainer">  
+            <div className = "screenLayout">  
                 <h1 className="header"> Your Pets: </h1>
                 <div className="HomePetSlotContainer">
 
@@ -95,7 +95,7 @@ function Home (){
 
                             return (
 
-                                <div className="screenInteractiveBackgroundContainer HomePetSlot">
+                                <div className="screenGeneralContainerTemplate HomePetSlot">
 
                                     {currPetHealth > 0 ? (
 
@@ -103,7 +103,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className="radialGradientButtonStructure screenInteractiveOptionButtonColor"
+                                                className="radialGradientButtonStructure screenOptionButtonColor"
                                                 onClick = {() => getPet(key)}
                                             >
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
@@ -170,7 +170,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className="radialGradientButtonStructure screenInteractiveOptionButtonColor"
+                                                className="radialGradientButtonStructure screenOptionButtonColor"
                                                 onClick = {() => getPet(key)}
                                             > 
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
