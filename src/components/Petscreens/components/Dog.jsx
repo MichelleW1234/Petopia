@@ -216,22 +216,22 @@ function Dog (){
 
             <div className="NavBarContainer">
 
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
                 {dogAlive ? (
 
                     <>
-                        <button className={dogHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
-                        <button className={dogDirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
-                        <button className={dogRestless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
+                        <button className={dogHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
+                        <button className={dogDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
+                        <button className={dogRestless ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
 
                         {dogCanReceiveDose ? (
 
-                            <button className="NavBarButton" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
+                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
 
                         ) : (
 
-                            <button className="NavBarButtonPlaceHolder"> Give Dog Medicine </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Dog Medicine </button>
 
                         )}
                       
@@ -240,15 +240,15 @@ function Dog (){
                 ) : (
 
                     <>
-                        <button className="NavBarButtonPlaceHolder"> Feed Dog </button>
-                        <button className="NavBarButtonPlaceHolder"> Clean Dog </button>
-                        <button className="NavBarButtonPlaceHolder"> Play With Dog </button>
-                        <button className="NavBarButtonPlaceHolder"> Give Dog Medicine </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Dog </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Dog </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Play With Dog </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Dog Medicine </button>
                     </>
 
                 )}
 
-                <button className="NavBarButton" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
+                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
                
             </div>
             <div className = "ScreenContainer">

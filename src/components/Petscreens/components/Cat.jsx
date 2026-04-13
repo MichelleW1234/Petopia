@@ -183,21 +183,21 @@ function Cat (){
 
             <div className="NavBarContainer">
 
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
                 {catAlive ? (
 
                     <>
-                        <button className={catHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed Cat </button>
-                        <button className={catRestless ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play With Cat </button>
+                        <button className={catHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed Cat </button>
+                        <button className={catRestless ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play With Cat </button>
 
                         {catCanReceiveDose ? (
 
-                            <button className="NavBarButton" onClick = {() => setCatMedicineOpenFlag(true)}> Cat Medicine Available </button>
+                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setCatMedicineOpenFlag(true)}> Cat Medicine Available </button>
 
                         ) : (
 
-                            <button className="NavBarButtonPlaceHolder"> Cat Medicine Available </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Cat Medicine Available </button>
 
                         )}
                        
@@ -206,14 +206,14 @@ function Cat (){
                 ) : (
 
                     <>
-                        <button className="NavBarButtonPlaceHolder"> Feed Cat </button>
-                        <button className="NavBarButtonPlaceHolder"> Play With Cat </button>
-                        <button className="NavBarButtonPlaceHolder"> Give Cat Medicine </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Cat </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Play With Cat </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Cat Medicine </button>
                     </>
 
                 )}
 
-                <button className="NavBarButton" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
+                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
                 
             </div>
             

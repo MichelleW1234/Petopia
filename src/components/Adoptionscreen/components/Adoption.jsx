@@ -168,8 +168,8 @@ function Adoption () {
             }
 
             <div className="NavBarContainer">
-                <Link to = "/home" className = "NavBarButton"> Quit </Link>
-                <button className = "NavBarButton" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit </Link>
+                <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
             </div>
             <div className="ScreenContainer">
 
@@ -183,13 +183,13 @@ function Adoption () {
 
                             key === selectionSelectedPet ? (
 
-                                <div key = {key} className = "screenInteractiveOptionButtonActive">
+                                <div key = {key} className = "radialGradientButtonStructure screenInteractiveOptionButtonColorActive">
                                     <img src = {portraitPetImages[key][0]}/>
                                 </div>
         
                             ) : (
 
-                                <div key = {key} className = "screenInteractiveOptionButton" onClick = {() => setSelectionSelectedPet(key)}>
+                                <div key = {key} className = "radialGradientButtonStructure screenInteractiveOptionButtonColor" onClick = {() => setSelectionSelectedPet(key)}>
                                     <img src = {portraitPetImages[key][0]} />
                                 </div>
 
@@ -214,11 +214,11 @@ function Adoption () {
 
                         {selectionSelectedPet !== "" ? (
 
-                            <Link to = "/home" className = "multipurposeScreenButton" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
+                            <Link to = "/home" className = "linearGradientButtonStructure screenButtonColor" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
 
                         ) : (
 
-                            <button className = "multipurposeScreenButtonPlaceholder"> Adopt New Pet </button>
+                            <button className = "linearGradientButtonPlaceholderStructure screenButtonPlaceholderColor"> Adopt New Pet </button>
 
                         )}
                         

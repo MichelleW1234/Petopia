@@ -62,49 +62,6 @@
 }
 
 
-
-.AdoptionAdoptButton{
-
-  padding: var(--linear_grad_button_padding);
-  border-radius: var(--linear_grad_button_border_radius);
-
-  color: hsl(290 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-left: 0.25rem solid hsl(290 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-bottom: 0.25rem solid hsl(290 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-right: 0.1rem solid hsl(290 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-top: 0.1rem solid hsl(290 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(274 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(290 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(290 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
-
-  transition: transform 0.3s ease;
-
-}
-
-
-.AdoptionAdoptButton:hover{
-
-  box-shadow: 0 0 1rem 0.5rem hsl(290 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
-
-  transform: scale(1.1);
-
-}
-
-
-.AdoptionAdoptButtonPlaceholder{
-
-    padding: var(--linear_grad_button_padding);
-    border-radius: var(--linear_grad_button_border_radius);
-
-    color: hsl(290 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
-    border-left: 0.25rem solid hsl(290 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-    border-bottom: 0.25rem solid hsl(290 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-    border-right: 0.1rem solid hsl(290 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-    border-top: 0.1rem solid hsl(290 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-    background: linear-gradient(hsl(274 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(290 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
-
-}
-
-
 .AdoptionNameError {
 
     height: 1rem;

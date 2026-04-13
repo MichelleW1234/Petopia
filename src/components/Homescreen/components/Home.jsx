@@ -55,26 +55,26 @@ function Home (){
                 {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
                     <>
-                        <button className="NavBarButton" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
-                        <button className="NavBarButton" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                        <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
+                        <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className="NavBarButtonPlaceHolder" > Restart Game </button>
-                        <button className="NavBarButtonPlaceHolder"> Clear Pets </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor" > Restart Game </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clear Pets </button>
                     </>
 
                 )}
 
                 {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
-                   <button className="NavBarButtonPlaceHolder"> Add Pets </button>
+                   <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Add Pets </button>
 
                 ) : (
 
-                    <Link to ="/adopt" className="NavBarButton"> Add Pets </Link>
+                    <Link to ="/adopt" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
 
                 )}
                 
@@ -103,7 +103,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className="screenInteractiveOptionButton"
+                                                className="radialGradientButtonStructure screenInteractiveOptionButtonColor"
                                                 onClick = {() => getPet(key)}
                                             >
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
@@ -170,7 +170,7 @@ function Home (){
                                             <Link 
                                                 key = {key}
                                                 to = {`/${PetList[key][speciesKey]}`}
-                                                className="screenInteractiveOptionButton"
+                                                className="radialGradientButtonStructure screenInteractiveOptionButtonColor"
                                                 onClick = {() => getPet(key)}
                                             > 
                                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>

@@ -188,21 +188,21 @@ function Fish (){
 
             <div className="NavBarContainer">
 
-                <Link to = "/home" className = "NavBarButton" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
                 {fishAlive ? (
 
                     <>
-                        <button className={fishHungry ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
-                        <button className={fishDirty ? "NavBarButtonUrgent" : "NavBarButton"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
+                        <button className={fishHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
+                        <button className={fishDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
 
                         {fishCanReceiveDose ? (
 
-                            <button className="NavBarButton" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
+                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
 
                         ) : (
 
-                            <button className="NavBarButtonPlaceHolder"> Give Fish Medicine </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
 
                         )}
 
@@ -211,14 +211,14 @@ function Fish (){
                 ) : (
 
                     <>
-                        <button className="NavBarButtonPlaceHolder"> Feed Fish </button>
-                        <button className="NavBarButtonPlaceHolder"> Clean Fish Tank </button>
-                        <button className="NavBarButtonPlaceHolder"> Give Fish Medicine </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Fish </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Fish Tank </button>
+                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
                     </>
 
                 )}
 
-                <button className="NavBarButton" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
+                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
 
             </div>
             <div className = "ScreenContainer">
