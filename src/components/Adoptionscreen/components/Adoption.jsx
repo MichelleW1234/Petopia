@@ -214,11 +214,11 @@ function Adoption () {
 
                         {selectionSelectedPet !== "" ? (
 
-                            <Link to = "/home" className = "AdoptionAdoptButton" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
+                            <Link to = "/home" className = "multipurposeScreenButton" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
 
                         ) : (
 
-                            <button className = "AdoptionAdoptButtonPlaceholder"> Adopt New Pet </button>
+                            <button className = "multipurposeScreenButtonPlaceholder"> Adopt New Pet </button>
 
                         )}
                         

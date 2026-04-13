@@ -1,5 +1,14 @@
 :root {
 
+  --button_left_bottom_border_width: 0.3rem;
+  --button_top_right_border_width: 0.1rem;
+
+
+  --container_left_bottom_border_width: 0.4rem;
+  --container_top_right_border_width: 0.15rem;
+
+
+
   --linear_grad_button_padding: 1.5rem 2rem;
   --linear_grad_button_border_radius: 3rem;
 
@@ -52,14 +61,14 @@
 
 
 
-  --image_sat_inner_color: 100%;
-  --image_light_inner_color: 55%;
+  --image_sat_color_1: 100%;
+  --image_light_color_1: 55%;
 
-  --image_sat_middle_color: 100%;
-  --image_light_middle_color: 70%;
+  --image_sat_color_2: 100%;
+  --image_light_color_2: 70%;
 
-  --image_sat_outer_color: 100%;
-  --image_light_outer_color: 85%;
+  --image_sat_color_3: 100%;
+  --image_light_color_3: 85%;
 
 }
 
@@ -161,13 +170,13 @@ button {
   padding: var(--linear_grad_button_padding);
   border-radius: var(--linear_grad_button_border_radius);
 
-  color: hsl(294 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-left: 0.25rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-bottom: 0.25rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-right: 0.1rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-top: 0.1rem solid hsl(294 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(275 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  color: hsl(300 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(300 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(300 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(300 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(300 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(300 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transition: transform 0.3s ease;
 
@@ -176,7 +185,7 @@ button {
 
 .NavBarButton:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(294 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transform: scale(1.1);
 
@@ -187,13 +196,13 @@ button {
   padding: var(--linear_grad_button_padding);
   border-radius: var(--linear_grad_button_border_radius);
 
-  color: hsl(326 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-left: 0.25rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-bottom: 0.25rem solid hsl(326 var(--linear_grad_border_color) var(--linear_grad_light_border_color));
-  border-right: 0.1rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  border-top: 0.1rem solid hsl(326 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(303 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  color: hsl(315 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(315 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(315 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-right:var(--button_top_right_border_width) solid hsl(315 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(315 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(315 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(315 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(315 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transition: transform 0.3s ease;
 
@@ -201,7 +210,7 @@ button {
 
 .NavBarButtonUrgent:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(326 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(315 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
 
   transform: scale(1.1);
 
@@ -213,12 +222,12 @@ button {
   padding: var(--linear_grad_button_padding);
   border-radius: var(--linear_grad_button_border_radius);
 
-  color: hsl(294 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
-  border-left: 0.25rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  border-bottom: 0.25rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  border-right: 0.1rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  border-top: 0.1rem solid hsl(294 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  background: linear-gradient(hsl(275 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(294 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
+  color: hsl(300 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(300 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(300 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(300 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(300 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  background: linear-gradient(hsl(300 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(300 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
 
 }
 
@@ -226,16 +235,18 @@ button {
 
 /* Screen Interactive components: */
 
+
 .screenInteractiveBackgroundContainer{
 
   color: white;
-  border-top: 0.15rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-right: 0.15rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-left: 0.35rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-bottom: 0.35rem solid hsl(274 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 10%, hsl(274 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(274 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  border-top: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-left: var(--container_left_bottom_border_width)solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: var(--container_left_bottom_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(275 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 10%, hsl(275 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(275 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
 
+  /*background: hsl(275 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5);*/
 }
 
 
@@ -251,12 +262,12 @@ button {
   border-radius: 50%;
   padding: 2rem;
 
-  border-left: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-bottom: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-right: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-top: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(286 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
   transition: transform 0.3s ease;
 
@@ -265,10 +276,7 @@ button {
     width: 90%;
     height: 90%;
 
-    filter: 
-      drop-shadow(0 0 5px hsl(286 var(--image_sat_inner_color) var(--image_light_inner_color)))
-      drop-shadow(0 0 10px hsl(286 var(--image_sat_middle_color) var(--image_light_middle_color)))
-      drop-shadow(0 0 15px hsl(286 var(--image_sat_outer_color) var(--image_light_outer_color)));
+    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_1) var(--image_light_color_1)));
 
   }
 
@@ -276,7 +284,7 @@ button {
 
 .screenInteractiveOptionButton:hover {
 
-  box-shadow: 0 0 1rem 0.5rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
   transform: scale(1.1);
 
@@ -294,12 +302,12 @@ button {
   border-radius: 50%;
   padding: 2rem;
 
-  border-left: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-bottom: 0.3rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-right: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-top: 0.15rem solid hsl(286 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(0 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(286 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
-  box-shadow: 0 0 1rem 0.75rem hsl(286 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width)solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 10%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
+  box-shadow: 0 0 1rem 0.75rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
 
   transition: transform 0.3s ease;
 
@@ -308,14 +316,68 @@ button {
     width: 90%;
     height: 90%;
 
-    filter: 
-      drop-shadow(0 0 5px hsl(286 var(--image_sat_inner_color) var(--image_light_inner_color)))
-      drop-shadow(0 0 10px hsl(286 var(--image_sat_middle_color) var(--image_light_middle_color)))
-      drop-shadow(0 0 15px hsl(286 var(--image_sat_outer_color) var(--image_light_outer_color)));
+    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_1) var(--image_light_color_1)));
 
   }
 
 }
+
+
+.multipurposeScreenButton {
+
+  padding: var(--linear_grad_button_padding);
+  border-radius: var(--linear_grad_button_border_radius);
+
+  color: hsl(285 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(285 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+
+  transition: transform 0.3s ease;
+
+}
+
+
+
+.multipurposeScreenButton:hover{
+
+  box-shadow: 0 0 1rem 0.5rem hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+
+  transform: scale(1.1);
+
+}
+
+
+.multipurposeScreenButtonPlaceholder{
+
+  padding: var(--linear_grad_button_padding);
+  border-radius: var(--linear_grad_button_border_radius);
+
+  color: hsl(285 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
+  border-left: var(--button_left_bottom_border_width) solid hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-bottom: var(--button_left_bottom_border_width) solid hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-right: var(--button_top_right_border_width) solid hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  border-top: var(--button_top_right_border_width) solid hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
+  background: linear-gradient(hsl(285 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(285 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
