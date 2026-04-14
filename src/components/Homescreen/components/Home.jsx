@@ -97,97 +97,76 @@ function Home (){
 
                                 <div className="screenGeneralContainerTemplate HomePetSlot">
 
-                                    {currPetHealth > 0 ? (
+                                    <Link 
+                                        key = {key}
+                                        to = {`/${PetList[key][speciesKey]}`}
+                                        className="radialGradientButtonStructure screenOptionButtonColor"
+                                        onClick = {() => getPet(key)}
+                                    >
+                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                    </Link>
+                                    <h2 className = "HomePetSlotPetName">{key}</h2>
+                                    <div className = "HomePetSlotHealthBarContainer">
 
-                                        <>
-                                            <Link 
-                                                key = {key}
-                                                to = {`/${PetList[key][speciesKey]}`}
-                                                className="radialGradientButtonStructure screenOptionButtonColor"
-                                                onClick = {() => getPet(key)}
-                                            >
-                                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                            </Link>
-                                            <p>{key}</p>
-                                            <div className = "HomePetSlotHealthBarContainer">
+                                        {currPetHealth > 75 ? (
 
-                                                {currPetHealth > 75 ? (
+                                            Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                                                <div key = {num} className = {num <= currPetHealth ? 
+                                                                                    "HomePetSlotHealthBarCellDoneGood"
+                                                                                : "HomePetSlotHealthBarCellLeft"
+                                                                            }>
+                                                </div>
 
-                                                        <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomePetSlotHealthBarCellDoneGood"
-                                                                                        : "HomePetSlotHealthBarCellLeft"
-                                                                                    }>
-                                                        </div>
+                                            ))
 
-                                                    ))
+                                        ) : currPetHealth > 50 ? (
 
-                                                ) : currPetHealth > 50 ? (
+                                            Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                                                <div key = {num} className = {num <= currPetHealth ? 
+                                                                                    "HomePetSlotHealthBarCellDoneOkay"
+                                                                                : "HomePetSlotHealthBarCellLeft"
+                                                                            }>
+                                                </div>
 
-                                                        <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomePetSlotHealthBarCellDoneOkay"
-                                                                                        : "HomePetSlotHealthBarCellLeft"
-                                                                                    }>
-                                                        </div>
+                                            ))
 
-                                                    ))
+                                        ) : currPetHealth > 25 ? (
 
-                                                ) : currPetHealth > 25 ? (
+                                            Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                                                <div key = {num} className = {num <= currPetHealth ? 
+                                                                                    "HomePetSlotHealthBarCellDoneBad"
+                                                                                : "HomePetSlotHealthBarCellLeft"
+                                                                            }>
+                                                </div>
 
-                                                        <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomePetSlotHealthBarCellDoneBad"
-                                                                                        : "HomePetSlotHealthBarCellLeft"
-                                                                                    }>
-                                                        </div>
+                                            ))
 
-                                                    ))
+                                        ) : currPetHealth > 0 ? (
 
-                                                ) : (
+                                            Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                                    Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                                                <div key = {num} className = {num <= currPetHealth ? 
+                                                                                    "HomePetSlotHealthBarCellDoneVeryBad"
+                                                                                : "HomePetSlotHealthBarCellLeft"
+                                                                            }>
+                                                </div>
 
-                                                        <div key = {num} className = {num <= currPetHealth ? 
-                                                                                            "HomePetSlotHealthBarCellDoneVeryBad"
-                                                                                        : "HomePetSlotHealthBarCellLeft"
-                                                                                    }>
-                                                        </div>
+                                            ))
 
-                                                    ))
+                                        ) : (
 
-                                                )}
-                                                
-                                            </div>
-                                        </>
+                                            Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                                    ) : (
+                                                <div key = {num} className = "HomePetSlotHealthBarCellDead"></div>
 
-                                        <>
-                                            <Link 
-                                                key = {key}
-                                                to = {`/${PetList[key][speciesKey]}`}
-                                                className="radialGradientButtonStructure screenOptionButtonColor"
-                                                onClick = {() => getPet(key)}
-                                            > 
-                                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
-                                            </Link>
-                                            <p>{key}</p>
-                                            <div className = "HomePetSlotHealthBarContainer">
+                                            ))
 
-                                                {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                                                    <div key = {num} className = "HomePetSlotHealthBarCellDead"></div>
-
-                                                ))}
-                                                
-                                            </div>
-                                        </>
-
-                                    )}
+                                        )}
+                                        
+                                    </div>
 
                                 </div>
 

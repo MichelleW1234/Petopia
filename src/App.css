@@ -1,80 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Silkscreen');
+
+
 :root {
+
+  /*
+  Horizontal (left → right) = Saturation (0% → 100%)
+  Vertical (top → bottom) = Lightness (100% → 0%)
+  */
 
   --root_font_size: 1rem;
 
 
 
   --button_left_bottom_border_width: 0.3rem;
-  --button_top_right_border_width: 0.1rem;
+  --button_right_top_border_width: 0.1rem;
+  --button_placeholder_background_color_transparency: 0.75;
+  --button_placeholder_border_font_color_light_ratio: 1.25;
 
 
 
   --container_left_bottom_border_width: 0.4rem;
-  --container_top_right_border_width: 0.15rem;
+  --container_right_top_border_width: 0.15rem;
 
 
+
+  --linear_grad_padding: 1.5rem 2rem;
+  --linear_grad_border_radius: 3rem;
 
   --linear_grad_sat_font_color: 100%; 
   --linear_grad_light_font_color: 25%;
 
   --linear_grad_sat_top_color: 100%;
-  --linear_grad_light_top_color: 60%;
+  --linear_grad_light_top_color: 50%;
 
   --linear_grad_sat_bottom_color: 100%;
-  --linear_grad_light_bottom_color: 90%;
+  --linear_grad_light_bottom_color: 100%;
 
   --linear_grad_sat_border_color: 100%;
   --linear_grad_light_border_color: 25%;
 
-
-
-  --linear_grad_ph_sat_font_color: 100%; 
-  --linear_grad_ph_light_font_color: 12.5%;
-
-  --linear_grad_ph_sat_top_color: 80%;
-  --linear_grad_ph_light_top_color: 40%;
-
-  --linear_grad_ph_sat_bottom_color: 25%;
-  --linear_grad_ph_light_bottom_color: 65%;
-
-  --linear_grad_ph_sat_border_color: 100%;
-  --linear_grad_ph_light_border_color: 12.5%;
-
-  --linear_grad_button_padding: 1.5rem 2rem;
-  --linear_grad_button_border_radius: 3rem;
+  --linear_grad_sat_shadow_color: 100%;
+  --linear_grad_light_shadow_color: 90%;
 
 
 
   --radial_grad_sat_outer_color: 100%;
   --radial_grad_light_outer_color: 50%;
 
-  --radial_grad_sat_inner_color: 0%;
+  --radial_grad_sat_inner_color: 100%;
   --radial_grad_light_inner_color: 100%;
 
   --radial_grad_sat_border_color: 100%;
   --radial_grad_light_border_color: 25;
 
-  --radial_grad_container_sat_shadow_color: 25%;
-  --radial_grad_container_light_shadow_color: 75%;
+  --radial_grad_sat_shadow_color: 100%;
+  --radial_grad_light_shadow_color: 90%;
 
-  --radial_grad_button_sat_shadow_color: 100%;
-  --radial_grad_button_light_shadow_color: 85%;
+
+
+  --conic_grad_sat_first_color: 100%;
+  --conic_grad_light_first_color: 75%;
+
+  --conic_grad_sat_second_color: 100%;
+  --conic_grad_light_second_color: 50%;
+
+  --conic_grad_sat_border_color: 100%;
+  --conic_grad_light_border_color: 25;
+
+  --conic_grad_sat_shadow_color: 100%;
+  --conic_grad_light_shadow_color: 80%;
 
 
 
   --image_sat_color_1: 100%;
-  --image_light_color_1: 55%;
+  --image_light_color_1: 50%;
 
   --image_sat_color_2: 100%;
-  --image_light_color_2: 70%;
+  --image_light_color_2: 75%;
 
   --image_sat_color_3: 100%;
-  --image_light_color_3: 85%;
+  --image_light_color_3: 100%;
 
 }
 
 
 html {
+
   font-size: 16px;
 }
 
@@ -87,7 +99,7 @@ body{
   user-select: none;
 
   background: linear-gradient(rgb(59, 0, 102) 15%, rgb(140, 0, 156) 50%, rgb(59, 0, 102) 85%);
-  background: linear-gradient(rgb(75, 0, 125) 15%, rgb(175, 0, 175) 50%, rgb(75, 0, 125) 85%);
+  background: linear-gradient(rgb(75, 0, 125) 15%, rgb(150, 0, 150) 50%, rgb(75, 0, 125) 85%);
     
 }
 
@@ -99,12 +111,46 @@ body{
   margin: 0;
   padding: 0;
 
-  font-family: monospace;
   word-wrap: break-word;
   word-break: break-word;
   white-space: normal;
 
 }
+
+
+h1, h2, a, button {
+
+  font-family: 'Orbitron', monospace;
+  font-family: 'Silkscreen', monospace;
+  
+}
+
+h1 {
+
+  font-size: calc(var(--root_font_size)*2);
+
+}
+
+h2 {
+
+  font-size: calc(var(--root_font_size)*1.5);
+
+}
+
+a, button {
+
+  font-size: calc(var(--root_font_size)*1.25);
+
+}
+
+
+p, input {
+
+  font-family: monospace;
+  font-size: var(--root_font_size);
+
+}
+
 
 a:link,
 a:visited,
@@ -120,12 +166,6 @@ a:active {
 
 }
 
-p, a, button, input {
-
-  font-size: var(--root_font_size);
-
-}
-
 
 
 
@@ -137,14 +177,14 @@ p, a, button, input {
 
 .linearGradientButtonStructure{
 
-  padding: var(--linear_grad_button_padding);
-  border-radius: var(--linear_grad_button_border_radius);
+  padding: var(--linear_grad_padding);
+  border-radius: var(--linear_grad_border_radius);
   border-style: solid;
 
   border-left-width: var(--button_left_bottom_border_width);
   border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_top_right_border_width);
-  border-top-width: var(--button_top_right_border_width);
+  border-right-width: var(--button_right_top_border_width);
+  border-top-width: var(--button_right_top_border_width);
 
   transition: transform 0.3s ease;
 
@@ -160,14 +200,14 @@ p, a, button, input {
 
 .linearGradientButtonPlaceholderStructure{
 
-  padding: var(--linear_grad_button_padding);
-  border-radius: var(--linear_grad_button_border_radius);
+  padding: var(--linear_grad_padding);
+  border-radius: var(--linear_grad_border_radius);
   border-style: solid;
 
   border-left-width: var(--button_left_bottom_border_width);
   border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_top_right_border_width);
-  border-top-width: var(--button_top_right_border_width);
+  border-right-width: var(--button_right_top_border_width);
+  border-top-width: var(--button_right_top_border_width);
 
 }
 
@@ -188,8 +228,8 @@ p, a, button, input {
 
   border-left-width: var(--button_left_bottom_border_width);
   border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_top_right_border_width);
-  border-top-width: var(--button_top_right_border_width);
+  border-right-width: var(--button_right_top_border_width);
+  border-top-width: var(--button_right_top_border_width);
 
   transition: transform 0.3s ease;
 
@@ -235,39 +275,38 @@ p, a, button, input {
   color: hsl(300 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
   border-color: hsl(300 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
   background: linear-gradient(hsl(300 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.1rem hsl(300 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 
 }
 
 
 .navbarButtonColor:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(300 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 
 }
 
 
 .navbarButtonColorUrgent{
 
-  color: hsl(330 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-color: hsl(330 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(330 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(330 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(330 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
-
+  color: hsl(320 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-color: hsl(320 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(320 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(320 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(320 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 }
 
 .navbarButtonColorUrgent:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(330 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(320 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 
 }
 
 
 .navbarButtonPlaceholderColor{
 
-  color: hsl(300 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
-  border-color: hsl(300 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  background: linear-gradient(hsl(300 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(300 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
+  color: hsl(300 var(--linear_grad_sat_font_color) calc(var(--linear_grad_light_font_color) / var(--button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(300 var(--linear_grad_sat_border_color) calc(var(--linear_grad_light_border_color) / var(--button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(300 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color) / var(--button_placeholder_background_color_transparency)) 0%, hsl(300 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color) / var(--button_placeholder_background_color_transparency)) 100%);
 
 }
 
@@ -289,26 +328,32 @@ p, a, button, input {
 
 .screenGeneralContainerTemplate{
 
-  color: white;
-  border-top: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-right: var(--container_top_right_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-left: var(--container_left_bottom_border_width)solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  border-bottom: var(--container_left_bottom_border_width) solid hsl(275 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(275 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.5) 5%, hsl(275 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.5) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(275 var(--radial_grad_container_sat_shadow_color) var(--radial_grad_container_light_shadow_color));
+  color: rgb(255, 255, 255);
+  border-top: var(--container_right_top_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-right: var(--container_right_top_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-left: var(--container_left_bottom_border_width)solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-bottom: var(--container_left_bottom_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  background: conic-gradient(
+    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 0deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 90deg,
+    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 180deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 270deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_first_color)) 360deg
+  );
+  box-shadow: 0 0 1rem 0.1rem hsl(280 var(--conic_grad_sat_shadow_color) var(--conic_grad_light_shadow_color));
 
 }
 
 
 .screenOptionButtonColor{
 
-  border-color: hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 5%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  border-color: hsl(290 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(290 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color)) 0%, hsl(290 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(290 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_2) var(--image_light_color_2)));
+    filter: drop-shadow(0 0 5px hsl(290 var(--image_sat_color_2) var(--image_light_color_2)));
 
   }
 
@@ -316,19 +361,19 @@ p, a, button, input {
 
 .screenOptionButtonColor:hover {
 
-  box-shadow: 0 0 1rem 0.5rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(290 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
 
 }
 
 .screenOptionButtonColorActive{
 
-  border-color: hsl(285 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(285 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color) / 0.75) 5%, hsl(285 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color) / 0.75) 100%);
-  box-shadow: 0 0 1rem 0.75rem hsl(285 var(--radial_grad_button_sat_shadow_color) var(--radial_grad_button_light_shadow_color));
+  border-color: hsl(290 var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
+  background: radial-gradient(circle, hsl(290 var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color)) 0%, hsl(290 var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color)) 100%);
+  box-shadow: 0 0 1rem 0.75rem hsl(290 var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(285 var(--image_sat_color_2) var(--image_light_color_2)));
+    filter: drop-shadow(0 0 5px hsl(290 var(--image_sat_color_2) var(--image_light_color_2)));
 
   }
 
@@ -337,27 +382,26 @@ p, a, button, input {
 
 .screenGeneralButtonColor {
 
-  color: hsl(285 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-color: hsl(285 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(285 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
-
+  color: hsl(290 var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
+  border-color: hsl(290 var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
+  background: linear-gradient(hsl(290 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(290 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(290 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 }
 
 
 
 .screenGeneralButtonColor:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(285 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(290 var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
 
 }
 
 
 .screenGeneralButtonPlaceholderColor{
 
-  color: hsl(285 var(--linear_grad_ph_sat_font_color) var(--linear_grad_ph_light_font_color));
-  border-color: hsl(285 var(--linear_grad_ph_sat_border_color) var(--linear_grad_ph_light_border_color));
-  background: linear-gradient(hsl(285 var(--linear_grad_ph_sat_top_color) var(--linear_grad_ph_light_top_color)) 0%, hsl(285 var(--linear_grad_ph_sat_bottom_color) var(--linear_grad_ph_light_bottom_color)) 100%);
+  color: hsl(290 var(--linear_grad_sat_font_color) calc(var(--linear_grad_light_font_color) / var(--button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(290 var(--linear_grad_sat_border_color) calc(var(--linear_grad_light_border_color) / var(--button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(290 var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color) / var(--button_placeholder_background_color_transparency)) 0%, hsl(290 var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color) / var(--button_placeholder_background_color_transparency)) 100%);
 
 }
 
