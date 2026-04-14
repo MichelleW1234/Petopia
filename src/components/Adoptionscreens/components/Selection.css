@@ -1,0 +1,22 @@
+.AdoptionOuterContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2rem;
+
+}
+
+.AdoptionSelectionContainer {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 3rem;
+    padding: 3rem;
+    border-radius: 2rem;
+
+}

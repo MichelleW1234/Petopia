@@ -7,14 +7,15 @@ import {PetTimeStampsProvider} from "./providers/PetTimeStampsProvider.jsx";
 import {PetListProvider} from "./providers/PetListProvider.jsx";
 import {UpdateEngineProvider} from "./providers/UpdateEngineProvider.jsx";
 import { ActivePetNameProvider } from "./providers/ActivePetNameProvider.jsx";
+import { SelectedPetProvider } from "./components/Adoptionscreens/providers/SelectedPetProvider.jsx";
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GlobalTimerProvider><PetListProvider><PetTimeStampsProvider>
-      <UpdateEngineProvider><ActivePetNameProvider>
-          <App />
-        </ActivePetNameProvider></UpdateEngineProvider>
+      <UpdateEngineProvider><ActivePetNameProvider><SelectedPetProvider>
+        <App />
+      </SelectedPetProvider></ActivePetNameProvider></UpdateEngineProvider>
     </PetTimeStampsProvider></PetListProvider></GlobalTimerProvider>
   </StrictMode>,
 )

@@ -1,28 +1,25 @@
 import { Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
-
-import {useGlobalTimer} from "../../../providers/GlobalTimerProvider.jsx";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
+import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
-import {usePetList} from "../../../providers/PetListProvider.jsx";
+import { useSelectedPet } from "../providers/SelectedPetProvider.jsx";
 
-import { portraitPetImages } from "../../../constants/Constants.js";
 import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
-import "./Adoption.css";
+import "./Confirmation.css";
 
 
 
-function Adoption () {
+function Confirmation() {
 
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {SelectedPet, setSelectedPet} = useSelectedPet();
 
     const [errorMessage, setErrorMessage] = useState("");
-    const [petGuideOpenFlag, setPetGuideOpenFlag] = useState(false);
-    const [selectionSelectedPet, setSelectionSelectedPet] = useState("");
     const [confirmationPetName, setConfirmationPetName] = useState("");
 
     const confirmationTimeoutRef = useRef(null);
@@ -73,13 +70,13 @@ function Adoption () {
         }, 5000);
 
     }
-    
-    
+
+
     const adoptPet = (finalPetName) => {
 
         const startingTime = GlobalTimer;
 
-        if (selectionSelectedPet === dogSpecies){
+        if (SelectedPet === dogSpecies){
 
             setPetList(prev => ({
                 ...prev,
@@ -103,7 +100,7 @@ function Adoption () {
                     }
             }));
 
-        } else if (selectionSelectedPet === catSpecies){
+        } else if (SelectedPet === catSpecies){
 
             setPetList(prev => ({
                 ...prev,
@@ -126,7 +123,7 @@ function Adoption () {
                     }
             }));
 
-        } else if (selectionSelectedPet === fishSpecies){
+        } else if (SelectedPet === fishSpecies){
 
             setPetList(prev => ({
                 ...prev,
@@ -154,83 +151,44 @@ function Adoption () {
     }
 
 
-    
 
 
     return (
-
         <>
-
-            {petGuideOpenFlag &&
-                <PetGuide
-                    setPetGuideOpenFlag = {setPetGuideOpenFlag}
-                />
-            }
-
-            <div className="navbarContainer">
-                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit </Link>
-                <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+            <div className = "navbarContainer">
+                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setSelectedPet("")}> Quit and Go Home </Link>
             </div>
-            <div className="screenLayout">
+            <div className = "screenLayout">
+                <h1 className="header">Fill out this form and then confirm: </h1>  
+                <div className = "ConfirmationContainer">
+                    <p>Hello, my name is: </p>
 
-                <h1 className="header"> Select a new Pet: </h1>
-
-                <div className = "AdoptionOuterContainer">
-
-                    <div className = "screenGeneralContainerTemplate AdoptionSelectionContainer">
-
-                        {Object.keys(portraitPetImages).map((key) => (
-
-                            key === selectionSelectedPet ? (
-
-                                <div key = {key} className = "radialGradientButtonStructure screenOptionButtonColorActive">
-                                    <img src = {portraitPetImages[key][0]}/>
-                                </div>
-        
-                            ) : (
-
-                                <div key = {key} className = "radialGradientButtonStructure screenOptionButtonColor" onClick = {() => setSelectionSelectedPet(key)}>
-                                    <img src = {portraitPetImages[key][0]} />
-                                </div>
-
-                            )
-
-                        ))}
-
+                    <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
+                        <input 
+                            type="text"
+                            value={confirmationPetName}
+                            onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                            placeholder="Name your pet..."
+                        />
                     </div>
-                
+
+                    <p>I am a {SelectedPet}.</p>
+
+                    <p>I require: </p>
+
+                    <p>Thank you for adopting me!</p>
+
                     <p className = "AdoptionNameError">{errorMessage}</p>
-
-                    <div className = "AdoptionNameContainer">
-
-                        <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
-                            <input 
-                                type="text"
-                                value={confirmationPetName}
-                                onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                                placeholder="Hello, my name is..."
-                            />
-                        </div>
-
-                        {selectionSelectedPet !== "" ? (
-
-                            <Link to = "/home" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Adopt New Pet </Link>
-
-                        ) : (
-
-                            <button className = "linearGradientButtonPlaceholderStructure screenGeneralButtonPlaceholderColor"> Adopt New Pet </button>
-
-                        )}
-                        
+                    
+                    <div className = "ConfirmationButtonContainer">
+                        <Link to = "/select" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {() => setSelectedPet("")}> Undo Selection </Link>
+                        <button className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </button>
                     </div>
 
                 </div>
-                        
             </div>
         </>
-        
-    );
-
-};
-
-export default Adoption;
+    )
+}
+  
+export default Confirmation;

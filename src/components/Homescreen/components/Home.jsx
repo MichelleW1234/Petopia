@@ -74,7 +74,7 @@ function Home (){
 
                 ) : (
 
-                    <Link to ="/adopt" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
+                    <Link to ="/select" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
 
                 )}
                 

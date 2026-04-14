@@ -1,4 +1,4 @@
-.AdoptionOuterContainer{
+.ConfirmationContainer{
 
     display: flex;
     flex-direction: column;
@@ -7,20 +7,20 @@
 
     gap: 2rem;
 
+    color: white;
+
 }
 
-.AdoptionSelectionContainer {
+.ConfirmationButtonContainer{
 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
     gap: 3rem;
-    padding: 3rem;
-    border-radius: 2rem;
 
 }
-
 
 .AdoptionNameContainer {
 
