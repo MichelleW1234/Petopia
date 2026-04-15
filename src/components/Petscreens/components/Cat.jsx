@@ -54,6 +54,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
+import "./Cat.css";
 
 
 // CHANGE THIS LATER!!!!!!!!!
@@ -149,7 +150,7 @@ function Cat (){
 
     return (
 
-        <>
+        <div className = "screenLayout Catscreen">
 
             {catFeedOpenFlag &&
             <Feed
@@ -216,18 +217,15 @@ function Cat (){
                 <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
                 
             </div>
-            
-            <div className = "screenLayout">
 
-                <Main
-                    mainAnimationImages={catMainImages}
-                    mainPetEnergy = {450}
-                    mainPetMood = {catMood}
-                    mainActivityInProgress = {catActivityInProgress}
-                />
-    
-            </div>
-        </>
+            <Main
+                mainAnimationImages={catMainImages}
+                mainPetEnergy = {450}
+                mainPetMood = {catMood}
+                mainActivityInProgress = {catActivityInProgress}
+            />
+
+        </div>
 
     );
 

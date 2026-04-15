@@ -1,4 +1,4 @@
-.Adoptionscreen{
+.Catscreen{
 
     background:
         /*add image here*/
@@ -6,17 +6,5 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-}
-
-.AdoptionSelectionContainer {
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    gap: 3rem;
-    padding: 3rem;
-    border-radius: 2rem;
 
 }

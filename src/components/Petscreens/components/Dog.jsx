@@ -64,6 +64,8 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
+import "./Dog.css";
+
 
 // CHANGE THIS LATER!!!!!!!!!
 //const dogPlayComponents = ["button 1", "button 2", "button 3"]
@@ -173,7 +175,7 @@ function Dog (){
     
     return (
         
-        <>
+        <div className = "screenLayout Dogscreen">
 
             {dogFeedOpenFlag &&
             <Feed
@@ -251,17 +253,15 @@ function Dog (){
                 <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
                
             </div>
-            <div className = "screenLayout">
 
-                <Main
-                    mainAnimationImages={dogMainImages}
-                    mainPetEnergy = {350}
-                    mainPetMood = {dogMood}
-                    mainActivityInProgress={dogActivityInProgress}
-                />
+            <Main
+                mainAnimationImages={dogMainImages}
+                mainPetEnergy = {350}
+                mainPetMood = {dogMood}
+                mainActivityInProgress={dogActivityInProgress}
+            />
 
-            </div>
-        </>
+        </div>
 
     );
 

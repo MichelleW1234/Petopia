@@ -80,22 +80,23 @@
 }
 
 
-html {
+html, body, #root {
+  margin: 0;
+  padding: 0;
+}
 
+html {
   font-size: 16px;
 }
 
 body{
 
-  min-height: 100vh;
-
-  margin: 0;
-  padding: 0;
+  /*min-height: 100vh;*/
 
   user-select: none;
 
-  background: linear-gradient(rgb(59, 0, 102) 15%, rgb(140, 0, 156) 50%, rgb(59, 0, 102) 85%);
-  background: linear-gradient(rgb(75, 0, 125) 15%, rgb(150, 0, 150) 50%, rgb(75, 0, 125) 85%);
+  /*For fallback:*/
+  background-color: rgb(100, 0, 125);
     
 }
 
@@ -166,7 +167,6 @@ a:active {
 
 
 /*Custom tags:*/
-
 
 
 /* Button Structures: */
@@ -254,7 +254,7 @@ a:active {
 
 .navbarContainer {
 
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -312,12 +312,11 @@ a:active {
 
 .screenLayout {
 
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  margin-top: 5vh;
   gap: 4rem;
   
 }
@@ -431,6 +430,8 @@ a:active {
 
 .FloatingFlagBackground{
 
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -442,10 +443,12 @@ a:active {
 
   z-index: 1;
 
+  /*
   top: 0;
   left: 0;
   right: 0;  
   bottom: 0; 
+  */
 
   background-color: rgba(8, 0, 83, 0.674);
 
@@ -454,8 +457,6 @@ a:active {
 .FloatingFlagContainer {
 
   width: 50vw;
-  max-height: 85vh;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -466,7 +467,6 @@ a:active {
   gap: 4rem;
 
   color: rgb(224, 220, 255);
-
   background-color: rgba(12, 0, 60, 0.667);
   box-shadow: 0 0 1rem 0.5rem rgb(140, 111, 255);
 

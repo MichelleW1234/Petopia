@@ -17,7 +17,7 @@ function Adoption () {
 
     return (
 
-        <>
+        <div className="screenLayout Adoptionscreen">
 
             {petGuideOpenFlag &&
                 <PetGuide
@@ -29,29 +29,27 @@ function Adoption () {
                 <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit and Go Home </Link>
                 <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
             </div>
-            <div className="screenLayout">
 
-                {step === 0 ? (
+            {step === 0 ? (
 
-                    <Selection
-                        selectedPet = {selectedPet}
-                        setSelectedPet = {setSelectedPet}
-                        setStep = {setStep}
-                    />
+                <Selection
+                    selectedPet = {selectedPet}
+                    setSelectedPet = {setSelectedPet}
+                    setStep = {setStep}
+                />
 
-                ) : (
+            ) : (
 
-                    <Confirmation
-                        selectedPet = {selectedPet}
-                        setSelectedPet = {setSelectedPet}
-                        setStep = {setStep}
-                    />
+                <Confirmation
+                    selectedPet = {selectedPet}
+                    setSelectedPet = {setSelectedPet}
+                    setStep = {setStep}
+                />
 
-                )}
-        
-            </div>
-        </>
-        
+            )}
+    
+        </div>
+    
     );
 
 };

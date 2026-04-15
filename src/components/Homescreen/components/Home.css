@@ -1,3 +1,14 @@
+.Homescreen{
+
+  background:
+    /*add image here*/
+    linear-gradient(rgb(75, 0, 125) 15%, rgb(150, 0, 150) 50%, rgb(75, 0, 125) 85%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
 .HomePetSlotContainer{
 
   display: flex;

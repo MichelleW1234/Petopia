@@ -61,6 +61,9 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
+import "./Fish.css";
+
+
 
 function Fish (){
 
@@ -154,7 +157,7 @@ function Fish (){
 
     return (
 
-        <>
+        <div className = "screenLayout Fishscreen">
 
             {fishFeedOpenFlag &&
             <Feed
@@ -221,17 +224,15 @@ function Fish (){
                 <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
 
             </div>
-            <div className = "screenLayout">
 
-                <Main
-                    mainAnimationImages={fishMainImages}
-                    mainPetEnergy = {400}
-                    mainPetMood = {fishMood}
-                    mainActivityInProgress={fishActivityInProgress}
-                />
+            <Main
+                mainAnimationImages={fishMainImages}
+                mainPetEnergy = {400}
+                mainPetMood = {fishMood}
+                mainActivityInProgress={fishActivityInProgress}
+            />
 
-            </div>
-        </>
+        </div>
 
     );
 
