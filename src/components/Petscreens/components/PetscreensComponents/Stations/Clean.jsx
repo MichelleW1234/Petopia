@@ -112,7 +112,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                                 {/* Change this later!!!!!!!!!!!!!*/}
                                 <img
                                     className = "StationsImage StationsImage-Clean" 
-                                    src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} 
+                                    src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} 
                                 />
                             </div>
                         </>

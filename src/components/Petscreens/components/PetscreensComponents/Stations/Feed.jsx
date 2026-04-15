@@ -133,7 +133,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                             />
                             <div className = "StationsWindow StationsWindow-Feed">
                                 {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Feed" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Feed" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
                             </div>
                         </>
 

@@ -74,7 +74,7 @@ function Home (){
 
                 ) : (
 
-                    <Link to ="/select" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
+                    <Link to ="/adopt" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
 
                 )}
                 
@@ -103,7 +103,7 @@ function Home (){
                                         className="radialGradientButtonStructure screenOptionButtonColor"
                                         onClick = {() => getPet(key)}
                                     >
-                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]-1]}/>
+                                        <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                     </Link>
                                     <h2 className = "HomePetSlotPetName">{key}</h2>
                                     <div className = "HomePetSlotHealthBarContainer">

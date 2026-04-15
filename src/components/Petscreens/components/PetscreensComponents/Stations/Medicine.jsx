@@ -187,7 +187,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                             />
                             <div className="StationsWindow StationsWindow-Medicine">
                                 {/* Change this later!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Medicine" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
                             </div>
                         </>
                     

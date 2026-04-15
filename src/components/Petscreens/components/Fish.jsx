@@ -58,7 +58,7 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, speciesKey, stageKey} from "../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
 
@@ -112,24 +112,24 @@ function Fish (){
                                     : false;
 
 
-    const fishMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const fishMainImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]
-                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo]
                             : [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo];
 
     
-    const fishFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const fishFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1FishFeedOne, s1FishFeedTwo]
-                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2FishFeedOne, s2FishFeedTwo]
                             : [s3FishFeedOne, s3FishFeedTwo];
 
     const fishCleanImages = [fishCleanOne, fishCleanTwo];
 
-    const fishMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const fishMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1FishMedOne, s1FishMedTwo]
-                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2FishMedOne, s2FishMedTwo]
                             : [s3FishMedOne, s3FishMedTwo];
 

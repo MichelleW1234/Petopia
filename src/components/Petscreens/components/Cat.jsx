@@ -51,7 +51,7 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import {stageKey, speciesKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
 
@@ -108,21 +108,21 @@ function Cat (){
                                         : false
                                     : false;
 
-    const catMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const catMainImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo]
-                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                          : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo]
                           : [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo];
 
-    const catFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const catFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1CatFeedOne, s1CatFeedTwo]
-                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                          : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2CatFeedOne, s2CatFeedTwo]
                           : [s3CatFeedOne, s3CatFeedTwo];
 
-    const catMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const catMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1CatMedOne, s1CatMedTwo]
-                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                          : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2CatMedOne, s2CatMedTwo]
                           : [s3CatMedOne, s3CatMedTwo];
 

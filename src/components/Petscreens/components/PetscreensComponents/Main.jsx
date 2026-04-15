@@ -10,7 +10,7 @@ import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
-import { healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { healthKey, speciesKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
 

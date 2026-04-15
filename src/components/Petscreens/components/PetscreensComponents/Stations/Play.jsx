@@ -103,7 +103,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                             />
                             <div className="StationsWindow StationsWindow-Play">
                                 {/*CHANGE THIS LATER!!!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Play" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]-1][0]} />
+                                <img className = "StationsImage StationsImage-Play" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
                             </div>
                         </>
 

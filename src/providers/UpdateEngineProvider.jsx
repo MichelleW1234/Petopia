@@ -156,15 +156,15 @@ export function UpdateEngineProvider({ children }) {
 
             if (difference > 864000000){
 
-                return 3;
+                return 2;
 
             } else if (difference > 432000000){
 
-                return 2;
+                return 1;
 
             } else {
 
-                return 1;
+                return 0;
 
             }
 
@@ -173,15 +173,15 @@ export function UpdateEngineProvider({ children }) {
 
             if (difference > 1209600000){
 
-                return 3;
+                return 2;
 
             } else if (difference > 604800000){
 
-                return 2;
+                return 1;
 
             } else {
 
-                return 1;
+                return 0;
 
             }
 
@@ -190,15 +190,15 @@ export function UpdateEngineProvider({ children }) {
 
             if (difference > 518400000){
 
-                return 3;
+                return 2;
 
             } else if (difference > 259200000){
 
-                return 2;
+                return 1;
 
             } else {
 
-                return 1;
+                return 0;
 
             }
 

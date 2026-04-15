@@ -4,11 +4,6 @@
 
 :root {
 
-  /*
-  Horizontal (left → right) = Saturation (0% → 100%)
-  Vertical (top → bottom) = Lightness (100% → 0%)
-  */
-
   --root_font_size: 1rem;
 
 

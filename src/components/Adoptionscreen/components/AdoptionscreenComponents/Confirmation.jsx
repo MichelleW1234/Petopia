@@ -1,26 +1,32 @@
 import { Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
-import { usePetList } from "../../../providers/PetListProvider.jsx";
-import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
-import { useSelectedPet } from "../providers/SelectedPetProvider.jsx";
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import { usePetList } from "../../../../providers/PetListProvider.jsx";
+import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./Confirmation.css";
 
 
 
-function Confirmation() {
+function Confirmation({selectedPet, setSelectedPet, setStep}) {
 
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
-    const {SelectedPet, setSelectedPet} = useSelectedPet();
 
     const [errorMessage, setErrorMessage] = useState("");
     const [confirmationPetName, setConfirmationPetName] = useState("");
+
+    const petPersonality = {
+
+        [dogSpecies] : "Dogs are generally loyal and bond strongly with their owners—they often form deep attachments and like to stay close to their people. Many dogs are social and playful, meaning they enjoy interacting with humans and other dogs, especially through games and attention.",
+        [catSpecies] : "Cats are often independent and self-sufficient—they like having their own space and don’t always rely on humans for attention. They can be affectionate, but on their own terms—many cats enjoy cuddling or being close, but usually when they choose to.",
+        [fishSpecies] : "Fish are usually calm and low-interaction animals—they don’t seek attention or social bonding the way mammals do. Many fish are territorial or routine-based, meaning they can become used to specific areas of the tank and behave differently depending on their environment and feeding schedule."
+
+    }
 
     const confirmationTimeoutRef = useRef(null);
 
@@ -76,14 +82,14 @@ function Confirmation() {
 
         const startingTime = GlobalTimer;
 
-        if (SelectedPet === dogSpecies){
+        if (selectedPet === dogSpecies){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
                         [speciesKey]: dogSpecies, 
-                        [stageKey]: 1,
+                        [stageKey]: 0,
                         [healthKey]: 15,
                         [birthDateKey]: startingTime,
                         [medicineKey]: 0
@@ -100,14 +106,14 @@ function Confirmation() {
                     }
             }));
 
-        } else if (SelectedPet === catSpecies){
+        } else if (selectedPet === catSpecies){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
                         [speciesKey]: catSpecies, 
-                        [stageKey]: 1,
+                        [stageKey]: 0,
                         [healthKey]: 20,
                         [birthDateKey]: startingTime,
                         [medicineKey]: 0
@@ -123,14 +129,14 @@ function Confirmation() {
                     }
             }));
 
-        } else if (SelectedPet === fishSpecies){
+        } else if (selectedPet === fishSpecies){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
                         [speciesKey]: fishSpecies, 
-                        [stageKey]: 1,
+                        [stageKey]: 0,
                         [healthKey]: 5,
                         [birthDateKey]: startingTime,
                         [medicineKey]: 0
@@ -151,40 +157,43 @@ function Confirmation() {
     }
 
 
+    const undo = () => {
+
+        setSelectedPet("");
+        setStep(0);
+
+    }
 
 
+
+    
     return (
         <>
-            <div className = "navbarContainer">
-                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setSelectedPet("")}> Quit and Go Home </Link>
+            <h1 className="header">Fill out this form: </h1>  
+            
+            <div className = "ConfirmationContainer">
+                <p>Hello, my name is </p>
+
+                <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
+                    <input 
+                        type="text"
+                        value={confirmationPetName}
+                        onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                        placeholder="Name your pet..."
+                    />
+                </div>
+
+                <p> the {selectedPet}!</p>
+
+                <p>{petPersonality[selectedPet]}</p>
+
             </div>
-            <div className = "screenLayout">
-                <h1 className="header">Fill out this form and then confirm: </h1>  
-                <div className = "ConfirmationContainer">
-                    <p>Hello, my name is: </p>
-
-                    <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
-                        <input 
-                            type="text"
-                            value={confirmationPetName}
-                            onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                            placeholder="Name your pet..."
-                        />
-                    </div>
-
-                    <p>I am a {SelectedPet}.</p>
-
-                    <p>I require: </p>
-
-                    <p>Thank you for adopting me!</p>
-
-                    <p className = "AdoptionNameError">{errorMessage}</p>
-                    
-                    <div className = "ConfirmationButtonContainer">
-                        <Link to = "/select" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {() => setSelectedPet("")}> Undo Selection </Link>
-                        <button className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </button>
-                    </div>
-
+                
+            <div className = "ConfirmationCheckingContainer">
+                <p className = "AdoptionNameError">{errorMessage}</p>
+                <div className = "ConfirmationButtonContainer">
+                    <button className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

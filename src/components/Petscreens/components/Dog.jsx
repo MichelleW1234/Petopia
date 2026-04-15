@@ -61,7 +61,7 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, speciesKey, stageKey} from "../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
 import { initiateActivity } from "../helpers/Helpers.js";
 
 
@@ -126,28 +126,28 @@ function Dog (){
                                     : false;
 
 
-    const dogMainImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const dogMainImages = PetList[ActivePetName][stageKey] === 0 ? 
                                 [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo]
-                              : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                              : PetList[ActivePetName][stageKey] === 1 ? 
                                 [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo]
                               : [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo];
 
-    const dogFeedImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const dogFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1DogFeedOne, s1DogFeedTwo]
-                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                          : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2DogFeedOne, s2DogFeedTwo]
                           : [s3DogFeedOne, s3DogFeedTwo];
 
 
-    const dogCleanImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const dogCleanImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1DogCleanOne, s1DogCleanTwo]
-                          : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                          : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2DogCleanOne, s2DogCleanTwo]
                           : [s3DogCleanOne, s3DogCleanTwo];
 
-    const dogMedicineImages = PetList[ActivePetName][stageKey]-1 === 0 ? 
+    const dogMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
                             [s1DogMedOne, s1DogMedTwo]
-                            : PetList[ActivePetName][stageKey]-1 === 1 ? 
+                            : PetList[ActivePetName][stageKey] === 1 ? 
                             [s2DogMedOne, s2DogMedTwo]
                             : [s3DogMedOne, s3DogMedTwo];
 
