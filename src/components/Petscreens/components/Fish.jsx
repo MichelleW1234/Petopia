@@ -157,8 +157,7 @@ function Fish (){
 
     return (
 
-        <div className = "screenLayout Fishscreen">
-
+        <>
             {fishFeedOpenFlag &&
             <Feed
                 feedAnimationImages={fishFeedImages}
@@ -189,50 +188,55 @@ function Fish (){
                 setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
-            <div className="navbarContainer">
+            <div className = "screenLayout Fishscreen">
 
-                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                <div className="navbarContainer">
 
-                {fishAlive ? (
+                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
-                    <>
-                        <button className={fishHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
-                        <button className={fishDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
+                    {fishAlive ? (
 
-                        {fishCanReceiveDose ? (
+                        <>
+                            <button className={fishHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
+                            <button className={fishDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
 
-                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
+                            {fishCanReceiveDose ? (
 
-                        ) : (
+                                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
 
+                            ) : (
+
+                                <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
+
+                            )}
+
+                        </>
+
+                    ) : (
+
+                        <>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Fish </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Fish Tank </button>
                             <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
+                        </>
 
-                        )}
+                    )}
 
-                    </>
+                    <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
 
-                ) : (
+                </div>
 
-                    <>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Fish </button>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Fish Tank </button>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
-                    </>
-
-                )}
-
-                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
+                <div className = "screenComponentsContainer">
+                    <Main
+                        mainAnimationImages={fishMainImages}
+                        mainPetEnergy = {400}
+                        mainPetMood = {fishMood}
+                        mainActivityInProgress={fishActivityInProgress}
+                    />
+                </div>
 
             </div>
-
-            <Main
-                mainAnimationImages={fishMainImages}
-                mainPetEnergy = {400}
-                mainPetMood = {fishMood}
-                mainActivityInProgress={fishActivityInProgress}
-            />
-
-        </div>
+        </>
 
     );
 

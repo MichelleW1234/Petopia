@@ -132,7 +132,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
     return (
 
-        <div className = "FloatingFlagBackground">
+        <div className = "floatingFlagLayout FloatingFlagBackground">
 
             <div className="StationsFlagContainer">
         

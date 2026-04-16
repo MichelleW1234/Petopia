@@ -17,7 +17,7 @@ function Adoption () {
 
     return (
 
-        <div className="screenLayout Adoptionscreen">
+        <>
 
             {petGuideOpenFlag &&
                 <PetGuide
@@ -25,30 +25,36 @@ function Adoption () {
                 />
             }
 
-            <div className="navbarContainer">
-                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit and Go Home </Link>
-                <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+            <div className="screenLayout Adoptionscreen">
+
+                <div className="navbarContainer">
+                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit and Go Home </Link>
+                    <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                </div>
+
+                <div className = "screenComponentsContainer">
+                    {step === 0 ? (
+
+                        <Selection
+                            selectedPet = {selectedPet}
+                            setSelectedPet = {setSelectedPet}
+                            setStep = {setStep}
+                        />
+
+                    ) : (
+
+                        <Confirmation
+                            selectedPet = {selectedPet}
+                            setSelectedPet = {setSelectedPet}
+                            setStep = {setStep}
+                        />
+
+                    )}
+                </div>
+        
             </div>
 
-            {step === 0 ? (
-
-                <Selection
-                    selectedPet = {selectedPet}
-                    setSelectedPet = {setSelectedPet}
-                    setStep = {setStep}
-                />
-
-            ) : (
-
-                <Confirmation
-                    selectedPet = {selectedPet}
-                    setSelectedPet = {setSelectedPet}
-                    setStep = {setStep}
-                />
-
-            )}
-    
-        </div>
+        </>
     
     );
 

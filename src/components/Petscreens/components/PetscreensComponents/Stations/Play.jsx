@@ -50,7 +50,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
     return (
         
-        <div className = "FloatingFlagBackground">
+        <div className = "floatingFlagLayout FloatingFlagBackground">
 
             <div className="StationsFlagContainer">
 

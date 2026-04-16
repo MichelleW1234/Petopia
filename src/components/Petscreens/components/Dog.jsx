@@ -175,8 +175,7 @@ function Dog (){
     
     return (
         
-        <div className = "screenLayout Dogscreen">
-
+        <>
             {dogFeedOpenFlag &&
             <Feed
                 feedAnimationImages={dogFeedImages}
@@ -215,53 +214,58 @@ function Dog (){
             <Schedule
                 setScheduleOpenFlag={setDogScheduleOpenFlag}
             />}
+            
+            <div className = "screenLayout Dogscreen">
 
-            <div className="navbarContainer">
+                <div className="navbarContainer">
 
-                <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
-                {dogAlive ? (
+                    {dogAlive ? (
 
-                    <>
-                        <button className={dogHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
-                        <button className={dogDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
-                        <button className={dogRestless ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
+                        <>
+                            <button className={dogHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
+                            <button className={dogDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
+                            <button className={dogRestless ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
 
-                        {dogCanReceiveDose ? (
+                            {dogCanReceiveDose ? (
 
-                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
+                                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
 
-                        ) : (
+                            ) : (
 
+                                <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Dog Medicine </button>
+
+                            )}
+                        
+                        </>
+
+                    ) : (
+
+                        <>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Dog </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Dog </button>
+                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Play With Dog </button>
                             <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Dog Medicine </button>
+                        </>
 
-                        )}
-                      
-                    </>
+                    )}
 
-                ) : (
+                    <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
+                
+                </div>
 
-                    <>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Dog </button>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Dog </button>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Play With Dog </button>
-                        <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Dog Medicine </button>
-                    </>
+                <div className = "screenComponentsContainer">
+                    <Main
+                        mainAnimationImages={dogMainImages}
+                        mainPetEnergy = {350}
+                        mainPetMood = {dogMood}
+                        mainActivityInProgress={dogActivityInProgress}
+                    />
+                </div>
 
-                )}
-
-                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
-               
             </div>
-
-            <Main
-                mainAnimationImages={dogMainImages}
-                mainPetEnergy = {350}
-                mainPetMood = {dogMood}
-                mainActivityInProgress={dogActivityInProgress}
-            />
-
-        </div>
+        </>
 
     );
 

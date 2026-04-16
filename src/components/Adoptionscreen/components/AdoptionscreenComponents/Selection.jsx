@@ -41,7 +41,7 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
 
                 <button className = "linearGradientButtonPlaceholderStructure screenGeneralButtonPlaceholderColor"> Go to Confirmation </button>
 
-            )}         
+            )}  
         </>
         
     );
