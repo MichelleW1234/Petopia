@@ -4,7 +4,7 @@ import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList} from "../constants/Constants.js";
+import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage} from "../constants/Constants.js";
 
 
 export function UpdateEngineProvider({ children }) {
@@ -98,12 +98,6 @@ export function UpdateEngineProvider({ children }) {
         
         }
 
-        const damage = 
-            {
-                [feedingKey]: 4, 
-                [cleaningKey]: 1, 
-                [playingKey]: 2
-            };
         let healthAffected = 0;
 
         // Iterate through every activity of this pet to see how much health damage there is:
@@ -112,7 +106,7 @@ export function UpdateEngineProvider({ children }) {
             // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another damage update:
             let subtrahend = Math.max(currPetTimeStamps[curActivityKey][0], currPetTimeStamps[curActivityKey][1]); 
 
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], damage[curActivityKey]);
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], activityDamage[curActivityKey]);
             currPetTimeStamps[curActivityKey][1] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 

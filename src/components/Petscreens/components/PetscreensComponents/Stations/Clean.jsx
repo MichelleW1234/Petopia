@@ -69,7 +69,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     return (
         
-        <div className = "floatingFlagLayout FloatingFlagBackground">
+        <div className = "floatingFlagLayout floatingFlagStationBackgroundColor">
 
             <div className="StationsFlagContainer">
 

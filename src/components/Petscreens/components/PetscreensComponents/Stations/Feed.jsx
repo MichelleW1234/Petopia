@@ -97,7 +97,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     return (
 
-        <div className = "floatingFlagLayout FloatingFlagBackground">
+        <div className = "floatingFlagLayout floatingFlagStationBackgroundColor">
 
             <div className = "StationsFlagContainer">
         

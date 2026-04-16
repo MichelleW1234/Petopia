@@ -1,4 +1,4 @@
-import { cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
+import { activityDamage, cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
 
 export const initiateActivity = (wantsTo, setDesiredOption, setOpenFlag, options) => {
 
@@ -18,14 +18,6 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     if (desiredOption === -1){
     //Too much (unwilling)
 
-        const damageAmounts = {
-
-            [feedingKey] : 3,
-            [cleaningKey] : 1,
-            [playingKey] : 2
-
-        }
-
         setPetList(prev => ({
 
             ...prev,
@@ -33,7 +25,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
             [ActivePetName]: {
 
                 ...prev[ActivePetName],
-                [healthKey]: Math.max(prev[ActivePetName][healthKey] - damageAmounts[key], 0)
+                [healthKey]: Math.max(prev[ActivePetName][healthKey] - activityDamage[key], 0)
             }
 
         }));

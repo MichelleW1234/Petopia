@@ -438,47 +438,56 @@ a:active {
 
 
 
+/*Floating Flag components:*/
 
+.floatingFlagPetActionBackgroundColor{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Floating Flag components: STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-
-.FloatingFlagBackground{
-
-  background-color: rgba(8, 0, 83, 0.674);
+  background-color: rgba(100, 0, 100, 0.5);
 
 }
 
 .floatingFlagInfoBackgroundColor{
 
-  background-color: rgba(8, 0, 83, 0.674);
+  background-color: rgba(50, 0, 100, 0.5);
 
 }
 
 .floatingFlagStationBackgroundColor{
 
-  background-color: rgba(8, 0, 83, 0.674);
+  background-color: rgba(0, 0, 100, 0.5);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.floatingFlagContainerColor{
+
+  color: rgb(255, 255, 255);
+  border-color: hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  background: conic-gradient(
+    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 0deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 90deg,
+    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 180deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 270deg,
+    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_first_color)) 360deg
+  );
+  box-shadow: 0 0 1rem 0.1rem hsl(280 var(--conic_grad_sat_shadow_color) var(--conic_grad_light_shadow_color));
 
 }
 
