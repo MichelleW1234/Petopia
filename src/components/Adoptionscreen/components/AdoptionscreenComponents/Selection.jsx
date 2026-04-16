@@ -11,7 +11,7 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1 className="header"> Select a new Pet: </h1>
 
-            <div className = "screenGeneralContainerTemplate AdoptionSelectionContainer">
+            <div className = "conicGradientContainerStructure screenGeneralContainerColor AdoptionSelectionContainer">
 
                 {Object.keys(portraitPetImages).map((key) => (
 

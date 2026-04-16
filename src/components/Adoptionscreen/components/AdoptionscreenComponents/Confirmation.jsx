@@ -174,7 +174,7 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "ConfirmationContainer">
                 <p>Hello, my name is </p>
 
-                <div className="screenGeneralContainerTemplate AdoptionNameInputBox">
+                <div className="conicGradientContainerStructure screenGeneralContainerColor AdoptionNameInputBox">
                     <input 
                         type="text"
                         value={confirmationPetName}

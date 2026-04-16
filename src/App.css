@@ -105,8 +105,6 @@ body{
 
   box-sizing: border-box;
   position: relative;
-  margin: 0;
-  padding: 0;
 
   word-wrap: break-word;
   word-break: break-word;
@@ -169,7 +167,41 @@ a:active {
 /*Custom tags:*/
 
 
-/* Button Structures: */
+/* Full Screen structure:*/
+
+.screenLayout {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 3rem;
+  gap: 4rem;
+
+}
+
+.FloatingFlagLayout{
+
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+
+  gap: 3rem;
+  padding: 3rem;
+
+}
+
+
+
+
+
+/* General Component Structures: */
 
 .linearGradientButtonStructure{
 
@@ -246,11 +278,22 @@ a:active {
 }
 
 
+.conicGradientContainerStructure{
+
+  border-top-width: var(--container_right_top_border_width);
+  border-right-width: var(--container_right_top_border_width);
+  border-left-width: var(--container_left_bottom_border_width);
+  border-bottom-width: var(--container_left_bottom_border_width);
+  border-style: solid;
+
+}
 
 
 
 
-/* NavBar components: */
+
+
+/* Navbar components: */
 
 .navbarContainer {
 
@@ -260,7 +303,6 @@ a:active {
   align-items: center;
   flex-wrap: wrap;
 
-  padding: 3rem;
   gap: 3rem;
 
 }
@@ -310,24 +352,10 @@ a:active {
 
 /* screen components: */
 
-.screenLayout {
-
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 4rem;
-  
-}
-
-.screenGeneralContainerTemplate{
+.screenGeneralContainerColor{
 
   color: rgb(255, 255, 255);
-  border-top: var(--container_right_top_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
-  border-right: var(--container_right_top_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
-  border-left: var(--container_left_bottom_border_width)solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
-  border-bottom: var(--container_left_bottom_border_width) solid hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-color: hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
   background: conic-gradient(
     hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 0deg,
     hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 90deg,
@@ -425,7 +453,7 @@ a:active {
 
 
 
-/*Floating Flags: STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/*Floating Flag components: STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 
 .FloatingFlagBackground{

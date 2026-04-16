@@ -95,7 +95,7 @@ function Home (){
 
                         return (
 
-                            <div className="screenGeneralContainerTemplate HomePetSlot">
+                            <div className="conicGradientContainerStructure screenGeneralContainerColor HomePetSlot">
 
                                 <Link 
                                     key = {key}
