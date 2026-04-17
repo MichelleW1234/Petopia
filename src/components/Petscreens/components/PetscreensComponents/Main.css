@@ -1,3 +1,34 @@
+.MainHealthContainer{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+
+}
+
+
+.MainHealthHeartGood {
+
+    height: 1.5rem;
+    width: 1.5rem;
+
+    background-color: red;
+
+}
+
+.MainHealthHeartBad {
+
+    height: 1.5rem;
+    width: 1.5rem;
+
+    background-color: black;
+
+}
+
+
+
 .MainPetWindowGrid {
 
     display: grid;

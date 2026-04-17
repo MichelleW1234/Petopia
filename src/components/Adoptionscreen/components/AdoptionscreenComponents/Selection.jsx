@@ -17,7 +17,7 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
 
                     key === selectedPet ? (
 
-                        <div key = {key} className = "radialGradientButtonStructure screenOptionButtonColorActive">
+                        <div key = {key} className = "radialGradientButtonStructureActive screenOptionButtonColorActive">
                             <img src = {portraitPetImages[key][0]}/>
                         </div>
 

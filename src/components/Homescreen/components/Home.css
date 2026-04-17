@@ -55,64 +55,75 @@
 }
 
 
-.HomePetSlotHealthBarContainer {
+.HomePetSlotAlertContainer {
 
   display: flex;
   flex-direction: row;
-  width: fit-content;
+  align-items: center;
+  justify-content: center;
 
-  border: 0.1rem solid rgb(255, 255, 255);
-  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255, 0.75);;
-
-}
-
-.HomePetSlotHealthBarCellLeft {
-
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgba(175, 0, 255, 0.75);
+  gap: 0.5rem;
 
 }
 
-.HomePetSlotHealthBarCellDoneGood {
+.HomePetSlotAlertGood {
 
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgb(25, 255, 0, 0.75);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+
+  border: 0.2rem solid rgb(0, 200, 0);
+  background-color: rgb(25, 255, 0);
+  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
 
-.HomePetSlotHealthBarCellDoneOkay {
+.HomePetSlotAlertOkay {
 
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgb(255, 225, 0, 0.75);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
 
-}
-
-
-.HomePetSlotHealthBarCellDoneBad {
-
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgb(255, 125, 0, 0.75);
+  border: 0.2rem solid rgb(200, 200, 0);
+  background-color: rgb(255, 225, 0);
+  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
 
-.HomePetSlotHealthBarCellDoneVeryBad {
+.HomePetSlotAlertBad {
 
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgb(255, 0, 0, 0.75);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+
+  border: 0.2rem solid rgb(200, 100, 0);
+  background-color: rgb(255, 125, 0);
+  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
-.HomePetSlotHealthBarCellDead {
 
-  height: 0.5rem;
-  width: 0.1rem;
-  background-color: rgb(100, 0, 125, 0.75);
+.HomePetSlotAlertVeryBad {
+
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+
+  border: 0.2rem solid rgb(200, 0, 0);
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
+
+}
+
+.HomePetSlotAlertDead {
+
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+
+  border: 0.2rem solid rgb(100, 100, 100);
+  background-color: rgb(150, 150, 150);
 
 }

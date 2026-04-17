@@ -11,14 +11,14 @@
 
 
 
-  --button_left_bottom_border_width: 0.3rem;
+  --button_left_bottom_border_width: 0.35rem;
   --button_right_top_border_width: 0.1rem;
   --button_placeholder_background_color_transparency: 0.75;
   --button_placeholder_border_font_color_light_ratio: 1.25;
 
 
 
-  --container_left_bottom_border_width: 0.4rem;
+  --container_left_bottom_border_width: 0.45rem;
   --container_right_top_border_width: 0.15rem;
 
 
@@ -39,7 +39,7 @@
   --linear_grad_light_border_color: 25%;
 
   --linear_grad_sat_shadow_color: 100%;
-  --linear_grad_light_shadow_color: 90%;
+  --linear_grad_light_shadow_color: 100%;
 
 
 
@@ -53,7 +53,7 @@
   --radial_grad_light_border_color: 25;
 
   --radial_grad_sat_shadow_color: 100%;
-  --radial_grad_light_shadow_color: 90%;
+  --radial_grad_light_shadow_color: 100%;
 
 
 
@@ -67,7 +67,7 @@
   --conic_grad_light_border_color: 25;
 
   --conic_grad_sat_shadow_color: 100%;
-  --conic_grad_light_shadow_color: 80%;
+  --conic_grad_light_shadow_color: 75%;
 
 
 
@@ -83,8 +83,8 @@
 
 
   --screen_hsl_base_hue: 280;
-  --floating_flag_nonstation_hsl_base_hue: 300;
-  --floating_flag_station_hsl_base_hue: 260;
+  --floating_flag_nonstation_hsl_base_hue: 260;
+  --floating_flag_station_hsl_base_hue: 240;
 
 
 
@@ -188,7 +188,7 @@ a:active {
 /*Custom tags:*/
 
 
-/* Full Screen structures:*/
+/* Full screen layouts:*/
 
 .screenLayout {
 
@@ -221,7 +221,7 @@ a:active {
 
 
 
-/* General Component Structures: */
+/* Universal design component structures: */
 
 .linearGradientButtonStructure{
 
@@ -237,7 +237,6 @@ a:active {
   transition: transform 0.3s ease;
 
 }
-
 
 .linearGradientButtonStructure:hover{
 
@@ -297,6 +296,35 @@ a:active {
 
 }
 
+.radialGradientButtonStructureActive{
+
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+
+  border-radius: 50%;
+  padding: 1.5rem;
+  border-style: solid;
+
+  border-left-width: var(--button_left_bottom_border_width);
+  border-bottom-width: var(--button_left_bottom_border_width);
+  border-right-width: var(--button_right_top_border_width);
+  border-top-width: var(--button_right_top_border_width);
+
+  transition: transform 0.3s ease;
+
+  img {
+
+    width: 90%;
+    height: 90%;
+
+  }
+
+}
+
 
 .conicGradientContainerStructure{
 
@@ -352,6 +380,7 @@ a:active {
   border-color: hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
   background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
   box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
+
 }
 
 .navbarButtonColorUrgent:hover{
@@ -422,7 +451,7 @@ a:active {
 
   border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
   background: radial-gradient(circle, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color)) 100%);
-  box-shadow: 0 0 1rem 0.75rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
 
   img {
 
@@ -439,6 +468,7 @@ a:active {
   border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
   background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
   box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
+
 }
 
 
@@ -827,16 +857,30 @@ a:active {
 
 /*animations: */
 
-@keyframes lightPink-glow{
+@keyframes urgent-glow{
 
-
+  0% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgb(187, 192, 255), 
+      0 0 2rem 0.3rem rgb(50, 64, 255);
+  }
+  50% {
+    box-shadow: 
+      0 0 1rem 0.15rem rgb(187, 192, 255, 0.5),  
+      0 0 2rem 0.3rem rgb(50, 64, 255, 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 1rem 0.15rem rgb(187, 192, 255), 
+      0 0 2rem 0.3rem rgb(50, 64, 255);
+  }
 
 }
 
 
 @keyframes lightPink-glow{
 
-
+  
   
 }
 

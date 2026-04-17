@@ -10,7 +10,7 @@ import neutral from "../../../../images/placeholderneutral.jpg";
 import sad from "../../../../images/placeholdersad.png";
 import verySad from "../../../../images/placeholderverysad.png";
 
-import { healthKey, speciesKey } from "../../../../constants/Constants.js";
+import { healthCapList, healthKey, speciesKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
 
@@ -126,91 +126,112 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                 <div className= {"MainPetWindowGrid MainPetWindowGrid-default"}></div> 
 
-            ) : PetList[ActivePetName][healthKey] > 0 ? (
+            ) : (
+                
+                <>
 
-                !mainActivityInProgress ? (
+                    <div className = "MainHealthContainer">
 
-                    <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
+                            {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
 
-                        {mainInnerScreenSpace.map((row, rowIndex) => (
-                            row.map((__, colIndex) => {
+                                <div key = {num} className = {num <= PetList[ActivePetName][healthKey] ? 
+                                                                    "MainHealthHeartGood"
+                                                                : "MainHealthHeartBad"
+                                                            }>
+                                </div>
 
-                                const petHere = rowIndex === 2 && mainPetCurrentSpace === colIndex;
-                                const quotationHere = rowIndex === 1 && mainPetCurrentSpace === colIndex;
-                                
-                                return (
+                            ))}
 
-                                    petHere ? (
-
-                                        mainPetDirectionRef.current === 0 ? (
-
-                                            colIndex%2 === 0 ? (
-
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[0]} onMouseEnter={() => showAttention()}/>
-
-                                            ):(
-
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[1]} onMouseEnter={() => showAttention()}/>
-
-                                            )
-
-                                        ) : (
-
-                                            colIndex%2 === 1 ? (
-
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[2]} onMouseEnter={() => showAttention()}/>
-
-                                            ):(
-
-                                                <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[3]} onMouseEnter={() => showAttention()}/>
-
-                                            )
-
-                                        )
-
-                                    ) : quotationHere ? (
-
-                                        mainPetMood === 0 ? (
-
-                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: happy} className = "MainPetWindowGridQuotationCell"/>
-
-                                        ) : mainPetMood === 1 ? (
-
-                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: neutral} className = "MainPetWindowGridQuotationCell"/>
-
-                                        ) : mainPetMood === 2 ? (
-
-                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ?  anger: sad} className = "MainPetWindowGridQuotationCell"/>
-
-                                        ) : (
-
-                                            <img key={rowIndex + "," + colIndex} src = {mainAttention ? anger: verySad} className = "MainPetWindowGridQuotationCell"/>
-
-                                        )
-
-                                    ) : (
-
-                                        <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
-
-                                    ) 
-
-                                )
-                            
-                            })
-                        ))}
                     </div>
 
-                ) : (
+                    {PetList[ActivePetName][healthKey] > 0 ? (
 
-                    // CHANGE THIS AFTER CREATING BACKGROUNDS FOR EACH PET
-                    <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
+                        !mainActivityInProgress ? (
 
-                )
+                            <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
-            ) : (
+                                {mainInnerScreenSpace.map((row, rowIndex) => (
+                                    row.map((__, colIndex) => {
 
-                <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
+                                        const petHere = rowIndex === 2 && mainPetCurrentSpace === colIndex;
+                                        const quotationHere = rowIndex === 1 && mainPetCurrentSpace === colIndex;
+                                        
+                                        return (
 
+                                            petHere ? (
+
+                                                mainPetDirectionRef.current === 0 ? (
+
+                                                    colIndex%2 === 0 ? (
+
+                                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[0]} onMouseEnter={() => showAttention()}/>
+
+                                                    ):(
+
+                                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[1]} onMouseEnter={() => showAttention()}/>
+
+                                                    )
+
+                                                ) : (
+
+                                                    colIndex%2 === 1 ? (
+
+                                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[2]} onMouseEnter={() => showAttention()}/>
+
+                                                    ):(
+
+                                                        <img key={rowIndex + "," + colIndex} className = "MainPetWindowGridPetCell" src = {mainAnimationImages[3]} onMouseEnter={() => showAttention()}/>
+
+                                                    )
+
+                                                )
+
+                                            ) : quotationHere ? (
+
+                                                mainPetMood === 0 ? (
+
+                                                    <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: happy} className = "MainPetWindowGridQuotationCell"/>
+
+                                                ) : mainPetMood === 1 ? (
+
+                                                    <img key={rowIndex + "," + colIndex} src = {mainAttention ? heart: neutral} className = "MainPetWindowGridQuotationCell"/>
+
+                                                ) : mainPetMood === 2 ? (
+
+                                                    <img key={rowIndex + "," + colIndex} src = {mainAttention ?  anger: sad} className = "MainPetWindowGridQuotationCell"/>
+
+                                                ) : (
+
+                                                    <img key={rowIndex + "," + colIndex} src = {mainAttention ? anger: verySad} className = "MainPetWindowGridQuotationCell"/>
+
+                                                )
+
+                                            ) : (
+
+                                                <div key={rowIndex + "," + colIndex} className = "MainPetWindowGridCell"></div>
+
+                                            ) 
+
+                                        )
+                                    
+                                    })
+                                ))}
+                            </div>
+
+                        ) : (
+
+                            // CHANGE THIS AFTER CREATING BACKGROUNDS FOR EACH PET
+                            <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
+
+                        )
+
+                    ) : (
+
+                        <div className= "MainPetWindowGrid MainPetWindowGrid-tomb"></div>
+
+                    )}
+                    
+                </>
             )}
 
         </div>
