@@ -150,6 +150,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             <div className= {`MainPetWindowGrid MainPetWindowGrid-${PetList[ActivePetName][speciesKey]}`}>  
 
+                                {/* CHANGE THIS SO THAT HEARTS OR ANNOYANCE SYMBOL SHOWS UP ONLY WHEN PET (WHOLE IMAGE CHANGES) AND DELETE THE HOVERING EMOTION ???????? */}
                                 {mainInnerScreenSpace.map((row, rowIndex) => (
                                     row.map((__, colIndex) => {
 
