@@ -23,7 +23,7 @@ function Restart({setRestartOpenFlag}) {
 
 
     return (
-        <div className = "floatingFlagLayout floatingFlagPetActionBackgroundColor">
+        <div className = "floatingFlagLayout floatingFlagNonstationBackgroundColor">
             <div className="FloatingFlagContainer">
                 <div className="FloatingFlagInfoContainer">
                     <h2>Are you sure you want to restart the game? </h2>

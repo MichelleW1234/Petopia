@@ -2,7 +2,7 @@
 
     background:
         /*add image here*/
-        linear-gradient(rgb(75, 0, 125) 15%, rgb(150, 0, 150) 50%, rgb(75, 0, 125) 85%);
+        linear-gradient(hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 15%, hsl(var(--screen_hsl_base_hue) var(--background_sat_inner_color) var(--background_light_inner_color)) 50%, hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 85%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

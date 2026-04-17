@@ -15,7 +15,7 @@ function Schedule({setScheduleOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
     return (
-        <div className = "floatingFlagLayout floatingFlagInfoBackgroundColor">
+        <div className = "floatingFlagLayout floatingFlagNonstationBackgroundColor">
 
             <div className="FloatingFlagContainer">
                 
