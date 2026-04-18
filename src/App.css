@@ -197,7 +197,7 @@ a:active {
   flex-direction: column;
   align-items: center;
 
-  gap: 5rem;
+  gap: 10rem;
   padding: 3rem;
 
 }
@@ -594,10 +594,6 @@ a:active {
 }
 
 
-
-
-
-
 /*General Buttons: */
 
 .GeneralNavButton {
@@ -659,195 +655,9 @@ a:active {
 
 
 
-/*Pet windows:*/
 
-.PetWindowBorder {
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  gap: 2rem;
-  padding: 3rem;
-  border-radius: 2rem;
-
-  border-left: 0.5rem solid black; 
-  border-bottom: 0.5rem solid black; 
-  border-top: 0.2rem solid black; 
-  border-right: 0.2rem solid black; 
-
-}
-
-.PetWindowBorder-newpet {
-
-  background: linear-gradient(rgb(180, 0, 208), rgb(26, 0, 30));
-  box-shadow: 0 0 1rem 0.5rem  rgb(250, 155, 255);
-
-}
-
-
-.PetWindowBorder-default {
-
-  background-color: rgb(103, 106, 116);
-  box-shadow: 0 0 1rem 0.5rem  rgb(176, 180, 196);
-
-}
-
-
-.PetWindowBorder-dog {
-
-  background: linear-gradient(rgb(158, 82, 0), rgb(47, 24, 0));
-  box-shadow: 0 0 1rem 0.5rem  rgb(255, 192, 124);
-
-}
-
-.PetWindowBorder-cat {
-
-  background: linear-gradient( rgb(114, 0, 201),  rgb(27, 0, 48));
-  box-shadow: 0 0 1rem 0.5rem  rgb(203, 124, 255);
-
-}
-
-.PetWindowBorder-fish {
-
-  background: linear-gradient(rgb(0, 10, 202), rgb(0, 2, 37));
-  box-shadow: 0 0 1rem 0.5rem  rgb(124, 161, 255);
-
-}
-
-.PetWindowSign {
-
-  padding: 1rem 1.5rem;
-  border-radius: 5rem;
-  color: rgb(255, 255, 255);
-
-}
-
-
-.PetWindowSign-newpet {
-
-  border: 0.5rem solid rgba(242, 154, 255, 0.5);
-  background-color: rgb(229, 81, 255);
-
-  animation: PetWindowComponent-newpet-glow 3s infinite;
-
-}
-
-
-.PetWindowSign-default {
-
-  border: 0.5rem solid rgb(212, 217, 237, 0.5);
-  background-color: rgb(153, 157, 170);
-
-}
-
-
-.PetWindowSign-dog {
-
-  border: 0.5rem solid rgba(255, 204, 137, 0.5);
-  background-color: rgb(203, 128, 48);
-  
-  animation: PetWindowComponent-dog-glow 3s infinite;
-
-}
-
-.PetWindowSign-cat {
-
-  border: 0.5rem solid rgba(213, 161, 255, 0.5);
-  background-color: rgb(162, 40, 255);
-
-  animation: PetWindowComponent-cat-glow 3s infinite;
-
-}
-
-
-.PetWindowSign-fish {
-
-  background-color: rgb(33, 81, 255);
-  border: 0.5rem solid rgba(111, 178, 255, 0.5);
-
-  animation: PetWindowComponent-fish-glow 3s infinite;
-
-}
-
-
-.PetWindowButton {
-
-  padding: 1rem 1.5rem;
-
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-top: 0.1rem solid black;
-  border-right: 0.1rem solid black;
-
-}
-
-.PetWindowButton-dog {
-
-  background-color: rgb(255, 179, 98);
-  animation: PetWindowComponent-dog-glow 3s infinite;
-
-}
-
-.PetWindowButton-dog:hover {
-
-  color: white;
-  background-color: rgb(130, 83, 32);
-  animation: PetWindowComponent-dog-dim-glow 3s infinite;
-
-}
-
-.PetWindowButton-cat {
-
-  background-color: rgb(195, 119, 254);
-  animation: PetWindowComponent-cat-glow  3s infinite;
-
-}
-
-.PetWindowButton-cat:hover {
-
-  color: white;
-  background-color: rgb(104, 0, 184);
-  animation: PetWindowComponent-cat-dim-glow  3s infinite;
-
-}
-
-.PetWindowButton-fish {
-
-  background-color: rgb(114, 145, 255);
-  animation: PetWindowComponent-fish-glow 3s infinite;
-
-}
-
-.PetWindowButton-fish:hover {
-
-  color: white;
-  background-color: rgb(0, 44, 205);
-  animation: PetWindowComponent-fish-dim-glow 3s infinite;
-
-}
-
-
-
-.PetWindowButton-placeholdercat {
-
-  background-color: rgb(124, 84, 155);
-
-}
-
-.PetWindowButton-placeholderdog {
-
-  background-color: rgb(155, 119, 80);
-
-}
-
-.PetWindowButton-placeholderfish {
-
-  background-color: rgb(76, 98, 176);
-
-}
 
 
 
