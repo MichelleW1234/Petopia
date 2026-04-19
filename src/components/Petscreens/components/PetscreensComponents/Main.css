@@ -49,6 +49,16 @@
     
 }
 
+.MainPetName{
+
+    color:rgb(0,0,0);
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px rgb(255, 255, 255));
+
+}
+
 .MainHealthContainer{
 
     width: 40rem;
@@ -97,28 +107,32 @@
     width: 8rem;
     position: relative;
 
+    img {
+
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+
+        filter: 
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
+
 }
 
-.MainPetWindowGridPetCellBase{
-
-    height: 100%;
-    width: 100%;
-
-}
-
-.MainPetWindowGridPetCellOverlay {
-
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    inset: 0;
-
-}
 
 
 .MainPetWindowGridEmpty{
 
     height: 20rem;
     width: 46rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }

@@ -124,7 +124,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
                     <div className = {`MainFullWindowContainer MainFullWindowContainer-${PetList[ActivePetName][speciesKey]}`}>
 
                         <div className = "MainPetStatsContainer">
-                            <h1>{ActivePetName}:</h1>
+                            <h1 className = "MainPetName">{ActivePetName}:</h1>
                             <div className = "MainHealthContainer">
 
                                 {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
@@ -159,10 +159,9 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                            <div className = "MainPetWindowGridPetCell" onMouseEnter={() => showAttention()}>
+                                            <div className = "MainPetWindowGridPetCell">
                                                     <img 
                                                         key={index}
-                                                        className = "MainPetWindowGridPetCellBase"
                                                         src = {mainPetDirectionRef.current === 0 ? 
                                                                     index%2 === 0 ?
                                                                         mainAnimationImages[0]
@@ -172,13 +171,14 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
                                                                         mainAnimationImages[2]
                                                                         : mainAnimationImages[3]
                                                                 } 
+                                                        onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img 
                                                         key={index} 
-                                                        className = "MainPetWindowGridPetCellOverlay" 
                                                         src = {mainPetMood <= 1 ? heart : anger} 
+                                                        onMouseEnter={() => showAttention()}
                                                     />}
 
                                                 </div>
@@ -196,7 +196,6 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             ) : (
 
-                                // CHANGE THIS AFTER CREATING BACKGROUNDS FOR EACH PET
                                 <div className= "MainPetWindowGridEmpty"></div>
 
                             )
