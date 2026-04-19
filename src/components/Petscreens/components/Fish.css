@@ -1,8 +1,8 @@
-.Fishscreen{
+.Fish_BackgroundScreen_Color{
 
     background:
         /*add image here*/
-        linear-gradient(hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 15%, hsl(var(--screen_hsl_base_hue) var(--background_sat_inner_color) var(--background_light_inner_color)) 50%, hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 85%);
+        linear-gradient(hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_outer_color_light)) 15%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_inner_color_light)) 50%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_outer_color_light)) 85%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

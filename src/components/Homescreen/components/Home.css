@@ -1,15 +1,15 @@
-.Homescreen{
+.Home_BackgroundScreen_Color{
 
   background:
     /*add image here*/
-    linear-gradient(hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 15%, hsl(var(--screen_hsl_base_hue) var(--background_sat_inner_color) var(--background_light_inner_color)) 50%, hsl(var(--screen_hsl_base_hue) var(--background_sat_outer_color) var(--background_light_outer_color)) 85%);
+    linear-gradient(hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_outer_color_light)) 15%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_inner_color_light)) 50%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_screen_outer_color_light)) 85%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
 }
 
-.HomePetSlotContainer{
+.Home_PetSlotContainer{
 
   display: flex;
   flex-direction: row;
@@ -21,7 +21,7 @@
 
 }
 
-.HomeNoPets {
+.Home_NoPets {
 
   padding: 5rem 10rem;
   border-radius: 1rem;
@@ -35,7 +35,7 @@
   
 }
 
-.HomePetSlot{
+.Home_PetSlot{
 
   display: flex;
   flex-direction: column;
@@ -48,14 +48,7 @@
 }
 
 
-.HomePetSlotPetName {
-
-
-
-}
-
-
-.HomePetSlotAlertContainer {
+.Home_PetSlotAlertContainer {
 
   display: flex;
   flex-direction: row;
@@ -66,7 +59,7 @@
 
 }
 
-.HomePetSlotAlertGood {
+.Home_PetSlotAlertGood {
 
   height: 2rem;
   width: 2rem;
@@ -79,7 +72,7 @@
 }
 
 
-.HomePetSlotAlertOkay {
+.Home_PetSlotAlertOkay {
 
   height: 2rem;
   width: 2rem;
@@ -92,7 +85,7 @@
 }
 
 
-.HomePetSlotAlertBad {
+.Home_PetSlotAlertBad {
 
   height: 2rem;
   width: 2rem;
@@ -105,7 +98,7 @@
 }
 
 
-.HomePetSlotAlertVeryBad {
+.Home_PetSlotAlertVeryBad {
 
   height: 2rem;
   width: 2rem;
@@ -117,7 +110,7 @@
 
 }
 
-.HomePetSlotAlertDead {
+.Home_PetSlotAlertDead {
 
   height: 2rem;
   width: 2rem;

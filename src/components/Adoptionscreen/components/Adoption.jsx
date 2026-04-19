@@ -25,14 +25,14 @@ function Adoption () {
                 />
             }
 
-            <div className="screenLayout Adoptionscreen">
+            <div className="BackgroundScreen_Layout Adoption_BackgroundScreen_Color">
 
-                <div className="navbarContainer">
-                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor"> Quit and Go Home </Link>
-                    <button className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                <div className="Navbar_Container">
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"> Quit and Go Home </Link>
+                    <button className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
-                <div className = "screenComponentsContainer">
+                <div className = "Screen_ComponentsContainer">
                     {step === 0 ? (
 
                         <Selection

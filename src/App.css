@@ -7,98 +7,78 @@
 
 :root {
 
+  /*font sizes:*/
+
   --root_font_size: 1rem;
 
 
 
-  --button_left_bottom_border_width: 0.35rem;
-  --button_right_top_border_width: 0.1rem;
-  --button_placeholder_background_color_transparency: 0.75;
-  --button_placeholder_border_font_color_light_ratio: 1.25;
+  /*Structural measurements:*/
+
+  --reusable_component_container_left_bottom_border_width: 0.45rem;
+  --reusable_component_container_right_top_border_width: 0.15rem;
+
+  --reusable_component_button_left_bottom_border_width: 0.35rem;
+  --reusable_component_button_right_top_border_width: 0.1rem;
+
+  --reusable_component_button_pill_padding: 1.5rem 2rem;
+  --reusable_component_button_pill_border_radius: 3rem;
+
+  --reusable_component_button_circle_height_width: 12rem;
+  --reusable_component_button_circle_border_radius: 50%;
+  --reusable_component_button_circle_padding: 1.5rem;
+  --reusable_component_button_circle_image_height_width: 90%;
 
 
 
-  --container_left_bottom_border_width: 0.45rem;
-  --container_right_top_border_width: 0.15rem;
+  /*Color light and saturation percentages:*/
+
+  --reusable_component_color_saturation: 100%;
+  --background_color_saturation: 75%;
+  --image_color_saturation: 100%;
 
 
 
-  --linear_grad_padding: 1.5rem 2rem;
-  --linear_grad_border_radius: 3rem;
+  --background_floatingflag_color_light: 25%;
+  --background_floatingflag_color_transparency: 50%;
 
-  --linear_grad_sat_font_color: 100%; 
-  --linear_grad_light_font_color: 25%;
-
-  --linear_grad_sat_top_color: 100%;
-  --linear_grad_light_top_color: 50%;
-
-  --linear_grad_sat_bottom_color: 100%;
-  --linear_grad_light_bottom_color: 100%;
-
-  --linear_grad_sat_border_color: 100%;
-  --linear_grad_light_border_color: 25%;
-
-  --linear_grad_sat_shadow_color: 100%;
-  --linear_grad_light_shadow_color: 100%;
+  --background_screen_outer_color_light: 25%;
+  --background_screen_inner_color_light: 50%;
 
 
 
-  --radial_grad_sat_outer_color: 100%;
-  --radial_grad_light_outer_color: 50%;
+  --reusable_component_interactive_border_color_light: 50%;
+  --reusable_component_noninteractive_border_color_light: 25%;
 
-  --radial_grad_sat_inner_color: 100%;
-  --radial_grad_light_inner_color: 100%;
+  --reusable_component_button_placeholder_background_color_transparency: 0.75;
+  --reusable_component_button_placeholder_border_font_color_light_ratio: 1.25;
 
-  --radial_grad_sat_border_color: 100%;
-  --radial_grad_light_border_color: 25;
+  --reusable_component_button_pill_font_color_light: 25%;
+  --reusable_component_button_pill_top_color_light: 50%;
+  --reusable_component_button_pill_bottom_color_light: 100%;
+  --reusable_component_button_pill_shadow_color_light: 100%;
 
-  --radial_grad_sat_shadow_color: 100%;
-  --radial_grad_light_shadow_color: 100%;
+  --reusable_component_button_circle_outer_color_light: 50%;
+  --reusable_component_button_circle_inner_color_light: 100%;
+  --reusable_component_button_circle_shadow_color_light: 100%;
 
-
-
-  --conic_grad_sat_first_color: 100%;
-  --conic_grad_light_first_color: 75%;
-
-  --conic_grad_sat_second_color: 100%;
-  --conic_grad_light_second_color: 50%;
-
-  --conic_grad_sat_border_color: 100%;
-  --conic_grad_light_border_color: 25;
-
-  --conic_grad_sat_shadow_color: 100%;
-  --conic_grad_light_shadow_color: 75%;
+  --reusable_component_container_first_color_light: 75%;
+  --reusable_component_container_second_color_light: 50%;
+  --reusable_component_container_shadow_color_light: 75%;
 
 
 
-  --image_sat_color_1: 100%;
-  --image_light_color_1: 50%;
-
-  --image_sat_color_2: 100%;
-  --image_light_color_2: 75%;
-
-  --image_sat_color_3: 100%;
-  --image_light_color_3: 100%;
+  --image_first_color_light: 50%;
+  --image_second_color_light: 75%;
+  --image_third_color_light: 100%;
 
 
 
-  --screen_hsl_base_hue: 280;
-  --floating_flag_nonstation_hsl_base_hue: 260;
-  --floating_flag_station_hsl_base_hue: 240;
+  /*Color hues:*/
 
-
-
-  --floating_flag_background_sat_color: 100%;
-  --floating_flag_background_light_color: 25%;
-  --floating_flag_background_color_transparency: 50%;
-
-
-
-  --background_sat_outer_color: 75%;
-  --background_light_outer_color: 25%;
-
-  --background_sat_inner_color: 75%;
-  --background_light_inner_color: 50%;
+  --background_screen_base_color_hue: 280;
+  --background_floatingflag_nonstation_base_color_hue: 260;
+  --background_floatingflag_station_base_color_hue: 240;
 
 }
 
@@ -188,9 +168,9 @@ a:active {
 /*Custom tags:*/
 
 
-/* Full screen layouts:*/
+/* Background layouts:*/
 
-.screenLayout {
+.BackgroundScreen_Layout {
 
   min-height: 100vh;
   display: flex;
@@ -202,7 +182,7 @@ a:active {
 
 }
 
-.floatingFlagLayout{
+.BackgroundFloatingFlag_Layout{
 
   display: flex;
   flex-direction: column;
@@ -221,117 +201,118 @@ a:active {
 
 
 
-/* Universal design component structures: */
+/* Reusable Component Structures: */
 
-.linearGradientButtonStructure{
+.ReusableComponentButtonPill_Structure{
 
-  padding: var(--linear_grad_padding);
-  border-radius: var(--linear_grad_border_radius);
+  padding: var(--reusable_component_button_pill_padding);
+  border-radius: var(--reusable_component_button_pill_border_radius);
   border-style: solid;
 
-  border-left-width: var(--button_left_bottom_border_width);
-  border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_right_top_border_width);
-  border-top-width: var(--button_right_top_border_width);
+  border-left-width: var(--reusable_component_button_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_button_left_bottom_border_width);
+  border-right-width: var(--reusable_component_button_right_top_border_width);
+  border-top-width: var(--reusable_component_button_right_top_border_width);
 
   transition: transform 0.3s ease;
 
 }
 
-.linearGradientButtonStructure:hover{
+
+.ReusableComponentButtonPill_Structure:hover{
 
   transform: scale(1.1);
 
 }
 
 
-.linearGradientButtonPlaceholderStructure{
+.ReusableComponentButtonPill_PlaceholderStructure{
 
-  padding: var(--linear_grad_padding);
-  border-radius: var(--linear_grad_border_radius);
+  padding: var(--reusable_component_button_pill_padding);
+  border-radius: var(--reusable_component_button_pill_border_radius);
   border-style: solid;
 
-  border-left-width: var(--button_left_bottom_border_width);
-  border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_right_top_border_width);
-  border-top-width: var(--button_right_top_border_width);
+  border-left-width: var(--reusable_component_button_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_button_left_bottom_border_width);
+  border-right-width: var(--reusable_component_button_right_top_border_width);
+  border-top-width: var(--reusable_component_button_right_top_border_width);
 
 }
 
 
+.ReusableComponentButtonCircle_Structure{
 
-.radialGradientButtonStructure{
-
-  height: 12rem;
-  width: 12rem;
+  height: var(--reusable_component_button_circle_height_width);
+  width: var(--reusable_component_button_circle_height_width);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; 
 
-  border-radius: 50%;
-  padding: 1.5rem;
+  border-radius: var(--reusable_component_button_circle_border_radius);
+  padding: var(--reusable_component_button_circle_padding);
   border-style: solid;
 
-  border-left-width: var(--button_left_bottom_border_width);
-  border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_right_top_border_width);
-  border-top-width: var(--button_right_top_border_width);
+  border-left-width: var(--reusable_component_button_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_button_left_bottom_border_width);
+  border-right-width: var(--reusable_component_button_right_top_border_width);
+  border-top-width: var(--reusable_component_button_right_top_border_width);
 
   transition: transform 0.3s ease;
 
   img {
 
-    width: 90%;
-    height: 90%;
+    width: var(--reusable_component_button_circle_image_height_width);
+    height: var(--reusable_component_button_circle_image_height_width);
 
   }
 
 }
 
 
-.radialGradientButtonStructure:hover{
+.ReusableComponentButtonCircle_Structure:hover{
 
   transform: scale(1.1);
 
 }
 
-.radialGradientButtonStructureActive{
 
-  height: 12rem;
-  width: 12rem;
+.ReusableComponentButtonCircle_ActiveStructure{
+
+  height: var(--reusable_component_button_circle_height_width);
+  width: var(--reusable_component_button_circle_height_width);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; 
 
-  border-radius: 50%;
-  padding: 1.5rem;
+  border-radius: var(--reusable_component_button_circle_border_radius);
+  padding: var(--reusable_component_button_circle_padding);
   border-style: solid;
 
-  border-left-width: var(--button_left_bottom_border_width);
-  border-bottom-width: var(--button_left_bottom_border_width);
-  border-right-width: var(--button_right_top_border_width);
-  border-top-width: var(--button_right_top_border_width);
+  border-left-width: var(--reusable_component_button_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_button_left_bottom_border_width);
+  border-right-width: var(--reusable_component_button_right_top_border_width);
+  border-top-width: var(--reusable_component_button_right_top_border_width);
 
   transition: transform 0.3s ease;
 
   img {
 
-    width: 90%;
-    height: 90%;
+    width: var(--reusable_component_button_circle_image_height_width);
+    height: var(--reusable_component_button_circle_image_height_width);
 
   }
 
 }
 
 
-.conicGradientContainerStructure{
+.ReusableComponentContainer_Structure{
 
-  border-top-width: var(--container_right_top_border_width);
-  border-right-width: var(--container_right_top_border_width);
-  border-left-width: var(--container_left_bottom_border_width);
-  border-bottom-width: var(--container_left_bottom_border_width);
+  border-top-width: var(--reusable_component_container_right_top_border_width);
+  border-right-width: var(--reusable_component_container_right_top_border_width);
+  border-left-width: var(--reusable_component_container_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_container_left_bottom_border_width);
   border-style: solid;
 
 }
@@ -341,10 +322,10 @@ a:active {
 
 
 
-/* screen components: */
+/* Screen Components: */
 
 
-.navbarContainer {
+.Navbar_Container {
 
   width: 100%;
   display: flex;
@@ -357,49 +338,50 @@ a:active {
 }
 
 
-.navbarButtonColor{
+.Navbar_ReusableComponentButtonPill_Color{
 
-  color: hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
-
-}
-
-
-.navbarButtonColor:hover{
-
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
+  color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
 
 }
 
 
-.navbarButtonColorUrgent{
+.Navbar_ReusableComponentButtonPill_Color:hover{
 
-  color: hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
-
-}
-
-.navbarButtonColorUrgent:hover{
-
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 40) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
 
 }
 
 
-.navbarButtonPlaceholderColor{
+.Navbar_ReusableComponentButtonPill_UrgentColor{
 
-  color: hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_font_color) calc(var(--linear_grad_light_font_color) / var(--button_placeholder_border_font_color_light_ratio)));
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_border_color) calc(var(--linear_grad_light_border_color) / var(--button_placeholder_border_font_color_light_ratio)));
-  background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color) / var(--button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 20) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color) / var(--button_placeholder_background_color_transparency)) 100%);
+  color: hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
 
 }
 
 
-.screenComponentsContainer {
+.Navbar_ReusableComponentButtonPill_UrgentColor:hover{
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+
+}
+
+
+.Navbar_ReusableComponentButtonPill_PlaceholderColor{
+
+  color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) calc(var(--reusable_component_button_pill_font_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) calc(var(--reusable_component_noninteractive_border_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 100%);
+
+}
+
+
+.Screen_ComponentsContainer {
 
   display: flex;
   flex-direction: column;
@@ -411,96 +393,95 @@ a:active {
 }
 
 
-.screenGeneralContainerColor{
+.Screen_ReusableComponentContainer_Color{
 
   color: rgb(255, 255, 255);
-  border-color: hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-color: hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
   background: conic-gradient(
-    hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 0deg,
-    hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 90deg,
-    hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 180deg,
-    hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 270deg,
-    hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_second_color) var(--conic_grad_light_first_color)) 360deg
+    hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
+    hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 90deg,
+    hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 180deg,
+    hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 270deg,
+    hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 360deg
   );
-  box-shadow: 0 0 1rem 0.1rem hsl(var(--screen_hsl_base_hue) var(--conic_grad_sat_shadow_color) var(--conic_grad_light_shadow_color));
 
 }
 
 
-.screenOptionButtonColor{
+.Screen_ReusableComponentButtonCircle_Color{
 
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: radial-gradient(circle, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(calc(var(--screen_hsl_base_hue) + 10) var(--image_sat_color_2) var(--image_light_color_2)));
+    filter: drop-shadow(0 0 5px hsl(calc(var(--background_screen_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
 
   }
 
 }
 
-.screenOptionButtonColor:hover {
+.Screen_ReusableComponentButtonCircle_Color:hover {
 
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
 
 }
 
-.screenOptionButtonColorActive{
+.Screen_ReusableComponentButtonCircle_ActiveColor{
 
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_border_color) var(--radial_grad_light_border_color));
-  background: radial-gradient(circle, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_inner_color) var(--radial_grad_light_inner_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_outer_color) var(--radial_grad_light_outer_color)) 100%);
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--radial_grad_sat_shadow_color) var(--radial_grad_light_shadow_color));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: radial-gradient(circle, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
 
   img {
 
-    filter: drop-shadow(0 0 5px hsl(calc(var(--screen_hsl_base_hue) + 10) var(--image_sat_color_2) var(--image_light_color_2)));
+    filter: drop-shadow(0 0 5px hsl(calc(var(--background_screen_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
 
   }
 
 }
 
 
-.screenGeneralButtonColor {
+.Screen_ReusableComponentButtonPill_Color {
 
-  color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_font_color) var(--linear_grad_light_font_color));
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_border_color) var(--linear_grad_light_border_color));
-  background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
-
-}
-
-
-
-.screenGeneralButtonColor:hover{
-
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_shadow_color) var(--linear_grad_light_shadow_color));
-
-}
-
-
-.screenGeneralButtonPlaceholderColor{
-
-  color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_font_color) calc(var(--linear_grad_light_font_color) / var(--button_placeholder_border_font_color_light_ratio)));
-  border-color: hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_border_color) calc(var(--linear_grad_light_border_color) / var(--button_placeholder_border_font_color_light_ratio)));
-  background: linear-gradient(hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_top_color) var(--linear_grad_light_top_color) / var(--button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--screen_hsl_base_hue) + 10) var(--linear_grad_sat_bottom_color) var(--linear_grad_light_bottom_color) / var(--button_placeholder_background_color_transparency)) 100%);
+  color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
 
 }
 
 
 
-/*Floating Flag components:*/
+.Screen_ReusableComponentButtonPill_Color:hover{
 
-.floatingFlagNonstationBackgroundColor{
-
-  background-color: hsl(var(--floating_flag_nonstation_hsl_base_hue) var(--floating_flag_background_sat_color) var(--floating_flag_background_light_color) / var(--floating_flag_background_color_transparency));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
 
 }
 
-.floatingFlagStationBackgroundColor{
 
-  background-color: hsl(var(--floating_flag_station_hsl_base_hue) var(--floating_flag_background_sat_color) var(--floating_flag_background_light_color) / var(--floating_flag_background_color_transparency));
+.Screen_ReusableComponentButtonPill_PlaceholderColor{
+
+  color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_button_pill_font_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_noninteractive_border_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 100%);
+
+}
+
+
+
+/* Floating Flag components:*/
+
+.BackgroundFloatingFlag_NonstationBackgroundColor{
+
+  background-color: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
+
+}
+
+.BackgroundFloatingFlag_StationBackgroundColor{
+
+  background-color: hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
 
 }
 
@@ -525,15 +506,15 @@ a:active {
 .floatingFlagContainerColor{
 
   color: rgb(255, 255, 255);
-  border-color: hsl(280 var(--conic_grad_sat_border_color) var(--conic_grad_light_border_color));
+  border-color: hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
   background: conic-gradient(
-    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 0deg,
-    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 90deg,
-    hsl(280 var(--conic_grad_sat_first_color) var(--conic_grad_light_first_color)) 180deg,
-    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_second_color)) 270deg,
-    hsl(280 var(--conic_grad_sat_second_color) var(--conic_grad_light_first_color)) 360deg
+    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
+    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 90deg,
+    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 180deg,
+    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 270deg,
+    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 360deg
   );
-  box-shadow: 0 0 1rem 0.1rem hsl(280 var(--conic_grad_sat_shadow_color) var(--conic_grad_light_shadow_color));
+  box-shadow: 0 0 1rem 0.1rem hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_shadow_color_light));
 
 }
 

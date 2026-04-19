@@ -113,31 +113,31 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "conicGradientContainerStructure screenGeneralContainerColor PetWindowBorder">
+            <div className = "ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Main_PetWindowBorder">
 
                 {ActivePetName === "" ? (
 
-                    <div className= "MainPetWindowGridEmpty"></div>
+                    <div className= "Main_PetWindowGridEmpty"></div>
 
                 ) : (
                     
-                    <div className = {`MainFullWindowContainer MainFullWindowContainer-${PetList[ActivePetName][speciesKey]}`}>
+                    <div className = {`Main_FullWindowContainer Main_FullWindowContainer-${PetList[ActivePetName][speciesKey]}`}>
 
-                        <div className = "MainPetStatsContainer">
-                            <h1 className = "MainPetName">{ActivePetName}:</h1>
-                            <div className = "MainHealthContainer">
+                        <div className = "Main_PetStatsContainer">
+                            <h1 className = "Main_PetName">{ActivePetName}:</h1>
+                            <div className = "Main_HealthContainer">
 
                                 {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
 
                                     num <= PetList[ActivePetName][healthKey] ? (
                                         <img key = {num} 
                                             src = {healthHeartGood}
-                                            className = "MainHealthHeart"
+                                            className = "Main_HealthHeart"
                                         />
                                     ) : (
                                         <img key = {num} 
                                             src = {healthHeartBad}
-                                            className = "MainHealthHeart"
+                                            className = "Main_HealthHeart"
                                         />
                                     )
 
@@ -150,7 +150,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             !mainActivityInProgress ? (
 
-                                <div className="MainPetWindowGrid"> 
+                                <div className="Main_PetWindowGrid"> 
                                     {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
                                         
                                         const petHere = mainPetCurrentSpace === index;
@@ -159,7 +159,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                            <div className = "MainPetWindowGridPetCell">
+                                            <div className = "Main_PetWindowGridPetCell">
                                                     <img 
                                                         key={index}
                                                         src = {mainPetDirectionRef.current === 0 ? 
@@ -185,7 +185,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             ) : (
 
-                                                <div key={index} className = "MainPetWindowGridCell"></div>
+                                                <div key={index} className = "Main_PetWindowGridCell"></div>
 
                                             )
                                 
@@ -196,13 +196,13 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             ) : (
 
-                                <div className= "MainPetWindowGridEmpty"></div>
+                                <div className= "Main_PetWindowGridEmpty"></div>
 
                             )
 
                         ) : (
 
-                            <div className= "MainPetWindowGridEmpty">
+                            <div className= "Main_PetWindowGridEmpty">
                                 {/* Insert image of tomb !!!!!!!!!!!!*/}
                                 <img/>
                             </div>

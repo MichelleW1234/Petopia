@@ -188,25 +188,25 @@ function Fish (){
                 setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
-            <div className = "screenLayout Fishscreen">
+            <div className = "BackgroundScreen_Layout Fish_BackgroundScreen_Color">
 
-                <div className="navbarContainer">
+                <div className="Navbar_Container">
 
-                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
-                            <button className={fishDirty ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
+                            <button className={fishHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed Fish </button>
+                            <button className={fishDirty ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean Fish Tank </button>
 
                             {fishCanReceiveDose ? (
 
-                                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
+                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishMedicineOpenFlag(true)}> Give Fish Medicine </button>
 
                             ) : (
 
-                                <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
+                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Fish Medicine </button>
 
                             )}
 
@@ -215,18 +215,18 @@ function Fish (){
                     ) : (
 
                         <>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Fish </button>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clean Fish Tank </button>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Fish Medicine </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed Fish </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Clean Fish Tank </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Fish Medicine </button>
                         </>
 
                     )}
 
-                    <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishScheduleOpenFlag(true)}> Check Schedule </button>
 
                 </div>
 
-                <div className = "screenComponentsContainer">
+                <div className = "Screen_ComponentsContainer">
                     <Main
                         mainAnimationImages={fishMainImages}
                         mainPetEnergy = {400}

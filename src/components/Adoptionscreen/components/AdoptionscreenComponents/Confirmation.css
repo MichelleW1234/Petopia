@@ -1,4 +1,4 @@
-.ConfirmationContainer{
+.Confirmation_Container{
 
     width: 75vw;
     display: flex;
@@ -14,7 +14,7 @@
 }
 
 
-.AdoptionNameInputBox{
+.Confirmation_NameInputBox{
 
     display: flex;
     flex-direction: row;
@@ -29,16 +29,16 @@
         border-radius: 3rem;
         padding: 1.5rem 2rem;
 
-        border: 0.15rem solid rgb(0, 0, 0, 0.75);
+        border: 0.1rem solid rgba(255, 255, 255);
         background-color: rgb(255, 255, 255, 0.75);
-        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255, 0.75);
+        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
 
     }
 
 }
 
 
-.AdoptionNameError {
+.Confirmation_NameError {
 
     height: 1rem;
     
@@ -47,7 +47,7 @@
 }
 
 
-.ConfirmationCheckingContainer{
+.Confirmation_CheckingContainer{
 
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
 }
 
 
-.ConfirmationButtonContainer{
+.Confirmation_ButtonContainer{
 
     display: flex;
     flex-direction: row;

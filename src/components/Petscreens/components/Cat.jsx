@@ -181,25 +181,25 @@ function Cat (){
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
         
-            <div className = "screenLayout Catscreen">
+            <div className = "BackgroundScreen_Layout Cat_BackgroundScreen_Color">
 
-                <div className="navbarContainer">
+                <div className="Navbar_Container">
 
-                    <Link to = "/home" className = "linearGradientButtonStructure navbarButtonColor" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Back to Home </Link>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed Cat </button>
-                            <button className={catRestless ? "linearGradientButtonStructure navbarButtonColorUrgent" : "linearGradientButtonStructure navbarButtonColor"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play With Cat </button>
+                            <button className={catHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed Cat </button>
+                            <button className={catRestless ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play With Cat </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setCatMedicineOpenFlag(true)}> Cat Medicine Available </button>
+                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatMedicineOpenFlag(true)}> Cat Medicine Available </button>
 
                             ) : (
 
-                                <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Cat Medicine Available </button>
+                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Cat Medicine Available </button>
 
                             )}
                         
@@ -208,18 +208,18 @@ function Cat (){
                     ) : (
 
                         <>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Feed Cat </button>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Play With Cat </button>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Give Cat Medicine </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed Cat </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Play With Cat </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Cat Medicine </button>
                         </>
 
                     )}
 
-                    <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
                     
                 </div>
 
-                <div className = "screenComponentsContainer">
+                <div className = "Screen_ComponentsContainer">
                     <Main
                         mainAnimationImages={catMainImages}
                         mainPetEnergy = {450}

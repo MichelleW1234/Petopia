@@ -171,10 +171,10 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1 className="header">Fill out this form: </h1>  
             
-            <div className = "ConfirmationContainer">
+            <div className = "Confirmation_Container">
                 <p>Hello, my name is </p>
 
-                <div className="conicGradientContainerStructure screenGeneralContainerColor AdoptionNameInputBox">
+                <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Confirmation_NameInputBox">
                     <input 
                         type="text"
                         value={confirmationPetName}
@@ -187,11 +187,11 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
                 <p>{petPersonality[selectedPet]}</p>
             </div>
                 
-            <div className = "ConfirmationCheckingContainer">
-                <p className = "AdoptionNameError">{errorMessage}</p>
-                <div className = "ConfirmationButtonContainer">
-                    <button className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {() => undo()}> Undo Selection </button>
-                    <Link to = "/home" className = "linearGradientButtonStructure screenGeneralButtonColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+            <div className = "Confirmation_CheckingContainer">
+                <p className = "Confirmation_NameError">{errorMessage}</p>
+                <div className = "Confirmation_ButtonContainer">
+                    <button className = "ReusableComponentButtonPill_Structure Screen_ReusableComponentButtonPill_Color" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Screen_ReusableComponentButtonPill_Color" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

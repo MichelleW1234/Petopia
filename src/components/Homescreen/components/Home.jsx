@@ -50,45 +50,45 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            <div className = "screenLayout Homescreen">  
+            <div className = "BackgroundScreen_Layout Home_BackgroundScreen_Color">  
 
-                <div className="navbarContainer">
+                <div className="Navbar_Container">
 
                     {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
                         <>
-                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
-                            <button className="linearGradientButtonStructure navbarButtonColor" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                            <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
+                            <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor" > Restart Game </button>
-                            <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Clear Pets </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor" > Restart Game </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Clear Pets </button>
                         </>
 
                     )}
 
                     {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
-                    <button className="linearGradientButtonPlaceholderStructure navbarButtonPlaceholderColor"> Add Pets </button>
+                    <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Add Pets </button>
 
                     ) : (
 
-                        <Link to ="/adopt" className="linearGradientButtonStructure navbarButtonColor"> Add Pets </Link>
+                        <Link to ="/adopt" className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"> Add Pets </Link>
 
                     )}
                     
                 </div>
 
-                <div className = "screenComponentsContainer">
+                <div className = "Screen_ComponentsContainer">
                     <h1 className="header"> Your Pets: </h1>
-                    <div className="HomePetSlotContainer">
+                    <div className="Home_PetSlotContainer">
 
                         {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <h2 className = "HomeNoPets"> Your pet(s) will appear here when added. </h2>
+                            <h2 className = "Home_NoPets"> Your pet(s) will appear here when added. </h2>
 
                         ) : (
 
@@ -98,47 +98,47 @@ function Home (){
 
                                 return (
 
-                                    <div className="conicGradientContainerStructure screenGeneralContainerColor HomePetSlot">
-                                        <div className = "HomePetSlotAlertContainer">
+                                    <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Home_PetSlot">
+                                        <div className = "Home_PetSlotAlertContainer">
                                             
                                             {currPetHealth >= 75 ? (
 
                                                 <>
-                                                    <div className="HomePetSlotAlertGood"></div>
-                                                    <div className="HomePetSlotAlertGood"></div>
-                                                    <div className="HomePetSlotAlertGood"></div>
+                                                    <div className="Home_PetSlotAlertGood"></div>
+                                                    <div className="Home_PetSlotAlertGood"></div>
+                                                    <div className="Home_PetSlotAlertGood"></div>
                                                 </>
                                             
                                             ) : currPetHealth >= 50 ? (
 
                                                 <>
-                                                    <div className="HomePetSlotAlertOkay"></div>
-                                                    <div className="HomePetSlotAlertOkay"></div>
-                                                    <div className="HomePetSlotAlertOkay"></div>
+                                                    <div className="Home_PetSlotAlertOkay"></div>
+                                                    <div className="Home_PetSlotAlertOkay"></div>
+                                                    <div className="Home_PetSlotAlertOkay"></div>
                                                 </>
 
                                             ) : currPetHealth >= 25 ? (
 
                                                 <>
-                                                    <div className="HomePetSlotAlertBad"></div>
-                                                    <div className="HomePetSlotAlertBad"></div>
-                                                    <div className="HomePetSlotAlertBad"></div>
+                                                    <div className="Home_PetSlotAlertBad"></div>
+                                                    <div className="Home_PetSlotAlertBad"></div>
+                                                    <div className="Home_PetSlotAlertBad"></div>
                                                 </>
 
                                             ) : currPetHealth > 0 ? (
 
                                                 <>
-                                                    <div className="HomePetSlotAlertVeryBad"></div>
-                                                    <div className="HomePetSlotAlertVeryBad"></div>
-                                                    <div className="HomePetSlotAlertVeryBad"></div>
+                                                    <div className="Home_PetSlotAlertVeryBad"></div>
+                                                    <div className="Home_PetSlotAlertVeryBad"></div>
+                                                    <div className="Home_PetSlotAlertVeryBad"></div>
                                                 </>
 
                                             ) : (
 
                                                 <>
-                                                    <div className="HomePetSlotAlertDead"></div>
-                                                    <div className="HomePetSlotAlertDead"></div>
-                                                    <div className="HomePetSlotAlertDead"></div>
+                                                    <div className="Home_PetSlotAlertDead"></div>
+                                                    <div className="Home_PetSlotAlertDead"></div>
+                                                    <div className="Home_PetSlotAlertDead"></div>
                                                 </>
 
                                             )}
@@ -146,12 +146,12 @@ function Home (){
                                         <Link 
                                             key = {key}
                                             to = {`/${PetList[key][speciesKey]}`}
-                                            className="radialGradientButtonStructure screenOptionButtonColor"
+                                            className="ReusableComponentButtonCircle_Structure Screen_ReusableComponentButtonCircle_Color"
                                             onClick = {() => getPet(key)}
                                         >
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
-                                        <h2 className = "HomePetSlotPetName">{key}</h2>
+                                        <h2 className = "Home_PetSlotPetName">{key}</h2>
 
 
                                     </div>

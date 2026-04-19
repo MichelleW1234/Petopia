@@ -2,7 +2,7 @@ function PetGuide({setPetGuideOpenFlag}) {
 
 
     return (
-        <div className = "floatingFlagLayout floatingFlagNonstationBackgroundColor">
+        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
             <div className = "FloatingFlagContainer">
                 Hello
                 <button onClick = {() => setPetGuideOpenFlag(false)}> Close </button>

@@ -63,7 +63,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     }
 
     return (
-        <div className = "floatingFlagLayout floatingFlagNonstationBackgroundColor">
+        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
             <div className="FloatingFlagContainer">
                 <div className="FloatingFlagInfoContainer">
                     <h2>Select pet(s) to clear:</h2>
