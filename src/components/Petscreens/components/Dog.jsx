@@ -128,30 +128,37 @@ function Dog (){
                                     : false;
 
 
-    const dogMainImages = PetList[ActivePetName][stageKey] === 0 ? 
-                                [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo]
-                              : PetList[ActivePetName][stageKey] === 1 ? 
-                                [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo]
-                              : [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo];
+    const dogMainImages = ActivePetName !== "" ? 
+                            PetList[ActivePetName][stageKey] === 0 ? 
+                                    [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo]
+                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                    [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo]
+                                : [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]
+                            : [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1DogFeedOne, s1DogFeedTwo]
-                          : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2DogFeedOne, s2DogFeedTwo]
-                          : [s3DogFeedOne, s3DogFeedTwo];
+    const dogFeedImages = ActivePetName !== "" ? 
+                            PetList[ActivePetName][stageKey] === 0 ? 
+                                    [s1DogFeedOne, s1DogFeedTwo]
+                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                    [s2DogFeedOne, s2DogFeedTwo]
+                                : [s3DogFeedOne, s3DogFeedTwo]
+                            : [s1DogFeedOne, s1DogFeedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
+    const dogCleanImages = ActivePetName !== "" ? 
+                            PetList[ActivePetName][stageKey] === 0 ? 
+                                    [s1DogCleanOne, s1DogCleanTwo]
+                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                    [s2DogCleanOne, s2DogCleanTwo]
+                                : [s3DogCleanOne, s3DogCleanTwo]
+                            : [s1DogCleanOne, s1DogCleanTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogCleanImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1DogCleanOne, s1DogCleanTwo]
-                          : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2DogCleanOne, s2DogCleanTwo]
-                          : [s3DogCleanOne, s3DogCleanTwo];
-
-    const dogMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1DogMedOne, s1DogMedTwo]
-                            : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2DogMedOne, s2DogMedTwo]
-                            : [s3DogMedOne, s3DogMedTwo];
+    const dogMedicineImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1DogMedOne, s1DogMedTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2DogMedOne, s2DogMedTwo]
+                                    : [s3DogMedOne, s3DogMedTwo]
+                                : [s1DogMedOne, s1DogMedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const dogFeedOptions = [beef, turkey, lamb]; 
     const dogCleanOptions = [soap, brush];

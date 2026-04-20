@@ -159,9 +159,8 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                            <div className = "Main_PetWindowGridPetCell">
+                                                <div key={index} className = "Main_PetWindowGridPetCell">
                                                     <img 
-                                                        key={index}
                                                         src = {mainPetDirectionRef.current === 0 ? 
                                                                     index%2 === 0 ?
                                                                         mainAnimationImages[0]
@@ -176,7 +175,6 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                                     {mainAttention &&
                                                     <img 
-                                                        key={index} 
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}

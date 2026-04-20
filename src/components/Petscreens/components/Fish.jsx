@@ -27,8 +27,12 @@ import s3FishFeedOne from "../../../images/Fish/Main/3fish.svg";
 import s3FishFeedTwo from "../../../images/Fish/Main/3fish1.svg";
 
 
-import fishCleanOne from "../../../images/Fish/Main/1fish.svg";
-import fishCleanTwo from "../../../images/Fish/Main/1fish1.svg";
+import s1FishCleanOne from "../../../images/Fish/Main/1fish.svg";
+import s1FishCleanTwo from "../../../images/Fish/Main/1fish1.svg";
+import s2FishCleanOne from "../../../images/Fish/Main/2fish.svg";
+import s2FishCleanTwo from "../../../images/Fish/Main/2fish1.svg";
+import s3FishCleanOne from "../../../images/Fish/Main/3fish.svg";
+import s3FishCleanTwo from "../../../images/Fish/Main/3fish1.svg";
 
 
 import s1FishMedOne from "../../../images/Fish/Main/1fish.svg";
@@ -115,26 +119,38 @@ function Fish (){
                                     : false;
 
 
-    const fishMainImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]
-                            : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo]
-                            : [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo];
+    const fishMainImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo]
+                                    : [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]
+                                : [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     
-    const fishFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1FishFeedOne, s1FishFeedTwo]
-                            : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2FishFeedOne, s2FishFeedTwo]
-                            : [s3FishFeedOne, s3FishFeedTwo];
+    const fishFeedImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1FishFeedOne, s1FishFeedTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2FishFeedOne, s2FishFeedTwo]
+                                    : [s3FishFeedOne, s3FishFeedTwo]
+                                : [s1FishFeedOne, s1FishFeedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishCleanImages = [fishCleanOne, fishCleanTwo];
+    const fishCleanImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1FishCleanOne, s1FishCleanTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2FishCleanOne, s2FishCleanTwo]
+                                    : [s3FishCleanOne, s3FishCleanTwo]
+                                : [s1FishCleanOne, s1FishCleanTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1FishMedOne, s1FishMedTwo]
-                            : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2FishMedOne, s2FishMedTwo]
-                            : [s3FishMedOne, s3FishMedTwo];
+    const fishMedicineImages = ActivePetName !== "" ? 
+                                    PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1FishMedOne, s1FishMedTwo]
+                                        : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2FishMedOne, s2FishMedTwo]
+                                        : [s3FishMedOne, s3FishMedTwo]
+                                    :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const fishFeedOptions = [shrimp, worms, algae];
     const fishCleanOptions = [sponge, cloth];

@@ -109,23 +109,29 @@ function Cat (){
                                         : false
                                     : false;
 
-    const catMainImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo]
-                          : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo]
-                          : [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo];
+    const catMainImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo]
+                                    : [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]
+                                : [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const catFeedImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1CatFeedOne, s1CatFeedTwo]
-                          : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2CatFeedOne, s2CatFeedTwo]
-                          : [s3CatFeedOne, s3CatFeedTwo];
+    const catFeedImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1CatFeedOne, s1CatFeedTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2CatFeedOne, s2CatFeedTwo]
+                                    : [s3CatFeedOne, s3CatFeedTwo]
+                                : [s1CatFeedOne, s1CatFeedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const catMedicineImages = PetList[ActivePetName][stageKey] === 0 ? 
-                            [s1CatMedOne, s1CatMedTwo]
-                          : PetList[ActivePetName][stageKey] === 1 ? 
-                            [s2CatMedOne, s2CatMedTwo]
-                          : [s3CatMedOne, s3CatMedTwo];
+    const catMedicineImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1CatMedOne, s1CatMedTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2CatMedOne, s2CatMedTwo]
+                                    : [s3CatMedOne, s3CatMedTwo]
+                                : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
     const catFeedOptions = [tuna, chicken, salmon]; 

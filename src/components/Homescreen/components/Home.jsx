@@ -72,7 +72,7 @@ function Home (){
 
                     {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
-                    <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Add Pets </button>
+                        <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Add Pets </button>
 
                     ) : (
 
@@ -98,7 +98,7 @@ function Home (){
 
                                 return (
 
-                                    <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Home_PetSlot">
+                                    <div key = {key} className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Home_PetSlot">
                                         <div className = "Home_PetSlotAlertContainer">
                                             
                                             {currPetHealth >= 75 ? (
@@ -142,9 +142,9 @@ function Home (){
                                                 </>
 
                                             )}
+
                                         </div>
-                                        <Link 
-                                            key = {key}
+                                        <Link
                                             to = {`/${PetList[key][speciesKey]}`}
                                             className="ReusableComponentButtonCircle_Structure Screen_ReusableComponentButtonCircle_Color"
                                             onClick = {() => getPet(key)}
@@ -152,8 +152,6 @@ function Home (){
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
                                         <h2 className = "Home_PetSlotPetName">{key}</h2>
-
-
                                     </div>
 
                                 )
