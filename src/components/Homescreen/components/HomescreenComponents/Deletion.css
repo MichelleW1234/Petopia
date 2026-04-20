@@ -1,51 +1,23 @@
-.DeletionClearPetsFlagList {
+.Deletion_PetOptionContainer{
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4rem;
+  gap: 3rem;
+  padding: 4rem 5rem;
+
+}
+
+.Deletion_PetOptionSlot {
 
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    gap: 2rem;
-
-}
-
-.DeletionClearPetsFlagButton {
-
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-
-    background-color: rgb(183, 196, 255);
-    border-right: 0.15rem solid black; 
-    border-top: 0.15rem solid black;
-    border-left: 0.3rem solid black; 
-    border-bottom: 0.3rem solid black;
-
-}
-
-
-.DeletionClearPetsFlagButton:hover {
-
-    color: white;
-    background-color: rgb(0, 8, 255);
-
-}
-
-
-.DeletionClearPetsFlagButtonActive {
-
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-
-    background-color: rgb(251, 183, 255);
-    border-right: 0.15rem solid black; 
-    border-top: 0.15rem solid black;
-    border-left: 0.3rem solid black; 
-    border-bottom: 0.3rem solid black;
-
-}
-
-
-.DeletionClearPetsFlagButtonActive:hover {
-
-    color: white;
-    background-color: rgb(154, 0, 165);
+    gap: 1rem;
 
 }

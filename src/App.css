@@ -39,14 +39,15 @@
 
 
 
+  --background_outer_color_light: 25%;
+  --background_inner_color_light: 50%;
+
   --background_floatingflag_color_light: 25%;
   --background_floatingflag_color_transparency: 50%;
 
-  --background_screen_outer_color_light: 25%;
-  --background_screen_inner_color_light: 50%;
 
 
-
+  --reusable_component_interactive_shadow_color_light: 100%;
   --reusable_component_interactive_border_color_light: 50%;
   --reusable_component_noninteractive_border_color_light: 25%;
 
@@ -56,15 +57,12 @@
   --reusable_component_button_pill_font_color_light: 25%;
   --reusable_component_button_pill_top_color_light: 50%;
   --reusable_component_button_pill_bottom_color_light: 100%;
-  --reusable_component_button_pill_shadow_color_light: 100%;
 
   --reusable_component_button_circle_outer_color_light: 50%;
   --reusable_component_button_circle_inner_color_light: 100%;
-  --reusable_component_button_circle_shadow_color_light: 100%;
 
   --reusable_component_container_first_color_light: 75%;
   --reusable_component_container_second_color_light: 50%;
-  --reusable_component_container_shadow_color_light: 75%;
 
 
 
@@ -343,14 +341,14 @@ a:active {
   color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
   border-color: hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
 
 .Navbar_ReusableComponentButtonPill_Color:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 20) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
@@ -360,14 +358,14 @@ a:active {
   color: hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
   border-color: hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
 
 .Navbar_ReusableComponentButtonPill_UrgentColor:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 40) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
@@ -412,7 +410,7 @@ a:active {
 
   border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: radial-gradient(circle, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
   img {
 
@@ -424,7 +422,7 @@ a:active {
 
 .Screen_ReusableComponentButtonCircle_Color:hover {
 
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
@@ -432,7 +430,7 @@ a:active {
 
   border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: radial-gradient(circle, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_shadow_color_light));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
   img {
 
@@ -448,7 +446,7 @@ a:active {
   color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
   border-color: hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: linear-gradient(hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
@@ -456,7 +454,7 @@ a:active {
 
 .Screen_ReusableComponentButtonPill_Color:hover{
 
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_shadow_color_light));
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_screen_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 
@@ -475,104 +473,121 @@ a:active {
 
 .BackgroundFloatingFlag_NonstationBackgroundColor{
 
-  background-color: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
+  background: linear-gradient(hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);
 
 }
+
 
 .BackgroundFloatingFlag_StationBackgroundColor{
 
-  background-color: hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
+  background: linear-gradient(hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);
 
 }
 
 
+.FloatingFlag_ReusableComponentContainer_NonStationColor{
+
+  color: rgb(255, 255, 255);
+  border-color: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
+  background: conic-gradient(
+    hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
+    hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 90deg,
+    hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 180deg,
+    hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 270deg,
+    hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 360deg
+  );
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonPill_NonStationColor{
+
+  color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonPill_NonStationColor:hover{
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonCircle_NonStationColor{
+
+  color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonCircle_NonStationColor:hover{
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonCircle_NonStationColor{
+
+  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: radial-gradient(circle, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+  img {
+
+    filter: drop-shadow(0 0 5px hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
+
+  }
+
+}
 
 
+.FloatingFlag_ReusableComponentButtonCircle_NonStationColor:hover {
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonCircle_NonStationActiveColor{
+
+  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: radial-gradient(circle, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+  img {
+
+    filter: drop-shadow(0 0 5px hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
+
+  }
+
+}
 
 
 
 /*STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-.floatingFlagContainerColor{
-
-  color: rgb(255, 255, 255);
-  border-color: hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
-  background: conic-gradient(
-    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
-    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 90deg,
-    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 180deg,
-    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 270deg,
-    hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 360deg
-  );
-  box-shadow: 0 0 1rem 0.1rem hsl(280 var(--reusable_component_color_saturation) var(--reusable_component_container_shadow_color_light));
-
-}
-
-.FloatingFlagContainer {
-
-  max-height: 75vh;
-  width: 50vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-
-  border-radius: 1rem;
-  padding: 5rem;
-  gap: 4rem;
-
-  color: rgb(224, 220, 255);
-  background-color: rgba(12, 0, 60, 0.667);
-  box-shadow: 0 0 1rem 0.5rem rgb(140, 111, 255);
-
-}
-
-.FloatingFlagInfoContainer{
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 1rem;
-  padding: 3rem;
-  
-  box-shadow: 0 0 1rem 0.5rem rgb(255, 203, 255);
-
-}
 
 
-.FloatingFlagButton{
 
-  padding: 1rem 1.5rem;
 
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-right: 0.1rem solid black;
-  border-top: 0.1rem solid black;
-  background-color: rgb(187, 220, 255);
 
-  animation: GeneralNavButton-glow 4s infinite;
 
-}
 
-.FloatingFlagButton:hover{
 
-  color: white;
-  background-color: rgb(0, 102, 255);
 
-  animation: GeneralNavButton-hover-glow  4s infinite;
 
-}
+
+
+
+
 
 
 /*General Buttons: */

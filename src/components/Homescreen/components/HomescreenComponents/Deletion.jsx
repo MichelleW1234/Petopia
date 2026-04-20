@@ -3,6 +3,8 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
+import { portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+
 import "./Deletion.css";
 
 
@@ -64,29 +66,32 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     return (
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
-            <div className="FloatingFlagContainer">
-                <div className="FloatingFlagInfoContainer">
-                    <h2>Select pet(s) to clear:</h2>
+            <h1 className="header">Select pet(s) to clear:</h1>
+            <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor Deletion_PetOptionContainer">
+                {Object.keys(PetList).map((key) => (
 
-                    <div className = "DeletionClearPetsFlagList">
-                        {Object.keys(PetList).map((key) => (
+                    <div key = {key} className = "Deletion_PetOptionSlot">
 
-                            deletionSelectedPets.includes(key) ? (
+                        {deletionSelectedPets.includes(key) ? (
 
-                                <button key = {key} className="DeletionClearPetsFlagButtonActive" onClick = {() => removePet(key)}> {key} </button>
+                            <button key = {key} className="ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_NonStationActiveColor" onClick = {() => removePet(key)}> 
+                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
+                            </button>
 
-                            ) : (
+                        ) : (
 
-                                <button key = {key} className="DeletionClearPetsFlagButton" onClick = {() => addPet(key)}> {key} </button>
+                            <button key = {key} className="ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_NonStationColor" onClick = {() => addPet(key)}> 
+                                <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
+                            </button>
 
-                            )
+                        )}
 
-                        ))}
+                        <h2>{key}</h2>
                     </div>
 
-                </div>
-                <button className="FloatingFlagButton" onClick={() => clearPets()}>Done</button>
+                ))}
             </div>
+            <button className="ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick={() => clearPets()}>Done</button>
         </div>
     )
 }

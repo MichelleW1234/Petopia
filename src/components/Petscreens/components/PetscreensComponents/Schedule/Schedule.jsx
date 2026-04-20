@@ -17,7 +17,7 @@ function Schedule({setScheduleOpenFlag}) {
     return (
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
 
-            <div className="FloatingFlagContainer">
+            <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor  Schedule_InfoContainer">
                 
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
@@ -36,7 +36,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
 
-            <button className="FloatingFlagButton" onClick={() => setScheduleOpenFlag(false)}>Close</button>
+            <button className="ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     )
