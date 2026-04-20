@@ -111,11 +111,11 @@ function Cat (){
 
     const catMainImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo]
+                                        [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatLeftOne, s2CatLeftTwo, s2CatRightOne, s2CatRightTwo]
-                                    : [s3CatLeftOne, s3CatLeftTwo, s3CatRightOne, s3CatRightTwo]
-                                : [s1CatLeftOne, s1CatLeftTwo, s1CatRightOne, s1CatRightTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        [[s2CatLeftOne, s2CatLeftTwo], [s2CatRightOne, s2CatRightTwo]]
+                                    : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
+                                : [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const catFeedImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 

@@ -22,9 +22,10 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
     const [mainAttention, setMainAttention] = useState(false);
     const [mainPetCurrentSpace, setMainPetCurrentSpace] = useState(Math.floor(Math.random() * mainPetWindowLength));
+    const [mainPetDirection, setMainPetDirection] = useState(0);
 
     const mainPetCurrentSpaceRef = useRef(mainPetCurrentSpace);
-    const mainPetDirectionRef = useRef(0);
+    const mainPetDirectionRef = useRef(mainPetDirection);
     const mainTimeoutRef = useRef(null);
     
 
@@ -33,6 +34,10 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
     useEffect(() => {
         mainPetCurrentSpaceRef.current = mainPetCurrentSpace;
     }, [mainPetCurrentSpace]);
+
+    useEffect(() => {
+        mainPetDirectionRef.current = mainPetDirection;
+    }, [mainPetDirection]);
 
     useEffect(() => {
 
@@ -61,12 +66,12 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         if (mainPetCurrentSpaceRef.current === 0){
 
             setMainPetCurrentSpace(1);
-            mainPetDirectionRef.current = 1;
+            setMainPetDirection(1);
 
         } else if (mainPetCurrentSpaceRef.current === mainPetWindowLength - 1){
 
             setMainPetCurrentSpace(mainPetWindowLength - 2);
-            mainPetDirectionRef.current = 0;
+            setMainPetDirection(0);
 
         } else if (mainPetDirectionRef.current === 0){
 
@@ -161,15 +166,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                                 <div key={index} className = "Main_PetWindowGridPetCell">
                                                     <img 
-                                                        src = {mainPetDirectionRef.current === 0 ? 
-                                                                    index%2 === 0 ?
-                                                                        mainAnimationImages[0]
-                                                                        : mainAnimationImages[1]
-                                                                :
-                                                                    index%2 === 1 ?
-                                                                        mainAnimationImages[2]
-                                                                        : mainAnimationImages[3]
-                                                                } 
+                                                        src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 

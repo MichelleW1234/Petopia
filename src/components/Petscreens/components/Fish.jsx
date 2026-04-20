@@ -121,11 +121,11 @@ function Fish (){
 
     const fishMainImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]
+                                        [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2FishLeftOne, s2FishLeftTwo, s2FishRightOne, s2FishRightTwo]
-                                    : [s3FishLeftOne, s3FishLeftTwo, s3FishRightOne, s3FishRightTwo]
-                                : [s1FishLeftOne, s1FishLeftTwo, s1FishRightOne, s1FishRightTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
+                                    : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
+                                : [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     
     const fishFeedImages = ActivePetName !== "" ? 

@@ -130,11 +130,11 @@ function Dog (){
 
     const dogMainImages = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
-                                    [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo]
+                                    [[s1DogLeftOne, s1DogLeftTwo], [s1DogRightOne, s1DogRightTwo]]
                                 : PetList[ActivePetName][stageKey] === 1 ? 
-                                    [s2DogLeftOne, s2DogLeftTwo, s2DogRightOne, s2DogRightTwo]
-                                : [s3DogLeftOne, s3DogLeftTwo, s3DogRightOne, s3DogRightTwo]
-                            : [s1DogLeftOne, s1DogLeftTwo, s1DogRightOne, s1DogRightTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                    [[s2DogLeftOne, s2DogLeftTwo], [s2DogRightOne, s2DogRightTwo]]
+                                : [[s3DogLeftOne, s3DogLeftTwo], [s3DogRightOne, s3DogRightTwo]]
+                            : [[s1DogLeftOne, s1DogLeftTwo], [s1DogRightOne, s1DogRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const dogFeedImages = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
