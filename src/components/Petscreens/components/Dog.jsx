@@ -166,7 +166,7 @@ function Dog (){
     const dogPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
     const dogMedicineOptions = [pill];
 
-    
+
 
 
     useEffect(() => {
@@ -226,22 +226,22 @@ function Dog (){
 
                 <div className="Navbar_Container">
 
-                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {dogAlive ? (
 
                         <>
-                            <button className={dogHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed Dog </button>
-                            <button className={dogDirty ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Bathe Dog </button>
-                            <button className={dogRestless ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play With Dog </button>
+                            <button className={dogHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed </button>
+                            <button className={dogDirty ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Clean </button>
+                            <button className={dogRestless ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play </button>
 
                             {dogCanReceiveDose ? (
 
-                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogMedicineOpenFlag(true)}> Give Dog Medicine </button>
+                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Dog Medicine </button>
+                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Medicine </button>
 
                             )}
                         
@@ -250,15 +250,15 @@ function Dog (){
                     ) : (
 
                         <>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed Dog </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Clean Dog </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Play With Dog </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Dog Medicine </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Clean </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Play </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogScheduleOpenFlag(true)}> Check Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogScheduleOpenFlag(true)}> Schedule </button>
                 
                 </div>
 

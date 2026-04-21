@@ -29,6 +29,18 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
     const mainTimeoutRef = useRef(null);
     
 
+    
+    // For preloading images:
+    useEffect(() => {
+
+        const preloadImages = [...mainAnimationImages.flat(1), heart, anger, healthHeartGood, healthHeartBad];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, [mainAnimationImages]);
 
 
     useEffect(() => {

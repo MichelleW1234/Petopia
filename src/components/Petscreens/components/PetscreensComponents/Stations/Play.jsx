@@ -36,6 +36,17 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
     useEffect(() => {
 
+        const preloadImages = [...playOptions];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, []);
+    
+    useEffect(() => {
+
         if (playCurrNumber >= playTotal){
 
             setPlayDone(true);

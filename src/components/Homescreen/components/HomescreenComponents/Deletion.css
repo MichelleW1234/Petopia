@@ -14,10 +14,23 @@
 
 .Deletion_PetOptionSlot {
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    gap: 1rem;
+  gap: 1rem;
+
+}
+
+
+.Deletion_ButtonContainer {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
 
 }

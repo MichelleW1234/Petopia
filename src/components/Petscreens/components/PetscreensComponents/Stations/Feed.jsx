@@ -36,6 +36,17 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
 
     useEffect(() => {
+
+        const preloadImages = [...feedAnimationImages, ...feedOptions];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, [feedAnimationImages]);
+
+    useEffect(() => {
         feedGlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);
     

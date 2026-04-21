@@ -1,4 +1,5 @@
 import {HashRouter, Routes, Route} from "react-router-dom";
+import { useEffect } from "react";
 
 import Homescreen from "./components/Homescreen/components/Home.jsx";
 import Adoptionscreen from "./components/Adoptionscreen/components/Adoption.jsx";
@@ -9,10 +10,24 @@ import Fishscreen from "./components/Petscreens/components/Fish.jsx";
 
 import NoPage from "./components/NoPage.jsx";
 
+import { portraitPetImages, moodPetImages } from "./constants/Constants.js";
+
 import "./App.css";
 
 
 function App() {
+
+  // For preloading images in Constants.js (globally used images):
+  useEffect(() => {
+
+    const preloadImages = [...Object.values(portraitPetImages).flat(1), ...Object.values(moodPetImages).flat(2)];
+
+    preloadImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+  }, []);
 
   return (
     <>

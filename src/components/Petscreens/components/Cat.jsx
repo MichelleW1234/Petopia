@@ -191,21 +191,21 @@ function Cat (){
 
                 <div className="Navbar_Container">
 
-                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Back to Home </Link>
+                    <Link to = "/home" className = "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed Cat </button>
-                            <button className={catRestless ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play With Cat </button>
+                            <button className={catHungry ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
+                            <button className={catRestless ? "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_UrgentColor" : "ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatMedicineOpenFlag(true)}> Cat Medicine Available </button>
+                                <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Cat Medicine Available </button>
+                                <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Medicine </button>
 
                             )}
                         
@@ -214,14 +214,14 @@ function Cat (){
                     ) : (
 
                         <>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed Cat </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Play With Cat </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Give Cat Medicine </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Feed </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Play </button>
+                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatScheduleOpenFlag(true)}> Check Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
                     
                 </div>
 

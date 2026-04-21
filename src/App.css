@@ -43,7 +43,7 @@
   --background_inner_color_light: 50%;
 
   --background_floatingflag_color_light: 25%;
-  --background_floatingflag_color_transparency: 50%;
+  --background_floatingflag_color_transparency: 75%;
 
 
 
@@ -516,20 +516,11 @@ a:active {
 
 }
 
-
-.FloatingFlag_ReusableComponentButtonCircle_NonStationColor{
-
-  color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
-  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
-  background: linear-gradient(hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
-  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
-
-}
-
-
-.FloatingFlag_ReusableComponentButtonCircle_NonStationColor:hover{
-
-  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+.FloatingFlag_ReusableComponentButtonPill_NonStationPlaceholderColor{
+  
+  color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_button_pill_font_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_noninteractive_border_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 100%);
 
 }
 
@@ -556,7 +547,7 @@ a:active {
 }
 
 
-.FloatingFlag_ReusableComponentButtonCircle_NonStationActiveColor{
+.FloatingFlag_ReusableComponentButtonCircle_NonStationSelectedColor{
 
   border-color: hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
   background: radial-gradient(circle, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
@@ -569,6 +560,7 @@ a:active {
   }
 
 }
+
 
 
 

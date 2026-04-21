@@ -30,6 +30,18 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
 
+
+    useEffect(() => {
+
+        const preloadImages = [...medicineAnimationImages, ...medicineOptions];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, [medicineAnimationImages]);
+
     useEffect(() => {
         medicineGlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);

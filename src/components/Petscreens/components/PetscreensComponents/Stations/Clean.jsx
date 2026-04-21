@@ -33,6 +33,18 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
 
 
+
+    useEffect(() => {
+
+        const preloadImages = [...cleanAnimationImages, ...cleanOptions];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, [cleanAnimationImages]);
+
     useEffect(() => {
         cleanAnimationImageRef.current = cleanAnimationImage;
     }, [cleanAnimationImage]);
