@@ -75,8 +75,8 @@
   /*Color hues:*/
 
   --background_screen_base_color_hue: 280;
-  --background_floatingflag_nonstation_base_color_hue: 260;
-  --background_floatingflag_station_base_color_hue: 240;
+  --background_floatingflag_station_base_color_hue: 260;
+  --background_floatingflag_nonstation_base_color_hue: 240;
 
 }
 
@@ -471,7 +471,7 @@ a:active {
 
 /* Floating Flag components:*/
 
-.BackgroundFloatingFlag_NonstationBackgroundColor{
+.BackgroundFloatingFlag_NonStationBackgroundColor{
 
   background: linear-gradient(hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);
 
@@ -558,6 +558,69 @@ a:active {
     filter: drop-shadow(0 0 5px hsl(calc(var(--background_floatingflag_nonstation_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
 
   }
+
+}
+
+
+.FloatingFlag_ReusableComponentContainer_StationColor{
+
+  color: rgb(255, 255, 255);
+  border-color: hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
+  background: conic-gradient(
+    hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
+    hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 90deg,
+    hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 180deg,
+    hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_second_color_light)) 270deg,
+    hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 360deg
+  );
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonPill_StationColor{
+
+  color: hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_font_color_light));
+  border-color: hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: linear-gradient(hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light)) 0%, hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonPill_StationColor:hover{
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor{
+  
+  color: hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_button_pill_font_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  border-color: hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) calc(var(--reusable_component_noninteractive_border_color_light) / var(--reusable_component_button_placeholder_border_font_color_light_ratio)));
+  background: linear-gradient(hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_top_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 0%, hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_pill_bottom_color_light) / var(--reusable_component_button_placeholder_background_color_transparency)) 100%);
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonCircle_StationColor{
+
+  border-color: hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_border_color_light));
+  background: radial-gradient(circle, hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_inner_color_light)) 0%, hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_button_circle_outer_color_light)) 100%);
+  box-shadow: 0 0 1rem 0.1rem hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
+
+  img {
+
+    filter: drop-shadow(0 0 5px hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--image_color_saturation) var(--image_second_color_light)));
+
+  }
+
+}
+
+
+.FloatingFlag_ReusableComponentButtonCircle_StationColor:hover {
+
+  box-shadow: 0 0 1rem 0.5rem hsl(calc(var(--background_floatingflag_station_base_color_hue) + 10) var(--reusable_component_color_saturation) var(--reusable_component_interactive_shadow_color_light));
 
 }
 

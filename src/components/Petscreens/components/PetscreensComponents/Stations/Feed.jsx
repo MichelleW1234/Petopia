@@ -109,8 +109,6 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     return (
 
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
-
-            <div className = "StationsFlagContainer">
         
                 {feedSelection === -1 ? (
 
@@ -152,16 +150,22 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
                 )}
 
+            <div className="buttonContainer">
                 {feedSelection === -1 || !feedDone ? (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                    <>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                    </>
 
                 ) : (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                    <>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                    </>
 
                 )}
-
             </div>
 
         </div>

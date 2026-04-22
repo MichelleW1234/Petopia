@@ -134,15 +134,23 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                 )}
 
-                {cleanSelection === -1 || !cleanDone ? (
+                <div className="buttonContainer">
+                    {cleanSelection === -1 || !cleanDone ? (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                        </>
 
-                ) : (
+                    ) : (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                        </>
 
-                )}
+                    )}
+                </div>
 
             </div>
 

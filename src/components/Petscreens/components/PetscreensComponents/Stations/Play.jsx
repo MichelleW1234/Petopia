@@ -122,15 +122,23 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                 )}
             
-                {playSelection === -1 || !playDone ? (
+                <div className="buttonContainer">
+                    {playSelection === -1 || !playDone ? (
 
-                    <button className = "GeneralNavButton" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                        </>
 
-                ) : (
+                    ) : (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                        </>
 
-                )}
+                    )}
+                </div>
             </div>
 
         </div>

@@ -4,7 +4,7 @@ function PetGuide({setPetGuideOpenFlag}) {
 
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
+        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
             <h1 className="header">Read About Your Pet Options:</h1>
             <div className ="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor PetGuide_InfoContainer">
                 Hello. This is a placeholder

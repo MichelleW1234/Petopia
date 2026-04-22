@@ -88,8 +88,8 @@ function Activity({activityKey, activityTimeGap}) {
     return (
         <div className = "ActivityContainer">
             <div> 
-                <h2>{activityLastStrings[activityKey] + activityLastTimeString}</h2>
-                <h2>{activityNextStrings[activityKey] + activityNextTimeString}</h2>
+                <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
+                <h1>{activityNextStrings[activityKey] + activityNextTimeString}</h1>
             </div>
         
             {PetList[ActivePetName][healthKey] > 0 ? (

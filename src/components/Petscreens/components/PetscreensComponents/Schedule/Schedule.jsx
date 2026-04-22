@@ -15,9 +15,9 @@ function Schedule({setScheduleOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
+        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
 
-            <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor  Schedule_InfoContainer">
+            <div className="Schedule_InfoContainer">
                 
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 

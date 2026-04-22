@@ -1,76 +1,87 @@
-.OptionsPetMindContainer {
-
-    display: flex;
-    flex-direction: row;
-
-    gap: 1rem;
-        
-}
-
-.OptionsDesiredOptionSign{
+.Options_Container{
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border-radius: 1rem;
-    gap: 2rem;
+    gap: 3rem;
+    
+}
 
-    color: white;
 
-    img {
+.Options_DesiredOptionContainer {
 
-        height: 10rem;
-        width: 10rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
-        filter:
-            drop-shadow(0 0 5px rgb(207, 194, 255))
-            drop-shadow(0 0 10px rgba(178, 156, 255))
-            drop-shadow(0 0 15px rgb(152, 123, 255));
+    gap: 1rem;
+    padding: 1rem;
+  
+}
+
+
+.Options_Pet{
+
+    height: 10rem;
+    width: 10rem;
+
+    filter:
+        drop-shadow(0 0 5px rgb(200, 175, 255))
+        drop-shadow(0 0 10px rgba(175, 150, 255))
+        drop-shadow(0 0 15px rgb(150, 125, 255));
+
+}
+
+.Options_DesiredOption {
+
+    height: 10rem;
+    width: 10rem;
+    position: relative;
+
+    img{
+
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
 
     }
 
 }
 
-.OptionsListContainer{
+.Options_DesiredOptionBubble{
+
+    height: 100%;
+    width: 100%;
+    filter:
+        drop-shadow(0 0 5px rgb(200, 175, 255))
+        drop-shadow(0 0 10px rgba(175, 150, 255))
+        drop-shadow(0 0 15px rgb(150, 125, 255));
+
+}
+
+.Options_DesiredOptionObject{
+
+    width: 80%;
+    height: 80%;
+
+}
+
+.Options_ListContainer{
 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     
-    gap: 4rem;
+    gap: 2rem;
 
 }
 
-.OptionsListButton{
-        
-    height: 15rem;
-    width: 12rem;
+.test{
 
-    border-radius: 1rem;
-    padding: 2rem;
-
-    box-shadow: 0 0 0.25rem 0.15rem rgb(207, 194, 255);
-
-    filter: 
-        drop-shadow(0 0 4px rgb(207, 194, 255))
-        drop-shadow(0 0 8px rgba(178, 156, 255))
-        drop-shadow(0 0 12px rgb(152, 123, 255));
-
-    transition: transform 0.3s ease;
-
-}
-
-.OptionsListButton:hover{
-
-    box-shadow: 0 0 0.35rem 0.25rem rgb(207, 194, 255);
-
-    filter: 
-        drop-shadow(0 0 5px rgb(207, 194, 255))
-        drop-shadow(0 0 10px rgba(178, 156, 255))
-        drop-shadow(0 0 15px rgb(152, 123, 255));
-
-    transform: scale(1.1);
+    padding: 3rem;
+    border-radius: 3rem;
 
 }

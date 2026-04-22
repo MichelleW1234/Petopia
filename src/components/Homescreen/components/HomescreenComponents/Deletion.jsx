@@ -65,12 +65,12 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     }
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonstationBackgroundColor">
+        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
             <h1 className="header">Select pet(s) to clear:</h1>
-            <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor Deletion_PetOptionContainer">
+            <div className="Deletion_PetOptionContainer">
                 {Object.keys(PetList).map((key) => (
 
-                    <div key = {key} className = "Deletion_PetOptionSlot">
+                    <div key = {key} className = "ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_NonStationColor Deletion_PetOptionSlot">
 
                         {deletionSelectedPets.includes(key) ? (
 

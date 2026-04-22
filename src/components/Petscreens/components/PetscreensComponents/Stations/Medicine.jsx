@@ -207,15 +207,23 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                 
                 )}
 
-                {medicineSelection === -1 || !medicineDone ? (
+                <div className="buttonContainer">
+                    {medicineSelection === -1 || !medicineDone ? (
 
-                    <button className = "GeneralNavButton" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                        </>
 
-                ) : (
+                    ) : (
 
-                    <button className = "FloatingFlagButton" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                        <>
+                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                        </>
 
-                )}
+                    )}
+                </div>
 
             </div>
 

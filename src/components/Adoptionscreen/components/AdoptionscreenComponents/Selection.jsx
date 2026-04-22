@@ -11,11 +11,12 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1 className="header"> Select a new Pet: </h1>
 
-            <div className = "ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Adoption_SelectionContainer">
+            <div className = "Adoption_SelectionContainer">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    key === selectedPet ? (
+                    <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color testing">
+                    {key === selectedPet ? (
 
                         <div key = {key} className = "ReusableComponentButtonCircle_ActiveStructure Screen_ReusableComponentButtonCircle_ActiveColor">
                             <img src = {portraitPetImages[key][0]}/>
@@ -27,7 +28,8 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
                             <img src = {portraitPetImages[key][0]} />
                         </div>
 
-                    )
+                    )}
+                    </div>
 
                 ))}
 
