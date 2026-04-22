@@ -42,7 +42,7 @@
   --background_outer_color_light: 25%;
   --background_inner_color_light: 50%;
 
-  --background_floatingflag_color_light: 25%;
+  --background_floatingflag_color_light: 25%; /*Keep this if not revertiing*/
   --background_floatingflag_color_transparency: 75%;
 
 
@@ -75,8 +75,8 @@
   /*Color hues:*/
 
   --background_screen_base_color_hue: 280;
-  --background_floatingflag_station_base_color_hue: 260;
-  --background_floatingflag_nonstation_base_color_hue: 240;
+  --background_floatingflag_station_base_color_hue: 270;
+  --background_floatingflag_nonstation_base_color_hue: 260;
 
 }
 
@@ -473,15 +473,15 @@ a:active {
 
 .BackgroundFloatingFlag_NonStationBackgroundColor{
 
-  background: linear-gradient(hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);
-
+  /*background: linear-gradient(hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);*/
+  background: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency));
 }
 
 
 .BackgroundFloatingFlag_StationBackgroundColor{
 
-  background: linear-gradient(hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);
-
+  /*background: linear-gradient(hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);*/
+  background: hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency));
 }
 
 
