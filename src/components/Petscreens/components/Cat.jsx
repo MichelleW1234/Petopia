@@ -229,7 +229,7 @@ function Cat (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 

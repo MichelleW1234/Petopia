@@ -83,75 +83,63 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
         
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
 
-            <div className="StationsFlagContainer">
+            {cleanSelection === -1 ? (
 
-                {cleanSelection === -1 ? (
+                <Options
+                    optionsDesiredOption = {cleanDesiredOption}
+                    optionsList = {cleanOptions} 
+                    setOptionsTotal = {setCleanTotal}
+                    setOptionsSelection = {setCleanSelection}
+                />
 
-                    <Options
-                        optionsDesiredOption = {cleanDesiredOption}
-                        optionsList = {cleanOptions} 
-                        setOptionsTotal = {setCleanTotal}
-                        setOptionsSelection = {setCleanSelection}
+            ) : (
+
+                <>
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                     />
 
+                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">
+                        <div className="Stations_InnerWindow">
+                            {!cleanDone ? ( 
+
+                                <>
+                                    <h2> Drag your cursor back and forth</h2>
+                                    <img
+                                        className = "Stations_Image" 
+                                        src = {cleanAnimationImages[cleanAnimationImage]} 
+                                        onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
+                                    />
+                                </>
+
+                            ) : (
+
+                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                            )}
+                        </div>
+                    </div>
+                </>
+
+
+            )}
+
+            <div className="buttonContainer">
+                {cleanSelection === -1 || !cleanDone ? (
+
+                    <>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                    </>
+
                 ) : (
- 
-                    !cleanDone ? ( 
 
-                        <>
-                            <h2> Cleaning in progress...</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Clean">
-                                <h2> Drag your cursor back and forth</h2>
-                                <img
-                                    className = "StationsImage StationsImage-Clean" 
-                                    src = {cleanAnimationImages[cleanAnimationImage]} 
-                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
-                                />
-                            </div>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <h2> Done!!!!!!</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Clean">
-                                {/* Change this later!!!!!!!!!!!!!*/}
-                                <img
-                                    className = "StationsImage StationsImage-Clean" 
-                                    src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} 
-                                />
-                            </div>
-                        </>
-
-                    )
-
+                    <>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                    </>
 
                 )}
-
-                <div className="buttonContainer">
-                    {cleanSelection === -1 || !cleanDone ? (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setCleanOpenFlag(false)}>Done</button>
-                        </>
-
-                    )}
-                </div>
-
             </div>
 
         </div>

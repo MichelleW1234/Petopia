@@ -146,85 +146,70 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
 
-            <div className="StationsFlagContainer">
-        
-                {medicineSelection === -1 ? (
+            {medicineSelection === -1 ? (
+
+                PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
+
+                    <Options
+                        optionsDesiredOption = {0}
+                        optionsList = {medicineOptions} 
+                        setOptionsTotal = {setMedicineTotal}
+                        setOptionsSelection = {setMedicineSelection}
+                    />
+
+                ) : (
+
+                    <Options
+                        optionsDesiredOption = {-1}
+                        optionsList = {medicineOptions} 
+                        setOptionsTotal = {setMedicineTotal}
+                        setOptionsSelection = {setMedicineSelection}
+                    />
+
+                )
+
+            ) : (
+
+                <>
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                    />
+                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">  
+                        <div className="Stations_InnerWindow">
+
+                            {!medicineDone ? (
+
+                                <img className = "Stations_Image" src = {medicineAnimationImages[medicineAnimationImage]} />
+
+                            ) : (
+
+                                /* Change this later!!!!!!!!!!!!!*/
+                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                    
+                            )}
+
+                        </div> 
+                    </div>
+                </>
+            )}
+            
+
+            <div className="buttonContainer">
+                {medicineSelection === -1 || !medicineDone ? (
 
                     <>
-
-                        {PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
-
-                            <Options
-                                optionsDesiredOption = {0}
-                                optionsList = {medicineOptions} 
-                                setOptionsTotal = {setMedicineTotal}
-                                setOptionsSelection = {setMedicineSelection}
-                            />
-
-                        ) : (
-
-                            <Options
-                                optionsDesiredOption = {-1}
-                                optionsList = {medicineOptions} 
-                                setOptionsTotal = {setMedicineTotal}
-                                setOptionsSelection = {setMedicineSelection}
-                            />
-
-                        )}
-
-                        <h2> Use medicine (+4 between 8pm and 6am, +2 otherwise)! </h2>
-                        
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
                     </>
 
                 ) : (
 
-                    !medicineDone ? (
+                    <>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                    </>
 
-                        <>
-                            <h2>Medicine in progress...</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Medicine">
-                                <img className = "StationsImage StationsImage-Medicine" src = {medicineAnimationImages[medicineAnimationImage]} />
-                            </div>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <h2>Finished!!!!</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Medicine">
-                                {/* Change this later!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Medicine" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                            </div>
-                        </>
-                    
-                    )
-                
                 )}
-
-                <div className="buttonContainer">
-                    {medicineSelection === -1 || !medicineDone ? (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
-                        </>
-
-                    )}
-                </div>
-
             </div>
 
         </div>

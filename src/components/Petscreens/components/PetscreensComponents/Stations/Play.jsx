@@ -63,29 +63,27 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
         
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
 
-            <div className="StationsFlagContainer">
+            {playSelection === -1 ? (
 
-                {playSelection === -1 ? (
+                <Options
+                    optionsDesiredOption = {playDesiredOption}
+                    optionsList = {playOptions} 
+                    setOptionsTotal = {setPlayTotal}
+                    setOptionsSelection = {setPlaySelection}
+                />
 
-                    <Options
-                        optionsDesiredOption = {playDesiredOption}
-                        optionsList = {playOptions} 
-                        setOptionsTotal = {setPlayTotal}
-                        setOptionsSelection = {setPlaySelection}
+            ) : (
+
+                <>
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                     />
 
-                ) : (
-
-                    !playDone ? (
-
-                        <>
-                            <h2>Game in progress...</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Play">
-                                
-                                {playSelectedGameWindow !== null ? (
+                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">
+                        <div className="Stations_InnerWindow">
+                            {!playDone ? (
+                                        
+                                playSelectedGameWindow !== null ? (
 
                                     <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
                                     /*
@@ -100,45 +98,37 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                                     null /*Default window? */
 
-                                )}
+                                )
 
-                            </div>
-                        </>
+                            ) : (
 
-                    ) : (
+                                /*CHANGE THIS LATER!!!!!!!!!!!!!!!*/
+                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
-                        <>
-                            <h2>Finished!!!!</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Play">
-                                {/*CHANGE THIS LATER!!!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Play" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                            </div>
-                        </>
+                            )}
+                        </div>
+                    </div>
 
-                    )
+                </>
+
+            )}
+        
+            <div className="buttonContainer">
+                {playSelection === -1 || !playDone ? (
+
+                    <>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
+                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                    </>
 
                 )}
-            
-                <div className="buttonContainer">
-                    {playSelection === -1 || !playDone ? (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
-                            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Done</button>
-                        </>
-
-                    )}
-                </div>
             </div>
 
         </div>

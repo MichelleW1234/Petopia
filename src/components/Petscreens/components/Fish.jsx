@@ -245,7 +245,7 @@ function Fish (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 

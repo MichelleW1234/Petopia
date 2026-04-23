@@ -1,123 +1,36 @@
-.StationsFlagContainer{
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 5rem;
-    gap: 3rem;
-
-    color: white;
-
-}
-
-.StationsWindow {
-
-    height: 30rem;
-    width: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.Stations_WindowBorder {
 
     border-radius: 5rem;
     padding: 3rem;
-    gap: 3rem;
 
 }
 
-.StationsWindow-Feed {
+.Stations_InnerWindow{
 
-    border: 0.25rem solid rgb(255, 111, 0);
-    
-    box-shadow:
-        0 0 2rem rgb(255, 111, 0),
-        0 0 4rem rgba(255, 111, 0, 0.65),
-        0 0 6rem rgb(255, 111, 0, 0.3);
+    height: 25rem;
+    width: 45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
+    border-radius: 3rem;
 
-}
-
-.StationsWindow-Clean {
-
-    border: 0.25rem solid rgb(0, 200, 255);
-
-    box-shadow:
-        0 0 2rem rgb(0, 200, 255),
-        0 0 4rem rgb(0, 200, 255, 0.65),
-        0 0 6rem rgb(0, 200, 255, 0.3);
+    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
 
 }
 
 
-.StationsWindow-Play {
-
-    border: 0.25rem solid rgb(0, 255, 38);
-
-    box-shadow:
-        0 0 2rem rgb(0, 255, 38),
-        0 0 4rem rgb(0, 255, 38, 0.65),
-        0 0 6rem rgb(0, 255, 38, 0.3);
-
-}
-
-
-.StationsWindow-Medicine {
-
-    border: 0.25rem solid rgb(221, 0, 255);
-
-    box-shadow:
-        0 0 2rem rgb(221, 0, 255),
-        0 0 4rem rgb(221, 0, 255, 0.65),
-        0 0 6rem rgb(221, 0, 255, 0.3);
-
-}
-
-
-.StationsImage {
+.Stations_Image {
 
     height: 10rem;
     width: 10rem;
 
-}
-
-
-.StationsImage-Feed {
-
     filter: 
-        drop-shadow(0 0 5px rgb(255, 217, 188))
-        drop-shadow(0 0 10px rgb(255, 171, 106))
-        drop-shadow(0 0 15px  rgb(255, 111, 0));
+        drop-shadow(0 0 5px rgb(235, 220, 255))
+        drop-shadow(0 0 10px rgb(211, 180, 255))
+        drop-shadow(0 0 15px  rgb(186, 137, 255));
 
-}
-
-.StationsImage-Clean {
-
-    filter: 
-        drop-shadow(0 0 5px rgb(192, 241, 255))
-        drop-shadow(0 0 10px rgb(111, 224, 255))
-        drop-shadow(0 0 15px rgb(0, 200, 255));
-
-}
-
-
-.StationsImage-Play {
-
-    filter: 
-        drop-shadow(0 0 5px rgb(188, 255, 198))
-        drop-shadow(0 0 10px rgb(106, 255, 128))
-        drop-shadow(0 0 15px rgb(0, 255, 38));
-
-}
-
-
-.StationsImage-Medicine {
-
-    filter: 
-        drop-shadow(0 0 5px rgb(246, 187, 255))
-        drop-shadow(0 0 10px rgb(233, 94, 255))
-        drop-shadow(0 0 15px rgb(221, 0, 255));
 
 }
 

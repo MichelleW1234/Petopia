@@ -110,45 +110,41 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
         
-                {feedSelection === -1 ? (
+            {feedSelection === -1 ? (
 
-                    <Options
-                        optionsDesiredOption = {feedDesiredOption}
-                        optionsList = {feedOptions} 
-                        setOptionsTotal = {setFeedTotal}
-                        setOptionsSelection = {setFeedSelection}
+                <Options
+                    optionsDesiredOption = {feedDesiredOption}
+                    optionsList = {feedOptions} 
+                    setOptionsTotal = {setFeedTotal}
+                    setOptionsSelection = {setFeedSelection}
+                />
+        
+            ) : (
+
+                <>
+
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
-            
-                ) : (
 
-                    !feedDone ? (
+                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">  
+                        <div className="Stations_InnerWindow">
+                            {!feedDone ? (
 
-                        <>
-                            <h2> Feeding in progress...</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
-                            />
-                            <div className="StationsWindow StationsWindow-Feed">  
-                                <img className = "StationsImage StationsImage-Feed" src = {feedAnimationImages[feedAnimationImage]} />
-                            </div>
-                        </>
+                                <img className = "Stations_Image" src = {feedAnimationImages[feedAnimationImage]} />
 
-                    ) : (
+                            ) : (
 
-                        <>
-                            <h2>Finished!!</h2>
-                            <ProgressBar
-                                progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
-                            />
-                            <div className = "StationsWindow StationsWindow-Feed">
-                                {/* Change this!!!!!!!!!!!!!*/}
-                                <img className = "StationsImage StationsImage-Feed" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                            </div>
-                        </>
+                                /* Change this!!!!!!!!!!!!!*/
+                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
-                    )
+                            )}
+                        </div>
+                    </div>
 
-                )}
+                </>
+
+            )}
 
             <div className="buttonContainer">
                 {feedSelection === -1 || !feedDone ? (

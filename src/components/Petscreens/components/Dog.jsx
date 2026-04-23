@@ -266,7 +266,7 @@ function Dog (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogPetCareGuideOpenFlag(true)}> Guide </button>
                 
                 </div>
 
