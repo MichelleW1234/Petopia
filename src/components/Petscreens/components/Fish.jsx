@@ -55,7 +55,8 @@ import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Clean from "./PetscreensComponents/Stations/Clean.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
+import Schedule from "./PetscreensComponents/NonStations/Schedule.jsx";
+import PetCareGuide from "./PetscreensComponents/NonStations/PetCareGuide.jsx";
 
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -81,6 +82,7 @@ function Fish (){
     const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
     const [fishMedicineOpenFlag, setFishMedicineOpenFlag] = useState(false);
     const [fishScheduleOpenFlag, setFishScheduleOpenFlag] = useState(false);
+    const [fishPetCareGuideOpenFlag, setFishPetCareGuideOpenFlag] = useState(false);
     const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
     const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
 
@@ -202,6 +204,12 @@ function Fish (){
                 setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
+            {fishPetCareGuideOpenFlag &&
+            <PetCareGuide
+                setPetCareGuideOpenFlag = {setFishPetCareGuideOpenFlag}
+            />}
+
+
             <div className = "BackgroundScreen_Layout Fish_BackgroundScreen_Color">
 
                 <div className="Navbar_Container">
@@ -237,6 +245,7 @@ function Fish (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
 
                 </div>
 

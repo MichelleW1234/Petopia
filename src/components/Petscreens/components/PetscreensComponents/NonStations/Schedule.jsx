@@ -1,4 +1,4 @@
-import Activity from "./ScheduleComponents/Activity.jsx";
+import Activity from "./NonStationsComponents/Activity.jsx";
 
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";

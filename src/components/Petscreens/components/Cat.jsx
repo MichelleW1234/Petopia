@@ -44,7 +44,8 @@ import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Play from "./PetscreensComponents/Stations/Play.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
+import Schedule from "./PetscreensComponents/NonStations/Schedule.jsx";
+import PetCareGuide from "./PetscreensComponents/NonStations/PetCareGuide.jsx";
 
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -72,6 +73,7 @@ function Cat (){
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
     const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
     const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
+    const [catPetCareGuideOpenFlag, setCatPetCareGuideOpenFlag] = useState(false);
     const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
     const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
 
@@ -186,6 +188,11 @@ function Cat (){
             <Schedule
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
+
+            {catPetCareGuideOpenFlag &&
+            <PetCareGuide
+                setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
+            />}
         
             <div className = "BackgroundScreen_Layout Cat_BackgroundScreen_Color">
 
@@ -222,7 +229,8 @@ function Cat (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
+
                 </div>
 
                 <div className = "Screen_ComponentsContainer">

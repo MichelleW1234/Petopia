@@ -54,7 +54,8 @@ import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Clean from "./PetscreensComponents/Stations/Clean.jsx";
 import Play from "./PetscreensComponents/Stations/Play.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/Schedule/Schedule.jsx";
+import Schedule from "./PetscreensComponents/NonStations/Schedule.jsx";
+import PetCareGuide from "./PetscreensComponents/NonStations/PetCareGuide.jsx";
 
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -82,6 +83,7 @@ function Dog (){
     const [dogCleanOpenFlag, setDogCleanOpenFlag] = useState(false);
     const [dogPlayOpenFlag, setDogPlayOpenFlag] = useState(false);
     const [dogMedicineOpenFlag, setDogMedicineOpenFlag] = useState(false);
+    const [dogPetCareGuideOpenFlag, setDogPetCareGuideOpenFlag] = useState(false);
     const [dogScheduleOpenFlag, setDogScheduleOpenFlag] = useState(false);
     const [dogFeedDesiredOption, setDogFeedDesiredOption] = useState(-1);
     const [dogCleanDesiredOption, setDogCleanDesiredOption] = useState(-1);
@@ -221,6 +223,11 @@ function Dog (){
             <Schedule
                 setScheduleOpenFlag={setDogScheduleOpenFlag}
             />}
+
+            {dogPetCareGuideOpenFlag &&
+            <PetCareGuide
+                setPetCareGuideOpenFlag = {setDogPetCareGuideOpenFlag}
+            />}
             
             <div className = "BackgroundScreen_Layout Dog_BackgroundScreen_Color">
 
@@ -259,6 +266,7 @@ function Dog (){
                     )}
 
                     <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setDogPetCareGuideOpenFlag(true)}> Pet Care Guide </button>
                 
                 </div>
 

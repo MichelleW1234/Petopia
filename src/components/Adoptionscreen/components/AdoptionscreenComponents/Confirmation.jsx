@@ -185,6 +185,7 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
 
                 <p> the {selectedPet}!</p>
                 <p>{petPersonality[selectedPet]}</p>
+                <p>Make sure to read the Pet Care Guide!!</p>
             </div>
                 
             <div className = "Confirmation_CheckingContainer">
