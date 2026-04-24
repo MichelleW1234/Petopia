@@ -1,11 +1,4 @@
-.Stations_WindowBorder {
-
-    border-radius: 5rem;
-    padding: 3rem;
-
-}
-
-.Stations_InnerWindow{
+.Stations_WindowContainer{
 
     height: 25rem;
     width: 45rem;
@@ -14,33 +7,22 @@
     align-items: center;
     justify-content: center;
 
-    border-radius: 3rem;
+    border-radius: 4rem;
 
     box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
 
 }
 
 
-.Stations_Image {
+.Stations_WindowImage {
 
     height: 10rem;
     width: 10rem;
 
     filter: 
-        drop-shadow(0 0 5px rgb(235, 220, 255))
-        drop-shadow(0 0 10px rgb(211, 180, 255))
-        drop-shadow(0 0 15px  rgb(186, 137, 255));
+        drop-shadow(0 0 5px rgb(255, 255, 255))
+        drop-shadow(0 0 10px rgb(255, 255, 255))
+        drop-shadow(0 0 15px  rgb(255, 255, 255));
 
-
-}
-
-.buttonContainer{
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    gap: 2rem;    
 
 }

@@ -26,34 +26,34 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
         <div className="Options_Container">
 
-            <div className="Options_DesiredOptionContainer"> 
+            <div className="Options_PetThoughtContainer"> 
 
                 {/* Change this!!!!!!!!!!!!!*/}
-                <img className = "Options_Pet" src = {optionsList[0]} />
+                <img className = "Options_PetThoughtPetImage" src = {optionsList[0]} />
 
-                <div className="Options_DesiredOption">
+                <div className="Universal_OverlappingImagesContainer Options_PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
-                    <img src = {bubble} className="Options_DesiredOptionBubble"/>
+                    <img src = {bubble} className="Options_PetThoughtDesiredOptionBubbleImage"/>
 
                     {optionsDesiredOption === -1 ? (
 
                         /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className="Options_DesiredOptionObject"/>
+                        <img src = {heart} className="Options_PetThoughtDesiredOptionObjectImage"/>
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption]} className="Options_DesiredOptionObject"/>
+                        <img src = {optionsList[optionsDesiredOption]} className="Options_PetThoughtDesiredOptionObjectImage"/>
 
                     )}
                 </div>
 
             </div>
-            <div className= "Options_ListContainer">  
+            <div className= "Universal_RowContainer">  
 
                 {optionsList.map((option, index) => (
 
-                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor test">
+                    <div className="ReusableComponentContainer_ButtonBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">
                         <img key = {index} className = "ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_StationColor" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 

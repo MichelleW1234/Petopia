@@ -99,14 +99,14 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                     />
 
-                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">
-                        <div className="Stations_InnerWindow">
+                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">
+                        <div className="Stations_WindowContainer">
                             {!cleanDone ? ( 
 
                                 <>
                                     <h2> Drag your cursor back and forth</h2>
                                     <img
-                                        className = "Stations_Image" 
+                                        className = "Stations_WindowImage" 
                                         src = {cleanAnimationImages[cleanAnimationImage]} 
                                         onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                     />
@@ -114,7 +114,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                             ) : (
 
-                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
                             )}
                         </div>
@@ -124,7 +124,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
             )}
 
-            <div className="buttonContainer">
+            <div className="Universal_RowContainer">
                 {cleanSelection === -1 || !cleanDone ? (
 
                     <>

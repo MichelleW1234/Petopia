@@ -86,23 +86,22 @@ function Activity({activityKey, activityTimeGap}) {
 
 
     return (
-        <div className = "ActivityContainer">
-            <div> 
-                <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
-                <h1>{activityNextStrings[activityKey] + activityNextTimeString}</h1>
-            </div>
-        
+        <div className = "Activity_Container">
+            
+            <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
+            <h1>{activityNextStrings[activityKey] + activityNextTimeString}</h1>
+    
             {PetList[ActivePetName][healthKey] > 0 ? (
 
-                <div className = "ActivityTimeBarContainer">
+                <div className = "Activity_TimeBarContainer">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "ActivityTimeBarCellHalfway"
+                                                        "Activity_TimeBarCellHalfway"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "ActivityTimeBarCellDone"
-                                                            : "ActivityTimeBarCellLeft"
+                                                            "Activity_TimeBarCellDone"
+                                                            : "Activity_TimeBarCellLeft"
                                                         }>
                         </div>
 
@@ -112,11 +111,11 @@ function Activity({activityKey, activityTimeGap}) {
 
             ) : (
 
-                <div className = "ActivityTimeBarContainer">
+                <div className = "Activity_TimeBarContainer">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "ActivityTimeBarCellCancelled"></div>
+                        <div key = {num} className = "Activity_TimeBarCellCancelled"></div>
 
                     ))}
                     

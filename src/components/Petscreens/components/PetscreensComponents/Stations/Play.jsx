@@ -79,8 +79,8 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                     />
 
-                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">
-                        <div className="Stations_InnerWindow">
+                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">
+                        <div className="Stations_WindowContainer">
                             {!playDone ? (
                                         
                                 playSelectedGameWindow !== null ? (
@@ -103,7 +103,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                             ) : (
 
                                 /*CHANGE THIS LATER!!!!!!!!!!!!!!!*/
-                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
                             )}
                         </div>
@@ -113,7 +113,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
             )}
         
-            <div className="buttonContainer">
+            <div className="Universal_RowContainer">
                 {playSelection === -1 || !playDone ? (
 
                     <>

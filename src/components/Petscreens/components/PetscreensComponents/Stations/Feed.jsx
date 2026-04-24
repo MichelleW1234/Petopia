@@ -127,16 +127,16 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
 
-                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">  
-                        <div className="Stations_InnerWindow">
+                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">  
+                        <div className="Stations_WindowContainer">
                             {!feedDone ? (
 
-                                <img className = "Stations_Image" src = {feedAnimationImages[feedAnimationImage]} />
+                                <img className = "Stations_WindowImage" src = {feedAnimationImages[feedAnimationImage]} />
 
                             ) : (
 
                                 /* Change this!!!!!!!!!!!!!*/
-                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
                             )}
                         </div>
@@ -146,7 +146,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
             )}
 
-            <div className="buttonContainer">
+            <div className="Universal_RowContainer">
                 {feedSelection === -1 || !feedDone ? (
 
                     <>

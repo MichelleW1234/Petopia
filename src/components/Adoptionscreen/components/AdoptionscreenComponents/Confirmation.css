@@ -9,12 +9,12 @@
 
     gap: 1rem;
 
-    color: white;
+    /*color: white;*/
 
 }
 
 
-.Confirmation_NameInputBox{
+.Confirmation_NameBorder{
 
     display: flex;
     flex-direction: row;
@@ -36,16 +36,7 @@
     }
 
 }
-
-
-.Confirmation_NameError {
-
-    height: 1rem;
-    
-    color: rgb(255, 0, 111);
-
-}
-
+ 
 
 .Confirmation_CheckingContainer{
 
@@ -59,13 +50,10 @@
 }
 
 
-.Confirmation_ButtonContainer{
+.Confirmation_CheckingError {
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    gap: 4rem;
+    height: 1rem;
+    
+    color: rgb(255, 0, 111);
 
 }

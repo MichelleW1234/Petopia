@@ -1,4 +1,4 @@
-.ActivityContainer{
+.Activity_Container{
 
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 
-.ActivityTimeBarContainer {
+.Activity_TimeBarContainer {
 
   display: flex;
   flex-direction: row;
@@ -20,7 +20,7 @@
 
 }
 
-.ActivityTimeBarCellLeft {
+.Activity_TimeBarCellLeft {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -29,7 +29,7 @@
 }
 
 
-.ActivityTimeBarCellHalfway {
+.Activity_TimeBarCellHalfway {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -37,7 +37,7 @@
 
 }
 
-.ActivityTimeBarCellDone {
+.Activity_TimeBarCellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -45,7 +45,7 @@
 
 }
 
-.ActivityTimeBarCellCancelled {
+.Activity_TimeBarCellCancelled {
 
   height: 0.75rem;
   width: 0.3rem;

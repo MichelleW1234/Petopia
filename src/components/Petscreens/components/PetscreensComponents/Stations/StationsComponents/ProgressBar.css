@@ -1,14 +1,14 @@
-.ProgressBarContainer {
+.ProgressBar_Container {
 
   display: flex;
   flex-direction: row;
   width: fit-content;
 
-  box-shadow: 0 0 0.5rem 0.2rem rgb(208, 255, 196);
+  box-shadow: 0 0 0.5rem 0.2rem rgb(209, 255, 200);
 
 }
 
-.ProgressBarCellDone {
+.ProgressBar_CellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -16,7 +16,7 @@
 
 }
 
-.ProgressBarCellLeft {
+.ProgressBar_CellLeft {
 
   height: 0.75rem;
   width: 0.3rem;

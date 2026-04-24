@@ -169,12 +169,12 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
     
     return (
         <>
-            <h1 className="header">Fill out this form: </h1>  
+            <h1>Fill out this form: </h1>  
             
             <div className = "Confirmation_Container">
                 <p>Hello, my name is </p>
 
-                <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Confirmation_NameInputBox">
+                <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Confirmation_NameBorder">
                     <input 
                         type="text"
                         value={confirmationPetName}
@@ -189,8 +189,8 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             </div>
                 
             <div className = "Confirmation_CheckingContainer">
-                <p className = "Confirmation_NameError">{errorMessage}</p>
-                <div className = "Confirmation_ButtonContainer">
+                <p className = "Confirmation_CheckingError">{errorMessage}</p>
+                <div className = "Universal_RowContainer">
                     <button className = "ReusableComponentButtonPill_Structure Screen_ReusableComponentButtonPill_Color" onClick = {() => undo()}> Undo Selection </button>
                     <Link to = "/home" className = "ReusableComponentButtonPill_Structure Screen_ReusableComponentButtonPill_Color" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>

@@ -83,12 +83,12 @@ function Home (){
                 </div>
 
                 <div className = "Screen_ComponentsContainer">
-                    <h1 className="header"> Your Pets: </h1>
-                    <div className="Home_PetSlotContainer">
+                    <h1> Your Pets: </h1>
+                    <div className="Universal_RowContainer">
 
                         {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <h2 className = "Home_NoPets"> Your pet(s) will appear here when added. </h2>
+                            <h2 className = "ReusableComponentContainer_WindowBorderStructure Screen_ReusableComponentContainer_Color"> Your pet(s) will appear here when added. </h2>
 
                         ) : (
 
@@ -98,7 +98,7 @@ function Home (){
 
                                 return (
 
-                                    <div key = {key} className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color Home_PetSlot">
+                                    <div key = {key} className="ReusableComponentContainer_ButtonBorderStructure Screen_ReusableComponentContainer_Color">
                                         <div className = "Home_PetSlotAlertContainer">
                                             
                                             {currPetHealth >= 75 ? (
@@ -151,7 +151,7 @@ function Home (){
                                         >
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
-                                        <h2 className = "Home_PetSlotPetName">{key}</h2>
+                                        <h2>{key}</h2>
                                     </div>
 
                                 )

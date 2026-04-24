@@ -9,26 +9,26 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
     return (
 
         <>
-            <h1 className="header"> Select a new Pet: </h1>
+            <h1> Select a new Pet: </h1>
 
-            <div className = "Adoption_SelectionContainer">
+            <div className = "Universal_RowContainer">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="ReusableComponentContainer_Structure Screen_ReusableComponentContainer_Color testing">
-                    {key === selectedPet ? (
+                    <div className="ReusableComponentContainer_ButtonBorderStructure Screen_ReusableComponentContainer_Color">
+                        {key === selectedPet ? (
 
-                        <div key = {key} className = "ReusableComponentButtonCircle_ActiveStructure Screen_ReusableComponentButtonCircle_ActiveColor">
-                            <img src = {portraitPetImages[key][0]}/>
-                        </div>
+                            <div key = {key} className = "ReusableComponentButtonCircle_ActiveStructure Screen_ReusableComponentButtonCircle_ActiveColor">
+                                <img src = {portraitPetImages[key][0]}/>
+                            </div>
 
-                    ) : (
+                        ) : (
 
-                        <div key = {key} className = "ReusableComponentButtonCircle_Structure Screen_ReusableComponentButtonCircle_Color" onClick = {() => setSelectedPet(key)}>
-                            <img src = {portraitPetImages[key][0]} />
-                        </div>
+                            <div key = {key} className = "ReusableComponentButtonCircle_Structure Screen_ReusableComponentButtonCircle_Color" onClick = {() => setSelectedPet(key)}>
+                                <img src = {portraitPetImages[key][0]} />
+                            </div>
 
-                    )}
+                        )}
                     </div>
 
                 ))}

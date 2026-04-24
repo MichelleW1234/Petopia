@@ -174,17 +174,17 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                     <ProgressBar
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
-                    <div className="ReusableComponentContainer_Structure FloatingFlag_ReusableComponentContainer_StationColor Stations_WindowBorder">  
-                        <div className="Stations_InnerWindow">
+                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">  
+                        <div className="Stations_WindowContainer">
 
                             {!medicineDone ? (
 
-                                <img className = "Stations_Image" src = {medicineAnimationImages[medicineAnimationImage]} />
+                                <img className = "Stations_WindowImage" src = {medicineAnimationImages[medicineAnimationImage]} />
 
                             ) : (
 
                                 /* Change this later!!!!!!!!!!!!!*/
-                                <img className = "Stations_Image" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
                                     
                             )}
 
@@ -194,7 +194,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
             )}
             
 
-            <div className="buttonContainer">
+            <div className="Universal_RowContainer">
                 {medicineSelection === -1 || !medicineDone ? (
 
                     <>

@@ -1,37 +1,29 @@
-.Main_PetWindowBorder {
-
-  padding: 5rem;
-  border-radius: 6rem;
-
-}
-
-
-.Main_FullWindowContainer{
+.Main_WindowContainer{
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding: 1rem;
-    border-radius: 3rem;
+    padding: 2rem;
+    border-radius: 4rem;
     box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
 
 }
 
 
-.Main_FullWindowContainer-dog{ 
+.Main_WindowContainer-dog{ 
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_FullWindowContainer-cat{
+.Main_WindowContainer-cat{
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_FullWindowContainer-fish{
+.Main_WindowContainer-fish{
 
     background: linear-gradient(to bottom, #59bfff, #000872);
 
@@ -39,17 +31,18 @@
 
 
 
-.Main_PetStatsContainer{
+.Main_WindowStatsContainer{
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     padding: 0rem 1rem;
+    gap: 1rem;
     
 }
 
-.Main_PetName{
+.Main_WindowStatsPetName{
 
     color:rgb(0,0,0);
     filter: 
@@ -59,7 +52,7 @@
 
 }
 
-.Main_HealthContainer{
+.Main_WindowStatsHealthContainer{
 
     width: 40rem;
     height: 5.5rem;
@@ -72,7 +65,7 @@
 }
 
 
-.Main_HealthHeart {
+.Main_WindowStatsHealthHeart {
 
     height: 2.5rem;
     width: 2.5rem;
@@ -85,7 +78,7 @@
 }
 
 
-.Main_PetWindowGrid {
+.Main_WindowGrid {
 
     display: grid;
     grid-template-columns: repeat(20, auto);
@@ -93,7 +86,7 @@
 }
 
 
-.Main_PetWindowGridCell {
+.Main_WindowGridCell {
 
     height: 20rem;
     width: 2rem;
@@ -101,32 +94,26 @@
 }
 
 
-.Main_PetWindowGridPetCell {
+.Main_WindowGridPetCell {
 
     height: 20rem;
     width: 8rem;
-    position: relative;
 
-    img {
+}
 
-        width: 100%;
-        top: 50%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
+.Main_WindowGridPetCellImage{
 
-        filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
-
-    }
+    width: 100%;
+    
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px rgb(255, 255, 255));
 
 }
 
 
-
-.Main_PetWindowGridEmpty{
+.Main_WindowGridEmpty{
 
     height: 20rem;
     width: 46rem;

@@ -9,44 +9,6 @@
 
 }
 
-.Home_PetSlotContainer{
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  gap: 2rem;
-
-}
-
-.Home_NoPets {
-
-  padding: 5rem 10rem;
-  border-radius: 1rem;
-
-  border-top: 0.1rem solid rgb(61, 0, 125);
-  border-right: 0.1rem solid rgb(61, 0, 125);
-  border-left: 0.4rem solid rgb(61, 0, 125);
-  border-bottom: 0.4rem solid rgb(61, 0, 125);
-  background-color: rgb(136, 142, 255);
-  box-shadow: 0 0 1rem 0.1rem rgb(200, 203, 255);
-  
-}
-
-.Home_PetSlot{
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 2rem;
-  padding: 4rem;
-  border-radius: 4rem;
-
-}
-
 
 .Home_PetSlotAlertContainer {
 

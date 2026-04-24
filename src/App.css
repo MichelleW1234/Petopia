@@ -3,8 +3,6 @@
 
 
 
-/* old background: linear-gradient(rgb(75, 0, 125) 15%, rgb(150, 0, 150) 50%, rgb(75, 0, 125) 85%);*/
-
 :root {
 
   /*font sizes:*/
@@ -12,14 +10,7 @@
   --root_font_size: 1rem;
 
 
-
   /*Structural measurements:*/
-
-  --reusable_component_container_left_bottom_border_width: 0.45rem;
-  --reusable_component_container_right_top_border_width: 0.15rem;
-
-  --reusable_component_button_left_bottom_border_width: 0.35rem;
-  --reusable_component_button_right_top_border_width: 0.1rem;
 
   --reusable_component_button_pill_padding: 1.5rem 2rem;
   --reusable_component_button_pill_border_radius: 3rem;
@@ -30,19 +21,37 @@
   --reusable_component_button_circle_image_height_width: 90%;
 
 
+  /*May delete everything before this point (not related to color)*/
+
+
+  
+
+  /*Color measurements:*/
+  --reusable_component_button_box_shadow_size: 0 0 1rem 0.1rem;
+  --reusable_component_button_box_shadow_interacted_size: 0 0 1rem 0.5rem;
+
+
+
+  --reusable_component_container_left_bottom_border_width: 0.45rem;
+  --reusable_component_container_right_top_border_width: 0.15rem;
+
+  --reusable_component_button_left_bottom_border_width: 0.35rem;
+  --reusable_component_button_right_top_border_width: 0.1rem;
+  
+
 
   /*Color light and saturation percentages:*/
 
   --reusable_component_color_saturation: 100%;
   --background_color_saturation: 75%;
-  --image_color_saturation: 100%;
+  --image_color_saturation: 100%; /*May delete this!!!!!!!*/
 
 
 
   --background_outer_color_light: 25%;
   --background_inner_color_light: 50%;
 
-  --background_floatingflag_color_light: 25%; /*Keep this if not revertiing*/
+  --background_floatingflag_color_light: 25%;
   --background_floatingflag_color_transparency: 75%;
 
 
@@ -64,35 +73,35 @@
   --reusable_component_container_first_color_light: 75%;
   --reusable_component_container_second_color_light: 50%;
 
-
-
-  --image_first_color_light: 50%;
-  --image_second_color_light: 75%;
-  --image_third_color_light: 100%;
-
-
-
+  
+  
   /*Color hues:*/
 
   --background_screen_base_color_hue: 280;
   --background_floatingflag_station_base_color_hue: 270;
   --background_floatingflag_nonstation_base_color_hue: 260;
 
-}
 
 
-html, body, #root {
-  margin: 0;
-  padding: 0;
+
+
+
+  /*May delete this!!!!!!!*/
+  --image_first_color_light: 50%;
+  --image_second_color_light: 75%;
+  --image_third_color_light: 100%;
+
+
+
+
 }
 
-html {
-  font-size: 16px;
-}
 
 body{
 
   user-select: none;
+
+  color: rgb(255, 255, 255);
 
   /*For fallback:*/
   background-color: rgb(100, 0, 125);
@@ -103,7 +112,10 @@ body{
 * {
 
   box-sizing: border-box;
-  position: relative;
+  /*position: relative;*/
+
+  margin: 0;
+  padding: 0;
 
   word-wrap: break-word;
   word-break: break-word;
@@ -118,6 +130,8 @@ h1, h2, a, button {
   font-family: 'Silkscreen', monospace;
   
 }
+
+
 
 h1 {
 
@@ -197,9 +211,12 @@ a:active {
 
 
 
+/*Components*/
 
 
 /* Reusable Component Structures: */
+
+/*Pill Button*/
 
 .ReusableComponentButtonPill_Structure{
 
@@ -237,6 +254,8 @@ a:active {
 
 }
 
+
+/*Circle Button*/
 
 .ReusableComponentButtonCircle_Structure{
 
@@ -305,6 +324,9 @@ a:active {
 }
 
 
+
+/*Container*/
+
 .ReusableComponentContainer_Structure{
 
   border-top-width: var(--reusable_component_container_right_top_border_width);
@@ -315,26 +337,42 @@ a:active {
 
 }
 
+.ReusableComponentContainer_ButtonBorderStructure{
 
-
-
-
-
-/* Screen Components: */
-
-
-.Navbar_Container {
-
-  width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
 
-  gap: 3rem;
+  gap: 2rem;
+  padding: 3rem;
+  border-radius: 3rem;
+  border-top-width: var(--reusable_component_container_right_top_border_width);
+  border-right-width: var(--reusable_component_container_right_top_border_width);
+  border-left-width: var(--reusable_component_container_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_container_left_bottom_border_width);
+  border-style: solid;
 
 }
 
+
+.ReusableComponentContainer_WindowBorderStructure{
+
+  padding: 4rem;
+  border-radius: 4rem;
+  border-top-width: var(--reusable_component_container_right_top_border_width);
+  border-right-width: var(--reusable_component_container_right_top_border_width);
+  border-left-width: var(--reusable_component_container_left_bottom_border_width);
+  border-bottom-width: var(--reusable_component_container_left_bottom_border_width);
+  border-style: solid;
+
+}
+
+
+
+/*Reusable Component Colors: */
+
+/*Navbar*/
 
 .Navbar_ReusableComponentButtonPill_Color{
 
@@ -378,22 +416,10 @@ a:active {
 
 }
 
-
-.Screen_ComponentsContainer {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 3rem;
-
-}
-
+/*Screen*/
 
 .Screen_ReusableComponentContainer_Color{
 
-  color: rgb(255, 255, 255);
   border-color: hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
   background: conic-gradient(
     hsl(var(--background_screen_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
@@ -468,26 +494,24 @@ a:active {
 }
 
 
-
-/* Floating Flag components:*/
+/* Floating Flag:*/
 
 .BackgroundFloatingFlag_NonStationBackgroundColor{
 
-  /*background: linear-gradient(hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);*/
-  background: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency));
+  background: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
+
 }
 
 
 .BackgroundFloatingFlag_StationBackgroundColor{
 
-  /*background: linear-gradient(hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 15%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light) / var(--background_floatingflag_color_transparency) ) 50%, hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency)) 85%);*/
-  background: hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light) / var(--background_floatingflag_color_transparency));
+  background: hsl(var(--background_floatingflag_station_base_color_hue) var(--background_color_saturation) var(--background_floatingflag_color_light) / var(--background_floatingflag_color_transparency));
+
 }
 
 
 .FloatingFlag_ReusableComponentContainer_NonStationColor{
 
-  color: rgb(255, 255, 255);
   border-color: hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
   background: conic-gradient(
     hsl(var(--background_floatingflag_nonstation_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
@@ -564,7 +588,6 @@ a:active {
 
 .FloatingFlag_ReusableComponentContainer_StationColor{
 
-  color: rgb(255, 255, 255);
   border-color: hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_noninteractive_border_color_light));
   background: conic-gradient(
     hsl(var(--background_floatingflag_station_base_color_hue) var(--reusable_component_color_saturation) var(--reusable_component_container_first_color_light)) 0deg,
@@ -627,414 +650,65 @@ a:active {
 
 
 
-/*STOPPED HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 
 
+/* Other Components: */
 
+/*Navbar*/
 
+.Navbar_Container {
 
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
 
-
-
-
-
-
-
-
-
-
-
-/*General Buttons: */
-
-.GeneralNavButton {
-
-  padding: 1rem 1.5rem;
-
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-top: 0.1rem solid black;
-  border-right: 0.1rem solid black;
-  background-color: rgb(187, 192, 255);
-
-  animation: GeneralNavButton-glow 3s infinite;
-  
-}
-
-.GeneralNavButton:hover {
-
-  color: white;
-  background-color: rgb(0, 31, 133);
-
-  animation: GeneralNavButton-hover-glow 3s infinite;
-  
-}
-
-.GeneralNavButtonPlaceHolder{
-
-  padding: 1rem 1.5rem;
-
-  color: black;
-  border-left: 0.25rem solid black;
-  border-bottom: 0.25rem solid black;
-  border-top: 0.1rem solid black;
-  border-right: 0.1rem solid black;
-  background-color: rgb(132, 135, 192);
+  gap: 3rem;
 
 }
 
-.GeneralNavButtonContainer{
+
+/*Screen*/
+.Screen_ComponentsContainer {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+
+}
+
+
+/* Universal Components: */
+
+.Universal_RowContainer {
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  
-  gap: 4rem;
+  flex-wrap: wrap;
+
+  gap: 2rem;
 
 }
 
 
-/*Signs: */
+.Universal_OverlappingImagesContainer {
 
-.header{
+  position: relative;
 
-  color: white;
+  img{
 
-}
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*animations: */
-
-@keyframes urgent-glow{
-
-  0% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgb(187, 192, 255), 
-      0 0 2rem 0.3rem rgb(50, 64, 255);
   }
-  50% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgb(187, 192, 255, 0.5),  
-      0 0 2rem 0.3rem rgb(50, 64, 255, 0.5);
-  }
-  100% {
-    box-shadow:
-      0 0 1rem 0.15rem rgb(187, 192, 255), 
-      0 0 2rem 0.3rem rgb(50, 64, 255);
-  }
-
-}
-
-
-@keyframes lightPink-glow{
-
-  
-  
-}
-
-
-
-
-
-
-
-@keyframes GeneralNavButton-glow {
-  0% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgb(187, 192, 255), 
-      0 0 2rem 0.3rem rgb(50, 64, 255);
-  }
-  50% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgb(187, 192, 255, 0.5),  
-      0 0 2rem 0.3rem rgb(50, 64, 255, 0.5);
-  }
-  100% {
-    box-shadow:
-      0 0 1rem 0.15rem rgb(187, 192, 255), 
-      0 0 2rem 0.3rem rgb(50, 64, 255);
-  }
-}
-
-
-@keyframes GeneralNavButton-hover-glow {
-  0% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgba(149, 165, 255, 0.75), 
-      0 0 2rem 0.3rem rgba(0, 55, 255, 0.75);   
-  }
-  50% {
-    box-shadow: 
-      0 0 1rem 0.15rem rgba(149, 165, 255, 0.25),  
-      0 0 2rem 0.3rem rgba(0, 55, 255, 0.25);   
-  }
-  100% {
-    box-shadow:
-      0 0 1rem 0.15rem rgba(149, 165, 255, 0.75),  
-      0 0 2rem 0.3rem rgba(0, 55, 255, 0.75);       
-  }
-}
-
-
-@keyframes NavBarButtonUrgent-glow {
-  0% {
-    box-shadow: 
-      0 0 2rem 0.3rem rgb(255, 50, 176), 
-      0 0 2rem 0.3rem rgb(132, 50, 255);
-  }
-  50% {
-    box-shadow: 
-      0 0 2rem 0.3rem rgb(255, 50, 176, 0.5), 
-      0 0 2rem 0.3rem rgb(132, 50, 255, 0.5);
-  }
-  100% {
-    box-shadow:
-      0 0 2rem 0.3rem rgb(255, 50, 176), 
-      0 0 2rem 0.3rem rgb(132, 50, 255);
-  }
-}
-
-@keyframes NavBarButtonUrgent-hover-glow {
-  0% {
-    box-shadow: 
-      0 0 2rem 0.3rem rgba(198, 76, 151, 0.75), 
-      0 0 2rem 0.3rem rgba(139, 98, 201, 0.75);
-  }
-  50% {
-    box-shadow: 
-      0 0 2rem 0.3rem rgba(198, 76, 151, 0.25), 
-      0 0 2rem 0.3rem rgba(139, 98, 201, 0.25);
-  }
-  100% {
-    box-shadow:
-      0 0 2rem 0.3rem rgba(198, 76, 151, 0.75), 
-      0 0 2rem 0.3rem rgba(139, 98, 201, 0.75);
-  }
-}
-
-
-
-@keyframes FloatingFlagBox-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgba(171, 224, 255, 0.75), 
-      0 0 1rem 0.5rem rgba(0, 123, 255, 0.75);   
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgba(171, 224, 255, 0.25), 
-      0 0 1rem 0.5rem rgba(0, 123, 255, 0.25);     
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgba(171, 224, 255, 0.75), 
-      0 0 1rem 0.5rem rgba(0, 123, 255, 0.75);     
-  }
-}
-
-
-
-@keyframes FloatingFlagBox-Active-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgba(255, 149, 253, 0.75), 
-      0 0 1rem 0.5rem rgba(165, 40, 255, 0.75);   
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgba(255, 149, 253, 0.25), 
-      0 0 1rem 0.5rem rgba(165, 40, 255, 0.25);     
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgba(255, 149, 253, 0.75), 
-      0 0 1rem 0.5rem rgba(165, 40, 255, 0.75);       
-  }
-}
-
-
-
-@keyframes PetWindowComponent-newpet-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(249, 128, 255), 
-      0 0 1rem 0.5rem rgb(246, 169, 255);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(249, 128, 255, 0.5), 
-      0 0 1rem 0.5rem rgb(246, 169, 255, 0.5);    
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(249, 128, 255), 
-      0 0 1rem 0.5rem rgb(246, 169, 255);       
-  }
-}
-
-
-@keyframes PetWindowComponent-dog-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(255, 217, 128), 
-      0 0 1rem 0.5rem rgb(255, 241, 169);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(255, 217, 128, 0.5), 
-      0 0 1rem 0.5rem rgb(255, 241, 169, 0.5);   
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(255, 217, 128), 
-      0 0 1rem 0.5rem rgb(255, 241, 169);      
-  }
-}
-
-
-
-@keyframes PetWindowComponent-dog-dim-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(255, 217, 128, 0.75), 
-      0 0 1rem 0.5rem rgb(255, 241, 169, 0.75);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(255, 217, 128, 0.25), 
-      0 0 1rem 0.5rem rgb(255, 241, 169, 0.25);   
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(255, 217, 128, 0.75), 
-      0 0 1rem 0.5rem rgb(255, 241, 169, 0.75);      
-  }
-}
-
-
-
-@keyframes PetWindowComponent-cat-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(183, 128, 255), 
-      0 0 1rem 0.5rem rgb(222, 181, 255);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(183, 128, 255, 0.5), 
-      0 0 1rem 0.5rem rgb(222, 181, 255, 0.5); 
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(183, 128, 255), 
-      0 0 1rem 0.5rem rgb(222, 181, 255);       
-  }
-}
-
-
-
-@keyframes PetWindowComponent-cat-dim-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(183, 128, 255, 0.75), 
-      0 0 1rem 0.5rem rgb(222, 181, 255, 0.75);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(183, 128, 255, 0.25), 
-      0 0 1rem 0.5rem rgb(222, 181, 255, 0.25); 
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(183, 128, 255, 0.75), 
-      0 0 1rem 0.5rem rgb(222, 181, 255, 0.75);       
-  }
-}
-
-
-
-
-@keyframes PetWindowComponent-fish-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(117, 170, 255), 
-      0 0 1rem 0.5rem rgb(173, 214, 255);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(117, 170, 255, 0.5), 
-      0 0 1rem 0.5rem rgb(173, 214, 255, 0.5);         
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(117, 170, 255), 
-      0 0 1rem 0.5rem rgb(173, 214, 255);      
-  }
-}
-
-
-
-@keyframes PetWindowComponent-fish-dim-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(117, 170, 255, 0.75), 
-      0 0 1rem 0.5rem rgb(173, 214, 255, 0.75);     
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.25rem rgb(117, 170, 255, 0.25), 
-      0 0 1rem 0.5rem rgb(173, 214, 255, 0.25);         
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.25rem rgb(117, 170, 255, 0.75), 
-      0 0 1rem 0.5rem rgb(173, 214, 255, 0.75);      
-  }
-}
-
-
-
-@keyframes Input-glow {
-  0% {
-    box-shadow: 
-      0 0 0.5rem 0.2rem rgb(201, 226, 255), 
-      0 0 1rem 0.4rem rgb(149, 199, 255);   
-  }
-  50% {
-    box-shadow: 
-      0 0 0.5rem 0.2rem rgb(201, 226, 255, 0.5), 
-      0 0 1rem 0.4rem rgb(149, 199, 255, 0.5);  
-  }
-  100% {
-    box-shadow:
-      0 0 0.5rem 0.2rem rgb(201, 226, 255), 
-      0 0 1rem 0.4rem rgb(149, 199, 255);             
-  }
-}
-
-
-
-
-
-
-
-.filler {
-
-  height: 20rem;
-  width: 39rem;
-  background-color: rgb(198, 212, 253);
 
 }

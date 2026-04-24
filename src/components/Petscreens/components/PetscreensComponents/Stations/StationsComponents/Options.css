@@ -10,7 +10,7 @@
 }
 
 
-.Options_DesiredOptionContainer {
+.Options_PetThoughtContainer {
 
     display: flex;
     flex-direction: row;
@@ -23,65 +23,40 @@
 }
 
 
-.Options_Pet{
+.Options_PetThoughtPetImage{
 
     height: 10rem;
     width: 10rem;
 
     filter:
-        drop-shadow(0 0 5px rgb(200, 175, 255))
-        drop-shadow(0 0 10px rgba(175, 150, 255))
-        drop-shadow(0 0 15px rgb(150, 125, 255));
+        drop-shadow(0 0 5px rgb(215, 175, 255))
+        drop-shadow(0 0 10px rgba(215, 150, 255))
+        drop-shadow(0 0 15px rgb(215, 125, 255));
 
 }
 
-.Options_DesiredOption {
+.Options_PetThoughtDesiredOption {
 
     height: 10rem;
     width: 10rem;
-    position: relative;
-
-    img{
-
-        top: 50%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-
-    }
 
 }
 
-.Options_DesiredOptionBubble{
+.Options_PetThoughtDesiredOptionBubbleImage{
 
     height: 100%;
     width: 100%;
+    
     filter:
-        drop-shadow(0 0 5px rgb(200, 175, 255))
-        drop-shadow(0 0 10px rgba(175, 150, 255))
-        drop-shadow(0 0 15px rgb(150, 125, 255));
+        drop-shadow(0 0 5px rgb(215, 175, 255))
+        drop-shadow(0 0 10px rgba(215, 150, 255))
+        drop-shadow(0 0 15px rgb(215, 125, 255));
 
 }
 
-.Options_DesiredOptionObject{
+.Options_PetThoughtDesiredOptionObjectImage{
 
     width: 80%;
     height: 80%;
-
-}
-
-.Options_ListContainer{
-
-    display: flex;
-    flex-direction: row;
-    
-    gap: 2rem;
-
-}
-
-.test{
-
-    padding: 3rem;
-    border-radius: 3rem;
 
 }
