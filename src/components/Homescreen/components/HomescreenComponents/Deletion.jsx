@@ -65,23 +65,23 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     }
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
+        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_NonStationColor">
             <h1>Select pet(s) to clear:</h1>
-            <div className="Universal_RowContainer">
+            <div className="Global_RowContainer">
 
                 {Object.keys(PetList).map((key) => (
 
-                    <div key = {key} className = "ReusableComponentContainer_ButtonBorderStructure FloatingFlag_ReusableComponentContainer_NonStationColor">
+                    <div key = {key} className = "Global_ReusableMultitag-ComponentContainer_ButtonBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_NonStationColor">
 
                         {deletionSelectedPets.includes(key) ? (
 
-                            <button key = {key} className="ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_NonStationSelectedColor" onClick = {() => removePet(key)}> 
+                            <button key = {key} className="Global_ReusableMultitag-ComponentButtonCircle_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonCircle_NonStationSelectedColor" onClick = {() => removePet(key)}> 
                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                             </button>
 
                         ) : (
 
-                            <button key = {key} className="ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_NonStationColor" onClick = {() => addPet(key)}> 
+                            <button key = {key} className="Global_ReusableMultitag-ComponentButtonCircle_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonCircle_NonStationNormalColor" onClick = {() => addPet(key)}> 
                                 <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                             </button>
 
@@ -94,17 +94,17 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                 
             </div>
 
-            <div className="Universal_RowContainer ">
+            <div className="Global_RowContainer ">
 
-                <button className="ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_NonStationNormalColor" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick={() => clearPets()}>Clear Selected Pets</button>
+                    <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_NonStationNormalColor" onClick={() => clearPets()}>Clear Selected Pets</button>
 
                 ) : (
 
-                    <button className="ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_NonStationPlaceholderColor">Clear Selected Pets</button>
+                    <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_NonStationUnclickableColor">Clear Selected Pets</button>
 
                 )}
 

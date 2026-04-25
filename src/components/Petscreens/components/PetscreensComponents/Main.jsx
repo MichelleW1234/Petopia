@@ -130,7 +130,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "ReusableComponentContainer_WindowBorderStructure Screen_ReusableComponentContainer_Color">
+            <div className = "Global_ReusableMultitag-ComponentContainer_WindowBorderStructure Screen_ReusableMultitag-ComponentContainer_Color">
 
                 {ActivePetName === "" ? (
 
@@ -176,7 +176,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "Universal_OverlappingImagesContainer Main_WindowGridPetCell">
+                                                <div key={index} className = "Global_OverlappingImagesContainer Main_WindowGridPetCell">
                                                     <img 
                                                         className = "Main_WindowGridPetCellImage"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 

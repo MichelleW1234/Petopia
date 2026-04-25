@@ -108,7 +108,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     return (
 
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
+        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_StationColor">
         
             {feedSelection === -1 ? (
 
@@ -127,7 +127,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
 
-                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">  
+                    <div className="Global_ReusableMultitag-ComponentContainer_WindowBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_StationColor">  
                         <div className="Stations_WindowContainer">
                             {!feedDone ? (
 
@@ -146,19 +146,19 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
             )}
 
-            <div className="Universal_RowContainer">
+            <div className="Global_RowContainer">
                 {feedSelection === -1 || !feedDone ? (
 
                     <>
-                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
-                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
-                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Quit</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setFeedOpenFlag(false)}>Done</button>
                     </>
 
                 )}

@@ -50,33 +50,33 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            <div className = "BackgroundScreen_Layout Home_BackgroundScreen_Color">  
+            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Home_ReusableMultitag-BackgroundScreen_Color">  
 
-                <div className="Navbar_Container">
+                <div className="Screen_NavbarContainer">
 
                     {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
                         <>
-                            <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
-                            <button className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                            <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
+                            <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor" > Restart Game </button>
-                            <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Clear Pets </button>
+                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor" > Restart Game </button>
+                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Clear Pets </button>
                         </>
 
                     )}
 
                     {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
-                        <button className="ReusableComponentButtonPill_PlaceholderStructure Navbar_ReusableComponentButtonPill_PlaceholderColor"> Add Pets </button>
+                        <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Add Pets </button>
 
                     ) : (
 
-                        <Link to ="/adopt" className="ReusableComponentButtonPill_Structure Navbar_ReusableComponentButtonPill_Color"> Add Pets </Link>
+                        <Link to ="/adopt" className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"> Add Pets </Link>
 
                     )}
                     
@@ -84,11 +84,11 @@ function Home (){
 
                 <div className = "Screen_ComponentsContainer">
                     <h1> Your Pets: </h1>
-                    <div className="Universal_RowContainer">
+                    <div className="Global_RowContainer">
 
                         {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <h2 className = "ReusableComponentContainer_WindowBorderStructure Screen_ReusableComponentContainer_Color"> Your pet(s) will appear here when added. </h2>
+                            <h2 className = "Global_ReusableMultitag-ComponentContainer_WindowBorderStructure Screen_ReusableMultitag-ComponentContainer_Color"> Your pet(s) will appear here when added. </h2>
 
                         ) : (
 
@@ -98,7 +98,7 @@ function Home (){
 
                                 return (
 
-                                    <div key = {key} className="ReusableComponentContainer_ButtonBorderStructure Screen_ReusableComponentContainer_Color">
+                                    <div key = {key} className="Global_ReusableMultitag-ComponentContainer_ButtonBorderStructure Screen_ReusableMultitag-ComponentContainer_Color">
                                         <div className = "Home_PetSlotAlertContainer">
                                             
                                             {currPetHealth >= 75 ? (
@@ -146,7 +146,7 @@ function Home (){
                                         </div>
                                         <Link
                                             to = {`/${PetList[key][speciesKey]}`}
-                                            className="ReusableComponentButtonCircle_Structure Screen_ReusableComponentButtonCircle_Color"
+                                            className="Global_ReusableMultitag-ComponentButtonCircle_NormalStructure Screen_ReusableMultitag-ComponentButtonCircle_NormalColor"
                                             onClick = {() => getPet(key)}
                                         >
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>

@@ -31,7 +31,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 {/* Change this!!!!!!!!!!!!!*/}
                 <img className = "Options_PetThoughtPetImage" src = {optionsList[0]} />
 
-                <div className="Universal_OverlappingImagesContainer Options_PetThoughtDesiredOption">
+                <div className="Global_OverlappingImagesContainer Options_PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
                     <img src = {bubble} className="Options_PetThoughtDesiredOptionBubbleImage"/>
@@ -49,12 +49,12 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 </div>
 
             </div>
-            <div className= "Universal_RowContainer">  
+            <div className= "Global_RowContainer">  
 
                 {optionsList.map((option, index) => (
 
-                    <div className="ReusableComponentContainer_ButtonBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">
-                        <img key = {index} className = "ReusableComponentButtonCircle_Structure FloatingFlag_ReusableComponentButtonCircle_StationColor" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <div className="Global_ReusableMultitag-ComponentContainer_ButtonBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_StationColor">
+                        <img key = {index} className = "Global_ReusableMultitag-ComponentButtonCircle_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonCircle_StationNormalColor" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 
                 ))}

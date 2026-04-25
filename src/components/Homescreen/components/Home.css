@@ -1,15 +1,3 @@
-.Home_BackgroundScreen_Color{
-
-  background:
-    /*add image here*/
-    linear-gradient(hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light)) 15%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_inner_color_light)) 50%, hsl(var(--background_screen_base_color_hue) var(--background_color_saturation) var(--background_outer_color_light)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-
 .Home_PetSlotAlertContainer {
 
   display: flex;

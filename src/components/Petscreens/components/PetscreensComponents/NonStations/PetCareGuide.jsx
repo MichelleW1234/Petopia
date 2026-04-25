@@ -4,7 +4,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
+        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_NonStationColor">
             <h1>This tells you everything you need to know about caring for your pet:</h1>
             <h2> &bull; when to perform activity </h2>
             <h2> &bull; what to select for each activity ( and what it looks like when activity isn't wanted)</h2>
@@ -12,7 +12,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
             <h2> &bull; the damage for not doing each task on time, and the damage for choosing the incorrect option</h2>
             <h2> &bull; best medicine hours for healing and how much health they heal (+4 between 8pm and 6am, +2 otherwise)</h2>
             <h2> &bull; hint at interacting with pet to see what happens</h2>
-            <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick = {() => setPetCareGuideOpenFlag(false)}> Close </button>
+            <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_NonStationNormalColor" onClick = {() => setPetCareGuideOpenFlag(false)}> Close </button>
         </div>
     )
 }

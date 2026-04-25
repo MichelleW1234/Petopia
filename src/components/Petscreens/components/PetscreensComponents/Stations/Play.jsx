@@ -61,7 +61,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
     return (
         
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_StationBackgroundColor">
+        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_StationColor">
 
             {playSelection === -1 ? (
 
@@ -79,7 +79,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                     />
 
-                    <div className="ReusableComponentContainer_WindowBorderStructure FloatingFlag_ReusableComponentContainer_StationColor">
+                    <div className="Global_ReusableMultitag-ComponentContainer_WindowBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_StationColor">
                         <div className="Stations_WindowContainer">
                             {!playDone ? (
                                         
@@ -113,19 +113,19 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
             )}
         
-            <div className="Universal_RowContainer">
+            <div className="Global_RowContainer">
                 {playSelection === -1 || !playDone ? (
 
                     <>
-                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
-                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Done</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "ReusableComponentButtonPill_PlaceholderStructure FloatingFlag_ReusableComponentButtonPill_StationPlaceholderColor">Quit</button>
-                        <button className = "ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_StationColor" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Quit</button>
+                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setPlayOpenFlag(false)}>Done</button>
                     </>
 
                 )}

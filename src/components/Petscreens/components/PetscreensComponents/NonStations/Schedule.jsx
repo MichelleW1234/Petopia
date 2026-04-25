@@ -15,7 +15,7 @@ function Schedule({setScheduleOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
     return (
-        <div className = "BackgroundFloatingFlag_Layout BackgroundFloatingFlag_NonStationBackgroundColor">
+        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_NonStationColor">
 
             <div className="Schedule_InfoContainer">
                 
@@ -36,7 +36,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
 
-            <button className="ReusableComponentButtonPill_Structure FloatingFlag_ReusableComponentButtonPill_NonStationColor" onClick={() => setScheduleOpenFlag(false)}>Close</button>
+            <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_NonStationNormalColor" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     )
