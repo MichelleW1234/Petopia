@@ -210,7 +210,7 @@ function Fish (){
             />}
 
 
-            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Fish_ReusableMultitag-BackgroundScreen_Color">
+            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_FishColor">
 
                 <div className="Screen_NavbarContainer">
 

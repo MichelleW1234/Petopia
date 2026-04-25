@@ -25,7 +25,7 @@ function Adoption () {
                 />
             }
 
-            <div className="Global_ReusableMultitag-BackgroundScreen_Structure Adoption_ReusableMultitag-BackgroundScreen_Color">
+            <div className="Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_AdoptionColor">
 
                 <div className="Screen_NavbarContainer">
                     <Link to = "/home" className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"> Quit and Go Home </Link>

@@ -229,7 +229,7 @@ function Dog (){
                 setPetCareGuideOpenFlag = {setDogPetCareGuideOpenFlag}
             />}
             
-            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Dog_ReusableMultitag-BackgroundScreen_Color">
+            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_DogColor">
 
                 <div className="Screen_NavbarContainer">
 

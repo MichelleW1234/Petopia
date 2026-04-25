@@ -194,7 +194,7 @@ function Cat (){
                 setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
             />}
         
-            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Cat_ReusableMultitag-BackgroundScreen_Color">
+            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_CatColor">
 
                 <div className="Screen_NavbarContainer">
 
