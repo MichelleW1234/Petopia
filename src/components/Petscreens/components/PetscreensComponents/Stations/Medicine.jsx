@@ -144,7 +144,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
     return (
 
-        <div className = "Global_ReusableMultitag-BackgroundFloatingFlag_Structure Global_ReusableMultitag-BackgroundFloatingFlag_StationColor">
+        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-StationColor">
 
             {medicineSelection === -1 ? (
 
@@ -174,7 +174,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                     <ProgressBar
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
-                    <div className="Global_ReusableMultitag-ComponentContainer_WindowBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_StationColor">  
+                    <div className="Global_ReusableMultitag_ComponentContainer-WindowBorderStructure FloatingFlag_ReusableMultitag_ComponentContainer-StationColor">  
                         <div className="Stations_WindowContainer">
 
                             {!medicineDone ? (
@@ -198,15 +198,15 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                 {medicineSelection === -1 || !medicineDone ? (
 
                     <>
-                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
-                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Done</button>
+                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationUnclickableColor">Quit</button>
-                        <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonPill_StationNormalColor" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Quit</button>
+                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
                     </>
 
                 )}

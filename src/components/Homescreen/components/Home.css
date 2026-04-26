@@ -9,7 +9,7 @@
 
 }
 
-.Home_PetSlotAlertGood {
+.Home_PetSlotGoodAlert {
 
   height: 2rem;
   width: 2rem;
@@ -22,7 +22,7 @@
 }
 
 
-.Home_PetSlotAlertOkay {
+.Home_PetSlotOkayAlert {
 
   height: 2rem;
   width: 2rem;
@@ -35,7 +35,7 @@
 }
 
 
-.Home_PetSlotAlertBad {
+.Home_PetSlotBadAlert {
 
   height: 2rem;
   width: 2rem;
@@ -48,7 +48,7 @@
 }
 
 
-.Home_PetSlotAlertVeryBad {
+.Home_PetSlotVeryBadAlert {
 
   height: 2rem;
   width: 2rem;
@@ -60,7 +60,7 @@
 
 }
 
-.Home_PetSlotAlertDead {
+.Home_PetSlotDeadAlert {
 
   height: 2rem;
   width: 2rem;

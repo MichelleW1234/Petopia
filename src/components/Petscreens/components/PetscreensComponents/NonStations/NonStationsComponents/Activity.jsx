@@ -98,10 +98,10 @@ function Activity({activityKey, activityTimeGap}) {
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "Activity_TimeBarCellHalfway"
+                                                        "Activity_TimeBarHalfwayCell"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "Activity_TimeBarCellDone"
-                                                            : "Activity_TimeBarCellLeft"
+                                                            "Activity_TimeBarDoneCell"
+                                                            : "Activity_TimeBarLeftCell"
                                                         }>
                         </div>
 
@@ -115,7 +115,7 @@ function Activity({activityKey, activityTimeGap}) {
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "Activity_TimeBarCellCancelled"></div>
+                        <div key = {num} className = "Activity_TimeBarCancelledCell"></div>
 
                     ))}
                     

@@ -229,26 +229,26 @@ function Dog (){
                 setPetCareGuideOpenFlag = {setDogPetCareGuideOpenFlag}
             />}
             
-            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_DogColor">
+            <div className = "Global_ReusableMultitag_BackgroundScreen-Structure Global_ReusableMultitag_BackgroundScreen-DogColor">
 
                 <div className="Screen_NavbarContainer">
 
-                    <Link to = "/home" className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {dogAlive ? (
 
                         <>
-                            <button className={dogHungry ? "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUrgentColor" : "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed </button>
-                            <button className={dogDirty ? "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUrgentColor" : "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Clean </button>
-                            <button className={dogRestless ? "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUrgentColor" : "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play </button>
+                            <button className={dogHungry ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed </button>
+                            <button className={dogDirty ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Clean </button>
+                            <button className={dogRestless ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play </button>
 
                             {dogCanReceiveDose ? (
 
-                                <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setDogMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setDogMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Medicine </button>
+                                <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
 
                             )}
                         
@@ -257,16 +257,16 @@ function Dog (){
                     ) : (
 
                         <>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Feed </button>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Clean </button>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Play </button>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Medicine </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Feed </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Clean </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Play </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setDogScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setDogPetCareGuideOpenFlag(true)}> Guide </button>
+                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setDogScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setDogPetCareGuideOpenFlag(true)}> Guide </button>
                 
                 </div>
 

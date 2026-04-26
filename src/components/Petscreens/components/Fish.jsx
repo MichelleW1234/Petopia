@@ -210,25 +210,25 @@ function Fish (){
             />}
 
 
-            <div className = "Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_FishColor">
+            <div className = "Global_ReusableMultitag_BackgroundScreen-Structure Global_ReusableMultitag_BackgroundScreen-FishColor">
 
                 <div className="Screen_NavbarContainer">
 
-                    <Link to = "/home" className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUrgentColor" : "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed </button>
-                            <button className={fishDirty ? "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUrgentColor" : "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean </button>
+                            <button className={fishHungry ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed </button>
+                            <button className={fishDirty ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean </button>
 
                             {fishCanReceiveDose ? (
 
-                                <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setFishMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setFishMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Medicine </button>
+                                <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
 
                             )}
 
@@ -237,15 +237,15 @@ function Fish (){
                     ) : (
 
                         <>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Feed </button>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Clean </button>
-                            <button className="Global_ReusableMultitag-ComponentButtonPill_UnclickableStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarUnclickableColor"> Medicine </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Feed </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Clean </button>
+                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
+                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 

@@ -53,8 +53,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <div className="Global_ReusableMultitag-ComponentContainer_ButtonBorderStructure FloatingFlag_ReusableMultitag-ComponentContainer_StationColor">
-                        <img key = {index} className = "Global_ReusableMultitag-ComponentButtonCircle_NormalStructure FloatingFlag_ReusableMultitag-ComponentButtonCircle_StationNormalColor" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <div className="Global_ReusableMultitag_ComponentContainer-ButtonBorderStructure FloatingFlag_ReusableMultitag_ComponentContainer-StationColor">
+                        <img key = {index} className = "Global_ReusableMultitag_ComponentButtonCircle-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonCircle-StationNormalColor" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 
                 ))}

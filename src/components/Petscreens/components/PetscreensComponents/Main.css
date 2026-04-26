@@ -1,4 +1,4 @@
-.Main_WindowContainer{
+.Main_WindowContainer-Structure{
 
     display: flex;
     flex-direction: column;
@@ -11,19 +11,19 @@
 }
 
 
-.Main_WindowContainer-dog{ 
+.Main_WindowContainer-dogColor{ 
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_WindowContainer-cat{
+.Main_WindowContainer-catColor{
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_WindowContainer-fish{
+.Main_WindowContainer-fishColor{
 
     background: linear-gradient(to bottom, #59bfff, #000872);
 
@@ -78,7 +78,7 @@
 }
 
 
-.Main_WindowGrid {
+.Main_NonemptyWindowGrid {
 
     display: grid;
     grid-template-columns: repeat(20, auto);
@@ -86,7 +86,7 @@
 }
 
 
-.Main_WindowGridCell {
+.Main_NonemptyWindowGridNonPetCell {
 
     height: 20rem;
     width: 2rem;
@@ -94,17 +94,17 @@
 }
 
 
-.Main_WindowGridPetCell {
+.Main_NonemptyWindowGridPetCell {
 
     height: 20rem;
     width: 8rem;
 
 }
 
-.Main_WindowGridPetCellImage{
+.Main_NonemptyWindowGridPetCellImage {
 
     width: 100%;
-    
+
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 4px rgb(255, 255, 255))
@@ -112,8 +112,7 @@
 
 }
 
-
-.Main_WindowGridEmpty{
+.Main_EmptyWindowGrid{
 
     height: 20rem;
     width: 46rem;

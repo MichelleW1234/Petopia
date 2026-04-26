@@ -174,7 +174,7 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "Confirmation_Container">
                 <p>Hello, my name is </p>
 
-                <div className="Global_ReusableMultitag-ComponentContainer_NormalStructure Screen_ReusableMultitag-ComponentContainer_Color Confirmation_NameBorder">
+                <div className="Global_ReusableMultitag_ComponentContainer-NormalStructure Screen_ReusableMultitag_ComponentContainer-Color Confirmation_NameBorder">
                     <input 
                         type="text"
                         value={confirmationPetName}
@@ -191,8 +191,8 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "Confirmation_CheckingContainer">
                 <p className = "Confirmation_CheckingError">{errorMessage}</p>
                 <div className = "Global_RowContainer">
-                    <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NormalColor" onClick = {() => undo()}> Undo Selection </button>
-                    <Link to = "/home" className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NormalColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+                    <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NormalColor" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NormalColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

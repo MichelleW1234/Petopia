@@ -10,11 +10,11 @@ function ProgressBar({progressBarPercentUntilNextUpdate}) {
 
                     num <= progressBarPercentUntilNextUpdate ? (
 
-                        <div key = {num} className = "ProgressBar_CellDone"></div>
+                        <div key = {num} className = "ProgressBar_DoneCell"></div>
 
                     ) : (
 
-                        <div key = {num} className = "ProgressBar_CellLeft"></div>
+                        <div key = {num} className = "ProgressBar_LeftCell"></div>
 
                     )
 

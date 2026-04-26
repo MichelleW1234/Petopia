@@ -20,7 +20,7 @@
 
 }
 
-.Activity_TimeBarCellLeft {
+.Activity_TimeBarLeftCell {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -29,7 +29,7 @@
 }
 
 
-.Activity_TimeBarCellHalfway {
+.Activity_TimeBarHalfwayCell {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -37,7 +37,7 @@
 
 }
 
-.Activity_TimeBarCellDone {
+.Activity_TimeBarDoneCell {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -45,7 +45,7 @@
 
 }
 
-.Activity_TimeBarCellCancelled {
+.Activity_TimeBarCancelledCell {
 
   height: 0.75rem;
   width: 0.3rem;

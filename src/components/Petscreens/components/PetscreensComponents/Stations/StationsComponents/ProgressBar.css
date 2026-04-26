@@ -8,7 +8,7 @@
 
 }
 
-.ProgressBar_CellDone {
+.ProgressBar_DoneCell {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -16,7 +16,7 @@
 
 }
 
-.ProgressBar_CellLeft {
+.ProgressBar_LeftCell {
 
   height: 0.75rem;
   width: 0.3rem;

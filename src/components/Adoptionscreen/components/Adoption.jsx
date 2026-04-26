@@ -25,11 +25,11 @@ function Adoption () {
                 />
             }
 
-            <div className="Global_ReusableMultitag-BackgroundScreen_Structure Global_ReusableMultitag-BackgroundScreen_AdoptionColor">
+            <div className="Global_ReusableMultitag_BackgroundScreen-Structure Global_ReusableMultitag_BackgroundScreen-AdoptionColor">
 
                 <div className="Screen_NavbarContainer">
-                    <Link to = "/home" className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor"> Quit and Go Home </Link>
-                    <button className = "Global_ReusableMultitag-ComponentButtonPill_NormalStructure Screen_ReusableMultitag-ComponentButtonPill_NavbarNormalColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"> Quit and Go Home </Link>
+                    <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
                 <div className = "Screen_ComponentsContainer">

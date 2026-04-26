@@ -130,15 +130,15 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "Global_ReusableMultitag-ComponentContainer_WindowBorderStructure Screen_ReusableMultitag-ComponentContainer_Color">
+            <div className = "Global_ReusableMultitag_ComponentContainer-WindowBorderStructure Screen_ReusableMultitag_ComponentContainer-Color">
 
                 {ActivePetName === "" ? (
 
-                    <div className= "Main_WindowGridEmpty"></div>
+                    <div className= "Main_EmptyWindowGrid"></div>
 
                 ) : (
                     
-                    <div className = {`Main_WindowContainer Main_WindowContainer-${PetList[ActivePetName][speciesKey]}`}>
+                    <div className = {`Main_WindowContainer-Structure Main_WindowContainer-${PetList[ActivePetName][speciesKey]}Color`}>
 
                         <div className = "Main_WindowStatsContainer">
                             <h1 className = "Main_WindowStatsPetName">{ActivePetName}:</h1>
@@ -167,7 +167,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             !mainActivityInProgress ? (
 
-                                <div className="Main_WindowGrid"> 
+                                <div className="Main_NonemptyWindowGrid"> 
                                     {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
                                         
                                         const petHere = mainPetCurrentSpace === index;
@@ -176,16 +176,16 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "Global_OverlappingImagesContainer Main_WindowGridPetCell">
+                                                <div key={index} className = "Global_OverlappingImagesContainer Main_NonemptyWindowGridPetCell">
                                                     <img 
-                                                        className = "Main_WindowGridPetCellImage"
+                                                        className="Main_NonemptyWindowGridPetCellImage"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img 
-                                                        className = "Main_WindowGridPetCellImage"
+                                                        className="Main_NonemptyWindowGridPetCellImage"
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}
@@ -194,7 +194,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             ) : (
 
-                                                <div key={index} className = "Main_WindowGridCell"></div>
+                                                <div key={index} className = "Main_NonemptyWindowGridNonPetCell"></div>
 
                                             )
                                 
@@ -205,13 +205,13 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             ) : (
 
-                                <div className= "Main_WindowGridEmpty"></div>
+                                <div className= "Main_EmptyWindowGrid"></div>
 
                             )
 
                         ) : (
 
-                            <div className= "Main_WindowGridEmpty">
+                            <div className= "Main_EmptyWindowGrid">
                                 {/* Insert image of tomb !!!!!!!!!!!!*/}
                                 <img/>
                             </div>
