@@ -23,7 +23,7 @@ function Restart({setRestartOpenFlag}) {
 
 
     return (
-        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
+        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
             <h1>Are you sure you want to restart the game? </h1>
             <div className="Global_RowContainer">
                 <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationNormalColor" onClick = {() => restartGame()}>Yes</button>

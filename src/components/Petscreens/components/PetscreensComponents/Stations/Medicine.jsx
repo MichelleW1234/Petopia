@@ -144,7 +144,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
     return (
 
-        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-StationColor">
+        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-StationColor">
 
             {medicineSelection === -1 ? (
 

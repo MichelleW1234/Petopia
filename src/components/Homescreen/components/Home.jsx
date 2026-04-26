@@ -50,7 +50,7 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            <div className = "Global_ReusableMultitag_BackgroundScreen-Structure Global_ReusableMultitag_BackgroundScreen-HomeColor">  
+            <div className = "Screen_ReusableMultitag_BackgroundScreen-Structure Home_ReusableMultitag_BackgroundScreen-Color">  
 
                 <div className="Screen_NavbarContainer">
 

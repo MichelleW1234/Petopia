@@ -81,7 +81,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     return (
         
-        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-StationColor">
+        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-StationColor">
 
             {cleanSelection === -1 ? (
 

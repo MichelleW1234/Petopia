@@ -4,7 +4,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
 
     return (
-        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
+        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
             <h1>This tells you everything you need to know about caring for your pet:</h1>
             <h2> &bull; when to perform activity </h2>
             <h2> &bull; what to select for each activity ( and what it looks like when activity isn't wanted)</h2>

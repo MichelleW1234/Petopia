@@ -65,7 +65,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     }
 
     return (
-        <div className = "Global_ReusableMultitag_BackgroundFloatingFlag-Structure Global_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
+        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
             <h1>Select pet(s) to clear:</h1>
             <div className="Global_RowContainer">
 
