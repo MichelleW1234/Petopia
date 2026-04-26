@@ -104,9 +104,9 @@ function Home (){
                                             {currPetHealth >= 75 ? (
 
                                                 <>
-                                                    <div className="Home_PetSlotAlertGood"></div>
-                                                    <div className="Home_PetSlotAlertGood"></div>
-                                                    <div className="Home_PetSlotAlertGood"></div>
+                                                    <div className="Home_PetSlotGoodAlert"></div>
+                                                    <div className="Home_PetSlotGoodAlert"></div>
+                                                    <div className="Home_PetSlotGoodAlert"></div>
                                                 </>
                                             
                                             ) : currPetHealth >= 50 ? (
