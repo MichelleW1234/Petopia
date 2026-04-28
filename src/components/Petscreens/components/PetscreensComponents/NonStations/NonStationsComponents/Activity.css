@@ -10,45 +10,26 @@
 }
 
 
-.Activity_ComponentContainer-Template--Timebar {
+.Activity_ComponentContainer-Color--TimebarCellHalfway {
 
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-
-  box-shadow: 0 0 0.5rem 0.1rem rgb(255, 244, 171);
-
-}
-
-.Activity_ComponentContainer-Template--TimebarCellLeft {
-
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgba(137, 105, 0, 0.4);
-
-}
-
-
-.Activity_ComponentContainer-Template--TimebarCellHalfway {
-
-  height: 0.75rem;
-  width: 0.3rem;
   background-color: rgb(255, 0, 0);
 
 }
 
-.Activity_ComponentContainer-Template--TimebarCellDone {
+.Activity_ComponentContainer-Color--TimebarCellDone {
 
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgb(255, 221, 0);
+  background-color: rgb(255, 217, 0);
 
 }
 
-.Activity_ComponentContainer-Template--TimebarCellDead {
+.Activity_ComponentContainer-Color--TimebarCellLeft {
 
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgba(108, 108, 108, 0.4);
+  background-color: rgb(255, 217, 0, 0.25);
+
+}
+
+.Activity_ComponentContainer-Color--TimebarCellDead {
+
+  background-color: rgba(126, 126, 126, 0.25);
 
 }

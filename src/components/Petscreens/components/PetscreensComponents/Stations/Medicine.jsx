@@ -146,53 +146,57 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
         <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
 
-            {medicineSelection === -1 ? (
+            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+                
+                {medicineSelection === -1 ? (
 
-                PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
+                    PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-                    <Options
-                        optionsDesiredOption = {0}
-                        optionsList = {medicineOptions} 
-                        setOptionsTotal = {setMedicineTotal}
-                        setOptionsSelection = {setMedicineSelection}
-                    />
+                        <Options
+                            optionsDesiredOption = {0}
+                            optionsList = {medicineOptions} 
+                            setOptionsTotal = {setMedicineTotal}
+                            setOptionsSelection = {setMedicineSelection}
+                        />
+
+                    ) : (
+
+                        <Options
+                            optionsDesiredOption = {-1}
+                            optionsList = {medicineOptions} 
+                            setOptionsTotal = {setMedicineTotal}
+                            setOptionsSelection = {setMedicineSelection}
+                        />
+
+                    )
 
                 ) : (
 
-                    <Options
-                        optionsDesiredOption = {-1}
-                        optionsList = {medicineOptions} 
-                        setOptionsTotal = {setMedicineTotal}
-                        setOptionsSelection = {setMedicineSelection}
-                    />
+                    <>
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                        />
+                        <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">  
+                            <div className="Stations_ComponentContainer-Structure--Window">
 
-                )
+                                {!medicineDone ? (
 
-            ) : (
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {medicineAnimationImages[medicineAnimationImage]} />
 
-                <>
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
-                    />
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">  
-                        <div className="Stations_ComponentContainer-Structure--Window">
+                                ) : (
 
-                            {!medicineDone ? (
+                                    /* Change this later!!!!!!!!!!!!!*/
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                        
+                                )}
 
-                                <img className = "Stations_ComponentImage-Template--Window" src = {medicineAnimationImages[medicineAnimationImage]} />
+                            </div> 
+                        </div>
+                    </>
+                )}
 
-                            ) : (
-
-                                /* Change this later!!!!!!!!!!!!!*/
-                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                                    
-                            )}
-
-                        </div> 
-                    </div>
-                </>
-            )}
-            
+            </div>
+                
 
             <div className="ComponentContainer-Structure--Row">
                 {medicineSelection === -1 || !medicineDone ? (

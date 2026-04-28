@@ -83,46 +83,50 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
         
         <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
 
-            {cleanSelection === -1 ? (
+            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+                
+                {cleanSelection === -1 ? (
 
-                <Options
-                    optionsDesiredOption = {cleanDesiredOption}
-                    optionsList = {cleanOptions} 
-                    setOptionsTotal = {setCleanTotal}
-                    setOptionsSelection = {setCleanSelection}
-                />
-
-            ) : (
-
-                <>
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                    <Options
+                        optionsDesiredOption = {cleanDesiredOption}
+                        optionsList = {cleanOptions} 
+                        setOptionsTotal = {setCleanTotal}
+                        setOptionsSelection = {setCleanSelection}
                     />
 
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
-                        <div className="Stations_ComponentContainer-Structure--Window">
-                            {!cleanDone ? ( 
+                ) : (
 
-                                <>
-                                    <h2> Drag your cursor back and forth</h2>
-                                    <img
-                                        className = "Stations_ComponentImage-Template--Window" 
-                                        src = {cleanAnimationImages[cleanAnimationImage]} 
-                                        onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
-                                    />
-                                </>
+                    <>
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
+                        />
 
-                            ) : (
+                        <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
+                            <div className="Stations_ComponentContainer-Structure--Window">
+                                {!cleanDone ? ( 
 
-                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                    <>
+                                        <h2> Drag your cursor back and forth</h2>
+                                        <img
+                                            className = "Stations_ComponentImage-Template--Window" 
+                                            src = {cleanAnimationImages[cleanAnimationImage]} 
+                                            onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
+                                        />
+                                    </>
 
-                            )}
+                                ) : (
+
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </>
+                    </>
 
 
-            )}
+                )}
+
+            </div>
 
             <div className="ComponentContainer-Structure--Row">
                 {cleanSelection === -1 || !cleanDone ? (

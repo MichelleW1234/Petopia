@@ -197,7 +197,7 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
                 </div>
             </div>
         </>
-    )
+    );
 }
   
 export default Confirmation;

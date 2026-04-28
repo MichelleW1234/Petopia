@@ -141,7 +141,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
                     <div className = {`Main_ComponentContainer-Structure--Window Main_ComponentContainer-Color--Window${PetList[ActivePetName][speciesKey]}`}>
 
                         <div className = "Main_ComponentContainer-Structure--WindowStats">
-                            <h1 className = "Main_ComponentHeading-Color--WindowStatsName">{ActivePetName}:</h1>
+                            <h1 className = "Main_ComponentHeading-Template--WindowStatsName">{ActivePetName}:</h1>
                             <div className = "Main_ComponentContainer-Structure--WindowStatsHealth">
 
                                 {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (

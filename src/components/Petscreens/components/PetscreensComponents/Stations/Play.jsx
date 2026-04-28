@@ -62,57 +62,61 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     return (
         
         <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
+            
+            <div className="FloatingFlags_ComponentContainer-Structure--Content">
 
-            {playSelection === -1 ? (
+                {playSelection === -1 ? (
 
-                <Options
-                    optionsDesiredOption = {playDesiredOption}
-                    optionsList = {playOptions} 
-                    setOptionsTotal = {setPlayTotal}
-                    setOptionsSelection = {setPlaySelection}
-                />
-
-            ) : (
-
-                <>
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
+                    <Options
+                        optionsDesiredOption = {playDesiredOption}
+                        optionsList = {playOptions} 
+                        setOptionsTotal = {setPlayTotal}
+                        setOptionsSelection = {setPlaySelection}
                     />
 
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
-                        <div className="Stations_ComponentContainer-Structure--Window">
-                            {!playDone ? (
-                                        
-                                playSelectedGameWindow !== null ? (
+                ) : (
 
-                                    <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
-                                    /*
-                                    <playSelectedGameWindow
-                                        setPlayDone = {setPlayDone}
-                                        playCurrNumber = {playCurrNumber}
-                                        setPlayCurrNumber = {setPlayCurrNumber}
-                                    />
-                                    */
+                    <>
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
+                        />
+
+                        <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
+                            <div className="Stations_ComponentContainer-Structure--Window">
+                                {!playDone ? (
+                                            
+                                    playSelectedGameWindow !== null ? (
+
+                                        <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
+                                        /*
+                                        <playSelectedGameWindow
+                                            setPlayDone = {setPlayDone}
+                                            playCurrNumber = {playCurrNumber}
+                                            setPlayCurrNumber = {setPlayCurrNumber}
+                                        />
+                                        */
+
+                                    ) : (
+
+                                        null /*Default window? */
+
+                                    )
 
                                 ) : (
 
-                                    null /*Default window? */
+                                    /*CHANGE THIS LATER!!!!!!!!!!!!!!!*/
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
-                                )
-
-                            ) : (
-
-                                /*CHANGE THIS LATER!!!!!!!!!!!!!!!*/
-                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-
-                            )}
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                </>
+                    </>
 
-            )}
-        
+                )}
+            
+            </div>
+
             <div className="ComponentContainer-Structure--Row">
                 {playSelection === -1 || !playDone ? (
 

@@ -1,25 +1,11 @@
-.ProgressBar_ComponentContainer-Structure {
+.ProgressBar_ComponentContainer-Color--ProgressbarCellDone {
 
-  display: flex;
-  flex-direction: row;
-  width: fit-content;
-
-  box-shadow: 0 0 0.5rem 0.2rem rgb(209, 255, 200);
-
-}
-
-.ProgressBar_ComponentContainer-Template--CellDone {
-
-  height: 0.75rem;
-  width: 0.3rem;
   background-color: rgb(55, 255, 0);
 
 }
 
-.ProgressBar_ComponentContainer-Template--CellLeft {
+.ProgressBar_ComponentContainer-Color--ProgressbarCellLeft {
 
-  height: 0.75rem;
-  width: 0.3rem;
-  background-color: rgba(0, 137, 11, 0.4);
+  background-color: rgb(55, 255, 0, 0.25);
 
 }

@@ -5,16 +5,16 @@ function ProgressBar({progressBarPercentUntilNextUpdate}) {
     return (
         <>
 
-            <div className = "ProgressBar_ComponentContainer-Structure">
+            <div className = "FloatingFlags_ComponentContainer-Template--Progressionbar">
                 {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                     num <= progressBarPercentUntilNextUpdate ? (
 
-                        <div key = {num} className = "ProgressBar_ComponentContainer-Template--CellDone"></div>
+                        <div key = {num} className = "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell ProgressBar_ComponentContainer-Color--ProgressbarCellDone"></div>
 
                     ) : (
 
-                        <div key = {num} className = "ProgressBar_ComponentContainer-Template--CellLeft"></div>
+                        <div key = {num} className = "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell ProgressBar_ComponentContainer-Color--ProgressbarCellLeft"></div>
 
                     )
 

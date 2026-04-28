@@ -15,10 +15,11 @@ function Schedule({setScheduleOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
     return (
+
         <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
 
-            <div className="Schedule_ComponentContainer-Structure--Info">
-                
+            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+            
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
                     <Activity
@@ -35,11 +36,11 @@ function Schedule({setScheduleOpenFlag}) {
                 />
 
             </div>
-
+            
             <button className="ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
-    )
+    );
 }
   
 export default Schedule;

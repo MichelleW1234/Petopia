@@ -110,41 +110,45 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
         
-            {feedSelection === -1 ? (
+            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+                
+                {feedSelection === -1 ? (
 
-                <Options
-                    optionsDesiredOption = {feedDesiredOption}
-                    optionsList = {feedOptions} 
-                    setOptionsTotal = {setFeedTotal}
-                    setOptionsSelection = {setFeedSelection}
-                />
-        
-            ) : (
-
-                <>
-
-                    <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                    <Options
+                        optionsDesiredOption = {feedDesiredOption}
+                        optionsList = {feedOptions} 
+                        setOptionsTotal = {setFeedTotal}
+                        setOptionsSelection = {setFeedSelection}
                     />
+            
+                ) : (
 
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">  
-                        <div className="Stations_ComponentContainer-Structure--Window">
-                            {!feedDone ? (
+                    <>
 
-                                <img className = "Stations_ComponentImage-Template--Window" src = {feedAnimationImages[feedAnimationImage]} />
+                        <ProgressBar
+                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
+                        />
 
-                            ) : (
+                        <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">  
+                            <div className="Stations_ComponentContainer-Structure--Window">
+                                {!feedDone ? (
 
-                                /* Change this!!!!!!!!!!!!!*/
-                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {feedAnimationImages[feedAnimationImage]} />
 
-                            )}
+                                ) : (
+
+                                    /* Change this!!!!!!!!!!!!!*/
+                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                </>
+                    </>
 
-            )}
+                )}
+
+            </div>
 
             <div className="ComponentContainer-Structure--Row">
                 {feedSelection === -1 || !feedDone ? (

@@ -93,15 +93,15 @@ function Activity({activityKey, activityTimeGap}) {
     
             {PetList[ActivePetName][healthKey] > 0 ? (
 
-                <div className = "Activity_ComponentContainer-Template--Timebar">
+                <div className = "FloatingFlags_ComponentContainer-Template--Progressionbar">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "Activity_ComponentContainer-Template--TimebarCellHalfway"
+                                                        "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "Activity_ComponentContainer-Template--TimebarCellDone"
-                                                            : "Activity_ComponentContainer-Template--TimebarCellLeft"
+                                                            "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
+                                                            : "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
                                                         }>
                         </div>
 
@@ -111,11 +111,11 @@ function Activity({activityKey, activityTimeGap}) {
 
             ) : (
 
-                <div className = "Activity_ComponentContainer-Template--Timebar">
+                <div className = "FloatingFlags_ComponentContainer-Template--Progressionbar">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "Activity_ComponentContainer-Template--TimebarCellDead"></div>
+                        <div key = {num} className = "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
 
                     ))}
                     
@@ -124,7 +124,7 @@ function Activity({activityKey, activityTimeGap}) {
             )} 
 
         </div>
-    )
+    );
 }
   
 export default Activity;

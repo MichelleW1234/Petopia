@@ -101,44 +101,45 @@ function Home (){
                                     <div key = {key} className="ReusableMultitags_ComponentContainer-Structure--Button ReusableMultitags_ComponentContainer-Color--Screens_">
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
                                             
+                                            {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
                                             {currPetHealth >= 75 ? (
 
                                                 <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertGood"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertGood"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertGood"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertGood"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertGood"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertGood"></div>
                                                 </>
                                             
                                             ) : currPetHealth >= 50 ? (
 
                                                 <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertOkay"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertOkay"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertOkay"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertOkay"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertOkay"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertOkay"></div>
                                                 </>
 
                                             ) : currPetHealth >= 25 ? (
 
                                                 <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBad"></div>
                                                 </>
 
                                             ) : currPetHealth > 0 ? (
 
                                                 <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertVeryBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertVeryBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertVeryBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertVeryBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertVeryBad"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertVeryBad"></div>
                                                 </>
 
                                             ) : (
 
                                                 <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertDead"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertDead"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertDead"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertDead"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertDead"></div>
+                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertDead"></div>
                                                 </>
 
                                             )}

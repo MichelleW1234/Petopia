@@ -9,64 +9,52 @@
 
 }
 
-.Home_ComponentContainer-Template--PetAlertGood {
+.Home_ComponentContainer-Template--PetAlertBubble {
 
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
+  border-width: 0.2rem;
+  border-style: solid;
 
-  border: 0.2rem solid rgb(0, 200, 0);
+  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
+
+}
+
+.Home_ComponentContainer-Color--PetAlertGood {
+
+  border-color:rgb(0, 200, 0);
   background-color: rgb(25, 255, 0);
-  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
 
-.Home_ComponentContainer-Template--PetAlertOkay {
+.Home_ComponentContainer-Color--PetAlertOkay {
 
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-
-  border: 0.2rem solid rgb(200, 200, 0);
+  border-color: rgb(200, 200, 0);
   background-color: rgb(255, 225, 0);
-  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
 
-.Home_ComponentContainer-Template--PetAlertBad {
+.Home_ComponentContainer-Color--PetAlertBad {
 
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-
-  border: 0.2rem solid rgb(200, 100, 0);
+  border-color:rgb(200, 100, 0);
   background-color: rgb(255, 125, 0);
-  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
 
-.Home_ComponentContainer-Template--PetAlertVeryBad {
+.Home_ComponentContainer-Color--PetAlertVeryBad {
 
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-
-  border: 0.2rem solid rgb(200, 0, 0);
+  border-color: rgb(200, 0, 0);
   background-color: rgb(255, 0, 0);
-  box-shadow: 0 0 0.5rem 0.05rem rgb(255, 255, 255);
 
 }
 
-.Home_ComponentContainer-Template--PetAlertDead {
+.Home_ComponentContainer-Color--PetAlertDead {
 
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-
-  border: 0.2rem solid rgb(100, 100, 100);
+  border-color: rgb(140, 140, 140);
   background-color: rgb(150, 150, 150);
 
 }
