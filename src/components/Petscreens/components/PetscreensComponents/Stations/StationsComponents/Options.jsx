@@ -53,8 +53,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlags_Station">
-                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlags_StationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlagStation">
+                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagStationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 
                 ))}

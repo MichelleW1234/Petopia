@@ -66,25 +66,25 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     return (
 
-        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
+        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlagNonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
                 <h1>Select pet(s) to clear:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
 
                     {Object.keys(PetList).map((key) => (
 
-                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlags_Nonstation">
+                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlagNonstation">
 
                             {deletionSelectedPets.includes(key) ? (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlags_NonstationSelected" onClick = {() => removePet(key)}> 
+                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 
                             ) : (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlags_NonstationNormal" onClick = {() => addPet(key)}> 
+                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagNonstationNormal" onClick = {() => addPet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 
@@ -100,15 +100,15 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--Row ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick={() => clearPets()}>Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick={() => clearPets()}>Clear Selected Pets</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationUnclickable">Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationUnclickable">Clear Selected Pets</button>
 
                 )}
 

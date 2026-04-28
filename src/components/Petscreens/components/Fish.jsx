@@ -210,25 +210,25 @@ function Fish (){
             />}
 
 
-            <div className = "UIStapleElements_BackgroundScreen-Structure--Screens_ UIStapleElements_BackgroundScreen-Color--Fish_">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--ScreenStation">
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--Screens_Navbar">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed </button>
-                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean </button>
+                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed </button>
+                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean </button>
 
                             {fishCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setFishMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setFishMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Medicine </button>
 
                             )}
 
@@ -237,19 +237,19 @@ function Fish (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Feed </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Clean </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Feed </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Clean </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screens_Content">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
                     <Main
                         mainAnimationImages={fishMainImages}
                         mainPetEnergy = {400}

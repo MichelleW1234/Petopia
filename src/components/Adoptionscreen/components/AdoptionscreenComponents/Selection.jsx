@@ -15,16 +15,16 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screens_">
+                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screen">
                         {key === selectedPet ? (
 
-                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Active UIStapleElements_ComponentButtonCircle-Color--Screens_Active">
+                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Active UIStapleElements_ComponentButtonCircle-Color--ScreenActive">
                                 <img src = {portraitPetImages[key][0]}/>
                             </div>
 
                         ) : (
 
-                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--Screens_Normal" onClick = {() => setSelectedPet(key)}>
+                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--ScreenNormal" onClick = {() => setSelectedPet(key)}>
                                 <img src = {portraitPetImages[key][0]} />
                             </div>
 
@@ -37,11 +37,11 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         
             {selectedPet !== "" ? (
 
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_Normal" onClick = {() => setStep(1)}> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNormal" onClick = {() => setStep(1)}> Go to Confirmation </button>
 
             ) : (
 
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_Unclickable"> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenUnclickable"> Go to Confirmation </button>
 
             )}  
         </>

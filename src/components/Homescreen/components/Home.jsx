@@ -50,45 +50,45 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            <div className = "UIStapleElements_BackgroundScreen-Structure--Screens_ UIStapleElements_BackgroundScreen-Color--Home_">  
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--ScreenNonstation">  
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--Screens_Navbar">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     {Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0 ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable" > Restart Game </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Clear Pets </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable" > Restart Game </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Clear Pets </button>
                         </>
 
                     )}
 
                     {Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3 ? (
 
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Add Pets </button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Add Pets </button>
 
                     ) : (
 
-                        <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"> Add Pets </Link>
+                        <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal"> Add Pets </Link>
 
                     )}
                     
                 </div>
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screens_Content">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
                     <h1> Your Pets: </h1>
                     <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
 
                         {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <h2 className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screens_"> Your pet(s) will appear here when added. </h2>
+                            <h2 className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screen"> Your pet(s) will appear here when added. </h2>
 
                         ) : (
 
@@ -98,7 +98,7 @@ function Home (){
 
                                 return (
 
-                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screens_">
+                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screen">
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
                                             
                                             {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
@@ -147,7 +147,7 @@ function Home (){
                                         </div>
                                         <Link
                                             to = {`/${PetList[key][speciesKey]}`}
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--Screens_Normal"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--ScreenNormal"
                                             onClick = {() => getPet(key)}
                                         >
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>

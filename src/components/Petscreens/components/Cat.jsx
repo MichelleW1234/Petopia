@@ -194,25 +194,25 @@ function Cat (){
                 setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
             />}
         
-            <div className = "UIStapleElements_BackgroundScreen-Structure--Screens_ UIStapleElements_BackgroundScreen-Color--Cat_">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--ScreenStation">
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--Screens_Navbar">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
+                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Medicine </button>
 
                             )}
                         
@@ -221,19 +221,19 @@ function Cat (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Feed </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Play </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Feed </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Play </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenNavbarUnclickable"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNavbarNormal" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screens_Content">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
                     <Main
                         mainAnimationImages={catMainImages}
                         mainPetEnergy = {450}

@@ -16,9 +16,9 @@ function Schedule({setScheduleOpenFlag}) {
 
     return (
 
-        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
+        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlagNonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
             
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
@@ -37,7 +37,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick={() => setScheduleOpenFlag(false)}>Close</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     );

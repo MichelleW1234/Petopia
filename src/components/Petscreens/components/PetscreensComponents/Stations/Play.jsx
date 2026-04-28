@@ -61,9 +61,9 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
     return (
         
-        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Station">
+        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlagStation">
             
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
 
                 {playSelection === -1 ? (
 
@@ -81,7 +81,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                         />
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlags_Station">
+                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlagStation">
                             <div className="Stations_ComponentContainer-Structure--Window">
                                 {!playDone ? (
                                             
@@ -121,15 +121,15 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                 {playSelection === -1 || !playDone ? (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setPlayOpenFlag(false)}>Done</button>
                     </>
 
                 )}

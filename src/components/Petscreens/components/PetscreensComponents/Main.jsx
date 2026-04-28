@@ -130,7 +130,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screens_">
+            <div className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screen">
 
                 {ActivePetName === "" ? (
 

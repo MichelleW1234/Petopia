@@ -4,14 +4,14 @@ function PetGuide({setPetGuideOpenFlag}) {
 
 
     return (
-        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
+        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlagNonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
                 <h1>Read About Your Pet Options:</h1>
                 <h2> Hello. This is a placeholder</h2>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
         </div>
     );
 }
