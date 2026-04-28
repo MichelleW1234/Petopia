@@ -178,14 +178,14 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                                 <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
                                                     <img 
-                                                        className="Main_ComponentImage-Template--WindowGridNonemptyCellPet"
+                                                        className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img 
-                                                        className="Main_ComponentImage-Template--WindowGridNonemptyCellPet"
+                                                        className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}

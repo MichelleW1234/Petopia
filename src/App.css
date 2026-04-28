@@ -586,14 +586,14 @@ a:active {
 
   position: relative;
 
-  img{
+}
 
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
+.MiscellaneousElements_ComponentImage-Structure--ImageOverlay {
 
-  }
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
 
 }
 

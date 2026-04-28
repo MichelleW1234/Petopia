@@ -34,12 +34,12 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
-                    <img src = {bubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
 
                     {optionsDesiredOption === -1 ? (
 
                         /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {heart} className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     ) : (
 
