@@ -31,7 +31,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 {/* Change this!!!!!!!!!!!!!*/}
                 <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {optionsList[0]} />
 
-                <div className="ComponentContainer-Structure--ImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
                     <img src = {bubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
@@ -49,12 +49,12 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 </div>
 
             </div>
-            <div className= "ComponentContainer-Structure--Row">  
+            <div className= "MiscellaneousElements_ComponentContainer-Structure--Row">  
 
                 {optionsList.map((option, index) => (
 
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Button ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
-                        <img key = {index} className = "ReusableMultitags_ComponentButtonCircle-Structure--Normal ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_StationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlags_Station">
+                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlags_StationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 
                 ))}

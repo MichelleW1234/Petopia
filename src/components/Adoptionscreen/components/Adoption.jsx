@@ -25,14 +25,14 @@ function Adoption () {
                 />
             }
 
-            <div className="ReusableMultitags_BackgroundScreen-Structure--Screens_ ReusableMultitags_BackgroundScreen-Color--Adoption_">
+            <div className="UIStapleElements_BackgroundScreen-Structure--Screens_ UIStapleElements_BackgroundScreen-Color--Adoption_">
 
-                <div className="Screens_ComponentContainer-Structure--Navbar">
-                    <Link to = "/home" className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal"> Quit and Go Home </Link>
-                    <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--Screens_Navbar">
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal"> Quit and Go Home </Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
-                <div className = "Screens_ComponentContainer-Structure--Components">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screens_Content">
                     {step === 0 ? (
 
                         <Selection

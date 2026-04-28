@@ -174,7 +174,7 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "Confirmation_ComponentContainer-Structure">
                 <p>Hello, my name is </p>
 
-                <div className="ReusableMultitags_ComponentContainer-Structure--Normal ReusableMultitags_ComponentContainer-Color--Screens_ Confirmation_ComponentContainer-Structure--Name">
+                <div className="UIStapleElements_ComponentContainer-Structure--Normal UIStapleElements_ComponentContainer-Color--Screens_ Confirmation_ComponentContainer-Structure--Name">
                     <input 
                         className = "Confirmation_ComponentInput-Template--Name"
                         type="text"
@@ -191,9 +191,9 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
                 
             <div className = "Confirmation_ComponentContainer-Structure--Checking">
                 <p className = "Confirmation_ComponentContainer-Template--CheckingError">{errorMessage}</p>
-                <div className = "ComponentContainer-Structure--Row">
-                    <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {() => undo()}> Undo Selection </button>
-                    <Link to = "/home" className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--Row">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_Normal" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_Normal" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

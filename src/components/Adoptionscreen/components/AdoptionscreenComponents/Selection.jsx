@@ -11,20 +11,20 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1> Select a new Pet: </h1>
 
-            <div className = "ComponentContainer-Structure--Row">
+            <div className = "MiscellaneousElements_ComponentContainer-Structure--Row">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="ReusableMultitags_ComponentContainer-Structure--Button ReusableMultitags_ComponentContainer-Color--Screens_">
+                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screens_">
                         {key === selectedPet ? (
 
-                            <div key = {key} className = "ReusableMultitags_ComponentButtonCircle-Structure--Active ReusableMultitags_ComponentButtonCircle-Color--Screens_Active">
+                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Active UIStapleElements_ComponentButtonCircle-Color--Screens_Active">
                                 <img src = {portraitPetImages[key][0]}/>
                             </div>
 
                         ) : (
 
-                            <div key = {key} className = "ReusableMultitags_ComponentButtonCircle-Structure--Normal ReusableMultitags_ComponentButtonCircle-Color--Screens_Normal" onClick = {() => setSelectedPet(key)}>
+                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--Screens_Normal" onClick = {() => setSelectedPet(key)}>
                                 <img src = {portraitPetImages[key][0]} />
                             </div>
 
@@ -37,11 +37,11 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         
             {selectedPet !== "" ? (
 
-                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {() => setStep(1)}> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--Screens_Normal" onClick = {() => setStep(1)}> Go to Confirmation </button>
 
             ) : (
 
-                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_Unclickable"> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--Screens_Unclickable"> Go to Confirmation </button>
 
             )}  
         </>

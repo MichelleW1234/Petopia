@@ -81,9 +81,9 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     return (
         
-        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
+        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Station">
 
-            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
                 
                 {cleanSelection === -1 ? (
 
@@ -101,7 +101,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                         />
 
-                        <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
+                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlags_Station">
                             <div className="Stations_ComponentContainer-Structure--Window">
                                 {!cleanDone ? ( 
 
@@ -128,19 +128,19 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
             </div>
 
-            <div className="ComponentContainer-Structure--Row">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
                 {cleanSelection === -1 || !cleanDone ? (
 
                     <>
-                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
-                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Quit</button>
-                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Done</button>
                     </>
 
                 )}

@@ -130,7 +130,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--Screens_">
+            <div className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screens_">
 
                 {ActivePetName === "" ? (
 
@@ -176,7 +176,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "ComponentContainer-Structure--ImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
+                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
                                                     <img 
                                                         className="Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 

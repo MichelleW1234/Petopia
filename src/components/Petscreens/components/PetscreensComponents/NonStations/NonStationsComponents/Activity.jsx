@@ -93,15 +93,15 @@ function Activity({activityKey, activityTimeGap}) {
     
             {PetList[ActivePetName][healthKey] > 0 ? (
 
-                <div className = "FloatingFlags_ComponentContainer-Template--Progressionbar">
+                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlags_Progressionbar">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
+                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
-                                                            : "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
+                                                            "MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
+                                                            : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
                                                         }>
                         </div>
 
@@ -111,11 +111,11 @@ function Activity({activityKey, activityTimeGap}) {
 
             ) : (
 
-                <div className = "FloatingFlags_ComponentContainer-Template--Progressionbar">
+                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlags_Progressionbar">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "FloatingFlags_ComponentContainer-Structure--ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
+                        <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_ProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
 
                     ))}
                     

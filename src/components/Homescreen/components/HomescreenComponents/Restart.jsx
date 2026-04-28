@@ -23,13 +23,13 @@ function Restart({setRestartOpenFlag}) {
 
 
     return (
-        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
-            <div className="FloatingFlags_ComponentContainer-Structure--Content">
+        <div className = "UIStapleElements_BackgroundFloatingFlag-Structure--FloatingFlags_ UIStapleElements_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlags_Content">
                 <h1>Are you sure you want to restart the game? </h1>
             </div>
-            <div className="ComponentContainer-Structure--Row">
-                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => restartGame()}>Yes</button>
-                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => setRestartOpenFlag(false)}>No</button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => restartGame()}>Yes</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => setRestartOpenFlag(false)}>No</button>
             </div>
         </div>
     );
