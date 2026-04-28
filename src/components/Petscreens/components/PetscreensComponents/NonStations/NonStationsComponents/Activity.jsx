@@ -86,22 +86,22 @@ function Activity({activityKey, activityTimeGap}) {
 
 
     return (
-        <div className = "Activity_Container">
+        <div className = "Activity_ComponentContainer-Structure">
             
             <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
             <h1>{activityNextStrings[activityKey] + activityNextTimeString}</h1>
     
             {PetList[ActivePetName][healthKey] > 0 ? (
 
-                <div className = "Activity_TimeBarContainer">
+                <div className = "Activity_ComponentContainer-Template--Timebar">
                     
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                         <div key = {num} className = {num === 50 ?
-                                                        "Activity_TimeBarHalfwayCell"
+                                                        "Activity_ComponentContainer-Template--TimebarCellHalfway"
                                                         : num <= activityPercentUntilNextUpdate ? 
-                                                            "Activity_TimeBarDoneCell"
-                                                            : "Activity_TimeBarLeftCell"
+                                                            "Activity_ComponentContainer-Template--TimebarCellDone"
+                                                            : "Activity_ComponentContainer-Template--TimebarCellLeft"
                                                         }>
                         </div>
 
@@ -111,11 +111,11 @@ function Activity({activityKey, activityTimeGap}) {
 
             ) : (
 
-                <div className = "Activity_TimeBarContainer">
+                <div className = "Activity_ComponentContainer-Template--Timebar">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "Activity_TimeBarCancelledCell"></div>
+                        <div key = {num} className = "Activity_ComponentContainer-Template--TimebarCellDead"></div>
 
                     ))}
                     

@@ -1,4 +1,4 @@
-.Activity_Container{
+.Activity_ComponentContainer-Structure{
 
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 
-.Activity_TimeBarContainer {
+.Activity_ComponentContainer-Template--Timebar {
 
   display: flex;
   flex-direction: row;
@@ -20,7 +20,7 @@
 
 }
 
-.Activity_TimeBarLeftCell {
+.Activity_ComponentContainer-Template--TimebarCellLeft {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -29,7 +29,7 @@
 }
 
 
-.Activity_TimeBarHalfwayCell {
+.Activity_ComponentContainer-Template--TimebarCellHalfway {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -37,7 +37,7 @@
 
 }
 
-.Activity_TimeBarDoneCell {
+.Activity_ComponentContainer-Template--TimebarCellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -45,7 +45,7 @@
 
 }
 
-.Activity_TimeBarCancelledCell {
+.Activity_ComponentContainer-Template--TimebarCellDead {
 
   height: 0.75rem;
   width: 0.3rem;

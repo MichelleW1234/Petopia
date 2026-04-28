@@ -1,4 +1,4 @@
-.Options_Container{
+.Options_ComponentContainer-Structure{
 
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 
-.Options_PetThoughtContainer {
+.Options_ComponentContainer-Structure--PetThought {
 
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@
 }
 
 
-.Options_PetThoughtPetImage{
+.Options_ComponentImage-Template--PetThoughtPet{
 
     height: 10rem;
     width: 10rem;
@@ -35,14 +35,14 @@
 
 }
 
-.Options_PetThoughtDesiredOption {
+.Options_ComponentContainer-Structure--PetThoughtDesiredOption {
 
     height: 10rem;
     width: 10rem;
 
 }
 
-.Options_PetThoughtDesiredOptionBubbleImage{
+.Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{
 
     height: 100%;
     width: 100%;
@@ -54,9 +54,14 @@
 
 }
 
-.Options_PetThoughtDesiredOptionObjectImage{
+.Options_ComponentImage-Template--PetThoughtDesiredOptionObject{
 
     width: 80%;
     height: 80%;
+
+    filter:
+        drop-shadow(0 0 2px rgb(215, 175, 255))
+        drop-shadow(0 0 4px rgba(215, 150, 255))
+        drop-shadow(0 0 6px rgb(215, 125, 255));
 
 }

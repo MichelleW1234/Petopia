@@ -24,37 +24,37 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
     return (
 
-        <div className="Options_Container">
+        <div className="Options_ComponentContainer-Structure">
 
-            <div className="Options_PetThoughtContainer"> 
+            <div className="Options_ComponentContainer-Structure--PetThought"> 
 
                 {/* Change this!!!!!!!!!!!!!*/}
-                <img className = "Options_PetThoughtPetImage" src = {optionsList[0]} />
+                <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {optionsList[0]} />
 
-                <div className="Global_OverlappingImagesContainer Options_PetThoughtDesiredOption">
+                <div className="ComponentContainer-Structure--ImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
-                    <img src = {bubble} className="Options_PetThoughtDesiredOptionBubbleImage"/>
+                    <img src = {bubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
 
                     {optionsDesiredOption === -1 ? (
 
                         /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className="Options_PetThoughtDesiredOptionObjectImage"/>
+                        <img src = {heart} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption]} className="Options_PetThoughtDesiredOptionObjectImage"/>
+                        <img src = {optionsList[optionsDesiredOption]} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     )}
                 </div>
 
             </div>
-            <div className= "Global_RowContainer">  
+            <div className= "ComponentContainer-Structure--Row">  
 
                 {optionsList.map((option, index) => (
 
-                    <div className="Global_ReusableMultitag_ComponentContainer-ButtonBorderStructure FloatingFlag_ReusableMultitag_ComponentContainer-StationColor">
-                        <img key = {index} className = "Global_ReusableMultitag_ComponentButtonCircle-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonCircle-StationNormalColor" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <div className="ReusableMultitags_ComponentContainer-Structure--Button ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
+                        <img key = {index} className = "ReusableMultitags_ComponentButtonCircle-Structure--Normal ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_StationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
                     </div>
 
                 ))}

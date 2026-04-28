@@ -11,20 +11,20 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1> Select a new Pet: </h1>
 
-            <div className = "Global_RowContainer">
+            <div className = "ComponentContainer-Structure--Row">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="Global_ReusableMultitag_ComponentContainer-ButtonBorderStructure Screen_ReusableMultitag_ComponentContainer-Color">
+                    <div className="ReusableMultitags_ComponentContainer-Structure--Button ReusableMultitags_ComponentContainer-Color--Screens_">
                         {key === selectedPet ? (
 
-                            <div key = {key} className = "Global_ReusableMultitag_ComponentButtonCircle-ActiveStructure Screen_ReusableMultitag_ComponentButtonCircle-ActiveColor">
+                            <div key = {key} className = "ReusableMultitags_ComponentButtonCircle-Structure--Active ReusableMultitags_ComponentButtonCircle-Color--Screens_Active">
                                 <img src = {portraitPetImages[key][0]}/>
                             </div>
 
                         ) : (
 
-                            <div key = {key} className = "Global_ReusableMultitag_ComponentButtonCircle-NormalStructure Screen_ReusableMultitag_ComponentButtonCircle-NormalColor" onClick = {() => setSelectedPet(key)}>
+                            <div key = {key} className = "ReusableMultitags_ComponentButtonCircle-Structure--Normal ReusableMultitags_ComponentButtonCircle-Color--Screens_Normal" onClick = {() => setSelectedPet(key)}>
                                 <img src = {portraitPetImages[key][0]} />
                             </div>
 
@@ -37,11 +37,11 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         
             {selectedPet !== "" ? (
 
-                <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NormalColor" onClick = {() => setStep(1)}> Go to Confirmation </button>
+                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {() => setStep(1)}> Go to Confirmation </button>
 
             ) : (
 
-                <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-UnclickableColor"> Go to Confirmation </button>
+                <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_Unclickable"> Go to Confirmation </button>
 
             )}  
         </>

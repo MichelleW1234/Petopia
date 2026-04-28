@@ -1,4 +1,4 @@
-.Home_PetSlotAlertContainer {
+.Home_ComponentContainer-Structure--PetAlert {
 
   display: flex;
   flex-direction: row;
@@ -9,7 +9,7 @@
 
 }
 
-.Home_PetSlotGoodAlert {
+.Home_ComponentContainer-Template--PetAlertGood {
 
   height: 2rem;
   width: 2rem;
@@ -22,7 +22,7 @@
 }
 
 
-.Home_PetSlotOkayAlert {
+.Home_ComponentContainer-Template--PetAlertOkay {
 
   height: 2rem;
   width: 2rem;
@@ -35,7 +35,7 @@
 }
 
 
-.Home_PetSlotBadAlert {
+.Home_ComponentContainer-Template--PetAlertBad {
 
   height: 2rem;
   width: 2rem;
@@ -48,7 +48,7 @@
 }
 
 
-.Home_PetSlotVeryBadAlert {
+.Home_ComponentContainer-Template--PetAlertVeryBad {
 
   height: 2rem;
   width: 2rem;
@@ -60,7 +60,7 @@
 
 }
 
-.Home_PetSlotDeadAlert {
+.Home_ComponentContainer-Template--PetAlertDead {
 
   height: 2rem;
   width: 2rem;

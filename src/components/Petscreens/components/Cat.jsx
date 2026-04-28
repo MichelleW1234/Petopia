@@ -44,8 +44,8 @@ import Main from "./PetscreensComponents/Main.jsx";
 import Feed from "./PetscreensComponents/Stations/Feed.jsx";
 import Play from "./PetscreensComponents/Stations/Play.jsx";
 import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/NonStations/Schedule.jsx";
-import PetCareGuide from "./PetscreensComponents/NonStations/PetCareGuide.jsx";
+import Schedule from "./PetscreensComponents/Nonstations/Schedule.jsx";
+import PetCareGuide from "./PetscreensComponents/Nonstations/PetCareGuide.jsx";
 
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -194,25 +194,25 @@ function Cat (){
                 setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
             />}
         
-            <div className = "Screen_ReusableMultitag_BackgroundScreen-Structure Cat_ReusableMultitag_BackgroundScreen-Color">
+            <div className = "ReusableMultitags_BackgroundScreen-Structure--Screens_ ReusableMultitags_BackgroundScreen-Color--Cat_">
 
-                <div className="Screen_NavbarContainer">
+                <div className="Screens_ComponentContainer-Structure--Navbar">
 
-                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setActivePetName("")}> Home </Link>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
-                            <button className={catRestless ? "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor" : "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
+                            <button className={catHungry ? "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUrgent" : "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
+                            <button className={catRestless ? "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUrgent" : "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
-                                <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
+                                <button className="ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
 
                             )}
                         
@@ -221,19 +221,19 @@ function Cat (){
                     ) : (
 
                         <>
-                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Feed </button>
-                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Play </button>
-                            <button className="Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor"> Medicine </button>
+                            <button className="ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Feed </button>
+                            <button className="ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Play </button>
+                            <button className="ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUnclickable"> Medicine </button>
                         </>
 
                     )}
 
-                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
+                    <button className="ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 
-                <div className = "Screen_ComponentsContainer">
+                <div className = "Screens_ComponentContainer-Structure--Components">
                     <Main
                         mainAnimationImages={catMainImages}
                         mainPetEnergy = {450}

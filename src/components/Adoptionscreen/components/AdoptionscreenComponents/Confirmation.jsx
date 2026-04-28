@@ -171,11 +171,12 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1>Fill out this form: </h1>  
             
-            <div className = "Confirmation_Container">
+            <div className = "Confirmation_ComponentContainer-Structure">
                 <p>Hello, my name is </p>
 
-                <div className="Global_ReusableMultitag_ComponentContainer-NormalStructure Screen_ReusableMultitag_ComponentContainer-Color Confirmation_NameBorder">
+                <div className="ReusableMultitags_ComponentContainer-Structure--Normal ReusableMultitags_ComponentContainer-Color--Screens_ Confirmation_ComponentContainer-Structure--Name">
                     <input 
+                        className = "Confirmation_ComponentInput-Template--Name"
                         type="text"
                         value={confirmationPetName}
                         onChange={(e) => {setConfirmationPetName(e.target.value)}}
@@ -188,11 +189,11 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
                 <p>Make sure to read the Pet Care Guide!!</p>
             </div>
                 
-            <div className = "Confirmation_CheckingContainer">
-                <p className = "Confirmation_CheckingError">{errorMessage}</p>
-                <div className = "Global_RowContainer">
-                    <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NormalColor" onClick = {() => undo()}> Undo Selection </button>
-                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NormalColor" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+            <div className = "Confirmation_ComponentContainer-Structure--Checking">
+                <p className = "Confirmation_ComponentContainer-Template--CheckingError">{errorMessage}</p>
+                <div className = "ComponentContainer-Structure--Row">
+                    <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_Normal" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

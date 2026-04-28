@@ -1,4 +1,4 @@
-.ProgressBar_Container {
+.ProgressBar_ComponentContainer-Structure {
 
   display: flex;
   flex-direction: row;
@@ -8,7 +8,7 @@
 
 }
 
-.ProgressBar_DoneCell {
+.ProgressBar_ComponentContainer-Template--CellDone {
 
   height: 0.75rem;
   width: 0.3rem;
@@ -16,7 +16,7 @@
 
 }
 
-.ProgressBar_LeftCell {
+.ProgressBar_ComponentContainer-Template--CellLeft {
 
   height: 0.75rem;
   width: 0.3rem;

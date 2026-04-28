@@ -108,7 +108,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     return (
 
-        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-StationColor">
+        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
         
             {feedSelection === -1 ? (
 
@@ -127,16 +127,16 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
 
-                    <div className="Global_ReusableMultitag_ComponentContainer-WindowBorderStructure FloatingFlag_ReusableMultitag_ComponentContainer-StationColor">  
-                        <div className="Stations_WindowContainer">
+                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">  
+                        <div className="Stations_ComponentContainer-Structure--Window">
                             {!feedDone ? (
 
-                                <img className = "Stations_WindowImage" src = {feedAnimationImages[feedAnimationImage]} />
+                                <img className = "Stations_ComponentImage-Template--Window" src = {feedAnimationImages[feedAnimationImage]} />
 
                             ) : (
 
                                 /* Change this!!!!!!!!!!!!!*/
-                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
                             )}
                         </div>
@@ -146,19 +146,19 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
             )}
 
-            <div className="Global_RowContainer">
+            <div className="ComponentContainer-Structure--Row">
                 {feedSelection === -1 || !feedDone ? (
 
                     <>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Done</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Quit</button>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Quit</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setFeedOpenFlag(false)}>Done</button>
                     </>
 
                 )}

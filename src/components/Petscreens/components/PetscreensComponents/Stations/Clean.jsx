@@ -81,7 +81,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     return (
         
-        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-StationColor">
+        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station">
 
             {cleanSelection === -1 ? (
 
@@ -99,14 +99,14 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                     />
 
-                    <div className="Global_ReusableMultitag_ComponentContainer-WindowBorderStructure FloatingFlag_ReusableMultitag_ComponentContainer-StationColor">
-                        <div className="Stations_WindowContainer">
+                    <div className="ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station">
+                        <div className="Stations_ComponentContainer-Structure--Window">
                             {!cleanDone ? ( 
 
                                 <>
                                     <h2> Drag your cursor back and forth</h2>
                                     <img
-                                        className = "Stations_WindowImage" 
+                                        className = "Stations_ComponentImage-Template--Window" 
                                         src = {cleanAnimationImages[cleanAnimationImage]} 
                                         onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                     />
@@ -114,7 +114,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                             ) : (
 
-                                <img className = "Stations_WindowImage" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
                             )}
                         </div>
@@ -124,19 +124,19 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
             )}
 
-            <div className="Global_RowContainer">
+            <div className="ComponentContainer-Structure--Row">
                 {cleanSelection === -1 || !cleanDone ? (
 
                     <>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Done</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor">Quit</button>
-                        <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Unclickable ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable">Quit</button>
+                        <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal" onClick = {() => setCleanOpenFlag(false)}>Done</button>
                     </>
 
                 )}

@@ -4,10 +4,10 @@ function PetGuide({setPetGuideOpenFlag}) {
 
 
     return (
-        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
+        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
             <h1>Read About Your Pet Options:</h1>
             <h2> Hello. This is a placeholder</h2>
-            <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationNormalColor" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
+            <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
         </div>
     )
 }

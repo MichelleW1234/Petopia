@@ -25,14 +25,14 @@ function Adoption () {
                 />
             }
 
-            <div className="Screen_ReusableMultitag_BackgroundScreen-Structure Adoption_ReusableMultitag_BackgroundScreen-Color">
+            <div className="ReusableMultitags_BackgroundScreen-Structure--Screens_ ReusableMultitags_BackgroundScreen-Color--Adoption_">
 
-                <div className="Screen_NavbarContainer">
-                    <Link to = "/home" className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor"> Quit and Go Home </Link>
-                    <button className = "Global_ReusableMultitag_ComponentButtonPill-NormalStructure Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                <div className="Screens_ComponentContainer-Structure--Navbar">
+                    <Link to = "/home" className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal"> Quit and Go Home </Link>
+                    <button className = "ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
-                <div className = "Screen_ComponentsContainer">
+                <div className = "Screens_ComponentContainer-Structure--Components">
                     {step === 0 ? (
 
                         <Selection

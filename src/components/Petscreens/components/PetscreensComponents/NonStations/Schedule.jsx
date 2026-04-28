@@ -1,4 +1,4 @@
-import Activity from "./NonStationsComponents/Activity.jsx";
+import Activity from "./NonstationsComponents/Activity.jsx";
 
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
@@ -15,9 +15,9 @@ function Schedule({setScheduleOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
     return (
-        <div className = "FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor">
+        <div className = "ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_ ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation">
 
-            <div className="Schedule_InfoContainer">
+            <div className="Schedule_ComponentContainer-Structure--Info">
                 
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
@@ -36,7 +36,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
 
-            <button className="Global_ReusableMultitag_ComponentButtonPill-NormalStructure FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationNormalColor" onClick={() => setScheduleOpenFlag(false)}>Close</button>
+            <button className="ReusableMultitags_ComponentButtonPill-Structure--Normal ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     )

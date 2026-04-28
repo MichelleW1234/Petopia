@@ -7,52 +7,52 @@
 
   /*Color measurements:*/
 
-  --ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements: 0 0 1rem 0.1rem;
-  --ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements: 0 0 1rem 0.5rem;
+  --ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted: 0 0 1rem 0.1rem;
+  --ReusableMultitags_ComponentButton-Measurements--ShadowInteracted: 0 0 1rem 0.5rem;
 
 
 
   /*Color light and saturation percentages:*/
 
-  --ReusableMultitag_Background-ColorSaturation: 75%;
+  --ReusableMultitags_Background-Saturation--ColorBackground: 75%;
 
-  --ReusableMultitag_BackgroundScreen-OuterColorLight: 25%;
-  --ReusableMultitag_BackgroundScreen-InnerColorLight: 50%;
+  --ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter: 25%;
+  --ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner: 50%;
 
-  --ReusableMultitag_BackgroundFloatingFlag-ColorLight: 25%;
-  --ReusableMultitag_BackgroundFloatingFlag-ColorTransparency: 75%;
+  --ReusableMultitags_BackgroundFloatingFlag-Light--ColorBackground: 25%;
+  --ReusableMultitags_BackgroundFloatingFlag-Transparency--ColorBackground: 75%;
 
 
 
-  --ReusableMultitag_Component-ColorSaturation: 100%;
-  --ReusableMultitag_Component-InteractiveShadowColorLight: 100%;
-  --ReusableMultitag_Component-InteractiveBorderColorLight: 50%;
-  --ReusableMultitag_Component-NoninteractiveBorderColorLight: 25%;
+  --ReusableMultitags_Component-Saturation--Color: 100%;
+  --ReusableMultitags_Component-Light--ColorShadowInteractive: 100%;
+  --ReusableMultitags_Component-Light--ColorBorderInteractive: 50%;
+  --ReusableMultitags_Component-Light--ColorBorderNoninteractive: 25%;
 
-  --ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency: 0.75;
-  --ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio: 1.25;
-  --ReusableMultitag_ComponentButtonPill-FontColorLight: 25%;
-  --ReusableMultitag_ComponentButtonPill-TopColorLight: 50%;
-  --ReusableMultitag_ComponentButtonPill-BottomColorLight: 100%;
+  --ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable: 0.75;
+  --ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable: 1.25;
+  --ReusableMultitags_ComponentButtonPill-Light--ColorFont: 25%;
+  --ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop: 50%;
+  --ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom: 100%;
 
-  --ReusableMultitag_ComponentButtonCircle-OuterColorLight: 50%;
-  --ReusableMultitag_ComponentButtonCircle-InnerColorLight: 100%;
+  --ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter: 50%;
+  --ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner: 100%;
 
-  --ReusableMultitag_ComponentContainer-FirstColorLight: 75%;
-  --ReusableMultitag_ComponentContainer-SecondColorLight: 50%;
+  --ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst: 75%;
+  --ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond: 50%;
 
   
   
   /*Color hues:*/
 
-  --ReusableMultitag_BackgroundScreen-BaseColorHue: 280;
-  --ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue: 270;
-  --ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue: 260;
+  --ReusableMultitags_BackgroundScreen-Hue--ColorBase: 280;
+  --ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation: 270;
+  --ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation: 260;
 
 
   /*Color layer:*/
 
-  --ReusableMultitag_Component-ColorLayer: 10;
+  --ReusableMultitags_Component-Layer--Hue: 10;
 
 }
 
@@ -72,8 +72,6 @@ body{
 * {
 
   box-sizing: border-box;
-  /*position: relative;*/
-
   margin: 0;
   padding: 0;
 
@@ -137,13 +135,110 @@ a:active {
 
 
 
-/*Custom multi-screen tags:*/
+/*Reusable multitags:*/
+
+/*Backgrounds:*/
 
 
-/* Global: */
+.ReusableMultitags_BackgroundScreen-Structure--Screens_ {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10rem;
+  padding: 4rem;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
 
 
-.Global_ReusableMultitag_ComponentButtonPill-NormalStructure{
+
+
+.ReusableMultitags_BackgroundScreen-Color--Fish_{
+
+  background:
+      /*add image here*/
+      linear-gradient(hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 15%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner)) 50%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 85%);
+
+}
+
+.ReusableMultitags_BackgroundScreen-Color--Dog_{
+
+  background:
+      /*add image here*/
+      linear-gradient(hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 15%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner)) 50%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 85%);
+
+}
+
+.ReusableMultitags_BackgroundScreen-Color--Cat_{
+
+  background:
+      /*add image here*/
+      linear-gradient(hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 15%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner)) 50%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 85%);
+
+}
+
+.ReusableMultitags_BackgroundScreen-Color--Home_{
+
+  background:
+    /*add image here*/
+    linear-gradient(hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 15%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner)) 50%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 85%);
+
+}
+
+.ReusableMultitags_BackgroundScreen-Color--Adoption_{
+
+  background:
+      /*add image here*/
+      linear-gradient(hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 15%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundInner)) 50%, hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundScreen-Light--ColorBackgroundOuter)) 85%);
+
+}
+
+
+
+.ReusableMultitags_BackgroundFloatingFlag-Structure--FloatingFlags_{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+
+  gap: 3rem;
+  padding: 5rem;
+
+}
+
+
+.ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Nonstation{
+
+  background: hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundFloatingFlag-Light--ColorBackground) / var(--ReusableMultitags_BackgroundFloatingFlag-Transparency--ColorBackground));
+
+}
+
+.ReusableMultitags_BackgroundFloatingFlag-Color--FloatingFlags_Station{
+
+  background: hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Background-Saturation--ColorBackground) var(--ReusableMultitags_BackgroundFloatingFlag-Light--ColorBackground) / var(--ReusableMultitags_BackgroundFloatingFlag-Transparency--ColorBackground));
+
+}
+
+
+
+
+
+
+
+
+/*Components:*/
+
+.ReusableMultitags_ComponentButtonPill-Structure--Normal{
 
   padding: 1.5rem 2rem;
   border-radius: 3rem;
@@ -158,13 +253,13 @@ a:active {
 
 }
 
-.Global_ReusableMultitag_ComponentButtonPill-NormalStructure:hover{
+.ReusableMultitags_ComponentButtonPill-Structure--Normal:hover{
 
   transform: scale(1.1);
 
 }
 
-.Global_ReusableMultitag_ComponentButtonPill-UnclickableStructure{
+.ReusableMultitags_ComponentButtonPill-Structure--Unclickable{
 
   padding: 1.5rem 2rem;
   border-radius: 3rem;
@@ -179,7 +274,7 @@ a:active {
 
 
 
-.Global_ReusableMultitag_ComponentButtonCircle-NormalStructure{
+.ReusableMultitags_ComponentButtonCircle-Structure--Normal{
 
   height: 12rem;
   width: 12rem;
@@ -208,13 +303,13 @@ a:active {
 
 }
 
-.Global_ReusableMultitag_ComponentButtonCircle-NormalStructure:hover{
+.ReusableMultitags_ComponentButtonCircle-Structure--Normal:hover{
 
   transform: scale(1.1);
 
 }
 
-.Global_ReusableMultitag_ComponentButtonCircle-ActiveStructure{
+.ReusableMultitags_ComponentButtonCircle-Structure--Active{
 
   height: 12rem;
   width: 12rem;
@@ -244,7 +339,7 @@ a:active {
 }
 
 
-.Global_ReusableMultitag_ComponentContainer-NormalStructure{
+.ReusableMultitags_ComponentContainer-Structure--Normal{
 
   border-top-width: 0.15rem;
   border-right-width: 0.15rem;
@@ -254,7 +349,7 @@ a:active {
 
 }
 
-.Global_ReusableMultitag_ComponentContainer-ButtonBorderStructure{
+.ReusableMultitags_ComponentContainer-Structure--Button{
 
   display: flex;
   flex-direction: column;
@@ -272,7 +367,7 @@ a:active {
 
 }
 
-.Global_ReusableMultitag_ComponentContainer-WindowBorderStructure{
+.ReusableMultitags_ComponentContainer-Structure--Window{
 
   padding: 4rem;
   border-radius: 4rem;
@@ -285,7 +380,247 @@ a:active {
 }
 
 
-.Global_RowContainer {
+.ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarNormal:hover{
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUrgent{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUrgent:hover{
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_NavbarUnclickable{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 100%);
+
+}
+
+
+.ReusableMultitags_ComponentContainer-Color--Screens_{
+
+  border-color: hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive));
+  background: conic-gradient(
+    hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 0deg,
+    hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 90deg,
+    hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 180deg,
+    hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 270deg,
+    hsl(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 360deg
+  );
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--Screens_Normal{
+
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--Screens_Normal:hover {
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--Screens_Active{
+
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_Normal {
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_Normal:hover{
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--Screens_Unclickable{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundScreen-Hue--ColorBase) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 100%);
+
+}
+
+
+.Screens_ComponentContainer-Structure--Navbar {
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 3rem;
+
+}
+
+
+.Screens_ComponentContainer-Structure--Components {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+
+}
+
+
+
+.ReusableMultitags_ComponentContainer-Color--FloatingFlags_Nonstation{
+
+  border-color: hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive));
+  background: conic-gradient(
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 0deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 90deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 180deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 270deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 360deg
+  );
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationNormal:hover{
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_NonstationUnclickable{
+  
+  color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 100%);
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_NonstationNormal{
+
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_NonstationNormal:hover {
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_NonstationSelected{
+
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseNonstation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentContainer-Color--FloatingFlags_Station{
+
+  border-color: hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive));
+  background: conic-gradient(
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 0deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 90deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 180deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundSecond)) 270deg,
+    hsl(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentContainer-Light--ColorBackgroundFirst)) 360deg
+  );
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal{
+
+  color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationNormal:hover{
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonPill-Color--FloatingFlags_StationUnclickable{
+  
+  color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_ComponentButtonPill-Light--ColorFont) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) calc(var(--ReusableMultitags_Component-Light--ColorBorderNoninteractive) / var(--ReusableMultitags_ComponentButtonPill-Ratio--LightColorBorderAndFontUnclickable)));
+  background: linear-gradient(hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundTop) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonPill-Light--ColorBackgroundBottom) / var(--ReusableMultitags_ComponentButtonPill-Transparency--ColorBackgroundUnclickable)) 100%);
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_StationNormal{
+
+  border-color: hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorBorderInteractive));
+  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light--ColorBackgroundInner)) 0%, hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowNoninteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+.ReusableMultitags_ComponentButtonCircle-Color--FloatingFlags_StationNormal:hover {
+
+  box-shadow: var(--ReusableMultitags_ComponentButton-Measurements--ShadowInteracted) hsl(calc(var(--ReusableMultitags_BackgroundFloatingFlag-Hue--ColorBaseStation) + var(--ReusableMultitags_Component-Layer--Hue)) var(--ReusableMultitags_Component-Saturation--Color) var(--ReusableMultitags_Component-Light--ColorShadowInteractive));
+
+}
+
+
+
+
+
+/*Other tags:*/
+
+/*Components: */
+.ComponentContainer-Structure--Row {
 
   display: flex;
   flex-direction: row;
@@ -298,7 +633,7 @@ a:active {
 }
 
 
-.Global_OverlappingImagesContainer {
+.ComponentContainer-Structure--ImageOverlay {
 
   position: relative;
 
@@ -313,353 +648,8 @@ a:active {
 
 }
 
-
-
-
-
-/*Screens:*/
-
-.Screen_ReusableMultitag_BackgroundScreen-Structure {
-
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 10rem;
-  padding: 4rem;
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-FontColorLight));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NavbarNormalColor:hover{
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-FontColorLight));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NavbarUrgentColor:hover{
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NavbarUnclickableColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_ComponentButtonPill-FontColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_Component-NoninteractiveBorderColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 100%);
-
-}
-
-
-.Screen_ReusableMultitag_ComponentContainer-Color{
-
-  border-color: hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-NoninteractiveBorderColorLight));
-  background: conic-gradient(
-    hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 0deg,
-    hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 90deg,
-    hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 180deg,
-    hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 270deg,
-    hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 360deg
-  );
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonCircle-NormalColor{
-
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-InnerColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-OuterColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonCircle-NormalColor:hover {
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonCircle-ActiveColor{
-
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-InnerColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-OuterColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-
-.Screen_ReusableMultitag_ComponentButtonPill-NormalColor {
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-FontColorLight));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-NormalColor:hover{
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.Screen_ReusableMultitag_ComponentButtonPill-UnclickableColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_ComponentButtonPill-FontColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_Component-NoninteractiveBorderColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 100%);
-
-}
-
-
-.Screen_NavbarContainer {
-
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-
-  gap: 3rem;
-
-}
-
-
-.Screen_ComponentsContainer {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 3rem;
-
-}
-
-
-
-
-
-/*Floating Flags:*/
-
-
-.FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-Structure{
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 1;
-  inset: 0;
-
-  gap: 3rem;
-  padding: 5rem;
-
-}
-
-
-.FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-NonStationColor{
-
-  background: hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundFloatingFlag-ColorLight) / var(--ReusableMultitag_BackgroundFloatingFlag-ColorTransparency));
-
-}
-
-.FloatingFlag_ReusableMultitag_BackgroundFloatingFlag-StationColor{
-
-  background: hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundFloatingFlag-ColorLight) / var(--ReusableMultitag_BackgroundFloatingFlag-ColorTransparency));
-
-}
-
-
-.FloatingFlag_ReusableMultitag_ComponentContainer-NonStationColor{
-
-  border-color: hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-NoninteractiveBorderColorLight));
-  background: conic-gradient(
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 0deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 90deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 180deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 270deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 360deg
-  );
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationNormalColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-FontColorLight));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationNormalColor:hover{
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-NonStationUnclickableColor{
-  
-  color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_ComponentButtonPill-FontColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_Component-NoninteractiveBorderColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 100%);
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonCircle-NonStationNormalColor{
-
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-InnerColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-OuterColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonCircle-NonStationNormalColor:hover {
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonCircle-NonStationSelectedColor{
-
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-InnerColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-OuterColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-NonstationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentContainer-StationColor{
-
-  border-color: hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-NoninteractiveBorderColorLight));
-  background: conic-gradient(
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 0deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 90deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 180deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-SecondColorLight)) 270deg,
-    hsl(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentContainer-FirstColorLight)) 360deg
-  );
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor{
-
-  color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-FontColorLight));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-StationNormalColor:hover{
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonPill-StationUnclickableColor{
-  
-  color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_ComponentButtonPill-FontColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) calc(var(--ReusableMultitag_Component-NoninteractiveBorderColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBorderFontColorLightRatio)));
-  background: linear-gradient(hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-TopColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonPill-BottomColorLight) / var(--ReusableMultitag_ComponentButtonPill-UnclickableBackgroundColorTransparency)) 100%);
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonCircle-StationNormalColor{
-
-  border-color: hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveBorderColorLight));
-  background: radial-gradient(circle, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-InnerColorLight)) 0%, hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_ComponentButtonCircle-OuterColorLight)) 100%);
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowNormalMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-.FloatingFlag_ReusableMultitag_ComponentButtonCircle-StationNormalColor:hover {
-
-  box-shadow: var(--ReusableMultitag_ComponentButton-BoxShadowInteractedMeasurements) hsl(calc(var(--ReusableMultitag_BackgroundFloatingFlag-StationBaseColorHue) + var(--ReusableMultitag_Component-ColorLayer)) var(--ReusableMultitag_Component-ColorSaturation) var(--ReusableMultitag_Component-InteractiveShadowColorLight));
-
-}
-
-
-.FloatingFlag_Container{
+.FloatingFlags_ComponentContainer-Structure{
 
   /*May create this if needed*/
-
-}
-
-
-
-/*Other tags:*/
-
-.Fish_ReusableMultitag_BackgroundScreen-Color{
-
-  background:
-      /*add image here*/
-      linear-gradient(hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 15%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-InnerColorLight)) 50%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.Dog_ReusableMultitag_BackgroundScreen-Color{
-
-  background:
-      /*add image here*/
-      linear-gradient(hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 15%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-InnerColorLight)) 50%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.Cat_ReusableMultitag_BackgroundScreen-Color{
-
-  background:
-      /*add image here*/
-      linear-gradient(hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 15%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-InnerColorLight)) 50%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.Home_ReusableMultitag_BackgroundScreen-Color{
-
-  background:
-    /*add image here*/
-    linear-gradient(hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 15%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-InnerColorLight)) 50%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.Adoption_ReusableMultitag_BackgroundScreen-Color{
-
-  background:
-      /*add image here*/
-      linear-gradient(hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 15%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-InnerColorLight)) 50%, hsl(var(--ReusableMultitag_BackgroundScreen-BaseColorHue) var(--ReusableMultitag_Background-ColorSaturation) var(--ReusableMultitag_BackgroundScreen-OuterColorLight)) 85%);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
 }

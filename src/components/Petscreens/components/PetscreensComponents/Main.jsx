@@ -130,31 +130,31 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "Global_ReusableMultitag_ComponentContainer-WindowBorderStructure Screen_ReusableMultitag_ComponentContainer-Color">
+            <div className = "ReusableMultitags_ComponentContainer-Structure--Window ReusableMultitags_ComponentContainer-Color--Screens_">
 
                 {ActivePetName === "" ? (
 
-                    <div className= "Main_EmptyWindowGrid"></div>
+                    <div className= "Main_ComponentContainer-Structure--WindowGridEmpty"></div>
 
                 ) : (
                     
-                    <div className = {`Main_WindowContainer-Structure Main_WindowContainer-${PetList[ActivePetName][speciesKey]}Color`}>
+                    <div className = {`Main_ComponentContainer-Structure--Window Main_ComponentContainer-Color--Window${PetList[ActivePetName][speciesKey]}`}>
 
-                        <div className = "Main_WindowStatsContainer">
-                            <h1 className = "Main_WindowStatsPetName">{ActivePetName}:</h1>
-                            <div className = "Main_WindowStatsHealthContainer">
+                        <div className = "Main_ComponentContainer-Structure--WindowStats">
+                            <h1 className = "Main_ComponentHeading-Color--WindowStatsName">{ActivePetName}:</h1>
+                            <div className = "Main_ComponentContainer-Structure--WindowStatsHealth">
 
                                 {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
 
                                     num <= PetList[ActivePetName][healthKey] ? (
                                         <img key = {num} 
                                             src = {healthHeartGood}
-                                            className = "Main_WindowStatsHealthHeart"
+                                            className = "Main_ComponentImage--Template--WindowStatsHealthHeart"
                                         />
                                     ) : (
                                         <img key = {num} 
                                             src = {healthHeartBad}
-                                            className = "Main_WindowStatsHealthHeart"
+                                            className = "Main_ComponentImage--Template--WindowStatsHealthHeart"
                                         />
                                     )
 
@@ -167,7 +167,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             !mainActivityInProgress ? (
 
-                                <div className="Main_NonemptyWindowGrid"> 
+                                <div className="Main_ComponentContainer-Structure--WindowGridNonempty"> 
                                     {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
                                         
                                         const petHere = mainPetCurrentSpace === index;
@@ -176,16 +176,16 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "Global_OverlappingImagesContainer Main_NonemptyWindowGridPetCell">
+                                                <div key={index} className = "ComponentContainer-Structure--ImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
                                                     <img 
-                                                        className="Main_NonemptyWindowGridPetCellImage"
+                                                        className="Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img 
-                                                        className="Main_NonemptyWindowGridPetCellImage"
+                                                        className="Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}
@@ -194,7 +194,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             ) : (
 
-                                                <div key={index} className = "Main_NonemptyWindowGridNonPetCell"></div>
+                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowGridNonemptyCellNonpet"></div>
 
                                             )
                                 
@@ -205,13 +205,13 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                             ) : (
 
-                                <div className= "Main_EmptyWindowGrid"></div>
+                                <div className= "Main_ComponentContainer-Structure--WindowGridEmpty"></div>
 
                             )
 
                         ) : (
 
-                            <div className= "Main_EmptyWindowGrid">
+                            <div className= "Main_ComponentContainer-Structure--WindowGridEmpty">
                                 {/* Insert image of tomb !!!!!!!!!!!!*/}
                                 <img/>
                             </div>

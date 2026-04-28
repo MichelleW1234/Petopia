@@ -1,4 +1,4 @@
-.Main_WindowContainer-Structure{
+.Main_ComponentContainer-Structure--Window{
 
     display: flex;
     flex-direction: column;
@@ -11,19 +11,19 @@
 }
 
 
-.Main_WindowContainer-dogColor{ 
+.Main_ComponentContainer-Color--Windowdog{ 
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_WindowContainer-catColor{
+.Main_ComponentContainer-Color--Windowcat{
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_WindowContainer-fishColor{
+.Main_ComponentContainer-Color--Windowfish{
 
     background: linear-gradient(to bottom, #59bfff, #000872);
 
@@ -31,7 +31,7 @@
 
 
 
-.Main_WindowStatsContainer{
+.Main_ComponentContainer-Structure--WindowStats{
 
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     
 }
 
-.Main_WindowStatsPetName{
+.Main_ComponentHeading-Color--WindowStatsName{
 
     color:rgb(0,0,0);
     filter: 
@@ -52,7 +52,7 @@
 
 }
 
-.Main_WindowStatsHealthContainer{
+.Main_ComponentContainer-Structure--WindowStatsHealth{
 
     width: 40rem;
     height: 5.5rem;
@@ -65,7 +65,7 @@
 }
 
 
-.Main_WindowStatsHealthHeart {
+.Main_ComponentImage--Template--WindowStatsHealthHeart {
 
     height: 2.5rem;
     width: 2.5rem;
@@ -78,7 +78,7 @@
 }
 
 
-.Main_NonemptyWindowGrid {
+.Main_ComponentContainer-Structure--WindowGridNonempty {
 
     display: grid;
     grid-template-columns: repeat(20, auto);
@@ -86,7 +86,7 @@
 }
 
 
-.Main_NonemptyWindowGridNonPetCell {
+.Main_ComponentContainer-Structure--WindowGridNonemptyCellNonpet {
 
     height: 20rem;
     width: 2rem;
@@ -94,14 +94,14 @@
 }
 
 
-.Main_NonemptyWindowGridPetCell {
+.Main_ComponentContainer-Structure--WindowGridNonemptyCellPet {
 
     height: 20rem;
     width: 8rem;
 
 }
 
-.Main_NonemptyWindowGridPetCellImage {
+.Main_ComponentImage-Template--WindowGridNonemptyCellPet {
 
     width: 100%;
 
@@ -112,7 +112,7 @@
 
 }
 
-.Main_EmptyWindowGrid{
+.Main_ComponentContainer-Structure--WindowGridEmpty{
 
     height: 20rem;
     width: 46rem;
