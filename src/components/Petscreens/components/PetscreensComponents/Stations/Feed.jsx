@@ -129,7 +129,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                         />
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlagStation">  
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">  
                             <div className="Stations_ComponentContainer-Structure--Window">
                                 {!feedDone ? (
 
@@ -150,19 +150,19 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 {feedSelection === -1 || !feedDone ? (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Done</button>
                     </>
 
                 )}

@@ -1,4 +1,4 @@
-.Main_ComponentContainer-Structure--Window{
+.Main_ComponentContainer-Template--Window{
 
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
 
 
 
-.Main_ComponentContainer-Structure--WindowStats{
+.Main_ComponentContainer-Structure--WindowPetStats{
 
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     
 }
 
-.Main_ComponentHeading-Template--WindowStatsName{
+.Main_ComponentHeading-Template--WindowPetStatsName{
 
     color:rgb(0,0,0);
     filter: 
@@ -52,7 +52,7 @@
 
 }
 
-.Main_ComponentContainer-Structure--WindowStatsHealth{
+.Main_ComponentContainer-Structure--WindowPetStatsHealth{
 
     width: 40rem;
     height: 5.5rem;
@@ -65,7 +65,7 @@
 }
 
 
-.Main_ComponentImage--Template--WindowStatsHealthHeart {
+.Main_ComponentImage--Template--WindowPetStatsHealthHeart {
 
     height: 2.5rem;
     width: 2.5rem;

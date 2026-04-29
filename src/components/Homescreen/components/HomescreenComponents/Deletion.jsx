@@ -70,21 +70,21 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
                 <h1>Select pet(s) to clear:</h1>
-                <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                     {Object.keys(PetList).map((key) => (
 
-                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlagNonstation">
+                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
 
                             {deletionSelectedPets.includes(key) ? (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
+                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickFloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 
                             ) : (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagNonstationNormal" onClick = {() => addPet(key)}> 
+                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickFloatingFlagNonstation" onClick = {() => addPet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 
@@ -98,17 +98,17 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                 </div>
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--Row ">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagNonstation" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick={() => clearPets()}>Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagNonstation" onClick={() => clearPets()}>Clear Selected Pets</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationUnclickable">Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagNonstation">Clear Selected Pets</button>
 
                 )}
 

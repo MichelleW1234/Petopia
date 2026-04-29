@@ -11,22 +11,22 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         <>
             <h1> Select a new Pet: </h1>
 
-            <div className = "MiscellaneousElements_ComponentContainer-Structure--Row">
+            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--Screen">
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalScreen MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
                         {key === selectedPet ? (
 
-                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Active UIStapleElements_ComponentButtonCircle-Color--ScreenActive">
+                            <button key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickScreenSelected" onClick = {() => setSelectedPet("")}>
                                 <img src = {portraitPetImages[key][0]}/>
-                            </div>
+                            </button>
 
                         ) : (
 
-                            <div key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--ScreenNormal" onClick = {() => setSelectedPet(key)}>
+                            <button key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickScreen" onClick = {() => setSelectedPet(key)}>
                                 <img src = {portraitPetImages[key][0]} />
-                            </div>
+                            </button>
 
                         )}
                     </div>
@@ -37,11 +37,11 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
         
             {selectedPet !== "" ? (
 
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--ScreenNormal" onClick = {() => setStep(1)}> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickScreen" onClick = {() => setStep(1)}> Go to Confirmation </button>
 
             ) : (
 
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--ScreenUnclickable"> Go to Confirmation </button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickScreen"> Go to Confirmation </button>
 
             )}  
         </>

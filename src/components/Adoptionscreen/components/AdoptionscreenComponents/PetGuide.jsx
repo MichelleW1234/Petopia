@@ -11,7 +11,7 @@ function PetGuide({setPetGuideOpenFlag}) {
                 <h2> Hello. This is a placeholder</h2>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagNonstationNormal" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagNonstation" onClick = {() => setPetGuideOpenFlag(false)}> Close </button>
         </div>
     );
 }

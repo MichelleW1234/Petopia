@@ -101,7 +101,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                         />
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlagStation">
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
                             <div className="Stations_ComponentContainer-Structure--Window">
                                 {!cleanDone ? ( 
 
@@ -128,19 +128,19 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 {cleanSelection === -1 || !cleanDone ? (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setCleanOpenFlag(false)}>Done</button>
                     </>
 
                 )}

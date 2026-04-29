@@ -31,31 +31,31 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 {/* Change this!!!!!!!!!!!!!*/}
                 <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {optionsList[0]} />
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
-                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
 
                     {optionsDesiredOption === -1 ? (
 
                         /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {heart} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption]} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {optionsList[optionsDesiredOption]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     )}
                 </div>
 
             </div>
-            <div className= "MiscellaneousElements_ComponentContainer-Structure--Row">  
+            <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">  
 
                 {optionsList.map((option, index) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Button UIStapleElements_ComponentContainer-Color--FloatingFlagStation">
-                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Normal UIStapleElements_ComponentButtonCircle-Color--FloatingFlagStationNormal" src = {option} onClick = {() => judgeSelection(index)}/>
-                    </div>
+                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
+                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickFloatingFlagStation" src = {option} onClick = {() => judgeSelection(index)}/>
+                    </button>
 
                 ))}
 

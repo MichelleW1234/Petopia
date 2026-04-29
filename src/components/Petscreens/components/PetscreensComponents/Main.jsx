@@ -130,7 +130,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--Screen">
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalScreen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
 
                 {ActivePetName === "" ? (
 
@@ -138,23 +138,23 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                 ) : (
                     
-                    <div className = {`Main_ComponentContainer-Structure--Window Main_ComponentContainer-Color--Window${PetList[ActivePetName][speciesKey]}`}>
+                    <div className = {`Main_ComponentContainer-Template--Window Main_ComponentContainer-Color--Window${PetList[ActivePetName][speciesKey]}`}>
 
-                        <div className = "Main_ComponentContainer-Structure--WindowStats">
-                            <h1 className = "Main_ComponentHeading-Template--WindowStatsName">{ActivePetName}:</h1>
-                            <div className = "Main_ComponentContainer-Structure--WindowStatsHealth">
+                        <div className = "Main_ComponentContainer-Structure--WindowPetStats">
+                            <h1 className = "Main_ComponentHeading-Template--WindowPetStatsName">{ActivePetName}:</h1>
+                            <div className = "Main_ComponentContainer-Structure--WindowPetStatsHealth">
 
                                 {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
 
                                     num <= PetList[ActivePetName][healthKey] ? (
                                         <img key = {num} 
                                             src = {healthHeartGood}
-                                            className = "Main_ComponentImage--Template--WindowStatsHealthHeart"
+                                            className = "Main_ComponentImage--Template--WindowPetStatsHealthHeart"
                                         />
                                     ) : (
                                         <img key = {num} 
                                             src = {healthHeartBad}
-                                            className = "Main_ComponentImage--Template--WindowStatsHealthHeart"
+                                            className = "Main_ComponentImage--Template--WindowPetStatsHealthHeart"
                                         />
                                     )
 
@@ -176,16 +176,16 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--ImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
+                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
                                                     <img 
-                                                        className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
+                                                        className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img 
-                                                        className="MiscellaneousElements_ComponentImage-Structure--ImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
+                                                        className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}

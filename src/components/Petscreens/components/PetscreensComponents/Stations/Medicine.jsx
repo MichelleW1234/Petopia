@@ -176,7 +176,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                         <ProgressBar
                             progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                         />
-                        <div className="UIStapleElements_ComponentContainer-Structure--Window UIStapleElements_ComponentContainer-Color--FloatingFlagStation">  
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">  
                             <div className="Stations_ComponentContainer-Structure--Window">
 
                                 {!medicineDone ? (
@@ -198,19 +198,19 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
             </div>
                 
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--Row">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 {medicineSelection === -1 || !medicineDone ? (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Done</button>
                     </>
 
                 ) : (
 
                     <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Unclickable UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationUnclickable">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--Normal UIStapleElements_ComponentButtonPill-Color--FloatingFlagStationNormal" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclickFloatingFlagStation">Quit</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickFloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
                     </>
 
                 )}
