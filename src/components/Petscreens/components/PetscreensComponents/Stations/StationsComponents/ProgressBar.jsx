@@ -3,6 +3,7 @@ import "./ProgressBar.css";
 function ProgressBar({progressBarPercentUntilNextUpdate}) {
 
     return (
+
         <>
 
             <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
@@ -22,7 +23,8 @@ function ProgressBar({progressBarPercentUntilNextUpdate}) {
             </div>
 
         </>
-    )
+        
+    );
 }
   
 export default ProgressBar;

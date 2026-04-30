@@ -174,9 +174,8 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "Confirmation_ComponentContainer-Structure">
                 <p>Hello, my name is </p>
 
-                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalScreen Confirmation_ComponentContainer-Structure--Name">
+                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Confirmation_ComponentContainer-Template--Name">
                     <input 
-                        className = "Confirmation_ComponentInput-Template--Name"
                         type="text"
                         value={confirmationPetName}
                         onChange={(e) => {setConfirmationPetName(e.target.value)}}
@@ -192,8 +191,8 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
             <div className = "Confirmation_ComponentContainer-Structure--Checking">
                 <p className = "Confirmation_ComponentContainer-Template--CheckingError">{errorMessage}</p>
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickScreen" onClick = {() => undo()}> Undo Selection </button>
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClickScreen" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => undo()}> Undo Selection </button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
         </>

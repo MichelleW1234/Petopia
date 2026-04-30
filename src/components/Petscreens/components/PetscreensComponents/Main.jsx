@@ -130,7 +130,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         
         <>
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalScreen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
 
                 {ActivePetName === "" ? (
 
@@ -138,7 +138,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                 ) : (
                     
-                    <div className = {`Main_ComponentContainer-Template--Window Main_ComponentContainer-Color--Window${PetList[ActivePetName][speciesKey]}`}>
+                    <div className = {`Main_ComponentContainer-Template--Window Main_ComponentContainer-Color--Window--${PetList[ActivePetName][speciesKey]}`}>
 
                         <div className = "Main_ComponentContainer-Structure--WindowPetStats">
                             <h1 className = "Main_ComponentHeading-Template--WindowPetStatsName">{ActivePetName}:</h1>
@@ -176,16 +176,14 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                             petHere ? (
 
-                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowGridNonemptyCellPet">
+                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Template--WindowGridNonemptyCellPet">
                                                     <img 
-                                                        className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
                                                     />
 
                                                     {mainAttention &&
-                                                    <img 
-                                                        className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Main_ComponentImage-Template--WindowGridNonemptyCellPet"
+                                                    <img
                                                         src = {mainPetMood <= 1 ? heart : anger} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}

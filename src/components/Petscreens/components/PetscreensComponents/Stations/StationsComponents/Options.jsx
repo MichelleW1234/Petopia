@@ -24,7 +24,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
     return (
 
-        <div className="Options_ComponentContainer-Structure">
+        <>
 
             <div className="Options_ComponentContainer-Structure--PetThought"> 
 
@@ -34,16 +34,16 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     {/* Change this!!!!!!!!!!!!!*/}
-                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {bubble} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
 
                     {optionsDesiredOption === -1 ? (
 
                         /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {heart} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlay Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {optionsList[optionsDesiredOption]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     )}
                 </div>
@@ -53,15 +53,15 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--GlobalFloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
-                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--GlobalClick UIStapleElements_ComponentButtonCircle-Color--GlobalClickFloatingFlagStation" src = {option} onClick = {() => judgeSelection(index)}/>
+                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
+                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" src = {option} onClick = {() => judgeSelection(index)}/>
                     </button>
 
                 ))}
 
             </div>
                     
-        </div>
+        </>
     )
 }
   

@@ -86,6 +86,7 @@ function Activity({activityKey, activityTimeGap}) {
 
 
     return (
+
         <div className = "Activity_ComponentContainer-Structure">
             
             <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
@@ -124,6 +125,7 @@ function Activity({activityKey, activityTimeGap}) {
             )} 
 
         </div>
+        
     );
 }
   

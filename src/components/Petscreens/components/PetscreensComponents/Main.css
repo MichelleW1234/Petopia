@@ -11,19 +11,19 @@
 }
 
 
-.Main_ComponentContainer-Color--Windowdog{ 
+.Main_ComponentContainer-Color--Window--dog{ 
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_ComponentContainer-Color--Windowcat{
+.Main_ComponentContainer-Color--Window--cat{
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_ComponentContainer-Color--Windowfish{
+.Main_ComponentContainer-Color--Window--fish{
 
     background: linear-gradient(to bottom, #59bfff, #000872);
 
@@ -94,23 +94,24 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowGridNonemptyCellPet {
+.Main_ComponentContainer-Template--WindowGridNonemptyCellPet {
 
     height: 20rem;
     width: 8rem;
 
+    img {
+
+        width: 100%;
+
+        filter: 
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
+
 }
 
-.Main_ComponentImage-Template--WindowGridNonemptyCellPet {
-
-    width: 100%;
-
-    filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
-
-}
 
 .Main_ComponentContainer-Structure--WindowGridEmpty{
 

@@ -12,7 +12,7 @@
 }
 
 
-.Confirmation_ComponentContainer-Structure--Name{
+.Confirmation_ComponentContainer-Template--Name{
 
     display: flex;
     flex-direction: row;
@@ -22,16 +22,16 @@
     padding: 1rem 2rem;
     border-radius: 1rem;
 
-}
+    input {
 
-.Confirmation_ComponentInput-Template--Name{
+        border-radius: 3rem;
+        padding: 1.5rem 2rem;
 
-    border-radius: 3rem;
-    padding: 1.5rem 2rem;
-
-    border: 0.1rem solid rgba(255, 255, 255);
-    background-color: rgb(255, 255, 255, 0.75);
-    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+        border: 0.1rem solid rgba(255, 255, 255);
+        background-color: rgb(255, 255, 255, 0.75);
+        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+        
+    }
 
 }
  

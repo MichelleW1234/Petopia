@@ -21,7 +21,7 @@
 
 }
 
-.Home_ComponentContainer-Color--PetAlertGood {
+.Home_ComponentContainer-Color--PetAlertBubble--Good {
 
   border-color:rgb(0, 200, 0);
   background-color: rgb(25, 255, 0);
@@ -29,7 +29,7 @@
 }
 
 
-.Home_ComponentContainer-Color--PetAlertOkay {
+.Home_ComponentContainer-Color--PetAlertBubble--Okay {
 
   border-color: rgb(200, 200, 0);
   background-color: rgb(255, 225, 0);
@@ -37,7 +37,7 @@
 }
 
 
-.Home_ComponentContainer-Color--PetAlertBad {
+.Home_ComponentContainer-Color--PetAlertBubble--Bad {
 
   border-color:rgb(200, 100, 0);
   background-color: rgb(255, 125, 0);
@@ -45,14 +45,14 @@
 }
 
 
-.Home_ComponentContainer-Color--PetAlertVeryBad {
+.Home_ComponentContainer-Color--PetAlertBubble--VeryBad {
 
   border-color: rgb(200, 0, 0);
   background-color: rgb(255, 0, 0);
 
 }
 
-.Home_ComponentContainer-Color--PetAlertDead {
+.Home_ComponentContainer-Color--PetAlertBubble--Dead {
 
   border-color: rgb(140, 140, 140);
   background-color: rgb(150, 150, 150);

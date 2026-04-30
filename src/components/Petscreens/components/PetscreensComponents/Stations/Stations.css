@@ -1,4 +1,4 @@
-.Stations_ComponentContainer-Structure--Window{
+.Stations_ComponentContainer-Template--Window{
 
     height: 25rem;
     width: 45rem;
@@ -23,6 +23,5 @@
         drop-shadow(0 0 5px rgb(255, 255, 255))
         drop-shadow(0 0 10px rgb(255, 255, 255))
         drop-shadow(0 0 15px  rgb(255, 255, 255));
-
 
 }
