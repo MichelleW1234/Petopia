@@ -12,7 +12,6 @@ import { feedingKey, moodPetImages, speciesKey, stageKey } from "../../../../../
 import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Feed.css";
-import "./Stations.css";
 
 
 
@@ -109,64 +108,62 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     return (
 
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
-        
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
                 
-                {feedSelection === -1 ? (
+            {feedSelection === -1 ? (
 
-                    <Options
-                        optionsDesiredOption = {feedDesiredOption}
-                        optionsList = {feedOptions} 
-                        setOptionsTotal = {setFeedTotal}
-                        setOptionsSelection = {setFeedSelection}
+                <Options
+                    optionsDesiredOption = {feedDesiredOption}
+                    optionsList = {feedOptions} 
+                    setOptionsTotal = {setFeedTotal}
+                    setOptionsSelection = {setFeedSelection}
+                />
+        
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
-            
-                ) : (
 
-                    <>
+                    {!feedDone ? (
 
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
-                        />
-
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">  
-                            <div className="Stations_ComponentContainer-Template--Window">
-                                {!feedDone ? (
-
-                                    <img className = "Stations_ComponentImage-Template--Window" src = {feedAnimationImages[feedAnimationImage]} />
-
-                                ) : (
-
-                                    /* Change this!!!!!!!!!!!!!*/
-                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-
-                                )}
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                <img src = {feedAnimationImages[feedAnimationImage]} />
                             </div>
                         </div>
 
-                    </>
+                    ) : (
 
-                )}
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                {/* Change this!!!!!!!!!!!!!*/}
+                                <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                            </div>
+                        </div>
+                    )}
 
-            </div>
+                </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                {feedSelection === -1 || !feedDone ? (
+            )}
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
-                    </>
 
-                ) : (
+            {feedSelection === -1 || !feedDone ? (
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Done</button>
-                    </>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
+                </div>
 
-                )}
-            </div>
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                </div>
+
+            )}
 
         </div>
 

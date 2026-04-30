@@ -62,13 +62,13 @@ export const timeLimitList = {
 
     [dogSpecies] :
     {
-        [feedingKey]: 43200000,
+        [feedingKey]: 28800000,
         [cleaningKey]: 86400000,
         [playingKey]: 43200000
 
     },
     //[180000, 300000, 180000]; //for testing purposes
-    //[eat 2 times a day, bath 1 time a day, play 2 times a day]
+    //[eat 3 times a day, bath 1 time a day, play 2 times a day]
 
     [catSpecies] : 
     {

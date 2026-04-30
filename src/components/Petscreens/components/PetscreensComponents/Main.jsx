@@ -127,100 +127,99 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
     
 
     return (
-        
-        <>
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
+        ActivePetName === "" ? (
 
-                {ActivePetName === "" ? (
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
+                <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty"></div>
+            </div>
 
-                    <div className= "Main_ComponentContainer-Structure--WindowGridEmpty"></div>
+        ) : (
 
-                ) : (
-                    
-                    <div className = {`Main_ComponentContainer-Template--Window Main_ComponentContainer-Color--Window--${PetList[ActivePetName][speciesKey]}`}>
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
+            
+                <div className = {`Main_ComponentContainer-Template--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
 
-                        <div className = "Main_ComponentContainer-Structure--WindowPetStats">
-                            <h1 className = "Main_ComponentHeading-Template--WindowPetStatsName">{ActivePetName}:</h1>
-                            <div className = "Main_ComponentContainer-Structure--WindowPetStatsHealth">
+                    <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
+                        <h1 className = "Main_ComponentHeading-Template--WindowScreenPetStatsName">{ActivePetName}:</h1>
+                        <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                                {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
+                            {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
 
-                                    num <= PetList[ActivePetName][healthKey] ? (
-                                        <img key = {num} 
-                                            src = {healthHeartGood}
-                                            className = "Main_ComponentImage--Template--WindowPetStatsHealthHeart"
-                                        />
-                                    ) : (
-                                        <img key = {num} 
-                                            src = {healthHeartBad}
-                                            className = "Main_ComponentImage--Template--WindowPetStatsHealthHeart"
-                                        />
+                                num <= PetList[ActivePetName][healthKey] ? (
+                                    <img key = {num} 
+                                        src = {healthHeartGood}
+                                        className = "Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart"
+                                    />
+                                ) : (
+                                    <img key = {num} 
+                                        src = {healthHeartBad}
+                                        className = "Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart"
+                                    />
+                                )
+
+                            ))}
+
+                        </div>
+                    </div>
+
+                    {PetList[ActivePetName][healthKey] > 0 ? (
+
+                        !mainActivityInProgress ? (
+
+                            <div className="Main_ComponentContainer-Structure--WindowScreenGridNonempty"> 
+                                {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
+                                    
+                                    const petHere = mainPetCurrentSpace === index;
+
+                                    return(
+
+                                        petHere ? (
+
+                                            <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Template--WindowScreenGridNonemptyCellPet">
+                                                <img 
+                                                    src = {mainAnimationImages[mainPetDirection][index % 2]} 
+                                                    onMouseEnter={() => showAttention()}
+                                                />
+
+                                                {mainAttention &&
+                                                <img
+                                                    src = {mainPetMood <= 1 ? heart : anger} 
+                                                    onMouseEnter={() => showAttention()}
+                                                />}
+
+                                            </div>
+
+                                        ) : (
+
+                                            <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet"></div>
+
+                                        )
+                            
                                     )
 
-                                ))}
-
+                                })}
                             </div>
-                        </div>
-
-                        {PetList[ActivePetName][healthKey] > 0 ? (
-
-                            !mainActivityInProgress ? (
-
-                                <div className="Main_ComponentContainer-Structure--WindowGridNonempty"> 
-                                    {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
-                                        
-                                        const petHere = mainPetCurrentSpace === index;
-
-                                        return(
-
-                                            petHere ? (
-
-                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Template--WindowGridNonemptyCellPet">
-                                                    <img 
-                                                        src = {mainAnimationImages[mainPetDirection][index % 2]} 
-                                                        onMouseEnter={() => showAttention()}
-                                                    />
-
-                                                    {mainAttention &&
-                                                    <img
-                                                        src = {mainPetMood <= 1 ? heart : anger} 
-                                                        onMouseEnter={() => showAttention()}
-                                                    />}
-
-                                                </div>
-
-                                            ) : (
-
-                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowGridNonemptyCellNonpet"></div>
-
-                                            )
-                                
-                                        )
-
-                                    })}
-                                </div>
-
-                            ) : (
-
-                                <div className= "Main_ComponentContainer-Structure--WindowGridEmpty"></div>
-
-                            )
 
                         ) : (
 
-                            <div className= "Main_ComponentContainer-Structure--WindowGridEmpty">
-                                {/* Insert image of tomb !!!!!!!!!!!!*/}
-                                <img/>
-                            </div>
+                            <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty"></div>
 
-                        )}
-                        
-                    </div>
-                )}
+                        )
 
+                    ) : (
+
+                        <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty">
+                            {/* Insert image of tomb !!!!!!!!!!!!*/}
+                            <img/>
+                        </div>
+
+                    )}
+                    
+                </div>
+                
             </div>
-        </>
+        )   
 
     );
 

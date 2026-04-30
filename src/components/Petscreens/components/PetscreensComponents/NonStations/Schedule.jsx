@@ -18,7 +18,7 @@ function Schedule({setScheduleOpenFlag}) {
 
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 

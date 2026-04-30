@@ -1,4 +1,4 @@
-.Main_ComponentContainer-Template--Window{
+.Main_ComponentContainer-Template--WindowScreen{
 
     display: flex;
     flex-direction: column;
@@ -11,19 +11,19 @@
 }
 
 
-.Main_ComponentContainer-Color--Window--dog{ 
+.Main_ComponentContainer-Color--WindowScreen--dog{ 
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_ComponentContainer-Color--Window--cat{
+.Main_ComponentContainer-Color--WindowScreen--cat{
 
     background: linear-gradient(to bottom, #a159ff, #ffcf4b);
 
 }
 
-.Main_ComponentContainer-Color--Window--fish{
+.Main_ComponentContainer-Color--WindowScreen--fish{
 
     background: linear-gradient(to bottom, #59bfff, #000872);
 
@@ -31,7 +31,7 @@
 
 
 
-.Main_ComponentContainer-Structure--WindowPetStats{
+.Main_ComponentContainer-Structure--WindowScreenPetStats{
 
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     
 }
 
-.Main_ComponentHeading-Template--WindowPetStatsName{
+.Main_ComponentHeading-Template--WindowScreenPetStatsName{
 
     color:rgb(0,0,0);
     filter: 
@@ -52,7 +52,7 @@
 
 }
 
-.Main_ComponentContainer-Structure--WindowPetStatsHealth{
+.Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
 
     width: 40rem;
     height: 5.5rem;
@@ -65,7 +65,7 @@
 }
 
 
-.Main_ComponentImage--Template--WindowPetStatsHealthHeart {
+.Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart {
 
     height: 2.5rem;
     width: 2.5rem;
@@ -78,7 +78,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowGridNonempty {
+.Main_ComponentContainer-Structure--WindowScreenGridNonempty {
 
     display: grid;
     grid-template-columns: repeat(20, auto);
@@ -86,7 +86,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowGridNonemptyCellNonpet {
+.Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet {
 
     height: 20rem;
     width: 2rem;
@@ -94,7 +94,7 @@
 }
 
 
-.Main_ComponentContainer-Template--WindowGridNonemptyCellPet {
+.Main_ComponentContainer-Template--WindowScreenGridNonemptyCellPet {
 
     height: 20rem;
     width: 8rem;
@@ -113,7 +113,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowGridEmpty{
+.Main_ComponentContainer-Structure--WindowScreenGridEmpty{
 
     height: 20rem;
     width: 46rem;

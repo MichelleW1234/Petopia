@@ -10,7 +10,6 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { healthCapList, healthKey, medicineKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 
 import "./Medicine.css";
-import "./Stations.css";
 
 
 function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFlag}){
@@ -145,76 +144,75 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
     return (
 
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
-
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
                 
-                {medicineSelection === -1 ? (
+            {medicineSelection === -1 ? (
 
-                    PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
+                PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
 
-                        <Options
-                            optionsDesiredOption = {0}
-                            optionsList = {medicineOptions} 
-                            setOptionsTotal = {setMedicineTotal}
-                            setOptionsSelection = {setMedicineSelection}
-                        />
+                    <Options
+                        optionsDesiredOption = {0}
+                        optionsList = {medicineOptions} 
+                        setOptionsTotal = {setMedicineTotal}
+                        setOptionsSelection = {setMedicineSelection}
+                    />
+
+                ) : (
+
+                    <Options
+                        optionsDesiredOption = {-1}
+                        optionsList = {medicineOptions} 
+                        setOptionsTotal = {setMedicineTotal}
+                        setOptionsSelection = {setMedicineSelection}
+                    />
+
+                )
+
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
+                    />
+
+                    {!medicineDone ? (
+
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                <img src = {medicineAnimationImages[medicineAnimationImage]} />
+                            </div> 
+                        </div>
 
                     ) : (
 
-                        <Options
-                            optionsDesiredOption = {-1}
-                            optionsList = {medicineOptions} 
-                            setOptionsTotal = {setMedicineTotal}
-                            setOptionsSelection = {setMedicineSelection}
-                        />
-
-                    )
-
-                ) : (
-
-                    <>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
-                        />
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">  
-                            <div className="Stations_ComponentContainer-Template--Window">
-
-                                {!medicineDone ? (
-
-                                    <img className = "Stations_ComponentImage-Template--Window" src = {medicineAnimationImages[medicineAnimationImage]} />
-
-                                ) : (
-
-                                    /* Change this later!!!!!!!!!!!!!*/
-                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                                        
-                                )}
-
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                {/* Change this later!!!!!!!!!!!!!*/}
+                                <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
                             </div> 
                         </div>
-                    </>
-                )}
+                        
+                    )}
 
-            </div>
+                </div>
                 
+            )}
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                {medicineSelection === -1 || !medicineDone ? (
+            {medicineSelection === -1 || !medicineDone ? (
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
-                    </>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
+                </div>
 
-                ) : (
+            ) : (
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
-                    </>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                </div>
 
-                )}
-            </div>
+            )}
 
         </div>
 

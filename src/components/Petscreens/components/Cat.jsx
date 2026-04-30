@@ -233,7 +233,7 @@ function Cat (){
 
                 </div>
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={catMainImages}
                         mainPetEnergy = {450}

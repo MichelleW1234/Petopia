@@ -82,69 +82,68 @@ function Home (){
                     
                 </div>
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+
                     <h1> Your Pets: </h1>
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                        {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
+                    {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                            <h2 className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation"> Your pet(s) will appear here when added. </h2>
+                        <h2 className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow"> Your pet(s) will appear here when added. </h2>
 
-                        ) : (
+                    ) : (
 
-                            Object.keys(PetList).map((key) => {
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                            {Object.keys(PetList).map((key) => {
 
                                 const currPetHealth = Math.min(100, Math.max(0, Math.floor(((PetList[key][healthKey])/healthCapList[PetList[key][speciesKey]]) * 100)));
 
                                 return (
 
-                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
-                                        <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
                                             
-                                            {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
-                                            {currPetHealth >= 75 ? (
+                                        {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
+                                        {currPetHealth >= 75 ? (
 
-                                                <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
-                                                </>
-                                            
-                                            ) : currPetHealth >= 50 ? (
+                                            <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
+                                            </div>
+                                        
+                                        ) : currPetHealth >= 50 ? (
 
-                                                <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
-                                                </>
+                                            <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
+                                            </div>
 
-                                            ) : currPetHealth >= 25 ? (
+                                        ) : currPetHealth >= 25 ? (
 
-                                                <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
-                                                </>
+                                            <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
+                                            </div>
 
-                                            ) : currPetHealth > 0 ? (
+                                        ) : currPetHealth > 0 ? (
 
-                                                <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
-                                                </>
+                                            <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
+                                            </div>
 
-                                            ) : (
+                                        ) : (
 
-                                                <>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
-                                                    <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
-                                                </>
+                                            <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
+                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
+                                            </div>
 
-                                            )}
+                                        )}
 
-                                        </div>
                                         <Link
                                             to = {`/${PetList[key][speciesKey]}`}
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
@@ -153,15 +152,16 @@ function Home (){
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
                                         <h2>{key}</h2>
+                                        
                                     </div>
 
                                 )
 
-                            })
+                            })}
+                        </div>
 
-                        )}
+                    )}
                             
-                    </div>
                 </div>
 
             </div>

@@ -1,4 +1,4 @@
-import { portraitPetImages } from "../../../../constants/Constants.js";
+import { portraitPetImages } from "../../../../../constants/Constants.js";
 
 import "./Selection.css";
 
@@ -8,14 +8,14 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
 
     return (
 
-        <>
+        <div className = "Selection_ComponentContainer-Structure">
             <h1> Select a new Pet: </h1>
 
             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
                         {key === selectedPet ? (
 
                             <button key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => setSelectedPet("")}>
@@ -44,7 +44,7 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation </button>
 
             )}  
-        </>
+        </div>
         
     );
 

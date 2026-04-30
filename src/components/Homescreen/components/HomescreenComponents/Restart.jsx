@@ -24,7 +24,7 @@ function Restart({setRestartOpenFlag}) {
 
     return (
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1>Are you sure you want to restart the game? </h1>
             </div>
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">

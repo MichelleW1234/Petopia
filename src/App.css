@@ -509,9 +509,8 @@ a:active {
 
 
 
-/*Other tags:*/
+/*Other cross-component tags:*/
 
-/*Components: */
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalRow {
 
@@ -525,7 +524,7 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation {
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton {
 
   display: flex;
   flex-direction: column;
@@ -538,7 +537,7 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation {
+.MiscellaneousElements_ComponentContainer-Structure--GlobalWindow {
 
   padding: 4rem;
   border-radius: 4rem;
@@ -565,7 +564,7 @@ a:active {
 
 
 
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent {
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
 
   max-height: 75vh;
   display: flex;
@@ -577,6 +576,35 @@ a:active {
   padding: 2rem;
 
 }
+
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen{
+
+  height: 25rem;
+  width: 45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 4rem;
+
+  box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+
+  img {
+
+    height: 10rem;
+    width: 10rem;
+
+    filter: 
+      drop-shadow(0 0 5px rgb(255, 255, 255))
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 15px  rgb(255, 255, 255));
+
+  }
+
+}
+
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar {
 
@@ -609,7 +637,7 @@ a:active {
 }
 
 
-.MiscellaneousElements_ComponentContainer-Structure--ScreenContent {
+.MiscellaneousElements_ComponentContainer-Structure--Screen {
 
   display: flex;
   flex-direction: column;

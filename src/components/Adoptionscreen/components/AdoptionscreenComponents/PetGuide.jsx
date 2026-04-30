@@ -6,7 +6,7 @@ function PetGuide({setPetGuideOpenFlag}) {
     return (
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1>Read About Your Pet Options:</h1>
                 <h2> Hello. This is a placeholder</h2>
             </div>

@@ -24,7 +24,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
     return (
 
-        <>
+        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
             <div className="Options_ComponentContainer-Structure--PetThought"> 
 
@@ -53,7 +53,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalButtonEncapsulation">
+                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
                         <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" src = {option} onClick = {() => judgeSelection(index)}/>
                     </button>
 
@@ -61,8 +61,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
             </div>
                     
-        </>
-    )
+        </div>
+    );
 }
   
 export default Options

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import { usePetList } from "../../../../providers/PetListProvider.jsx";
-import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
+import { useGlobalTimer } from "../../providers/GlobalTimerProvider.jsx";
+import { usePetList } from "../../providers/PetListProvider.jsx";
+import { usePetTimeStamps } from "../../providers/PetTimeStampsProvider.jsx";
 
-import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../constants/Constants.js";
 
 import "./Confirmation.css";
 
@@ -168,13 +168,14 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
 
     
     return (
-        <>
+
+        <div className = "Confirmation_ComponentContainer-Structure"> 
             <h1>Fill out this form: </h1>  
             
-            <div className = "Confirmation_ComponentContainer-Structure">
+            <div className = "Confirmation_ComponentContainer-Structure--Form">
                 <p>Hello, my name is </p>
 
-                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Confirmation_ComponentContainer-Template--Name">
+                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Confirmation_ComponentContainer-Template--FormName">
                     <input 
                         type="text"
                         value={confirmationPetName}
@@ -188,14 +189,14 @@ function Confirmation({selectedPet, setSelectedPet, setStep}) {
                 <p>Make sure to read the Pet Care Guide!!</p>
             </div>
                 
-            <div className = "Confirmation_ComponentContainer-Structure--Checking">
-                <p className = "Confirmation_ComponentContainer-Template--CheckingError">{errorMessage}</p>
+            <div className = "Confirmation_ComponentContainer-Structure--FormChecking">
+                <p className = "Confirmation_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => undo()}> Undo Selection </button>
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
   

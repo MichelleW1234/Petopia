@@ -12,7 +12,6 @@ import { moodPetImages, playingKey, speciesKey, stageKey } from "../../../../../
 import { manageHealth } from "../../../helpers/Helpers.js";
 
 import "./Play.css";
-import "./Stations.css";
 
 
 
@@ -62,78 +61,79 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     return (
         
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
-            
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagContent">
 
-                {playSelection === -1 ? (
+            {playSelection === -1 ? (
 
-                    <Options
-                        optionsDesiredOption = {playDesiredOption}
-                        optionsList = {playOptions} 
-                        setOptionsTotal = {setPlayTotal}
-                        setOptionsSelection = {setPlaySelection}
+                <Options
+                    optionsDesiredOption = {playDesiredOption}
+                    optionsList = {playOptions} 
+                    setOptionsTotal = {setPlayTotal}
+                    setOptionsSelection = {setPlaySelection}
+                />
+
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+
+                    <ProgressBar
+                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                     />
 
-                ) : (
+                    {!playDone ? (
+                                
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
 
-                    <>
-                        <ProgressBar
-                            progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
-                        />
+                                {playSelectedGameWindow !== null ? (
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowEncapsulation">
-                            <div className="Stations_ComponentContainer-Template--Window">
-                                {!playDone ? (
-                                            
-                                    playSelectedGameWindow !== null ? (
-
-                                        <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
-                                        /*
-                                        <playSelectedGameWindow
-                                            setPlayDone = {setPlayDone}
-                                            playCurrNumber = {playCurrNumber}
-                                            setPlayCurrNumber = {setPlayCurrNumber}
-                                        />
-                                        */
-
-                                    ) : (
-
-                                        null /*Default window? */
-
-                                    )
+                                    <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
+                                    /*
+                                    <playSelectedGameWindow
+                                        setPlayDone = {setPlayDone}
+                                        playCurrNumber = {playCurrNumber}
+                                        setPlayCurrNumber = {setPlayCurrNumber}
+                                    />
+                                    */
 
                                 ) : (
 
-                                    /*CHANGE THIS LATER!!!!!!!!!!!!!!!*/
-                                    <img className = "Stations_ComponentImage-Template--Window" src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                                    null /* Make a default window? */
 
                                 )}
+
                             </div>
                         </div>
 
-                    </>
+                    ) : (
 
-                )}
-            
-            </div>
+                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                {/*CHANGE THIS LATER!!!!!!!!!!!!!!!*/}
+                                <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                            </div>
+                        </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                {playSelection === -1 || !playDone ? (
+                    )}
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
-                    </>
+                </div>
 
-                ) : (
+            )}
 
-                    <>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Done</button>
-                    </>
+            {playSelection === -1 || !playDone ? (
 
-                )}
-            </div>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
+                </div>
+
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                </div>
+
+            )}
 
         </div>
 
