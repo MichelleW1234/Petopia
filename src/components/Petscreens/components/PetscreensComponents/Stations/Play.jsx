@@ -108,8 +108,17 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                         <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
                             <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
-                                {/*CHANGE THIS LATER!!!!!!!!!!!!!!!*/}
-                                <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                {playSelection === playDesiredOption ? (
+
+                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                ) : (
+
+                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} />
+
+                                )}
+
                             </div>
                         </div>
 

@@ -3,52 +3,52 @@ import { useState, useEffect } from "react";
 
 
 
-import s1FishLeftOne from "../../../images/Fish/Main/1fish.svg";
-import s1FishLeftTwo from "../../../images/Fish/Main/1fish1.svg";
-import s1FishRightOne from "../../../images/Fish/Main/1fish2.svg";
-import s1FishRightTwo from "../../../images/Fish/Main/1fish3.svg";
+import s1FishLeftOne from "../../../images/Fish/Main/s1.svg";
+import s1FishLeftTwo from "../../../images/Fish/Main/s11.svg";
+import s1FishRightOne from "../../../images/Fish/Main/s12.svg";
+import s1FishRightTwo from "../../../images/Fish/Main/s13.svg";
 
-import s2FishLeftOne from "../../../images/Fish/Main/2fish.svg";
-import s2FishLeftTwo from "../../../images/Fish/Main/2fish1.svg";
-import s2FishRightOne from "../../../images/Fish/Main/2fish2.svg";
-import s2FishRightTwo from "../../../images/Fish/Main/2fish3.svg";
+import s2FishLeftOne from "../../../images/Fish/Main/s2.svg";
+import s2FishLeftTwo from "../../../images/Fish/Main/s21.svg";
+import s2FishRightOne from "../../../images/Fish/Main/s22.svg";
+import s2FishRightTwo from "../../../images/Fish/Main/s23.svg";
 
-import s3FishLeftOne from "../../../images/Fish/Main/3fish.svg";
-import s3FishLeftTwo from "../../../images/Fish/Main/3fish1.svg";
-import s3FishRightOne from "../../../images/Fish/Main/3fish2.svg";
-import s3FishRightTwo from "../../../images/Fish/Main/3fish3.svg";
-
-
-import s1FishFeedOne from "../../../images/Fish/Main/1fish.svg";
-import s1FishFeedTwo from "../../../images/Fish/Main/1fish1.svg";
-import s2FishFeedOne from "../../../images/Fish/Main/2fish.svg";
-import s2FishFeedTwo from "../../../images/Fish/Main/2fish1.svg";
-import s3FishFeedOne from "../../../images/Fish/Main/3fish.svg";
-import s3FishFeedTwo from "../../../images/Fish/Main/3fish1.svg";
+import s3FishLeftOne from "../../../images/Fish/Main/s3.svg";
+import s3FishLeftTwo from "../../../images/Fish/Main/s31.svg";
+import s3FishRightOne from "../../../images/Fish/Main/s32.svg";
+import s3FishRightTwo from "../../../images/Fish/Main/s33.svg";
 
 
-import s1FishCleanOne from "../../../images/Fish/Main/1fish.svg";
-import s1FishCleanTwo from "../../../images/Fish/Main/1fish1.svg";
-import s2FishCleanOne from "../../../images/Fish/Main/2fish.svg";
-import s2FishCleanTwo from "../../../images/Fish/Main/2fish1.svg";
-import s3FishCleanOne from "../../../images/Fish/Main/3fish.svg";
-import s3FishCleanTwo from "../../../images/Fish/Main/3fish1.svg";
+import s1FishFeedOne from "../../../images/Fish/Main/s1.svg";
+import s1FishFeedTwo from "../../../images/Fish/Main/s11.svg";
+import s2FishFeedOne from "../../../images/Fish/Main/s2.svg";
+import s2FishFeedTwo from "../../../images/Fish/Main/s21.svg";
+import s3FishFeedOne from "../../../images/Fish/Main/s3.svg";
+import s3FishFeedTwo from "../../../images/Fish/Main/s31.svg";
 
 
-import s1FishMedOne from "../../../images/Fish/Main/1fish.svg";
-import s1FishMedTwo from "../../../images/Fish/Main/1fish1.svg";
-import s2FishMedOne from "../../../images/Fish/Main/2fish.svg";
-import s2FishMedTwo from "../../../images/Fish/Main/2fish1.svg";
-import s3FishMedOne from "../../../images/Fish/Main/3fish.svg";
-import s3FishMedTwo from "../../../images/Fish/Main/3fish1.svg";
+import s1FishCleanOne from "../../../images/Fish/Main/s1.svg";
+import s1FishCleanTwo from "../../../images/Fish/Main/s11.svg";
+import s2FishCleanOne from "../../../images/Fish/Main/s2.svg";
+import s2FishCleanTwo from "../../../images/Fish/Main/s21.svg";
+import s3FishCleanOne from "../../../images/Fish/Main/s3.svg";
+import s3FishCleanTwo from "../../../images/Fish/Main/s31.svg";
 
 
-import shrimp from "../../../images/Fish/Main/1fish.svg";
-import worms from "../../../images/Fish/Main/1fish1.svg";
-import algae from "../../../images/Fish/Main/1fish2.svg";
-import sponge from "../../../images/Fish/Main/1fish.svg";
-import cloth from "../../../images/Fish/Main/1fish1.svg";
-import pill from "../../../images/Fish/Main/1fish.svg";
+import s1FishMedOne from "../../../images/Fish/Main/s1.svg";
+import s1FishMedTwo from "../../../images/Fish/Main/s11.svg";
+import s2FishMedOne from "../../../images/Fish/Main/s2.svg";
+import s2FishMedTwo from "../../../images/Fish/Main/s21.svg";
+import s3FishMedOne from "../../../images/Fish/Main/s3.svg";
+import s3FishMedTwo from "../../../images/Fish/Main/s31.svg";
+
+
+import shrimp from "../../../images/Fish/Main/s1.svg";
+import worms from "../../../images/Fish/Main/s11.svg";
+import algae from "../../../images/Fish/Main/s12.svg";
+import sponge from "../../../images/Fish/Main/s1.svg";
+import cloth from "../../../images/Fish/Main/s11.svg";
+import pill from "../../../images/Fish/Main/s1.svg";
 
 
 import Main from "./PetscreensComponents/Main.jsx";

@@ -7,6 +7,7 @@ import heart from "../../../../images/placeholderheart.png";
 import anger from "../../../../images/placeholderangry.png";
 import healthHeartGood from "../../../../images/placeholderheartGood.png";
 import healthHeartBad from "../../../../images/placeholderheartBad.png";
+import petTombStone from "../../../../images/PetTombStone.png";
 
 import { healthCapList, healthKey, speciesKey } from "../../../../constants/Constants.js";
 
@@ -210,8 +211,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
                     ) : (
 
                         <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty">
-                            {/* Insert image of tomb !!!!!!!!!!!!*/}
-                            <img/>
+                            <img src = {petTombStone}/>
                         </div>
 
                     )}

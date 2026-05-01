@@ -1,36 +1,36 @@
-import catStageOne from "../images/Cat/Main/1cat.svg";
-import catStageTwo from "../images/Cat/Main/2cat.svg";
-import catStageThree from "../images/Cat/Main/3cat.svg";
+import catStageOne from "../images/Cat/Main/s1.svg";
+import catStageTwo from "../images/Cat/Main/s2.svg";
+import catStageThree from "../images/Cat/Main/s3.svg";
 
-import dogStageOne from "../images/Dog/Main/1dog.svg";
-import dogStageTwo from "../images/Dog/Main/2dog.svg";
-import dogStageThree from "../images/Dog/Main/3dog.svg";
+import dogStageOne from "../images/Dog/Main/s1.svg";
+import dogStageTwo from "../images/Dog/Main/s2.svg";
+import dogStageThree from "../images/Dog/Main/s3.svg";
 
-import fishStageOne from "../images/Fish/Main/1fish.svg";
-import fishStageTwo from "../images/Fish/Main/2fish.svg";
-import fishStageThree from "../images/Fish/Main/3fish.svg";
+import fishStageOne from "../images/Fish/Main/s1.svg";
+import fishStageTwo from "../images/Fish/Main/s2.svg";
+import fishStageThree from "../images/Fish/Main/s3.svg";
 
 
-import s1CatHappy from "../images/placeholderstage1.jpeg";
-import s1CatSad from "../images/placeholderstage1.jpeg";
-import s2CatHappy from "../images/placeholderstage2.jpg";
-import s2CatSad from "../images/placeholderstage2.jpg";
-import s3CatHappy from "../images/placeholderstage3.jpg";
-import s3CatSad from "../images/placeholderstage3.jpg";
+import s1CatHappy from "../images/Cat/Mood/s1Happy.png";
+import s1CatSad from "../images/Cat/Mood/s1Sad.png";
+import s2CatHappy from "../images/Cat/Mood/s2Happy.png";
+import s2CatSad from "../images/Cat/Mood/s2Sad.png";
+import s3CatHappy from "../images/Cat/Mood/s3Happy.png";
+import s3CatSad from "../images/Cat/Mood/s3Sad.png";
 
-import s1DogHappy from "../images/placeholderstage1.jpeg";
-import s1DogSad from "../images/placeholderstage1.jpeg";
-import s2DogHappy from "../images/placeholderstage2.jpg";
-import s2DogSad from "../images/placeholderstage2.jpg";
-import s3DogHappy from "../images/placeholderstage3.jpg";
-import s3DogSad from "../images/placeholderstage3.jpg";
+import s1DogHappy from "../images/Dog/Mood/s1Happy.png";
+import s1DogSad from "../images/Dog/Mood/s1Sad.png";
+import s2DogHappy from "../images/Dog/Mood/s2Happy.png";
+import s2DogSad from "../images/Dog/Mood/s2Sad.png";
+import s3DogHappy from "../images/Dog/Mood/s3Happy.png";
+import s3DogSad from "../images/Dog/Mood/s3Sad.png";
 
-import s1FishHappy from "../images/placeholderstage1.jpeg";
-import s1FishSad from "../images/placeholderstage1.jpeg";
-import s2FishHappy from "../images/placeholderstage2.jpg";
-import s2FishSad from "../images/placeholderstage2.jpg";
-import s3FishHappy from "../images/placeholderstage3.jpg";
-import s3FishSad from "../images/placeholderstage3.jpg";
+import s1FishHappy from "../images/Fish/Mood/s1Happy.png";
+import s1FishSad from "../images/Fish/Mood/s1Sad.png";
+import s2FishHappy from "../images/Fish/Mood/s1Happy.png";
+import s2FishSad from "../images/Fish/Mood/s1Sad.png";
+import s3FishHappy from "../images/Fish/Mood/s1Happy.png";
+import s3FishSad from "../images/Fish/Mood/s1Sad.png";
 
 
 

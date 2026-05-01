@@ -4,7 +4,7 @@ export const initiateActivity = (wantsTo, setDesiredOption, setOpenFlag, options
 
     if (wantsTo){
 
-        setDesiredOption(Math.floor(Math.random() * options.length));
+        setDesiredOption(options[Math.floor(Math.random() * options.length)]);
 
     }
 

@@ -122,4 +122,16 @@
     align-items: center;
     justify-content: center;
 
+    img {
+
+        height: 15rem;
+        width: 15rem;
+
+        filter: 
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
+
 }
