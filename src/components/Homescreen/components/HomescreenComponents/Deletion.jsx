@@ -78,13 +78,13 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
                             {deletionSelectedPets.includes(key) ? (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
+                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 
                             ) : (
 
-                                <button key = {key} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(key)}> 
+                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(key)}> 
                                     <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                 </button>
 

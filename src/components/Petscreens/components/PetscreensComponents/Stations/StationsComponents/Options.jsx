@@ -53,9 +53,11 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <button className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
-                        <img key = {index} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" src = {option} onClick = {() => judgeSelection(index)}/>
-                    </button>
+                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
+                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => judgeSelection(index)}>
+                            <img src = {option}/>
+                        </button>
+                    </div>
 
                 ))}
 

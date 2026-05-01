@@ -15,16 +15,16 @@ function Selection ({selectedPet, setSelectedPet, setStep}) {
 
                 {Object.keys(portraitPetImages).map((key) => (
 
-                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
+                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
                         {key === selectedPet ? (
 
-                            <button key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => setSelectedPet("")}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => setSelectedPet("")}>
                                 <img src = {portraitPetImages[key][0]}/>
                             </button>
 
                         ) : (
 
-                            <button key = {key} className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => setSelectedPet(key)}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => setSelectedPet(key)}>
                                 <img src = {portraitPetImages[key][0]} />
                             </button>
 
