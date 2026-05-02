@@ -64,7 +64,6 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
-import { initiateActivity } from "../helpers/Helpers.js";
 
 import "./Fish.css";
 
@@ -159,6 +158,23 @@ function Fish (){
     const fishMedicineOptions = [pill];
     
 
+
+    useEffect(() => {
+
+        if (fishHungry){
+
+            setFishFeedDesiredOption(Math.floor(Math.random() * fishFeedOptions.length));
+
+        }
+
+        if (fishDirty){
+
+            setFishCleanDesiredOption(Math.floor(Math.random() * fishCleanOptions.length));
+
+        }
+
+    }, [fishHungry, fishDirty]);
+
     
     useEffect(() => {
         if (fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag) {
@@ -219,8 +235,8 @@ function Fish (){
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(fishHungry, setFishFeedDesiredOption, setFishFeedOpenFlag, fishFeedOptions)}> Feed </button>
-                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(fishDirty, setFishCleanDesiredOption, setFishCleanOpenFlag, fishCleanOptions)}> Clean </button>
+                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setFishFeedOpenFlag(true)}> Feed </button>
+                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setFishCleanOpenFlag(true)}> Clean </button>
 
                             {fishCanReceiveDose ? (
 

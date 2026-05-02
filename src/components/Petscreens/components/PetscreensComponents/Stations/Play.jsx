@@ -26,6 +26,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     const [playDone, setPlayDone] = useState(false);
     const [playSelection, setPlaySelection] = useState(-1);
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
+    const [playSuccess, setPlaySuccess] = useState(false);
 
     const playSelectedGameWindow = playSelection !== -1 ? 
                                         playComponents[playSelection]
@@ -49,7 +50,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
         if (playCurrNumber >= playTotal){
 
             setPlayDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playDesiredOption, setPlayDesiredOption, playSelection);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playDesiredOption, setPlayDesiredOption, playSelection, setPlaySuccess);
 
         }
 
@@ -109,7 +110,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                         <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
                             <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
 
-                                {playSelection === playDesiredOption ? (
+                                {playSuccess ? (
 
                                     <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 

@@ -26,6 +26,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     const [feedCurrNumber, setFeedCurrNumber] = useState(0);
     const [feedDone, setFeedDone] = useState(false);
     const [feedSelection, setFeedSelection] = useState(-1);
+    const [feedSuccess, setFeedSuccess] = useState(false);
     const [feedAnimationImage, setFeedAnimationImage] = useState(0);
 
     const feedGlobalTimerRef = useRef(GlobalTimer);
@@ -74,7 +75,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             if (currSeconds >= feedTotal){
                 clearInterval(interval);
                 setFeedDone(true);
-                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedDesiredOption, setFeedDesiredOption, feedSelection);
+                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedDesiredOption, setFeedDesiredOption, feedSelection, setFeedSuccess);
             }
 
         }, 1000);
@@ -139,7 +140,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                         <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
                             <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
 
-                                {feedSelection === feedDesiredOption ? (
+                                {feedSuccess ? (
 
                                     <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 

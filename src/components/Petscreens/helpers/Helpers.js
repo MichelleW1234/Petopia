@@ -1,19 +1,7 @@
 import { activityDamage, cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
 
-export const initiateActivity = (wantsTo, setDesiredOption, setOpenFlag, options) => {
 
-    if (wantsTo){
-
-        setDesiredOption(options[Math.floor(Math.random() * options.length)]);
-
-    }
-
-    setOpenFlag(true);
-
-}
-
-
-export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection) => {
+export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setSuccess) => {
 
     if (desiredOption === -1){
     //Too much (unwilling)
@@ -45,6 +33,10 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
 
         }));
 
+    } else {
+
+        setSuccess(true);
+
     }
 
     setPetTimeStamps(prev => ({
@@ -61,8 +53,6 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     }));
 
     setDesiredOption(-1);
-
-    console.log("done!");
 
 }
 

@@ -26,6 +26,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     const [cleanSelection, setCleanSelection] = useState(-1);
     const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
     const [cleanDone, setCleanDone] = useState(false);
+    const [cleanSuccess, setCleanSuccess] = useState(false);
     const [cleanAnimationImage, setCleanAnimationImage] = useState(0);
 
     const cleanAnimationImageRef = useRef(cleanAnimationImage);
@@ -52,7 +53,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     useEffect(() => {
         if (cleanCurrNumber >= cleanTotal){
             setCleanDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection, setCleanSuccess);
         }
     }, [cleanCurrNumber]);
 
@@ -116,7 +117,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                         <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
                             <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
 
-                                {cleanSelection === cleanDesiredOption ? (
+                                {cleanSuccess ? (
 
                                     <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 

@@ -53,7 +53,6 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
 import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
-import { initiateActivity } from "../helpers/Helpers.js";
 
 import "./Cat.css";
 
@@ -144,6 +143,23 @@ function Cat (){
 
 
 
+    useEffect(() => {
+
+        if (catHungry){
+
+            setCatFeedDesiredOption(Math.floor(Math.random() * catFeedOptions.length));
+
+        }
+
+        if (catRestless){
+
+            setCatPlayDesiredOption(Math.floor(Math.random() * catPlayOptions.length));
+
+        }
+
+    }, [catHungry, catRestless]);
+
+
 
     useEffect(() => {
         if (catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag) {
@@ -203,8 +219,8 @@ function Cat (){
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(catHungry, setCatFeedDesiredOption, setCatFeedOpenFlag, catFeedOptions)}> Feed </button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(catRestless, setCatPlayDesiredOption, setCatPlayOpenFlag, catPlayOptions)}> Play </button>
+                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatFeedOpenFlag(true)}> Feed </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatPlayOpenFlag(true)}> Play </button>
 
                             {catCanReceiveDose ? (
 

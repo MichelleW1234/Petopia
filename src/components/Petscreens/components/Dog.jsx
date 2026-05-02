@@ -63,7 +63,6 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
-import { initiateActivity } from "../helpers/Helpers.js";
 
 import "./Dog.css";
 
@@ -169,8 +168,6 @@ function Dog (){
     const dogMedicineOptions = [pill];
 
 
-
-
     useEffect(() => {
         if (dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag) {
             setDogActivityInProgress(true);
@@ -179,7 +176,28 @@ function Dog (){
         }
     }, [dogFeedOpenFlag, dogCleanOpenFlag, dogPlayOpenFlag, dogMedicineOpenFlag]);
 
+    
+    useEffect(() => {
 
+        if (dogHungry){
+
+            setDogFeedDesiredOption(Math.floor(Math.random() * dogFeedOptions.length));
+
+        }
+
+        if (dogDirty){
+
+            setDogCleanDesiredOption(Math.floor(Math.random() * dogCleanOptions.length));
+
+        }
+
+        if (dogRestless){
+
+            setDogPlayDesiredOption(Math.floor(Math.random() * dogPlayOptions.length));
+
+        }
+
+    }, [dogHungry, dogDirty, dogRestless]);
 
     
     return (
@@ -238,9 +256,9 @@ function Dog (){
                     {dogAlive ? (
 
                         <>
-                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(dogHungry, setDogFeedDesiredOption, setDogFeedOpenFlag, dogFeedOptions)}> Feed </button>
-                            <button className={dogDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(dogDirty, setDogCleanDesiredOption, setDogCleanOpenFlag, dogCleanOptions)}> Clean </button>
-                            <button className={dogRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => initiateActivity(dogRestless, setDogPlayDesiredOption, setDogPlayOpenFlag, dogPlayOptions)}> Play </button>
+                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setDogFeedOpenFlag(true)}> Feed </button>
+                            <button className={dogDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setDogCleanOpenFlag(true)}> Clean </button>
+                            <button className={dogRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setDogPlayOpenFlag(true)}> Play </button>
 
                             {dogCanReceiveDose ? (
 

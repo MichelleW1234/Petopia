@@ -1,11 +1,22 @@
 import "./Options.css";
 
+import unwanted from "../../../../../../images/PetUnwanted.png";
 import heart from "../../../../../../images/placeholderheart.png";
 import bubble from "../../../../../../images/placeholderthoughtbubble.png";
+
+import { usePetList } from "../../../../../../providers/PetListProvider";
+import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider";
+
+import { portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
 
 
 
 function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptionsSelection}) {
+
+
+    const {PetList, setPetList} = usePetList();
+    const {ActivePetName, setActivePetName} = useActivePetName();
+
 
     const judgeSelection = (chosenOption) => {
 
@@ -13,7 +24,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
             setOptionsTotal(prev => prev*2);
 
-        } 
+        }
 
         setOptionsSelection(chosenOption);
 
@@ -28,18 +39,15 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
             <div className="Options_ComponentContainer-Structure--PetThought"> 
 
-                {/* Change this!!!!!!!!!!!!!*/}
-                <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {optionsList[0]} />
+                <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {portraitPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]} />
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
-                    {/* Change this!!!!!!!!!!!!!*/}
                     <img src = {bubble} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
 
                     {optionsDesiredOption === -1 ? (
 
-                        /* Change this!!!!!!!!!!!!!*/
-                        <img src = {heart} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {unwanted} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     ) : (
 
