@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
 import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
@@ -21,6 +21,7 @@ function Adoption () {
 
     const [petGuideOpenFlag, setPetGuideOpenFlag] = useState(false);
     const [selectedPet, setSelectedPet] = useState("");
+    const [petGender, setPetGender] = useState("");
     const [step, setStep] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
     const [confirmationPetName, setConfirmationPetName] = useState("");
@@ -36,6 +37,15 @@ function Adoption () {
     const confirmationTimeoutRef = useRef(null);
 
 
+    const petSelecting = () => {
+
+        const gender = Math.floor(Math.random() * 2);
+        const petGenders = ["female", "male"];
+        
+        setPetGender(petGenders[gender]);
+        setStep(1);
+
+    }
 
 
     const nameChecking = (e) => {
@@ -97,6 +107,7 @@ function Adoption () {
                         [stageKey]: 0,
                         [healthKey]: 15,
                         [birthDateKey]: startingTime,
+                        [genderKey]: petGender,
                         [medicineKey]: 0
                     }
             }));
@@ -121,6 +132,7 @@ function Adoption () {
                         [stageKey]: 0,
                         [healthKey]: 20,
                         [birthDateKey]: startingTime,
+                        [genderKey]: petGender,
                         [medicineKey]: 0
                     }
             }));
@@ -144,6 +156,7 @@ function Adoption () {
                         [stageKey]: 0,
                         [healthKey]: 5,
                         [birthDateKey]: startingTime,
+                        [genderKey]: petGender,
                         [medicineKey]: 0
                     }
             }));
@@ -165,6 +178,7 @@ function Adoption () {
     const undo = () => {
 
         setSelectedPet("");
+        setPetGender("");
         setStep(0);
 
     }
@@ -189,7 +203,7 @@ function Adoption () {
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
-                {step === 0 ? (
+                {step === 0 && petGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
@@ -221,7 +235,7 @@ function Adoption () {
                     
                         {selectedPet !== "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => setStep(1)}> Go to Confirmation </button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => petSelecting()}> Go to Confirmation </button>
             
                         ) : (
             
@@ -249,7 +263,7 @@ function Adoption () {
                                 />
                             </div>
 
-                            <p> the {selectedPet}!</p>
+                            <p> and I am a {petGender} {selectedPet}.</p>
                             <p>{petPersonality[selectedPet]}</p>
                             <p>Make sure to read the Pet Care Guide!!</p>
                         </div>
