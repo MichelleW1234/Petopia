@@ -2,67 +2,67 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-import s1DogLeftOne from "../../../images/Dog/Main/s1.svg";
-import s1DogLeftTwo from "../../../images/Dog/Main/s11.svg";
-import s1DogRightOne from "../../../images/Dog/Main/s12.svg";
-import s1DogRightTwo from "../../../images/Dog/Main/s13.svg";
+import s1DogLeftOne from "../../../../images/Dog/Main/s1.svg";
+import s1DogLeftTwo from "../../../../images/Dog/Main/s11.svg";
+import s1DogRightOne from "../../../../images/Dog/Main/s12.svg";
+import s1DogRightTwo from "../../../../images/Dog/Main/s13.svg";
 
-import s2DogLeftOne from "../../../images/Dog/Main/s2.svg";
-import s2DogLeftTwo from "../../../images/Dog/Main/s21.svg";
-import s2DogRightOne from "../../../images/Dog/Main/s22.svg";
-import s2DogRightTwo from "../../../images/Dog/Main/s23.svg";
+import s2DogLeftOne from "../../../../images/Dog/Main/s2.svg";
+import s2DogLeftTwo from "../../../../images/Dog/Main/s21.svg";
+import s2DogRightOne from "../../../../images/Dog/Main/s22.svg";
+import s2DogRightTwo from "../../../../images/Dog/Main/s23.svg";
 
-import s3DogLeftOne from "../../../images/Dog/Main/s3.svg";
-import s3DogLeftTwo from "../../../images/Dog/Main/s31.svg";
-import s3DogRightOne from "../../../images/Dog/Main/s32.svg";
-import s3DogRightTwo from "../../../images/Dog/Main/s33.svg";
-
-
-import s1DogFeedOne from "../../../images/Dog/Main/s1.svg";
-import s1DogFeedTwo from "../../../images/Dog/Main/s11.svg";
-import s2DogFeedOne from "../../../images/Dog/Main/s2.svg";
-import s2DogFeedTwo from "../../../images/Dog/Main/s21.svg";
-import s3DogFeedOne from "../../../images/Dog/Main/s3.svg";
-import s3DogFeedTwo from "../../../images/Dog/Main/s31.svg";
+import s3DogLeftOne from "../../../../images/Dog/Main/s3.svg";
+import s3DogLeftTwo from "../../../../images/Dog/Main/s31.svg";
+import s3DogRightOne from "../../../../images/Dog/Main/s32.svg";
+import s3DogRightTwo from "../../../../images/Dog/Main/s33.svg";
 
 
-import s1DogCleanOne from "../../../images/Dog/Main/s1.svg";
-import s1DogCleanTwo from "../../../images/Dog/Main/s11.svg";
-import s2DogCleanOne from "../../../images/Dog/Main/s2.svg";
-import s2DogCleanTwo from "../../../images/Dog/Main/s21.svg";
-import s3DogCleanOne from "../../../images/Dog/Main/s3.svg";
-import s3DogCleanTwo from "../../../images/Dog/Main/s31.svg";
+import s1DogFeedOne from "../../../../images/Dog/Main/s1.svg";
+import s1DogFeedTwo from "../../../../images/Dog/Main/s11.svg";
+import s2DogFeedOne from "../../../../images/Dog/Main/s2.svg";
+import s2DogFeedTwo from "../../../../images/Dog/Main/s21.svg";
+import s3DogFeedOne from "../../../../images/Dog/Main/s3.svg";
+import s3DogFeedTwo from "../../../../images/Dog/Main/s31.svg";
 
 
-import s1DogMedOne from "../../../images/Dog/Main/s1.svg";
-import s1DogMedTwo from "../../../images/Dog/Main/s11.svg";
-import s2DogMedOne from "../../../images/Dog/Main/s2.svg";
-import s2DogMedTwo from "../../../images/Dog/Main/s21.svg";
-import s3DogMedOne from "../../../images/Dog/Main/s3.svg";
-import s3DogMedTwo from "../../../images/Dog/Main/s31.svg";
+import s1DogCleanOne from "../../../../images/Dog/Main/s1.svg";
+import s1DogCleanTwo from "../../../../images/Dog/Main/s11.svg";
+import s2DogCleanOne from "../../../../images/Dog/Main/s2.svg";
+import s2DogCleanTwo from "../../../../images/Dog/Main/s21.svg";
+import s3DogCleanOne from "../../../../images/Dog/Main/s3.svg";
+import s3DogCleanTwo from "../../../../images/Dog/Main/s31.svg";
 
 
-import beef from "../../../images/Dog/Main/s1.svg";
-import turkey from "../../../images/Dog/Main/s11.svg";
-import lamb from "../../../images/Dog/Main/s12.svg";
-import soap from "../../../images/Dog/Main/s1.svg";
-import brush from "../../../images/Dog/Main/s11.svg";
-import pill from "../../../images/Dog/Main/s1.svg";
+import s1DogMedOne from "../../../../images/Dog/Main/s1.svg";
+import s1DogMedTwo from "../../../../images/Dog/Main/s11.svg";
+import s2DogMedOne from "../../../../images/Dog/Main/s2.svg";
+import s2DogMedTwo from "../../../../images/Dog/Main/s21.svg";
+import s3DogMedOne from "../../../../images/Dog/Main/s3.svg";
+import s3DogMedTwo from "../../../../images/Dog/Main/s31.svg";
 
-import Main from "./PetscreensComponents/Main.jsx";
-import Feed from "./PetscreensComponents/Stations/Feed.jsx";
-import Clean from "./PetscreensComponents/Stations/Clean.jsx";
-import Play from "./PetscreensComponents/Stations/Play.jsx";
-import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "./PetscreensComponents/Nonstations/PetCareGuide.jsx";
 
-import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../providers/PetListProvider.jsx";
+import beef from "../../../../images/Dog/Main/s1.svg";
+import turkey from "../../../../images/Dog/Main/s11.svg";
+import lamb from "../../../../images/Dog/Main/s12.svg";
+import soap from "../../../../images/Dog/Main/s1.svg";
+import brush from "../../../../images/Dog/Main/s11.svg";
+import pill from "../../../../images/Dog/Main/s1.svg";
 
-import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../constants/Constants.js";
+import Main from "../PetscreensComponents/Main.jsx";
+import Feed from "../PetscreensComponents/Stations/Feed.jsx";
+import Clean from "../PetscreensComponents/Stations/Clean.jsx";
+import Play from "../PetscreensComponents/Stations/Play.jsx";
+import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
+
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
+
+import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../../constants/Constants.js";
 
 import "./Dog.css";
 

@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "./StationsComponents/NonGames/ProgressBar.jsx";
-import Options from "./StationsComponents/NonGames/Options.jsx";
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
 
 import {useGlobalTimer} from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";

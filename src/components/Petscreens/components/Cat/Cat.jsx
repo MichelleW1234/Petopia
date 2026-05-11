@@ -1,58 +1,58 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import s1CatLeftOne from "../../../images/Cat/Main/s1.svg";
-import s1CatLeftTwo from "../../../images/Cat/Main/s11.svg";
-import s1CatRightOne from "../../../images/Cat/Main/s12.svg";
-import s1CatRightTwo from "../../../images/Cat/Main/s13.svg";
+import s1CatLeftOne from "../../../../images/Cat/Main/s1.svg";
+import s1CatLeftTwo from "../../../../images/Cat/Main/s11.svg";
+import s1CatRightOne from "../../../../images/Cat/Main/s12.svg";
+import s1CatRightTwo from "../../../../images/Cat/Main/s13.svg";
 
-import s2CatLeftOne from "../../../images/Cat/Main/s2.svg";
-import s2CatLeftTwo from "../../../images/Cat/Main/s21.svg";
-import s2CatRightOne from "../../../images/Cat/Main/s22.svg";
-import s2CatRightTwo from "../../../images/Cat/Main/s23.svg";
+import s2CatLeftOne from "../../../../images/Cat/Main/s2.svg";
+import s2CatLeftTwo from "../../../../images/Cat/Main/s21.svg";
+import s2CatRightOne from "../../../../images/Cat/Main/s22.svg";
+import s2CatRightTwo from "../../../../images/Cat/Main/s23.svg";
 
-import s3CatLeftOne from "../../../images/Cat/Main/s3.svg";
-import s3CatLeftTwo from "../../../images/Cat/Main/s31.svg";
-import s3CatRightOne from "../../../images/Cat/Main/s32.svg";
-import s3CatRightTwo from "../../../images/Cat/Main/s33.svg";
-
-
-import s1CatFeedOne from "../../../images/Cat/Main/s1.svg";
-import s1CatFeedTwo from "../../../images/Cat/Main/s11.svg";
-import s2CatFeedOne from "../../../images/Cat/Main/s2.svg";
-import s2CatFeedTwo from "../../../images/Cat/Main/s21.svg";
-import s3CatFeedOne from "../../../images/Cat/Main/s3.svg";
-import s3CatFeedTwo from "../../../images/Cat/Main/s31.svg";
+import s3CatLeftOne from "../../../../images/Cat/Main/s3.svg";
+import s3CatLeftTwo from "../../../../images/Cat/Main/s31.svg";
+import s3CatRightOne from "../../../../images/Cat/Main/s32.svg";
+import s3CatRightTwo from "../../../../images/Cat/Main/s33.svg";
 
 
-import s1CatMedOne from "../../../images/Cat/Main/s1.svg";
-import s1CatMedTwo from "../../../images/Cat/Main/s11.svg";
-import s2CatMedOne from "../../../images/Cat/Main/s2.svg";
-import s2CatMedTwo from "../../../images/Cat/Main/s21.svg";
-import s3CatMedOne from "../../../images/Cat/Main/s3.svg";
-import s3CatMedTwo from "../../../images/Cat/Main/s31.svg";
+import s1CatFeedOne from "../../../../images/Cat/Main/s1.svg";
+import s1CatFeedTwo from "../../../../images/Cat/Main/s11.svg";
+import s2CatFeedOne from "../../../../images/Cat/Main/s2.svg";
+import s2CatFeedTwo from "../../../../images/Cat/Main/s21.svg";
+import s3CatFeedOne from "../../../../images/Cat/Main/s3.svg";
+import s3CatFeedTwo from "../../../../images/Cat/Main/s31.svg";
 
 
-import tuna from "../../../images/Cat/Main/s1.svg";
-import chicken from "../../../images/Cat/Main/s11.svg";
-import salmon from "../../../images/Cat/Main/s12.svg";
-import pill from "../../../images/Cat/Main/s1.svg";
+import s1CatMedOne from "../../../../images/Cat/Main/s1.svg";
+import s1CatMedTwo from "../../../../images/Cat/Main/s11.svg";
+import s2CatMedOne from "../../../../images/Cat/Main/s2.svg";
+import s2CatMedTwo from "../../../../images/Cat/Main/s21.svg";
+import s3CatMedOne from "../../../../images/Cat/Main/s3.svg";
+import s3CatMedTwo from "../../../../images/Cat/Main/s31.svg";
+
+
+import tuna from "../../../../images/Cat/Main/s1.svg";
+import chicken from "../../../../images/Cat/Main/s11.svg";
+import salmon from "../../../../images/Cat/Main/s12.svg";
+import pill from "../../../../images/Cat/Main/s1.svg";
 
 
 
-import Main from "./PetscreensComponents/Main.jsx";
-import Feed from "./PetscreensComponents/Stations/Feed.jsx";
-import Play from "./PetscreensComponents/Stations/Play.jsx";
-import Medicine from "./PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "./PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "./PetscreensComponents/Nonstations/PetCareGuide.jsx";
+import Main from "../PetscreensComponents/Main.jsx";
+import Feed from "../PetscreensComponents/Stations/Feed.jsx";
+import Play from "../PetscreensComponents/Stations/Play.jsx";
+import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
 
-import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../providers/PetListProvider.jsx";
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../constants/Constants.js";
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
 
 import "./Cat.css";
 

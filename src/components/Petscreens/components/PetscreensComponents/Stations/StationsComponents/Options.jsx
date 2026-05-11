@@ -4,10 +4,10 @@ import unwanted from "../../../../../../images/PetUnwanted.png";
 import heart from "../../../../../../images/placeholderheart.png";
 import bubble from "../../../../../../images/placeholderthoughtbubble.png";
 
-import { usePetList } from "../../../../../../../providers/PetListProvider.jsx";
-import { useActivePetName } from "../../../../../../../providers/ActivePetNameProvider.jsx";
+import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
+import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { portraitPetImages, speciesKey, stageKey } from "../../../../../../../constants/Constants.js";
+import { portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
 
 
 

@@ -4,9 +4,9 @@ import { useEffect } from "react";
 import Homescreen from "./components/Homescreen/components/Home.jsx";
 import Adoptionscreen from "./components/Adoptionscreen/components/Adoption.jsx";
 
-import Dogscreen from "./components/Petscreens/components/Dog.jsx";
-import Catscreen from "./components/Petscreens/components/Cat.jsx";
-import Fishscreen from "./components/Petscreens/components/Fish.jsx";
+import Dogscreen from "./components/Petscreens/components/Dog/Dog.jsx";
+import Catscreen from "./components/Petscreens/components/Cat/Cat.jsx";
+import Fishscreen from "./components/Petscreens/components/Fish/Fish.jsx";
 
 import NoPage from "./components/NoPage.jsx";
 
