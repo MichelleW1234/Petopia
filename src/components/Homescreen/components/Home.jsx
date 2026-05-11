@@ -8,8 +8,10 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { healthCapList, portraitPetImages } from "../../../constants/Constants.js";
-import { healthKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { healthCapList, maleGender, portraitPetImages, healthKey, speciesKey, stageKey, genderKey } from "../../../constants/Constants.js";
+
+import BoyBow from "../../../images/Boy.png";
+import GirlBow from "../../../images/Girl.png";
 
 import "./Home.css";
 
@@ -88,7 +90,7 @@ function Home (){
 
                     {Object.keys(PetList).length === 0 && Object.keys(PetTimeStamps).length === 0 ? (
 
-                        <h2 className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow"> Your pet(s) will appear here when added. </h2>
+                        <h2 className = "Home_ComponentContainer-Template--Start"> Your pet(s) will appear here when added. </h2>
 
                     ) : (
 
@@ -152,6 +154,16 @@ function Home (){
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
                                         <h2>{key}</h2>
+
+                                        {PetList[key][genderKey] === maleGender ? (
+
+                                            <img className = "Home_ComponentImage-Template--PetBow" src = {BoyBow}/>
+
+                                        ) : (
+
+                                            <img className = "Home_ComponentImage-Template--PetBow" src = {GirlBow}/>
+
+                                        )}
                                         
                                     </div>
 

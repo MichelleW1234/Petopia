@@ -7,7 +7,7 @@ import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender } from "../../../constants/Constants.js";
 
 import "./Adoption.css";
 
@@ -40,9 +40,17 @@ function Adoption () {
     const petSelecting = () => {
 
         const gender = Math.floor(Math.random() * 2);
-        const petGenders = ["female", "male"];
         
-        setPetGender(petGenders[gender]);
+        if (gender === 0){
+
+            setPetGender(maleGender);
+
+        } else {
+
+            setPetGender(femaleGender);
+
+        }
+
         setStep(1);
 
     }

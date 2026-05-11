@@ -90,6 +90,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                                     <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
                                     /*
                                     <playSelectedGameWindow
+                                        playTotal = {playTotal}
                                         setPlayDone = {setPlayDone}
                                         playCurrNumber = {playCurrNumber}
                                         setPlayCurrNumber = {setPlayCurrNumber}

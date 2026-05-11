@@ -1,3 +1,9 @@
+.Home_ComponentContainer-Template--Start{
+
+  
+
+}
+
 .Home_ComponentContainer-Structure--PetAlert {
 
   display: flex;
@@ -56,5 +62,16 @@
 
   border-color: rgb(140, 140, 140);
   background-color: rgb(150, 150, 150);
+
+}
+
+.Home_ComponentImage-Template--PetBow{
+
+  height: 5rem;
+
+  filter: 
+    drop-shadow(0 0 1px rgb(255, 255, 255))
+    drop-shadow(0 0 2px rgb(255, 255, 255))
+    drop-shadow(0 0 3px  rgb(255, 255, 255));
 
 }
