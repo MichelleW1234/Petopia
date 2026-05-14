@@ -28,7 +28,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
     const [playSuccess, setPlaySuccess] = useState(false);
 
-    const playSelectedGameWindow = playSelection !== -1 ? 
+    const PlaySelectedGameWindow = playSelection !== -1 ? 
                                         playComponents[playSelection]
                                         : null;
 
@@ -46,7 +46,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     }, []);
     
     useEffect(() => {
-
+        
         if (playCurrNumber >= playTotal){
 
             setPlayDone(true);
@@ -85,17 +85,12 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                         <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
                             <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
 
-                                {playSelectedGameWindow !== null ? (
+                                {PlaySelectedGameWindow !== null ? (
 
-                                    <button onClick = {() => setPlayCurrNumber(prev => prev + 1)}> {playSelectedGameWindow} </button>
-                                    /*
-                                    <playSelectedGameWindow
-                                        playTotal = {playTotal}
-                                        setPlayDone = {setPlayDone}
+                                    <PlaySelectedGameWindow
                                         playCurrNumber = {playCurrNumber}
                                         setPlayCurrNumber = {setPlayCurrNumber}
                                     />
-                                    */
 
                                 ) : (
 

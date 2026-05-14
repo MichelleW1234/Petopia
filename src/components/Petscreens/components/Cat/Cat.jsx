@@ -47,6 +47,8 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
 
+import GameOne from "./CatComponents/GameOne.jsx";
+
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -57,8 +59,7 @@ import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTi
 import "./Cat.css";
 
 
-// CHANGE THIS LATER!!!!!!!!!
-//const catPlayComponents = ["button 1", "button 2", "button 3"]
+const catPlayComponents = [GameOne];
 
 function Cat (){
 
@@ -136,8 +137,7 @@ function Cat (){
 
 
     const catFeedOptions = [tuna, chicken, salmon]; 
-    const catPlayOptions = [tuna, chicken, salmon]; // CHANGE THIS LATER!!!!!!!!! 
-    const catPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER!!!!!!!
+    const catPlayOptions = [tuna]; // CHANGE THIS LATER!!!!!!!!! 
     const catMedicineOptions = [pill];
 
 

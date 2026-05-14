@@ -1,110 +1,157 @@
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./GameOne.css";
 
 
-function GameOne({ playTotal, setPlayDone, playCurrNumber, setPlayCurrNumber }) {
+function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
     const windowWidth = 10;
-    const boundary = 4;
 
-    const [userPattern, setUserPattern] = useState(Array.from({ length: 10 }, () => -1));
+    const [start, setStart] = useState(false);
+    const [activeSelection, setActiveSelection] = useState(-1);
+    const [randomPattern, setRandomPattern] = useState([]);
 
-    const [randomPattern, setRandomPattern] = useState(
-            Array.from({ length: 10 }, () => [Math.floor(Math.random() * 4), -1])
-        );
+    const randomPatternRef = useRef(randomPattern);
 
-    const [activatedNumber, setActivatedNumber] = useState(0);
 
-    const [pause, setPause] = useState(true);
-    const [roundDone, setRoundDone] = false;
+
+
+    useEffect(() => {
+        randomPatternRef.current = randomPattern;
+    }, [randomPattern]);
+
+
+    useEffect(() => {
+
+        if (!start){
+
+            return;
+
+        } 
+
+        const interval = setInterval(() => {
+
+            const copy = randomPatternRef.current.map(inner => [...inner]);
+
+            for (let i = 0; i< copy.length; i++){
+
+                copy[i][1] -= 1;
+
+            }
+
+            const newList = copy.filter(item => item[1] >= 0);
+
+            if (!newList.some(item => item[1] >= windowWidth/2)){
+
+                const newSlot = Math.floor(Math.random() * 4);
+                newList.push([newSlot, windowWidth]);
+
+            }
+            
+            setRandomPattern(newList);
+            
+        }, 150);
+
+        return () => clearInterval(interval);
+
+    }, [start]);
 
 
 
     useEffect(() => {
 
-        if (playCurrNumber >= playTotal || pause){
+        const targetValue = randomPatternRef.current.find(item => item[1] === 0);
 
-            return;
+        if (targetValue){
 
-        } else if (randomPattern.every(pair => pair[1] === -2)){
-
-            let tally = 0;
-
-            for (let i = 0; i< randomPattern.length; i++){
-
-                if (randomPattern[i][0] === userPattern[i]){
-
-                    tally += 1;
-
-                }
-
-            }
-
-            if (tally >= 7) {
+            if (activeSelection === targetValue[0]){
 
                 setPlayCurrNumber(prev => prev + 1);
 
             }
 
-            setPause(true);
-
-        } else {
-
-            const interval = setInterval(() => {
-
-                const copy = randomPattern.map(inner => [...inner]);
-
-                for (let i = 0; i< copy.length; i++){
-
-                    if (copy[i][1] !== -2 && i <= activatedNumber) {
-
-                        if (copy[i][1] === boundary){
-
-                            copy[i][1] = -2;
-
-                        } else if (i === activatedNumber){
-
-                            copy[i][1] = windowWidth;
-    
-                        } else {
-
-                            copy[i][1] -= 1;
-
-                        }
-
-                    }
-
-                }
-
-                setRandomPattern(copy);
-                setActivatedNumber(prev => prev + 1);
-                
-            }, 100);
-
-            return () => clearInterval(interval);
-
         }
 
-    }, [randomPattern, pause]);
-
-
-
-
-    
-    const nextRund = () => {
-
-        setPause(false);
-        setRandomPattern(Array.from({ length: 10 }, () => [Math.floor(Math.random() * 4), -1]));
-
-    }
-
+    }, [activeSelection]);
 
 
 
     return (
 
         <div className = "Window">
-            
+            {!start && <div className="StartFlag">
+                <h2>Match the keyboard pattern!</h2> 
+                <button onClick = {() => setStart(true)}>Start Game</button>
+            </div>}
+
+            <div className="UsersContainer">
+
+                <div>{activeSelection}</div>
+                <button onMouseDown = {() => setActiveSelection(0)}
+                        onMouseUp={() => setActiveSelection(-1)}> 
+                    Up 
+                    </button>
+                <button onMouseDown = {() => setActiveSelection(1)}
+                        onMouseUp={() => setActiveSelection(-1)}> 
+                    Down 
+                    </button>
+                <button onMouseDown = {() => setActiveSelection(2)}
+                        onMouseUp={() => setActiveSelection(-1)}> 
+                    Left
+                    </button>
+                <button onMouseDown = {() => setActiveSelection(3)}
+                        onMouseUp={() => setActiveSelection(-1)}> 
+                    Right
+                    </button>
+
+            </div>
+
+            <div className="SlotContainer">
+
+                {Array.from({ length: windowWidth}, (_, i) => i).map(index => {
+
+                    const slotData = randomPattern.find(item => item[1] === index);
+
+                    return (
+                        
+                        slotData ? (
+
+                            index === 0 ? (
+
+                                <div key = {index} className="CellSlotThis">
+                                    {slotData[0]}
+                                </div>
+
+                            ) : (
+
+                                <div key = {index} className="CellSlot">
+                                    {slotData[0]}
+                                </div>
+
+                            )
+
+                        ) : (
+
+                            index === 0 ? (
+
+                                <div key = {index} className="CellSlotThis">
+                                </div>
+
+                            ) : (
+
+                                <div key = {index} className="CellNormal">
+                                </div>
+
+
+                            )
+    
+                        )
+                       
+                    );
+
+                })}
+
+            </div>
+                
         </div>
         
     );
