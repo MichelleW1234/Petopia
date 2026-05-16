@@ -22,6 +22,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
+    const [start, setStart] = useState(false);
     const [cleanTotal, setCleanTotal] = useState(30);
     const [cleanSelection, setCleanSelection] = useState(-1);
     const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
@@ -51,16 +52,8 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
 
     useEffect(() => {
-        if (cleanCurrNumber >= cleanTotal){
-            setCleanDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection, setCleanSuccess);
-        }
-    }, [cleanCurrNumber]);
 
-
-    useEffect(() => {
-
-        if (cleanSelection === -1 || cleanDone) {
+        if (!start || cleanSelection === -1 || cleanDone) {
             return;
         }
 
@@ -74,7 +67,15 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
         return () => clearInterval(interval);
 
-    }, [cleanSelection, cleanDone]);
+    }, [start, cleanSelection, cleanDone]);
+
+    
+    useEffect(() => {
+        if (cleanCurrNumber >= cleanTotal){
+            setCleanDone(true);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection, setCleanSuccess);
+        }
+    }, [cleanCurrNumber]);
 
 
 
@@ -100,22 +101,27 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanTotal) * 100)))}
                     />
 
-                    {!cleanDone ? ( 
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
-                                <h2> Drag your cursor back and forth</h2>
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+
+                        {!cleanDone ? ( 
+
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow">
+
+                                {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                    <h2> Drag your cursor back and forth to clean! </h2>
+                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                                </div>}
+
                                 <img
                                     src = {cleanAnimationImages[cleanAnimationImage]} 
                                     onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                 />
                             </div>
-                        </div>
 
-                    ) : (
+                        ) : (
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow">
 
                                 {cleanSuccess ? (
 
@@ -126,11 +132,12 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                                     <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} />
 
                                 )}
-                               
-                            </div>
-                        </div>
                         
-                    )}
+                            </div>
+
+                        )}
+                            
+                    </div>
                         
                 </div>
 

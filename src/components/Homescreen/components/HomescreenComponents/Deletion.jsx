@@ -74,7 +74,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
                     {Object.keys(PetList).map((key) => (
 
-                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton">
+                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame">
 
                             {deletionSelectedPets.includes(key) ? (
 

@@ -524,7 +524,7 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButton {
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame {
 
   display: flex;
   flex-direction: column;
@@ -537,10 +537,29 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalWindow {
+.MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame {
 
   padding: 4rem;
   border-radius: 4rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen{
+
+  height: 30rem;
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  border-radius: inherit;
+
+  box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
 }
 
@@ -578,34 +597,6 @@ a:active {
 }
 
 
-.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen{
-
-  height: 25rem;
-  width: 45rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 4rem;
-
-  box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
-
-  img {
-
-    height: 10rem;
-    width: 10rem;
-
-    filter: 
-      drop-shadow(0 0 5px rgb(255, 255, 255))
-      drop-shadow(0 0 10px rgb(255, 255, 255))
-      drop-shadow(0 0 15px  rgb(255, 255, 255));
-
-  }
-
-}
-
-
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar {
 
   display: flex;
@@ -622,6 +613,52 @@ a:active {
   width: 0.3rem;
 
 }
+
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  gap: 3rem;
+  padding: 5rem;
+  border-radius: 4rem;
+
+  background-color: rgba(71, 0, 125, 0.75);
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton{
+
+  border-radius: 1rem;
+  padding: 2rem 3rem;
+  border: none;
+
+  color: white;
+  background-color: inherit;
+  box-shadow: 0 0 1rem 0.25rem rgb(255, 255, 255);
+
+  transition: transform 0.3s ease;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton:hover{
+
+  box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
+  transform: scale(1.1);
+
+}
+
+
+
+
+
 
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar {

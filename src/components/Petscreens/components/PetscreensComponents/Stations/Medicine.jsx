@@ -18,6 +18,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const [start, setStart] = useState(false);
     const [medicineTotal, setMedicineTotal] = useState(10);
     const [medicineSelection, setMedicineSelection] = useState(-1);
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
@@ -55,7 +56,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
     useEffect(() => {
 
-        if (medicineSelection === -1 || medicineDone) {
+        if (!start || medicineSelection === -1 || medicineDone) {
             return;
         }
 
@@ -74,11 +75,12 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
         return () => clearInterval(interval);
 
-    }, [medicineSelection, medicineDone]);
+    }, [start, medicineSelection, medicineDone]);
 
+    
     useEffect(() => {
 
-        if (medicineSelection === -1 || medicineDone) {
+        if (!start || medicineSelection === -1 || medicineDone) {
             return;
         }
 
@@ -92,7 +94,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
         return () => clearInterval(interval);
 
-    }, [medicineSelection, medicineDone]);
+    }, [start, medicineSelection, medicineDone]);
 
 
 
@@ -175,24 +177,31 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicineCurrNumber/medicineTotal) * 100)))}
                     />
 
-                    {!medicineDone ? (
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                        {!medicineDone ? (
+
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
+
+                                {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                    <h2>Feed your pet!</h2> 
+                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                                </div>}
+                        
                                 <img src = {medicineAnimationImages[medicineAnimationImage]} />
-                            </div> 
-                        </div>
 
-                    ) : (
+                            </div>
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                        ) : (
+
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
                                 {/* Change this later!!!!!!!!!!!!!*/}
                                 <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
-                            </div> 
-                        </div>
-                        
-                    )}
+                            </div>
+                            
+                        )}
+
+                    </div>
 
                 </div>
                 

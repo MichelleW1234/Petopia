@@ -131,15 +131,14 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
         ActivePetName === "" ? (
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty"></div>
             </div>
 
         ) : (
 
-            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
-            
-                <div className = {`Main_ComponentContainer-Template--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
+            <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+                <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Structure--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
                         <h1 className = "Main_ComponentHeading-Template--WindowScreenPetStatsName">{ActivePetName}:</h1>
@@ -177,7 +176,7 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                                         petHere ? (
 
-                                            <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Template--WindowScreenGridNonemptyCellPet">
+                                            <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet">
                                                 <img 
                                                     src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                     onMouseEnter={() => showAttention()}

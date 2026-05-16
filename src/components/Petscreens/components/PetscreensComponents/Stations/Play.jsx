@@ -22,7 +22,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [playTotal, setPlayTotal] = useState(10);
+    const [playTotal, setPlayTotal] = useState(20);
     const [playDone, setPlayDone] = useState(false);
     const [playSelection, setPlaySelection] = useState(-1);
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
@@ -79,32 +79,29 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                     <ProgressBar
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((playCurrNumber/playTotal) * 100)))}
                     />
+     
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
-                    {!playDone ? (
-                                
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                        {!playDone ? (
 
-                                {PlaySelectedGameWindow !== null ? (
+                            PlaySelectedGameWindow !== null ? (
 
-                                    <PlaySelectedGameWindow
-                                        playCurrNumber = {playCurrNumber}
-                                        setPlayCurrNumber = {setPlayCurrNumber}
-                                    />
+                                <PlaySelectedGameWindow
+                                    playCurrNumber = {playCurrNumber}
+                                    setPlayCurrNumber = {setPlayCurrNumber}
+                                />
 
-                                ) : (
+                            ) : (
 
-                                    null /* Make a default window? */
+                                /* Change default window??? */
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen PlayWindow">
+                                </div>
 
-                                )}
+                            )
 
-                            </div>
-                        </div>
+                        ) : (
 
-                    ) : (
-
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen">
 
                                 {playSuccess ? (
 
@@ -117,9 +114,10 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
                                 )}
 
                             </div>
-                        </div>
 
-                    )}
+                        )}
+
+                    </div>
 
                 </div>
 

@@ -22,6 +22,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
+    const [start, setStart] = useState(false);
     const [feedTotal, setFeedTotal] = useState(10);
     const [feedCurrNumber, setFeedCurrNumber] = useState(0);
     const [feedDone, setFeedDone] = useState(false);
@@ -63,7 +64,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useEffect(() => {
 
-        if (feedSelection === -1 || feedDone) {
+        if (!start || feedSelection === -1 || feedDone) {
             return;
         }
 
@@ -82,12 +83,12 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         return () => clearInterval(interval);
 
-    }, [feedSelection, feedDone]);
+    }, [start, feedSelection, feedDone]);
 
 
     useEffect(() => {
 
-        if (feedSelection === -1 || feedDone) {
+        if (!start || feedSelection === -1 || feedDone) {
             return;
         }
 
@@ -101,7 +102,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         return () => clearInterval(interval);
 
-    }, [feedSelection, feedDone]);
+    }, [start, feedSelection, feedDone]);
 
 
 
@@ -127,32 +128,39 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                         progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedTotal) * 100)))}
                     />
 
-                    {!feedDone ? (
+                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
-                                <img src = {feedAnimationImages[feedAnimationImage]} />
-                            </div>
-                        </div>
+                            {!feedDone ? (
 
-                    ) : (
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeedWindow">
+                                    {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                        <h2>Wait for your pet as it eats!</h2> 
+                                        <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                                    </div>}
 
-                        <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindow">  
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreen">
+                                    <img src = {feedAnimationImages[feedAnimationImage]} />
 
-                                {feedSuccess ? (
+                                </div>
 
-                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+                            ) : (
 
-                                ) : (
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeedWindow">
 
-                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} />
+                                    {feedSuccess ? (
 
-                                )}
+                                        <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
 
-                            </div>
-                        </div>
-                    )}
+                                    ) : (
+
+                                        <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} />
+
+                                    )}
+
+                                </div>
+
+                            )}
+
+                    </div>
 
                 </div>
 

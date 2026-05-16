@@ -1,12 +1,15 @@
-.Main_ComponentContainer-Template--WindowScreen{
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.Main_ComponentContainer-Structure--WindowScreen{
 
     padding: 2rem;
-    border-radius: 4rem;
-    box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
+
+    img {
+
+        filter: 
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
 
 }
 
@@ -70,11 +73,6 @@
     height: 2.5rem;
     width: 2.5rem;
 
-    filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
-
 }
 
 
@@ -94,7 +92,7 @@
 }
 
 
-.Main_ComponentContainer-Template--WindowScreenGridNonemptyCellPet {
+.Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet {
 
     height: 20rem;
     width: 8rem;
@@ -102,11 +100,6 @@
     img {
 
         width: 100%;
-
-        filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
 
     }
 
@@ -126,11 +119,6 @@
 
         height: 15rem;
         width: 15rem;
-
-        filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
 
     }
 

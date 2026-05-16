@@ -57,6 +57,8 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
 
+import GameOne from "./DogComponents/GameOne.jsx";
+
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
@@ -67,8 +69,8 @@ import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDo
 import "./Dog.css";
 
 
-// CHANGE THIS LATER!!!!!!!!!
-//const dogPlayComponents = ["button 1", "button 2", "button 3"]
+
+const dogPlayComponents = [GameOne];
 
 function Dog (){
 
@@ -163,8 +165,7 @@ function Dog (){
 
     const dogFeedOptions = [beef, turkey, lamb]; 
     const dogCleanOptions = [soap, brush];
-    const dogPlayOptions = [beef, turkey, lamb]; // CHANGE THIS LATER!!!!!!!!!
-    const dogPlayComponents = ["button 1", "button 2", "button 3"]; // DELETE THIS LATER
+    const dogPlayOptions = [beef]; // CHANGE THIS LATER!!!!!!!!!
     const dogMedicineOptions = [pill];
 
 
