@@ -101,7 +101,7 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
 
                         ) : (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen PlayWindow">
 
                                 {playSuccess ? (
 

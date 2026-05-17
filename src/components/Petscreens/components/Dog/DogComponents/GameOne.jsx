@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./GameOne.css";
 
 import carrot from "../../../../../images/carrot.png";
@@ -12,9 +12,7 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
     const windowHeight = 5;
 
     const [start, setStart] = useState(false);
-    const [randomPattern, setRandomPattern] = useState([]);
-    const [restart, setRestart] = useState(false);
-
+    const [objectPositions, setObjectPositions] = useState([]);
     const [dogPosition, setDogPosition] = useState([3, 2]);
 
 
@@ -29,7 +27,7 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
         const interval = setInterval(() => {
 
-            setRandomPattern(prev => {
+            setObjectPositions(prev => {
 
                 const copy = prev.map(inner => [...inner]);
 
@@ -61,7 +59,7 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
     
     useEffect(() => {
 
-        const copy = randomPattern.map(inner => [...inner]);
+        const copy = objectPositions.map(inner => [...inner]);
 
         const hitIndex = copy.findIndex(item => item[0] === dogPosition[0] && item[1] === dogPosition[1]);
     
@@ -78,11 +76,11 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
             }
 
             copy.splice(hitIndex, 1);
-            setRandomPattern(copy);
+            setObjectPositions(copy);
             
         }
 
-    }, [randomPattern, dogPosition]);
+    }, [objectPositions, dogPosition]);
 
 
 
@@ -134,8 +132,8 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
                     Array.from({ length: windowWidth}, (_, col) => {
 
                         const dogHere = col === dogPosition[0] && row === dogPosition[1];
-                        const badHere = randomPattern.find(item => item[0] === col && item[1] === row && item[2] === 0);
-                        const goodHere = randomPattern.find(item => item[0] === col && item[1] === row && item[2] === 1);
+                        const badHere = objectPositions.find(item => item[0] === col && item[1] === row && item[2] === 0);
+                        const goodHere = objectPositions.find(item => item[0] === col && item[1] === row && item[2] === 1);
 
                         return (
                             
