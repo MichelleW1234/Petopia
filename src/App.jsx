@@ -9,6 +9,7 @@ import Catscreen from "./components/Petscreens/components/Cat/Cat.jsx";
 import Fishscreen from "./components/Petscreens/components/Fish/Fish.jsx";
 
 import NoPage from "./components/NoPage.jsx";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 import { portraitPetImages, moodPetImages } from "./constants/Constants.js";
 
@@ -32,6 +33,7 @@ function App() {
   return (
     <>
       <HashRouter>
+        <ScrollToTop />
         <Routes>
           <Route index element={<Homescreen/>}/>
             
