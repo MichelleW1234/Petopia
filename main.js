@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 if (process.arch === 'x64') {
-  const userDataPath = path.join(app.getPath('appData'), 'Tamagotchi');
+  const userDataPath = path.join(app.getPath('appData'), 'Petopia');
   app.setPath('userData', userDataPath);
 }
 
