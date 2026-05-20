@@ -12,7 +12,7 @@ import { healthCapList, healthKey, medicineKey, moodPetImages, speciesKey, stage
 import "./Medicine.css";
 
 
-function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFlag}){
+function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOption, setMedicineDesiredOption, setMedicineOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -23,6 +23,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
     const [medicineSelection, setMedicineSelection] = useState(-1);
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
     const [medicineDone, setMedicineDone] = useState(false);
+    const [medicineSuccess, setMedicineSuccess] = useState(false);
     const [medicineAnimationImage, setMedicineAnimationImage] = useState(0);
 
     const medicineGlobalTimerRef = useRef(GlobalTimer);
@@ -33,7 +34,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
 
     useEffect(() => {
 
-        const preloadImages = [...medicineAnimationImages, ...medicineOptions];
+        const preloadImages = [...medicineAnimationImages, ...medicineOptions.map(item => item[1])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -138,6 +139,14 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
     
         }
 
+        if (medicineDesiredOption === medicineSelection){
+
+            setMedicineSuccess(true);
+
+        }
+
+        setMedicineDesiredOption(-1);
+
     }
 
 
@@ -149,25 +158,12 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                 
             {medicineSelection === -1 ? (
 
-                PetList[ActivePetName][healthKey] < healthCapList[PetList[ActivePetName][speciesKey]] ? (
-
-                    <Options
-                        optionsDesiredOption = {0}
-                        optionsList = {medicineOptions} 
-                        setOptionsTotal = {setMedicineTotal}
-                        setOptionsSelection = {setMedicineSelection}
-                    />
-
-                ) : (
-
-                    <Options
-                        optionsDesiredOption = {-1}
-                        optionsList = {medicineOptions} 
-                        setOptionsTotal = {setMedicineTotal}
-                        setOptionsSelection = {setMedicineSelection}
-                    />
-
-                )
+                <Options
+                    optionsDesiredOption = {medicineDesiredOption}
+                    optionsList = {medicineOptions} 
+                    setOptionsTotal = {setMedicineTotal}
+                    setOptionsSelection = {setMedicineSelection}
+                />
 
             ) : (
 
@@ -195,8 +191,17 @@ function Medicine ({medicineAnimationImages, medicineOptions, setMedicineOpenFla
                         ) : (
 
                             <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
-                                {/* Change this later!!!!!!!!!!!!!*/}
-                                <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                {medicineSuccess ? (
+
+                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]} />
+
+                                ) : (
+
+                                    <img src = {moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} />
+
+                                )}
+                             
                             </div>
                             
                         )}

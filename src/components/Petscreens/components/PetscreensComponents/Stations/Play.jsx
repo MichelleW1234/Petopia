@@ -15,7 +15,7 @@ import "./Play.css";
 
 
 
-function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOption, setPlayOpenFlag}){
+function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -29,14 +29,14 @@ function Play ({playOptions, playComponents, playDesiredOption, setPlayDesiredOp
     const [playSuccess, setPlaySuccess] = useState(false);
 
     const PlaySelectedGameWindow = playSelection !== -1 ? 
-                                        playComponents[playSelection]
+                                        playOptions[playSelection][2]
                                         : null;
 
 
 
     useEffect(() => {
 
-        const preloadImages = [...playOptions];
+        const preloadImages = [...playOptions.map(item => item[1])];
 
         preloadImages.forEach((src) => {
         const img = new Image();

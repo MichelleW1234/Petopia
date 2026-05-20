@@ -37,7 +37,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     useEffect(() => {
 
-        const preloadImages = [...cleanAnimationImages, ...cleanOptions];
+        const preloadImages = [...cleanAnimationImages, ...cleanOptions.map(item => item[1])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -88,7 +88,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                 <Options
                     optionsDesiredOption = {cleanDesiredOption}
-                    optionsList = {cleanOptions} 
+                    optionsList = {cleanOptions}
                     setOptionsTotal = {setCleanTotal}
                     setOptionsSelection = {setCleanSelection}
                 />

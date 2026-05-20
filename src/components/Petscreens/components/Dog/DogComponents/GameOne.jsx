@@ -19,6 +19,18 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
     useEffect(() => {
 
+        const preloadImages = [carrot, skull, dog];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, []);
+
+
+    useEffect(() => {
+
         if (!start){
 
             return;

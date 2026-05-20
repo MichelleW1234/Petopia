@@ -18,6 +18,19 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
     useEffect(() => {
 
+        const preloadImages = [mouse, snake];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, []);
+    
+
+
+    useEffect(() => {
+
         if (!start){
 
             return;

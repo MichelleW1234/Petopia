@@ -221,7 +221,7 @@ function Adoption () {
             
                             {Object.keys(portraitPetImages).map((key) => (
             
-                                <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame">
+                                <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
                                     {key === selectedPet ? (
             
                                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => setSelectedPet("")}>
@@ -235,6 +235,8 @@ function Adoption () {
                                         </button>
             
                                     )}
+
+                                    <h2>{key}</h2>
                                 </div>
             
                             ))}

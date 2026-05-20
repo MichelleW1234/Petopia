@@ -101,7 +101,7 @@ function Home (){
 
                                 return (
 
-                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame">
+                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
                                             
                                         {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
                                         {currPetHealth >= 75 ? (

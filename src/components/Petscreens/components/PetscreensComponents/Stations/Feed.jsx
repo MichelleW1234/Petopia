@@ -38,7 +38,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useEffect(() => {
 
-        const preloadImages = [...feedAnimationImages, ...feedOptions];
+        const preloadImages = [...feedAnimationImages, ...feedOptions.map(item => item[1])];
 
         preloadImages.forEach((src) => {
         const img = new Image();

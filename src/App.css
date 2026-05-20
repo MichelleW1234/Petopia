@@ -516,7 +516,6 @@ a:active {
 
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 
@@ -524,8 +523,10 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame {
 
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot {
+
+  width: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;

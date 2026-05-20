@@ -59,7 +59,6 @@ import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTi
 import "./Cat.css";
 
 
-const catPlayComponents = [GameOne];
 
 function Cat (){
 
@@ -76,6 +75,7 @@ function Cat (){
     const [catPetCareGuideOpenFlag, setCatPetCareGuideOpenFlag] = useState(false);
     const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
     const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
+    const [catMedicineDesiredOption, setCatMedicineDesiredOption] = useState(-1);
 
     const catAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -94,6 +94,13 @@ function Cat (){
                                 true 
                                 : false
                             : false;
+
+    const catUnwell =  ActivePetName !== "" ? 
+                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies] ? 
+                            true 
+                            : false
+                        : false;
+
 
     const catMood = ActivePetName !== "" ? 
                         PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.75 ? 
@@ -136,9 +143,9 @@ function Cat (){
                                 : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
-    const catFeedOptions = [tuna, chicken, salmon]; 
-    const catPlayOptions = [tuna]; // CHANGE THIS LATER!!!!!!!!! 
-    const catMedicineOptions = [pill];
+    const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
+    const catPlayOptions = [["Mouse Hunt", tuna, GameOne]]; // CHANGE THIS LATER!!!!!!!!! 
+    const catMedicineOptions = [["pill", pill]];
 
 
 
@@ -157,7 +164,13 @@ function Cat (){
 
         }
 
-    }, [catHungry, catRestless]);
+        if (catUnwell){
+
+            setCatMedicineDesiredOption(Math.floor(Math.random() * catMedicineOptions.length));
+
+        }
+
+    }, [catHungry, catRestless, catUnwell]);
 
 
 
@@ -187,7 +200,6 @@ function Cat (){
             {catPlayOpenFlag &&
             <Play
                 playOptions={catPlayOptions}
-                playComponents={catPlayComponents}
                 playDesiredOption = {catPlayDesiredOption}
                 setPlayDesiredOption = {setCatPlayDesiredOption}
                 setPlayOpenFlag = {setCatPlayOpenFlag}
@@ -197,6 +209,8 @@ function Cat (){
             <Medicine
                 medicineAnimationImages={catMedicineImages}
                 medicineOptions={catMedicineOptions}
+                medicineDesiredOption = {catMedicineDesiredOption}
+                setMedicineDesiredOption = {setCatMedicineDesiredOption}
                 setMedicineOpenFlag = {setCatMedicineOpenFlag}
             />}
 

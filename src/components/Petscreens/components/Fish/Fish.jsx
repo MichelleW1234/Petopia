@@ -84,6 +84,7 @@ function Fish (){
     const [fishPetCareGuideOpenFlag, setFishPetCareGuideOpenFlag] = useState(false);
     const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
     const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
+    const [fishMedicineDesiredOption, setFishMedicineDesiredOption] = useState(-1);
 
     const fishAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -99,6 +100,12 @@ function Fish (){
                             
     const fishDirty = ActivePetName !== "" ?  
                             (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
+                                true 
+                                : false
+                            : false;
+
+    const fishUnwell = ActivePetName !== "" ? 
+                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies] ? 
                                 true 
                                 : false
                             : false;
@@ -153,11 +160,12 @@ function Fish (){
                                         : [s3FishMedOne, s3FishMedTwo]
                                     :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishFeedOptions = [shrimp, worms, algae];
-    const fishCleanOptions = [sponge, cloth];
-    const fishMedicineOptions = [pill];
-    
+    const fishFeedOptions = [["shrimp", shrimp], ["worms", worms], ["algae", algae]];
+    const fishCleanOptions = [["sponge", sponge], ["cloth", cloth]];
+    const fishMedicineOptions = [["pill", pill]];
 
+
+    
 
     useEffect(() => {
 
@@ -173,7 +181,13 @@ function Fish (){
 
         }
 
-    }, [fishHungry, fishDirty]);
+        if (fishUnwell){
+
+            setFishMedicineDesiredOption(Math.floor(Math.random() * fishMedicineOptions.length));
+
+        }
+
+    }, [fishHungry, fishDirty, fishUnwell]);
 
     
     useEffect(() => {
@@ -212,6 +226,8 @@ function Fish (){
             <Medicine
                 medicineAnimationImages={fishMedicineImages}
                 medicineOptions = {fishMedicineOptions}
+                medicineDesiredOption = {fishMedicineDesiredOption}
+                setMedicineDesiredOption = {setFishMedicineDesiredOption}
                 setMedicineOpenFlag = {setFishMedicineOpenFlag}
             />}
 

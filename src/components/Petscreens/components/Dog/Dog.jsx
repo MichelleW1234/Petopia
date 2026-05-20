@@ -70,7 +70,6 @@ import "./Dog.css";
 
 
 
-const dogPlayComponents = [GameOne];
 
 function Dog (){
 
@@ -89,6 +88,7 @@ function Dog (){
     const [dogFeedDesiredOption, setDogFeedDesiredOption] = useState(-1);
     const [dogCleanDesiredOption, setDogCleanDesiredOption] = useState(-1);
     const [dogPlayDesiredOption, setDogPlayDesiredOption] = useState(-1);
+    const [dogMedicineDesiredOption, setDogMedicineDesiredOption] = useState(-1);
 
     const dogAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -113,6 +113,13 @@ function Dog (){
                                 true 
                                 : false
                             : false;
+
+    const dogUnwell = ActivePetName !== "" ? 
+                        PetList[ActivePetName][healthKey] < healthCapList[dogSpecies] ? 
+                            true 
+                            : false
+                        : false;
+
 
     const dogMood = ActivePetName !== "" ? 
                         PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.75 ? 
@@ -163,11 +170,14 @@ function Dog (){
                                     : [s3DogMedOne, s3DogMedTwo]
                                 : [s1DogMedOne, s1DogMedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogFeedOptions = [beef, turkey, lamb]; 
-    const dogCleanOptions = [soap, brush];
-    const dogPlayOptions = [beef]; // CHANGE THIS LATER!!!!!!!!!
-    const dogMedicineOptions = [pill];
+    const dogFeedOptions = [["beef", beef], ["turkey", turkey], ["lamb", lamb]]; 
+    const dogCleanOptions = [["soap", soap], ["brush", brush]];
+    const dogPlayOptions = [["Stroll Patrol", beef, GameOne]]; // CHANGE THIS LATER!!!!!!!!!
+    const dogMedicineOptions = [["pill", pill]];
 
+
+
+    
 
     useEffect(() => {
         if (dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag) {
@@ -198,7 +208,13 @@ function Dog (){
 
         }
 
-    }, [dogHungry, dogDirty, dogRestless]);
+        if (dogUnwell){
+
+            setDogMedicineDesiredOption(Math.floor(Math.random() * dogMedicineOptions.length));
+
+        }
+
+    }, [dogHungry, dogDirty, dogRestless, dogUnwell]);
 
     
     return (
@@ -225,7 +241,6 @@ function Dog (){
             {dogPlayOpenFlag &&
             <Play
                 playOptions={dogPlayOptions}
-                playComponents={dogPlayComponents}
                 playDesiredOption = {dogPlayDesiredOption}
                 setPlayDesiredOption = {setDogPlayDesiredOption}
                 setPlayOpenFlag = {setDogPlayOpenFlag}
@@ -235,6 +250,8 @@ function Dog (){
             <Medicine
                 medicineAnimationImages={dogMedicineImages}
                 medicineOptions={dogMedicineOptions}
+                medicineDesiredOption = {dogMedicineDesiredOption}
+                setMedicineDesiredOption = {setDogMedicineDesiredOption}
                 setMedicineOpenFlag = {setDogMedicineOpenFlag}
             />}
 

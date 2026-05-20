@@ -51,7 +51,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {optionsList[optionsDesiredOption][1]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     )}
                 </div>
@@ -61,10 +61,12 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 {optionsList.map((option, index) => (
 
-                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonFrame">
+                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => judgeSelection(index)}>
-                            <img src = {option}/>
+                            <img src = {option[1]}/>
                         </button>
+
+                        <h2>{option[0]}</h2>
                     </div>
 
                 ))}
