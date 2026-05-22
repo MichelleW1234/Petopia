@@ -19,6 +19,14 @@ import s3FishRightOne from "../../../../images/Fish/Main/s32.svg";
 import s3FishRightTwo from "../../../../images/Fish/Main/s33.svg";
 
 
+import s1FishSleepOne from "../../../../images/Fish/Main/Sleeping/s1.png";
+import s1FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s11.png";
+import s2FishSleepOne from "../../../../images/Fish/Main/Sleeping/s2.png";
+import s2FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s21.png";
+import s3FishSleepOne from "../../../../images/Fish/Main/Sleeping/s3.png";
+import s3FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s31.png";
+
+
 import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
 import s1FishFeedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
 import s2FishFeedOne from "../../../../images/Fish/Feed/Animation/s2.png";
@@ -137,6 +145,15 @@ function Fish (){
                                         [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
                                     : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
                                 : [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
+
+    const fishMainSleepingImages = ActivePetName !== "" ? 
+                                    PetList[ActivePetName][stageKey] === 0 ? 
+                                            [s1FishSleepOne, s1FishSleepTwo]
+                                        : PetList[ActivePetName][stageKey] === 1 ? 
+                                            [s2FishSleepOne, s2FishSleepTwo]
+                                        : [s3FishSleepOne, s3FishSleepTwo]
+                                    : [s1FishSleepOne, s1FishSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     
     const fishFeedImages = ActivePetName !== "" ? 
@@ -287,6 +304,7 @@ function Fish (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={fishMainImages}
+                        mainSleepingImages={fishMainSleepingImages}
                         mainPetEnergy = {400}
                         mainPetMood = {fishMood}
                         mainActivityInProgress={fishActivityInProgress}

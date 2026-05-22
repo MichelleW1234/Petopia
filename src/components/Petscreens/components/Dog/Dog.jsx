@@ -17,6 +17,13 @@ import s3DogLeftTwo from "../../../../images/Dog/Main/s31.svg";
 import s3DogRightOne from "../../../../images/Dog/Main/s32.svg";
 import s3DogRightTwo from "../../../../images/Dog/Main/s33.svg";
 
+import s1DogSleepOne from "../../../../images/Dog/Main/Sleeping/s1.png";
+import s1DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s11.png";
+import s2DogSleepOne from "../../../../images/Dog/Main/Sleeping/s2.png";
+import s2DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s21.png";
+import s3DogSleepOne from "../../../../images/Dog/Main/Sleeping/s3.png";
+import s3DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s31.png";
+
 
 import s1DogFeedOne from "../../../../images/Dog/Feed/Animation/s1.png";
 import s1DogFeedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
@@ -148,6 +155,14 @@ function Dog (){
                                     [[s2DogLeftOne, s2DogLeftTwo], [s2DogRightOne, s2DogRightTwo]]
                                 : [[s3DogLeftOne, s3DogLeftTwo], [s3DogRightOne, s3DogRightTwo]]
                             : [[s1DogLeftOne, s1DogLeftTwo], [s1DogRightOne, s1DogRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
+    const dogMainSleepingImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1DogSleepOne, s1DogSleepTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2DogSleepOne, s2DogSleepTwo]
+                                    : [s3DogSleepOne, s3DogSleepTwo]
+                                : [s1DogSleepOne, s1DogSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const dogFeedImages = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
@@ -312,6 +327,7 @@ function Dog (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={dogMainImages}
+                        mainSleepingImages={dogMainSleepingImages}
                         mainPetEnergy = {350}
                         mainPetMood = {dogMood}
                         mainActivityInProgress={dogActivityInProgress}

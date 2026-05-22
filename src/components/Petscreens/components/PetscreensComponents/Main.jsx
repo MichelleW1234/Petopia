@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from "react";
 
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 
 import heart from "../../../../images/placeholderheart.png";
 import anger from "../../../../images/placeholderangry.png";
@@ -13,21 +14,28 @@ import { healthCapList, healthKey, speciesKey } from "../../../../constants/Cons
 
 import "./Main.css";
 
-function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInProgress}){
+function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
+    const {GlobalTimer} = useGlobalTimer();
 
     const mainPetWindowLength = 20;
 
     const [mainAttention, setMainAttention] = useState(false);
     const [mainPetCurrentSpace, setMainPetCurrentSpace] = useState(Math.floor(Math.random() * mainPetWindowLength));
     const [mainPetDirection, setMainPetDirection] = useState(0);
+    const [sleepAnimationImage, setSleepAnimationImage] = useState(0);
 
     const mainPetCurrentSpaceRef = useRef(mainPetCurrentSpace);
     const mainPetDirectionRef = useRef(mainPetDirection);
+    const sleepAnimationImageRef = useRef(sleepAnimationImage);
     const mainTimeoutRef = useRef(null);
+
+    const currHour = new Date(GlobalTimer).getHours();
+    const petSleeping = currHour < 6 || currHour >= 20;
+        
     
 
     
@@ -52,24 +60,56 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
         mainPetDirectionRef.current = mainPetDirection;
     }, [mainPetDirection]);
 
+
+    useEffect(() => {
+        sleepAnimationImageRef.current = sleepAnimationImage;
+    }, [sleepAnimationImage]);
+
+
     useEffect(() => {
 
-        if (ActivePetName === ""){
+        if (ActivePetName === "" || !petSleeping){
+
+            return;
+
+        }
+
+        const interval = setInterval(() => {
+
+            if (sleepAnimationImageRef.current === 0) {
+                setSleepAnimationImage(1);
+            } else {
+                setSleepAnimationImage(0);
+            }
+
+        }, 800);
+
+        return () => clearInterval(interval);
+
+    }, [ActivePetName, petSleeping])
+
+
+
+    useEffect(() => {
+
+        if (ActivePetName === "" || petSleeping){
 
             return;
 
         } else {
 
+
             const interval = setInterval(() => {
+
                 petPositionChange();
+
             }, mainPetEnergy);
 
             return () => clearInterval(interval);
 
         }
 
-    }, [ActivePetName]);
-
+    }, [ActivePetName, petSleeping]);
 
 
 
@@ -167,39 +207,62 @@ function Main ({mainAnimationImages, mainPetEnergy, mainPetMood, mainActivityInP
 
                         !mainActivityInProgress ? (
 
-                            <div className="Main_ComponentContainer-Structure--WindowScreenGridNonempty"> 
-                                {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
-                                    
-                                    const petHere = mainPetCurrentSpace === index;
+                            petSleeping ? (
 
-                                    return(
+                                <div className="Main_ComponentContainer-Structure--WindowScreenGridEmpty"> 
 
-                                        petHere ? (
+                                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridEmptyPet">
+                                        <img 
+                                            onMouseEnter={() => showAttention()}
+                                            src = {mainSleepingImages[sleepAnimationImage]}
+                                        />
 
-                                            <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet">
-                                                <img 
-                                                    src = {mainAnimationImages[mainPetDirection][index % 2]} 
-                                                    onMouseEnter={() => showAttention()}
-                                                />
+                                        {mainAttention &&
+                                        <img
+                                            src = {mainPetMood <= 1 ? heart : anger} 
+                                            onMouseEnter={() => showAttention()}
+                                        />}
 
-                                                {mainAttention &&
-                                                <img
-                                                    src = {mainPetMood <= 1 ? heart : anger} 
-                                                    onMouseEnter={() => showAttention()}
-                                                />}
+                                    </div>
+                                </div>
 
-                                            </div>
+                            ) : (
 
-                                        ) : (
+                                <div className="Main_ComponentContainer-Structure--WindowScreenGridNonempty"> 
+                                    {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
+                                        
+                                        const petHere = mainPetCurrentSpace === index;
 
-                                            <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet"></div>
+                                        return(
 
+                                            petHere ? (
+
+                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet">
+                                                    <img 
+                                                        src = {mainAnimationImages[mainPetDirection][index % 2]} 
+                                                        onMouseEnter={() => showAttention()}
+                                                    />
+
+                                                    {mainAttention &&
+                                                    <img
+                                                        src = {mainPetMood <= 1 ? heart : anger} 
+                                                        onMouseEnter={() => showAttention()}
+                                                    />}
+
+                                                </div>
+
+                                            ) : (
+
+                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet"></div>
+
+                                            )
+                                
                                         )
-                            
-                                    )
 
-                                })}
-                            </div>
+                                    })}
+                                </div>
+
+                            )
 
                         ) : (
 

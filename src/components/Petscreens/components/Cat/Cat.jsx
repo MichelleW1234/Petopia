@@ -17,6 +17,14 @@ import s3CatRightOne from "../../../../images/Cat/Main/s32.svg";
 import s3CatRightTwo from "../../../../images/Cat/Main/s33.svg";
 
 
+import s1CatSleepOne from "../../../../images/Cat/Main/Sleeping/s1.png";
+import s1CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s11.png";
+import s2CatSleepOne from "../../../../images/Cat/Main/Sleeping/s2.png";
+import s2CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s21.png";
+import s3CatSleepOne from "../../../../images/Cat/Main/Sleeping/s3.png";
+import s3CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s31.png";
+
+
 import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
 import s1CatFeedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
 import s2CatFeedOne from "../../../../images/Cat/Feed/Animation/s2.png";
@@ -127,6 +135,14 @@ function Cat (){
                                     : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
                                 : [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
+    const catMainSleepingImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1CatSleepOne, s1CatSleepTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2CatSleepOne, s2CatSleepTwo]
+                                    : [s3CatSleepOne, s3CatSleepTwo]
+                                : [s1CatSleepOne, s1CatSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
     const catFeedImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
                                         [s1CatFeedOne, s1CatFeedTwo]
@@ -142,6 +158,9 @@ function Cat (){
                                         [s2CatMedOne, s2CatMedTwo]
                                     : [s3CatMedOne, s3CatMedTwo]
                                 : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
+
+    
 
 
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
@@ -267,6 +286,7 @@ function Cat (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={catMainImages}
+                        mainSleepingImages = {catMainSleepingImages}
                         mainPetEnergy = {450}
                         mainPetMood = {catMood}
                         mainActivityInProgress = {catActivityInProgress}
