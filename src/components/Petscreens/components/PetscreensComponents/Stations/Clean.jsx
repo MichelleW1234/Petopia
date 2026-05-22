@@ -11,6 +11,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import { cleaningKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
 
+
 import "./Clean.css";
 
 
@@ -33,8 +34,6 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     const cleanAnimationImageRef = useRef(cleanAnimationImage);
 
 
-
-
     useEffect(() => {
 
         const preloadImages = [...cleanAnimationImages, ...cleanOptions.map(item => item[1])];
@@ -49,6 +48,15 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     useEffect(() => {
         cleanAnimationImageRef.current = cleanAnimationImage;
     }, [cleanAnimationImage]);
+
+
+    useEffect(() => {
+
+        if (cleanSelection !== -1 ) {
+            console.log(cleanOptions[cleanSelection][1]);
+        }
+    }, [cleanSelection]);
+
 
 
     useEffect(() => {
@@ -106,7 +114,13 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                         {!cleanDone ? ( 
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow">
+                            <div 
+                                className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow`} 
+                                style={{
+                                    cursor: cleanSelection !== -1 && start
+                                        ? `url('${cleanOptions[cleanSelection][2]}'), auto`
+                                        : "default",
+                                }}>
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                     <h2> Drag your cursor back and forth to clean! </h2>

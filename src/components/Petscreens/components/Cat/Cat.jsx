@@ -17,26 +17,27 @@ import s3CatRightOne from "../../../../images/Cat/Main/s32.svg";
 import s3CatRightTwo from "../../../../images/Cat/Main/s33.svg";
 
 
-import s1CatFeedOne from "../../../../images/Cat/Main/s1.svg";
-import s1CatFeedTwo from "../../../../images/Cat/Main/s11.svg";
-import s2CatFeedOne from "../../../../images/Cat/Main/s2.svg";
-import s2CatFeedTwo from "../../../../images/Cat/Main/s21.svg";
-import s3CatFeedOne from "../../../../images/Cat/Main/s3.svg";
-import s3CatFeedTwo from "../../../../images/Cat/Main/s31.svg";
+import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
+import s1CatFeedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
+import s2CatFeedOne from "../../../../images/Cat/Feed/Animation/s2.png";
+import s2CatFeedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
+import s3CatFeedOne from "../../../../images/Cat/Feed/Animation/s3.png";
+import s3CatFeedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
 
 
-import s1CatMedOne from "../../../../images/Cat/Main/s1.svg";
-import s1CatMedTwo from "../../../../images/Cat/Main/s11.svg";
-import s2CatMedOne from "../../../../images/Cat/Main/s2.svg";
-import s2CatMedTwo from "../../../../images/Cat/Main/s21.svg";
-import s3CatMedOne from "../../../../images/Cat/Main/s3.svg";
-import s3CatMedTwo from "../../../../images/Cat/Main/s31.svg";
+import s1CatMedOne from "../../../../images/Cat/Feed/Animation/s1.png";
+import s1CatMedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
+import s2CatMedOne from "../../../../images/Cat/Feed/Animation/s2.png";
+import s2CatMedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
+import s3CatMedOne from "../../../../images/Cat/Feed/Animation/s3.png";
+import s3CatMedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
 
 
-import tuna from "../../../../images/Cat/Main/s1.svg";
-import chicken from "../../../../images/Cat/Main/s11.svg";
-import salmon from "../../../../images/Cat/Main/s12.svg";
-import pill from "../../../../images/Cat/Main/s1.svg";
+import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
+import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
+import salmon from "../../../../images/Cat/Feed/Options/salmon.png";
+import magnifier from "../../../../images/Cat/Play/magnifier.png";
+import pill from "../../../../images/Cat/Medicine/Options/pill.png";
 
 
 
@@ -144,7 +145,7 @@ function Cat (){
 
 
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
-    const catPlayOptions = [["Mouse Hunt", tuna, GameOne]]; // CHANGE THIS LATER!!!!!!!!! 
+    const catPlayOptions = [["Mouse Hunt", magnifier, GameOne]];
     const catMedicineOptions = [["pill", pill]];
 
 

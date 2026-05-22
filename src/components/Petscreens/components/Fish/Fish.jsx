@@ -19,36 +19,39 @@ import s3FishRightOne from "../../../../images/Fish/Main/s32.svg";
 import s3FishRightTwo from "../../../../images/Fish/Main/s33.svg";
 
 
-import s1FishFeedOne from "../../../../images/Fish/Main/s1.svg";
-import s1FishFeedTwo from "../../../../images/Fish/Main/s11.svg";
-import s2FishFeedOne from "../../../../images/Fish/Main/s2.svg";
-import s2FishFeedTwo from "../../../../images/Fish/Main/s21.svg";
-import s3FishFeedOne from "../../../../images/Fish/Main/s3.svg";
-import s3FishFeedTwo from "../../../../images/Fish/Main/s31.svg";
+import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
+import s1FishFeedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
+import s2FishFeedOne from "../../../../images/Fish/Feed/Animation/s2.png";
+import s2FishFeedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
+import s3FishFeedOne from "../../../../images/Fish/Feed/Animation/s3.png";
+import s3FishFeedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
 
 
-import s1FishCleanOne from "../../../../images/Fish/Main/s1.svg";
-import s1FishCleanTwo from "../../../../images/Fish/Main/s11.svg";
-import s2FishCleanOne from "../../../../images/Fish/Main/s2.svg";
-import s2FishCleanTwo from "../../../../images/Fish/Main/s21.svg";
-import s3FishCleanOne from "../../../../images/Fish/Main/s3.svg";
-import s3FishCleanTwo from "../../../../images/Fish/Main/s31.svg";
+import s1FishCleanOne from "../../../../images/Fish/Clean/Animation/s1.png";
+import s1FishCleanTwo from "../../../../images/Fish/Clean/Animation/s11.png";
+import s2FishCleanOne from "../../../../images/Fish/Clean/Animation/s2.png";
+import s2FishCleanTwo from "../../../../images/Fish/Clean/Animation/s21.png";
+import s3FishCleanOne from "../../../../images/Fish/Clean/Animation/s3.png";
+import s3FishCleanTwo from "../../../../images/Fish/Clean/Animation/s31.png";
 
 
-import s1FishMedOne from "../../../../images/Fish/Main/s1.svg";
-import s1FishMedTwo from "../../../../images/Fish/Main/s11.svg";
-import s2FishMedOne from "../../../../images/Fish/Main/s2.svg";
-import s2FishMedTwo from "../../../../images/Fish/Main/s21.svg";
-import s3FishMedOne from "../../../../images/Fish/Main/s3.svg";
-import s3FishMedTwo from "../../../../images/Fish/Main/s31.svg";
+import s1FishMedOne from "../../../../images/Fish/Feed/Animation/s1.png";
+import s1FishMedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
+import s2FishMedOne from "../../../../images/Fish/Feed/Animation/s2.png";
+import s2FishMedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
+import s3FishMedOne from "../../../../images/Fish/Feed/Animation/s3.png";
+import s3FishMedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
 
 
-import shrimp from "../../../../images/Fish/Main/s1.svg";
-import worms from "../../../../images/Fish/Main/s11.svg";
-import algae from "../../../../images/Fish/Main/s12.svg";
-import sponge from "../../../../images/Fish/Main/s1.svg";
-import cloth from "../../../../images/Fish/Main/s11.svg";
-import pill from "../../../../images/Fish/Main/s1.svg";
+import shrimp from "../../../../images/Fish/Feed/Options/shrimp.png";
+import worms from "../../../../images/Fish/Feed/Options/worm.png";
+import algae from "../../../../images/Fish/Feed/Options/algae.png";
+import sponge from "../../../../images/Fish/Clean/Options/sponge.png";
+import cloth from "../../../../images/Fish/Clean/Options/cloth.png";
+import spongeCursor from "../../../../images/Fish/Clean/Options/sponge.cur";
+import clothCursor from "../../../../images/Fish/Clean/Options/cloth.cur";
+
+import pill from "../../../../images/Fish/Medicine/Options/pill.png";
 
 
 import Main from "../PetscreensComponents/Main.jsx";
@@ -161,7 +164,7 @@ function Fish (){
                                     :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const fishFeedOptions = [["shrimp", shrimp], ["worms", worms], ["algae", algae]];
-    const fishCleanOptions = [["sponge", sponge], ["cloth", cloth]];
+    const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
     const fishMedicineOptions = [["pill", pill]];
 
 

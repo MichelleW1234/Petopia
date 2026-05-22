@@ -18,12 +18,12 @@ import s3DogRightOne from "../../../../images/Dog/Main/s32.svg";
 import s3DogRightTwo from "../../../../images/Dog/Main/s33.svg";
 
 
-import s1DogFeedOne from "../../../../images/Dog/Main/s1.svg";
-import s1DogFeedTwo from "../../../../images/Dog/Main/s11.svg";
-import s2DogFeedOne from "../../../../images/Dog/Main/s2.svg";
-import s2DogFeedTwo from "../../../../images/Dog/Main/s21.svg";
-import s3DogFeedOne from "../../../../images/Dog/Main/s3.svg";
-import s3DogFeedTwo from "../../../../images/Dog/Main/s31.svg";
+import s1DogFeedOne from "../../../../images/Dog/Feed/Animation/s1.png";
+import s1DogFeedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
+import s2DogFeedOne from "../../../../images/Dog/Feed/Animation/s2.png";
+import s2DogFeedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
+import s3DogFeedOne from "../../../../images/Dog/Feed/Animation/s3.png";
+import s3DogFeedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
 
 
 import s1DogCleanOne from "../../../../images/Dog/Main/s1.svg";
@@ -34,20 +34,23 @@ import s3DogCleanOne from "../../../../images/Dog/Main/s3.svg";
 import s3DogCleanTwo from "../../../../images/Dog/Main/s31.svg";
 
 
-import s1DogMedOne from "../../../../images/Dog/Main/s1.svg";
-import s1DogMedTwo from "../../../../images/Dog/Main/s11.svg";
-import s2DogMedOne from "../../../../images/Dog/Main/s2.svg";
-import s2DogMedTwo from "../../../../images/Dog/Main/s21.svg";
-import s3DogMedOne from "../../../../images/Dog/Main/s3.svg";
-import s3DogMedTwo from "../../../../images/Dog/Main/s31.svg";
+import s1DogMedOne from "../../../../images/Dog/Feed/Animation/s1.png";
+import s1DogMedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
+import s2DogMedOne from "../../../../images/Dog/Feed/Animation/s2.png";
+import s2DogMedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
+import s3DogMedOne from "../../../../images/Dog/Feed/Animation/s3.png";
+import s3DogMedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
 
 
-import beef from "../../../../images/Dog/Main/s1.svg";
-import turkey from "../../../../images/Dog/Main/s11.svg";
-import lamb from "../../../../images/Dog/Main/s12.svg";
-import soap from "../../../../images/Dog/Main/s1.svg";
-import brush from "../../../../images/Dog/Main/s11.svg";
-import pill from "../../../../images/Dog/Main/s1.svg";
+import beef from "../../../../images/Dog/Feed/Options/beef.png";
+import turkey from "../../../../images/Dog/Feed/Options/turkey.png";
+import lamb from "../../../../images/Dog/Feed/Options/lamb.png";
+import soap from "../../../../images/Dog/Clean/Options/soap.png";
+import brush from "../../../../images/Dog/Clean/Options/brush.png";
+import soapCursor from "../../../../images/Dog/Clean/Options/soap.cur";
+import brushCursor from "../../../../images/Dog/Clean/Options/brush.cur";
+import leash from "../../../../images/Dog/Play/leash.png";
+import pill from "../../../../images/Dog/Medicine/Options/pill.png";
 
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
@@ -171,8 +174,8 @@ function Dog (){
                                 : [s1DogMedOne, s1DogMedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const dogFeedOptions = [["beef", beef], ["turkey", turkey], ["lamb", lamb]]; 
-    const dogCleanOptions = [["soap", soap], ["brush", brush]];
-    const dogPlayOptions = [["Stroll Patrol", beef, GameOne]]; // CHANGE THIS LATER!!!!!!!!!
+    const dogCleanOptions = [["soap", soap, soapCursor], ["brush", brush, brushCursor]];
+    const dogPlayOptions = [["Stroll Patrol", leash, GameOne]];
     const dogMedicineOptions = [["pill", pill]];
 
 
