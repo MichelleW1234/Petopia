@@ -1,14 +1,14 @@
-import catStageOne from "../images/Cat/Main/s1.svg";
-import catStageTwo from "../images/Cat/Main/s2.svg";
-import catStageThree from "../images/Cat/Main/s3.svg";
+import catStageOne from "../images/Cat/Main/Awake/s1.svg";
+import catStageTwo from "../images/Cat/Main/Awake/s2.svg";
+import catStageThree from "../images/Cat/Main/Awake/s3.svg";
 
-import dogStageOne from "../images/Dog/Main/s1.svg";
-import dogStageTwo from "../images/Dog/Main/s2.svg";
-import dogStageThree from "../images/Dog/Main/s3.svg";
+import dogStageOne from "../images/Dog/Main/Awake/s1.svg";
+import dogStageTwo from "../images/Dog/Main/Awake/s2.svg";
+import dogStageThree from "../images/Dog/Main/Awake/s3.svg";
 
-import fishStageOne from "../images/Fish/Main/s1.svg";
-import fishStageTwo from "../images/Fish/Main/s2.svg";
-import fishStageThree from "../images/Fish/Main/s3.svg";
+import fishStageOne from "../images/Fish/Main/Awake/s1.svg";
+import fishStageTwo from "../images/Fish/Main/Awake/s2.svg";
+import fishStageThree from "../images/Fish/Main/Awake/s3.svg";
 
 
 import s1CatHappy from "../images/Cat/Mood/s1Happy.png";
@@ -54,13 +54,16 @@ export const dogSpecies = "dog";
 export const catSpecies = "cat"; 
 export const fishSpecies = "fish"; 
 
+
+
 export const healthCapList = {
 
-    [dogSpecies] : 15,
-    [catSpecies] : 20,
-    [fishSpecies] : 5
+    [dogSpecies] : [9, 12, 15],
+    [catSpecies] : [12, 16, 20],
+    [fishSpecies] : [3, 4, 5]
 
 }
+
 
 export const timeLimitList = {
 
@@ -86,7 +89,7 @@ export const timeLimitList = {
     [fishSpecies] : 
     {
         [feedingKey]: 86400000, 
-        [cleaningKey]: 86400000, 
+        [cleaningKey]: 86400000
     }
     // [180000, 300000]; //for testing purposes
     //[eat 1 time a day, clean fish tank 1 time a day, doesn't need to play]

@@ -97,7 +97,7 @@ function Home (){
                         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                             {Object.keys(PetList).map((key) => {
 
-                                const currPetHealth = Math.min(100, Math.max(0, Math.floor(((PetList[key][healthKey])/healthCapList[PetList[key][speciesKey]]) * 100)));
+                                const currPetHealth = Math.min(100, Math.max(0, Math.floor(((PetList[key][healthKey])/healthCapList[PetList[key][speciesKey]][PetList[key][stageKey]]) * 100)));
 
                                 return (
 

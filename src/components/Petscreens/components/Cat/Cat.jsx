@@ -1,28 +1,26 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import s1CatLeftOne from "../../../../images/Cat/Main/s1.svg";
-import s1CatLeftTwo from "../../../../images/Cat/Main/s11.svg";
-import s1CatRightOne from "../../../../images/Cat/Main/s12.svg";
-import s1CatRightTwo from "../../../../images/Cat/Main/s13.svg";
-
-import s2CatLeftOne from "../../../../images/Cat/Main/s2.svg";
-import s2CatLeftTwo from "../../../../images/Cat/Main/s21.svg";
-import s2CatRightOne from "../../../../images/Cat/Main/s22.svg";
-import s2CatRightTwo from "../../../../images/Cat/Main/s23.svg";
-
-import s3CatLeftOne from "../../../../images/Cat/Main/s3.svg";
-import s3CatLeftTwo from "../../../../images/Cat/Main/s31.svg";
-import s3CatRightOne from "../../../../images/Cat/Main/s32.svg";
-import s3CatRightTwo from "../../../../images/Cat/Main/s33.svg";
+import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
+import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
+import s1CatRightOne from "../../../../images/Cat/Main/Awake/s12.svg";
+import s1CatRightTwo from "../../../../images/Cat/Main/Awake/s13.svg";
+import s2CatLeftOne from "../../../../images/Cat/Main/Awake/s2.svg";
+import s2CatLeftTwo from "../../../../images/Cat/Main/Awake/s21.svg";
+import s2CatRightOne from "../../../../images/Cat/Main/Awake/s22.svg";
+import s2CatRightTwo from "../../../../images/Cat/Main/Awake/s23.svg";
+import s3CatLeftOne from "../../../../images/Cat/Main/Awake/s3.svg";
+import s3CatLeftTwo from "../../../../images/Cat/Main/Awake/s31.svg";
+import s3CatRightOne from "../../../../images/Cat/Main/Awake/s32.svg";
+import s3CatRightTwo from "../../../../images/Cat/Main/Awake/s33.svg";
 
 
-import s1CatSleepOne from "../../../../images/Cat/Main/Sleeping/s1.png";
-import s1CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s11.png";
-import s2CatSleepOne from "../../../../images/Cat/Main/Sleeping/s2.png";
-import s2CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s21.png";
-import s3CatSleepOne from "../../../../images/Cat/Main/Sleeping/s3.png";
-import s3CatSleepTwo from "../../../../images/Cat/Main/Sleeping/s31.png";
+import s1CatSleepOne from "../../../../images/Cat/Main/Asleep/s1.png";
+import s1CatSleepTwo from "../../../../images/Cat/Main/Asleep/s11.png";
+import s2CatSleepOne from "../../../../images/Cat/Main/Asleep/s2.png";
+import s2CatSleepTwo from "../../../../images/Cat/Main/Asleep/s21.png";
+import s3CatSleepOne from "../../../../images/Cat/Main/Asleep/s3.png";
+import s3CatSleepTwo from "../../../../images/Cat/Main/Asleep/s31.png";
 
 
 import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
@@ -105,18 +103,18 @@ function Cat (){
                             : false;
 
     const catUnwell =  ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies] ? 
+                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies][PetList[ActivePetName][stageKey]] ? 
                             true 
                             : false
                         : false;
 
 
     const catMood = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.75 ? 
+                        PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                             0
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.5 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.25 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                             2
                             : 3
                         : -1;

@@ -4,7 +4,7 @@ import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage} from "../constants/Constants.js";
+import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage, healthCapList} from "../constants/Constants.js";
 
 
 export function UpdateEngineProvider({ children }) {
@@ -65,8 +65,9 @@ export function UpdateEngineProvider({ children }) {
                 const currentStage = petAgeCheck(currDate, updatedPetList[curPetKey]);
 
                 if (currentStage !== updatedPetList[curPetKey][stageKey]){
-
-                    updatedPetList[curPetKey][stageKey] = currentStage;                             
+   
+                    updatedPetList[curPetKey][healthKey] += (healthCapList[updatedPetList[curPetKey][speciesKey]][currentStage] - healthCapList[updatedPetList[curPetKey][speciesKey]][updatedPetList[curPetKey][stageKey]]);
+                    updatedPetList[curPetKey][stageKey] = currentStage; 
 
                 }
 

@@ -10,7 +10,7 @@ import healthHeartGood from "../../../../images/placeholderheartGood.png";
 import healthHeartBad from "../../../../images/placeholderheartBad.png";
 import petTombStone from "../../../../images/PetTombStone.png";
 
-import { healthCapList, healthKey, speciesKey } from "../../../../constants/Constants.js";
+import { healthCapList, healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
 
@@ -184,7 +184,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetM
                         <h1 className = "Main_ComponentHeading-Template--WindowScreenPetStatsName">{ActivePetName}:</h1>
                         <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                            {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]]}, (_, i) => i + 1).map(num => (
+                            {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]}, (_, i) => i + 1).map(num => (
 
                                 num <= PetList[ActivePetName][healthKey] ? (
                                     <img key = {num} 

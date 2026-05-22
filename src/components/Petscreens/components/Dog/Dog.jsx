@@ -2,27 +2,25 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
-import s1DogLeftOne from "../../../../images/Dog/Main/s1.svg";
-import s1DogLeftTwo from "../../../../images/Dog/Main/s11.svg";
-import s1DogRightOne from "../../../../images/Dog/Main/s12.svg";
-import s1DogRightTwo from "../../../../images/Dog/Main/s13.svg";
+import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.svg";
+import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.svg";
+import s1DogRightOne from "../../../../images/Dog/Main/Awake/s12.svg";
+import s1DogRightTwo from "../../../../images/Dog/Main/Awake/s13.svg";
+import s2DogLeftOne from "../../../../images/Dog/Main/Awake/s2.svg";
+import s2DogLeftTwo from "../../../../images/Dog/Main/Awake/s21.svg";
+import s2DogRightOne from "../../../../images/Dog/Main/Awake/s22.svg";
+import s2DogRightTwo from "../../../../images/Dog/Main/Awake/s23.svg";
+import s3DogLeftOne from "../../../../images/Dog/Main/Awake/s3.svg";
+import s3DogLeftTwo from "../../../../images/Dog/Main/Awake/s31.svg";
+import s3DogRightOne from "../../../../images/Dog/Main/Awake/s32.svg";
+import s3DogRightTwo from "../../../../images/Dog/Main/Awake/s33.svg";
 
-import s2DogLeftOne from "../../../../images/Dog/Main/s2.svg";
-import s2DogLeftTwo from "../../../../images/Dog/Main/s21.svg";
-import s2DogRightOne from "../../../../images/Dog/Main/s22.svg";
-import s2DogRightTwo from "../../../../images/Dog/Main/s23.svg";
-
-import s3DogLeftOne from "../../../../images/Dog/Main/s3.svg";
-import s3DogLeftTwo from "../../../../images/Dog/Main/s31.svg";
-import s3DogRightOne from "../../../../images/Dog/Main/s32.svg";
-import s3DogRightTwo from "../../../../images/Dog/Main/s33.svg";
-
-import s1DogSleepOne from "../../../../images/Dog/Main/Sleeping/s1.png";
-import s1DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s11.png";
-import s2DogSleepOne from "../../../../images/Dog/Main/Sleeping/s2.png";
-import s2DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s21.png";
-import s3DogSleepOne from "../../../../images/Dog/Main/Sleeping/s3.png";
-import s3DogSleepTwo from "../../../../images/Dog/Main/Sleeping/s31.png";
+import s1DogSleepOne from "../../../../images/Dog/Main/Asleep/s1.png";
+import s1DogSleepTwo from "../../../../images/Dog/Main/Asleep/s11.png";
+import s2DogSleepOne from "../../../../images/Dog/Main/Asleep/s2.png";
+import s2DogSleepTwo from "../../../../images/Dog/Main/Asleep/s21.png";
+import s3DogSleepOne from "../../../../images/Dog/Main/Asleep/s3.png";
+import s3DogSleepTwo from "../../../../images/Dog/Main/Asleep/s31.png";
 
 
 import s1DogFeedOne from "../../../../images/Dog/Feed/Animation/s1.png";
@@ -33,12 +31,12 @@ import s3DogFeedOne from "../../../../images/Dog/Feed/Animation/s3.png";
 import s3DogFeedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
 
 
-import s1DogCleanOne from "../../../../images/Dog/Main/s1.svg";
-import s1DogCleanTwo from "../../../../images/Dog/Main/s11.svg";
-import s2DogCleanOne from "../../../../images/Dog/Main/s2.svg";
-import s2DogCleanTwo from "../../../../images/Dog/Main/s21.svg";
-import s3DogCleanOne from "../../../../images/Dog/Main/s3.svg";
-import s3DogCleanTwo from "../../../../images/Dog/Main/s31.svg";
+import s1DogCleanOne from "../../../../images/Dog/Main/Awake/s1.svg";
+import s1DogCleanTwo from "../../../../images/Dog/Main/Awake/s11.svg";
+import s2DogCleanOne from "../../../../images/Dog/Main/Awake/s2.svg";
+import s2DogCleanTwo from "../../../../images/Dog/Main/Awake/s21.svg";
+import s3DogCleanOne from "../../../../images/Dog/Main/Awake/s3.svg";
+import s3DogCleanTwo from "../../../../images/Dog/Main/Awake/s31.svg";
 
 
 import s1DogMedOne from "../../../../images/Dog/Feed/Animation/s1.png";
@@ -74,7 +72,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, stageKey} from "../../../../constants/Constants.js";
+import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
 
 import "./Dog.css";
 
@@ -125,18 +123,18 @@ function Dog (){
                             : false;
 
     const dogUnwell = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey] < healthCapList[dogSpecies] ? 
+                        PetList[ActivePetName][healthKey] < healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] ? 
                             true 
                             : false
                         : false;
 
 
     const dogMood = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.75 ? 
+                        PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                             0
-                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.5 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies] >= 0.25 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                             2
                             : 3
                         : -1;

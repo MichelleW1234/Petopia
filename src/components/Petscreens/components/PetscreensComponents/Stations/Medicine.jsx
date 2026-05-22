@@ -114,7 +114,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
                 [ActivePetName]: {
     
                     ...prev[ActivePetName],
-                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 4, healthCapList[prev[ActivePetName][speciesKey]]),
+                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 4, healthCapList[prev[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]),
                     [medicineKey]: currDate
     
                 }
@@ -130,7 +130,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
                 [ActivePetName]: {
     
                     ...prev[ActivePetName],
-                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 2, healthCapList[prev[ActivePetName][speciesKey]]),
+                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 2, healthCapList[prev[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]),
                     [medicineKey]: currDate
     
                 }

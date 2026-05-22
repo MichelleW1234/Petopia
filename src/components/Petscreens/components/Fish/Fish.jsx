@@ -3,28 +3,26 @@ import { useState, useEffect } from "react";
 
 
 
-import s1FishLeftOne from "../../../../images/Fish/Main/s1.svg";
-import s1FishLeftTwo from "../../../../images/Fish/Main/s11.svg";
-import s1FishRightOne from "../../../../images/Fish/Main/s12.svg";
-import s1FishRightTwo from "../../../../images/Fish/Main/s13.svg";
-
-import s2FishLeftOne from "../../../../images/Fish/Main/s2.svg";
-import s2FishLeftTwo from "../../../../images/Fish/Main/s21.svg";
-import s2FishRightOne from "../../../../images/Fish/Main/s22.svg";
-import s2FishRightTwo from "../../../../images/Fish/Main/s23.svg";
-
-import s3FishLeftOne from "../../../../images/Fish/Main/s3.svg";
-import s3FishLeftTwo from "../../../../images/Fish/Main/s31.svg";
-import s3FishRightOne from "../../../../images/Fish/Main/s32.svg";
-import s3FishRightTwo from "../../../../images/Fish/Main/s33.svg";
+import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.svg";
+import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.svg";
+import s1FishRightOne from "../../../../images/Fish/Main/Awake/s12.svg";
+import s1FishRightTwo from "../../../../images/Fish/Main/Awake/s13.svg";
+import s2FishLeftOne from "../../../../images/Fish/Main/Awake/s2.svg";
+import s2FishLeftTwo from "../../../../images/Fish/Main/Awake/s21.svg";
+import s2FishRightOne from "../../../../images/Fish/Main/Awake/s22.svg";
+import s2FishRightTwo from "../../../../images/Fish/Main/Awake/s23.svg";
+import s3FishLeftOne from "../../../../images/Fish/Main/Awake/s3.svg";
+import s3FishLeftTwo from "../../../../images/Fish/Main/Awake/s31.svg";
+import s3FishRightOne from "../../../../images/Fish/Main/Awake/s32.svg";
+import s3FishRightTwo from "../../../../images/Fish/Main/Awake/s33.svg";
 
 
-import s1FishSleepOne from "../../../../images/Fish/Main/Sleeping/s1.png";
-import s1FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s11.png";
-import s2FishSleepOne from "../../../../images/Fish/Main/Sleeping/s2.png";
-import s2FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s21.png";
-import s3FishSleepOne from "../../../../images/Fish/Main/Sleeping/s3.png";
-import s3FishSleepTwo from "../../../../images/Fish/Main/Sleeping/s31.png";
+import s1FishSleepOne from "../../../../images/Fish/Main/Asleep/s1.png";
+import s1FishSleepTwo from "../../../../images/Fish/Main/Asleep/s11.png";
+import s2FishSleepOne from "../../../../images/Fish/Main/Asleep/s2.png";
+import s2FishSleepTwo from "../../../../images/Fish/Main/Asleep/s21.png";
+import s3FishSleepOne from "../../../../images/Fish/Main/Asleep/s3.png";
+import s3FishSleepTwo from "../../../../images/Fish/Main/Asleep/s31.png";
 
 
 import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
@@ -116,17 +114,17 @@ function Fish (){
                             : false;
 
     const fishUnwell = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies] ? 
+                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] ? 
                                 true 
                                 : false
                             : false;
 
     const fishMood = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.75 ? 
+                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                                 0
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.5 ? 
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                                 1
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.25 ? 
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                                 2
                                 : 3
                             : -1;

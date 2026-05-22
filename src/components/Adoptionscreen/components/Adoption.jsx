@@ -7,7 +7,7 @@ import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender } from "../../../constants/Constants.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList } from "../../../constants/Constants.js";
 
 import "./Adoption.css";
 
@@ -113,7 +113,7 @@ function Adoption () {
                     { 
                         [speciesKey]: dogSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 15,
+                        [healthKey]: healthCapList[dogSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
@@ -138,7 +138,7 @@ function Adoption () {
                     { 
                         [speciesKey]: catSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 20,
+                        [healthKey]: healthCapList[catSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
@@ -162,7 +162,7 @@ function Adoption () {
                     { 
                         [speciesKey]: fishSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 5,
+                        [healthKey]: healthCapList[fishSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
