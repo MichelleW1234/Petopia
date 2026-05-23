@@ -1,4 +1,4 @@
-import { generatePath, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
 import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
@@ -8,6 +8,8 @@ import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList } from "../../../constants/Constants.js";
+
+import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import "./Adoption.css";
 
@@ -35,6 +37,76 @@ function Adoption () {
     }
 
     const confirmationTimeoutRef = useRef(null);
+
+    const navigate = useNavigate();
+
+
+    useKeyboardShortcut("1", () => {
+        
+        if (!petGuideOpenFlag){
+
+            navigate("/home");
+
+        }
+
+    },
+        ".QuitAndGoHome"
+    );
+
+        
+    
+    useKeyboardShortcut("2", () => {
+        
+        setPetGuideOpenFlag(true);
+
+    },
+        ".OpenPetGuide"
+    );
+
+
+
+    useKeyboardShortcut("Enter", () => {
+        
+        if (step === 0 && petGender === "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            petSelecting();
+
+        }
+
+    },
+        ".GoToConfirmation"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+        
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            undo();
+
+        }
+
+    },
+        ".UndoSelection"
+    );
+
+
+    useKeyboardShortcut("Enter", (e) => {
+        
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            nameChecking(e);
+
+        }
+
+    },
+        ".ConfirmSelection"
+    );
+
+
+
+
+
 
 
     const petSelecting = () => {
@@ -207,8 +279,8 @@ function Adoption () {
             <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Nonstation">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"> Quit and Go Home </Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome"> Quit and Go Home </Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar OpenPetGuide" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
                 </div>
 
                 {step === 0 && petGender === "" ? (
@@ -245,7 +317,7 @@ function Adoption () {
                     
                         {selectedPet !== "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => petSelecting()}> Go to Confirmation </button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation </button>
             
                         ) : (
             
@@ -281,8 +353,8 @@ function Adoption () {
                         <div className = "Adoption_ComponentContainer-Structure--FormChecking">
                             <p className = "Adoption_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => undo()}> Undo Selection </button>
-                                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection </button>
+                                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
                             </div>
                         </div>
 

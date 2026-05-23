@@ -7,7 +7,7 @@ import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage, healthCapList} from "../constants/Constants.js";
 
 
-export function UpdateEngineProvider({ children }) {
+export function PetProgressionUpdateProvider({ children }) {
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();

@@ -5,16 +5,46 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 
 import { portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
 import "./Deletion.css";
 
 
 
-function Deletion({setDeletionOpenClearPetsFlag}) {
+function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
     const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
+
+
+    useKeyboardShortcut("Enter", () => {
+        
+        if (deletionOpenClearPetsFlag && deletionSelectedPets.length > 0){
+
+            clearPets();
+
+        }
+
+    },
+        ".ClearSelectedPets"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+        
+        if (deletionOpenClearPetsFlag){
+
+            setDeletionOpenClearPetsFlag(false);
+
+        }
+
+    },
+        ".Quit"
+    );
+    
+
 
 
 
@@ -100,11 +130,11 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick={() => clearPets()}>Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation ClearSelectedPets" onClick={() => clearPets()}>Clear Selected Pets</button>
 
                 ) : (
 
