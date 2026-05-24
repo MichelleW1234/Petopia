@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
@@ -62,6 +62,8 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./Cat.css";
 
@@ -167,6 +169,94 @@ function Cat (){
 
 
 
+    const navigate = useNavigate();
+        
+        
+    useKeyboardShortcut("1", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setActivePetName("");
+            navigate("/home");
+
+        }
+
+    },
+        ".Home"
+    );
+
+
+    useKeyboardShortcut("2", () => {
+
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setCatScheduleOpenFlag(true);
+
+        }
+
+    },
+        ".Schedule"
+    );
+    
+
+
+    useKeyboardShortcut("3", () => {
+
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setCatPetCareGuideOpenFlag(true);
+
+        }
+
+    },
+        ".Guide"
+    );
+        
+
+
+    useKeyboardShortcut("4", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setCatFeedOpenFlag(true);
+
+        }
+
+    },
+        ".Feed"
+    );    
+
+
+    useKeyboardShortcut("5", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setCatPlayOpenFlag(true);
+
+        }
+
+    },
+        ".Play"
+    );
+    
+
+
+    useKeyboardShortcut("6", () => {
+
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+
+            setCatMedicineOpenFlag(true);
+
+        }
+
+    },
+        ".Medicine"
+    );
+
+
+
+
+
 
     useEffect(() => {
 
@@ -246,17 +336,19 @@ function Cat (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => setActivePetName("")}> Home </Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatFeedOpenFlag(true)}> Feed </button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatPlayOpenFlag(true)}> Play </button>
+                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => setCatFeedOpenFlag(true)}> Feed </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => setCatPlayOpenFlag(true)}> Play </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
 
                             ) : (
 
@@ -275,9 +367,6 @@ function Cat (){
                         </>
 
                     )}
-
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
 
                 </div>
 

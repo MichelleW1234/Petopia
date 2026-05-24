@@ -4,8 +4,10 @@ import "./GameOne.css";
 import mouse from "../../../../../images/mouse.png";
 import snake from "../../../../../images/snake.png";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-function GameOne({ playCurrNumber, setPlayCurrNumber }) {
+
+function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber }) {
 
     const windowWidth = 3;
     const windowHeight = 5;
@@ -14,6 +16,18 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
     const [start, setStart] = useState(false);
     const [creaturePositions, setCreaturePositions] = useState([]);
 
+
+    useKeyboardShortcut("Enter", () => {
+    
+        if (playSelection !== -1 && !playDone){
+
+            setStart(true);
+
+        }
+
+    },
+        ".Start"
+    );
 
 
     useEffect(() => {
@@ -100,7 +114,7 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Hit the mouse and avoid the snakes!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
             </div>}
 
             <div className="gridContainer">

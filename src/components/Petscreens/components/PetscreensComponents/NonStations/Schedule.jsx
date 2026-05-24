@@ -5,6 +5,8 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../../constants/Constants.js";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
 import "./Schedule.css";
 
 
@@ -13,6 +15,16 @@ function Schedule({setScheduleOpenFlag}) {
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
+
+    useKeyboardShortcut("2", () => {
+
+        setScheduleOpenFlag(false);
+
+    },
+        ".Close"
+    );
+
+
 
     return (
 
@@ -37,7 +49,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick={() => setScheduleOpenFlag(false)}>Close</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => setScheduleOpenFlag(false)}>Close</button>
 
         </div>
     );

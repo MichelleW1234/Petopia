@@ -11,6 +11,8 @@ import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider
 import { moodPetImages, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
 import "./Play.css";
 
 
@@ -22,7 +24,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [playTotal, setPlayTotal] = useState(20);
+    const [playTotal, setPlayTotal] = useState(10);
     const [playDone, setPlayDone] = useState(false);
     const [playSelection, setPlaySelection] = useState(-1);
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
@@ -31,6 +33,33 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
     const PlaySelectedGameWindow = playSelection !== -1 ? 
                                         playOptions[playSelection][2]
                                         : null;
+
+    
+    useKeyboardShortcut("Enter", () => {
+    
+        if (playSelection !== -1 && playDone){
+
+            setPlayOpenFlag(false);
+
+        }
+
+    },
+        ".Done"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+
+        if (playSelection === -1 || !playDone){
+
+            setPlayOpenFlag(false);
+
+        }
+
+    },
+        ".Quit"
+    );
+        
 
 
 
@@ -87,6 +116,8 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
                             PlaySelectedGameWindow !== null ? (
 
                                 <PlaySelectedGameWindow
+                                    playSelection = {playSelection}
+                                    playDone = {playDone}
                                     playCurrNumber = {playCurrNumber}
                                     setPlayCurrNumber = {setPlayCurrNumber}
                                 />

@@ -9,6 +9,8 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
 import { healthCapList, healthKey, medicineKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
 import "./Medicine.css";
 
 
@@ -30,6 +32,46 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
+        
+    useKeyboardShortcut("Enter", () => {
+    
+        if (medicineSelection !== -1 && medicineDone){
+
+            setMedicineOpenFlag(false);
+
+        }
+
+    },
+        ".Done"
+    );
+
+    
+    useKeyboardShortcut("Enter", () => {
+    
+        if (medicineSelection !== -1 && !medicineDone){
+
+            setStart(true);
+
+        }
+
+    },
+        ".Start"
+    );
+
+
+
+    useKeyboardShortcut("Escape", () => {
+
+        if (medicineSelection === -1 || !medicineDone){
+
+            setMedicineOpenFlag(false);
+
+        }
+
+    },
+        ".Quit"
+    );
+              
 
 
     useEffect(() => {
@@ -181,7 +223,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                     <h2>Feed your pet!</h2> 
-                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
                                 </div>}
                         
                                 <img src = {medicineAnimationImages[medicineAnimationImage]} />
@@ -215,7 +257,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
             {medicineSelection === -1 || !medicineDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -223,7 +265,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
                 </div>
 
             )}

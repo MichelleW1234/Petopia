@@ -11,6 +11,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import { cleaningKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth } from "../../../helpers/Helpers.js";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Clean.css";
 
@@ -32,6 +33,51 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     const [cleanAnimationImage, setCleanAnimationImage] = useState(0);
 
     const cleanAnimationImageRef = useRef(cleanAnimationImage);
+
+
+
+    
+    useKeyboardShortcut("Enter", () => {
+    
+        if (cleanSelection !== -1 && cleanDone){
+
+            setCleanOpenFlag(false);
+
+        }
+
+    },
+        ".Done"
+    );
+
+    
+    useKeyboardShortcut("Enter", () => {
+    
+        if (cleanSelection !== -1 && !cleanDone){
+
+            setStart(true);
+
+        }
+
+    },
+        ".Start"
+    );
+
+
+
+    useKeyboardShortcut("Escape", () => {
+
+        if (cleanSelection === -1 || !cleanDone){
+
+            setCleanOpenFlag(false);
+
+        }
+
+    },
+        ".Quit"
+    );
+            
+    
+
 
 
     useEffect(() => {
@@ -124,7 +170,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                     <h2> Drag your cursor back and forth to clean! </h2>
-                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
                                 </div>}
 
                                 <img
@@ -160,7 +206,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
             {cleanSelection === -1 || !cleanDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => setCleanOpenFlag(false)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -168,7 +214,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setCleanOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => setCleanOpenFlag(false)}>Done</button>
                 </div>
 
             )}

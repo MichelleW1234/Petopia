@@ -1,7 +1,16 @@
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
 import "./PetCareGuide.css";
 
 function PetCareGuide({setPetCareGuideOpenFlag}) {
 
+    useKeyboardShortcut("3", () => {
+
+        setPetCareGuideOpenFlag(false);
+
+    },
+        ".Close"
+    );
 
     return (
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
@@ -16,7 +25,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
                 <h2> &bull; hint at interacting with pet to see what happens</h2>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick = {() => setPetCareGuideOpenFlag(false)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => setPetCareGuideOpenFlag(false)}> Close </button>
 
         </div>
     );
