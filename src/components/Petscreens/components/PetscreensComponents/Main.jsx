@@ -10,9 +10,10 @@ import healthHeartGood from "../../../../images/placeholderheartGood.png";
 import healthHeartBad from "../../../../images/placeholderheartBad.png";
 import petTombStone from "../../../../images/PetTombStone.png";
 
-import { healthCapList, healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { asleepSoundKey, catSoundKey, catSpecies, dogSoundKey, dogSpecies, fishSoundKey, healthCapList, healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import "./Main.css";
+import { playSound } from "../../../../helpers/helpers.js";
 
 function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
@@ -66,6 +67,64 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetM
     }, [sleepAnimationImage]);
 
 
+    
+    useEffect(() => {
+
+        if (ActivePetName === ""){
+
+            return;
+
+        }
+
+        if (mainAttention){
+
+            if (petSleeping){
+
+                playSound(asleepSoundKey);
+
+            } else if (PetList[ActivePetName][speciesKey] === dogSpecies){
+
+                if (mainPetMood <= 1){
+
+                    playSound(dogSoundKey);
+
+                } else {
+
+                    playSound(dogSoundKey);
+
+                }
+                
+            } else if (PetList[ActivePetName][speciesKey] === catSpecies){
+
+                if (mainPetMood <= 1){
+
+                    playSound(catSoundKey);
+
+                } else {
+
+                    playSound(catSoundKey);
+
+                }
+
+            } else {
+
+                if (mainPetMood <= 1){
+
+                    playSound(fishSoundKey);
+
+                } else {
+
+                    playSound(fishSoundKey);
+
+                }
+
+            }
+
+        }
+
+    }, [ActivePetName, mainAttention])
+
+
     useEffect(() => {
 
         if (ActivePetName === "" || !petSleeping){
@@ -97,7 +156,6 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetM
             return;
 
         } else {
-
 
             const interval = setInterval(() => {
 
@@ -146,7 +204,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetEnergy, mainPetM
             return;
 
         } else {
-                 
+                
             setMainAttention(true);
 
             // Cancels any existing timers:

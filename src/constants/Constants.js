@@ -36,6 +36,13 @@ import s3FishSad from "../images/Fish/Mood/s1Sad.png";
 
 
 
+export const buttonSoundKey = "button_click";
+export const asleepSoundKey = "asleep";
+export const dogSoundKey = "dog";
+export const catSoundKey = "cat";
+export const fishSoundKey = "fish";
+
+
 export const feedingKey = "feeding";
 export const cleaningKey = "cleaning";
 export const playingKey = "playing";
@@ -53,6 +60,7 @@ export const femaleGender = "female";
 export const dogSpecies = "dog"; 
 export const catSpecies = "cat"; 
 export const fishSpecies = "fish"; 
+
 
 
 
