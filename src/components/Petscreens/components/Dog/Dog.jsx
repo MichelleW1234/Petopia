@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.svg";
 import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.svg";
@@ -74,8 +74,13 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
+import { pauseAudios } from "../../helpers/Helpers.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import dogHappy from "../../../../Music/dog.mp3";
+import dogMad from "../../../../Music/dog.mp3";
+import dogSleep from "../../../../Music/asleep.mp3";
 
 import "./Dog.css";
 
@@ -195,6 +200,7 @@ function Dog (){
     const dogMedicineOptions = [["pill", pill]];
 
 
+    const dogAudioRefs = useRef([new Audio(dogHappy), new Audio(dogMad), new Audio(dogSleep)]);
 
     const navigate = useNavigate();
     
@@ -297,6 +303,15 @@ function Dog (){
 
 
 
+    useEffect(() => {
+
+        if (ActivePetName === "" || dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag){
+
+            pauseAudios(dogAudioRefs);
+
+        }
+
+    }, [ActivePetName, dogFeedOpenFlag, dogCleanOpenFlag, dogPlayOpenFlag, dogMedicineOpenFlag]);
     
 
     useEffect(() => {
@@ -429,6 +444,7 @@ function Dog (){
                     <Main
                         mainAnimationImages={dogMainImages}
                         mainSleepingImages={dogMainSleepingImages}
+                        mainPetAudios={dogAudioRefs}
                         mainPetEnergy = {350}
                         mainPetMood = {dogMood}
                         mainActivityInProgress={dogActivityInProgress}

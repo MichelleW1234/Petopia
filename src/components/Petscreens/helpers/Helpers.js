@@ -56,3 +56,12 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
 
 }
 
+
+export const pauseAudios = (audioRefs) => {
+
+    audioRefs.current.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+    });
+
+}

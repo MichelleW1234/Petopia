@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
 import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
@@ -61,9 +61,15 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList } from "../../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import catHappy from "../../../../Music/catHappy.mp3";
+import catMad from "../../../../Music/catMad.mp3";
+import catSleep from "../../../../Music/asleep.mp3";
+
+import { pauseAudios } from "../../helpers/helpers.js";
 
 import "./Cat.css";
 
@@ -160,13 +166,14 @@ function Cat (){
                                 : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
-    
 
 
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
     const catPlayOptions = [["Mouse Hunt", magnifier, GameOne]];
     const catMedicineOptions = [["pill", pill]];
 
+
+    const catAudioRefs = useRef([new Audio(catHappy), new Audio(catMad), new Audio(catSleep)]);
 
 
     const navigate = useNavigate();
@@ -255,6 +262,17 @@ function Cat (){
 
 
 
+
+    
+    useEffect(() => {
+
+        if (ActivePetName === "" || catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag){
+
+            pauseAudios(catAudioRefs);
+
+        }
+
+    }, [ActivePetName, catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
 
 
 
@@ -374,6 +392,7 @@ function Cat (){
                     <Main
                         mainAnimationImages={catMainImages}
                         mainSleepingImages = {catMainSleepingImages}
+                        mainPetAudios = {catAudioRefs}
                         mainPetEnergy = {450}
                         mainPetMood = {catMood}
                         mainActivityInProgress = {catActivityInProgress}

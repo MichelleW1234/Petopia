@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.svg";
 import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.svg";
@@ -70,8 +70,13 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey} from "../../../../constants/Constants.js";
+import { pauseAudios } from "../../helpers/Helpers.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import fishHappy from "../../../../Music/fish.mp3";
+import fishMad from "../../../../Music/fish.mp3";
+import fishSleep from "../../../../Music/asleep.mp3";
 
 import "./Fish.css";
 
@@ -181,6 +186,7 @@ function Fish (){
     const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
     const fishMedicineOptions = [["pill", pill]];
 
+    const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishMad), new Audio(fishSleep)]);
 
     const navigate = useNavigate();
 
@@ -269,6 +275,16 @@ function Fish (){
     
     
 
+
+    useEffect(() => {
+
+        if (ActivePetName === "" || fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag){
+
+            pauseAudios(fishAudioRefs);
+
+        }
+
+    }, [ActivePetName, fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
     
     
 
@@ -389,6 +405,7 @@ function Fish (){
                     <Main
                         mainAnimationImages={fishMainImages}
                         mainSleepingImages={fishMainSleepingImages}
+                        mainPetAudios={fishAudioRefs}
                         mainPetEnergy = {400}
                         mainPetMood = {fishMood}
                         mainActivityInProgress={fishActivityInProgress}
