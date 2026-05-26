@@ -8,12 +8,14 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { healthCapList, maleGender, portraitPetImages, healthKey, speciesKey, stageKey, genderKey } from "../../../constants/Constants.js";
+import { healthCapList, maleGender, portraitPetImages, healthKey, speciesKey, stageKey, genderKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
 
 import BoyBow from "../../../images/Boy.png";
 import GirlBow from "../../../images/Girl.png";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
+
+import { playSound } from "../../../helpers/helpers.js";
 
 import "./Home.css";
 
@@ -37,7 +39,7 @@ function Home (){
 
         if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
 
-            setHomeOpenRestartFlag(true);
+            restartGame();
 
         }
 
@@ -50,7 +52,7 @@ function Home (){
 
         if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
 
-            setHomeOpenClearPetsFlag(true);
+            clearPets();
 
         }
 
@@ -64,6 +66,7 @@ function Home (){
 
         if (!maxPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag) {
 
+            playSound(buttonSoundKey);
             navigate("/adopt");
 
         }
@@ -72,11 +75,26 @@ function Home (){
         ".AddPets"
     );
 
+    const restartGame = () => {
+
+        playSound(buttonSoundKey);
+        setHomeOpenRestartFlag(true);
+
+    }
+
+
+    const clearPets = () => {
+
+        playSound(buttonSoundKey);
+        setHomeOpenClearPetsFlag(true);
+
+    }
 
 
 
     const getPet = (petToGet) => {
 
+        playSound(buttonPressSoundKey);
         setActivePetName(petToGet);
         
     }
@@ -107,8 +125,8 @@ function Home (){
                     {minPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => setHomeOpenRestartFlag(true)}> Restart Game </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => setHomeOpenClearPetsFlag(true)}> Clear Pets </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => restartGame()}> Restart Game </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => clearPets()}> Clear Pets </button>
                         </>
 
                     ) : (
@@ -126,7 +144,7 @@ function Home (){
 
                     ) : (
 
-                        <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar AddPets"> Add Pets </Link>
+                        <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar AddPets" onClick = {() => playSound(buttonSoundKey)}> Add Pets </Link>
 
                     )}
                     

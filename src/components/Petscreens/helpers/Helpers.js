@@ -1,4 +1,5 @@
-import { activityDamage, cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
+import { activityDamage, buttonSoundKey, cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
+import { playSound } from "../../../helpers/helpers";
 
 
 export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setSuccess) => {
@@ -63,5 +64,13 @@ export const pauseAudios = (audioRefs) => {
         audio.pause();
         audio.currentTime = 0;
     });
+
+}
+
+
+export const home = (setActivePetName) => {
+
+    playSound(buttonSoundKey);
+    setActivePetName("");
 
 }

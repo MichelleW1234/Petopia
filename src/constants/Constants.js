@@ -35,8 +35,9 @@ import s3FishSad from "../images/Fish/Mood/s1Sad.png";
 
 
 
-
 export const buttonSoundKey = "button_click";
+export const buttonPressSoundKey = "button_press";
+export const errorSoundKey = "error";
 
 
 export const feedingKey = "feeding";

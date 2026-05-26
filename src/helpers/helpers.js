@@ -1,6 +1,8 @@
 import button_click from "../Music/button_click.mp3";
+import button_press from "../Music/button_press.mp3";
+import error from "../Music/error.mp3";
 
-import { buttonSoundKey } from "../constants/Constants";
+import { buttonSoundKey, buttonPressSoundKey, errorSoundKey } from "../constants/Constants";
 
 
 export const playSound = (soundEffect) => {
@@ -8,6 +10,8 @@ export const playSound = (soundEffect) => {
     const soundDictionary = {
 
         [buttonSoundKey] : [button_click, 0.5],
+        [buttonPressSoundKey] : [button_press, 0.5],
+        [errorSoundKey] : [error, 1]
 
     };
 
@@ -19,3 +23,19 @@ export const playSound = (soundEffect) => {
 
 }
 
+
+
+export const flagOpener = (setFlagToOpen) => {
+
+    playSound(buttonSoundKey);
+    setFlagToOpen(true);
+
+}
+
+
+export const flagCloser = (setFlagToClose) => {
+
+    playSound(buttonSoundKey);
+    setFlagToClose(false);
+
+}
