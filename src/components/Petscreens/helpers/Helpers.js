@@ -1,4 +1,4 @@
-import { activityDamage, buttonSoundKey, cleaningKey, feedingKey, healthKey, playingKey } from "../../../constants/Constants";
+import { activityDamage, buttonSoundKey, cleaningKey, failSoundKey, feedingKey, healthKey, playingKey, startSoundKey, successSoundKey } from "../../../constants/Constants";
 import { playSound } from "../../../helpers/helpers";
 
 
@@ -6,6 +6,8 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
 
     if (desiredOption === -1){
     //Too much (unwilling)
+
+        playSound(failSoundKey);
 
         setPetList(prev => ({
 
@@ -22,6 +24,8 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     } else if (desiredOption !== selection && desiredOption !== -1){
     // not desired option (willing)
 
+        playSound(failSoundKey);
+
         setPetList(prev => ({
 
             ...prev,
@@ -35,6 +39,8 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
         }));
 
     } else {
+
+        playSound(successSoundKey);
 
         setSuccess(true);
 
@@ -72,5 +78,13 @@ export const home = (setActivePetName) => {
 
     playSound(buttonSoundKey);
     setActivePetName("");
+
+}
+
+
+export const starter = (setStart) => {
+
+    playSound(startSoundKey);
+    setStart(true);
 
 }

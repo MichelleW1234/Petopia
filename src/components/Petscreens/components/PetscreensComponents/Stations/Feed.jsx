@@ -14,6 +14,8 @@ import { manageHealth } from "../../../helpers/Helpers.js";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Feed.css";
+import { flagCloser } from "../../../../../helpers/helpers.js";
+import { starter } from "../../../helpers/Helpers.js";
 
 
 
@@ -42,7 +44,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     
         if (feedSelection !== -1 && feedDone){
 
-            setFeedOpenFlag(false);
+            flagCloser(setFeedOpenFlag);
 
         }
 
@@ -55,7 +57,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     
         if (feedSelection !== -1 && !feedDone){
 
-            setStart(true);
+            starter(setStart);
 
         }
 
@@ -69,7 +71,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         if (feedSelection === -1 || !feedDone){
 
-            setFeedOpenFlag(false);
+            flagCloser(setFeedOpenFlag);
 
         }
 
@@ -178,7 +180,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeedWindow">
                                     {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2>Wait for your pet as it eats!</h2> 
-                                        <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
+                                        <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
                                     </div>}
 
                                     <img src = {feedAnimationImages[feedAnimationImage]} />
@@ -213,7 +215,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             {feedSelection === -1 || !feedDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => setFeedOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => flagCloser(setFeedOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -221,7 +223,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => setFeedOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setFeedOpenFlag)}>Done</button>
                 </div>
 
             )}

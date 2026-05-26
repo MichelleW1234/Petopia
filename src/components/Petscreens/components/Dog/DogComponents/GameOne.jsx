@@ -7,6 +7,10 @@ import dog from "../../../../../images/HorizontalDog.png";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
+import { starter } from "../../../helpers/Helpers.js";
+import { playSound } from "../../../../../helpers/helpers.js";
+import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
+
 
 function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber }) {
 
@@ -22,7 +26,7 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
     
         if (playSelection !== -1 && !playDone){
 
-            setStart(true);
+            starter(setStart);
 
         }
 
@@ -141,6 +145,8 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
 
     const moveUp = () => {
 
+        playSound(gameButtonSoundKey);
+
         if (dogPosition[1] > 0){
 
             setDogPosition(prev => [prev[0], prev[1]-1]);
@@ -151,6 +157,8 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
 
     const moveDown = () => {
 
+        playSound(gameButtonSoundKey);
+        
         if (dogPosition[1] < windowHeight-1){
 
             setDogPosition(prev => [prev[0], prev[1]+1]);
@@ -167,7 +175,7 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the dog on your walk to eat all the carrots! Avoid everything else!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
             </div>}
 
             <div className="UsersContainer">

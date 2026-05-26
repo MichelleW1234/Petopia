@@ -1,5 +1,5 @@
 import { buttonSoundKey } from "../../../../constants/Constants.js";
-import { playSound } from "../../../../helpers/helpers.js";
+import { flagCloser, playSound } from "../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./PetGuide.css";
@@ -8,19 +8,12 @@ function PetGuide({setPetGuideOpenFlag}) {
 
     useKeyboardShortcut("2", () => {
 
-        close();
+        flagCloser(setPetGuideOpenFlag);
 
     },
         ".Close"
     );
 
-
-    const close = () => {
-
-        playSound(buttonSoundKey);
-        setPetGuideOpenFlag(false);
-
-    }
     
 
     return (
@@ -31,7 +24,7 @@ function PetGuide({setPetGuideOpenFlag}) {
                 <h2> Hello. This is a placeholder</h2>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => close()}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetGuideOpenFlag)}> Close </button>
         </div>
     );
 }

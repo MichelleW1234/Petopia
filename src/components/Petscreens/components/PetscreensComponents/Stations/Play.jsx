@@ -15,6 +15,8 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Play.css";
 
+import { flagCloser } from "../../../../../helpers/helpers.js";
+
 
 
 function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpenFlag}){
@@ -39,7 +41,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
     
         if (playSelection !== -1 && playDone){
 
-            setPlayOpenFlag(false);
+            flagCloser(setPlayOpenFlag);
 
         }
 
@@ -52,7 +54,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
         if (playSelection === -1 || !playDone){
 
-            setPlayOpenFlag(false);
+            flagCloser(setPlayOpenFlag);
 
         }
 
@@ -157,7 +159,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
             {playSelection === -1 || !playDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -165,7 +167,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Done</button>
                 </div>
 
             )}

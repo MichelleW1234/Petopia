@@ -3,11 +3,12 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { buttonPressSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./Deletion.css";
+import { flagCloser, playSound } from "../../../../helpers/helpers.js";
 
 
 
@@ -36,7 +37,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
         
         if (deletionOpenClearPetsFlag){
 
-            setDeletionOpenClearPetsFlag(false);
+            flagCloser(setDeletionOpenClearPetsFlag);
 
         }
 
@@ -50,6 +51,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     const addPet = (PetToAdd) => {
 
+        playSound(buttonPressSoundKey);
         setDeletionSelectedPets(prev => [...prev, PetToAdd]);
 
     }
@@ -57,6 +59,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     const removePet = (PetToRemove) => {
 
+        playSound(buttonPressSoundKey);
         setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
@@ -90,9 +93,18 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
         });
 
-        setDeletionOpenClearPetsFlag(false);
+        flagCloser(setDeletionOpenClearPetsFlag);
 
     }
+
+
+    const quit = () => {
+
+        flagCloser(setDeletionOpenClearPetsFlag);
+
+    }
+
+    
 
     return (
 
@@ -130,7 +142,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => quit()}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 

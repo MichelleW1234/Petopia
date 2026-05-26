@@ -7,7 +7,8 @@ import bubble from "../../../../../../images/placeholderthoughtbubble.png";
 import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
+import { buttonPressSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
+import { playSound } from "../../../../../../helpers/helpers.js";
 
 
 
@@ -19,6 +20,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
 
     const judgeSelection = (chosenOption) => {
+
+        playSound(buttonPressSoundKey);
 
         if (chosenOption !== optionsDesiredOption) {
 

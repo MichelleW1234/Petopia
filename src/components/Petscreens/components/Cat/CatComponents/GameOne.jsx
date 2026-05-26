@@ -5,6 +5,9 @@ import mouse from "../../../../../images/mouse.png";
 import snake from "../../../../../images/snake.png";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+import { playSound } from "../../../../../helpers/helpers.js";
+import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Constants.js";
+import { starter } from "../../../helpers/Helpers.js";
 
 
 function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber }) {
@@ -21,7 +24,7 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
     
         if (playSelection !== -1 && !playDone){
 
-            setStart(true);
+            starter(setStart);
 
         }
 
@@ -106,6 +109,23 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
     }, [start]);
 
 
+    const holeSelected = (mouse) => {
+
+        playSound(gameButtonSoundKey);
+        
+        if (mouse === 0){
+
+            setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+
+        } else {
+
+            setPlayCurrNumber(prev => prev + 1);
+
+        }
+
+    }
+
+
 
 
     return (
@@ -114,7 +134,7 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Hit the mouse and avoid the snakes!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
             </div>}
 
             <div className="gridContainer">
@@ -129,13 +149,13 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
                             
                             mouseHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => setPlayCurrNumber(prev => prev + 1)}>
+                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(1)}>
                                     <img src = {mouse}/>
                                 </div>
                                 
                             ) : snakeHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}>
+                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(0)}>
                                     <img src = {snake}/>
                                 </div>
 

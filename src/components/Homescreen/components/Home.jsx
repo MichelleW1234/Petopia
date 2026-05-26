@@ -15,7 +15,7 @@ import GirlBow from "../../../images/Girl.png";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import { playSound } from "../../../helpers/helpers.js";
+import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
 import "./Home.css";
 
@@ -39,7 +39,7 @@ function Home (){
 
         if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
 
-            restartGame();
+            flagOpener(setHomeOpenRestartFlag);
 
         }
 
@@ -52,7 +52,7 @@ function Home (){
 
         if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
 
-            clearPets();
+            flagOpener(setHomeOpenClearPetsFlag);
 
         }
 
@@ -74,21 +74,6 @@ function Home (){
     },
         ".AddPets"
     );
-
-    const restartGame = () => {
-
-        playSound(buttonSoundKey);
-        setHomeOpenRestartFlag(true);
-
-    }
-
-
-    const clearPets = () => {
-
-        playSound(buttonSoundKey);
-        setHomeOpenClearPetsFlag(true);
-
-    }
 
 
 
@@ -125,8 +110,8 @@ function Home (){
                     {minPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => restartGame()}> Restart Game </button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => clearPets()}> Clear Pets </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => flagOpener(setHomeOpenRestartFlag)}> Restart Game </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeOpenClearPetsFlag)}> Clear Pets </button>
                         </>
 
                     ) : (

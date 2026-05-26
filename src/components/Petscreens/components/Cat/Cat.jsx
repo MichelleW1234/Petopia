@@ -184,7 +184,7 @@ function Cat (){
 
         if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
 
-            home(ActivePetName);
+            home(setActivePetName);
             navigate("/home");
 
         }
@@ -363,7 +363,7 @@ function Cat (){
 
                         <>
                             <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatFeedOpenFlag)}> Feed </button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatPlayOpenFlag)}> Play </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag)}> Play </button>
 
                             {catCanReceiveDose ? (
 

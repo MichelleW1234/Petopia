@@ -5,6 +5,8 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./Restart.css";
 
+import { playSound, flagCloser } from "../../../../helpers/helpers.js";
+import { buttonSoundKey } from "../../../../constants/Constants.js";
 
 
 function Restart({restartOpenFlag, setRestartOpenFlag}) {
@@ -30,7 +32,7 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
     
         if (restartOpenFlag){
 
-            setRestartOpenFlag(false);
+            flagCloser(setRestartOpenFlag);
 
         }
 
@@ -45,7 +47,7 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
         setPetList({});
         setPetTimeStamps({});
 
-        setRestartOpenFlag(false);
+        flagCloser(setRestartOpenFlag);
 
     }
 
@@ -57,7 +59,7 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
             </div>
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartGame()}>Yes</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => setRestartOpenFlag(false)}>No</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => flagCloser(setRestartOpenFlag)}>No</button>
             </div>
         </div>
     );

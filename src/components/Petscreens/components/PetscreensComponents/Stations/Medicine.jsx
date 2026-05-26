@@ -7,11 +7,14 @@ import {useGlobalTimer} from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { healthCapList, healthKey, medicineKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { failSoundKey, healthCapList, healthKey, medicineKey, moodPetImages, playingKey, speciesKey, stageKey, startSoundKey, successSoundKey } from "../../../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Medicine.css";
+
+import { playSound, flagCloser } from "../../../../../helpers/helpers.js";
+import { starter } from "../../../helpers/Helpers.js";
 
 
 function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOption, setMedicineDesiredOption, setMedicineOpenFlag}){
@@ -37,7 +40,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     
         if (medicineSelection !== -1 && medicineDone){
 
-            setMedicineOpenFlag(false);
+            flagCloser(setMedicineOpenFlag);
 
         }
 
@@ -50,7 +53,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     
         if (medicineSelection !== -1 && !medicineDone){
 
-            setStart(true);
+            starter(setStart);
 
         }
 
@@ -64,7 +67,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
         if (medicineSelection === -1 || !medicineDone){
 
-            setMedicineOpenFlag(false);
+            flagCloser(setMedicineOpenFlag);
 
         }
 
@@ -183,7 +186,12 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
         if (medicineDesiredOption === medicineSelection){
 
+            playSound(successSoundKey);
             setMedicineSuccess(true);
+
+        } else {
+
+            playSound(failSoundKey);
 
         }
 
@@ -223,7 +231,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                     <h2>Feed your pet!</h2> 
-                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => setStart(true)}>Start</button>
+                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
                                 </div>}
                         
                                 <img src = {medicineAnimationImages[medicineAnimationImage]} />
@@ -257,7 +265,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
             {medicineSelection === -1 || !medicineDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => setMedicineOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => flagCloser(setMedicineOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -265,7 +273,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => setMedicineOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setMedicineOpenFlag)}>Done</button>
                 </div>
 
             )}
