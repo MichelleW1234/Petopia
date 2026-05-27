@@ -14,6 +14,7 @@ import { catSpecies, dogSpecies, healthCapList, healthKey, speciesKey, stageKey 
 
 import "./Main.css";
 import { playSound } from "../../../../helpers/helpers.js";
+import { pauseAudios } from "../../helpers/Helpers.js";
 
 function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
@@ -72,11 +73,12 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     }, [sleepAnimationImage]);
 
 
-    
     useEffect(() => {
 
         if (mainAttention){
 
+            pauseAudios(mainPetAudios);
+            
             let currSound;
 
             if (petSleeping){

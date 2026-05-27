@@ -10,7 +10,7 @@ import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Cons
 import { starter } from "../../../helpers/Helpers.js";
 
 
-function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber }) {
+function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const windowWidth = 3;
     const windowHeight = 5;
@@ -31,6 +31,27 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
     },
         ".Start"
     );
+
+
+
+
+    useEffect(() => {
+
+        if (!start || playDone) {
+            return;
+        }
+
+        playAudioRef.current[0].loop = true;
+        playAudioRef.current[0].play();
+
+        return () => {
+            playAudioRef.current[0].pause();
+            playAudioRef.current[0].currentTime = 0;
+            playAudioRef.current[0].loop = false;
+        };
+
+    }, [start, playDone]);
+    
 
 
     useEffect(() => {

@@ -9,13 +9,15 @@ import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import { cleaningKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { manageHealth } from "../../../helpers/Helpers.js";
+import { manageHealth, pauseAudios, quit } from "../../../helpers/Helpers.js";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Clean.css";
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { screenFlagCloser, playSound } from "../../../../../helpers/helpers.js";
 import { starter } from "../../../helpers/Helpers.js";
+
+import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
 
 
 
@@ -36,6 +38,8 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     const cleanAnimationImageRef = useRef(cleanAnimationImage);
 
+    const cleanAudioRef = useRef([new Audio(clean)]);
+
 
 
     
@@ -43,7 +47,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     
         if (cleanSelection !== -1 && cleanDone){
 
-            flagCloser(setCleanOpenFlag);
+            screenFlagCloser(setCleanOpenFlag);
 
         }
 
@@ -70,7 +74,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
         if (cleanSelection === -1 || !cleanDone){
 
-            flagCloser(setCleanOpenFlag);
+            quit(cleanAudioRef, setCleanOpenFlag);
 
         }
 
@@ -100,20 +104,12 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     useEffect(() => {
 
-        if (cleanSelection !== -1 ) {
-            console.log(cleanOptions[cleanSelection][1]);
-        }
-    }, [cleanSelection]);
-
-
-
-    useEffect(() => {
-
-        if (!start || cleanSelection === -1 || cleanDone) {
+        if (!start || cleanDone) {
             return;
         }
 
         const interval = setInterval(() => {
+
             if (cleanAnimationImageRef.current === 0) {
                 setCleanAnimationImage(1);
             } else {
@@ -123,16 +119,45 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
         return () => clearInterval(interval);
 
-    }, [start, cleanSelection, cleanDone]);
+    }, [start, cleanDone]);
 
+
+    useEffect(() => {
+
+        if (!start || cleanDone) {
+            return;
+        }
+
+        cleanAudioRef.current[0].loop = true;
+        cleanAudioRef.current[0].play();
+
+        return () => {
+            cleanAudioRef.current[0].pause();
+            cleanAudioRef.current[0].currentTime = 0;
+            cleanAudioRef.current[0].loop = false;
+        };
+
+    }, [start, cleanDone]);
+    
     
     useEffect(() => {
         if (cleanCurrNumber >= cleanTotal){
+
+            pauseAudios(cleanAudioRef);
             setCleanDone(true);
             manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection, setCleanSuccess);
+
         }
     }, [cleanCurrNumber]);
+    
 
+
+
+    const scrub = () => {
+
+        setCleanCurrNumber(prev => prev + 1);
+
+    }
 
 
 
@@ -177,7 +202,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                                 <img
                                     src = {cleanAnimationImages[cleanAnimationImage]} 
-                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
+                                    onMouseEnter={() => scrub()}
                                 />
                             </div>
 
@@ -208,7 +233,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
             {cleanSelection === -1 || !cleanDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => flagCloser(setCleanOpenFlag)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(cleanAudioRef, setCleanOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -216,7 +241,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setCleanOpenFlag)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => screenFlagCloser(setCleanOpenFlag)}>Done</button>
                 </div>
 
             )}

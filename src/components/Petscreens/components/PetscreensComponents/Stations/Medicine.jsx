@@ -13,8 +13,11 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Medicine.css";
 
-import { playSound, flagCloser } from "../../../../../helpers/helpers.js";
-import { starter } from "../../../helpers/Helpers.js";
+import { playSound, screenFlagCloser } from "../../../../../helpers/helpers.js";
+import { pauseAudios, quit, starter } from "../../../helpers/Helpers.js";
+
+import medicine from "../../../../../Music/PetImmersionSounds/Medicine.mp3";
+
 
 
 function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOption, setMedicineDesiredOption, setMedicineOpenFlag}){
@@ -35,12 +38,14 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
+    const medicineAudioRef = useRef([new Audio(medicine)]);
+
         
     useKeyboardShortcut("Enter", () => {
     
         if (medicineSelection !== -1 && medicineDone){
 
-            flagCloser(setMedicineOpenFlag);
+            screenFlagCloser(setMedicineOpenFlag);
 
         }
 
@@ -67,7 +72,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
         if (medicineSelection === -1 || !medicineDone){
 
-            flagCloser(setMedicineOpenFlag);
+            quit(medicineAudioRef, setMedicineOpenFlag);
 
         }
 
@@ -102,7 +107,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
     useEffect(() => {
 
-        if (!start || medicineSelection === -1 || medicineDone) {
+        if (!start || medicineDone) {
             return;
         }
 
@@ -113,6 +118,8 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
             if (currSeconds >= medicineTotal){
                 clearInterval(interval);
+
+                pauseAudios(medicineAudioRef);
                 setMedicineDone(true);
                 manageMedicineEffectiveness();
             }
@@ -121,16 +128,17 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
         return () => clearInterval(interval);
 
-    }, [start, medicineSelection, medicineDone]);
+    }, [start, medicineDone]);
 
     
     useEffect(() => {
 
-        if (!start || medicineSelection === -1 || medicineDone) {
+        if (!start || medicineDone) {
             return;
         }
 
         const interval = setInterval(() => {
+
             if (medicineAnimationImageRef.current === 0) {
                 setMedicineAnimationImage(1);
             } else {
@@ -140,8 +148,25 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
         return () => clearInterval(interval);
 
-    }, [start, medicineSelection, medicineDone]);
+    }, [start, medicineDone]);
 
+
+    useEffect(() => {
+
+        if (!start || medicineDone) {
+            return;
+        }
+
+        medicineAudioRef.current[0].loop = true;
+        medicineAudioRef.current[0].play();
+
+        return () => {
+            medicineAudioRef.current[0].pause();
+            medicineAudioRef.current[0].currentTime = 0;
+            medicineAudioRef.current[0].loop = false;
+        };
+
+    }, [start, medicineDone]);
 
 
 
@@ -230,7 +255,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
                             <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <h2>Feed your pet!</h2> 
+                                    <h2>medicine your pet!</h2> 
                                     <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
                                 </div>}
                         
@@ -265,7 +290,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
             {medicineSelection === -1 || !medicineDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => flagCloser(setMedicineOpenFlag)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(medicineAudioRef, setMedicineOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -273,7 +298,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setMedicineOpenFlag)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => screenFlagCloser(setMedicineOpenFlag)}>Done</button>
                 </div>
 
             )}

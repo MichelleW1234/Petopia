@@ -65,9 +65,9 @@ import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTi
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import catHappy from "../../../../Music/catHappy.mp3";
-import catMad from "../../../../Music/catMad.mp3";
-import catSleep from "../../../../Music/asleep.mp3";
+import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
+import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
+import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 
 import { home, pauseAudios } from "../../helpers/helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
@@ -174,7 +174,7 @@ function Cat (){
     const catMedicineOptions = [["pill", pill]];
 
 
-    const catAudioRefs = useRef([new Audio(catHappy), new Audio(catMad), new Audio(catSleep)]);
+    const catAudioRefs = useRef([new Audio(catHappy), new Audio(catSad), new Audio(catSleep)]);
 
 
     const navigate = useNavigate();

@@ -8,7 +8,7 @@ import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Schedule.css";
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
 
 
 
@@ -19,7 +19,7 @@ function Schedule({setScheduleOpenFlag}) {
 
     useKeyboardShortcut("2", () => {
 
-        flagCloser(setScheduleOpenFlag);
+        screenFlagCloser(setScheduleOpenFlag);
 
     },
         ".Close"
@@ -50,7 +50,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => flagCloser(setScheduleOpenFlag)}>Close</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => screenFlagCloser(setScheduleOpenFlag)}>Close</button>
 
         </div>
     );

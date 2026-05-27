@@ -79,9 +79,9 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import dogHappy from "../../../../Music/dog.mp3";
-import dogMad from "../../../../Music/dog.mp3";
-import dogSleep from "../../../../Music/asleep.mp3";
+import dogHappy from "../../../../Music/PetImmersionSounds/dogHappy.mp3";
+import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
+import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 
 import "./Dog.css";
 
@@ -201,7 +201,7 @@ function Dog (){
     const dogMedicineOptions = [["pill", pill]];
 
 
-    const dogAudioRefs = useRef([new Audio(dogHappy), new Audio(dogMad), new Audio(dogSleep)]);
+    const dogAudioRefs = useRef([new Audio(dogHappy), new Audio(dogSad), new Audio(dogSleep)]);
 
     const navigate = useNavigate();
     
@@ -412,7 +412,7 @@ function Dog (){
                     {dogAlive ? (
 
                         <>
-                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setDogFeedOpenFlag)}> Feed </button>
+                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {(e) => flagOpener(setDogFeedOpenFlag)}> Feed </button>
                             <button className={dogDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setDogCleanOpenFlag)}> Clean </button>
                             <button className={dogRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setDogPlayOpenFlag)}> Play </button>
 

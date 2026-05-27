@@ -1,4 +1,4 @@
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./PetCareGuide.css";
@@ -7,7 +7,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
     useKeyboardShortcut("3", () => {
 
-        flagCloser(setPetCareGuideOpenFlag);
+        screenFlagCloser(setPetCareGuideOpenFlag);
 
     },
         ".Close"
@@ -26,7 +26,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
                 <h2> &bull; hint at interacting with pet to see what happens</h2>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetCareGuideOpenFlag)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setPetCareGuideOpenFlag)}> Close </button>
 
         </div>
     );

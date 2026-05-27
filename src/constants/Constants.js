@@ -42,6 +42,9 @@ export const errorSoundKey = "error";
 export const startSoundKey = "start";
 export const successSoundKey = "success";
 export const failSoundKey = "fail";
+export const confirmedSoundKey = "confirmed";
+export const clearedSoundKey = "cleared";
+export const restartSoundKey = "restart";
 
 
 export const feedingKey = "feeding";

@@ -7,7 +7,7 @@ import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey } from "../../../constants/Constants.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey } from "../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
@@ -109,7 +109,7 @@ function Adoption () {
 
     const petSelecting = () => {
 
-        playSound(buttonSoundKey);
+        playSound(gameButtonSoundKey);
         const gender = Math.floor(Math.random() * 2);
         
         if (gender === 0){
@@ -129,7 +129,8 @@ function Adoption () {
 
     const nameChecking = (e) => {
 
-        playSound(buttonSoundKey);
+        playSound(gameButtonSoundKey);
+
         const trimmedPetName = confirmationPetName.trim();
         setConfirmationPetName(trimmedPetName);
             
@@ -161,6 +162,7 @@ function Adoption () {
     const showError = (message) => {
 
         playSound(errorSoundKey);
+
         setErrorMessage(message);
 
         if (confirmationTimeoutRef.current) {
@@ -176,6 +178,8 @@ function Adoption () {
 
 
     const adoptPet = (finalPetName) => {
+
+        playSound(confirmedSoundKey);
 
         const startingTime = GlobalTimer;
 
@@ -259,7 +263,8 @@ function Adoption () {
 
     const undo = () => {
 
-        playSound(buttonSoundKey);
+        playSound(gameButtonSoundKey);
+
         setSelectedPet("");
         setPetGender("");
         setStep(0);

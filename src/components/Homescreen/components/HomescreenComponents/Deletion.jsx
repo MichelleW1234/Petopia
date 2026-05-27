@@ -3,12 +3,12 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { buttonPressSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./Deletion.css";
-import { flagCloser, playSound } from "../../../../helpers/helpers.js";
+import { flagCloser, playSound, screenFlagCloser } from "../../../../helpers/helpers.js";
 
 
 
@@ -37,7 +37,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
         
         if (deletionOpenClearPetsFlag){
 
-            flagCloser(setDeletionOpenClearPetsFlag);
+            screenFlagCloser(setDeletionOpenClearPetsFlag);
 
         }
 
@@ -93,14 +93,15 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
         });
 
-        flagCloser(setDeletionOpenClearPetsFlag);
+        playSound(clearedSoundKey);
+        screenFlagCloser(setDeletionOpenClearPetsFlag);
 
     }
 
 
     const quit = () => {
 
-        flagCloser(setDeletionOpenClearPetsFlag);
+        screenFlagCloser(setDeletionOpenClearPetsFlag);
 
     }
 

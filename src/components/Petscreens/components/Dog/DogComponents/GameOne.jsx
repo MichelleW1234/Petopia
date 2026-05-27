@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./GameOne.css";
 
 import carrot from "../../../../../images/carrot.png";
@@ -12,7 +12,7 @@ import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
 
 
-function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber }) {
+function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const windowWidth = 8;
     const windowHeight = 5;
@@ -62,6 +62,24 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber })
         ".Down"
     );
 
+
+
+    useEffect(() => {
+
+        if (!start || playDone) {
+            return;
+        }
+
+        playAudioRef.current[0].loop = true;
+        playAudioRef.current[0].play();
+
+        return () => {
+            playAudioRef.current[0].pause();
+            playAudioRef.current[0].currentTime = 0;
+            playAudioRef.current[0].loop = false;
+        };
+
+    }, [start, playDone]);
 
 
     useEffect(() => {

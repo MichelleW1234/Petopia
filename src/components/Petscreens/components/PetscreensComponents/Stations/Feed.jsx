@@ -14,9 +14,10 @@ import { manageHealth } from "../../../helpers/Helpers.js";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Feed.css";
-import { flagCloser } from "../../../../../helpers/helpers.js";
-import { starter } from "../../../helpers/Helpers.js";
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
+import { starter, pauseAudios, quit} from "../../../helpers/Helpers.js";
 
+import feed from "../../../../../Music/PetImmersionSounds/Feed.mp3";
 
 
 function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpenFlag}){
@@ -38,13 +39,14 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     const feedCurrNumberRef = useRef(feedCurrNumber);
     const feedAnimationImageRef = useRef(feedAnimationImage);
 
+    const feedAudioRef = useRef([new Audio(feed)]);
 
 
     useKeyboardShortcut("Enter", () => {
     
         if (feedSelection !== -1 && feedDone){
 
-            flagCloser(setFeedOpenFlag);
+            screenFlagCloser(setFeedOpenFlag);
 
         }
 
@@ -71,14 +73,14 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         if (feedSelection === -1 || !feedDone){
 
-            flagCloser(setFeedOpenFlag);
+            quit(feedAudioRef, setFeedOpenFlag);
 
         }
 
     },
         ".Quit"
     );
-        
+
 
 
     useEffect(() => {
@@ -120,6 +122,8 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
             if (currSeconds >= feedTotal){
                 clearInterval(interval);
+
+                pauseAudios(feedAudioRef);
                 setFeedDone(true);
                 manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedDesiredOption, setFeedDesiredOption, feedSelection, setFeedSuccess);
             }
@@ -133,11 +137,12 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useEffect(() => {
 
-        if (!start || feedSelection === -1 || feedDone) {
+        if (!start || feedDone) {
             return;
         }
 
         const interval = setInterval(() => {
+
             if (feedAnimationImageRef.current === 0) {
                 setFeedAnimationImage(1);
             } else {
@@ -147,9 +152,28 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         return () => clearInterval(interval);
 
-    }, [start, feedSelection, feedDone]);
+    }, [start, feedDone]);
 
 
+
+    useEffect(() => {
+
+        if (!start || feedDone) {
+            return;
+        }
+
+        feedAudioRef.current[0].loop = true;
+        feedAudioRef.current[0].play();
+
+        return () => {
+            feedAudioRef.current[0].pause();
+            feedAudioRef.current[0].currentTime = 0;
+            feedAudioRef.current[0].loop = false;
+        };
+
+    }, [start, feedDone]);
+
+    
 
 
     return (
@@ -215,7 +239,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             {feedSelection === -1 || !feedDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => flagCloser(setFeedOpenFlag)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(feedAudioRef, setFeedOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -223,7 +247,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setFeedOpenFlag)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => screenFlagCloser(setFeedOpenFlag)}>Done</button>
                 </div>
 
             )}

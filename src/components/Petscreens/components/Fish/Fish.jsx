@@ -75,9 +75,9 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import fishHappy from "../../../../Music/fish.mp3";
-import fishMad from "../../../../Music/fish.mp3";
-import fishSleep from "../../../../Music/asleep.mp3";
+import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
+import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
+import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 
 import "./Fish.css";
 import { playSound } from "../../../../helpers/helpers.js";
@@ -188,7 +188,7 @@ function Fish (){
     const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
     const fishMedicineOptions = [["pill", pill]];
 
-    const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishMad), new Audio(fishSleep)]);
+    const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishSad), new Audio(fishSleep)]);
 
     const navigate = useNavigate();
 

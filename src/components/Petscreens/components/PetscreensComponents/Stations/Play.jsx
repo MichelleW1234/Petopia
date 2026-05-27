@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
@@ -9,13 +9,16 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
 import { moodPetImages, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { manageHealth } from "../../../helpers/Helpers.js";
+import { manageHealth, pauseAudios } from "../../../helpers/Helpers.js";
+import { quit } from "../../../helpers/Helpers.js";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Play.css";
 
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
+
+import play from "../../../../../Music/PetImmersionSounds/Play.mp3";
 
 
 
@@ -36,12 +39,14 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
                                         playOptions[playSelection][2]
                                         : null;
 
+    const playAudioRef = useRef([new Audio(play)]);
+
     
     useKeyboardShortcut("Enter", () => {
     
         if (playSelection !== -1 && playDone){
 
-            flagCloser(setPlayOpenFlag);
+            screenFlagCloser(setPlayOpenFlag);
 
         }
 
@@ -54,7 +59,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
         if (playSelection === -1 || !playDone){
 
-            flagCloser(setPlayOpenFlag);
+            quit(playAudioRef, setPlayOpenFlag);
 
         }
 
@@ -80,6 +85,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
         
         if (playCurrNumber >= playTotal){
 
+            pauseAudios(playAudioRef);
             setPlayDone(true);
             manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playDesiredOption, setPlayDesiredOption, playSelection, setPlaySuccess);
 
@@ -122,6 +128,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
                                     playDone = {playDone}
                                     playCurrNumber = {playCurrNumber}
                                     setPlayCurrNumber = {setPlayCurrNumber}
+                                    playAudioRef = {playAudioRef}
                                 />
 
                             ) : (
@@ -159,7 +166,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
             {playSelection === -1 || !playDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => quit(playAudioRef, setPlayOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -167,7 +174,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => screenFlagCloser(setPlayOpenFlag)}>Done</button>
                 </div>
 
             )}

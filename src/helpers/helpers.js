@@ -1,13 +1,16 @@
-import button_click from "../Music/button_click.mp3";
-import button_press from "../Music/button_press.mp3";
-import gameButton_click from "../Music/gameButton_click.mp3";
-import error from "../Music/error.mp3";
-import start from "../Music/start.mp3";
-import success from "../Music/success.mp3";
-import fail from "../Music/fail.mp3";
+import button_click from "../Music/UIIndicatorSounds/button_click.mp3";
+import button_press from "../Music/UIIndicatorSounds/button_press.mp3";
+import gameButton_click from "../Music/UIIndicatorSounds/gameButton_click.mp3";
+import error from "../Music/UIIndicatorSounds/error.mp3";
+import start from "../Music/UIIndicatorSounds/start.mp3";
+import success from "../Music/UIIndicatorSounds/success.mp3";
+import fail from "../Music/UIIndicatorSounds/fail.mp3";
+import confirmed from "../Music/UIIndicatorSounds/confirmed.mp3";
+import cleared from "../Music/UIIndicatorSounds/cleared.mp3";
+import restart from "../Music/UIIndicatorSounds/restart.mp3";
 
 
-import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey } from "../constants/Constants";
+import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey } from "../constants/Constants";
 
 
 export const playSound = (soundEffect) => {
@@ -20,7 +23,10 @@ export const playSound = (soundEffect) => {
         [errorSoundKey] : [error, 1],
         [startSoundKey] : [start, 1],
         [successSoundKey] : [success, 1],
-        [failSoundKey] : [fail, 1]
+        [failSoundKey] : [fail, 1],
+        [confirmedSoundKey] : [confirmed, 1],
+        [clearedSoundKey] : [cleared, 1],
+        [restartSoundKey] : [restart, 1]
 
     };
 
@@ -33,7 +39,6 @@ export const playSound = (soundEffect) => {
 }
 
 
-
 export const flagOpener = (setFlagToOpen) => {
 
     playSound(buttonSoundKey);
@@ -41,10 +46,27 @@ export const flagOpener = (setFlagToOpen) => {
 
 }
 
+export const screenFlagOpener = (setFlagToOpen) => {
+
+    playSound(gameButtonSoundKey);
+    setFlagToOpen(true);
+
+}
+
 
 export const flagCloser = (setFlagToClose) => {
-
+    
     playSound(buttonSoundKey);
     setFlagToClose(false);
 
 }
+
+
+export const screenFlagCloser = (setFlagToClose) => {
+    
+    playSound(gameButtonSoundKey);
+    setFlagToClose(false);
+
+}
+
+
