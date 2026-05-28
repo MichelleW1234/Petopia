@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
@@ -17,11 +17,15 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
+import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
+
 import "./Home.css";
 
 
 
 function Home (){
+
+    const { audioRef } = useContext(BackgroundMusicContext);
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();

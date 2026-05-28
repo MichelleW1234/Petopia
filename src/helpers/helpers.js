@@ -19,14 +19,14 @@ export const playSound = (soundEffect) => {
 
         [buttonSoundKey] : [button_click, 0.5],
         [buttonPressSoundKey] : [button_press, 0.5],
-        [gameButtonSoundKey] : [gameButton_click, 0.3],
-        [errorSoundKey] : [error, 1],
-        [startSoundKey] : [start, 1],
-        [successSoundKey] : [success, 1],
-        [failSoundKey] : [fail, 1],
-        [confirmedSoundKey] : [confirmed, 1],
-        [clearedSoundKey] : [cleared, 1],
-        [restartSoundKey] : [restart, 1]
+        [gameButtonSoundKey] : [gameButton_click, 0.5],
+        [errorSoundKey] : [error, 0.5],
+        [startSoundKey] : [start, 0.5],
+        [successSoundKey] : [success, 0.5],
+        [failSoundKey] : [fail, 0.5],
+        [confirmedSoundKey] : [confirmed, 0.5],
+        [clearedSoundKey] : [cleared, 0.5],
+        [restartSoundKey] : [restart, 0.5]
 
     };
 

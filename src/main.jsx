@@ -7,15 +7,16 @@ import {PetTimeStampsProvider} from "./providers/PetTimeStampsProvider.jsx";
 import {PetListProvider} from "./providers/PetListProvider.jsx";
 import {PetProgressionUpdateProvider} from "./providers/PetProgressionUpdateProvider.jsx";
 import { ActivePetNameProvider } from "./providers/ActivePetNameProvider.jsx";
+import { BackgroundMusicProvider } from "./providers/BackgroundMusicProvider.jsx";
 
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <GlobalTimerProvider><PetListProvider><PetTimeStampsProvider>
+    <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider>
       <PetProgressionUpdateProvider><ActivePetNameProvider>
         <App />
       </ActivePetNameProvider></PetProgressionUpdateProvider>
-    </PetTimeStampsProvider></PetListProvider></GlobalTimerProvider>
+    </PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
   </StrictMode>,
 )
