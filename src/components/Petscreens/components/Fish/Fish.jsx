@@ -62,7 +62,7 @@ import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
+import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
 
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -96,7 +96,7 @@ function Fish (){
     const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
     const [fishMedicineOpenFlag, setFishMedicineOpenFlag] = useState(false);
     const [fishScheduleOpenFlag, setFishScheduleOpenFlag] = useState(false);
-    const [fishPetCareGuideOpenFlag, setFishPetCareGuideOpenFlag] = useState(false);
+    const [fishBirthCertificateOpenFlag, setFishBirthCertificateOpenFlag] = useState(false);
     const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
     const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
     const [fishMedicineDesiredOption, setFishMedicineDesiredOption] = useState(-1);
@@ -195,7 +195,7 @@ function Fish (){
 
     useKeyboardShortcut("1", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -210,7 +210,7 @@ function Fish (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
             flagOpener(setFishScheduleOpenFlag);
 
@@ -223,9 +223,9 @@ function Fish (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
-            flagOpener(setFishPetCareGuideOpenFlag);
+            flagOpener(setFishBirthCertificateOpenFlag);
 
         }
 
@@ -237,7 +237,7 @@ function Fish (){
 
     useKeyboardShortcut("4", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
             flagOpener(setFishFeedOpenFlag);
 
@@ -251,7 +251,7 @@ function Fish (){
 
     useKeyboardShortcut("5", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
             flagOpener(setFishCleanOpenFlag);
 
@@ -265,7 +265,7 @@ function Fish (){
 
     useKeyboardShortcut("6", () => {
 
-        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishPetCareGuideOpenFlag){
+        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
 
             flagOpener(setFishMedicineOpenFlag);
 
@@ -360,9 +360,9 @@ function Fish (){
                 setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
-            {fishPetCareGuideOpenFlag &&
-            <PetCareGuide
-                setPetCareGuideOpenFlag = {setFishPetCareGuideOpenFlag}
+            {fishBirthCertificateOpenFlag &&
+            <BirthCertificate
+                setBirthCertificateOpenFlag = {setFishBirthCertificateOpenFlag}
             />}
 
 
@@ -372,7 +372,7 @@ function Fish (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setFishPetCareGuideOpenFlag)}> Guide </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setFishBirthCertificateOpenFlag)}> About </button>
 
                     {fishAlive ? (
 

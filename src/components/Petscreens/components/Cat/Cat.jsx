@@ -52,7 +52,7 @@ import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
+import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
 
 import GameOne from "./CatComponents/GameOne.jsx";
 
@@ -88,7 +88,7 @@ function Cat (){
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
     const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
     const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
-    const [catPetCareGuideOpenFlag, setCatPetCareGuideOpenFlag] = useState(false);
+    const [catBirthCertificateOpenFlag, setCatBirthCertificateOpenFlag] = useState(false);
     const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
     const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
     const [catMedicineDesiredOption, setCatMedicineDesiredOption] = useState(-1);
@@ -182,7 +182,7 @@ function Cat (){
         
     useKeyboardShortcut("1", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -196,7 +196,7 @@ function Cat (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
             flagOpener(setCatScheduleOpenFlag);
 
@@ -210,9 +210,9 @@ function Cat (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
-            flagOpener(setCatPetCareGuideOpenFlag);
+            flagOpener(setCatBirthCertificateOpenFlag);
 
         }
 
@@ -224,7 +224,7 @@ function Cat (){
 
     useKeyboardShortcut("4", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
             flagOpener(setCatFeedOpenFlag);
 
@@ -237,7 +237,7 @@ function Cat (){
 
     useKeyboardShortcut("5", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
             flagOpener(setCatPlayOpenFlag);
 
@@ -251,7 +251,7 @@ function Cat (){
 
     useKeyboardShortcut("6", () => {
 
-        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catPetCareGuideOpenFlag){
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
 
             flagOpener(setCatMedicineOpenFlag);
 
@@ -346,9 +346,9 @@ function Cat (){
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
 
-            {catPetCareGuideOpenFlag &&
-            <PetCareGuide
-                setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
+            {catBirthCertificateOpenFlag &&
+            <BirthCertificate
+                setBirthCertificateOpenFlag = {setCatBirthCertificateOpenFlag}
             />}
         
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
@@ -357,7 +357,7 @@ function Cat (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setCatPetCareGuideOpenFlag)}> Guide </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setCatBirthCertificateOpenFlag)}> About </button>
 
                     {catAlive ? (
 

@@ -1,11 +1,11 @@
-import { screenFlagCloser } from "../../../../../helpers/helpers.js";
-import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+import { screenFlagCloser } from "../../../../helpers/helpers.js";
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./PetCareGuide.css";
 
 function PetCareGuide({setPetCareGuideOpenFlag}) {
 
-    useKeyboardShortcut("3", () => {
+    useKeyboardShortcut("4", () => {
 
         screenFlagCloser(setPetCareGuideOpenFlag);
 
@@ -18,7 +18,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1>This tells you everything you need to know about caring for your pet:</h1>
-                <h2> &bull; when to perform activity </h2>
+                <h2> &bull; when to perform activity </h2> 
                 <h2> &bull; what to select for each activity ( and what it looks like when activity isn't wanted)</h2>
                 <h2> &bull; that it takes twice as long when a pet is given an activity option they don't want</h2>
                 <h2> &bull; the damage for not doing each task on time, and the damage for choosing the incorrect option</h2>

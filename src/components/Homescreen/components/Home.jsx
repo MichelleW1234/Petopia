@@ -3,15 +3,13 @@ import { useContext, useState } from "react";
 
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
+import PetCareGuide from "./HomescreenComponents/PetCareGuide.jsx";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { healthCapList, maleGender, portraitPetImages, healthKey, speciesKey, stageKey, genderKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
-
-import BoyBow from "../../../images/Boy.png";
-import GirlBow from "../../../images/Girl.png";
+import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
@@ -20,6 +18,7 @@ import { flagOpener, playSound } from "../../../helpers/helpers.js";
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
 
 import "./Home.css";
+
 
 
 
@@ -33,6 +32,7 @@ function Home (){
 
     const [homeOpenClearPetsFlag, setHomeOpenClearPetsFlag] = useState(false);
     const [homeOpenRestartFlag, setHomeOpenRestartFlag] = useState(false);
+    const [homeOpenPetGuideFlag, setHomeOpenPetGuideFlag] = useState(false);
 
     const minPetsAdopted = Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0;
     const maxPetsAdopted = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3;
@@ -41,7 +41,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
 
             flagOpener(setHomeOpenRestartFlag);
 
@@ -54,7 +54,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag){
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
 
             flagOpener(setHomeOpenClearPetsFlag);
 
@@ -68,7 +68,7 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!maxPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag) {
+        if (!maxPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag) {
 
             playSound(buttonSoundKey);
             navigate("/adopt");
@@ -79,6 +79,18 @@ function Home (){
         ".AddPets"
     );
 
+    
+    useKeyboardShortcut("4", () => {
+
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
+
+            flagOpener(setHomeOpenPetGuideFlag);
+
+        }
+
+    },
+        ".PetGuide"
+    );
 
 
     const getPet = (petToGet) => {
@@ -105,6 +117,11 @@ function Home (){
             <Deletion
                 deletionOpenClearPetsFlag = {homeOpenClearPetsFlag}
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
+            />}
+
+            {homeOpenPetGuideFlag &&
+            <PetCareGuide
+                setPetCareGuideOpenFlag={setHomeOpenPetGuideFlag}
             />}
 
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Nonstation">  
@@ -136,6 +153,8 @@ function Home (){
                         <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar AddPets" onClick = {() => playSound(buttonSoundKey)}> Add Pets </Link>
 
                     )}
+
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetGuide" onClick = {() => flagOpener(setHomeOpenPetGuideFlag)}> Pet Guide </button>
                     
                 </div>
 
@@ -209,16 +228,6 @@ function Home (){
                                             <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
                                         </Link>
                                         <h2>{key}</h2>
-
-                                        {PetList[key][genderKey] === maleGender ? (
-
-                                            <img className = "Home_ComponentImage-Template--PetBow" src = {BoyBow}/>
-
-                                        ) : (
-
-                                            <img className = "Home_ComponentImage-Template--PetBow" src = {GirlBow}/>
-
-                                        )}
                                         
                                     </div>
 
