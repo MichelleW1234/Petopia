@@ -17,7 +17,11 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1>This tells you everything you need to know about caring for your pet:</h1>
+
+                <div className="heading">
+                    <h1>Caring for your pet:</h1>
+                    <hr/>
+                </div>
                 <h2> &bull; when to perform activity </h2> 
                 <h2> &bull; what to select for each activity ( and what it looks like when activity isn't wanted)</h2>
                 <h2> &bull; that it takes twice as long when a pet is given an activity option they don't want</h2>

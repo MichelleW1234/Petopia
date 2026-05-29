@@ -99,7 +99,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
             }
 
-            currSound.volume = 0.75;
+            currSound.volume = 0.8;
             currSound.play();
                 
         }

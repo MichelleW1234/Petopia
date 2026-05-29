@@ -346,7 +346,10 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1>Fill out this form: </h1>  
+                        <div className="heading">
+                            <h1>Fill out this form: </h1> 
+                            <hr/>
+                        </div> 
             
                         <div className = "Adoption_ComponentContainer-Structure--Form">
                             <p>Hello, my name is </p>
@@ -361,8 +364,8 @@ function Adoption () {
                             </div>
 
                             <p> and I am a {petGender} {selectedPet}.</p>
-                            <p>{petPersonality[selectedPet]}</p>
-                            <p>Make sure to read the Pet Care Guide!!</p>
+                            <p>This form is to certify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
+                            <img src = {portraitPetImages[selectedPet]}/>
                         </div>
                             
                         <div className = "Adoption_ComponentContainer-Structure--FormChecking">

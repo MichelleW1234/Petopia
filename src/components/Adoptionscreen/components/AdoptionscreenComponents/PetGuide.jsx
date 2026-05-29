@@ -20,8 +20,13 @@ function PetGuide({setPetGuideOpenFlag}) {
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1>Read About Your Pet Options:</h1>
-                <h2> Hello. This is a placeholder</h2>
+                <div className="heading">
+                    <h1>Pet Options:</h1>
+                    <hr/>
+                </div>
+                <h2>Dalmation: </h2>
+                <h2>Orange Cat: </h2>
+                <h2>Beta Fish: </h2>
             </div>
 
             <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetGuideOpenFlag)}> Close </button>

@@ -17,16 +17,16 @@ export const playSound = (soundEffect) => {
 
     const soundDictionary = {
 
-        [buttonSoundKey] : [button_click, 0.5],
-        [buttonPressSoundKey] : [button_press, 0.5],
-        [gameButtonSoundKey] : [gameButton_click, 0.5],
-        [errorSoundKey] : [error, 0.5],
-        [startSoundKey] : [start, 0.5],
-        [successSoundKey] : [success, 0.5],
-        [failSoundKey] : [fail, 0.5],
+        [buttonSoundKey] : [button_click, 0.3],
+        [buttonPressSoundKey] : [button_press, 0.25],
+        [gameButtonSoundKey] : [gameButton_click, 0.25],
+        [errorSoundKey] : [error, 0.25],
+        [startSoundKey] : [start, 0.15],
+        [successSoundKey] : [success, 0.25],
+        [failSoundKey] : [fail, 0.25],
         [confirmedSoundKey] : [confirmed, 0.5],
         [clearedSoundKey] : [cleared, 0.5],
-        [restartSoundKey] : [restart, 0.5]
+        [restartSoundKey] : [restart, 0.25]
 
     };
 
