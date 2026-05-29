@@ -19,6 +19,11 @@ import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvid
 
 import "./Home.css";
 
+import red from "../../../images/red.png";
+import orange from "../../../images/orange.png";
+import yellow from "../../../images/yellow.png";
+import green from "../../../images/green.png";
+import gray from "../../../images/gray.png";
 
 
 
@@ -177,45 +182,44 @@ function Home (){
 
                                     <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
                                             
-                                        {/* MAYBE REPLACE THESE WITH PAW PRINTS????????????*/}
                                         {currPetHealth >= 75 ? (
-
+           
                                             <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Good"></div>
+                                                <img src = {green}/>
+                                                <img src = {green}/>
+                                                <img src = {green}/>
                                             </div>
                                         
                                         ) : currPetHealth >= 50 ? (
 
                                             <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Okay"></div>
+                                                <img src = {yellow}/>
+                                                <img src = {yellow}/>
+                                                <img src = {yellow}/>
                                             </div>
 
                                         ) : currPetHealth >= 25 ? (
 
                                             <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Bad"></div>
+                                                <img src = {orange}/>
+                                                <img src = {orange}/>
+                                                <img src = {orange}/>
                                             </div>
 
                                         ) : currPetHealth > 0 ? (
 
                                             <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--VeryBad"></div>
+                                                <img src = {red}/>
+                                                <img src = {red}/>
+                                                <img src = {red}/>
                                             </div>
 
                                         ) : (
 
                                             <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
-                                                <div className="Home_ComponentContainer-Template--PetAlertBubble Home_ComponentContainer-Color--PetAlertBubble--Dead"></div>
+                                                <img src = {gray}/>
+                                                <img src = {gray}/>
+                                                <img src = {gray}/>
                                             </div>
 
                                         )}

@@ -230,7 +230,7 @@ function Fish (){
         }
 
     },
-        ".Guide"
+        ".BirthCertificate"
     );
     
 
@@ -372,7 +372,7 @@ function Fish (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setFishBirthCertificateOpenFlag)}> About </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setFishBirthCertificateOpenFlag)}> Birth Certificate </button>
 
                     {fishAlive ? (
 

@@ -217,7 +217,7 @@ function Cat (){
         }
 
     },
-        ".Guide"
+        ".BirthCertificate"
     );
         
 
@@ -357,7 +357,7 @@ function Cat (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setCatBirthCertificateOpenFlag)}> About </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setCatBirthCertificateOpenFlag)}> Birth Certificate </button>
 
                     {catAlive ? (
 

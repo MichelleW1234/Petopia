@@ -152,8 +152,8 @@ a:active {
   flex-direction: column;
   align-items: center;
 
-  gap: 10rem;
   padding: 4rem;
+  gap: 2rem;
 
   background-size: cover;
   background-position: center;
@@ -542,7 +542,7 @@ a:active {
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 3rem;
   padding: 3rem;
   border-radius: 3rem;
 
@@ -692,6 +692,7 @@ a:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
 
   gap: 3rem;
 

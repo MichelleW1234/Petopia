@@ -242,7 +242,7 @@ function Dog (){
         }
 
     },
-        ".Guide"
+        ".BirthCertificate"
     );
     
 
@@ -407,7 +407,7 @@ function Dog (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Guide" onClick = {() => flagOpener(setDogBirthCertificateOpenFlag)}> About </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setDogBirthCertificateOpenFlag)}> Birth Certificate </button>
 
                     {dogAlive ? (
 

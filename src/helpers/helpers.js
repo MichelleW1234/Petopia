@@ -17,7 +17,7 @@ export const playSound = (soundEffect) => {
 
     const soundDictionary = {
 
-        [buttonSoundKey] : [button_click, 0.3],
+        [buttonSoundKey] : [button_click, 0.5],
         [buttonPressSoundKey] : [button_press, 0.25],
         [gameButtonSoundKey] : [gameButton_click, 0.25],
         [errorSoundKey] : [error, 0.25],
