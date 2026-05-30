@@ -3,13 +3,16 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import "./Deletion.css";
+import { flagCloser, playSound, screenFlagCloser } from "../../../../helpers/helpers.js";
 
 
 
-function Deletion({setDeletionOpenClearPetsFlag}) {
+function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -17,9 +20,38 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
 
 
+    useKeyboardShortcut("Enter", () => {
+        
+        if (deletionOpenClearPetsFlag && deletionSelectedPets.length > 0){
+
+            clearPets();
+
+        }
+
+    },
+        ".ClearSelectedPets"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+        
+        if (deletionOpenClearPetsFlag){
+
+            screenFlagCloser(setDeletionOpenClearPetsFlag);
+
+        }
+
+    },
+        ".Quit"
+    );
+    
+
+
+
 
     const addPet = (PetToAdd) => {
 
+        playSound(buttonPressSoundKey);
         setDeletionSelectedPets(prev => [...prev, PetToAdd]);
 
     }
@@ -27,6 +59,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const removePet = (PetToRemove) => {
 
+        playSound(buttonPressSoundKey);
         setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
@@ -60,9 +93,19 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
         });
 
-        setDeletionOpenClearPetsFlag(false);
+        playSound(clearedSoundKey);
+        screenFlagCloser(setDeletionOpenClearPetsFlag);
 
     }
+
+
+    const quit = () => {
+
+        screenFlagCloser(setDeletionOpenClearPetsFlag);
+
+    }
+
+    
 
     return (
 
@@ -100,11 +143,11 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick={() => setDeletionOpenClearPetsFlag(false)}>Quit</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => quit()}>Quit</button>
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation" onClick={() => clearPets()}>Clear Selected Pets</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation ClearSelectedPets" onClick={() => clearPets()}>Clear Selected Pets</button>
 
                 ) : (
 

@@ -1,20 +1,85 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./GameOne.css";
 
 import carrot from "../../../../../images/carrot.png";
 import skull from "../../../../../images/skull.png";
 import dog from "../../../../../images/HorizontalDog.png";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-function GameOne({ playCurrNumber, setPlayCurrNumber }) {
+import { starter } from "../../../helpers/Helpers.js";
+import { playSound } from "../../../../../helpers/helpers.js";
+import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
+
+
+function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const windowWidth = 8;
     const windowHeight = 5;
 
     const [start, setStart] = useState(false);
     const [objectPositions, setObjectPositions] = useState([]);
-    const [dogPosition, setDogPosition] = useState([3, 2]);
+    const [dogPosition, setDogPosition] = useState([4, 2]);
 
+
+    useKeyboardShortcut("Enter", () => {
+    
+        if (playSelection !== -1 && !playDone){
+
+            starter(setStart);
+
+        }
+
+    },
+        ".Start"
+    );
+
+
+    useKeyboardShortcut("ArrowUp", (e) => {
+    
+        if (start){
+
+            e.preventDefault();
+            moveUp();
+
+        }
+
+    },
+        ".Up"
+    );
+
+
+    useKeyboardShortcut("ArrowDown", (e) => {
+    
+        if (start){
+
+            e.preventDefault();
+            moveDown();
+
+        }
+
+    },
+        ".Down"
+    );
+
+
+
+    useEffect(() => {
+
+        if (!start || playDone) {
+            return;
+        }
+
+        playAudioRef.current[0].loop = true;
+        playAudioRef.current[0].play();
+
+        return () => {
+            playAudioRef.current[0].pause();
+            playAudioRef.current[0].currentTime = 0;
+            playAudioRef.current[0].loop = false;
+        };
+
+    }, [start, playDone]);
 
 
     useEffect(() => {
@@ -98,6 +163,8 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
     const moveUp = () => {
 
+        playSound(gameButtonSoundKey);
+
         if (dogPosition[1] > 0){
 
             setDogPosition(prev => [prev[0], prev[1]-1]);
@@ -108,6 +175,8 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
     const moveDown = () => {
 
+        playSound(gameButtonSoundKey);
+        
         if (dogPosition[1] < windowHeight-1){
 
             setDogPosition(prev => [prev[0], prev[1]+1]);
@@ -124,15 +193,15 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the dog on your walk to eat all the carrots! Avoid everything else!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
             </div>}
 
             <div className="UsersContainer">
 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => moveUp()}> 
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Up" onClick = {() => moveUp()}> 
                     &#x2B06;
                 </button>
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => moveDown()}> 
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Down" onClick = {() => moveDown()}> 
                     &#x2B07;
                 </button>
 

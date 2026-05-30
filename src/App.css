@@ -118,7 +118,7 @@ p,
 input {
 
   font-family: monospace;
-  font-size: 1rem;
+  font-size: calc(1rem*1.25);
 
 }
 
@@ -152,8 +152,8 @@ a:active {
   flex-direction: column;
   align-items: center;
 
-  gap: 10rem;
   padding: 4rem;
+  gap: 12rem;
 
   background-size: cover;
   background-position: center;
@@ -162,16 +162,7 @@ a:active {
 }
 
 
-.UIStapleElements_BackgroundBase-Color--Screen--Station {
-
-  background:
-    /*add image here*/
-    linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 85%);
-
-}
-
-
-.UIStapleElements_BackgroundBase-Color--Screen--Nonstation {
+.UIStapleElements_BackgroundBase-Color--Screen {
 
   background:
     /*add image here*/
@@ -232,7 +223,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Structure--GlobalClick:hover {
+.UIStapleElements_ComponentButtonPill-Structure--GlobalClick:hover,
+.UIStapleElements_ComponentButtonPill-Structure--GlobalClick.active {
 
   transform: scale(1.1);
 
@@ -282,7 +274,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Structure--Global:hover {
+.UIStapleElements_ComponentButtonCircle-Structure--Global:hover,
+.UIStapleElements_ComponentButtonCircle-Structure--Global.active{
 
   transform: scale(1.1);
 
@@ -311,7 +304,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar:hover {
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar:hover,
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) + var(--UIStapleElements_Component-Layer--GlobalHue) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -326,7 +320,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent:hover {
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent:hover, 
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) + var(--UIStapleElements_Component-Layer--GlobalHue) + var(--UIStapleElements_Component-Layer--GlobalHue) + var(--UIStapleElements_Component-Layer--GlobalHue) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -349,7 +344,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--Screen:hover {
+.UIStapleElements_ComponentButtonCircle-Color--Global--Screen:hover,
+.UIStapleElements_ComponentButtonCircle-Color--Global--Screen.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -373,7 +369,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen:hover {
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen:hover,
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -409,7 +406,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation:hover {
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation:hover,
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -431,7 +429,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation:hover {
+.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation:hover,
+.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -455,7 +454,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation:hover {
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation:hover,
+.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -477,7 +477,8 @@ a:active {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation:hover {
+.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation:hover,
+.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation.active {
 
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
 
@@ -532,7 +533,7 @@ a:active {
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 3rem;
   padding: 3rem;
   border-radius: 3rem;
 
@@ -649,7 +650,8 @@ a:active {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton:hover{
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton:hover,
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton.active {
 
   box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
   transform: scale(1.1);

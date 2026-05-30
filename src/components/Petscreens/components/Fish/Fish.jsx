@@ -1,22 +1,26 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+
+import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.svg";
+import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.svg";
+import s1FishRightOne from "../../../../images/Fish/Main/Awake/s12.svg";
+import s1FishRightTwo from "../../../../images/Fish/Main/Awake/s13.svg";
+import s2FishLeftOne from "../../../../images/Fish/Main/Awake/s2.svg";
+import s2FishLeftTwo from "../../../../images/Fish/Main/Awake/s21.svg";
+import s2FishRightOne from "../../../../images/Fish/Main/Awake/s22.svg";
+import s2FishRightTwo from "../../../../images/Fish/Main/Awake/s23.svg";
+import s3FishLeftOne from "../../../../images/Fish/Main/Awake/s3.svg";
+import s3FishLeftTwo from "../../../../images/Fish/Main/Awake/s31.svg";
+import s3FishRightOne from "../../../../images/Fish/Main/Awake/s32.svg";
+import s3FishRightTwo from "../../../../images/Fish/Main/Awake/s33.svg";
 
 
-
-import s1FishLeftOne from "../../../../images/Fish/Main/s1.svg";
-import s1FishLeftTwo from "../../../../images/Fish/Main/s11.svg";
-import s1FishRightOne from "../../../../images/Fish/Main/s12.svg";
-import s1FishRightTwo from "../../../../images/Fish/Main/s13.svg";
-
-import s2FishLeftOne from "../../../../images/Fish/Main/s2.svg";
-import s2FishLeftTwo from "../../../../images/Fish/Main/s21.svg";
-import s2FishRightOne from "../../../../images/Fish/Main/s22.svg";
-import s2FishRightTwo from "../../../../images/Fish/Main/s23.svg";
-
-import s3FishLeftOne from "../../../../images/Fish/Main/s3.svg";
-import s3FishLeftTwo from "../../../../images/Fish/Main/s31.svg";
-import s3FishRightOne from "../../../../images/Fish/Main/s32.svg";
-import s3FishRightTwo from "../../../../images/Fish/Main/s33.svg";
+import s1FishSleepOne from "../../../../images/Fish/Main/Asleep/s1.png";
+import s1FishSleepTwo from "../../../../images/Fish/Main/Asleep/s11.png";
+import s2FishSleepOne from "../../../../images/Fish/Main/Asleep/s2.png";
+import s2FishSleepTwo from "../../../../images/Fish/Main/Asleep/s21.png";
+import s3FishSleepOne from "../../../../images/Fish/Main/Asleep/s3.png";
+import s3FishSleepTwo from "../../../../images/Fish/Main/Asleep/s31.png";
 
 
 import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
@@ -50,8 +54,8 @@ import sponge from "../../../../images/Fish/Clean/Options/sponge.png";
 import cloth from "../../../../images/Fish/Clean/Options/cloth.png";
 import spongeCursor from "../../../../images/Fish/Clean/Options/sponge.cur";
 import clothCursor from "../../../../images/Fish/Clean/Options/cloth.cur";
-
 import pill from "../../../../images/Fish/Medicine/Options/pill.png";
+import bottle from  "../../../../images/Fish/Medicine/Options/bottle.png";
 
 
 import Main from "../PetscreensComponents/Main.jsx";
@@ -59,16 +63,25 @@ import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
+import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
 
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey} from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey} from "../../../../constants/Constants.js";
+import { home, pauseAudios } from "../../helpers/Helpers.js";
+import { flagOpener } from "../../../../helpers/helpers.js";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
+import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
+import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 
 import "./Fish.css";
+import { playSound } from "../../../../helpers/helpers.js";
 
 
 
@@ -84,7 +97,7 @@ function Fish (){
     const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
     const [fishMedicineOpenFlag, setFishMedicineOpenFlag] = useState(false);
     const [fishScheduleOpenFlag, setFishScheduleOpenFlag] = useState(false);
-    const [fishPetCareGuideOpenFlag, setFishPetCareGuideOpenFlag] = useState(false);
+    const [fishBirthCertificateOpenFlag, setFishBirthCertificateOpenFlag] = useState(false);
     const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
     const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
     const [fishMedicineDesiredOption, setFishMedicineDesiredOption] = useState(-1);
@@ -108,17 +121,17 @@ function Fish (){
                             : false;
 
     const fishUnwell = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies] ? 
+                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] ? 
                                 true 
                                 : false
                             : false;
 
     const fishMood = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.75 ? 
+                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                                 0
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.5 ? 
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                                 1
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies] >= 0.25 ? 
+                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                                 2
                                 : 3
                             : -1;
@@ -137,6 +150,15 @@ function Fish (){
                                         [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
                                     : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
                                 : [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
+
+    const fishMainSleepingImages = ActivePetName !== "" ? 
+                                    PetList[ActivePetName][stageKey] === 0 ? 
+                                            [s1FishSleepOne, s1FishSleepTwo]
+                                        : PetList[ActivePetName][stageKey] === 1 ? 
+                                            [s2FishSleepOne, s2FishSleepTwo]
+                                        : [s3FishSleepOne, s3FishSleepTwo]
+                                    : [s1FishSleepOne, s1FishSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     
     const fishFeedImages = ActivePetName !== "" ? 
@@ -165,9 +187,108 @@ function Fish (){
 
     const fishFeedOptions = [["shrimp", shrimp], ["worms", worms], ["algae", algae]];
     const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
-    const fishMedicineOptions = [["pill", pill]];
+    const fishMedicineOptions = [["pill", pill], ["bottle", bottle]];
+
+    const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishSad), new Audio(fishSleep)]);
+
+    const navigate = useNavigate();
 
 
+    useKeyboardShortcut("1", () => {
+
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            home(setActivePetName);
+            navigate("/home");
+
+        }
+
+    },
+        ".Home"
+    );
+
+
+
+    useKeyboardShortcut("2", () => {
+
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            flagOpener(setFishScheduleOpenFlag);
+
+        }
+
+    },
+        ".Schedule"
+    );
+    
+
+    useKeyboardShortcut("3", () => {
+
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            flagOpener(setFishBirthCertificateOpenFlag);
+
+        }
+
+    },
+        ".BirthCertificate"
+    );
+    
+
+
+    useKeyboardShortcut("4", () => {
+
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            flagOpener(setFishFeedOpenFlag);
+
+        }
+
+    },
+        ".Feed"
+    );
+    
+
+
+    useKeyboardShortcut("5", () => {
+
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            flagOpener(setFishCleanOpenFlag);
+
+        }
+
+    },
+        ".Clean"
+    );
+    
+
+
+    useKeyboardShortcut("6", () => {
+
+        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishBirthCertificateOpenFlag){
+
+            flagOpener(setFishMedicineOpenFlag);
+
+        }
+
+    },
+        ".Medicine"
+    );
+    
+    
+
+
+    useEffect(() => {
+
+        if (ActivePetName === "" || fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag){
+
+            pauseAudios(fishAudioRefs);
+
+        }
+
+    }, [ActivePetName, fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
+    
     
 
     useEffect(() => {
@@ -201,6 +322,7 @@ function Fish (){
         }
     }, [fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
     
+
 
 
 
@@ -239,27 +361,29 @@ function Fish (){
                 setScheduleOpenFlag={setFishScheduleOpenFlag}
             />}
 
-            {fishPetCareGuideOpenFlag &&
-            <PetCareGuide
-                setPetCareGuideOpenFlag = {setFishPetCareGuideOpenFlag}
+            {fishBirthCertificateOpenFlag &&
+            <BirthCertificate
+                setBirthCertificateOpenFlag = {setFishBirthCertificateOpenFlag}
             />}
 
 
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag)}> Schedule </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setFishBirthCertificateOpenFlag)}> Birth Certificate </button>
 
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setFishFeedOpenFlag(true)}> Feed </button>
-                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setFishCleanOpenFlag(true)}> Clean </button>
+                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setFishFeedOpenFlag)}> Feed </button>
+                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setFishCleanOpenFlag)}> Clean </button>
 
                             {fishCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setFishMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setFishMedicineOpenFlag)}> Medicine </button>
 
                             ) : (
 
@@ -279,14 +403,13 @@ function Fish (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setFishScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setFishPetCareGuideOpenFlag(true)}> Guide </button>
-
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={fishMainImages}
+                        mainSleepingImages={fishMainSleepingImages}
+                        mainPetAudios={fishAudioRefs}
                         mainPetEnergy = {400}
                         mainPetMood = {fishMood}
                         mainActivityInProgress={fishActivityInProgress}

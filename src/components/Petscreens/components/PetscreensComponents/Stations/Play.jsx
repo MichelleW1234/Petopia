@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
@@ -9,9 +9,16 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 
 import { moodPetImages, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { manageHealth } from "../../../helpers/Helpers.js";
+import { manageHealth, pauseAudios } from "../../../helpers/Helpers.js";
+import { quit } from "../../../helpers/Helpers.js";
+
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import "./Play.css";
+
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
+
+import play from "../../../../../Music/PetImmersionSounds/Play.mp3";
 
 
 
@@ -22,7 +29,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [playTotal, setPlayTotal] = useState(20);
+    const [playTotal, setPlayTotal] = useState(10);
     const [playDone, setPlayDone] = useState(false);
     const [playSelection, setPlaySelection] = useState(-1);
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
@@ -31,6 +38,35 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
     const PlaySelectedGameWindow = playSelection !== -1 ? 
                                         playOptions[playSelection][2]
                                         : null;
+
+    const playAudioRef = useRef([new Audio(play)]);
+
+    
+    useKeyboardShortcut("Enter", () => {
+    
+        if (playSelection !== -1 && playDone){
+
+            screenFlagCloser(setPlayOpenFlag);
+
+        }
+
+    },
+        ".Done"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+
+        if (playSelection === -1 || !playDone){
+
+            quit(playAudioRef, setPlayOpenFlag);
+
+        }
+
+    },
+        ".Quit"
+    );
+        
 
 
 
@@ -49,6 +85,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
         
         if (playCurrNumber >= playTotal){
 
+            pauseAudios(playAudioRef);
             setPlayDone(true);
             manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playDesiredOption, setPlayDesiredOption, playSelection, setPlaySuccess);
 
@@ -87,8 +124,11 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
                             PlaySelectedGameWindow !== null ? (
 
                                 <PlaySelectedGameWindow
+                                    playSelection = {playSelection}
+                                    playDone = {playDone}
                                     playCurrNumber = {playCurrNumber}
                                     setPlayCurrNumber = {setPlayCurrNumber}
+                                    playAudioRef = {playAudioRef}
                                 />
 
                             ) : (
@@ -126,7 +166,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
             {playSelection === -1 || !playDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Quit</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => quit(playAudioRef, setPlayOpenFlag)}>Quit</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done</button>
                 </div>
 
@@ -134,7 +174,7 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => setPlayOpenFlag(false)}>Done</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => screenFlagCloser(setPlayOpenFlag)}>Done</button>
                 </div>
 
             )}

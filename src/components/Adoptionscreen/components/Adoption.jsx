@@ -1,4 +1,4 @@
-import { generatePath, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
 import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
@@ -7,9 +7,12 @@ import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender } from "../../../constants/Constants.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey } from "../../../constants/Constants.js";
+
+import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import "./Adoption.css";
+import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
 
 
@@ -36,9 +39,77 @@ function Adoption () {
 
     const confirmationTimeoutRef = useRef(null);
 
+    const navigate = useNavigate();
+
+
+    useKeyboardShortcut("1", () => {
+        
+        if (!petGuideOpenFlag){
+
+            playSound(buttonSoundKey);
+            navigate("/home");
+
+        }
+
+    },
+        ".QuitAndGoHome"
+    );
+
+        
+    
+    useKeyboardShortcut("2", () => {
+        
+        flagOpener(setPetGuideOpenFlag);
+
+    },
+        ".OpenPetGuide"
+    );
+
+
+
+    useKeyboardShortcut("Enter", () => {
+        
+        if (step === 0 && petGender === "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            petSelecting();
+
+        }
+
+    },
+        ".GoToConfirmation"
+    );
+
+
+    useKeyboardShortcut("Escape", () => {
+        
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            undo();
+
+        }
+
+    },
+        ".UndoSelection"
+    );
+
+
+    useKeyboardShortcut("Enter", (e) => {
+        
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+
+            nameChecking(e);
+
+        }
+
+    },
+        ".ConfirmSelection"
+    );
+
+
 
     const petSelecting = () => {
 
+        playSound(gameButtonSoundKey);
         const gender = Math.floor(Math.random() * 2);
         
         if (gender === 0){
@@ -57,6 +128,8 @@ function Adoption () {
 
 
     const nameChecking = (e) => {
+
+        playSound(gameButtonSoundKey);
 
         const trimmedPetName = confirmationPetName.trim();
         setConfirmationPetName(trimmedPetName);
@@ -79,6 +152,7 @@ function Adoption () {
         } else {
 
             adoptPet(trimmedPetName);
+            navigate("/home");
 
         }
 
@@ -86,6 +160,8 @@ function Adoption () {
 
 
     const showError = (message) => {
+
+        playSound(errorSoundKey);
 
         setErrorMessage(message);
 
@@ -103,6 +179,8 @@ function Adoption () {
 
     const adoptPet = (finalPetName) => {
 
+        playSound(confirmedSoundKey);
+
         const startingTime = GlobalTimer;
 
         if (selectedPet === dogSpecies){
@@ -113,7 +191,7 @@ function Adoption () {
                     { 
                         [speciesKey]: dogSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 15,
+                        [healthKey]: healthCapList[dogSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
@@ -138,7 +216,7 @@ function Adoption () {
                     { 
                         [speciesKey]: catSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 20,
+                        [healthKey]: healthCapList[catSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
@@ -162,7 +240,7 @@ function Adoption () {
                     { 
                         [speciesKey]: fishSpecies, 
                         [stageKey]: 0,
-                        [healthKey]: 5,
+                        [healthKey]: healthCapList[fishSpecies][0],
                         [birthDateKey]: startingTime,
                         [genderKey]: petGender,
                         [medicineKey]: 0
@@ -185,12 +263,21 @@ function Adoption () {
 
     const undo = () => {
 
+        playSound(gameButtonSoundKey);
+
         setSelectedPet("");
         setPetGender("");
         setStep(0);
 
     }
     
+
+    const selectPet = (key) => {
+
+        playSound(buttonPressSoundKey);
+        setSelectedPet(key);
+
+    }
 
     
 
@@ -204,11 +291,11 @@ function Adoption () {
                 />
             }
 
-            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Nonstation">
+            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"> Quit and Go Home </Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setPetGuideOpenFlag(true)}> Open Pet Guide </button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home </Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar OpenPetGuide" onClick = {() => flagOpener(setPetGuideOpenFlag)}> Open Pet Guide </button>
                 </div>
 
                 {step === 0 && petGender === "" ? (
@@ -224,14 +311,14 @@ function Adoption () {
                                 <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
                                     {key === selectedPet ? (
             
-                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => setSelectedPet("")}>
+                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => selectPet("")}>
                                             <img src = {portraitPetImages[key][0]}/>
                                         </button>
-            
+
                                     ) : (
             
-                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => setSelectedPet(key)}>
-                                            <img src = {portraitPetImages[key][0]} />
+                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => selectPet(key)}>
+                                            <img src = {portraitPetImages[key][0]}/>
                                         </button>
             
                                     )}
@@ -245,7 +332,7 @@ function Adoption () {
                     
                         {selectedPet !== "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => petSelecting()}> Go to Confirmation </button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation </button>
             
                         ) : (
             
@@ -259,30 +346,38 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1>Fill out this form: </h1>  
+                        <div className="form"> 
+                        <div className="heading">
+                            <h1>Fill out this form: </h1> 
+                            <hr/>
+                        </div> 
             
                         <div className = "Adoption_ComponentContainer-Structure--Form">
                             <p>Hello, my name is </p>
 
-                            <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormName">
-                                <input 
-                                    type="text"
-                                    value={confirmationPetName}
-                                    onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                                    placeholder="Name your pet..."
-                                />
+                            <div className="row">
+                                <img className = "portrait" src = {portraitPetImages[selectedPet][0]}/>
+                                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormName">
+                                    <input 
+                                        type="text"
+                                        value={confirmationPetName}
+                                        onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                                        placeholder="Name your pet..."
+                                    />
+                                </div>
                             </div>
 
                             <p> and I am a {petGender} {selectedPet}.</p>
-                            <p>{petPersonality[selectedPet]}</p>
-                            <p>Make sure to read the Pet Care Guide!!</p>
+                            <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide to know how to care for me!</p>
                         </div>
+                        </div>
+
                             
                         <div className = "Adoption_ComponentContainer-Structure--FormChecking">
                             <p className = "Adoption_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {() => undo()}> Undo Selection </button>
-                                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen" onClick = {(e) => nameChecking(e)}> Confirm Selection </Link>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection </button>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection </button>
                             </div>
                         </div>
 

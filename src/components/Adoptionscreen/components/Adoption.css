@@ -1,23 +1,69 @@
-.Adoption_ComponentContainer-Structure--Form{
+.form{
 
-    width: 75vw;
+    width: 50rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
 
-    gap: 1rem;
+    padding: 4rem;
+    gap: 3rem;
+    border-radius: 2rem;
+
+    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+
 
 }
 
 
-.Adoption_ComponentContainer-Template--FormName{
+
+.Adoption_ComponentContainer-Structure--Form{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    gap: 2rem;
+
+
+}
+
+
+.heading{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1rem;
+
+    hr{
+
+        width: 100%;
+
+        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+
+    }
+
+}
+
+.row {
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    gap: 3rem;
+
+}
+
+.Adoption_ComponentContainer-Template--FormName{
 
     padding: 1rem 2rem;
     border-radius: 1rem;
@@ -53,5 +99,20 @@
     height: 1rem;
     
     color: rgb(255, 0, 111);
+
+}
+
+.portrait{
+
+    height: 10rem;
+    width: 10rem;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    filter: 
+        drop-shadow(0 0 5px rgb(255, 255, 255));
+
+    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
 
 }

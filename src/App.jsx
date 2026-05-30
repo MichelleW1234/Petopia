@@ -30,6 +30,32 @@ function App() {
 
   }, []);
 
+
+  // For removing focus off of buttons that are just pressed:
+  useEffect(() => {
+
+    const blurIfButton = (e) => {
+
+      if (e.target instanceof HTMLButtonElement) {
+          e.target.blur();
+      }
+
+    };
+
+    document.addEventListener("mouseup", blurIfButton);
+    document.addEventListener("keyup", blurIfButton);
+
+    return () => {
+
+      document.removeEventListener("mouseup", blurIfButton);
+      document.removeEventListener("keyup", blurIfButton);
+
+    };
+
+  }, []);
+
+
+
   return (
     <>
       <HashRouter>

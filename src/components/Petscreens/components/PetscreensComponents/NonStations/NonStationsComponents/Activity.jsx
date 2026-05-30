@@ -88,9 +88,14 @@ function Activity({activityKey, activityTimeGap}) {
     return (
 
         <div className = "Activity_ComponentContainer-Structure">
-            
-            <h1>{activityLastStrings[activityKey] + activityLastTimeString}</h1>
-            <h1>{activityNextStrings[activityKey] + activityNextTimeString}</h1>
+            <div className="section">
+                <h2>{activityLastStrings[activityKey]}</h2> 
+                <p>{activityLastTimeString}</p>
+            </div>
+            <div className="section">
+                <h2>{activityNextStrings[activityKey]}</h2>
+                <p>{activityNextTimeString}</p>
+            </div>
     
             {PetList[ActivePetName][healthKey] > 0 ? (
 

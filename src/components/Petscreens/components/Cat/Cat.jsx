@@ -1,20 +1,26 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
-import s1CatLeftOne from "../../../../images/Cat/Main/s1.svg";
-import s1CatLeftTwo from "../../../../images/Cat/Main/s11.svg";
-import s1CatRightOne from "../../../../images/Cat/Main/s12.svg";
-import s1CatRightTwo from "../../../../images/Cat/Main/s13.svg";
+import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
+import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
+import s1CatRightOne from "../../../../images/Cat/Main/Awake/s12.svg";
+import s1CatRightTwo from "../../../../images/Cat/Main/Awake/s13.svg";
+import s2CatLeftOne from "../../../../images/Cat/Main/Awake/s2.svg";
+import s2CatLeftTwo from "../../../../images/Cat/Main/Awake/s21.svg";
+import s2CatRightOne from "../../../../images/Cat/Main/Awake/s22.svg";
+import s2CatRightTwo from "../../../../images/Cat/Main/Awake/s23.svg";
+import s3CatLeftOne from "../../../../images/Cat/Main/Awake/s3.svg";
+import s3CatLeftTwo from "../../../../images/Cat/Main/Awake/s31.svg";
+import s3CatRightOne from "../../../../images/Cat/Main/Awake/s32.svg";
+import s3CatRightTwo from "../../../../images/Cat/Main/Awake/s33.svg";
 
-import s2CatLeftOne from "../../../../images/Cat/Main/s2.svg";
-import s2CatLeftTwo from "../../../../images/Cat/Main/s21.svg";
-import s2CatRightOne from "../../../../images/Cat/Main/s22.svg";
-import s2CatRightTwo from "../../../../images/Cat/Main/s23.svg";
 
-import s3CatLeftOne from "../../../../images/Cat/Main/s3.svg";
-import s3CatLeftTwo from "../../../../images/Cat/Main/s31.svg";
-import s3CatRightOne from "../../../../images/Cat/Main/s32.svg";
-import s3CatRightTwo from "../../../../images/Cat/Main/s33.svg";
+import s1CatSleepOne from "../../../../images/Cat/Main/Asleep/s1.png";
+import s1CatSleepTwo from "../../../../images/Cat/Main/Asleep/s11.png";
+import s2CatSleepOne from "../../../../images/Cat/Main/Asleep/s2.png";
+import s2CatSleepTwo from "../../../../images/Cat/Main/Asleep/s21.png";
+import s3CatSleepOne from "../../../../images/Cat/Main/Asleep/s3.png";
+import s3CatSleepTwo from "../../../../images/Cat/Main/Asleep/s31.png";
 
 
 import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
@@ -38,7 +44,7 @@ import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
 import salmon from "../../../../images/Cat/Feed/Options/salmon.png";
 import magnifier from "../../../../images/Cat/Play/magnifier.png";
 import pill from "../../../../images/Cat/Medicine/Options/pill.png";
-
+import tablet from "../../../../images/Cat/Medicine/Options/tablet.png";
 
 
 import Main from "../PetscreensComponents/Main.jsx";
@@ -46,7 +52,7 @@ import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import PetCareGuide from "../PetscreensComponents/Nonstations/PetCareGuide.jsx";
+import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
 
 import GameOne from "./CatComponents/GameOne.jsx";
 
@@ -55,7 +61,16 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList } from "../../../../constants/Constants.js";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
+import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
+import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+
+import { home, pauseAudios } from "../../helpers/helpers.js";
+import { flagOpener } from "../../../../helpers/helpers.js";
 
 import "./Cat.css";
 
@@ -73,7 +88,7 @@ function Cat (){
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
     const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
     const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
-    const [catPetCareGuideOpenFlag, setCatPetCareGuideOpenFlag] = useState(false);
+    const [catBirthCertificateOpenFlag, setCatBirthCertificateOpenFlag] = useState(false);
     const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
     const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
     const [catMedicineDesiredOption, setCatMedicineDesiredOption] = useState(-1);
@@ -97,18 +112,18 @@ function Cat (){
                             : false;
 
     const catUnwell =  ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies] ? 
+                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies][PetList[ActivePetName][stageKey]] ? 
                             true 
                             : false
                         : false;
 
 
     const catMood = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.75 ? 
+                        PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                             0
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.5 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies] >= 0.25 ? 
+                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                             2
                             : 3
                         : -1;
@@ -127,6 +142,14 @@ function Cat (){
                                     : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
                                 : [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
+    const catMainSleepingImages = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        [s1CatSleepOne, s1CatSleepTwo]
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        [s2CatSleepOne, s2CatSleepTwo]
+                                    : [s3CatSleepOne, s3CatSleepTwo]
+                                : [s1CatSleepOne, s1CatSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
     const catFeedImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
                                         [s1CatFeedOne, s1CatFeedTwo]
@@ -144,10 +167,113 @@ function Cat (){
                                 : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
+
+
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
     const catPlayOptions = [["Mouse Hunt", magnifier, GameOne]];
-    const catMedicineOptions = [["pill", pill]];
+    const catMedicineOptions = [["pill", pill], ["tablet", tablet]];
 
+
+    const catAudioRefs = useRef([new Audio(catHappy), new Audio(catSad), new Audio(catSleep)]);
+
+
+    const navigate = useNavigate();
+        
+        
+    useKeyboardShortcut("1", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            home(setActivePetName);
+            navigate("/home");
+
+        }
+
+    },
+        ".Home"
+    );
+
+
+    useKeyboardShortcut("2", () => {
+
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            flagOpener(setCatScheduleOpenFlag);
+
+        }
+
+    },
+        ".Schedule"
+    );
+    
+
+
+    useKeyboardShortcut("3", () => {
+
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            flagOpener(setCatBirthCertificateOpenFlag);
+
+        }
+
+    },
+        ".BirthCertificate"
+    );
+        
+
+
+    useKeyboardShortcut("4", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            flagOpener(setCatFeedOpenFlag);
+
+        }
+
+    },
+        ".Feed"
+    );    
+
+
+    useKeyboardShortcut("5", () => {
+
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            flagOpener(setCatPlayOpenFlag);
+
+        }
+
+    },
+        ".Play"
+    );
+    
+
+
+    useKeyboardShortcut("6", () => {
+
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+
+            flagOpener(setCatMedicineOpenFlag);
+
+        }
+
+    },
+        ".Medicine"
+    );
+
+
+
+
+    
+    useEffect(() => {
+
+        if (ActivePetName === "" || catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag){
+
+            pauseAudios(catAudioRefs);
+
+        }
+
+    }, [ActivePetName, catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
 
 
 
@@ -220,26 +346,28 @@ function Cat (){
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
 
-            {catPetCareGuideOpenFlag &&
-            <PetCareGuide
-                setPetCareGuideOpenFlag = {setCatPetCareGuideOpenFlag}
+            {catBirthCertificateOpenFlag &&
+            <BirthCertificate
+                setBirthCertificateOpenFlag = {setCatBirthCertificateOpenFlag}
             />}
         
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setActivePetName("")}> Home </Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home </Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag)}> Schedule </button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setCatBirthCertificateOpenFlag)}> Birth Certificate </button>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatFeedOpenFlag(true)}> Feed </button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar"} onClick = {() => setCatPlayOpenFlag(true)}> Play </button>
+                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatFeedOpenFlag)}> Feed </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag)}> Play </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatMedicineOpenFlag(true)}> Medicine </button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setCatMedicineOpenFlag)}> Medicine </button>
 
                             ) : (
 
@@ -259,14 +387,13 @@ function Cat (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatScheduleOpenFlag(true)}> Schedule </button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar" onClick = {() => setCatPetCareGuideOpenFlag(true)}> Guide </button>
-
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={catMainImages}
+                        mainSleepingImages = {catMainSleepingImages}
+                        mainPetAudios = {catAudioRefs}
                         mainPetEnergy = {450}
                         mainPetMood = {catMood}
                         mainActivityInProgress = {catActivityInProgress}

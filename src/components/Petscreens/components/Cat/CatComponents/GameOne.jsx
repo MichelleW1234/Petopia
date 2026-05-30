@@ -4,8 +4,13 @@ import "./GameOne.css";
 import mouse from "../../../../../images/mouse.png";
 import snake from "../../../../../images/snake.png";
 
+import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+import { playSound } from "../../../../../helpers/helpers.js";
+import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Constants.js";
+import { starter } from "../../../helpers/Helpers.js";
 
-function GameOne({ playCurrNumber, setPlayCurrNumber }) {
+
+function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const windowWidth = 3;
     const windowHeight = 5;
@@ -14,6 +19,39 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
     const [start, setStart] = useState(false);
     const [creaturePositions, setCreaturePositions] = useState([]);
 
+
+    useKeyboardShortcut("Enter", () => {
+    
+        if (playSelection !== -1 && !playDone){
+
+            starter(setStart);
+
+        }
+
+    },
+        ".Start"
+    );
+
+
+
+
+    useEffect(() => {
+
+        if (!start || playDone) {
+            return;
+        }
+
+        playAudioRef.current[0].loop = true;
+        playAudioRef.current[0].play();
+
+        return () => {
+            playAudioRef.current[0].pause();
+            playAudioRef.current[0].currentTime = 0;
+            playAudioRef.current[0].loop = false;
+        };
+
+    }, [start, playDone]);
+    
 
 
     useEffect(() => {
@@ -92,6 +130,23 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
     }, [start]);
 
 
+    const holeSelected = (mouse) => {
+
+        playSound(gameButtonSoundKey);
+        
+        if (mouse === 0){
+
+            setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+
+        } else {
+
+            setPlayCurrNumber(prev => prev + 1);
+
+        }
+
+    }
+
+
 
 
     return (
@@ -100,7 +155,7 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Hit the mouse and avoid the snakes!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton" onClick = {() => setStart(true)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
             </div>}
 
             <div className="gridContainer">
@@ -115,13 +170,13 @@ function GameOne({ playCurrNumber, setPlayCurrNumber }) {
                             
                             mouseHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => setPlayCurrNumber(prev => prev + 1)}>
+                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(1)}>
                                     <img src = {mouse}/>
                                 </div>
                                 
                             ) : snakeHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}>
+                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(0)}>
                                     <img src = {snake}/>
                                 </div>
 
