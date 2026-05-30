@@ -31,16 +31,26 @@ function BirthCertificate({setBirthCertificateOpenFlag}) {
     return (
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag Certificate">
-                <div className="heading">
-                    <h1>Birth Certificate:</h1>
-                    <hr/>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+                <div className="Certificate">
+                    <div className="heading">
+                        <h1>Birth Certificate:</h1>
+                        <hr/>
+                    </div>
+                    <div className="column">
+                        <h2> Name: </h2>
+                        <p> {ActivePetName}</p>
+                    </div>
+                    <div className="column">
+                        <h2>Gender:</h2>
+                        <p>{PetList[ActivePetName][genderKey]}</p>
+                    </div>
+                    <div className="column">
+                        <h2> Birthdate: </h2>
+                        <p>{birthday}</p>
+                    </div>
+                    <img className = "stamp" src = {stamp}/>
                 </div>
-                <h2> Name: {ActivePetName} </h2>
-                <h2> Gender: {PetList[ActivePetName][genderKey]}</h2>
-                <h2> Birthdate: {birthday} </h2>
-
-                <img className = "stamp" src = {stamp}/>
             </div>
 
             <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setBirthCertificateOpenFlag)}> Close </button>

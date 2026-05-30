@@ -33,6 +33,12 @@ function Schedule({setScheduleOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
+                <div className = "schedule">
+                <div className="heading">
+                    <h1>Schedule:</h1>
+                    <hr/>
+                </div>
+
                 {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
 
                     <Activity
@@ -47,6 +53,7 @@ function Schedule({setScheduleOpenFlag}) {
                     activityKey = {medicineKey}
                     activityTimeGap = {medicineDoseTimeGap}
                 />
+                </div>
 
             </div>
             

@@ -55,6 +55,7 @@ import cloth from "../../../../images/Fish/Clean/Options/cloth.png";
 import spongeCursor from "../../../../images/Fish/Clean/Options/sponge.cur";
 import clothCursor from "../../../../images/Fish/Clean/Options/cloth.cur";
 import pill from "../../../../images/Fish/Medicine/Options/pill.png";
+import bottle from  "../../../../images/Fish/Medicine/Options/bottle.png";
 
 
 import Main from "../PetscreensComponents/Main.jsx";
@@ -186,7 +187,7 @@ function Fish (){
 
     const fishFeedOptions = [["shrimp", shrimp], ["worms", worms], ["algae", algae]];
     const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
-    const fishMedicineOptions = [["pill", pill]];
+    const fishMedicineOptions = [["pill", pill], ["bottle", bottle]];
 
     const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishSad), new Audio(fishSleep)]);
 
@@ -366,7 +367,7 @@ function Fish (){
             />}
 
 
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 

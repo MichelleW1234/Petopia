@@ -291,7 +291,7 @@ function Adoption () {
                 />
             }
 
-            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Nonstation">
+            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home </Link>
@@ -346,6 +346,7 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
+                        <div className="form"> 
                         <div className="heading">
                             <h1>Fill out this form: </h1> 
                             <hr/>
@@ -354,19 +355,23 @@ function Adoption () {
                         <div className = "Adoption_ComponentContainer-Structure--Form">
                             <p>Hello, my name is </p>
 
-                            <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormName">
-                                <input 
-                                    type="text"
-                                    value={confirmationPetName}
-                                    onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                                    placeholder="Name your pet..."
-                                />
+                            <div className="row">
+                                <img className = "portrait" src = {portraitPetImages[selectedPet][0]}/>
+                                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormName">
+                                    <input 
+                                        type="text"
+                                        value={confirmationPetName}
+                                        onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                                        placeholder="Name your pet..."
+                                    />
+                                </div>
                             </div>
 
                             <p> and I am a {petGender} {selectedPet}.</p>
-                            <p>This form is to certify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
-                            <img src = {portraitPetImages[selectedPet]}/>
+                            <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide to know how to care for me!</p>
                         </div>
+                        </div>
+
                             
                         <div className = "Adoption_ComponentContainer-Structure--FormChecking">
                             <p className = "Adoption_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>

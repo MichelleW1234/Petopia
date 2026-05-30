@@ -55,6 +55,7 @@ import soapCursor from "../../../../images/Dog/Clean/Options/soap.cur";
 import brushCursor from "../../../../images/Dog/Clean/Options/brush.cur";
 import leash from "../../../../images/Dog/Play/leash.png";
 import pill from "../../../../images/Dog/Medicine/Options/pill.png";
+import chew from "../../../../images/Dog/Medicine/Options/chew.png";
 
 import GameOne from "./DogComponents/GameOne.jsx";
 
@@ -198,7 +199,7 @@ function Dog (){
     const dogFeedOptions = [["beef", beef], ["turkey", turkey], ["lamb", lamb]]; 
     const dogCleanOptions = [["soap", soap, soapCursor], ["brush", brush, brushCursor]];
     const dogPlayOptions = [["Stroll Patrol", leash, GameOne]];
-    const dogMedicineOptions = [["pill", pill]];
+    const dogMedicineOptions = [["pill", pill], ["chew", chew]];
 
 
     const dogAudioRefs = useRef([new Audio(dogHappy), new Audio(dogSad), new Audio(dogSleep)]);
@@ -401,7 +402,7 @@ function Dog (){
                 setBirthCertificateOpenFlag = {setDogBirthCertificateOpenFlag}
             />}
             
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 

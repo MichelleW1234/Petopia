@@ -44,7 +44,7 @@ import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
 import salmon from "../../../../images/Cat/Feed/Options/salmon.png";
 import magnifier from "../../../../images/Cat/Play/magnifier.png";
 import pill from "../../../../images/Cat/Medicine/Options/pill.png";
-
+import tablet from "../../../../images/Cat/Medicine/Options/tablet.png";
 
 
 import Main from "../PetscreensComponents/Main.jsx";
@@ -171,7 +171,7 @@ function Cat (){
 
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
     const catPlayOptions = [["Mouse Hunt", magnifier, GameOne]];
-    const catMedicineOptions = [["pill", pill]];
+    const catMedicineOptions = [["pill", pill], ["tablet", tablet]];
 
 
     const catAudioRefs = useRef([new Audio(catHappy), new Audio(catSad), new Audio(catSleep)]);
@@ -351,7 +351,7 @@ function Cat (){
                 setBirthCertificateOpenFlag = {setCatBirthCertificateOpenFlag}
             />}
         
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen--Station">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
