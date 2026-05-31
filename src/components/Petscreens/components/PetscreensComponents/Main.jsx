@@ -218,7 +218,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
         ) : (
 
             <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
-                <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Structure--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
+                <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Template--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
                         <h1 className = "Main_ComponentHeading-Template--WindowScreenPetStatsName">{ActivePetName}:</h1>
