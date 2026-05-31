@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import "./GameOne.css";
+import "./StrollPatrol.css";
 
 import carrot from "../../../../../images/carrot.png";
 import skull from "../../../../../images/skull.png";
@@ -12,7 +12,7 @@ import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
 
 
-function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
+function StrollPatrol({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const windowWidth = 8;
     const windowHeight = 5;
@@ -189,14 +189,14 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen GameOne_ComponentContainer-Template--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <p>Lead the dog on your walk to collect all the carrots! Avoid everything else!</p> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
             </div>}
 
-            <div className="GameOne_ComponentContainer-Template--Buttons">
+            <div className="StrollPatrol_ComponentContainer-Template--Buttons">
 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Up" onClick = {() => moveUp()}> 
                     [&#x2B06;]
@@ -207,7 +207,7 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
             </div>
 
-            <div className="GameOne_ComponentContainer-Structure--Grid">
+            <div className="StrollPatrol_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: windowHeight}, (_, row) => 
                     Array.from({ length: windowWidth}, (_, col) => {
@@ -220,19 +220,19 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
                             
                             dogHere ? (
 
-                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {dog}/>
+                                <img key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell" src = {dog}/>
                                 
                             ) : badHere ? (
 
-                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {skull}/>
+                                <img key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell" src = {skull}/>
 
                             ) : goodHere ? (
                                 
-                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {carrot}/>
+                                <img key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell" src = {carrot}/>
                                 
                             ) : (
 
-                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell"></div>
+                                <div key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell"></div>
         
                             )
                         
@@ -248,4 +248,4 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
     );
 }
   
-export default GameOne;
+export default StrollPatrol;

@@ -54,7 +54,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import GameOne from "./CatComponents/GameOne.jsx";
+import MouseHunt from "./CatComponents/MouseHunt.jsx";
 
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
@@ -170,7 +170,7 @@ function Cat (){
 
 
     const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
-    const catPlayOptions = [["Mouse Hunt", magnifier, GameOne]];
+    const catPlayOptions = [["Mouse Hunt", magnifier, MouseHunt]];
     const catMedicineOptions = [["pill", pill], ["tablet", tablet]];
 
 

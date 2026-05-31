@@ -57,7 +57,7 @@ import leash from "../../../../images/Dog/Play/leash.png";
 import pill from "../../../../images/Dog/Medicine/Options/pill.png";
 import chew from "../../../../images/Dog/Medicine/Options/chew.png";
 
-import GameOne from "./DogComponents/GameOne.jsx";
+import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
 
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
@@ -198,7 +198,7 @@ function Dog (){
 
     const dogFeedOptions = [["beef", beef], ["turkey", turkey], ["lamb", lamb]]; 
     const dogCleanOptions = [["soap", soap, soapCursor], ["brush", brush, brushCursor]];
-    const dogPlayOptions = [["Stroll Patrol", leash, GameOne]];
+    const dogPlayOptions = [["Stroll Patrol", leash, StrollPatrol]];
     const dogMedicineOptions = [["pill", pill], ["chew", chew]];
 
 

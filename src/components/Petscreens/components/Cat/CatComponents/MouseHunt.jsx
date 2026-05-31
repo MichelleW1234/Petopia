@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./GameOne.css";
+import "./MouseHunt.css";
 
 import mouse from "../../../../../images/mouse.png";
 import snake from "../../../../../images/snake.png";
@@ -10,7 +10,7 @@ import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Cons
 import { starter } from "../../../helpers/Helpers.js";
 
 
-function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+function MouseHunt({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const windowWidth = 3;
     const windowHeight = 5;
@@ -151,14 +151,14 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen GameOne_ComponentContainer-Structure--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <p>Hit the mouse and avoid the snakes!</p> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
             </div>}
 
-            <div className="GameOne_ComponentContainer-Structure--Grid">
+            <div className="MouseHunt_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: windowHeight}, (_, row) => 
                     Array.from({ length: windowWidth}, (_, col) => {
@@ -170,19 +170,19 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
                             
                             mouseHere ? (
 
-                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(1)}>
+                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(1)}>
                                     <img src = {mouse}/>
                                 </div>
                                 
                             ) : snakeHere ? (
 
-                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(0)}>
+                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(0)}>
                                     <img src = {snake}/>
                                 </div>
 
                             ) : (
 
-                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell"></div>
+                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell"></div>
         
                             )
                         
@@ -198,4 +198,4 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
     );
 }
   
-export default GameOne;
+export default MouseHunt;

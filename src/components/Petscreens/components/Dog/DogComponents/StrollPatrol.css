@@ -1,4 +1,4 @@
-.GameOne_ComponentContainer-Template--Screen{
+.StrollPatrol_ComponentContainer-Template--Screen{
 
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 
-.GameOne_ComponentContainer-Template--Buttons{
+.StrollPatrol_ComponentContainer-Template--Buttons{
 
     height: 100%;
     width: 15rem;
@@ -32,7 +32,7 @@
 
 
 
-.GameOne_ComponentContainer-Structure--Grid{
+.StrollPatrol_ComponentContainer-Structure--Grid{
 
     display: grid;
     grid-template-rows: repeat(5, 5rem);
@@ -40,7 +40,7 @@
 
 }
 
-.GameOne_ComponentContainer-Structure--GridCell{
+.StrollPatrol_ComponentContainer-Structure--GridCell{
 
     width: 100%;
     height: 100%;
