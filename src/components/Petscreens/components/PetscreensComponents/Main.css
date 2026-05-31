@@ -57,7 +57,7 @@
 
 .Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
 
-    width: 40rem;
+    width: 100%;
     height: 5.5rem;
     display: flex;
     flex-direction: row;
@@ -65,10 +65,11 @@
 
     gap: 0.5rem;
 
+
 }
 
 
-.Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart {
+.Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart {
 
     height: 2.5rem;
     width: 2.5rem;
@@ -76,7 +77,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridNonempty {
+.Main_ComponentContainer-Structure--WindowScreenGrid {
 
     display: grid;
     grid-template-columns: repeat(20, auto);
@@ -84,7 +85,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet {
+.Main_ComponentContainer-Structure--WindowScreenGridCellNonpet {
 
     height: 20rem;
     width: 2rem;
@@ -92,7 +93,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet {
+.Main_ComponentContainer-Structure--WindowScreenGridCellPet {
 
     height: 20rem;
     width: 8rem;
@@ -106,7 +107,7 @@
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridEmpty{
+.Main_ComponentContainer-Structure--WindowScreenNongrid{
 
     height: 20rem;
     width: 46rem;
@@ -115,17 +116,10 @@
     align-items: center;
     justify-content: center;
 
-    img {
-
-        height: 15rem;
-        width: 15rem;
-
-    }
-
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridEmptyPet{
+.Main_ComponentContainer-Structure--WindowScreenNongridPet{
 
     height: 5rem;
     width: 10rem;
@@ -135,5 +129,12 @@
         width: 100%;
 
     }
+
+}
+
+.Main_ComponentImage-Structure--WindowScreenNongridTomb{
+
+    height: 15rem;
+    width: 15rem;
 
 }

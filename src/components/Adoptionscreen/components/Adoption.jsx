@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import PetGuide from "./AdoptionscreenComponents/PetGuide.jsx";
+import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
 
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
@@ -22,7 +22,7 @@ function Adoption () {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
-    const [petGuideOpenFlag, setPetGuideOpenFlag] = useState(false);
+    const [petSpeciesGuideOpenFlag, setPetSpeciesGuideOpenFlag] = useState(false);
     const [selectedPet, setSelectedPet] = useState("");
     const [petGender, setPetGender] = useState("");
     const [step, setStep] = useState(0);
@@ -44,7 +44,7 @@ function Adoption () {
 
     useKeyboardShortcut("1", () => {
         
-        if (!petGuideOpenFlag){
+        if (!petSpeciesGuideOpenFlag){
 
             playSound(buttonSoundKey);
             navigate("/home");
@@ -59,17 +59,17 @@ function Adoption () {
     
     useKeyboardShortcut("2", () => {
         
-        flagOpener(setPetGuideOpenFlag);
+        flagOpener(setPetSpeciesGuideOpenFlag);
 
     },
-        ".OpenPetGuide"
+        ".PetSpeciesGuide"
     );
 
 
 
     useKeyboardShortcut("Enter", () => {
         
-        if (step === 0 && petGender === "" && selectedPet !== "" && !petGuideOpenFlag){
+        if (step === 0 && petGender === "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             petSelecting();
 
@@ -82,7 +82,7 @@ function Adoption () {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             undo();
 
@@ -95,7 +95,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", (e) => {
         
-        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petGuideOpenFlag){
+        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             nameChecking(e);
 
@@ -285,9 +285,9 @@ function Adoption () {
 
         <>
 
-            {petGuideOpenFlag &&
-                <PetGuide
-                    setPetGuideOpenFlag = {setPetGuideOpenFlag}
+            {petSpeciesGuideOpenFlag &&
+                <PetSpeciesGuide
+                    setPetSpeciesGuideOpenFlag = {setPetSpeciesGuideOpenFlag}
                 />
             }
 
@@ -295,7 +295,7 @@ function Adoption () {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar OpenPetGuide" onClick = {() => flagOpener(setPetGuideOpenFlag)}> Open Pet Guide <br/> [2]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setPetSpeciesGuideOpenFlag)}> Pet Species Guide <br/> [2]</button>
                 </div>
 
                 {step === 0 && petGender === "" ? (
@@ -308,7 +308,7 @@ function Adoption () {
             
                             {Object.keys(portraitPetImages).map((key) => (
             
-                                <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
+                                <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                     {key === selectedPet ? (
             
                                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => selectPet("")}>
@@ -346,40 +346,41 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <div className="form"> 
-                        <div className="heading">
-                            <h1>Fill out this form: </h1> 
-                            <hr/>
-                        </div> 
-            
-                        <div className = "Adoption_ComponentContainer-Structure--Form">
-                            <p>Hello, my name is </p>
+                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument"> 
 
-                            <div className="row">
-                                <img className = "portrait" src = {portraitPetImages[selectedPet][0]}/>
-                                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormName">
-                                    <input 
-                                        type="text"
-                                        value={confirmationPetName}
-                                        onChange={(e) => {setConfirmationPetName(e.target.value)}}
-                                        placeholder="Name your pet..."
-                                    />
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                                <h1>Fill out this form: </h1> 
+                                <hr/>
+                            </div> 
+                
+                            <div className = "Adoption_ComponentContainer-Structure--FormBody">
+                                <p>Hello, my name is </p>
+
+                                <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
+                                    <img src = {portraitPetImages[selectedPet][0]}/>
+                                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
+                                        <input 
+                                            type="text"
+                                            value={confirmationPetName}
+                                            onChange={(e) => {setConfirmationPetName(e.target.value)}}
+                                            placeholder="Name your pet..."
+                                        />
+                                    </div>
+                                </div>
+
+                                <p> and I am a {petGender} {selectedPet}.</p>
+                                <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
+                            </div>
+                            </div>
+
+                                
+                            <div className = "Adoption_ComponentContainer-Structure--Confirmation">
+                                <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{errorMessage}</p>
+                                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection <br/> [esc]</button>
+                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection <br/> [return]</button>
                                 </div>
                             </div>
-
-                            <p> and I am a {petGender} {selectedPet}.</p>
-                            <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
-                        </div>
-                        </div>
-
-                            
-                        <div className = "Adoption_ComponentContainer-Structure--FormChecking">
-                            <p className = "Adoption_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection <br/> [esc]</button>
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection <br/> [return]</button>
-                            </div>
-                        </div>
 
                     </div>
 

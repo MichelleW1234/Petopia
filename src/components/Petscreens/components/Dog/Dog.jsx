@@ -65,7 +65,7 @@ import Clean from "../PetscreensComponents/Stations/Clean.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
+import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 
 
@@ -101,7 +101,7 @@ function Dog (){
     const [dogCleanOpenFlag, setDogCleanOpenFlag] = useState(false);
     const [dogPlayOpenFlag, setDogPlayOpenFlag] = useState(false);
     const [dogMedicineOpenFlag, setDogMedicineOpenFlag] = useState(false);
-    const [dogBirthCertificateOpenFlag, setDogBirthCertificateOpenFlag] = useState(false);
+    const [dogRecordsOpenFlag, setDogRecordsOpenFlag] = useState(false);
     const [dogScheduleOpenFlag, setDogScheduleOpenFlag] = useState(false);
     const [dogFeedDesiredOption, setDogFeedDesiredOption] = useState(-1);
     const [dogCleanDesiredOption, setDogCleanDesiredOption] = useState(-1);
@@ -209,7 +209,7 @@ function Dog (){
     
     useKeyboardShortcut("1", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -223,7 +223,7 @@ function Dog (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             flagOpener(setDogScheduleOpenFlag);
 
@@ -236,21 +236,21 @@ function Dog (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
-            flagOpener(setDogBirthCertificateOpenFlag);
+            flagOpener(setDogRecordsOpenFlag);
 
         }
 
     },
-        ".BirthCertificate"
+        ".Records"
     );
     
 
 
     useKeyboardShortcut("4", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             flagOpener(setDogFeedOpenFlag);
 
@@ -263,7 +263,7 @@ function Dog (){
 
     useKeyboardShortcut("5", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             flagOpener(setDogCleanOpenFlag);
 
@@ -278,7 +278,7 @@ function Dog (){
 
     useKeyboardShortcut("6", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             flagOpener(setDogPlayOpenFlag);
 
@@ -292,7 +292,7 @@ function Dog (){
 
     useKeyboardShortcut("7", () => {
 
-        if (dogAlive && dogCanReceiveDose && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogBirthCertificateOpenFlag){
+        if (dogAlive && dogCanReceiveDose && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             flagOpener(setDogMedicineOpenFlag);
 
@@ -397,9 +397,9 @@ function Dog (){
                 setScheduleOpenFlag={setDogScheduleOpenFlag}
             />}
 
-            {dogBirthCertificateOpenFlag &&
-            <BirthCertificate
-                setBirthCertificateOpenFlag = {setDogBirthCertificateOpenFlag}
+            {dogRecordsOpenFlag &&
+            <Records
+                setRecordsOpenFlag = {setDogRecordsOpenFlag}
             />}
             
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
@@ -408,7 +408,7 @@ function Dog (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setDogBirthCertificateOpenFlag)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setDogRecordsOpenFlag)}> Records <br/> [3]</button>
 
                     {dogAlive ? (
 

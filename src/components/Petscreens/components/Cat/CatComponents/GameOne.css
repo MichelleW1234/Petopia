@@ -1,4 +1,4 @@
-.ThisGameWindow{
+.GameOne_ComponentContainer-Structure--Screen{
 
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 
 }
 
-.gridContainer{
+.GameOne_ComponentContainer-Structure--Grid{
 
     display: grid;
     grid-template-rows: repeat(3, 8rem);
@@ -18,7 +18,7 @@
 
 }
 
-.hole{
+.GameOne_ComponentContainer-Template--GridCell{
 
     display: flex;
     flex-direction: column;
@@ -45,8 +45,8 @@
 
 }
 
-.hole:hover,
-.hole.active {
+.GameOne_ComponentContainer-Template--GridCell:hover,
+.GameOne_ComponentContainer-Template--GridCell.active {
 
     box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
 

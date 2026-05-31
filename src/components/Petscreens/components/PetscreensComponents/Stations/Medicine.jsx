@@ -252,11 +252,11 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                         {!medicineDone ? (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Medicine_ComponentContainer-Template--WindowScreen">
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <h2>medicine your pet!</h2> 
-                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
+                                    <p>Wait for your pet as it receives its dose!</p> 
+                                    <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
                                 </div>}
                         
                                 <img src = {medicineAnimationImages[medicineAnimationImage]} />
@@ -265,7 +265,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
                         ) : (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MedicineWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Medicine_ComponentContainer-Template--WindowScreen">
 
                                 {medicineSuccess ? (
 

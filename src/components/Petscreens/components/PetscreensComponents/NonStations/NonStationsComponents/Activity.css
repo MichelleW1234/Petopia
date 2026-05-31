@@ -1,4 +1,4 @@
-.Activity_ComponentContainer-Structure{
+.Activity_ComponentContainer-Structure--Category{
 
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 
 }
 
-.section{
+.Activity_ComponentContainer-Structure--CategoryField{
 
   display: flex;
   flex-direction: row;

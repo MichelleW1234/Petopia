@@ -1,24 +1,4 @@
-.form{
-
-    width: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    padding: 4rem;
-    gap: 3rem;
-    border-radius: 2rem;
-
-    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
-
-
-}
-
-
-
-.Adoption_ComponentContainer-Structure--Form{
+.Adoption_ComponentContainer-Structure--FormBody{
 
     display: flex;
     flex-direction: column;
@@ -32,27 +12,7 @@
 }
 
 
-.heading{
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 1rem;
-
-    hr{
-
-        width: 100%;
-
-        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
-
-    }
-
-}
-
-.row {
+.Adoption_ComponentContainer-Template--FormBodyNameRow {
 
     display: flex;
     flex-direction: row;
@@ -61,9 +21,24 @@
 
     gap: 3rem;
 
+    img {
+
+        height: 10rem;
+        width: 10rem;
+
+        padding: 1rem;
+        border-radius: 1rem;
+
+        filter: 
+            drop-shadow(0 0 5px rgb(255, 255, 255));
+
+        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
+
+    }
+
 }
 
-.Adoption_ComponentContainer-Template--FormName{
+.Adoption_ComponentContainer-Template--FormBodyNameRowName{
 
     padding: 1rem 2rem;
     border-radius: 1rem;
@@ -82,7 +57,7 @@
 }
  
 
-.Adoption_ComponentContainer-Structure--FormChecking{
+.Adoption_ComponentContainer-Structure--Confirmation{
 
     display: flex;
     flex-direction: column;
@@ -94,25 +69,10 @@
 }
 
 
-.Adoption_ComponentContainer-Template--FormCheckingError {
+.Adoption_ComponentContainer-Template--ConfirmationError {
 
     height: 1rem;
     
     color: rgb(255, 0, 111);
-
-}
-
-.portrait{
-
-    height: 10rem;
-    width: 10rem;
-
-    padding: 1rem;
-    border-radius: 1rem;
-
-    filter: 
-        drop-shadow(0 0 5px rgb(255, 255, 255));
-
-    box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
 
 }

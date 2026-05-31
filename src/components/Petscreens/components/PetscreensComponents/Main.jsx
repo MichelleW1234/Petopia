@@ -212,7 +212,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
         ActivePetName === "" ? (
 
             <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
-                <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty"></div>
+                <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
             </div>
 
         ) : (
@@ -229,12 +229,12 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
                                 num <= PetList[ActivePetName][healthKey] ? (
                                     <img key = {num} 
                                         src = {healthHeartGood}
-                                        className = "Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart"
+                                        className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"
                                     />
                                 ) : (
                                     <img key = {num} 
                                         src = {healthHeartBad}
-                                        className = "Main_ComponentImage--Template--WindowScreenPetStatsHealthHeart"
+                                        className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"
                                     />
                                 )
 
@@ -249,9 +249,9 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                             petSleeping ? (
 
-                                <div className="Main_ComponentContainer-Structure--WindowScreenGridEmpty"> 
+                                <div className="Main_ComponentContainer-Structure--WindowScreenNongrid"> 
 
-                                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridEmptyPet">
+                                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenNongridPet">
                                         <img 
                                             onMouseEnter={() => showAttention()}
                                             src = {mainSleepingImages[sleepAnimationImage]}
@@ -268,7 +268,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                             ) : (
 
-                                <div className="Main_ComponentContainer-Structure--WindowScreenGridNonempty"> 
+                                <div className="Main_ComponentContainer-Structure--WindowScreenGrid"> 
                                     {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
                                         
                                         const petHere = mainPetCurrentSpace === index;
@@ -277,7 +277,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                                             petHere ? (
 
-                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellPet">
+                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
                                                     <img 
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}
@@ -293,7 +293,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                                             ) : (
 
-                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridNonemptyCellNonpet"></div>
+                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridCellNonpet"></div>
 
                                             )
                                 
@@ -306,14 +306,14 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                         ) : (
 
-                            <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty"></div>
+                            <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
 
                         )
 
                     ) : (
 
-                        <div className= "Main_ComponentContainer-Structure--WindowScreenGridEmpty">
-                            <img src = {petTombStone}/>
+                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid">
+                            <img className = "Main_ComponentImage-Structure--WindowScreenNongridTomb" src = {petTombStone}/>
                         </div>
 
                     )}

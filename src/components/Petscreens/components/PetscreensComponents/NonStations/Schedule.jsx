@@ -33,26 +33,26 @@ function Schedule({setScheduleOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
-                <div className = "schedule">
-                <div className="heading">
-                    <h1>Schedule:</h1>
-                    <hr/>
-                </div>
+                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                        <h1>Schedule:</h1>
+                        <hr/>
+                    </div>
 
-                {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
+                    {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
+
+                        <Activity
+                            key = {key}
+                            activityKey = {key}
+                            activityTimeGap = {value}
+                        />
+
+                    ))}
 
                     <Activity
-                        key = {key}
-                        activityKey = {key}
-                        activityTimeGap = {value}
+                        activityKey = {medicineKey}
+                        activityTimeGap = {medicineDoseTimeGap}
                     />
-
-                ))}
-
-                <Activity
-                    activityKey = {medicineKey}
-                    activityTimeGap = {medicineDoseTimeGap}
-                />
                 </div>
 
             </div>

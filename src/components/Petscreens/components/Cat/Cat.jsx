@@ -52,7 +52,7 @@ import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
 import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import BirthCertificate from "../PetscreensComponents/Nonstations/BirthCertificate.jsx";
+import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import GameOne from "./CatComponents/GameOne.jsx";
 
@@ -88,7 +88,7 @@ function Cat (){
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
     const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
     const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
-    const [catBirthCertificateOpenFlag, setCatBirthCertificateOpenFlag] = useState(false);
+    const [catRecordsOpenFlag, setCatRecordsOpenFlag] = useState(false);
     const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
     const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
     const [catMedicineDesiredOption, setCatMedicineDesiredOption] = useState(-1);
@@ -182,7 +182,7 @@ function Cat (){
         
     useKeyboardShortcut("1", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -196,7 +196,7 @@ function Cat (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             flagOpener(setCatScheduleOpenFlag);
 
@@ -210,21 +210,21 @@ function Cat (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
-            flagOpener(setCatBirthCertificateOpenFlag);
+            flagOpener(setCatRecordsOpenFlag);
 
         }
 
     },
-        ".BirthCertificate"
+        ".Records"
     );
         
 
 
     useKeyboardShortcut("4", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             flagOpener(setCatFeedOpenFlag);
 
@@ -237,7 +237,7 @@ function Cat (){
 
     useKeyboardShortcut("5", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             flagOpener(setCatPlayOpenFlag);
 
@@ -251,7 +251,7 @@ function Cat (){
 
     useKeyboardShortcut("6", () => {
 
-        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catBirthCertificateOpenFlag){
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             flagOpener(setCatMedicineOpenFlag);
 
@@ -346,9 +346,9 @@ function Cat (){
                 setScheduleOpenFlag={setCatScheduleOpenFlag}
             />}
 
-            {catBirthCertificateOpenFlag &&
-            <BirthCertificate
-                setBirthCertificateOpenFlag = {setCatBirthCertificateOpenFlag}
+            {catRecordsOpenFlag &&
+            <Records
+                setRecordsOpenFlag = {setCatRecordsOpenFlag}
             />}
         
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
@@ -357,7 +357,7 @@ function Cat (){
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BirthCertificate" onClick = {() => flagOpener(setCatBirthCertificateOpenFlag)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setCatRecordsOpenFlag)}> Records <br/> [3]</button>
 
                     {catAlive ? (
 

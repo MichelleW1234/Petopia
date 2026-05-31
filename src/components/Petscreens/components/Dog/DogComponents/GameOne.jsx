@@ -189,25 +189,25 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen GameWindow">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen GameOne_ComponentContainer-Template--Screen">
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Lead the dog on your walk to eat all the carrots! Avoid everything else!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
+                <p>Lead the dog on your walk to collect all the carrots! Avoid everything else!</p> 
+                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
             </div>}
 
-            <div className="UsersContainer">
+            <div className="GameOne_ComponentContainer-Template--Buttons">
 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Up" onClick = {() => moveUp()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Up" onClick = {() => moveUp()}> 
                     [&#x2B06;]
                 </button>
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Down" onClick = {() => moveDown()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Down" onClick = {() => moveDown()}> 
                     [&#x2B07;]
                 </button>
 
             </div>
 
-            <div className="SlotContainer">
+            <div className="GameOne_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: windowHeight}, (_, row) => 
                     Array.from({ length: windowWidth}, (_, col) => {
@@ -220,19 +220,19 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
                             
                             dogHere ? (
 
-                                <img key = {row + " & " + col} className="CellSlot" src = {dog}/>
+                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {dog}/>
                                 
                             ) : badHere ? (
 
-                                <img key = {row + " & " + col} className="CellSlot" src = {skull}/>
+                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {skull}/>
 
                             ) : goodHere ? (
                                 
-                                <img key = {row + " & " + col} className="CellSlot" src = {carrot}/>
+                                <img key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell" src = {carrot}/>
                                 
                             ) : (
 
-                                <div key = {row + " & " + col} className="CellSlot"></div>
+                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Structure--GridCell"></div>
         
                             )
                         

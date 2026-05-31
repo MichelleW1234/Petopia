@@ -1,22 +1,5 @@
-.Certificate{
+.Records_ComponentContainer-Structure--Content{
 
-    width: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 4rem;
-    border-radius: 2rem;
-    gap: 2rem;
-    
-    box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
-
-}
-
-.heading{
-
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,17 +7,10 @@
 
     gap: 1rem;
 
-    hr{
-
-        width: 100%;
-
-        box-shadow: 0 0 1rem 0.1rem rgb(255, 255, 255);
-
-    }
-
 }
 
-.column{
+
+.Records_ComponentContainer-Structure--ContentField{
 
     display: flex;
     flex-direction: row;
@@ -45,14 +21,15 @@
 
 }
 
-.stamp{
+
+.Records_ComponentContainer-Template--Stamp{
 
     height: 10rem;
 
     padding: 1rem;
     border-radius: 1rem;
 
-    filter: 
+    filter:
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 4px rgb(255, 255, 255))
         drop-shadow(0 0 6px rgb(255, 255, 255));

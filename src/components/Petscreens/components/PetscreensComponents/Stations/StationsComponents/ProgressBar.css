@@ -1,10 +1,10 @@
-.ProgressBar_ComponentContainer-Color--ProgressbarCellDone {
+.ProgressBar_ComponentContainer-Color--CellDone {
 
   background-color: rgb(55, 255, 0);
 
 }
 
-.ProgressBar_ComponentContainer-Color--ProgressbarCellLeft {
+.ProgressBar_ComponentContainer-Color--CellLeft {
 
   background-color: rgb(55, 255, 0, 0.25);
 

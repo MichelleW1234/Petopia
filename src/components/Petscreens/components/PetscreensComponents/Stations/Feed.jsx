@@ -201,10 +201,10 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
                             {!feedDone ? (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeedWindow">
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
                                     {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2>Wait for your pet as it eats!</h2> 
-                                        <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
+                                        <p>Wait for your pet as it eats!</p> 
+                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
                                     </div>}
 
                                     <img src = {feedAnimationImages[feedAnimationImage]} />
@@ -213,7 +213,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
                             ) : (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeedWindow">
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
 
                                     {feedSuccess ? (
 

@@ -18,8 +18,8 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <div className = "guide">
-                    <div className="heading">
+                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
                         <h1>Pet Guide:</h1>
                         <hr/>
                     </div>

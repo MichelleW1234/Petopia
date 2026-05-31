@@ -37,7 +37,7 @@ function Home (){
 
     const [homeOpenClearPetsFlag, setHomeOpenClearPetsFlag] = useState(false);
     const [homeOpenRestartFlag, setHomeOpenRestartFlag] = useState(false);
-    const [homeOpenPetGuideFlag, setHomeOpenPetGuideFlag] = useState(false);
+    const [homeOpenPetCareGuideFlag, setHomeOpenPetCareGuideFlag] = useState(false);
 
     const minPetsAdopted = Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0;
     const maxPetsAdopted = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3;
@@ -46,7 +46,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag){
 
             flagOpener(setHomeOpenRestartFlag);
 
@@ -59,7 +59,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag){
 
             flagOpener(setHomeOpenClearPetsFlag);
 
@@ -73,7 +73,7 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!maxPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag) {
+        if (!maxPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag) {
 
             playSound(buttonSoundKey);
             navigate("/adopt");
@@ -87,14 +87,14 @@ function Home (){
     
     useKeyboardShortcut("4", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetGuideFlag){
+        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag){
 
-            flagOpener(setHomeOpenPetGuideFlag);
+            flagOpener(setHomeOpenPetCareGuideFlag);
 
         }
 
     },
-        ".PetGuide"
+        ".PetCareGuide"
     );
 
 
@@ -124,9 +124,9 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 
-            {homeOpenPetGuideFlag &&
+            {homeOpenPetCareGuideFlag &&
             <PetCareGuide
-                setPetCareGuideOpenFlag={setHomeOpenPetGuideFlag}
+                setPetCareGuideOpenFlag={setHomeOpenPetCareGuideFlag}
             />}
 
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">  
@@ -159,7 +159,7 @@ function Home (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetGuide" onClick = {() => flagOpener(setHomeOpenPetGuideFlag)}> Pet Guide <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomeOpenPetCareGuideFlag)}> Pet Care Guide <br/> [4]</button>
                     
                 </div>
 
@@ -185,7 +185,7 @@ function Home (){
 
                                     return (
 
-                                        <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionButtonSlot">
+                                        <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                                 
                                             {currPetHealth >= 75 ? (
             

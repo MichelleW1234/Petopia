@@ -133,15 +133,14 @@ function Play ({playOptions, playDesiredOption, setPlayDesiredOption, setPlayOpe
 
                             ) : (
 
-                                /* Change default window??? */
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen PlayWindow">
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen">
                                 </div>
 
                             )
 
                         ) : (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen PlayWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen">
 
                                 {playSuccess ? (
 

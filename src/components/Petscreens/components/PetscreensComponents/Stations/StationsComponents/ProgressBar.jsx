@@ -9,11 +9,11 @@ function ProgressBar({progressBarPercentUntilNextUpdate}) {
 
                 num <= progressBarPercentUntilNextUpdate ? (
 
-                    <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--ProgressbarCellDone"></div>
+                    <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellDone"></div>
 
                 ) : (
 
-                    <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--ProgressbarCellLeft"></div>
+                    <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellLeft"></div>
 
                 )
 

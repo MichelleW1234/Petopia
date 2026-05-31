@@ -2,13 +2,13 @@ import { buttonSoundKey } from "../../../../constants/Constants.js";
 import { flagCloser, playSound } from "../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import "./PetGuide.css";
+import "./PetSpeciesGuide.css";
 
-function PetGuide({setPetGuideOpenFlag}) {
+function PetSpeciesGuide({setPetSpeciesGuideOpenFlag}) {
 
     useKeyboardShortcut("2", () => {
 
-        flagCloser(setPetGuideOpenFlag);
+        flagCloser(setPetSpeciesGuideOpenFlag);
 
     },
         ".Close"
@@ -20,12 +20,12 @@ function PetGuide({setPetGuideOpenFlag}) {
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <div className="petGuide"> 
-                    <div className="heading">
-                        <h1>Pet Options:</h1>
+                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument"> 
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                        <h1>Pet Species Guide:</h1>
                         <hr/>
                     </div>
-                    <div className="petSection">
+                    <div className="PetSpeciesGuide_ComponentContainer-Structure--Category">
                         <h2>Dog: </h2>
                         <div>
                             <p>&bull; Feed 3 times a day </p>
@@ -34,7 +34,7 @@ function PetGuide({setPetGuideOpenFlag}) {
                             <p>&bull; Grows after 5 days  </p>
                         </div>
                     </div>
-                    <div className="petSection">
+                    <div className="PetSpeciesGuide_ComponentContainer-Structure--Category">
                         <h2>Cat: </h2>
                         <div>
                             <p>&bull; Feed 2 times a day </p>
@@ -42,7 +42,7 @@ function PetGuide({setPetGuideOpenFlag}) {
                             <p>&bull; Grows after 7 days </p>
                         </div>
                     </div>
-                    <div className="petSection">
+                    <div className="PetSpeciesGuide_ComponentContainer-Structure--Category">
                         <h2>Fish: </h2>
                         <div>
                             <p>&bull; Feed 1 time a day </p>
@@ -53,9 +53,9 @@ function PetGuide({setPetGuideOpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetGuideOpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetSpeciesGuideOpenFlag)}> Close <br/> [2]</button>
         </div>
     );
 }
   
-export default PetGuide;
+export default PetSpeciesGuide;

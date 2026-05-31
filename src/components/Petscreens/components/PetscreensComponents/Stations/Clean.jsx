@@ -188,7 +188,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                         {!cleanDone ? ( 
 
                             <div 
-                                className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow`} 
+                                className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
                                 style={{
                                     cursor: cleanSelection !== -1 && start
                                         ? `url('${cleanOptions[cleanSelection][2]}'), auto`
@@ -196,8 +196,8 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                                 }}>
 
                                 {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <h2> Drag your cursor back and forth to clean! </h2>
-                                    <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
+                                    <p> Drag your cursor back and forth for cleaning! </p>
+                                    <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
                                 </div>}
 
                                 <img
@@ -208,7 +208,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                         ) : (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen CleanWindow">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen">
 
                                 {cleanSuccess ? (
 

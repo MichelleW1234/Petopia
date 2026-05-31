@@ -87,12 +87,12 @@ function Activity({activityKey, activityTimeGap}) {
 
     return (
 
-        <div className = "Activity_ComponentContainer-Structure">
-            <div className="section">
+        <div className = "Activity_ComponentContainer-Structure--Category">
+            <div className="Activity_ComponentContainer-Structure--CategoryField">
                 <h2>{activityLastStrings[activityKey]}</h2> 
                 <p>{activityLastTimeString}</p>
             </div>
-            <div className="section">
+            <div className="Activity_ComponentContainer-Structure--CategoryField">
                 <h2>{activityNextStrings[activityKey]}</h2>
                 <p>{activityNextTimeString}</p>
             </div>

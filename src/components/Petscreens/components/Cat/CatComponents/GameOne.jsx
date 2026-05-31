@@ -151,14 +151,14 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen ThisGameWindow">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen GameOne_ComponentContainer-Structure--Screen">
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Hit the mouse and avoid the snakes!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
+                <p>Hit the mouse and avoid the snakes!</p> 
+                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
             </div>}
 
-            <div className="gridContainer">
+            <div className="GameOne_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: windowHeight}, (_, row) => 
                     Array.from({ length: windowWidth}, (_, col) => {
@@ -170,19 +170,19 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
                             
                             mouseHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(1)}>
+                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(1)}>
                                     <img src = {mouse}/>
                                 </div>
                                 
                             ) : snakeHere ? (
 
-                                <div key = {row + " & " + col} className="hole" onClick = {() => holeSelected(0)}>
+                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(0)}>
                                     <img src = {snake}/>
                                 </div>
 
                             ) : (
 
-                                <div key = {row + " & " + col} className="hole"></div>
+                                <div key = {row + " & " + col} className="GameOne_ComponentContainer-Template--GridCell"></div>
         
                             )
                         
