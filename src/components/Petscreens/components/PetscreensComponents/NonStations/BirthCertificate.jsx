@@ -53,7 +53,7 @@ function BirthCertificate({setBirthCertificateOpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setBirthCertificateOpenFlag)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setBirthCertificateOpenFlag)}> Close <br/> [3]</button>
 
         </div>
     );

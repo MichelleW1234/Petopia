@@ -23,17 +23,18 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
                         <h1>Pet Guide:</h1>
                         <hr/>
                     </div>
-                    <p> when to perform activity </p> 
-                    <p> what to select for each activity ( and what it looks like when activity isn't wanted)</p>
-                    <p> that it takes twice as long when a pet is given an activity option they don't want</p>
-                    <p> the damage for not doing each task on time, and the damage for choosing the incorrect option</p>
-                    <p> best medicine hours for healing and how much health they heal (+4 between 8pm and 6am, +2 otherwise)</p>
-                    <p> hint at interacting with pet to see what happens</p>
+                    <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
+                    <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
+                    <p> &bull; While an incorrect option can be selected, the activity will take twice as much effort to complete and the pet will lose health.</p>
+                    <p> &bull; A pet will also lose health if an actiivty isn't performed on time according to its schedule. Damage varies based on activity.</p>
+                    <p> &bull; A pet can gain health when given (the correct) medicine. Medicine is most effective when pets are sleeping (between 8pm and 6am). Only one dose per 24 hours is allowed.</p>
+                    <p> &bull; Pets will also gain health (increased health capacity) when they grow to their next stage. There are three stages in total.</p>
+                    <p> &bull; Try interacting with your pets to see what happens!</p>
                 </div>
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setPetCareGuideOpenFlag)}> Close </button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setPetCareGuideOpenFlag)}> Close <br/> [4]</button>
 
         </div>
     );

@@ -193,16 +193,16 @@ function GameOne({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, p
 
             {!start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the dog on your walk to eat all the carrots! Avoid everything else!</h2> 
-                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start</button>
+                <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Start" onClick = {() => starter(setStart)}>Start <br/> [return]</button>
             </div>}
 
             <div className="UsersContainer">
 
                 <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Up" onClick = {() => moveUp()}> 
-                    &#x2B06;
+                    [&#x2B06;]
                 </button>
                 <button className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowButton Down" onClick = {() => moveDown()}> 
-                    &#x2B07;
+                    [&#x2B07;]
                 </button>
 
             </div>

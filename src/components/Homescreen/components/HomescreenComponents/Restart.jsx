@@ -59,8 +59,8 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
                 <h1>Are you sure you want to restart the game? </h1>
             </div>
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartGame()}>Yes</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => screenFlagCloser(setRestartOpenFlag)}>No</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartGame()}>Yes <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => screenFlagCloser(setRestartOpenFlag)}>No <br/> [esc]</button>
             </div>
         </div>
     );

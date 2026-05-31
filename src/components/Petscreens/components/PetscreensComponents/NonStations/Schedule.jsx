@@ -57,7 +57,7 @@ function Schedule({setScheduleOpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => screenFlagCloser(setScheduleOpenFlag)}>Close</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => screenFlagCloser(setScheduleOpenFlag)}>Close <br/> [2] </button>
 
         </div>
     );

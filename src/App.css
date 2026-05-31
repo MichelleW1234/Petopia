@@ -110,6 +110,7 @@ a,
 button {
 
   font-size: calc(1rem*1.25);
+  text-align: center;
 
 }
 
@@ -153,7 +154,7 @@ a:active {
   align-items: center;
 
   padding: 4rem;
-  gap: 12rem;
+  gap: 10rem;
 
   background-size: cover;
   background-position: center;
@@ -210,8 +211,8 @@ a:active {
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick {
 
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
+  padding: 1.5rem 3rem;
+  border-radius: 4rem;
   border-style: solid;
 
   border-left-width: 0.35rem;
@@ -232,8 +233,8 @@ a:active {
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick {
 
-  padding: 1.5rem 2rem;
-  border-radius: 3rem;
+  padding: 1.5rem 3rem;
+  border-radius: 4rem;
   border-style: solid;
 
   border-left-width: 0.35rem;

@@ -294,8 +294,8 @@ function Adoption () {
             <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home </Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar OpenPetGuide" onClick = {() => flagOpener(setPetGuideOpenFlag)}> Open Pet Guide </button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home <br/> [1]</Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar OpenPetGuide" onClick = {() => flagOpener(setPetGuideOpenFlag)}> Open Pet Guide <br/> [2]</button>
                 </div>
 
                 {step === 0 && petGender === "" ? (
@@ -332,11 +332,11 @@ function Adoption () {
                     
                         {selectedPet !== "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation </button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation <br/> [return]</button>
             
                         ) : (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation </button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
             
                         )}  
 
@@ -368,7 +368,7 @@ function Adoption () {
                             </div>
 
                             <p> and I am a {petGender} {selectedPet}.</p>
-                            <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide to know how to care for me!</p>
+                            <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
                         </div>
                         </div>
 
@@ -376,8 +376,8 @@ function Adoption () {
                         <div className = "Adoption_ComponentContainer-Structure--FormChecking">
                             <p className = "Adoption_ComponentContainer-Template--FormCheckingError">{errorMessage}</p>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection </button>
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection </button>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => undo()}> Undo Selection <br/> [esc]</button>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => nameChecking(e)}> Confirm Selection <br/> [return]</button>
                             </div>
                         </div>
 
