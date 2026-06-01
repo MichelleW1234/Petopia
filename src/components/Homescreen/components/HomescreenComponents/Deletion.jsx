@@ -3,16 +3,17 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 
-import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
-
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import "./Deletion.css";
+import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { flagCloser, playSound, screenFlagCloser } from "../../../../helpers/helpers.js";
 
+import "./Deletion.css";
 
 
-function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
+
+
+function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -22,7 +23,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     useKeyboardShortcut("Enter", () => {
         
-        if (deletionOpenClearPetsFlag && deletionSelectedPets.length > 0){
+        if (deletionSelectedPets.length > 0){
 
             clearPets();
 
@@ -35,11 +36,7 @@ function Deletion({deletionOpenClearPetsFlag, setDeletionOpenClearPetsFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (deletionOpenClearPetsFlag){
-
-            screenFlagCloser(setDeletionOpenClearPetsFlag);
-
-        }
+        screenFlagCloser(setDeletionOpenClearPetsFlag);
 
     },
         ".Quit"

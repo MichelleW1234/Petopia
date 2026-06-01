@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
-import "./MouseHunt.css";
-
-import mouse from "../../../../../images/mouse.png";
-import snake from "../../../../../images/snake.png";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
 import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Constants.js";
 import { starter } from "../../../helpers/Helpers.js";
 
+import mouse from "../../../../../images/mouse.png";
+import snake from "../../../../../images/snake.png";
 
-function MouseHunt({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+import "./MouseHunt.css";
+
+
+
+
+function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const windowWidth = 3;
     const windowHeight = 5;
@@ -22,7 +26,7 @@ function MouseHunt({ playSelection, playDone, playCurrNumber, setPlayCurrNumber,
 
     useKeyboardShortcut("Enter", () => {
     
-        if (playSelection !== -1 && !playDone){
+        if (!playDone){
 
             starter(setStart);
 
@@ -41,13 +45,13 @@ function MouseHunt({ playSelection, playDone, playCurrNumber, setPlayCurrNumber,
             return;
         }
 
-        playAudioRef.current[0].loop = true;
-        playAudioRef.current[0].play();
+        playAudioRef.current.loop = true;
+        playAudioRef.current.play();
 
         return () => {
-            playAudioRef.current[0].pause();
-            playAudioRef.current[0].currentTime = 0;
-            playAudioRef.current[0].loop = false;
+            playAudioRef.current.pause();
+            playAudioRef.current.currentTime = 0;
+            playAudioRef.current.loop = false;
         };
 
     }, [start, playDone]);
@@ -130,6 +134,7 @@ function MouseHunt({ playSelection, playDone, playCurrNumber, setPlayCurrNumber,
     }, [start]);
 
 
+    
     const holeSelected = (mouse) => {
 
         playSound(gameButtonSoundKey);

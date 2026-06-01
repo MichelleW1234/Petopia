@@ -1,9 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import "./StrollPatrol.css";
-
-import carrot from "../../../../../images/carrot.png";
-import skull from "../../../../../images/skull.png";
-import dog from "../../../../../images/HorizontalDog.png";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
@@ -11,8 +6,16 @@ import { starter } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
 
+import carrot from "../../../../../images/carrot.png";
+import skull from "../../../../../images/skull.png";
+import dog from "../../../../../images/HorizontalDog.png";
 
-function StrollPatrol({ playSelection, playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
+import "./StrollPatrol.css";
+
+
+
+
+function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const windowWidth = 8;
     const windowHeight = 5;
@@ -24,7 +27,7 @@ function StrollPatrol({ playSelection, playDone, playCurrNumber, setPlayCurrNumb
 
     useKeyboardShortcut("Enter", () => {
     
-        if (playSelection !== -1 && !playDone){
+        if (!playDone){
 
             starter(setStart);
 
@@ -70,13 +73,13 @@ function StrollPatrol({ playSelection, playDone, playCurrNumber, setPlayCurrNumb
             return;
         }
 
-        playAudioRef.current[0].loop = true;
-        playAudioRef.current[0].play();
+        playAudioRef.current.loop = true;
+        playAudioRef.current.play();
 
         return () => {
-            playAudioRef.current[0].pause();
-            playAudioRef.current[0].currentTime = 0;
-            playAudioRef.current[0].loop = false;
+            playAudioRef.current.pause();
+            playAudioRef.current.currentTime = 0;
+            playAudioRef.current.loop = false;
         };
 
     }, [start, playDone]);

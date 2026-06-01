@@ -1,8 +1,11 @@
-import { buttonSoundKey } from "../../../../constants/Constants.js";
-import { flagCloser, playSound } from "../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
+import { buttonSoundKey } from "../../../../constants/Constants.js";
+import { flagCloser, playSound } from "../../../../helpers/helpers.js";
+
 import "./PetSpeciesGuide.css";
+
+
 
 function PetSpeciesGuide({setPetSpeciesGuideOpenFlag}) {
 

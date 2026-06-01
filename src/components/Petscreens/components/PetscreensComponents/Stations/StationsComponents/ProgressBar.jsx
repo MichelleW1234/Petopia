@@ -1,5 +1,6 @@
 import "./ProgressBar.css";
 
+
 function ProgressBar({progressBarPercentUntilNextUpdate}) {
 
     return (

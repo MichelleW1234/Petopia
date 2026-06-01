@@ -1,23 +1,23 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
-
 import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
-import { cleaningKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { manageHealth, pauseAudios, quit } from "../../../helpers/Helpers.js";
-
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import "./Clean.css";
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
+
+import { cleaningKey, moodPetImages, optionCursorKey, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { manageHealth, pauseAudio, quit, starter } from "../../../helpers/Helpers.js";
 import { screenFlagCloser, playSound } from "../../../../../helpers/helpers.js";
-import { starter } from "../../../helpers/Helpers.js";
 
 import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
+
+import "./Clean.css";
+
 
 
 
@@ -38,14 +38,14 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     const cleanAnimationImageRef = useRef(cleanAnimationImage);
 
-    const cleanAudioRef = useRef([new Audio(clean)]);
+    const cleanAudioRef = useRef(new Audio(clean));
 
 
 
     
     useKeyboardShortcut("Enter", () => {
     
-        if (cleanSelection !== -1 && cleanDone){
+        if (cleanDone){
 
             screenFlagCloser(setCleanOpenFlag);
 
@@ -58,7 +58,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     
     useKeyboardShortcut("Enter", () => {
     
-        if (cleanSelection !== -1 && !cleanDone){
+        if (!cleanDone){
 
             starter(setStart);
 
@@ -72,7 +72,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     useKeyboardShortcut("Escape", () => {
 
-        if (cleanSelection === -1 || !cleanDone){
+        if (!cleanDone){
 
             quit(cleanAudioRef, setCleanOpenFlag);
 
@@ -88,7 +88,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
     useEffect(() => {
 
-        const preloadImages = [...cleanAnimationImages, ...cleanOptions.map(item => item[1])];
+        const preloadImages = [...cleanAnimationImages, ...cleanOptions.map(item => item[optionImageKey]), ...cleanOptions.map(item => item[optionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -128,13 +128,13 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
             return;
         }
 
-        cleanAudioRef.current[0].loop = true;
-        cleanAudioRef.current[0].play();
+        cleanAudioRef.current.loop = true;
+        cleanAudioRef.current.play();
 
         return () => {
-            cleanAudioRef.current[0].pause();
-            cleanAudioRef.current[0].currentTime = 0;
-            cleanAudioRef.current[0].loop = false;
+            cleanAudioRef.current.pause();
+            cleanAudioRef.current.currentTime = 0;
+            cleanAudioRef.current.loop = false;
         };
 
     }, [start, cleanDone]);
@@ -143,7 +143,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     useEffect(() => {
         if (cleanCurrNumber >= cleanTotal){
 
-            pauseAudios(cleanAudioRef);
+            pauseAudio(cleanAudioRef.current);
             setCleanDone(true);
             manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanDesiredOption, setCleanDesiredOption, cleanSelection, setCleanSuccess);
 
@@ -151,13 +151,6 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
     }, [cleanCurrNumber]);
     
 
-
-
-    const scrub = () => {
-
-        setCleanCurrNumber(prev => prev + 1);
-
-    }
 
 
 
@@ -191,7 +184,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
                                 className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
                                 style={{
                                     cursor: cleanSelection !== -1 && start
-                                        ? `url('${cleanOptions[cleanSelection][2]}'), auto`
+                                        ? `url('${cleanOptions[cleanSelection][optionCursorKey]}'), auto`
                                         : "default",
                                 }}>
 
@@ -202,7 +195,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
                                 <img
                                     src = {cleanAnimationImages[cleanAnimationImage]} 
-                                    onMouseEnter={() => scrub()}
+                                    onMouseEnter={() => setCleanCurrNumber(prev => prev + 1)}
                                 />
                             </div>
 
@@ -230,7 +223,7 @@ function Clean ({cleanAnimationImages, cleanOptions, cleanDesiredOption, setClea
 
             )}
 
-            {cleanSelection === -1 || !cleanDone ? (
+            {!cleanDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>

@@ -1,23 +1,23 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
-
 import { useGlobalTimer } from "../../../../../providers/GlobalTimerProvider.jsx";
 import {useActivePetName} from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { feedingKey, moodPetImages, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { manageHealth } from "../../../helpers/Helpers.js";
-
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import "./Feed.css";
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
+
+import { feedingKey, moodPetImages, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { screenFlagCloser } from "../../../../../helpers/helpers.js";
-import { starter, pauseAudios, quit} from "../../../helpers/Helpers.js";
+import { starter, pauseAudio, quit, manageHealth} from "../../../helpers/Helpers.js";
 
 import feed from "../../../../../Music/PetImmersionSounds/Feed.mp3";
+
+import "./Feed.css";
+
 
 
 function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesiredOption, setFeedOpenFlag}){
@@ -39,12 +39,12 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     const feedCurrNumberRef = useRef(feedCurrNumber);
     const feedAnimationImageRef = useRef(feedAnimationImage);
 
-    const feedAudioRef = useRef([new Audio(feed)]);
+    const feedAudioRef = useRef(new Audio(feed));
 
 
     useKeyboardShortcut("Enter", () => {
     
-        if (feedSelection !== -1 && feedDone){
+        if (feedDone){
 
             screenFlagCloser(setFeedOpenFlag);
 
@@ -57,7 +57,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
     
     useKeyboardShortcut("Enter", () => {
     
-        if (feedSelection !== -1 && !feedDone){
+        if (!feedDone){
 
             starter(setStart);
 
@@ -71,7 +71,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useKeyboardShortcut("Escape", () => {
 
-        if (feedSelection === -1 || !feedDone){
+        if (!feedDone){
 
             quit(feedAudioRef, setFeedOpenFlag);
 
@@ -85,7 +85,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useEffect(() => {
 
-        const preloadImages = [...feedAnimationImages, ...feedOptions.map(item => item[1])];
+        const preloadImages = [...feedAnimationImages, ...feedOptions.map(item => item[optionImageKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -111,7 +111,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
     useEffect(() => {
 
-        if (!start || feedSelection === -1 || feedDone) {
+        if (!start || feedDone) {
             return;
         }
 
@@ -123,7 +123,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             if (currSeconds >= feedTotal){
                 clearInterval(interval);
 
-                pauseAudios(feedAudioRef);
+                pauseAudio(feedAudioRef.current);
                 setFeedDone(true);
                 manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedDesiredOption, setFeedDesiredOption, feedSelection, setFeedSuccess);
             }
@@ -132,7 +132,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
 
         return () => clearInterval(interval);
 
-    }, [start, feedSelection, feedDone]);
+    }, [start, feedDone]);
 
 
     useEffect(() => {
@@ -162,13 +162,13 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             return;
         }
 
-        feedAudioRef.current[0].loop = true;
-        feedAudioRef.current[0].play();
+        feedAudioRef.current.loop = true;
+        feedAudioRef.current.play();
 
         return () => {
-            feedAudioRef.current[0].pause();
-            feedAudioRef.current[0].currentTime = 0;
-            feedAudioRef.current[0].loop = false;
+            feedAudioRef.current.pause();
+            feedAudioRef.current.currentTime = 0;
+            feedAudioRef.current.loop = false;
         };
 
     }, [start, feedDone]);
@@ -236,7 +236,7 @@ function Feed ({feedAnimationImages, feedOptions, feedDesiredOption, setFeedDesi
             )}
 
 
-            {feedSelection === -1 || !feedDone ? (
+            {!feedDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>

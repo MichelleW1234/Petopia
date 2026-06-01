@@ -13,7 +13,7 @@ import "./Confirmation.css";
 
 function Confirmation({selectedPet, setSelectedPet, setStep}) {
 
-    const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
+    const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 

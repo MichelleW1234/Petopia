@@ -10,7 +10,6 @@ import fishStageOne from "../images/Fish/Main/Awake/s1.svg";
 import fishStageTwo from "../images/Fish/Main/Awake/s2.svg";
 import fishStageThree from "../images/Fish/Main/Awake/s3.svg";
 
-
 import s1CatHappy from "../images/Cat/Mood/s1Happy.png";
 import s1CatSad from "../images/Cat/Mood/s1Sad.png";
 import s2CatHappy from "../images/Cat/Mood/s2Happy.png";
@@ -35,6 +34,8 @@ import s3FishSad from "../images/Fish/Mood/s1Sad.png";
 
 
 
+
+
 export const buttonSoundKey = "button_click";
 export const buttonPressSoundKey = "button_press";
 export const gameButtonSoundKey = "gameButton_click"
@@ -45,6 +46,17 @@ export const failSoundKey = "fail";
 export const confirmedSoundKey = "confirmed";
 export const clearedSoundKey = "cleared";
 export const restartSoundKey = "restart";
+
+
+export const optionImageKey = "image";
+export const optionNameKey = "name";
+export const optionCursorKey = "cursor";
+export const optionGameKey = "game";
+
+
+export const sleepAudioKey = "sleep";
+export const happyAudioKey = "happy";
+export const sadAudioKey = "sad";
 
 
 export const feedingKey = "feeding";

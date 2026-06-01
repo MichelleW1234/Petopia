@@ -1,14 +1,14 @@
-import Activity from "./NonstationsComponents/Activity.jsx";
-
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
-import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../../constants/Constants.js";
-
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import "./Schedule.css";
+import Activity from "./NonstationsComponents/Activity.jsx";
+
+import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../../constants/Constants.js";
 import { screenFlagCloser } from "../../../../../helpers/helpers.js";
+
+import "./Schedule.css";
 
 
 

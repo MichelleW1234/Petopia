@@ -1,3 +1,5 @@
+import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey } from "../constants/Constants.js";
+
 import button_click from "../Music/UIIndicatorSounds/button_click.mp3";
 import button_press from "../Music/UIIndicatorSounds/button_press.mp3";
 import gameButton_click from "../Music/UIIndicatorSounds/gameButton_click.mp3";
@@ -9,8 +11,6 @@ import confirmed from "../Music/UIIndicatorSounds/confirmed.mp3";
 import cleared from "../Music/UIIndicatorSounds/cleared.mp3";
 import restart from "../Music/UIIndicatorSounds/restart.mp3";
 
-
-import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey } from "../constants/Constants";
 
 
 export const playSound = (soundEffect) => {

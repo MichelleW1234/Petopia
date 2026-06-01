@@ -1,22 +1,22 @@
 import {useState, useEffect, useRef} from "react";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
-
 import {useGlobalTimer} from "../../../../../providers/GlobalTimerProvider.jsx";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
-import { failSoundKey, healthCapList, healthKey, medicineKey, moodPetImages, playingKey, speciesKey, stageKey, startSoundKey, successSoundKey } from "../../../../../constants/Constants.js";
-
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
+
+import ProgressBar from "./StationsComponents/ProgressBar.jsx";
+import Options from "./StationsComponents/Options.jsx";
+
+import { failSoundKey, healthCapList, healthKey, medicineKey, moodPetImages, optionImageKey, playingKey, speciesKey, stageKey, startSoundKey, successSoundKey } from "../../../../../constants/Constants.js";
+import { playSound, screenFlagCloser } from "../../../../../helpers/helpers.js";
+import { pauseAudio, quit, starter } from "../../../helpers/Helpers.js";
+
+import medicine from "../../../../../Music/PetImmersionSounds/Medicine.mp3";
 
 import "./Medicine.css";
 
-import { playSound, screenFlagCloser } from "../../../../../helpers/helpers.js";
-import { pauseAudios, quit, starter } from "../../../helpers/Helpers.js";
-
-import medicine from "../../../../../Music/PetImmersionSounds/Medicine.mp3";
 
 
 
@@ -38,12 +38,12 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
     const medicineAnimationImageRef = useRef(medicineAnimationImage);
 
-    const medicineAudioRef = useRef([new Audio(medicine)]);
+    const medicineAudioRef = useRef(new Audio(medicine));
 
         
     useKeyboardShortcut("Enter", () => {
     
-        if (medicineSelection !== -1 && medicineDone){
+        if (medicineDone){
 
             screenFlagCloser(setMedicineOpenFlag);
 
@@ -56,7 +56,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
     
     useKeyboardShortcut("Enter", () => {
     
-        if (medicineSelection !== -1 && !medicineDone){
+        if (!medicineDone){
 
             starter(setStart);
 
@@ -70,7 +70,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
     useKeyboardShortcut("Escape", () => {
 
-        if (medicineSelection === -1 || !medicineDone){
+        if (!medicineDone){
 
             quit(medicineAudioRef, setMedicineOpenFlag);
 
@@ -84,7 +84,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
 
     useEffect(() => {
 
-        const preloadImages = [...medicineAnimationImages, ...medicineOptions.map(item => item[1])];
+        const preloadImages = [...medicineAnimationImages, ...medicineOptions.map(item => item[optionImageKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -119,7 +119,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
             if (currSeconds >= medicineTotal){
                 clearInterval(interval);
 
-                pauseAudios(medicineAudioRef);
+                pauseAudio(medicineAudioRef.current);
                 setMedicineDone(true);
                 manageMedicineEffectiveness();
             }
@@ -157,13 +157,13 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
             return;
         }
 
-        medicineAudioRef.current[0].loop = true;
-        medicineAudioRef.current[0].play();
+        medicineAudioRef.current.loop = true;
+        medicineAudioRef.current.play();
 
         return () => {
-            medicineAudioRef.current[0].pause();
-            medicineAudioRef.current[0].currentTime = 0;
-            medicineAudioRef.current[0].loop = false;
+            medicineAudioRef.current.pause();
+            medicineAudioRef.current.currentTime = 0;
+            medicineAudioRef.current.loop = false;
         };
 
     }, [start, medicineDone]);
@@ -287,7 +287,7 @@ function Medicine ({medicineAnimationImages, medicineOptions, medicineDesiredOpt
                 
             )}
 
-            {medicineSelection === -1 || !medicineDone ? (
+            {!medicineDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quit(medicineAudioRef, setMedicineOpenFlag)}>Quit <br/> [esc]</button>

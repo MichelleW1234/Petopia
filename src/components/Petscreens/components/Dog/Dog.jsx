@@ -1,6 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
+import Main from "../PetscreensComponents/Main.jsx";
+import Feed from "../PetscreensComponents/Stations/Feed.jsx";
+import Clean from "../PetscreensComponents/Stations/Clean.jsx";
+import Play from "../PetscreensComponents/Stations/Play.jsx";
+import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import Records from "../PetscreensComponents/Nonstations/Records.jsx";
+
+import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionCursorKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey} from "../../../../constants/Constants.js";
+import { home, pauseAudio } from "../../helpers/Helpers.js";
+import { flagOpener } from "../../../../helpers/helpers.js";
+
+import dogHappy from "../../../../Music/PetImmersionSounds/dogHappy.mp3";
+import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
+import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+
 import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.svg";
 import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.svg";
 import s1DogRightOne from "../../../../images/Dog/Main/Awake/s12.svg";
@@ -21,14 +45,12 @@ import s2DogSleepTwo from "../../../../images/Dog/Main/Asleep/s21.png";
 import s3DogSleepOne from "../../../../images/Dog/Main/Asleep/s3.png";
 import s3DogSleepTwo from "../../../../images/Dog/Main/Asleep/s31.png";
 
-
 import s1DogFeedOne from "../../../../images/Dog/Feed/Animation/s1.png";
 import s1DogFeedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
 import s2DogFeedOne from "../../../../images/Dog/Feed/Animation/s2.png";
 import s2DogFeedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
 import s3DogFeedOne from "../../../../images/Dog/Feed/Animation/s3.png";
 import s3DogFeedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
-
 
 import s1DogCleanOne from "../../../../images/Dog/Main/Awake/s1.svg";
 import s1DogCleanTwo from "../../../../images/Dog/Main/Awake/s11.svg";
@@ -37,14 +59,12 @@ import s2DogCleanTwo from "../../../../images/Dog/Main/Awake/s21.svg";
 import s3DogCleanOne from "../../../../images/Dog/Main/Awake/s3.svg";
 import s3DogCleanTwo from "../../../../images/Dog/Main/Awake/s31.svg";
 
-
 import s1DogMedOne from "../../../../images/Dog/Feed/Animation/s1.png";
 import s1DogMedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
 import s2DogMedOne from "../../../../images/Dog/Feed/Animation/s2.png";
 import s2DogMedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
 import s3DogMedOne from "../../../../images/Dog/Feed/Animation/s3.png";
 import s3DogMedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
-
 
 import beef from "../../../../images/Dog/Feed/Options/beef.png";
 import turkey from "../../../../images/Dog/Feed/Options/turkey.png";
@@ -56,33 +76,6 @@ import brushCursor from "../../../../images/Dog/Clean/Options/brush.cur";
 import leash from "../../../../images/Dog/Play/leash.png";
 import pill from "../../../../images/Dog/Medicine/Options/pill.png";
 import chew from "../../../../images/Dog/Medicine/Options/chew.png";
-
-import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
-
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Clean from "../PetscreensComponents/Stations/Clean.jsx";
-import Play from "../PetscreensComponents/Stations/Play.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
-
-
-
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-
-import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList} from "../../../../constants/Constants.js";
-import { home, pauseAudios } from "../../helpers/Helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
-
-import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
-
-import dogHappy from "../../../../Music/PetImmersionSounds/dogHappy.mp3";
-import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
-import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 
 import "./Dog.css";
 
@@ -196,20 +189,20 @@ function Dog (){
                                     : [s3DogMedOne, s3DogMedTwo]
                                 : [s1DogMedOne, s1DogMedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogFeedOptions = [["beef", beef], ["turkey", turkey], ["lamb", lamb]]; 
-    const dogCleanOptions = [["soap", soap, soapCursor], ["brush", brush, brushCursor]];
-    const dogPlayOptions = [["Stroll Patrol", leash, StrollPatrol]];
-    const dogMedicineOptions = [["pill", pill], ["chew", chew]];
+    const dogFeedOptions = [{[optionNameKey]: "beef", [optionImageKey]: beef}, {[optionNameKey]: "turkey", [optionImageKey]: turkey}, {[optionNameKey]: "lamb", [optionImageKey]: lamb}]; 
+    const dogCleanOptions = [{[optionNameKey]: "soap", [optionImageKey]: soap, [optionCursorKey]: soapCursor}, {[optionNameKey]: "brush", [optionImageKey]: brush, [optionCursorKey]: brushCursor}];
+    const dogPlayOptions = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: leash, [optionGameKey]: StrollPatrol}];
+    const dogMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "chew", [optionImageKey]: chew}];
 
-
-    const dogAudioRefs = useRef([new Audio(dogHappy), new Audio(dogSad), new Audio(dogSleep)]);
+    const dogAudioRefs = useRef({[happyAudioKey]: new Audio(dogHappy), [sadAudioKey]: new Audio(dogSad), [sleepAudioKey]: new Audio(dogSleep)});
 
     const navigate = useNavigate();
     
+
     
     useKeyboardShortcut("1", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -306,17 +299,6 @@ function Dog (){
 
 
     useEffect(() => {
-
-        if (ActivePetName === "" || dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag){
-
-            pauseAudios(dogAudioRefs);
-
-        }
-
-    }, [ActivePetName, dogFeedOpenFlag, dogCleanOpenFlag, dogPlayOpenFlag, dogMedicineOpenFlag]);
-    
-
-    useEffect(() => {
         if (dogFeedOpenFlag || dogCleanOpenFlag || dogPlayOpenFlag || dogMedicineOpenFlag) {
             setDogActivityInProgress(true);
         } else {
@@ -324,6 +306,22 @@ function Dog (){
         }
     }, [dogFeedOpenFlag, dogCleanOpenFlag, dogPlayOpenFlag, dogMedicineOpenFlag]);
 
+    
+    
+    useEffect(() => {
+
+        if (ActivePetName === "" || dogActivityInProgress){
+
+            Object.values(dogAudioRefs.current).forEach(audio => {
+                pauseAudio(audio);
+            });
+
+        }
+
+    }, [ActivePetName, dogActivityInProgress]);
+    
+
+    
     
     useEffect(() => {
 

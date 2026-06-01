@@ -3,13 +3,14 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import "./Restart.css";
-
 import { playSound, flagCloser, screenFlagCloser } from "../../../../helpers/helpers.js";
 import { buttonSoundKey, restartSoundKey } from "../../../../constants/Constants.js";
 
+import "./Restart.css";
 
-function Restart({restartOpenFlag, setRestartOpenFlag}) {
+
+
+function Restart({setRestartOpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -17,11 +18,7 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
     
     useKeyboardShortcut("Enter", () => {
     
-        if (restartOpenFlag){
-
-            restartGame();
-
-        }
+        restartGame();
 
     },
         ".Yes"
@@ -30,11 +27,7 @@ function Restart({restartOpenFlag, setRestartOpenFlag}) {
         
     useKeyboardShortcut("Escape", () => {
     
-        if (restartOpenFlag){
-
-            screenFlagCloser(setRestartOpenFlag);
-
-        }
+        screenFlagCloser(setRestartOpenFlag);
 
     },
         ".No"

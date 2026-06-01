@@ -1,41 +1,32 @@
 import { useNavigate, Link } from "react-router-dom";
 import {useState, useRef} from "react";
 
-import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
-
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey } from "../../../constants/Constants.js";
-
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import "./Adoption.css";
+import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
+
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
+
+import "./Adoption.css";
 
 
 
 function Adoption () {
 
-    const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
+    const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
     const [petSpeciesGuideOpenFlag, setPetSpeciesGuideOpenFlag] = useState(false);
     const [selectedPet, setSelectedPet] = useState("");
     const [petGender, setPetGender] = useState("");
-    const [step, setStep] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
     const [confirmationPetName, setConfirmationPetName] = useState("");
-
-    const petPersonality = {
-
-        [dogSpecies] : "Dogs are generally loyal and bond strongly with their owners—they often form deep attachments and like to stay close to their people. Many dogs are social and playful, meaning they enjoy interacting with humans and other dogs, especially through games and attention.",
-        [catSpecies] : "Cats are often independent and self-sufficient—they like having their own space and don’t always rely on humans for attention. They can be affectionate, but on their own terms—many cats enjoy cuddling or being close, but usually when they choose to.",
-        [fishSpecies] : "Fish are usually calm and low-interaction animals—they don’t seek attention or social bonding the way mammals do. Many fish are territorial or routine-based, meaning they can become used to specific areas of the tank and behave differently depending on their environment and feeding schedule."
-
-    }
 
     const confirmationTimeoutRef = useRef(null);
 
@@ -69,7 +60,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", () => {
         
-        if (step === 0 && petGender === "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
+        if (petGender === "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             petSelecting();
 
@@ -82,7 +73,7 @@ function Adoption () {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
+        if (petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             undo();
 
@@ -95,7 +86,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", (e) => {
         
-        if (step !== 0 && petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
+        if (petGender !== "" && selectedPet !== "" && !petSpeciesGuideOpenFlag){
 
             nameChecking(e);
 
@@ -121,8 +112,6 @@ function Adoption () {
             setPetGender(femaleGender);
 
         }
-
-        setStep(1);
 
     }
 
@@ -267,7 +256,6 @@ function Adoption () {
 
         setSelectedPet("");
         setPetGender("");
-        setStep(0);
 
     }
     
@@ -298,7 +286,7 @@ function Adoption () {
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setPetSpeciesGuideOpenFlag)}> Pet Species Guide <br/> [2]</button>
                 </div>
 
-                {step === 0 && petGender === "" ? (
+                {petGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 

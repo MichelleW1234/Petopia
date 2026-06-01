@@ -1,5 +1,5 @@
-import { activityDamage, buttonSoundKey, cleaningKey, failSoundKey, feedingKey, gameButtonSoundKey, healthKey, playingKey, startSoundKey, successSoundKey } from "../../../constants/Constants";
-import { flagCloser, playSound, screenFlagCloser } from "../../../helpers/helpers";
+import { activityDamage, buttonSoundKey, cleaningKey, failSoundKey, feedingKey, gameButtonSoundKey, healthKey, playingKey, startSoundKey, successSoundKey } from "../../../constants/Constants.js";
+import { flagCloser, playSound, screenFlagCloser } from "../../../helpers/helpers.js";
 
 
 export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setSuccess) => {
@@ -64,12 +64,10 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
 }
 
 
-export const pauseAudios = (audioRefs) => {
+export const pauseAudio = (audio) => {
 
-    audioRefs.current.forEach(audio => {
-        audio.pause();
-        audio.currentTime = 0;
-    });
+    audio.pause();
+    audio.currentTime = 0;
 
 }
 
@@ -83,7 +81,7 @@ export const home = (setActivePetName) => {
 
 export const quit = (audioRef, setFlagToClose) => {
 
-    pauseAudios(audioRef);
+    pauseAudio(audioRef.current);
     screenFlagCloser(setFlagToClose);
 
 }

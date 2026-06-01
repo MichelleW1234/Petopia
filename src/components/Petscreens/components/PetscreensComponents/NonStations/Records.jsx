@@ -1,13 +1,16 @@
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
-import { screenFlagCloser } from "../../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import "./Records.css";
 import { birthDateKey, genderKey } from "../../../../../constants/Constants.js";
+import { screenFlagCloser } from "../../../../../helpers/helpers.js";
 
 import stamp from "../../../../../images/stamp.png";
+
+import "./Records.css";
+
+
 
 function Records({setRecordsOpenFlag}) {
 

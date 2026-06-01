@@ -1,29 +1,28 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useContext, useState } from "react";
 
-import Deletion from "./HomescreenComponents/Deletion.jsx";
-import Restart from "./HomescreenComponents/Restart.jsx";
-import PetCareGuide from "./HomescreenComponents/PetCareGuide.jsx";
-
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 
-import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
-
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
-
-import { flagOpener, playSound } from "../../../helpers/helpers.js";
-
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
 
-import "./Home.css";
+import Deletion from "./HomescreenComponents/Deletion.jsx";
+import Restart from "./HomescreenComponents/Restart.jsx";
+import PetCareGuide from "./HomescreenComponents/PetCareGuide.jsx";
+
+import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
+import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
 import red from "../../../images/red.png";
 import orange from "../../../images/orange.png";
 import yellow from "../../../images/yellow.png";
 import green from "../../../images/green.png";
 import gray from "../../../images/gray.png";
+
+import "./Home.css";
+
 
 
 
@@ -87,7 +86,7 @@ function Home (){
     
     useKeyboardShortcut("4", () => {
 
-        if (minPetsAdopted && !homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag){
+        if (!homeOpenClearPetsFlag && !homeOpenRestartFlag && !homeOpenPetCareGuideFlag){
 
             flagOpener(setHomeOpenPetCareGuideFlag);
 
@@ -97,6 +96,7 @@ function Home (){
         ".PetCareGuide"
     );
 
+    
 
     const getPet = (petToGet) => {
 
@@ -114,13 +114,11 @@ function Home (){
 
             {homeOpenRestartFlag &&
             <Restart
-                restartOpenFlag = {homeOpenRestartFlag}
                 setRestartOpenFlag={setHomeOpenRestartFlag}
             />}
 
             {homeOpenClearPetsFlag &&
             <Deletion
-                deletionOpenClearPetsFlag = {homeOpenClearPetsFlag}
                 setDeletionOpenClearPetsFlag={setHomeOpenClearPetsFlag}
             />}
 

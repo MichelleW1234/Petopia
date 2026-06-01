@@ -1,14 +1,15 @@
-import "./Options.css";
+import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
+import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
+
+import { buttonPressSoundKey, optionImageKey, optionNameKey, portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
+import { playSound } from "../../../../../../helpers/helpers.js";
 
 import unwanted from "../../../../../../images/PetUnwanted.png";
 import heart from "../../../../../../images/placeholderheart.png";
 import bubble from "../../../../../../images/placeholderthoughtbubble.png";
 
-import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
-import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
+import "./Options.css";
 
-import { buttonPressSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
-import { playSound } from "../../../../../../helpers/helpers.js";
 
 
 
@@ -54,7 +55,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                     ) : (
 
-                        <img src = {optionsList[optionsDesiredOption][1]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                        <img src = {optionsList[optionsDesiredOption][optionImageKey]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                     )}
                 </div>
@@ -66,10 +67,10 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => judgeSelection(index)}>
-                            <img src = {option[1]}/>
+                            <img src = {option[optionImageKey]}/>
                         </button>
 
-                        <h2>{option[0]}</h2>
+                        <h2>{option[optionNameKey]}</h2>
                     </div>
 
                 ))}

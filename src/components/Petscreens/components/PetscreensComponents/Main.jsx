@@ -4,17 +4,19 @@ import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx"
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 
+import { catSpecies, dogSpecies, happyAudioKey, healthCapList, healthKey, sadAudioKey, sleepAudioKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { playSound } from "../../../../helpers/helpers.js";
+import { pauseAudio } from "../../helpers/Helpers.js";
+
 import heart from "../../../../images/placeholderheart.png";
 import anger from "../../../../images/placeholderangry.png";
 import healthHeartGood from "../../../../images/placeholderheartGood.png";
 import healthHeartBad from "../../../../images/placeholderheartBad.png";
 import petTombStone from "../../../../images/PetTombStone.png";
 
-import { catSpecies, dogSpecies, healthCapList, healthKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-
 import "./Main.css";
-import { playSound } from "../../../../helpers/helpers.js";
-import { pauseAudios } from "../../helpers/Helpers.js";
+
+
 
 function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
@@ -77,23 +79,25 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
         if (mainAttention){
 
-            pauseAudios(mainPetAudios);
+            Object.values(mainPetAudios.current).forEach(audio => {
+                pauseAudio(audio);
+            });
             
             let currSound;
 
             if (petSleeping){
 
-                currSound = mainPetAudios.current[2];
+                currSound = mainPetAudios.current[sleepAudioKey];
 
             } else {
 
                 if (mainPetMood <= 1){
 
-                    currSound = mainPetAudios.current[0];
+                    currSound = mainPetAudios.current[happyAudioKey];
 
                 } else {
 
-                    currSound = mainPetAudios.current[1];
+                    currSound = mainPetAudios.current[sadAudioKey];
 
                 }
 

@@ -1,6 +1,29 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import Main from "../PetscreensComponents/Main.jsx";
+import Feed from "../PetscreensComponents/Stations/Feed.jsx";
+import Play from "../PetscreensComponents/Stations/Play.jsx";
+import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import Records from "../PetscreensComponents/Nonstations/Records.jsx";
+import MouseHunt from "./CatComponents/MouseHunt.jsx";
+
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey } from "../../../../constants/Constants.js";
+import { home, pauseAudio } from "../../helpers/helpers.js";
+import { flagOpener } from "../../../../helpers/helpers.js";
+
+import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
+import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
+import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+
 import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
 import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
 import s1CatRightOne from "../../../../images/Cat/Main/Awake/s12.svg";
@@ -14,14 +37,12 @@ import s3CatLeftTwo from "../../../../images/Cat/Main/Awake/s31.svg";
 import s3CatRightOne from "../../../../images/Cat/Main/Awake/s32.svg";
 import s3CatRightTwo from "../../../../images/Cat/Main/Awake/s33.svg";
 
-
 import s1CatSleepOne from "../../../../images/Cat/Main/Asleep/s1.png";
 import s1CatSleepTwo from "../../../../images/Cat/Main/Asleep/s11.png";
 import s2CatSleepOne from "../../../../images/Cat/Main/Asleep/s2.png";
 import s2CatSleepTwo from "../../../../images/Cat/Main/Asleep/s21.png";
 import s3CatSleepOne from "../../../../images/Cat/Main/Asleep/s3.png";
 import s3CatSleepTwo from "../../../../images/Cat/Main/Asleep/s31.png";
-
 
 import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
 import s1CatFeedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
@@ -30,14 +51,12 @@ import s2CatFeedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
 import s3CatFeedOne from "../../../../images/Cat/Feed/Animation/s3.png";
 import s3CatFeedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
 
-
 import s1CatMedOne from "../../../../images/Cat/Feed/Animation/s1.png";
 import s1CatMedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
 import s2CatMedOne from "../../../../images/Cat/Feed/Animation/s2.png";
 import s2CatMedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
 import s3CatMedOne from "../../../../images/Cat/Feed/Animation/s3.png";
 import s3CatMedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
-
 
 import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
 import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
@@ -46,33 +65,8 @@ import magnifier from "../../../../images/Cat/Play/magnifier.png";
 import pill from "../../../../images/Cat/Medicine/Options/pill.png";
 import tablet from "../../../../images/Cat/Medicine/Options/tablet.png";
 
-
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Play from "../PetscreensComponents/Stations/Play.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
-
-import MouseHunt from "./CatComponents/MouseHunt.jsx";
-
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList } from "../../../../constants/Constants.js";
-
-import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
-
-import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
-import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
-import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-
-import { home, pauseAudios } from "../../helpers/helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
-
 import "./Cat.css";
+
 
 
 
@@ -168,21 +162,19 @@ function Cat (){
 
 
 
+    const catFeedOptions = [{[optionNameKey]: "tuna", [optionImageKey]: tuna}, {[optionNameKey]: "chicken", [optionImageKey]: chicken}, {[optionNameKey]: "salmon", [optionImageKey]: salmon}];
+    const catPlayOptions = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: magnifier, [optionGameKey]: MouseHunt}];
+    const catMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
 
-    const catFeedOptions = [["tuna", tuna], ["chicken", chicken], ["salmon", salmon]];
-    const catPlayOptions = [["Mouse Hunt", magnifier, MouseHunt]];
-    const catMedicineOptions = [["pill", pill], ["tablet", tablet]];
-
-
-    const catAudioRefs = useRef([new Audio(catHappy), new Audio(catSad), new Audio(catSleep)]);
-
+    const catAudioRefs = useRef({[happyAudioKey]: new Audio(catHappy), [sadAudioKey]: new Audio(catSad), [sleepAudioKey]: new Audio(catSleep)});
 
     const navigate = useNavigate();
         
+
         
     useKeyboardShortcut("1", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -263,17 +255,26 @@ function Cat (){
 
 
 
-
+    useEffect(() => {
+        if (catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag) {
+            setCatActivityInProgress(true);
+        } else {
+            setCatActivityInProgress(false);
+        }
+    }, [catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
+    
     
     useEffect(() => {
 
-        if (ActivePetName === "" || catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag){
+        if (ActivePetName === "" || catActivityInProgress){
 
-            pauseAudios(catAudioRefs);
+            Object.values(catAudioRefs.current).forEach(audio => {
+                pauseAudio(audio);
+            });
 
         }
 
-    }, [ActivePetName, catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
+    }, [ActivePetName, catActivityInProgress]);
 
 
 
@@ -300,14 +301,6 @@ function Cat (){
     }, [catHungry, catRestless, catUnwell]);
 
 
-
-    useEffect(() => {
-        if (catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag) {
-            setCatActivityInProgress(true);
-        } else {
-            setCatActivityInProgress(false);
-        }
-    }, [catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
 
 
     

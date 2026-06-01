@@ -8,6 +8,7 @@ import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey } from "../
 import "./Activity.css";
 
 
+
 function Activity({activityKey, activityTimeGap}) {
 
     const {GlobalTimer} = useGlobalTimer();

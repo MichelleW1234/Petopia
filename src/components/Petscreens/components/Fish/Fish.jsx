@@ -1,6 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
+import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
+import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
+import {usePetList} from "../../../../providers/PetListProvider.jsx";
+
+import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+
+import Main from "../PetscreensComponents/Main.jsx";
+import Feed from "../PetscreensComponents/Stations/Feed.jsx";
+import Clean from "../PetscreensComponents/Stations/Clean.jsx";
+import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
+import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import Records from "../PetscreensComponents/Nonstations/Records.jsx";
+
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey} from "../../../../constants/Constants.js";
+import { home, pauseAudio } from "../../helpers/Helpers.js";
+import { flagOpener, playSound } from "../../../../helpers/helpers.js";
+
+import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
+import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
+import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+
 import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.svg";
 import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.svg";
 import s1FishRightOne from "../../../../images/Fish/Main/Awake/s12.svg";
@@ -14,7 +36,6 @@ import s3FishLeftTwo from "../../../../images/Fish/Main/Awake/s31.svg";
 import s3FishRightOne from "../../../../images/Fish/Main/Awake/s32.svg";
 import s3FishRightTwo from "../../../../images/Fish/Main/Awake/s33.svg";
 
-
 import s1FishSleepOne from "../../../../images/Fish/Main/Asleep/s1.png";
 import s1FishSleepTwo from "../../../../images/Fish/Main/Asleep/s11.png";
 import s2FishSleepOne from "../../../../images/Fish/Main/Asleep/s2.png";
@@ -22,14 +43,12 @@ import s2FishSleepTwo from "../../../../images/Fish/Main/Asleep/s21.png";
 import s3FishSleepOne from "../../../../images/Fish/Main/Asleep/s3.png";
 import s3FishSleepTwo from "../../../../images/Fish/Main/Asleep/s31.png";
 
-
 import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
 import s1FishFeedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
 import s2FishFeedOne from "../../../../images/Fish/Feed/Animation/s2.png";
 import s2FishFeedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
 import s3FishFeedOne from "../../../../images/Fish/Feed/Animation/s3.png";
 import s3FishFeedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
-
 
 import s1FishCleanOne from "../../../../images/Fish/Clean/Animation/s1.png";
 import s1FishCleanTwo from "../../../../images/Fish/Clean/Animation/s11.png";
@@ -46,7 +65,6 @@ import s2FishMedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
 import s3FishMedOne from "../../../../images/Fish/Feed/Animation/s3.png";
 import s3FishMedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
 
-
 import shrimp from "../../../../images/Fish/Feed/Options/shrimp.png";
 import worms from "../../../../images/Fish/Feed/Options/worm.png";
 import algae from "../../../../images/Fish/Feed/Options/algae.png";
@@ -58,30 +76,7 @@ import pill from "../../../../images/Fish/Medicine/Options/pill.png";
 import bottle from  "../../../../images/Fish/Medicine/Options/bottle.png";
 
 
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Clean from "../PetscreensComponents/Stations/Clean.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
-
-import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
-import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
-import {usePetList} from "../../../../providers/PetListProvider.jsx";
-
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey} from "../../../../constants/Constants.js";
-import { home, pauseAudios } from "../../helpers/Helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
-
-import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
-
-import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
-import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
-import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-
 import "./Fish.css";
-import { playSound } from "../../../../helpers/helpers.js";
 
 
 
@@ -185,18 +180,19 @@ function Fish (){
                                         : [s3FishMedOne, s3FishMedTwo]
                                     :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishFeedOptions = [["shrimp", shrimp], ["worms", worms], ["algae", algae]];
-    const fishCleanOptions = [["sponge", sponge, spongeCursor], ["cloth", cloth, clothCursor]];
-    const fishMedicineOptions = [["pill", pill], ["bottle", bottle]];
+    const fishFeedOptions = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
+    const fishCleanOptions = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
+    const fishMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "bottle", [optionImageKey]: bottle}];
 
-    const fishAudioRefs = useRef([new Audio(fishHappy), new Audio(fishSad), new Audio(fishSleep)]);
+    const fishAudioRefs = useRef({[happyAudioKey]: new Audio(fishHappy), [sadAudioKey]: new Audio(fishSad), [sleepAudioKey]: new Audio(fishSleep)});
 
     const navigate = useNavigate();
 
 
+
     useKeyboardShortcut("1", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -280,15 +276,26 @@ function Fish (){
 
 
     useEffect(() => {
+        if (fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag) {
+            setFishActivityInProgress(true);
+        } else {
+            setFishActivityInProgress(false);
+        }
+    }, [fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
+    
 
-        if (ActivePetName === "" || fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag){
+    useEffect(() => {
 
-            pauseAudios(fishAudioRefs);
+        if (ActivePetName === "" || fishActivityInProgress){
+
+            Object.values(fishAudioRefs.current).forEach(audio => {
+                pauseAudio(audio);
+            });
 
         }
 
-    }, [ActivePetName, fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
-    
+    }, [ActivePetName, fishActivityInProgress]);
+
     
 
     useEffect(() => {
@@ -314,18 +321,8 @@ function Fish (){
     }, [fishHungry, fishDirty, fishUnwell]);
 
     
-    useEffect(() => {
-        if (fishFeedOpenFlag || fishCleanOpenFlag || fishMedicineOpenFlag) {
-            setFishActivityInProgress(true);
-        } else {
-            setFishActivityInProgress(false);
-        }
-    }, [fishFeedOpenFlag, fishCleanOpenFlag, fishMedicineOpenFlag]);
+
     
-
-
-
-
     return (
 
         <>

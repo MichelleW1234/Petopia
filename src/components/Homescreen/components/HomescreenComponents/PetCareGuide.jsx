@@ -1,7 +1,10 @@
-import { screenFlagCloser } from "../../../../helpers/helpers.js";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
+import { screenFlagCloser } from "../../../../helpers/helpers.js";
+
 import "./PetCareGuide.css";
+
+
 
 function PetCareGuide({setPetCareGuideOpenFlag}) {
 
@@ -13,6 +16,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
         ".Close"
     );
 
+    
     return (
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
