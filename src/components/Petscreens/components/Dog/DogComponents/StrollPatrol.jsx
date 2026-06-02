@@ -31,7 +31,7 @@ function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!playDone){
+        if (!strollPatrolStart && !playDone){
 
             startActivity(setStrollPatrolStart);
 

@@ -57,7 +57,7 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
     
     useKeyboardShortcut("Enter", () => {
     
-        if (feedOptionsSelection !== -1 && !feedDone){
+        if (feedOptionsSelection !== -1 && !feedStart && !feedDone){
 
             startActivity(setFeedStart);
 

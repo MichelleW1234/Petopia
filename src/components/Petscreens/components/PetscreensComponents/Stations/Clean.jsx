@@ -57,7 +57,7 @@ function Clean ({cleanAnimationImages, cleanOptionsList, cleanOptionsDesiredOpti
     
     useKeyboardShortcut("Enter", () => {
     
-        if (cleanOptionsSelection !== -1 && !cleanDone){
+        if (cleanOptionsSelection !== -1 && !cleanStart && !cleanDone){
 
             startActivity(setCleanStart);
 

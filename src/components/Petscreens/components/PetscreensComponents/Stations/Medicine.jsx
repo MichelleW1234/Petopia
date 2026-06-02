@@ -55,7 +55,7 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
     
     useKeyboardShortcut("Enter", () => {
     
-        if (!medicineDone){
+        if (medicineOptionsSelection !== -1 && !medicineStart && !medicineDone){
 
             startActivity(setMedicineStart);
 
@@ -69,7 +69,7 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
 
     useKeyboardShortcut("Escape", () => {
 
-        if (medicineOptionsSelection !== -1 && !medicineDone){
+        if (!medicineDone){
 
             quitActivity(medicineAudioRef, setMedicineOpenFlag);
 

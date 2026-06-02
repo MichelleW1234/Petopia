@@ -30,7 +30,7 @@ function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!playDone){
+        if (!mouseHuntStart && !playDone){
 
             startActivity(setMouseHuntStart);
 
