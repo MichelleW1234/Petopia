@@ -6,7 +6,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { flagCloser, playSound, screenFlagCloser } from "../../../../helpers/helpers.js";
+import { playSound, flagCloser } from "../../../../helpers/helpers.js";
 
 import "./Deletion.css";
 
@@ -21,6 +21,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
 
 
+    
     useKeyboardShortcut("Enter", () => {
         
         if (deletionSelectedPets.length > 0){
@@ -36,7 +37,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        screenFlagCloser(setDeletionOpenClearPetsFlag);
+        flagCloser(setDeletionOpenClearPetsFlag);
 
     },
         ".Quit"
@@ -91,14 +92,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
         });
 
         playSound(clearedSoundKey);
-        screenFlagCloser(setDeletionOpenClearPetsFlag);
-
-    }
-
-
-    const quit = () => {
-
-        screenFlagCloser(setDeletionOpenClearPetsFlag);
+        flagCloser(setDeletionOpenClearPetsFlag);
 
     }
 
@@ -140,7 +134,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => quit()}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setDeletionOpenClearPetsFlag)}>Quit <br/> [esc]</button>
 
                 {deletionSelectedPets.length > 0 ? (
 

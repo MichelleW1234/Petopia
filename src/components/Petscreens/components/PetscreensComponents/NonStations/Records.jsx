@@ -4,7 +4,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { birthDateKey, genderKey } from "../../../../../constants/Constants.js";
-import { screenFlagCloser } from "../../../../../helpers/helpers.js";
+import { flagCloser } from "../../../../../helpers/helpers.js";
 
 import stamp from "../../../../../images/stamp.png";
 
@@ -18,16 +18,25 @@ function Records({setRecordsOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
 
-    const birthday = new Date(PetList[ActivePetName][birthDateKey]).toLocaleString();
+    const recordsBirthdayString = new Date(PetList[ActivePetName][birthDateKey]).toLocaleString();
 
 
     useKeyboardShortcut("3", () => {
 
-        screenFlagCloser(setRecordsOpenFlag);
+        flagCloser(setRecordsOpenFlag);
 
     },
         ".Close"
     );
+
+        
+    useEffect(() => {
+
+        const img = new Image();
+        img.src = stamp;
+
+    }, []);
+
 
 
 
@@ -51,14 +60,14 @@ function Records({setRecordsOpenFlag}) {
                         </div>
                         <div className="Records_ComponentContainer-Structure--ContentField">
                             <h2> Birthdate: </h2>
-                            <p>{birthday}</p>
+                            <p>{recordsBirthdayString}</p>
                         </div>
                     </div>
                     <img className = "Records_ComponentContainer-Template--Stamp" src = {stamp}/>
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => screenFlagCloser(setRecordsOpenFlag)}> Close <br/> [3]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setRecordsOpenFlag)}> Close <br/> [3]</button>
 
         </div>
     );

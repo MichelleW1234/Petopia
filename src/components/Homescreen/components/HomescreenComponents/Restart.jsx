@@ -3,7 +3,7 @@ import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx"
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound, flagCloser, screenFlagCloser } from "../../../../helpers/helpers.js";
+import { playSound, flagCloser } from "../../../../helpers/helpers.js";
 import { buttonSoundKey, restartSoundKey } from "../../../../constants/Constants.js";
 
 import "./Restart.css";
@@ -27,7 +27,7 @@ function Restart({setRestartOpenFlag}) {
         
     useKeyboardShortcut("Escape", () => {
     
-        screenFlagCloser(setRestartOpenFlag);
+        flagCloser(setRestartOpenFlag);
 
     },
         ".No"
@@ -41,7 +41,7 @@ function Restart({setRestartOpenFlag}) {
         setPetTimeStamps({});
 
         playSound(restartSoundKey);
-        screenFlagCloser(setRestartOpenFlag);
+        flagCloser(setRestartOpenFlag);
 
     }
 
@@ -53,7 +53,7 @@ function Restart({setRestartOpenFlag}) {
             </div>
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartGame()}>Yes <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => screenFlagCloser(setRestartOpenFlag)}>No <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => flagCloser(setRestartOpenFlag)}>No <br/> [esc]</button>
             </div>
         </div>
     );

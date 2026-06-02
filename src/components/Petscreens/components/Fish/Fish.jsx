@@ -15,7 +15,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey} from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener, playSound } from "../../../../helpers/helpers.js";
 
@@ -93,9 +93,9 @@ function Fish (){
     const [fishMedicineOpenFlag, setFishMedicineOpenFlag] = useState(false);
     const [fishScheduleOpenFlag, setFishScheduleOpenFlag] = useState(false);
     const [fishRecordsOpenFlag, setFishRecordsOpenFlag] = useState(false);
-    const [fishFeedDesiredOption, setFishFeedDesiredOption] = useState(-1);
-    const [fishCleanDesiredOption, setFishCleanDesiredOption] = useState(-1);
-    const [fishMedicineDesiredOption, setFishMedicineDesiredOption] = useState(-1);
+    const [fishFeedOptionsDesiredOption, setFishFeedOptionsDesiredOption] = useState(-1);
+    const [fishCleanOptionsDesiredOption, setFishCleanOptionsDesiredOption] = useState(-1);
+    const [fishMedicineOptionsDesiredOption, setFishMedicineOptionsDesiredOption] = useState(-1);
 
     const fishAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -104,13 +104,13 @@ function Fish (){
                             : false;
 
     const fishHungry = ActivePetName !== "" ?  
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
                                 true 
                                 : false
                             : false;
                             
     const fishDirty = ActivePetName !== "" ?  
-                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
                                 true 
                                 : false
                             : false;
@@ -180,15 +180,14 @@ function Fish (){
                                         : [s3FishMedOne, s3FishMedTwo]
                                     :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishFeedOptions = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
-    const fishCleanOptions = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
-    const fishMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "bottle", [optionImageKey]: bottle}];
+    const fishFeedOptionsList = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
+    const fishCleanOptionsList = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
+    const fishMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "bottle", [optionImageKey]: bottle}];
 
     const fishAudioRefs = useRef({[happyAudioKey]: new Audio(fishHappy), [sadAudioKey]: new Audio(fishSad), [sleepAudioKey]: new Audio(fishSleep)});
 
+
     const navigate = useNavigate();
-
-
 
     useKeyboardShortcut("1", () => {
 
@@ -302,19 +301,19 @@ function Fish (){
 
         if (fishHungry){
 
-            setFishFeedDesiredOption(Math.floor(Math.random() * fishFeedOptions.length));
+            setFishFeedOptionsDesiredOption(Math.floor(Math.random() * fishFeedOptionsList.length));
 
         }
 
         if (fishDirty){
 
-            setFishCleanDesiredOption(Math.floor(Math.random() * fishCleanOptions.length));
+            setFishCleanOptionsDesiredOption(Math.floor(Math.random() * fishCleanOptionsList.length));
 
         }
 
         if (fishUnwell){
 
-            setFishMedicineDesiredOption(Math.floor(Math.random() * fishMedicineOptions.length));
+            setFishMedicineOptionsDesiredOption(Math.floor(Math.random() * fishMedicineOptionsList.length));
 
         }
 
@@ -329,27 +328,27 @@ function Fish (){
             {fishFeedOpenFlag &&
             <Feed
                 feedAnimationImages={fishFeedImages}
-                feedOptions={fishFeedOptions}
-                feedDesiredOption = {fishFeedDesiredOption}
-                setFeedDesiredOption = {setFishFeedDesiredOption}
+                feedOptionsList={fishFeedOptionsList}
+                feedOptionsDesiredOption = {fishFeedOptionsDesiredOption}
+                setFeedOptionsDesiredOption = {setFishFeedOptionsDesiredOption}
                 setFeedOpenFlag = {setFishFeedOpenFlag}
             />}
 
             {fishCleanOpenFlag &&
             <Clean
                 cleanAnimationImages={fishCleanImages}
-                cleanOptions={fishCleanOptions}
-                cleanDesiredOption = {fishCleanDesiredOption}
-                setCleanDesiredOption = {setFishCleanDesiredOption}
+                cleanOptionsList={fishCleanOptionsList}
+                cleanOptionsDesiredOption = {fishCleanOptionsDesiredOption}
+                setCleanOptionsDesiredOption = {setFishCleanOptionsDesiredOption}
                 setCleanOpenFlag = {setFishCleanOpenFlag}
             />}
 
             {fishMedicineOpenFlag &&
             <Medicine
                 medicineAnimationImages={fishMedicineImages}
-                medicineOptions = {fishMedicineOptions}
-                medicineDesiredOption = {fishMedicineDesiredOption}
-                setMedicineDesiredOption = {setFishMedicineDesiredOption}
+                medicineOptionsList = {fishMedicineOptionsList}
+                medicineOptionsDesiredOption = {fishMedicineOptionsDesiredOption}
+                setMedicineOptionsDesiredOption = {setFishMedicineOptionsDesiredOption}
                 setMedicineOpenFlag = {setFishMedicineOpenFlag}
             />}
 

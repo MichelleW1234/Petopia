@@ -17,7 +17,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionCursorKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey} from "../../../../constants/Constants.js";
+import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionCursorKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
 
@@ -96,10 +96,10 @@ function Dog (){
     const [dogMedicineOpenFlag, setDogMedicineOpenFlag] = useState(false);
     const [dogRecordsOpenFlag, setDogRecordsOpenFlag] = useState(false);
     const [dogScheduleOpenFlag, setDogScheduleOpenFlag] = useState(false);
-    const [dogFeedDesiredOption, setDogFeedDesiredOption] = useState(-1);
-    const [dogCleanDesiredOption, setDogCleanDesiredOption] = useState(-1);
-    const [dogPlayDesiredOption, setDogPlayDesiredOption] = useState(-1);
-    const [dogMedicineDesiredOption, setDogMedicineDesiredOption] = useState(-1);
+    const [dogFeedOptionsDesiredOption, setDogFeedOptionsDesiredOption] = useState(-1);
+    const [dogCleanOptionsDesiredOption, setDogCleanOptionsDesiredOption] = useState(-1);
+    const [dogPlayOptionsDesiredOption, setDogPlayOptionsDesiredOption] = useState(-1);
+    const [dogMedicineOptionsDesiredOption, setDogMedicineOptionsDesiredOption] = useState(-1);
 
     const dogAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -108,19 +108,19 @@ function Dog (){
                             : false;
 
     const dogHungry = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
                                 true 
                                 : false
                             : false;
 
     const dogDirty = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][0]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
                                 true
                                 : false
                             : false;
                             
     const dogRestless = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
                                 true 
                                 : false
                             : false;
@@ -189,10 +189,10 @@ function Dog (){
                                     : [s3DogMedOne, s3DogMedTwo]
                                 : [s1DogMedOne, s1DogMedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogFeedOptions = [{[optionNameKey]: "beef", [optionImageKey]: beef}, {[optionNameKey]: "turkey", [optionImageKey]: turkey}, {[optionNameKey]: "lamb", [optionImageKey]: lamb}]; 
-    const dogCleanOptions = [{[optionNameKey]: "soap", [optionImageKey]: soap, [optionCursorKey]: soapCursor}, {[optionNameKey]: "brush", [optionImageKey]: brush, [optionCursorKey]: brushCursor}];
-    const dogPlayOptions = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: leash, [optionGameKey]: StrollPatrol}];
-    const dogMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "chew", [optionImageKey]: chew}];
+    const dogFeedOptionsList = [{[optionNameKey]: "beef", [optionImageKey]: beef}, {[optionNameKey]: "turkey", [optionImageKey]: turkey}, {[optionNameKey]: "lamb", [optionImageKey]: lamb}]; 
+    const dogCleanOptionsList = [{[optionNameKey]: "soap", [optionImageKey]: soap, [optionCursorKey]: soapCursor}, {[optionNameKey]: "brush", [optionImageKey]: brush, [optionCursorKey]: brushCursor}];
+    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: leash, [optionGameKey]: StrollPatrol}];
+    const dogMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "chew", [optionImageKey]: chew}];
 
     const dogAudioRefs = useRef({[happyAudioKey]: new Audio(dogHappy), [sadAudioKey]: new Audio(dogSad), [sleepAudioKey]: new Audio(dogSleep)});
 
@@ -327,25 +327,25 @@ function Dog (){
 
         if (dogHungry){
 
-            setDogFeedDesiredOption(Math.floor(Math.random() * dogFeedOptions.length));
+            setDogFeedOptionsDesiredOption(Math.floor(Math.random() * dogFeedOptionsList.length));
 
         }
 
         if (dogDirty){
 
-            setDogCleanDesiredOption(Math.floor(Math.random() * dogCleanOptions.length));
+            setDogCleanOptionsDesiredOption(Math.floor(Math.random() * dogCleanOptionsList.length));
 
         }
 
         if (dogRestless){
 
-            setDogPlayDesiredOption(Math.floor(Math.random() * dogPlayOptions.length));
+            setDogPlayOptionsDesiredOption(Math.floor(Math.random() * dogPlayOptionsList.length));
 
         }
 
         if (dogUnwell){
 
-            setDogMedicineDesiredOption(Math.floor(Math.random() * dogMedicineOptions.length));
+            setDogMedicineOptionsDesiredOption(Math.floor(Math.random() * dogMedicineOptionsList.length));
 
         }
 
@@ -358,35 +358,35 @@ function Dog (){
             {dogFeedOpenFlag &&
             <Feed
                 feedAnimationImages={dogFeedImages}
-                feedOptions={dogFeedOptions}
-                feedDesiredOption = {dogFeedDesiredOption}
-                setFeedDesiredOption = {setDogFeedDesiredOption}
+                feedOptionsList={dogFeedOptionsList}
+                feedOptionsDesiredOption = {dogFeedOptionsDesiredOption}
+                setFeedOptionsDesiredOption = {setDogFeedOptionsDesiredOption}
                 setFeedOpenFlag = {setDogFeedOpenFlag}
             />}
 
             {dogCleanOpenFlag &&
             <Clean
                 cleanAnimationImages={dogCleanImages}
-                cleanOptions={dogCleanOptions}
-                cleanDesiredOption = {dogCleanDesiredOption}
-                setCleanDesiredOption = {setDogCleanDesiredOption}
+                cleanOptionsList={dogCleanOptionsList}
+                cleanOptionsDesiredOption = {dogCleanOptionsDesiredOption}
+                setCleanOptionsDesiredOption = {setDogCleanOptionsDesiredOption}
                 setCleanOpenFlag = {setDogCleanOpenFlag}
             />}
 
             {dogPlayOpenFlag &&
             <Play
-                playOptions={dogPlayOptions}
-                playDesiredOption = {dogPlayDesiredOption}
-                setPlayDesiredOption = {setDogPlayDesiredOption}
+                playOptionsList={dogPlayOptionsList}
+                playOptionsDesiredOption = {dogPlayOptionsDesiredOption}
+                setPlayOptionsDesiredOption = {setDogPlayOptionsDesiredOption}
                 setPlayOpenFlag = {setDogPlayOpenFlag}
             />}
 
             {dogMedicineOpenFlag &&
             <Medicine
                 medicineAnimationImages={dogMedicineImages}
-                medicineOptions={dogMedicineOptions}
-                medicineDesiredOption = {dogMedicineDesiredOption}
-                setMedicineDesiredOption = {setDogMedicineDesiredOption}
+                medicineOptionsList={dogMedicineOptionsList}
+                medicineOptionsDesiredOption = {dogMedicineOptionsDesiredOption}
+                setMedicineOptionsDesiredOption = {setDogMedicineOptionsDesiredOption}
                 setMedicineOpenFlag = {setDogMedicineOpenFlag}
             />}
 

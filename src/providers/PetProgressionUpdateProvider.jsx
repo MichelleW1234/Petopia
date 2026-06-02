@@ -4,7 +4,7 @@ import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage, healthCapList} from "../constants/Constants.js";
+import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage, healthCapList, activityLastPerformedKey, activityLastDamageKey} from "../constants/Constants.js";
 
 
 export function PetProgressionUpdateProvider({ children }) {
@@ -105,10 +105,10 @@ export function PetProgressionUpdateProvider({ children }) {
         for (const curActivityKey in petTimeLimits){
 
             // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another damage update:
-            let subtrahend = Math.max(currPetTimeStamps[curActivityKey][0], currPetTimeStamps[curActivityKey][1]); 
+            let subtrahend = Math.max(currPetTimeStamps[curActivityKey][activityLastPerformedKey], currPetTimeStamps[curActivityKey][activityLastDamageKey]); 
 
             const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], activityDamage[curActivityKey]);
-            currPetTimeStamps[curActivityKey][1] = newPetTimeStamp;
+            currPetTimeStamps[curActivityKey][activityLastDamageKey] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
         }

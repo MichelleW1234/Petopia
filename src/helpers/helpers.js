@@ -1,4 +1,4 @@
-import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey } from "../constants/Constants.js";
+import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey} from "../constants/Constants.js";
 
 import button_click from "../Music/UIIndicatorSounds/button_click.mp3";
 import button_press from "../Music/UIIndicatorSounds/button_press.mp3";
@@ -15,25 +15,26 @@ import restart from "../Music/UIIndicatorSounds/restart.mp3";
 
 export const playSound = (soundEffect) => {
 
+    const buttonAudioKey = "audio";
+    const buttonVolumeKey = "volume";
+
     const soundDictionary = {
 
-        [buttonSoundKey] : [button_click, 0.5],
-        [buttonPressSoundKey] : [button_press, 0.25],
-        [gameButtonSoundKey] : [gameButton_click, 0.5],
-        [errorSoundKey] : [error, 0.25],
-        [startSoundKey] : [start, 0.25],
-        [successSoundKey] : [success, 0.25],
-        [failSoundKey] : [fail, 0.25],
-        [confirmedSoundKey] : [confirmed, 0.5],
-        [clearedSoundKey] : [cleared, 0.5],
-        [restartSoundKey] : [restart, 0.25]
+        [buttonSoundKey] : {[buttonAudioKey]: button_click, [buttonVolumeKey]: 0.5},
+        [buttonPressSoundKey] : {[buttonAudioKey]: button_press, [buttonVolumeKey]: 0.25},
+        [gameButtonSoundKey] : {[buttonAudioKey]: gameButton_click, [buttonVolumeKey]: 0.5},
+        [errorSoundKey] : {[buttonAudioKey]: error, [buttonVolumeKey]: 0.25},
+        [startSoundKey] : {[buttonAudioKey]: start, [buttonVolumeKey]: 0.25},
+        [successSoundKey] : {[buttonAudioKey]: success, [buttonVolumeKey]: 0.25},
+        [failSoundKey] : {[buttonAudioKey]: fail, [buttonVolumeKey]: 0.25},
+        [confirmedSoundKey] : {[buttonAudioKey]: confirmed, [buttonVolumeKey]: 0.5},
+        [clearedSoundKey] : {[buttonAudioKey]: cleared, [buttonVolumeKey]: 0.5},
+        [restartSoundKey] : {[buttonAudioKey]: restart, [buttonVolumeKey]: 0.25},
 
     };
 
-    const entry = soundDictionary[soundEffect];
-    const [soundFile, volume] = entry;
-    const audio = new Audio(soundFile);
-    audio.volume = volume;
+    const audio = new Audio(soundDictionary[soundEffect][buttonAudioKey]);
+    audio.volume = soundDictionary[soundEffect][buttonVolumeKey];
     audio.play();
 
 }
@@ -46,23 +47,8 @@ export const flagOpener = (setFlagToOpen) => {
 
 }
 
-export const screenFlagOpener = (setFlagToOpen) => {
-
-    playSound(gameButtonSoundKey);
-    setFlagToOpen(true);
-
-}
-
 
 export const flagCloser = (setFlagToClose) => {
-    
-    playSound(buttonSoundKey);
-    setFlagToClose(false);
-
-}
-
-
-export const screenFlagCloser = (setFlagToClose) => {
     
     playSound(gameButtonSoundKey);
     setFlagToClose(false);

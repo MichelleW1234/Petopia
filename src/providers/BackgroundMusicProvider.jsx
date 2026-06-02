@@ -11,7 +11,7 @@ export function BackgroundMusicProvider({ children }) {
 
         const audio = audioRef.current;
         audio.loop = true;
-        audio.volume = 0.2;
+        audio.volume = 0.25;
 
         audio.play().catch((err) => {
             console.warn('Autoplay failed:', err);

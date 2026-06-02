@@ -43,21 +43,13 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
             <div className="Options_ComponentContainer-Structure--PetThought"> 
 
-                <img className = "Options_ComponentImage-Template--PetThoughtPet" src = {portraitPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]} />
+                <img src = {portraitPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]} className = "Options_ComponentImage-Template--PetThoughtPet" />
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
-                    <img src = {bubble} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {bubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {optionsDesiredOption === -1 ? unwanted : optionsList[optionsDesiredOption][optionImageKey]} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
-                    {optionsDesiredOption === -1 ? (
-
-                        <img src = {unwanted} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
-
-                    ) : (
-
-                        <img src = {optionsList[optionsDesiredOption][optionImageKey]} className=" Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
-
-                    )}
                 </div>
 
             </div>

@@ -16,7 +16,7 @@ import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHunt from "./CatComponents/MouseHunt.jsx";
 
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey } from "../../../../constants/Constants.js";
+import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey } from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
 
@@ -83,9 +83,9 @@ function Cat (){
     const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
     const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
     const [catRecordsOpenFlag, setCatRecordsOpenFlag] = useState(false);
-    const [catFeedDesiredOption, setCatFeedDesiredOption] = useState(-1);
-    const [catPlayDesiredOption, setCatPlayDesiredOption] = useState(-1);
-    const [catMedicineDesiredOption, setCatMedicineDesiredOption] = useState(-1);
+    const [catFeedOptionsDesiredOption, setCatFeedOptionsDesiredOption] = useState(-1);
+    const [catPlayOptionsDesiredOption, setCatPlayOptionsDesiredOption] = useState(-1);
+    const [catMedicineOptionsDesiredOption, setCatMedicineOptionsDesiredOption] = useState(-1);
 
     const catAlive = ActivePetName !== "" ? 
                             PetList[ActivePetName][healthKey] > 0 ? 
@@ -94,13 +94,13 @@ function Cat (){
                             : false;
 
     const catHungry = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][0]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
                                 true 
                                 : false
                             : false;
                             
     const catRestless = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][0]) >= timeLimitList[catSpecies][playingKey]/2 ? 
+                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][playingKey]/2 ? 
                                 true 
                                 : false
                             : false;
@@ -162,9 +162,9 @@ function Cat (){
 
 
 
-    const catFeedOptions = [{[optionNameKey]: "tuna", [optionImageKey]: tuna}, {[optionNameKey]: "chicken", [optionImageKey]: chicken}, {[optionNameKey]: "salmon", [optionImageKey]: salmon}];
-    const catPlayOptions = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: magnifier, [optionGameKey]: MouseHunt}];
-    const catMedicineOptions = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
+    const catFeedOptionsList = [{[optionNameKey]: "tuna", [optionImageKey]: tuna}, {[optionNameKey]: "chicken", [optionImageKey]: chicken}, {[optionNameKey]: "salmon", [optionImageKey]: salmon}];
+    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: magnifier, [optionGameKey]: MouseHunt}];
+    const catMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
 
     const catAudioRefs = useRef({[happyAudioKey]: new Audio(catHappy), [sadAudioKey]: new Audio(catSad), [sleepAudioKey]: new Audio(catSleep)});
 
@@ -282,19 +282,19 @@ function Cat (){
 
         if (catHungry){
 
-            setCatFeedDesiredOption(Math.floor(Math.random() * catFeedOptions.length));
+            setCatFeedOptionsDesiredOption(Math.floor(Math.random() * catFeedOptionsList.length));
 
         }
 
         if (catRestless){
 
-            setCatPlayDesiredOption(Math.floor(Math.random() * catPlayOptions.length));
+            setCatPlayOptionsDesiredOption(Math.floor(Math.random() * catPlayOptionsList.length));
 
         }
 
         if (catUnwell){
 
-            setCatMedicineDesiredOption(Math.floor(Math.random() * catMedicineOptions.length));
+            setCatMedicineOptionsDesiredOption(Math.floor(Math.random() * catMedicineOptionsList.length));
 
         }
 
@@ -311,26 +311,26 @@ function Cat (){
             {catFeedOpenFlag &&
             <Feed
                 feedAnimationImages={catFeedImages}
-                feedOptions={catFeedOptions}
-                feedDesiredOption = {catFeedDesiredOption}
-                setFeedDesiredOption = {setCatFeedDesiredOption}
+                feedOptionsList={catFeedOptionsList}
+                feedOptionsDesiredOption = {catFeedOptionsDesiredOption}
+                setFeedOptionsDesiredOption = {setCatFeedOptionsDesiredOption}
                 setFeedOpenFlag = {setCatFeedOpenFlag}
             />}
 
             {catPlayOpenFlag &&
             <Play
-                playOptions={catPlayOptions}
-                playDesiredOption = {catPlayDesiredOption}
-                setPlayDesiredOption = {setCatPlayDesiredOption}
+                playOptionsList={catPlayOptionsList}
+                playOptionsDesiredOption = {catPlayOptionsDesiredOption}
+                setPlayOptionsDesiredOption = {setCatPlayOptionsDesiredOption}
                 setPlayOpenFlag = {setCatPlayOpenFlag}
             />}
 
             {catMedicineOpenFlag &&
             <Medicine
                 medicineAnimationImages={catMedicineImages}
-                medicineOptions={catMedicineOptions}
-                medicineDesiredOption = {catMedicineDesiredOption}
-                setMedicineDesiredOption = {setCatMedicineDesiredOption}
+                medicineOptionsList={catMedicineOptionsList}
+                medicineOptionsDesiredOption = {catMedicineOptionsDesiredOption}
+                setMedicineOptionsDesiredOption = {setCatMedicineOptionsDesiredOption}
                 setMedicineOpenFlag = {setCatMedicineOpenFlag}
             />}
 

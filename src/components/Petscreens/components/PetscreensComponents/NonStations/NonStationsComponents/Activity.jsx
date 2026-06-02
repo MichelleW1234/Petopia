@@ -3,7 +3,7 @@ import { usePetList} from "../../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey } from "../../../../../../constants/Constants.js";
+import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey, activityLastPerformedKey } from "../../../../../../constants/Constants.js";
 
 import "./Activity.css";
 
@@ -19,7 +19,7 @@ function Activity({activityKey, activityTimeGap}) {
 
     const activityDeadLine = activityKey === medicineKey ? 
                             PetList[ActivePetName][activityKey] + activityTimeGap
-                        : PetTimeStamps[ActivePetName][activityKey][0] + activityTimeGap;
+                        : PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey] + activityTimeGap;
 
     const activityLastTimeString = activityKey === medicineKey ?
                                         PetList[ActivePetName][activityKey] > 0 ? 
@@ -31,7 +31,7 @@ function Activity({activityKey, activityTimeGap}) {
                                                 minute: "2-digit",
                                             })
                                         : "N/A"
-                                    :   (new Date(PetTimeStamps[ActivePetName][activityKey][0])).toLocaleString([], {
+                                    :   (new Date(PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey])).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
                                             day: "2-digit",
@@ -65,7 +65,7 @@ function Activity({activityKey, activityTimeGap}) {
                                                 PetList[ActivePetName][activityKey] === 0 ? 
                                                     100
                                                 : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetList[ActivePetName][activityKey])/activityTimeGap) * 100)))
-                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][0])/activityTimeGap) * 100)));
+                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey])/activityTimeGap) * 100)));
 
     const activityLastStrings = {
 
@@ -106,10 +106,10 @@ function Activity({activityKey, activityTimeGap}) {
 
                         <div key = {num} className = {num === 50 ?
                                                         "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
-                                                        : num <= activityPercentUntilNextUpdate ? 
-                                                            "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
-                                                            : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
-                                                        }>
+                                                    : num <= activityPercentUntilNextUpdate ? 
+                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
+                                                        : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
+                                                    }>
                         </div>
 
                     ))}

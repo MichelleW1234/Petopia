@@ -35,7 +35,6 @@ import s3FishSad from "../images/Fish/Mood/s1Sad.png";
 
 
 
-
 export const buttonSoundKey = "button_click";
 export const buttonPressSoundKey = "button_press";
 export const gameButtonSoundKey = "gameButton_click"
@@ -48,10 +47,12 @@ export const clearedSoundKey = "cleared";
 export const restartSoundKey = "restart";
 
 
+
 export const optionImageKey = "image";
 export const optionNameKey = "name";
 export const optionCursorKey = "cursor";
 export const optionGameKey = "game";
+
 
 
 export const sleepAudioKey = "sleep";
@@ -59,9 +60,12 @@ export const happyAudioKey = "happy";
 export const sadAudioKey = "sad";
 
 
+
 export const feedingKey = "feeding";
 export const cleaningKey = "cleaning";
 export const playingKey = "playing";
+
+
 
 export const speciesKey = "species";
 export const stageKey = "stage";
@@ -70,8 +74,15 @@ export const birthDateKey = "birthDate";
 export const genderKey = "gender"
 export const medicineKey = "medicine";
 
+export const activityLastPerformedKey = "performed";
+export const activityLastDamageKey = "damaged";
+
+
+
 export const maleGender = "male";
 export const femaleGender = "female";
+
+
 
 export const dogSpecies = "dog"; 
 export const catSpecies = "cat"; 
