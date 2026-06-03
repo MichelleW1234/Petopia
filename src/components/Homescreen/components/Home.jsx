@@ -188,7 +188,7 @@ function Home (){
                                     <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                             
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                            <img src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Left"src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow
@@ -199,7 +199,7 @@ function Home (){
                                                         dead
                                                     }
                                             />
-                                            <img src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Middle" src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow
@@ -210,7 +210,7 @@ function Home (){
                                                         dead
                                                     }
                                             />
-                                            <img src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Right" src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow

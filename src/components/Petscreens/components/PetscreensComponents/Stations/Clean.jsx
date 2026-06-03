@@ -12,7 +12,7 @@ import Options from "./StationsComponents/Options.jsx";
 
 import { cleaningKey, moodPetImages, optionCursorKey, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
-import { flagCloser, playSound } from "../../../../../helpers/helpers.js";
+import { flagCloser} from "../../../../../helpers/helpers.js";
 
 import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
 

@@ -102,6 +102,7 @@ function Adoption () {
     const petSelecting = () => {
 
         playSound(gameButtonSoundKey);
+        
         const gender = Math.floor(Math.random() * 2);
         
         if (gender === 0){
@@ -129,10 +130,10 @@ function Adoption () {
             e.preventDefault();
             showError("Enter a name for your pet.");
 
-        } else if (trimmedPetName.length > 15){
+        } else if (trimmedPetName.length > 20){
 
             e.preventDefault();
-            showError("Shorten the name to 15 characters max.");
+            showError("Shorten the name to 20 characters max.");
 
         } else if (trimmedPetName in PetList && trimmedPetName in PetTimeStamps) {
 

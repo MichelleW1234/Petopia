@@ -65,6 +65,8 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const clearPets = () => {
 
+        playSound(clearedSoundKey);
+
         setPetTimeStamps(prev => {
 
             let updatedList = { ...prev };
@@ -91,7 +93,6 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
         });
 
-        playSound(clearedSoundKey);
         flagCloser(setDeletionOpenClearPetsFlag);
 
     }

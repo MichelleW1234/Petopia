@@ -17,7 +17,7 @@ import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
-import { flagOpener, playSound } from "../../../../helpers/helpers.js";
+import { flagOpener } from "../../../../helpers/helpers.js";
 
 import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
 import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";

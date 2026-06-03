@@ -6,8 +6,8 @@ import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
-import mouse from "../../../../../images/mouse.png";
-import snake from "../../../../../images/snake.png";
+import mouse from "../../../../../images/Cat/Play/Games/mouse.png";
+import snake from "../../../../../images/Cat/Play/Games/snake.png";
 
 import "./MouseHunt.css";
 
@@ -126,8 +126,6 @@ function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }
                     }
 
                 }
-
-                console.log(finalArray);
 
                 return finalArray;
 

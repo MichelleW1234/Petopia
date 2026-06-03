@@ -7,8 +7,6 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import { birthDateKey, genderKey } from "../../../../../constants/Constants.js";
 import { flagCloser } from "../../../../../helpers/helpers.js";
 
-import stamp from "../../../../../images/stamp.png";
-
 import "./Records.css";
 
 
@@ -29,14 +27,6 @@ function Records({setRecordsOpenFlag}) {
     },
         ".Close"
     );
-
-        
-    useEffect(() => {
-
-        const img = new Image();
-        img.src = stamp;
-
-    }, []);
 
 
 
@@ -64,7 +54,6 @@ function Records({setRecordsOpenFlag}) {
                             <p>{recordsBirthdayString}</p>
                         </div>
                     </div>
-                    <img className = "Records_ComponentContainer-Template--Stamp" src = {stamp}/>
                 </div>
             </div>
 

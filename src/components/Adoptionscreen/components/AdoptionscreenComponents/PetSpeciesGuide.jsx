@@ -1,7 +1,7 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { buttonSoundKey } from "../../../../constants/Constants.js";
-import { flagCloser, playSound } from "../../../../helpers/helpers.js";
+import { flagCloser } from "../../../../helpers/helpers.js";
 
 import "./PetSpeciesGuide.css";
 

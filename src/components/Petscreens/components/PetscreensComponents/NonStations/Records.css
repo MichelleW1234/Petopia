@@ -20,18 +20,3 @@
     gap: 2rem;
 
 }
-
-
-.Records_ComponentContainer-Template--Stamp{
-
-    height: 10rem;
-
-    padding: 1rem;
-    border-radius: 1rem;
-
-    filter:
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
-
-}

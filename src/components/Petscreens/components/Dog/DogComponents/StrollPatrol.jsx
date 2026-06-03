@@ -6,9 +6,9 @@ import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
 
-import carrot from "../../../../../images/carrot.png";
-import skull from "../../../../../images/skull.png";
-import dog from "../../../../../images/HorizontalDog.png";
+import carrot from "../../../../../images/Dog/Play/Games/carrot.png";
+import skull from "../../../../../images/Dog/Play/Games/skull.png";
+import dog from "../../../../../images/Dog/Play/Games/HorizontalDog.png";
 
 import "./StrollPatrol.css";
 

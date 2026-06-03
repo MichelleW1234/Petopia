@@ -45,6 +45,7 @@ export const failSoundKey = "fail";
 export const confirmedSoundKey = "confirmed";
 export const clearedSoundKey = "cleared";
 export const restartSoundKey = "restart";
+export const quitSoundKey = "quit";
 
 
 

@@ -5,7 +5,6 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 
 import { catSpecies, dogSpecies, happyAudioKey, healthCapList, healthKey, sadAudioKey, sleepAudioKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { playSound } from "../../../../helpers/helpers.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
 import heart from "../../../../images/placeholderheart.png";
@@ -98,7 +97,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
             }
 
-            currSound.volume = 0.5;
+            currSound.volume = 0.75;
             currSound.play();
                 
         }

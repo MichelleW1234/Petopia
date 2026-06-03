@@ -61,7 +61,7 @@ import s3CatMedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
 import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
 import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
 import salmon from "../../../../images/Cat/Feed/Options/salmon.png";
-import magnifier from "../../../../images/Cat/Play/magnifier.png";
+import magnifier from "../../../../images/Cat/Play/Options/magnifier.png";
 import pill from "../../../../images/Cat/Medicine/Options/pill.png";
 import tablet from "../../../../images/Cat/Medicine/Options/tablet.png";
 

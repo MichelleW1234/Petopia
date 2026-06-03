@@ -73,7 +73,7 @@ import soap from "../../../../images/Dog/Clean/Options/soap.png";
 import brush from "../../../../images/Dog/Clean/Options/brush.png";
 import soapCursor from "../../../../images/Dog/Clean/Options/soap.cur";
 import brushCursor from "../../../../images/Dog/Clean/Options/brush.cur";
-import leash from "../../../../images/Dog/Play/leash.png";
+import leash from "../../../../images/Dog/Play/Options/leash.png";
 import pill from "../../../../images/Dog/Medicine/Options/pill.png";
 import chew from "../../../../images/Dog/Medicine/Options/chew.png";
 

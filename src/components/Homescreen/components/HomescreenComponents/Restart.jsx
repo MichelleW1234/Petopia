@@ -37,10 +37,10 @@ function Restart({setRestartOpenFlag}) {
 
     const restartGame = () => {
 
+        playSound(restartSoundKey);
         setPetList({});
         setPetTimeStamps({});
 
-        playSound(restartSoundKey);
         flagCloser(setRestartOpenFlag);
 
     }
