@@ -15,7 +15,7 @@ import "./StrollPatrol.css";
 
 
 
-function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef}) {
+function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const strollPatrolWindowWidth = 8;
     const strollPatrolWindowHeight = 5;
@@ -31,7 +31,7 @@ function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!strollPatrolStart && !playDone){
+        if (!strollPatrolStart){
 
             startActivity(setStrollPatrolStart);
 
@@ -73,7 +73,7 @@ function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef
 
     useEffect(() => {
 
-        if (!strollPatrolStart || playDone) {
+        if (!strollPatrolStart) {
             return;
         }
 
@@ -86,7 +86,7 @@ function StrollPatrol({playDone, playCurrNumber, setPlayCurrNumber, playAudioRef
             playAudioRef.current.loop = false;
         };
 
-    }, [strollPatrolStart, playDone]);
+    }, [strollPatrolStart]);
 
 
     useEffect(() => {

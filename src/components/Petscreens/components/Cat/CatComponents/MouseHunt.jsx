@@ -14,7 +14,7 @@ import "./MouseHunt.css";
 
 
 
-function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const mouseHuntWindowWidth = 3;
     const mouseHuntWindowHeight = 5;
@@ -30,7 +30,7 @@ function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!mouseHuntStart && !playDone){
+        if (!mouseHuntStart){
 
             startActivity(setMouseHuntStart);
 
@@ -45,7 +45,7 @@ function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }
 
     useEffect(() => {
 
-        if (!mouseHuntStart || playDone) {
+        if (!mouseHuntStart) {
             return;
         }
 
@@ -58,7 +58,7 @@ function MouseHunt({ playDone, playCurrNumber, setPlayCurrNumber, playAudioRef }
             playAudioRef.current.loop = false;
         };
 
-    }, [mouseHuntStart, playDone]);
+    }, [mouseHuntStart]);
     
 
 

@@ -123,7 +123,6 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
                             PlaySelectedGameWindow !== null ? (
 
                                 <PlaySelectedGameWindow
-                                    playDone = {playDone}
                                     playCurrNumber = {playCurrNumber}
                                     setPlayCurrNumber = {setPlayCurrNumber}
                                     playAudioRef = {playAudioRef}
