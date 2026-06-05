@@ -5,8 +5,7 @@ import { buttonPressSoundKey, optionImageKey, optionNameKey, portraitPetImages, 
 import { playSound } from "../../../../../../helpers/helpers.js";
 
 import unwanted from "../../../../../../images/PetUnwanted.png";
-import heart from "../../../../../../images/placeholderheart.png";
-import bubble from "../../../../../../images/placeholderthoughtbubble.png";
+import bubble from "../../../../../../images/thoughtBubble.png";
 
 import "./Options.css";
 
@@ -47,8 +46,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
-                    <img src = {bubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
-                    <img src = {optionsDesiredOption === -1 ? unwanted : optionsList[optionsDesiredOption][optionImageKey]} className="Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {optionsDesiredOption === -1 ? unwanted : optionsList[optionsDesiredOption][optionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer  Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                 </div>
 

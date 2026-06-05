@@ -27,13 +27,12 @@
 
 .Home_ComponentContainer-Template--PetAlertPawPrint{
 
-  height: 4rem;
-  width: 4rem;
+  width: 4.5rem;
 
   filter: 
-    drop-shadow(0 0 1px rgb(255, 255, 255))
     drop-shadow(0 0 2px rgb(255, 255, 255))
-    drop-shadow(0 0 3px  rgb(255, 255, 255));
+    drop-shadow(0 0 4px rgb(255, 255, 255))
+    drop-shadow(0 0 6px  rgb(255, 255, 255));
 
 }
 

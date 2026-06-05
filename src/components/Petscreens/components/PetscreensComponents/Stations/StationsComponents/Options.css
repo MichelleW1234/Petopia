@@ -2,31 +2,30 @@
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     justify-content: center;
 
-    gap: 1rem;
-    padding: 1rem;
+    gap: 2rem;
   
 }
 
 
 .Options_ComponentImage-Template--PetThoughtPet{
 
-    height: 10rem;
     width: 10rem;
+    height: 10rem;
 
     filter:
-        drop-shadow(0 0 5px rgb(215, 175, 255))
-        drop-shadow(0 0 10px rgba(215, 150, 255))
-        drop-shadow(0 0 15px rgb(215, 125, 255));
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 8px rgb(255, 255, 255))
+        drop-shadow(0 0 10px rgb(255, 255, 255));
 
 }
 
 .Options_ComponentContainer-Structure--PetThoughtDesiredOption {
 
-    height: 10rem;
-    width: 10rem;
+    height: 15rem;
+    width: 15rem;
 
 }
 
@@ -36,20 +35,20 @@
     width: 100%;
     
     filter:
-        drop-shadow(0 0 5px rgb(215, 175, 255))
-        drop-shadow(0 0 10px rgba(215, 150, 255))
-        drop-shadow(0 0 15px rgb(215, 125, 255));
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 8px rgb(255, 255, 255))
+        drop-shadow(0 0 12px rgb(255, 255, 255));
 
 }
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionObject{
 
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 50%;
 
     filter:
-        drop-shadow(0 0 2px rgb(215, 175, 255))
-        drop-shadow(0 0 4px rgba(215, 150, 255))
-        drop-shadow(0 0 6px rgb(215, 125, 255));
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px rgb(255, 255, 255));
 
 }
