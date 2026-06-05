@@ -196,7 +196,7 @@ function Home (){
                                                         orange
                                                         : currPetHealth > 0 ?
                                                         red :
-                                                        dead
+                                                        gray
                                                     }
                                             />
                                             <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Middle" src = {currPetHealth >= 75 ? 
@@ -207,7 +207,7 @@ function Home (){
                                                         orange
                                                         : currPetHealth > 0 ?
                                                         red :
-                                                        dead
+                                                        gray
                                                     }
                                             />
                                             <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Right" src = {currPetHealth >= 75 ? 
@@ -218,7 +218,7 @@ function Home (){
                                                         orange
                                                         : currPetHealth > 0 ?
                                                         red :
-                                                        dead
+                                                        gray
                                                     }
                                             />
                                         </div>
