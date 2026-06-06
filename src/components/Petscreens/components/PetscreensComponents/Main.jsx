@@ -11,8 +11,10 @@ import Happy from "../../../../images/Happy.png";
 import HappyOne from "../../../../images/Happy1.png";
 import Anger from "../../../../images/Angry.png";
 import AngerOne from "../../../../images/Angry1.png";
-import healthHeartGood from "../../../../images/placeholderheartGood.png";
-import healthHeartBad from "../../../../images/placeholderheartBad.png";
+import Sleep from "../../../../images/Sleep.png";
+import SleepOne from "../../../../images/Sleep1.png";
+import healthHeartGood from "../../../../images/HeartGood.png";
+import healthHeartBad from "../../../../images/HeartBad.png";
 import petTombStone from "../../../../images/PetTombStone.png";
 
 import "./Main.css";
@@ -44,6 +46,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
     const mainHappyAnimationImages = [Happy, HappyOne];
     const mainSadAnimationImages = [Anger, AngerOne];
+    const mainSleepAnimationImages = [Sleep, SleepOne];
         
     
 
@@ -51,7 +54,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), Happy, HappyOne, Anger, AngerOne, healthHeartGood, healthHeartBad, petTombStone];
+        const preloadImages = [...mainAnimationImages.flat(1), Happy, HappyOne, Anger, AngerOne, Sleep, SleepOne, healthHeartGood, healthHeartBad, petTombStone];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -290,7 +293,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
                                         {mainAttention &&
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {mainPetMood <= 1 ? mainHappyAnimationImages[mainEmotionAnimationImage] : mainSadAnimationImages[mainEmotionAnimationImage]} 
+                                            src = {mainSleepAnimationImages[mainEmotionAnimationImage]} 
                                             onMouseEnter={() => showAttention()}
                                         />}
                                     </div>

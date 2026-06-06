@@ -52,12 +52,9 @@ import s2DogFeedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
 import s3DogFeedOne from "../../../../images/Dog/Feed/Animation/s3.png";
 import s3DogFeedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
 
-import s1DogCleanOne from "../../../../images/Dog/Main/Awake/s1.svg";
-import s1DogCleanTwo from "../../../../images/Dog/Main/Awake/s11.svg";
-import s2DogCleanOne from "../../../../images/Dog/Main/Awake/s2.svg";
-import s2DogCleanTwo from "../../../../images/Dog/Main/Awake/s21.svg";
-import s3DogCleanOne from "../../../../images/Dog/Main/Awake/s3.svg";
-import s3DogCleanTwo from "../../../../images/Dog/Main/Awake/s31.svg";
+import s1DogClean from "../../../../images/Dog/Main/Awake/s1.svg";
+import s2DogClean from "../../../../images/Dog/Main/Awake/s2.svg";
+import s3DogClean from "../../../../images/Dog/Main/Awake/s3.svg";
 
 import s1DogMedOne from "../../../../images/Dog/Feed/Animation/s1.png";
 import s1DogMedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
@@ -173,13 +170,13 @@ function Dog (){
                                 : [s3DogFeedOne, s3DogFeedTwo]
                             : [s1DogFeedOne, s1DogFeedTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const dogCleanImages = ActivePetName !== "" ? 
+    const dogCleanImage = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
-                                    [s1DogCleanOne, s1DogCleanTwo]
+                                    [s1DogClean]
                                 : PetList[ActivePetName][stageKey] === 1 ? 
-                                    [s2DogCleanOne, s2DogCleanTwo]
-                                : [s3DogCleanOne, s3DogCleanTwo]
-                            : [s1DogCleanOne, s1DogCleanTwo];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                    [s2DogClean]
+                                : [s3DogClean]
+                            : [s1DogClean];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const dogMedicineImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -366,7 +363,7 @@ function Dog (){
 
             {dogCleanOpenFlag &&
             <Clean
-                cleanAnimationImages={dogCleanImages}
+                cleanImage={dogCleanImage}
                 cleanOptionsList={dogCleanOptionsList}
                 cleanOptionsDesiredOption = {dogCleanOptionsDesiredOption}
                 setCleanOptionsDesiredOption = {setDogCleanOptionsDesiredOption}

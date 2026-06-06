@@ -50,13 +50,9 @@ import s2FishFeedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
 import s3FishFeedOne from "../../../../images/Fish/Feed/Animation/s3.png";
 import s3FishFeedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
 
-import s1FishCleanOne from "../../../../images/Fish/Clean/Animation/s1.png";
-import s1FishCleanTwo from "../../../../images/Fish/Clean/Animation/s11.png";
-import s2FishCleanOne from "../../../../images/Fish/Clean/Animation/s2.png";
-import s2FishCleanTwo from "../../../../images/Fish/Clean/Animation/s21.png";
-import s3FishCleanOne from "../../../../images/Fish/Clean/Animation/s3.png";
-import s3FishCleanTwo from "../../../../images/Fish/Clean/Animation/s31.png";
-
+import s1FishClean from "../../../../images/Fish/Clean/Animation/s1.png";
+import s2FishClean from "../../../../images/Fish/Clean/Animation/s2.png";
+import s3FishClean from "../../../../images/Fish/Clean/Animation/s3.png";
 
 import s1FishMedOne from "../../../../images/Fish/Feed/Animation/s1.png";
 import s1FishMedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
@@ -164,13 +160,13 @@ function Fish (){
                                     : [s3FishFeedOne, s3FishFeedTwo]
                                 : [s1FishFeedOne, s1FishFeedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishCleanImages = ActivePetName !== "" ? 
+    const fishCleanImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1FishCleanOne, s1FishCleanTwo]
+                                        [s1FishClean]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2FishCleanOne, s2FishCleanTwo]
-                                    : [s3FishCleanOne, s3FishCleanTwo]
-                                : [s1FishCleanOne, s1FishCleanTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        [s2FishClean]
+                                    : [s3FishClean]
+                                : [s1FishClean]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const fishMedicineImages = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
@@ -336,7 +332,7 @@ function Fish (){
 
             {fishCleanOpenFlag &&
             <Clean
-                cleanAnimationImages={fishCleanImages}
+                cleanImage={fishCleanImage}
                 cleanOptionsList={fishCleanOptionsList}
                 cleanOptionsDesiredOption = {fishCleanOptionsDesiredOption}
                 setCleanOptionsDesiredOption = {setFishCleanOptionsDesiredOption}
