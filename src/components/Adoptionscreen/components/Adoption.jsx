@@ -277,7 +277,7 @@ function Adoption () {
 
             {adoptionPetSpeciesGuideOpenFlag &&
                 <PetSpeciesGuide
-                    setAdoptionPetSpeciesGuideOpenFlag = {setAdoptionPetSpeciesGuideOpenFlag}
+                    setPetSpeciesGuideOpenFlag = {setAdoptionPetSpeciesGuideOpenFlag}
                 />
             }
 

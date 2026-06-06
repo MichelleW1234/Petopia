@@ -14,13 +14,13 @@
 
 .Main_ComponentContainer-Color--WindowScreen--dog{ 
 
-    background: linear-gradient(to bottom, #a159ff, #ffcf4b);
+    background: url("./../../../../images/Dog/Background.png");
 
 }
 
 .Main_ComponentContainer-Color--WindowScreen--cat{
 
-    background: linear-gradient(to bottom, #a159ff, #ffcf4b);
+    background: url("./../../../../images/Cat/Background.png");
 
 }
 
