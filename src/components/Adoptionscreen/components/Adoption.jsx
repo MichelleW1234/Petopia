@@ -347,7 +347,9 @@ function Adoption () {
                                 <p>Hello, my name is </p>
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
-                                    <img src = {portraitPetImages[adoptionSelectedPet][0]}/>
+                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
+                                        <img src = {portraitPetImages[adoptionSelectedPet][0]}/>
+                                    </div>
                                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
                                         <input 
                                             type="text"

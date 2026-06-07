@@ -14,19 +14,26 @@
 
 .Main_ComponentContainer-Color--WindowScreen--dog{ 
 
-    background: url("./../../../../images/Dog/Background.png");
+    background: 
+        url("./../../../../images/Dog/Background.png"),
+        linear-gradient(to bottom, rgba(215, 0, 215, 0.75), rgba(17, 0, 37, 0.75));
+
 
 }
 
 .Main_ComponentContainer-Color--WindowScreen--cat{
 
-    background: url("./../../../../images/Cat/Background.png");
+    background: 
+        url("./../../../../images/Cat/Background.png"),
+        linear-gradient(to bottom, rgba(215, 0, 215, 0.75), rgba(17, 0, 37, 0.75));
 
 }
 
 .Main_ComponentContainer-Color--WindowScreen--fish{
 
-    background: linear-gradient(to bottom, #59bfff, #000872);
+    background: 
+        url("./../../../../images/Fish/Background.png"),
+        linear-gradient(to bottom, rgba(215, 0, 215, 0.75), rgba(17, 0, 37, 0.75));
 
 }
 
