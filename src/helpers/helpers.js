@@ -28,7 +28,7 @@ export const playSound = (soundEffect) => {
         [startSoundKey] : {[buttonAudioKey]: start, [buttonVolumeKey]: 0.25},
         [successSoundKey] : {[buttonAudioKey]: success, [buttonVolumeKey]: 0.25},
         [failSoundKey] : {[buttonAudioKey]: fail, [buttonVolumeKey]: 0.25},
-        [confirmedSoundKey] : {[buttonAudioKey]: confirmed, [buttonVolumeKey]: 0.5},
+        [confirmedSoundKey] : {[buttonAudioKey]: confirmed, [buttonVolumeKey]: 0.25},
         [clearedSoundKey] : {[buttonAudioKey]: cleared, [buttonVolumeKey]: 0.5},
         [restartSoundKey] : {[buttonAudioKey]: restart, [buttonVolumeKey]: 0.25},
         [quitSoundKey] : {[buttonAudioKey]: quit, [buttonVolumeKey]: 0.75}
