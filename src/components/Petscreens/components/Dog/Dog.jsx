@@ -8,6 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
+import MusicVolume from "../../../GlobalComponents//MusicVolume.jsx";
 import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
@@ -86,6 +87,7 @@ function Dog (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const [dogMusicVolumeOpenFlag, setDogMusicVolumeOpenFlag] = useState(false);
     const [dogActivityInProgress, setDogActivityInProgress] = useState(false);
     const [dogFeedOpenFlag, setDogFeedOpenFlag] = useState(false);
     const [dogCleanOpenFlag, setDogCleanOpenFlag] = useState(false);
@@ -196,10 +198,21 @@ function Dog (){
     const navigate = useNavigate();
     
 
-    
+    useKeyboardShortcut("v", () => {
+            
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
+
+            flagOpener(setDogMusicVolumeOpenFlag, 1);
+
+        }
+
+    },
+        ".Volume"
+    );
+
     useKeyboardShortcut("1", () => {
 
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -213,9 +226,9 @@ function Dog (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogScheduleOpenFlag);
+            flagOpener(setDogScheduleOpenFlag, 0);
 
         }
 
@@ -226,9 +239,9 @@ function Dog (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogRecordsOpenFlag);
+            flagOpener(setDogRecordsOpenFlag, 0);
 
         }
 
@@ -240,9 +253,9 @@ function Dog (){
 
     useKeyboardShortcut("4", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogFeedOpenFlag);
+            flagOpener(setDogFeedOpenFlag, 0);
 
         }
 
@@ -253,9 +266,9 @@ function Dog (){
 
     useKeyboardShortcut("5", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogCleanOpenFlag);
+            flagOpener(setDogCleanOpenFlag, 0);
 
         }
 
@@ -268,9 +281,9 @@ function Dog (){
 
     useKeyboardShortcut("6", () => {
 
-        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (dogAlive && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogPlayOpenFlag);
+            flagOpener(setDogPlayOpenFlag, 0);
 
         }
 
@@ -282,9 +295,9 @@ function Dog (){
 
     useKeyboardShortcut("7", () => {
 
-        if (dogAlive && dogCanReceiveDose && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag){
+        if (dogAlive && dogCanReceiveDose && !dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogMedicineOpenFlag);
+            flagOpener(setDogMedicineOpenFlag, 0);
 
         }
 
@@ -352,6 +365,12 @@ function Dog (){
     return (
         
         <>
+
+            {dogMusicVolumeOpenFlag && 
+            <MusicVolume
+                setMusicVolumeOpenFlag={setDogMusicVolumeOpenFlag}
+            />}
+
             {dogFeedOpenFlag &&
             <Feed
                 feedAnimationImages={dogFeedImages}
@@ -402,19 +421,19 @@ function Dog (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setDogRecordsOpenFlag)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setDogRecordsOpenFlag, 0)}> Records <br/> [3]</button>
 
                     {dogAlive ? (
 
                         <>
-                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {(e) => flagOpener(setDogFeedOpenFlag)}> Feed <br/> [4] </button>
-                            <button className={dogDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setDogCleanOpenFlag)}> Clean <br/> [5]</button>
-                            <button className={dogRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setDogPlayOpenFlag)}> Play <br/> [6]</button>
+                            <button className={dogHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {(e) => flagOpener(setDogFeedOpenFlag, 0)}> Feed <br/> [4] </button>
+                            <button className={dogDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setDogCleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                            <button className={dogRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setDogPlayOpenFlag, 0)}> Play <br/> [6]</button>
 
                             {dogCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setDogMedicineOpenFlag)}> Medicine <br/> [7]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setDogMedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
 
                             ) : (
 
@@ -449,6 +468,12 @@ function Dog (){
                 </div>
 
             </div>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setDogMusicVolumeOpenFlag, 1)}>
+                Volume <br/> [v]
+            </button>
         </>
 
     );

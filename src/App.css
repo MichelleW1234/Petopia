@@ -792,3 +792,11 @@ a:active {
 
 }
 
+
+.MiscellaneousElements_ComponentButton-Position--ScreenToggle{
+    
+  position: fixed;
+  bottom: 4rem;
+  left: 4rem;
+
+}

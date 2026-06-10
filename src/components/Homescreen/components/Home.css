@@ -25,33 +25,13 @@
 }
 
 
-.Home_ComponentContainer-Template--PetAlertPawPrint{
+.Home_ComponentContainer-Template--PetAlertBattery{
 
-  width: 4.5rem;
+  width: 3.5rem;
 
   filter: 
     drop-shadow(0 0 2px rgb(255, 255, 255))
     drop-shadow(0 0 4px rgb(255, 255, 255))
     drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-}
-
-.Home_ComponentContainer-Template--PetAlertPawPrint--Left{
-
-  padding-top: 1rem;
-  transform: rotate(-25deg);
-
-}
-
-.Home_ComponentContainer-Template--PetAlertPawPrint--Middle{
-
-  padding-bottom: 1rem;
-
-}
-
-.Home_ComponentContainer-Template--PetAlertPawPrint--Right{
-
-  padding-top: 1rem;
-  transform: rotate(25deg);
 
 }

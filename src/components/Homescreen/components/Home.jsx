@@ -8,6 +8,7 @@ import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
 
+import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
 import PetCareGuide from "./HomescreenComponents/PetCareGuide.jsx";
@@ -25,7 +26,6 @@ import "./Home.css";
 
 
 
-
 function Home (){
 
     const { audioRef } = useContext(BackgroundMusicContext);
@@ -34,6 +34,7 @@ function Home (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
+    const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
     const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
     const [homePetCareGuideOpenFlag, setHomePetCareGuideOpenFlag] = useState(false);
@@ -45,11 +46,26 @@ function Home (){
 
     const navigate = useNavigate();
 
+
+
+    useKeyboardShortcut("v", () => {
+        
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
+
+            flagOpener(setHomeMusicVolumeOpenFlag, 1);
+
+        }
+
+    },
+        ".Volume"
+    );
+
+
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
 
-            flagOpener(setHomeRestartOpenFlag);
+            flagOpener(setHomeRestartOpenFlag, 0);
 
         }
 
@@ -60,9 +76,9 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
 
-            flagOpener(setHomeDeletionOpenClearPetsFlag);
+            flagOpener(setHomeDeletionOpenClearPetsFlag, 0);
 
         }
 
@@ -74,7 +90,7 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!homeMaxPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag) {
+        if (!homeMaxPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag) {
 
             playSound(buttonSoundKey);
             navigate("/adopt");
@@ -88,9 +104,9 @@ function Home (){
     
     useKeyboardShortcut("4", () => {
 
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag){
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
 
-            flagOpener(setHomePetCareGuideOpenFlag);
+            flagOpener(setHomePetCareGuideOpenFlag, 0);
 
         }
 
@@ -114,6 +130,11 @@ function Home (){
 
         <>
 
+            {homeMusicVolumeOpenFlag && 
+            <MusicVolume
+                setMusicVolumeOpenFlag={setHomeMusicVolumeOpenFlag}
+            />}
+
             {homeRestartOpenFlag &&
             <Restart
                 setRestartOpenFlag={setHomeRestartOpenFlag}
@@ -136,8 +157,8 @@ function Home (){
                     {homeMinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => flagOpener(setHomeRestartOpenFlag)}> Restart Game <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeDeletionOpenClearPetsFlag)}> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Restart Game <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeDeletionOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
                         </>
 
                     ) : (
@@ -159,7 +180,7 @@ function Home (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomePetCareGuideOpenFlag)}> Pet Care Guide <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomePetCareGuideOpenFlag, 0)}> Pet Care Guide <br/> [4]</button>
                     
                 </div>
 
@@ -188,7 +209,7 @@ function Home (){
                                     <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                             
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Left"src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery"src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow
@@ -199,7 +220,7 @@ function Home (){
                                                         gray
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Middle" src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow
@@ -210,7 +231,7 @@ function Home (){
                                                         gray
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertPawPrint Home_ComponentContainer-Template--PetAlertPawPrint--Right" src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {currPetHealth >= 75 ? 
                                                         green
                                                         : currPetHealth >= 50 ?
                                                         yellow
@@ -244,6 +265,12 @@ function Home (){
                 )}
 
             </div>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                Volume <br/> [v]
+            </button>
 
         </>
 

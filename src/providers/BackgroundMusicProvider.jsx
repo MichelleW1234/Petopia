@@ -1,17 +1,26 @@
-import { createContext, useRef, useEffect } from 'react';
+import { createContext, useContext, useRef, useEffect, useState } from 'react';
 import soundtrack from "../Music/PetopiaSoundTrack.mp3";
+import {useVolume} from "./VolumeProvider.jsx";
 
 export const BackgroundMusicContext = createContext();
 
 export function BackgroundMusicProvider({ children }) {
 
+    const {Volume} = useVolume();
+
     const audioRef = useRef(new Audio(soundtrack));
+
+
+
+
+    useEffect(() => {
+        audioRef.current.volume = Volume;
+    }, [Volume]);
 
     useEffect(() => {
 
         const audio = audioRef.current;
         audio.loop = true;
-        audio.volume = 0.5;
 
         audio.play().catch((err) => {
             console.warn('Autoplay failed:', err);
@@ -25,9 +34,15 @@ export function BackgroundMusicProvider({ children }) {
 
     }, []);
 
+
+
     return (
-        <BackgroundMusicContext.Provider value={audioRef}>
+        <BackgroundMusicContext.Provider value={{audioRef}}>
             {children}
         </BackgroundMusicContext.Provider>
     );
+}
+
+export function useBackgroundMusic() {
+    return useContext(BackgroundMusicContext);
 }

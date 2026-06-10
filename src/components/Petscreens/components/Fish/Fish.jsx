@@ -8,6 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
+import MusicVolume from "../../../GlobalComponents/MusicVolume.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
@@ -83,6 +84,7 @@ function Fish (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const [fishMusicVolumeOpenFlag, setFishMusicVolumeOpenFlag] = useState(false);
     const [fishActivityInProgress, setFishActivityInProgress] = useState(false);
     const [fishFeedOpenFlag, setFishFeedOpenFlag] = useState(false);
     const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
@@ -185,9 +187,23 @@ function Fish (){
 
     const navigate = useNavigate();
 
+
+    useKeyboardShortcut("v", () => {
+                
+            if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+    
+                flagOpener(setFishMusicVolumeOpenFlag, 1);
+    
+            }
+    
+        },
+            ".Volume"
+        );
+    
+
     useKeyboardShortcut("1", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -202,9 +218,9 @@ function Fish (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
-            flagOpener(setFishScheduleOpenFlag);
+            flagOpener(setFishScheduleOpenFlag, 0);
 
         }
 
@@ -215,9 +231,9 @@ function Fish (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
-            flagOpener(setFishRecordsOpenFlag);
+            flagOpener(setFishRecordsOpenFlag, 0);
 
         }
 
@@ -229,9 +245,9 @@ function Fish (){
 
     useKeyboardShortcut("4", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
-            flagOpener(setFishFeedOpenFlag);
+            flagOpener(setFishFeedOpenFlag, 0);
 
         }
 
@@ -243,9 +259,9 @@ function Fish (){
 
     useKeyboardShortcut("5", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
-            flagOpener(setFishCleanOpenFlag);
+            flagOpener(setFishCleanOpenFlag, 0);
 
         }
 
@@ -257,9 +273,9 @@ function Fish (){
 
     useKeyboardShortcut("6", () => {
 
-        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag){
+        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
-            flagOpener(setFishMedicineOpenFlag);
+            flagOpener(setFishMedicineOpenFlag, 0);
 
         }
 
@@ -321,6 +337,12 @@ function Fish (){
     return (
 
         <>
+
+            {fishMusicVolumeOpenFlag && 
+            <MusicVolume
+                setMusicVolumeOpenFlag={setFishMusicVolumeOpenFlag}
+            />}
+
             {fishFeedOpenFlag &&
             <Feed
                 feedAnimationImages={fishFeedImages}
@@ -364,18 +386,18 @@ function Fish (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setFishRecordsOpenFlag)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setFishRecordsOpenFlag, 0)}> Records <br/> [3]</button>
 
                     {fishAlive ? (
 
                         <>
-                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setFishFeedOpenFlag)}> Feed <br/> [4]</button>
-                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setFishCleanOpenFlag)}> Clean <br/> [5]</button>
+                            <button className={fishHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setFishFeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={fishDirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => flagOpener(setFishCleanOpenFlag, 0)}> Clean <br/> [5]</button>
 
                             {fishCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setFishMedicineOpenFlag)}> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setFishMedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                             ) : (
 
@@ -409,6 +431,13 @@ function Fish (){
                 </div>
 
             </div>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setFishMusicVolumeOpenFlag, 1)}>
+                Volume <br/> [v]
+            </button>
+
         </>
 
     );

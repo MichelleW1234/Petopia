@@ -42,12 +42,22 @@ export const playSound = (soundEffect) => {
 }
 
 
-export const flagOpener = (setFlagToOpen) => {
+export const flagOpener = (setFlagToOpen, flagType) => {
 
-    playSound(buttonSoundKey);
+    if (flagType === 0){
+
+        playSound(buttonSoundKey);
+
+    } else {
+
+        playSound(gameButtonSoundKey);
+
+    }
+
     setFlagToOpen(true);
 
 }
+
 
 
 export const flagCloser = (setFlagToClose) => {

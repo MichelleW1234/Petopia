@@ -8,6 +8,7 @@ import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
+import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
@@ -22,11 +23,13 @@ function Adoption () {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
 
+    const [adoptionMusicVolumeOpenFlag, setAdoptionMusicVolumeOpenFlag] = useState(false);
     const [adoptionPetSpeciesGuideOpenFlag, setAdoptionPetSpeciesGuideOpenFlag] = useState(false);
     const [adoptionSelectedPet, setAdoptionSelectedPet] = useState("");
     const [adoptionPetGender, setAdoptionPetGender] = useState("");
     const [adoptionErrorMessage, setAdoptionErrorMessage] = useState("");
     const [adoptionConfirmationPetName, setAdoptionConfirmationPetName] = useState("");
+
 
     const adoptionConfirmationTimeoutRef = useRef(null);
 
@@ -34,9 +37,23 @@ function Adoption () {
     const navigate = useNavigate();
 
 
+
+    useKeyboardShortcut("v", () => {
+    
+        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+
+            flagOpener(setAdoptionMusicVolumeOpenFlag, 1);
+
+        }
+
+    },
+        ".Volume"
+    );
+
+
     useKeyboardShortcut("1", () => {
         
-        if (!adoptionPetSpeciesGuideOpenFlag){
+        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             playSound(buttonSoundKey);
             navigate("/home");
@@ -51,7 +68,11 @@ function Adoption () {
     
     useKeyboardShortcut("2", () => {
         
-        flagOpener(setAdoptionPetSpeciesGuideOpenFlag);
+        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+
+            flagOpener(setAdoptionPetSpeciesGuideOpenFlag, 0);
+
+        }
 
     },
         ".PetSpeciesGuide"
@@ -61,7 +82,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", () => {
         
-        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag){
+        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             petSelecting();
 
@@ -74,7 +95,7 @@ function Adoption () {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             undo();
 
@@ -87,7 +108,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", (e) => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             nameChecking(e);
 
@@ -275,6 +296,11 @@ function Adoption () {
 
         <>
 
+            {adoptionMusicVolumeOpenFlag && 
+            <MusicVolume
+                setMusicVolumeOpenFlag={setAdoptionMusicVolumeOpenFlag}
+            />}
+
             {adoptionPetSpeciesGuideOpenFlag &&
                 <PetSpeciesGuide
                     setPetSpeciesGuideOpenFlag = {setAdoptionPetSpeciesGuideOpenFlag}
@@ -285,7 +311,7 @@ function Adoption () {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setAdoptionPetSpeciesGuideOpenFlag)}> Pet Species Guide <br/> [2]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setAdoptionPetSpeciesGuideOpenFlag, 0)}> Pet Species Guide <br/> [2]</button>
                 </div>
 
                 {adoptionPetGender === "" ? (
@@ -379,6 +405,12 @@ function Adoption () {
                 )}
         
             </div>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setAdoptionMusicVolumeOpenFlag, 1)}>
+                Volume <br/> [v]
+            </button>
 
         </>
     

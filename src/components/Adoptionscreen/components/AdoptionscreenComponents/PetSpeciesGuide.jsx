@@ -9,6 +9,7 @@ import "./PetSpeciesGuide.css";
 
 function PetSpeciesGuide({setPetSpeciesGuideOpenFlag}) {
 
+    
     useKeyboardShortcut("2", () => {
 
         flagCloser(setPetSpeciesGuideOpenFlag);

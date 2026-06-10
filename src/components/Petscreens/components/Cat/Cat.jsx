@@ -8,6 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
+import MusicVolume from "../../../GlobalComponents/MusicVolume.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
@@ -77,6 +78,7 @@ function Cat (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
+    const [catMusicVolumeOpenFlag, setCatMusicVolumeOpenFlag] = useState(false);
     const [catActivityInProgress, setCatActivityInProgress] = useState(false);
     const [catFeedOpenFlag, setCatFeedOpenFlag] = useState(false);
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
@@ -171,10 +173,22 @@ function Cat (){
     const navigate = useNavigate();
         
 
+    useKeyboardShortcut("v", () => {
+        
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+
+            flagOpener(setCatMusicVolumeOpenFlag, 1);
+
+        }
+
+    },
+        ".Volume"
+    );
+
         
     useKeyboardShortcut("1", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -188,9 +202,9 @@ function Cat (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatScheduleOpenFlag);
+            flagOpener(setCatScheduleOpenFlag, 0);
 
         }
 
@@ -202,9 +216,9 @@ function Cat (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatRecordsOpenFlag);
+            flagOpener(setCatRecordsOpenFlag, 0);
 
         }
 
@@ -216,9 +230,9 @@ function Cat (){
 
     useKeyboardShortcut("4", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatFeedOpenFlag);
+            flagOpener(setCatFeedOpenFlag, 0);
 
         }
 
@@ -229,9 +243,9 @@ function Cat (){
 
     useKeyboardShortcut("5", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatPlayOpenFlag);
+            flagOpener(setCatPlayOpenFlag, 0);
 
         }
 
@@ -243,9 +257,9 @@ function Cat (){
 
     useKeyboardShortcut("6", () => {
 
-        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag){
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatMedicineOpenFlag);
+            flagOpener(setCatMedicineOpenFlag, 0);
 
         }
 
@@ -308,6 +322,12 @@ function Cat (){
     return (
 
         <>
+
+            {catMusicVolumeOpenFlag && 
+            <MusicVolume
+                setMusicVolumeOpenFlag={setCatMusicVolumeOpenFlag}
+            />}
+
             {catFeedOpenFlag &&
             <Feed
                 feedAnimationImages={catFeedImages}
@@ -349,18 +369,18 @@ function Cat (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setCatRecordsOpenFlag)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setCatRecordsOpenFlag, 0)}> Records <br/> [3]</button>
 
                     {catAlive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatFeedOpenFlag)}> Feed <br/> [4]</button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag)}> Play <br/> [5] </button>
+                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatFeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag, 0)}> Play <br/> [5] </button>
 
                             {catCanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setCatMedicineOpenFlag)}> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => flagOpener(setCatMedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                             ) : (
 
@@ -394,6 +414,13 @@ function Cat (){
                 </div>
 
             </div>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setCatMusicVolumeOpenFlag, 1)}>
+                Volume <br/> [v]
+            </button>
+
         </>
 
     );
