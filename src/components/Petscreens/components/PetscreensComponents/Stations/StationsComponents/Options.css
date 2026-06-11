@@ -32,7 +32,7 @@
 .Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{
 
     height: 100%;
-    width: 100%;
+    width: auto;
     
     filter:
         drop-shadow(0 0 4px rgb(255, 255, 255))

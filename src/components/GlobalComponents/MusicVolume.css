@@ -31,7 +31,7 @@
 
     padding: 2rem 4rem;
     border-radius: 2rem;
-    gap: 1rem;
+    gap: 2rem;
 
     input {
 
@@ -51,12 +51,10 @@
 
         -webkit-appearance: none;
 
-        width: 4rem;               
-        height: 4rem;    
+        width: 5rem;               
+        height: 5rem;    
 
-        cursor: pointer;
-
-        background-image: url("../../images/PlaceholderMusicNote.webp");
+        background-image: url("../../images/musicNote.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;

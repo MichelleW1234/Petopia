@@ -5,7 +5,7 @@ import { useVolume } from "../../providers/VolumeProvider.jsx";
 
 import { flagCloser, playSound } from "../../helpers/helpers.js";
 
-import speaker from "../../images/placeholderSpeaker.jpg";
+import speaker from "../../images/speaker.png";
 
 import "./MusicVolume.css";
 

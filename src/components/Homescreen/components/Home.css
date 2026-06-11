@@ -20,18 +20,18 @@
   align-items: center;
   justify-content: center;
 
-  gap: 0.5rem;
+  gap: 0.1rem;
 
 }
 
 
 .Home_ComponentContainer-Template--PetAlertBattery{
 
-  width: 3.5rem;
+  width: 3rem;
 
   filter: 
-    drop-shadow(0 0 2px rgb(255, 255, 255))
-    drop-shadow(0 0 4px rgb(255, 255, 255))
-    drop-shadow(0 0 6px  rgb(255, 255, 255));
+    drop-shadow(0 0 3px rgb(255, 255, 255))
+    drop-shadow(0 0 6px rgb(255, 255, 255))
+    drop-shadow(0 0 9px  rgb(255, 255, 255));
 
 }
