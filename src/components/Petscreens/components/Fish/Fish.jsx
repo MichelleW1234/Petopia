@@ -70,7 +70,7 @@ import cloth from "../../../../images/Fish/Clean/Options/cloth.png";
 import spongeCursor from "../../../../images/Fish/Clean/Options/sponge.cur";
 import clothCursor from "../../../../images/Fish/Clean/Options/cloth.cur";
 import pill from "../../../../images/Fish/Medicine/Options/pill.png";
-import bottle from  "../../../../images/Fish/Medicine/Options/bottle.png";
+import serum from  "../../../../images/Fish/Medicine/Options/serum.png";
 
 
 import "./Fish.css";
@@ -180,7 +180,7 @@ function Fish (){
 
     const fishFeedOptionsList = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
     const fishCleanOptionsList = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
-    const fishMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "bottle", [optionImageKey]: bottle}];
+    const fishMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "serum", [optionImageKey]: serum}];
 
     const fishAudioRefs = useRef({[happyAudioKey]: new Audio(fishHappy), [sadAudioKey]: new Audio(fishSad), [sleepAudioKey]: new Audio(fishSleep)});
 
