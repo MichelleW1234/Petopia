@@ -7,12 +7,9 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { catSpecies, dogSpecies, happyAudioKey, healthCapList, healthKey, sadAudioKey, sleepAudioKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
-import Happy from "../../../../images/Happy.png";
-import HappyOne from "../../../../images/Happy1.png";
-import Anger from "../../../../images/Angry.png";
-import AngerOne from "../../../../images/Angry1.png";
-import Sleep from "../../../../images/Sleep.png";
-import SleepOne from "../../../../images/Sleep1.png";
+import Sleep from "../../../../images/Sleep.gif";
+import Angry from "../../../../images/Angry.gif";
+import Happy from "../../../../images/Happy.gif";
 import healthHeartGood from "../../../../images/HeartGood.png";
 import healthHeartBad from "../../../../images/HeartBad.png";
 import rose from "../../../../images/rose.png";
@@ -33,20 +30,14 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     const [mainPetCurrentSpace, setMainPetCurrentSpace] = useState(Math.floor(Math.random() * mainPetWindowLength));
     const [mainPetDirection, setMainPetDirection] = useState(0);
     const [mainSleepAnimationImage, setMainSleepAnimationImage] = useState(0);
-    const [mainEmotionAnimationImage, setMainEmotionAnimationImage] = useState(0);
 
     const mainPetCurrentSpaceRef = useRef(mainPetCurrentSpace);
     const mainPetDirectionRef = useRef(mainPetDirection);
     const mainSleepAnimationImageRef = useRef(mainSleepAnimationImage);
-    const mainEmotionAnimationImageRef = useRef(mainEmotionAnimationImage);
     const mainTimeoutRef = useRef(null);
 
     const mainCurrHour = new Date(GlobalTimer).getHours();
     const mainPetSleeping = mainCurrHour < 6 || mainCurrHour >= 20;
-
-    const mainHappyAnimationImages = [Happy, HappyOne];
-    const mainSadAnimationImages = [Anger, AngerOne];
-    const mainSleepAnimationImages = [Sleep, SleepOne];
         
     
 
@@ -54,7 +45,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), Happy, HappyOne, Anger, AngerOne, Sleep, SleepOne, healthHeartGood, healthHeartBad, rose];
+        const preloadImages = [...mainAnimationImages.flat(1), healthHeartGood, healthHeartBad, rose];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -82,9 +73,6 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
         mainSleepAnimationImageRef.current = mainSleepAnimationImage;
     }, [mainSleepAnimationImage]);
 
-    useEffect(() => {
-        mainEmotionAnimationImageRef.current = mainEmotionAnimationImage;
-    }, [mainEmotionAnimationImage]);
 
 
     useEffect(() => {
@@ -117,29 +105,6 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
         }
 
     }, [mainAttention, mainPetMood])
-
-
-    useEffect(() => {
-
-        if (ActivePetName === "" || !mainAttention){
-
-            return;
-
-        }
-
-        const interval = setInterval(() => {
-
-            if (mainEmotionAnimationImageRef.current === 0) {
-                setMainEmotionAnimationImage(1);
-            } else {
-                setMainEmotionAnimationImage(0);
-            }
-
-        }, 400);
-
-        return () => clearInterval(interval);
-
-    }, [ActivePetName, mainAttention])
 
 
 
@@ -293,7 +258,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
                                         {mainAttention &&
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {mainSleepAnimationImages[mainEmotionAnimationImage]} 
+                                            src = {Sleep} 
                                             onMouseEnter={() => showAttention()}
                                         />}
                                     </div>
@@ -319,7 +284,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
                                                     {mainAttention &&
                                                     <img
                                                         className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                                        src = {mainPetMood <= 1 ? mainHappyAnimationImages[mainEmotionAnimationImage] : mainSadAnimationImages[mainEmotionAnimationImage]} 
+                                                        src = {mainPetMood <= 1 ? Happy : Angry} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}
                                                 </div>
