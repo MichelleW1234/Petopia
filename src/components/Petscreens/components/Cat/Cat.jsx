@@ -24,7 +24,7 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
 import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
 import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-import fire from "../../../../Music/PetImmersionSounds/fire.mp3";
+import candle from "../../../../Music/PetImmersionSounds/Candle.mp3";
 
 import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
 import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
@@ -170,7 +170,7 @@ function Cat (){
     const catMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
 
     const catAudioRefs = useRef({[happyAudioKey]: new Audio(catHappy), [sadAudioKey]: new Audio(catSad), [sleepAudioKey]: new Audio(catSleep)});
-    const catBackgroundAudioRef = useRef(new Audio(fire));
+    const catBackgroundAudioRef = useRef(new Audio(candle));
 
     const navigate = useNavigate();
         
@@ -293,7 +293,7 @@ function Cat (){
         } else {
 
             catBackgroundAudioRef.current.play();
-            catBackgroundAudioRef.current.volume = 1;
+            catBackgroundAudioRef.current.volume = 0.25;
             catBackgroundAudioRef.current.loop = true;
 
         }

@@ -25,7 +25,7 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 import dogHappy from "../../../../Music/PetImmersionSounds/dogHappy.mp3";
 import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
 import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-import fire from "../../../../Music/PetImmersionSounds/fire.mp3";
+import fireplace from "../../../../Music/PetImmersionSounds/Fireplace.mp3";
 
 import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.svg";
 import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.svg";
@@ -195,7 +195,7 @@ function Dog (){
     const dogMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "chew", [optionImageKey]: chew}];
 
     const dogAudioRefs = useRef({[happyAudioKey]: new Audio(dogHappy), [sadAudioKey]: new Audio(dogSad), [sleepAudioKey]: new Audio(dogSleep)});
-    const dogBackgroundAudioRef = useRef(new Audio(fire));
+    const dogBackgroundAudioRef = useRef(new Audio(fireplace));
 
     const navigate = useNavigate();
     
@@ -333,7 +333,7 @@ function Dog (){
         } else {
 
             dogBackgroundAudioRef.current.play();
-            dogBackgroundAudioRef.current.volume = 1;
+            dogBackgroundAudioRef.current.volume = 0.5;
             dogBackgroundAudioRef.current.loop = true;
 
         }

@@ -656,7 +656,7 @@ a:active {
   padding: 4rem;
   border-radius: 2rem;
 
-  border: 0.5rem dashed white;
+  border: 0.1rem dashed white;
   background-color: rgba(255, 255, 255, 0.25);
 
 }
