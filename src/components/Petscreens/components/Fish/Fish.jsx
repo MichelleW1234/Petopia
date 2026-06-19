@@ -23,6 +23,7 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
 import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
 import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+import fishTank from "../../../../Music/PetImmersionSounds/Tank.mp3";
 
 import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.svg";
 import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.svg";
@@ -183,6 +184,7 @@ function Fish (){
     const fishMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "serum", [optionImageKey]: serum}];
 
     const fishAudioRefs = useRef({[happyAudioKey]: new Audio(fishHappy), [sadAudioKey]: new Audio(fishSad), [sleepAudioKey]: new Audio(fishSleep)});
+    const fishBackgroundAudioRef = useRef(new Audio(fishTank));
 
 
     const navigate = useNavigate();
@@ -302,6 +304,15 @@ function Fish (){
             Object.values(fishAudioRefs.current).forEach(audio => {
                 pauseAudio(audio);
             });
+
+            pauseAudio(fishBackgroundAudioRef.current);
+
+
+        } else {
+
+            fishBackgroundAudioRef.current.play();
+            fishBackgroundAudioRef.current.volume = 0.25;
+            fishBackgroundAudioRef.current.loop = true;
 
         }
 

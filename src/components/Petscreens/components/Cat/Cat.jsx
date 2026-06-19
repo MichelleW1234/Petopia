@@ -24,6 +24,7 @@ import { flagOpener } from "../../../../helpers/helpers.js";
 import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
 import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
 import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
+import fire from "../../../../Music/PetImmersionSounds/fire.mp3";
 
 import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.svg";
 import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.svg";
@@ -169,6 +170,7 @@ function Cat (){
     const catMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
 
     const catAudioRefs = useRef({[happyAudioKey]: new Audio(catHappy), [sadAudioKey]: new Audio(catSad), [sleepAudioKey]: new Audio(catSleep)});
+    const catBackgroundAudioRef = useRef(new Audio(fire));
 
     const navigate = useNavigate();
         
@@ -286,6 +288,14 @@ function Cat (){
                 pauseAudio(audio);
             });
 
+            pauseAudio(catBackgroundAudioRef.current);
+
+        } else {
+
+            catBackgroundAudioRef.current.play();
+            catBackgroundAudioRef.current.volume = 1;
+            catBackgroundAudioRef.current.loop = true;
+
         }
 
     }, [ActivePetName, catActivityInProgress]);
@@ -376,7 +386,7 @@ function Cat (){
 
                         <>
                             <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => flagOpener(setCatFeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag, 0)}> Play <br/> [5] </button>
+                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => flagOpener(setCatPlayOpenFlag, 0)}> Play <br/> [5] </button>
 
                             {catCanReceiveDose ? (
 

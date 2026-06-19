@@ -15,8 +15,8 @@ import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../
 import { flagCloser} from "../../../../../helpers/helpers.js";
 
 import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
-import shine from "../../../../../images/Clean.png";
-import shineOne from "../../../../../images/Clean1.png";
+
+import shine from "../../../../../images/Clean.gif";
 
 import "./Clean.css";
 
@@ -35,15 +35,10 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
     const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
     const [cleanDone, setCleanDone] = useState(false);
     const [cleanSuccess, setCleanSuccess] = useState(false);
-    const [cleanAnimationImage, setCleanAnimationImage] = useState(0);
     const [cleanHover, setCleanHover] = useState(false);
-
-    const cleanAnimationImageRef = useRef(cleanAnimationImage);
 
     const cleanTimeoutRef = useRef(null);
     const cleanAudioRef = useRef(new Audio(clean));
-
-    const cleanWashImages = [shine, shineOne];
 
 
 
@@ -93,7 +88,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
 
     useEffect(() => {
 
-        const preloadImages = [...cleanImage, ...cleanOptionsList.map(item => item[optionImageKey]), ...cleanOptionsList.map(item => item[optionCursorKey]), shine, shineOne];
+        const preloadImages = [...cleanImage, ...cleanOptionsList.map(item => item[optionImageKey]), ...cleanOptionsList.map(item => item[optionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -101,52 +96,6 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
         });
 
     }, [cleanImage]);
-
-
-    const scrub = () => {
-
-        setCleanCurrNumber(prev => prev + 1);
-
-        setCleanHover(true);
-
-        // Cancels any existing timers:
-        if (cleanTimeoutRef.current) {
-            clearTimeout(cleanTimeoutRef.current);
-        }
-
-        // Starts a fresh 1s timer:
-        cleanTimeoutRef.current = setTimeout(() => {
-            setCleanHover(false);
-            cleanTimeoutRef.current = null;
-        }, 1000);
-
-    };
-
-
-
-    useEffect(() => {
-        cleanAnimationImageRef.current = cleanAnimationImage;
-    }, [cleanAnimationImage]);
-
-
-    useEffect(() => {
-
-        if (!cleanStart || cleanDone) {
-            return;
-        }
-
-        const interval = setInterval(() => {
-
-            if (cleanAnimationImageRef.current === 0) {
-                setCleanAnimationImage(1);
-            } else {
-                setCleanAnimationImage(0);
-            }
-        }, 300);
-
-        return () => clearInterval(interval);
-
-    }, [cleanStart, cleanDone]);
 
 
     useEffect(() => {
@@ -178,6 +127,25 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
     }, [cleanCurrNumber]);
     
 
+
+    const scrub = () => {
+
+        setCleanCurrNumber(prev => prev + 1);
+
+        setCleanHover(true);
+
+        // Cancels any existing timers:
+        if (cleanTimeoutRef.current) {
+            clearTimeout(cleanTimeoutRef.current);
+        }
+
+        // Starts a fresh 1s timer:
+        cleanTimeoutRef.current = setTimeout(() => {
+            setCleanHover(false);
+            cleanTimeoutRef.current = null;
+        }, 1000);
+
+    };
 
 
 
@@ -227,7 +195,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
 
                                 {cleanHover && <img
                                     className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                    src = {cleanWashImages[cleanAnimationImage]} 
+                                    src = {shine} 
                                     onMouseEnter={() => scrub()}
                                 />}
                             </div>
