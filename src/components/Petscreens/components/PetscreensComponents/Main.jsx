@@ -12,7 +12,6 @@ import Angry from "../../../../images/Angry.gif";
 import Happy from "../../../../images/Happy.gif";
 import healthHeartGood from "../../../../images/HeartGood.png";
 import healthHeartBad from "../../../../images/HeartBad.png";
-import rose from "../../../../images/rose.png";
 
 import "./Main.css";
 
@@ -45,7 +44,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), healthHeartGood, healthHeartBad, rose];
+        const preloadImages = [...mainAnimationImages.flat(1), healthHeartGood, healthHeartBad];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -310,9 +309,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                     ) : (
 
-                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid">
-                            <img className = "Main_ComponentImage-Structure--WindowScreenNongridTomb" src = {rose}/>
-                        </div>
+                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
 
                     )}
                     

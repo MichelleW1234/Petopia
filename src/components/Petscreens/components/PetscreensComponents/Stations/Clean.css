@@ -1,12 +1,17 @@
 .Clean_ComponentContainer-Template--WindowScreen{
 
     background:
-        url("https://www.shutterstock.com/shutterstock/videos/3404309413/thumb/1.jpg?ip=x480");
+        url("../../../../../images/CleanBackground.png");
 
     img {
 
         height: 10rem;
         width: 10rem;
+
+        filter: 
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px  rgb(255, 255, 255));
 
     }
 
