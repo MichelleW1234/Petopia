@@ -293,7 +293,7 @@ function Cat (){
         } else {
 
             catBackgroundAudioRef.current.play();
-            catBackgroundAudioRef.current.volume = 0.25;
+            catBackgroundAudioRef.current.volume = 0.5;
             catBackgroundAudioRef.current.loop = true;
 
         }

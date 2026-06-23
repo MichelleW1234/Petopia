@@ -311,7 +311,7 @@ function Fish (){
         } else {
 
             fishBackgroundAudioRef.current.play();
-            fishBackgroundAudioRef.current.volume = 0.25;
+            fishBackgroundAudioRef.current.volume = 0.5;
             fishBackgroundAudioRef.current.loop = true;
 
         }
