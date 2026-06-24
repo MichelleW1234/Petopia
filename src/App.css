@@ -731,7 +731,6 @@ a:active {
   z-index: 2;
 
   gap: 3rem;
-  padding: 5rem;
   border-radius: 4rem;
 
   background-color: rgba(71, 0, 125, 0.75);
@@ -758,6 +757,51 @@ a:active {
 
   box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
   transform: scale(1.1);
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{
+
+  background: 
+      url("./images/FailBackground.png");
+
+  gap: 2rem; 
+
+  img {
+
+      height: 10rem;
+      width: 10rem;
+
+      filter: 
+          drop-shadow(0 0 2px rgb(255, 255, 255))
+          drop-shadow(0 0 4px rgb(255, 255, 255))
+          drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+  }  
+
+}
+
+
+
+.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess{
+
+  background: 
+    url("./images/SuccessBackground.png");
+
+  gap: 2rem; 
+
+  img {
+
+    height: 10rem;
+    width: 10rem;
+
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+  }  
 
 }
 

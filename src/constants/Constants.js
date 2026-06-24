@@ -151,18 +151,3 @@ export const portraitPetImages = {
     [catSpecies]: [catStageOne, catStageTwo, catStageThree],
     [fishSpecies]: [fishStageOne, fishStageTwo, fishStageThree]
 }
-
-
-export const moodPetImages = {
-
-    [dogSpecies]: [[s1DogHappy, s1DogSad], 
-                    [s2DogHappy, s2DogSad], 
-                    [s3DogHappy, s3DogSad]],
-    [catSpecies]: [[s1CatHappy, s1CatSad], 
-                    [s2CatHappy, s2CatSad], 
-                    [s3CatHappy, s3CatSad]],
-    [fishSpecies]: [[s1FishHappy, s1FishSad], 
-                    [s2FishHappy, s2FishSad],
-                    [s3FishHappy, s3FishSad]]
-
-}

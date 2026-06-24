@@ -10,11 +10,13 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { moodPetImages, optionGameKey, optionImageKey, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { optionGameKey, optionImageKey, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers.js";
 import { flagCloser } from "../../../../../helpers/helpers.js";
 
 import play from "../../../../../Music/PetImmersionSounds/Play.mp3";
+import success from "../../../../../images/Success.png";
+import fail from "../../../../../images/Fail.png";
 
 import "./Play.css";
 
@@ -136,13 +138,21 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
                         ) : (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen">
+                            playSuccess ? (
+                           
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
+                                    <p>You chose the right option!</p>
+                                    <img src = {success} />
+                                </div>
 
-                                <img src = {playSuccess ? moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][0]
-                                            : moodPetImages[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]][1]} 
-                                />
+                            ) : (
 
-                            </div>
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
+                                    <p>You chose the wrong option.</p>
+                                    <img src = {fail} />
+                                </div>
+
+                            )
 
                         )}
 

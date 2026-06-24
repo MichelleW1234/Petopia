@@ -11,7 +11,7 @@ import Fishscreen from "./components/Petscreens/components/Fish/Fish.jsx";
 import NoPage from "./components/NoPage.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 
-import { portraitPetImages, moodPetImages } from "./constants/Constants.js";
+import { portraitPetImages } from "./constants/Constants.js";
 
 import "./App.css";
 
@@ -21,7 +21,7 @@ function App() {
   // For preloading images in Constants.js (globally used images):
   useEffect(() => {
 
-    const preloadImages = [...Object.values(portraitPetImages).flat(1), ...Object.values(moodPetImages).flat(2)];
+    const preloadImages = [...Object.values(portraitPetImages).flat(1)];
 
     preloadImages.forEach((src) => {
       const img = new Image();
