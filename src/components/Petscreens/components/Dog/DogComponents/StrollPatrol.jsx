@@ -6,9 +6,9 @@ import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/helpers.js";
 import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
 
-import carrot from "../../../../../images/Dog/Play/Games/carrot.png";
-import skull from "../../../../../images/Dog/Play/Games/skull.png";
-import dog from "../../../../../images/Dog/Play/Games/HorizontalDog.png";
+import ball from "../../../../../images/Dog/Play/Games/ball.png";
+import rock from "../../../../../images/Dog/Play/Games/rock.png";
+import dog from "../../../../../images/Dog/Play/Games/Arrow.png";
 
 import "./StrollPatrol.css";
 
@@ -91,7 +91,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useEffect(() => {
 
-        const preloadImages = [carrot, skull, dog];
+        const preloadImages = [ball, rock, dog];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -129,7 +129,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                 if (!newList.some(item => item[strollPatrolColumnKey] > 3)){
 
-                    newList.push({[strollPatrolColumnKey] : strollPatrolWindowWidth, [strollPatrolRowKey] : Math.floor(Math.random() * strollPatrolWindowHeight), [strollPatrolTypeKey] : Math.floor(Math.random() * 2)});
+                    newList.push({[strollPatrolColumnKey] : strollPatrolWindowWidth, [strollPatrolRowKey] : Math.floor(Math.random() * strollPatrolWindowHeight), [strollPatrolTypeKey] : Math.floor(Math.random() * 3)});
 
                 }
 
@@ -154,7 +154,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     
         if (hitIndex !== -1){
 
-            if (copy[hitIndex][strollPatrolTypeKey] === 1){
+            if (copy[hitIndex][strollPatrolTypeKey] === 0){
 
                 setPlayCurrNumber(prev => prev + 1);
 
@@ -210,7 +210,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
             {!strollPatrolStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <p>Lead the dog on your walk to collect all the carrots! Avoid everything else!</p> 
+                <p>Lead the dog on your walk to collect all the balls! Avoid the rocks!</p> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
             </div>}
 
@@ -231,8 +231,8 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
                     Array.from({ length: strollPatrolWindowWidth}, (_, col) => {
 
                         const dogHere = col === strollPatrolDogPosition[strollPatrolColumnKey] && row === strollPatrolDogPosition[strollPatrolRowKey];
-                        const badHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] === 0);
-                        const goodHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] === 1);
+                        const badHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] > 0);
+                        const goodHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] === 0);
 
                         return (
                                 
@@ -244,8 +244,8 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
                                     src = {dogHere ? 
                                             dog
                                             : badHere ?
-                                            skull
-                                            : carrot
+                                            rock
+                                            : ball
                                     }
                                 />
                                 

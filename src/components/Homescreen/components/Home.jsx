@@ -184,20 +184,17 @@ function Home (){
                     
                 </div>
 
-
-                {!homeMinPetsAdopted ? (
-
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
-                        <div className = "Home_ComponentContainer-Template--Start">
-                            <h1> Welcome.</h1>
-                            <h1>Adopt up to 3 pets to get started. </h1>
-                        </div>
-                    </div>
 
-                ) : (
+                        {!homeMinPetsAdopted ? (
 
-                    <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
-                        <h1> Your Pets: </h1>
+                            <h1> Welcome! Adopt up to 3 pets to get started. </h1>
+
+                        ) : (
+
+                            <h1> Your Pets: </h1>
+
+                        )}
 
                         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                             {Object.keys(PetList).map((key) => {
@@ -258,11 +255,16 @@ function Home (){
                                 )
 
                             })}
+
+                            {Array.from({ length: 3 - Object.keys(PetList).length}, (_, i) => i + 1).map(num => (
+                                <div key = {num} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot Home_ComponentContainer-Template--EmptySlot">
+                                    <img src = {"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPNLEC8AUMT6Gt6yAHd8KgXq346Y7k1BuR7MM8zUtB1g&s=10"}/>
+                                </div>
+                            ))}
                         </div>
 
                     </div>
 
-                )}
 
             </div>
 
