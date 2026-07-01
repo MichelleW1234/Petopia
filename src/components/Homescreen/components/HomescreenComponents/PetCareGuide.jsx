@@ -8,7 +8,7 @@ import "./PetCareGuide.css";
 
 function PetCareGuide({setPetCareGuideOpenFlag}) {
 
-    useKeyboardShortcut("4", () => {
+    useKeyboardShortcut("3", () => {
 
         flagCloser(setPetCareGuideOpenFlag);
 
@@ -38,7 +38,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetCareGuideOpenFlag)}> Close <br/> [4]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetCareGuideOpenFlag)}> Close <br/> [3]</button>
 
         </div>
     );

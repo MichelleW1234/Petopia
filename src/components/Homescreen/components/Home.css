@@ -3,17 +3,6 @@
   min-height: 30.3rem;
   justify-content: center;
 
-  img {
-
-    width: 80%;
-
-    filter: 
-      drop-shadow(0 0 3px rgb(255, 255, 255))
-      drop-shadow(0 0 6px rgb(255, 255, 255))
-      drop-shadow(0 0 9px  rgb(255, 255, 255));
-
-  }
-
 }
 
 .Home_ComponentContainer-Structure--PetAlert {

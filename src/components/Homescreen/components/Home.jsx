@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
+import { useRoom } from "../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
@@ -21,6 +22,7 @@ import orange from "../../../images/orange.png";
 import yellow from "../../../images/yellow.png";
 import green from "../../../images/green.png";
 import gray from "../../../images/gray.png";
+import add from "../../../images/add.png";
 
 import "./Home.css";
 
@@ -33,14 +35,14 @@ function Home (){
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
+    const {Room, setRoom} = useRoom();
 
     const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
     const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
     const [homePetCareGuideOpenFlag, setHomePetCareGuideOpenFlag] = useState(false);
 
-    const homeMinPetsAdopted = Object.keys(PetList).length > 0 && Object.keys(PetTimeStamps).length > 0;
-    const homeMaxPetsAdopted = Object.keys(PetList).length === 3 && Object.keys(PetTimeStamps).length === 3;
+    const homeMinPetsAdopted = Room.filter(x => x === null).length < 3;
 
 
 
@@ -86,23 +88,8 @@ function Home (){
         ".ClearPets"
     );
 
-
-
-    useKeyboardShortcut("3", () => {
-
-        if (!homeMaxPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag) {
-
-            playSound(buttonSoundKey);
-            navigate("/adopt");
-
-        }
-
-    },
-        ".AdoptPets"
-    );
-
     
-    useKeyboardShortcut("4", () => {
+    useKeyboardShortcut("3", () => {
 
         if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
 
@@ -116,6 +103,7 @@ function Home (){
 
     
 
+
     const getPet = (petToGet) => {
 
         playSound(buttonPressSoundKey);
@@ -123,6 +111,17 @@ function Home (){
         
     }
 
+
+    const checkoutRoom = (roomNumber) => {
+
+        playSound(buttonSoundKey);
+        setRoom(prev => {
+            let updated = [...prev];
+            updated[roomNumber] = "";
+            return updated;
+        });
+
+    }
 
 
 
@@ -170,17 +169,8 @@ function Home (){
 
                     )}
 
-                    {!homeMaxPetsAdopted ? (
 
-                        <Link to ="/adopt" className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar AddPets" onClick = {() => playSound(buttonSoundKey)}> Adopt Pets <br/> [3]</Link>
-
-                    ) : (
-
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Adopt Pets <br/> [3] </button>
-
-                    )}
-
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomePetCareGuideOpenFlag, 0)}> Pet Care Guide <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomePetCareGuideOpenFlag, 0)}> Pet Care Guide <br/> [3]</button>
                     
                 </div>
 
@@ -197,44 +187,57 @@ function Home (){
                         )}
 
                         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                            {Object.keys(PetList).map((key) => {
 
-                                const currPetHealth = Math.min(100, Math.max(0, Math.floor(((PetList[key][healthKey])/healthCapList[PetList[key][speciesKey]][PetList[key][stageKey]]) * 100)));
+                            {Room.map((petName, index) => (
 
-                                return (
+                                petName === null ? (
 
-                                    <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot Home_ComponentContainer-Template--EmptySlot">
+
+                                        <Link
+                                            to = {"/adopt"}
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
+                                            onClick = {() => checkoutRoom(index)}
+                                        >
+                                            <img src = {add}/>
+                                        </Link>
+
+                                    </div>
+
+                                ) : (
+
+                                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                             
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery"src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
                                                         green
-                                                        : currPetHealth >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
                                                         yellow
-                                                        : currPetHealth >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
                                                         orange
-                                                        : currPetHealth > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
                                                         red :
                                                         gray
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
                                                         green
-                                                        : currPetHealth >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
                                                         yellow
-                                                        : currPetHealth >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
                                                         orange
-                                                        : currPetHealth > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
                                                         red :
                                                         gray
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {currPetHealth >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
                                                         green
-                                                        : currPetHealth >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
                                                         yellow
-                                                        : currPetHealth >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
                                                         orange
-                                                        : currPetHealth > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
                                                         red :
                                                         gray
                                                     }
@@ -242,25 +245,20 @@ function Home (){
                                         </div>
 
                                         <Link
-                                            to = {`/${PetList[key][speciesKey]}`}
+                                            to = {`/${PetList[petName][speciesKey]}`}
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                            onClick = {() => getPet(key)}
+                                            onClick = {() => getPet(petName)}
                                         >
-                                            <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
+                                            <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
                                         </Link>
-                                        <h2>{key}</h2>
+                                        <h2>{petName}</h2>
                                         
                                     </div>
 
                                 )
 
-                            })}
-
-                            {Array.from({ length: 3 - Object.keys(PetList).length}, (_, i) => i + 1).map(num => (
-                                <div key = {num} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot Home_ComponentContainer-Template--EmptySlot">
-                                    <img src = {"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPNLEC8AUMT6Gt6yAHd8KgXq346Y7k1BuR7MM8zUtB1g&s=10"}/>
-                                </div>
                             ))}
+
                         </div>
 
                     </div>

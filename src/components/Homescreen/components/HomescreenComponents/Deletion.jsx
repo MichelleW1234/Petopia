@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
@@ -17,6 +18,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {Room, setRoom} = useRoom();
 
     const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
 
@@ -93,6 +95,19 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
         });
 
+        setRoom(prev => {
+
+            let updated = [...prev];
+
+            deletionSelectedPets.forEach(petToRemove => {
+                const petRoom = updated.findIndex(room => room === petToRemove);
+                updated[petRoom] = null;
+            });
+
+            return updated;
+
+        });
+
         flagCloser(setDeletionOpenClearPetsFlag);
 
     }
@@ -107,26 +122,34 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                 <h1>Select pet(s) to clear:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                    {Object.keys(PetList).map((key) => (
+                    {Room.map((petName, index) => (
 
-                        <div key = {key} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                        petName === null ? (
 
-                            {deletionSelectedPets.includes(key) ? (
+                            null
 
-                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(key)}> 
-                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
-                                </button>
+                        ) : (
 
-                            ) : (
+                            <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
-                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(key)}> 
-                                    <img src = {portraitPetImages[PetList[key][speciesKey]][PetList[key][stageKey]]}/>
-                                </button>
+                                {deletionSelectedPets.includes(petName) ? (
 
-                            )}
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(petName)}> 
+                                        <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
+                                    </button>
 
-                            <h2>{key}</h2>
-                        </div>
+                                ) : (
+
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(petName)}> 
+                                        <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
+                                    </button>
+
+                                )}
+
+                                <h2>{petName}</h2>
+                            </div>
+
+                        )
 
                     ))}
                     

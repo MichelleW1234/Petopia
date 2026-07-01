@@ -4,8 +4,10 @@ import {useState, useRef} from "react";
 import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
+import { useRoom } from "../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
+import useCloseWindow from "../../../hooks/useCloseWindow.js";
 
 import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
 import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
@@ -22,6 +24,7 @@ function Adoption () {
     const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {Room, setRoom} = useRoom();
 
     const [adoptionMusicVolumeOpenFlag, setAdoptionMusicVolumeOpenFlag] = useState(false);
     const [adoptionPetSpeciesGuideOpenFlag, setAdoptionPetSpeciesGuideOpenFlag] = useState(false);
@@ -36,6 +39,15 @@ function Adoption () {
 
     const navigate = useNavigate();
 
+
+    useCloseWindow(() => {
+
+        const stored = JSON.parse(localStorage.getItem("Room"));
+        const currRoom = stored.findIndex(room => room === "");
+        stored[currRoom] = null;
+        localStorage.setItem("Room", JSON.stringify(stored));
+
+    });
 
 
     useKeyboardShortcut("v", () => {
@@ -55,7 +67,7 @@ function Adoption () {
         
         if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
-            playSound(buttonSoundKey);
+            quit();
             navigate("/home");
 
         }
@@ -118,6 +130,21 @@ function Adoption () {
         ".ConfirmSelection"
     );
 
+
+
+    const quit = () => {
+
+        playSound(buttonSoundKey);
+        setRoom(prev => {
+
+            let updated = [...prev];
+            const currRoom = updated.findIndex(room => room === "");
+            updated[currRoom] = null;
+            return updated;
+
+        });
+
+    }
 
 
     const petSelecting = () => {
@@ -184,7 +211,7 @@ function Adoption () {
         adoptionConfirmationTimeoutRef.current = setTimeout(() => {
             setAdoptionErrorMessage("");
             adoptionConfirmationTimeoutRef.current = null;
-        }, 5000);
+        }, 5000); 
 
     }
 
@@ -270,6 +297,15 @@ function Adoption () {
 
         }
 
+        setRoom(prev => {
+
+            let updated = [...prev];
+            const currRoom = updated.findIndex(room => room === "");
+            updated[currRoom] = finalPetName;
+            return updated;
+            
+        })
+
     }
 
 
@@ -310,7 +346,7 @@ function Adoption () {
             <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => playSound(buttonSoundKey)}> Quit and Go Home <br/> [1]</Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => quit()}> Quit and Go Home <br/> [1]</Link>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setAdoptionPetSpeciesGuideOpenFlag, 0)}> Pet Species Guide <br/> [2]</button>
                 </div>
 

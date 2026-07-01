@@ -1,5 +1,6 @@
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
+import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
@@ -14,6 +15,7 @@ function Restart({setRestartOpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {Room, setRoom} = useRoom();
 
     
     useKeyboardShortcut("Enter", () => {
@@ -40,6 +42,7 @@ function Restart({setRestartOpenFlag}) {
         playSound(restartSoundKey);
         setPetList({});
         setPetTimeStamps({});
+        setRoom([null, null, null]);
 
         flagCloser(setRestartOpenFlag);
 

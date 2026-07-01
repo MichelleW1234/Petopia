@@ -9,17 +9,18 @@ import {PetProgressionUpdateProvider} from "./providers/PetProgressionUpdateProv
 import { ActivePetNameProvider } from "./providers/ActivePetNameProvider.jsx";
 import { BackgroundMusicProvider } from "./providers/BackgroundMusicProvider.jsx";
 import { VolumeProvider } from "./providers/VolumeProvider.jsx";
+import { RoomProvider } from "./providers/RoomProvider.jsx";
 
 
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <VolumeProvider>
-      <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider>
+      <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider><RoomProvider>
         <PetProgressionUpdateProvider><ActivePetNameProvider>
           <App />
         </ActivePetNameProvider></PetProgressionUpdateProvider>
-      </PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
+      </RoomProvider></PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
     </VolumeProvider>
   </StrictMode>,
 )

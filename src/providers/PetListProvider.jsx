@@ -1,10 +1,11 @@
 /*
   For each pet list element:
     - species -> dog/cat/fish
-    - stage -> 0-3
+    - stage -> 0-2
     - health -> dog=15/cat=20/fish=5
     - birthDate -> milliseconds
     - medicine -> milliseconds
+    - room number -> 0-2
 */
 
 import { createContext, useContext, useState, useEffect } from "react";

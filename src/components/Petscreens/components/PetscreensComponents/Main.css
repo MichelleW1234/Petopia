@@ -47,8 +47,8 @@
     justify-content: center;
 
     padding: 0rem 3rem;
-    gap: 1rem;
-    
+    gap: 0.5rem;
+
 }
 
 .Main_ComponentHeading-Template--WindowScreenPetStatsName{
@@ -90,7 +90,7 @@
 
 .Main_ComponentContainer-Structure--WindowScreenGridCellNonpet {
 
-    height: 18rem;
+    height: 16rem;
     width: 2rem;
 
 }
@@ -98,7 +98,7 @@
 
 .Main_ComponentContainer-Structure--WindowScreenGridCellPet {
 
-    height: 18rem;
+    height: 16rem;
     width: 8rem;
 
     img {
@@ -112,7 +112,7 @@
 
 .Main_ComponentContainer-Structure--WindowScreenNongrid{
 
-    height: 18rem;
+    height: 16rem;
     width: 46rem;
     display: flex;
     flex-direction: column;
