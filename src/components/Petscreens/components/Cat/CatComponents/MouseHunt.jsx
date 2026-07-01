@@ -7,7 +7,7 @@ import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Cons
 import { startActivity } from "../../../helpers/Helpers.js";
 
 import mouse from "../../../../../images/Cat/Play/Games/mouse.png";
-import snake from "../../../../../images/Cat/Play/Games/snake.png";
+import cord from "../../../../../images/Cat/Play/Games/cord.png";
 
 import "./MouseHunt.css";
 
@@ -64,7 +64,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     useEffect(() => {
 
-        const preloadImages = [mouse, snake];
+        const preloadImages = [mouse, cord];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -163,7 +163,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
             {!mouseHuntStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <p>Hit the mouse and avoid the snakes!</p> 
+                <p>Catch the toy mice and avoid the power cords!</p> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMouseHuntStart)}> Start <br/> [return]</button>
             </div>}
 
@@ -173,7 +173,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                     Array.from({ length: mouseHuntWindowWidth}, (_, col) => {
 
                         const mouseHere = mouseHuntCreaturePositions.find(item => item[mouseHuntRowKey] === row && item[mouseHuntColumnKey] === col && item[mouseHuntTypeKey] === 1);
-                        const snakeHere = mouseHuntCreaturePositions.find(item => item[mouseHuntRowKey] === row && item[mouseHuntColumnKey] === col && item[mouseHuntTypeKey] === 0);
+                        const cordHere = mouseHuntCreaturePositions.find(item => item[mouseHuntRowKey] === row && item[mouseHuntColumnKey] === col && item[mouseHuntTypeKey] === 0);
 
                         return (
                             
@@ -183,10 +183,10 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                                     <img src = {mouse}/>
                                 </div>
                                 
-                            ) : snakeHere ? (
+                            ) : cordHere ? (
 
                                 <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(0)}>
-                                    <img src = {snake}/>
+                                    <img src = {cord}/>
                                 </div>
 
                             ) : (
