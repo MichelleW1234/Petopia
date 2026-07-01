@@ -1,4 +1,4 @@
-import catStageOne from "../images/Cat/Main/Awake/s1.svg";
+import catStageOne from "../images/Cat/Portrait/s1.png";
 import catStageTwo from "../images/Cat/Main/Awake/s2.svg";
 import catStageThree from "../images/Cat/Main/Awake/s3.svg";
 
