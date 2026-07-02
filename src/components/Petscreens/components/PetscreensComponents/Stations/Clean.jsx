@@ -16,8 +16,6 @@ import { flagCloser} from "../../../../../helpers/helpers.js";
 
 import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
 import shine from "../../../../../images/Clean.gif";
-import success from "../../../../../images/Success.png";
-import fail from "../../../../../images/Fail.png";
 
 import "./Clean.css";
 
@@ -184,7 +182,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                                 }}>
 
                                 {!cleanStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <p> Drag your cursor back and forth for cleaning! </p>
+                                    <h2> Drag your cursor back and forth for cleaning! </h2>
                                     <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
                                 </div>}
 
@@ -206,15 +204,13 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                             cleanSuccess ? (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <p>You chose the right option!</p>
-                                    <img src = {success} />
+                                    <h2>You chose the right option!</h2>
                                 </div>
 
                             ) : (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <p>You chose the wrong option.</p>
-                                    <img src = {fail} />
+                                    <h2>You chose the wrong option.</h2>
                                 </div>
 
                             )

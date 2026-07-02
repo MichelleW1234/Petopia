@@ -15,8 +15,6 @@ import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers
 import { flagCloser } from "../../../../../helpers/helpers.js";
 
 import play from "../../../../../Music/PetImmersionSounds/Play.mp3";
-import success from "../../../../../images/Success.png";
-import fail from "../../../../../images/Fail.png";
 
 import "./Play.css";
 
@@ -141,15 +139,13 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
                             playSuccess ? (
                            
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <p>You chose the right option!</p>
-                                    <img src = {success} />
+                                    <h2>You chose the right option!</h2>
                                 </div>
 
                             ) : (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <p>You chose the wrong option.</p>
-                                    <img src = {fail} />
+                                    <h2>You chose the wrong option.</h2>
                                 </div>
 
                             )

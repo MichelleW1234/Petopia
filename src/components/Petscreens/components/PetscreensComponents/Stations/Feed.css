@@ -1,7 +1,6 @@
 .Feed_ComponentContainer-Template--WindowScreen{
 
-    background:
-        url("../../../../../images/FeedBackground.png");
+    background-image: url("../../../../../images/FeedBackground.png");
 
     img {
 

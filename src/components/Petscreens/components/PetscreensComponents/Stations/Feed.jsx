@@ -15,8 +15,6 @@ import { flagCloser } from "../../../../../helpers/helpers.js";
 import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
 
 import feed from "../../../../../Music/PetImmersionSounds/Feed.mp3";
-import success from "../../../../../images/Success.png";
-import fail from "../../../../../images/Fail.png";
 
 import "./Feed.css";
 
@@ -205,7 +203,7 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
                                     {!feedStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <p>Wait for your pet as it eats!</p> 
+                                        <h2>Wait for your pet as it eats!</h2> 
                                         <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeedStart)}> Start <br/> [return]</button>
                                     </div>}
 
@@ -218,15 +216,13 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
                                 feedSuccess ? (
                                
                                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                        <p>You chose the right option!</p>
-                                        <img src = {success} />
+                                        <h2>You chose the right option!</h2>
                                     </div>
     
                                 ) : (
     
                                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                        <p>You chose the wrong option.</p>
-                                        <img src = {fail} />
+                                        <h2>You chose the wrong option.</h2>
                                     </div>
     
                                 )

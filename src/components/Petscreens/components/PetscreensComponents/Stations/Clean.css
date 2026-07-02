@@ -1,7 +1,6 @@
 .Clean_ComponentContainer-Template--WindowScreen{
 
-    background:
-        url("../../../../../images/CleanBackground.png");
+    background-image: url("../../../../../images/CleanBackground.png");
 
     img {
 

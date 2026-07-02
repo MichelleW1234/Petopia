@@ -1,7 +1,6 @@
 .Medicine_ComponentContainer-Template--WindowScreen{
 
-    background:
-        url("../../../../../images/MedicineBackground.png");
+    background-image: url("../../../../../images/MedicineBackground.png");
 
     img {
 

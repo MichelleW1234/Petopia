@@ -210,7 +210,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
             {!strollPatrolStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <p>Lead the dog on your walk to collect all the balls! Avoid the rocks!</p> 
+                <h2>Lead the dog on your walk to collect all the balls! Avoid the rocks!</h2> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
             </div>}
 

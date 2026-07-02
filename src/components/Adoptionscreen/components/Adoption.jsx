@@ -5,9 +5,9 @@ import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../providers/RoomProvider.jsx";
+import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
-import useCloseWindow from "../../../hooks/useCloseWindow.js";
 
 import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
 import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
@@ -25,6 +25,7 @@ function Adoption () {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
+    const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
     const [adoptionMusicVolumeOpenFlag, setAdoptionMusicVolumeOpenFlag] = useState(false);
     const [adoptionPetSpeciesGuideOpenFlag, setAdoptionPetSpeciesGuideOpenFlag] = useState(false);
@@ -38,17 +39,6 @@ function Adoption () {
 
 
     const navigate = useNavigate();
-
-
-    useCloseWindow(() => {
-
-        const stored = JSON.parse(localStorage.getItem("Room"));
-        const currRoom = stored.findIndex(room => room === "");
-        stored[currRoom] = null;
-        localStorage.setItem("Room", JSON.stringify(stored));
-
-    });
-
 
     useKeyboardShortcut("v", () => {
     
@@ -135,14 +125,7 @@ function Adoption () {
     const quit = () => {
 
         playSound(buttonSoundKey);
-        setRoom(prev => {
-
-            let updated = [...prev];
-            const currRoom = updated.findIndex(room => room === "");
-            updated[currRoom] = null;
-            return updated;
-
-        });
+        setActiveCheckoutRoom(-1);
 
     }
 
@@ -300,11 +283,12 @@ function Adoption () {
         setRoom(prev => {
 
             let updated = [...prev];
-            const currRoom = updated.findIndex(room => room === "");
-            updated[currRoom] = finalPetName;
+            updated[ActiveCheckoutRoom] = finalPetName;
             return updated;
             
-        })
+        });
+
+        setActiveCheckoutRoom(-1);
 
     }
 

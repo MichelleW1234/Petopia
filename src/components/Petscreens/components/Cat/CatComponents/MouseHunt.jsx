@@ -163,7 +163,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
             {!mouseHuntStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <p>Catch the toy mice and avoid the power cords!</p> 
+                <h2>Catch the toy mice and avoid the power cords!</h2> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMouseHuntStart)}> Start <br/> [return]</button>
             </div>}
 

@@ -10,6 +10,7 @@ import { ActivePetNameProvider } from "./providers/ActivePetNameProvider.jsx";
 import { BackgroundMusicProvider } from "./providers/BackgroundMusicProvider.jsx";
 import { VolumeProvider } from "./providers/VolumeProvider.jsx";
 import { RoomProvider } from "./providers/RoomProvider.jsx";
+import { ActiveCheckoutRoomProvider } from "./providers/ActiveCheckoutRoomProvider.jsx";
 
 
 
@@ -17,9 +18,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <VolumeProvider>
       <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider><RoomProvider>
-        <PetProgressionUpdateProvider><ActivePetNameProvider>
+        <PetProgressionUpdateProvider><ActivePetNameProvider><ActiveCheckoutRoomProvider>
           <App />
-        </ActivePetNameProvider></PetProgressionUpdateProvider>
+        </ActiveCheckoutRoomProvider></ActivePetNameProvider></PetProgressionUpdateProvider>
       </RoomProvider></PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
     </VolumeProvider>
   </StrictMode>,

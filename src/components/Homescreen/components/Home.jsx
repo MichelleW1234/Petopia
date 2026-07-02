@@ -5,6 +5,7 @@ import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import { useRoom } from "../../../providers/RoomProvider.jsx";
+import { useActiveCheckoutRoom } from "../../../providers/ActiveCheckoutRoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
@@ -36,6 +37,7 @@ function Home (){
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {Room, setRoom} = useRoom();
+    const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
     const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
@@ -115,11 +117,7 @@ function Home (){
     const checkoutRoom = (roomNumber) => {
 
         playSound(buttonSoundKey);
-        setRoom(prev => {
-            let updated = [...prev];
-            updated[roomNumber] = "";
-            return updated;
-        });
+        setActiveCheckoutRoom(roomNumber);
 
     }
 

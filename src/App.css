@@ -173,7 +173,6 @@ a:active {
     url("./images/Background.png"),
     linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 85%);
 
-  
 }
 
 
@@ -765,22 +764,7 @@ a:active {
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{
 
-  background: 
-      url("./images/FailBackground.png");
-
-  gap: 2rem; 
-
-  img {
-
-      height: 10rem;
-      width: 10rem;
-
-      filter: 
-          drop-shadow(0 0 2px rgb(255, 255, 255))
-          drop-shadow(0 0 4px rgb(255, 255, 255))
-          drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-  }  
+  background-image: url("./images/FailBackground.png");
 
 }
 
@@ -788,22 +772,7 @@ a:active {
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess{
 
-  background: 
-    url("./images/SuccessBackground.png");
-
-  gap: 2rem; 
-
-  img {
-
-    height: 10rem;
-    width: 10rem;
-
-    filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-  }  
+  background-image: url("./images/SuccessBackground.png");
 
 }
 
