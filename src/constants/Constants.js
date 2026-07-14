@@ -1,6 +1,6 @@
 import catStageOne from "../images/Cat/Portrait/s1.png";
-import catStageTwo from "../images/Cat/Main/Awake/s2.svg";
-import catStageThree from "../images/Cat/Main/Awake/s3.svg";
+import catStageTwo from "../images/Cat/Portrait/s2.png";
+import catStageThree from "../images/Cat/Portrait/s3.png";
 
 import dogStageOne from "../images/Dog/Main/Awake/s1.svg";
 import dogStageTwo from "../images/Dog/Main/Awake/s2.svg";
