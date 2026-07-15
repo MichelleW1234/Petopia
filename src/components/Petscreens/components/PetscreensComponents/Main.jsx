@@ -274,7 +274,8 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
 
                                             petHere ? (
 
-                                                <div key={index} className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
+                                                <div key={index} 
+                                                    className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
                                                     <img className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
                                                         onMouseEnter={() => showAttention()}

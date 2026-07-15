@@ -2,9 +2,9 @@ import catStageOne from "../images/Cat/Portrait/s1.png";
 import catStageTwo from "../images/Cat/Portrait/s2.png";
 import catStageThree from "../images/Cat/Portrait/s3.png";
 
-import dogStageOne from "../images/Dog/Main/Awake/s1.svg";
-import dogStageTwo from "../images/Dog/Main/Awake/s2.svg";
-import dogStageThree from "../images/Dog/Main/Awake/s3.svg";
+import dogStageOne from "../images/Dog/Portrait/s1.png";
+import dogStageTwo from "../images/Dog/Portrait/s2.png";
+import dogStageThree from "../images/Dog/Portrait/s3.png";
 
 import fishStageOne from "../images/Fish/Main/Awake/s1.svg";
 import fishStageTwo from "../images/Fish/Main/Awake/s2.svg";

@@ -27,18 +27,18 @@ import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
 import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
 import fireplace from "../../../../Music/PetImmersionSounds/Fireplace.mp3";
 
-import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.svg";
-import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.svg";
-import s1DogRightOne from "../../../../images/Dog/Main/Awake/s12.svg";
-import s1DogRightTwo from "../../../../images/Dog/Main/Awake/s13.svg";
-import s2DogLeftOne from "../../../../images/Dog/Main/Awake/s2.svg";
-import s2DogLeftTwo from "../../../../images/Dog/Main/Awake/s21.svg";
-import s2DogRightOne from "../../../../images/Dog/Main/Awake/s22.svg";
-import s2DogRightTwo from "../../../../images/Dog/Main/Awake/s23.svg";
-import s3DogLeftOne from "../../../../images/Dog/Main/Awake/s3.svg";
-import s3DogLeftTwo from "../../../../images/Dog/Main/Awake/s31.svg";
-import s3DogRightOne from "../../../../images/Dog/Main/Awake/s32.svg";
-import s3DogRightTwo from "../../../../images/Dog/Main/Awake/s33.svg";
+import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.png";
+import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.png";
+import s1DogRightOne from "../../../../images/Dog/Main/Awake/s12.png";
+import s1DogRightTwo from "../../../../images/Dog/Main/Awake/s13.png";
+import s2DogLeftOne from "../../../../images/Dog/Main/Awake/s2.png";
+import s2DogLeftTwo from "../../../../images/Dog/Main/Awake/s21.png";
+import s2DogRightOne from "../../../../images/Dog/Main/Awake/s22.png";
+import s2DogRightTwo from "../../../../images/Dog/Main/Awake/s23.png";
+import s3DogLeftOne from "../../../../images/Dog/Main/Awake/s3.png";
+import s3DogLeftTwo from "../../../../images/Dog/Main/Awake/s31.png";
+import s3DogRightOne from "../../../../images/Dog/Main/Awake/s32.png";
+import s3DogRightTwo from "../../../../images/Dog/Main/Awake/s33.png";
 
 import s1DogSleepOne from "../../../../images/Dog/Main/Asleep/s1.png";
 import s1DogSleepTwo from "../../../../images/Dog/Main/Asleep/s11.png";
@@ -54,9 +54,9 @@ import s2DogFeedTwo from "../../../../images/Dog/Feed/Animation/s21.png";
 import s3DogFeedOne from "../../../../images/Dog/Feed/Animation/s3.png";
 import s3DogFeedTwo from "../../../../images/Dog/Feed/Animation/s31.png";
 
-import s1DogClean from "../../../../images/Dog/Main/Awake/s1.svg";
-import s2DogClean from "../../../../images/Dog/Main/Awake/s2.svg";
-import s3DogClean from "../../../../images/Dog/Main/Awake/s3.svg";
+import s1DogClean from "../../../../images/Dog/Main/Awake/s1.png";
+import s2DogClean from "../../../../images/Dog/Main/Awake/s2.png";
+import s3DogClean from "../../../../images/Dog/Main/Awake/s3.png";
 
 import s1DogMedOne from "../../../../images/Dog/Feed/Animation/s1.png";
 import s1DogMedTwo from "../../../../images/Dog/Feed/Animation/s11.png";
