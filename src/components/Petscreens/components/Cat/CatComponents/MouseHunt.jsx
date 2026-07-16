@@ -16,9 +16,9 @@ import "./MouseHunt.css";
 
 function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
-    const mouseHuntWindowWidth = 3;
-    const mouseHuntWindowHeight = 5;
-    const mouseHuntNumberCreatures = 5;
+    const mouseHuntWindowWidth = 2;
+    const mouseHuntWindowHeight = 4;
+    const mouseHuntNumberCreatures = 3;
 
     const mouseHuntRowKey = "row";
     const mouseHuntColumnKey = "column";
@@ -131,7 +131,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             });
 
-        }, 700);
+        }, 600);
 
         return () => clearInterval(interval);
 
