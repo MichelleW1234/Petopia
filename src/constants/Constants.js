@@ -6,9 +6,9 @@ import dogStageOne from "../images/Dog/Portrait/s1.png";
 import dogStageTwo from "../images/Dog/Portrait/s2.png";
 import dogStageThree from "../images/Dog/Portrait/s3.png";
 
-import fishStageOne from "../images/Fish/Main/Awake/s1.png";
-import fishStageTwo from "../images/Fish/Main/Awake/s2.png";
-import fishStageThree from "../images/Fish/Main/Awake/s3.png";
+import fishStageOne from "../images/Fish/Portrait/s1.png";
+import fishStageTwo from "../images/Fish/Portrait/s2.png";
+import fishStageThree from "../images/Fish/Portrait/s3.png";
 
 
 
