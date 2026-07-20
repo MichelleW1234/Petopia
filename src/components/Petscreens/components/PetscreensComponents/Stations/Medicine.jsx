@@ -31,12 +31,9 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
     const [medicineCurrNumber, setMedicineCurrNumber] = useState(0);
     const [medicineDone, setMedicineDone] = useState(false);
     const [medicineSuccess, setMedicineSuccess] = useState(false);
-    const [medicineAnimationImage, setMedicineAnimationImage] = useState(0);
 
     const medicineGlobalTimerRef = useRef(GlobalTimer);
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
-    const medicineAnimationImageRef = useRef(medicineAnimationImage);
-
     const medicineAudioRef = useRef(new Audio(medicine));
 
         
@@ -101,10 +98,6 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
     }, [medicineCurrNumber]);
 
     useEffect(() => {
-        medicineAnimationImageRef.current = medicineAnimationImage;
-    }, [medicineAnimationImage]);
-
-    useEffect(() => {
 
         if (!medicineStart || medicineDone) {
             return;
@@ -124,26 +117,6 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
             }
 
         }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, [medicineStart, medicineDone]);
-
-    
-    useEffect(() => {
-
-        if (!medicineStart || medicineDone) {
-            return;
-        }
-
-        const interval = setInterval(() => {
-
-            if (medicineAnimationImageRef.current === 0) {
-                setMedicineAnimationImage(1);
-            } else {
-                setMedicineAnimationImage(0);
-            }
-        }, 300);
 
         return () => clearInterval(interval);
 
@@ -258,7 +231,7 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
                                     <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
                                 </div>}
                         
-                                <img src = {medicineAnimationImages[medicineAnimationImage]} />
+                                <img src = {medicineAnimationImages[0]} />
 
                             </div>
 

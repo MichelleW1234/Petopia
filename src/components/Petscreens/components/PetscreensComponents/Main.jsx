@@ -68,11 +68,6 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
     }, [mainSleepAnimationImage]);
 
 
-    useEffect(() => {
-        mainSleepAnimationImageRef.current = mainSleepAnimationImage;
-    }, [mainSleepAnimationImage]);
-
-
 
     useEffect(() => {
 

@@ -10,7 +10,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { feedingKey, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { dogSpecies, feedingKey, fishSpecies, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { flagCloser } from "../../../../../helpers/helpers.js";
 import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
 
@@ -137,7 +137,7 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
 
     useEffect(() => {
 
-        if (!feedStart || feedDone) {
+        if (!feedStart || feedDone || PetList[ActivePetName][speciesKey] !== fishSpecies) {
             return;
         }
 

@@ -46,19 +46,13 @@ import s2CatSleepTwo from "../../../../images/Cat/Main/Asleep/s21.png";
 import s3CatSleepOne from "../../../../images/Cat/Main/Asleep/s3.png";
 import s3CatSleepTwo from "../../../../images/Cat/Main/Asleep/s31.png";
 
-import s1CatFeedOne from "../../../../images/Cat/Feed/Animation/s1.png";
-import s1CatFeedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
-import s2CatFeedOne from "../../../../images/Cat/Feed/Animation/s2.png";
-import s2CatFeedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
-import s3CatFeedOne from "../../../../images/Cat/Feed/Animation/s3.png";
-import s3CatFeedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
+import s1CatFeed from "../../../../images/Cat/Feed/Animation/s1.gif";
+import s2CatFeed from "../../../../images/Cat/Feed/Animation/s2.gif";
+import s3CatFeed from "../../../../images/Cat/Feed/Animation/s3.gif";
 
-import s1CatMedOne from "../../../../images/Cat/Feed/Animation/s1.png";
-import s1CatMedTwo from "../../../../images/Cat/Feed/Animation/s11.png";
-import s2CatMedOne from "../../../../images/Cat/Feed/Animation/s2.png";
-import s2CatMedTwo from "../../../../images/Cat/Feed/Animation/s21.png";
-import s3CatMedOne from "../../../../images/Cat/Feed/Animation/s3.png";
-import s3CatMedTwo from "../../../../images/Cat/Feed/Animation/s31.png";
+import s1CatMedOne from "../../../../images/Cat/Feed/Animation/s1.gif";
+import s2CatMedOne from "../../../../images/Cat/Feed/Animation/s2.gif";
+import s3CatMedOne from "../../../../images/Cat/Feed/Animation/s3.gif";
 
 import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
 import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
@@ -149,19 +143,19 @@ function Cat (){
 
     const catFeedImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatFeedOne, s1CatFeedTwo]
+                                        [s1CatFeed]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatFeedOne, s2CatFeedTwo]
-                                    : [s3CatFeedOne, s3CatFeedTwo]
-                                : [s1CatFeedOne, s1CatFeedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        [s2CatFeed]
+                                    : [s3CatFeed]
+                                : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const catMedicineImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatMedOne, s1CatMedTwo]
+                                        [s1CatMedOne]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatMedOne, s2CatMedTwo]
-                                    : [s3CatMedOne, s3CatMedTwo]
-                                : [s1CatMedOne, s1CatMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        [s2CatMedOne]
+                                    : [s3CatMedOne]
+                                : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
 
