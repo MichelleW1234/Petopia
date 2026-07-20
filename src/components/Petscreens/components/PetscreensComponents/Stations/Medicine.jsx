@@ -19,7 +19,7 @@ import "./Medicine.css";
 
 
 
-function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOptionsDesiredOption, setMedicineOptionsDesiredOption, setMedicineOpenFlag}){
+function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptionsDesiredOption, setMedicineOptionsDesiredOption, setMedicineOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -80,14 +80,14 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
 
     useEffect(() => {
 
-        const preloadImages = [...medicineAnimationImages, ...medicineOptionsList.map(item => item[optionImageKey])];
+        const preloadImages = [...medicineAnimationImage, ...medicineOptionsList.map(item => item[optionImageKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
             img.src = src;
         });
 
-    }, [medicineAnimationImages]);
+    }, [medicineAnimationImage]);
 
     useEffect(() => {
         medicineGlobalTimerRef.current = GlobalTimer;
@@ -226,12 +226,18 @@ function Medicine ({medicineAnimationImages, medicineOptionsList, medicineOption
 
                             <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Medicine_ComponentContainer-Template--WindowScreen">
 
-                                {!medicineStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <h2>Wait for your pet as it receives its dose!</h2> 
-                                    <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
-                                </div>}
+                                {medicineStart ? (
                         
-                                <img src = {medicineAnimationImages[0]} />
+                                    <img src = {medicineAnimationImage} />
+
+                                ) : (
+
+                                    <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                        <h2>Wait for your pet as it receives its dose!</h2> 
+                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
+                                    </div>
+
+                                )}
 
                             </div>
 

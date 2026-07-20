@@ -50,9 +50,9 @@ import s1CatFeed from "../../../../images/Cat/Feed/Animation/s1.gif";
 import s2CatFeed from "../../../../images/Cat/Feed/Animation/s2.gif";
 import s3CatFeed from "../../../../images/Cat/Feed/Animation/s3.gif";
 
-import s1CatMedOne from "../../../../images/Cat/Feed/Animation/s1.gif";
-import s2CatMedOne from "../../../../images/Cat/Feed/Animation/s2.gif";
-import s3CatMedOne from "../../../../images/Cat/Feed/Animation/s3.gif";
+import s1CatMed from "../../../../images/Cat/Medicine/Animation/s1.gif";
+import s2CatMed from "../../../../images/Cat/Medicine/Animation/s2.gif";
+import s3CatMed from "../../../../images/Cat/Medicine/Animation/s3.gif";
 
 import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
 import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
@@ -131,7 +131,7 @@ function Cat (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[s2CatLeftOne, s2CatLeftTwo], [s2CatRightOne, s2CatRightTwo]]
                                     : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
-                                : [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : [[,], [,]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const catMainSleepingImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -139,23 +139,23 @@ function Cat (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [s2CatSleepOne, s2CatSleepTwo]
                                     : [s3CatSleepOne, s3CatSleepTwo]
-                                : [s1CatSleepOne, s1CatSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
-
-    const catFeedImages = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatFeed]
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatFeed]
-                                    : [s3CatFeed]
                                 : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const catMedicineImages = ActivePetName !== "" ? 
+    const catFeedImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatMedOne]
+                                        s1CatFeed
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatMedOne]
-                                    : [s3CatMedOne]
-                                : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        s2CatFeed
+                                    : s3CatFeed
+                                : null ; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+
+    const catMedicineImage = ActivePetName !== "" ? 
+                                PetList[ActivePetName][stageKey] === 0 ? 
+                                        s1CatMed
+                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                        s2CatMed
+                                    : s3CatMed
+                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
 
@@ -334,7 +334,7 @@ function Cat (){
 
             {catFeedOpenFlag &&
             <Feed
-                feedAnimationImages={catFeedImages}
+                feedAnimationImage={catFeedImage}
                 feedOptionsList={catFeedOptionsList}
                 feedOptionsDesiredOption = {catFeedOptionsDesiredOption}
                 setFeedOptionsDesiredOption = {setCatFeedOptionsDesiredOption}
@@ -351,7 +351,7 @@ function Cat (){
 
             {catMedicineOpenFlag &&
             <Medicine
-                medicineAnimationImages={catMedicineImages}
+                medicineAnimationImage={catMedicineImage}
                 medicineOptionsList={catMedicineOptionsList}
                 medicineOptionsDesiredOption = {catMedicineOptionsDesiredOption}
                 setMedicineOptionsDesiredOption = {setCatMedicineOptionsDesiredOption}

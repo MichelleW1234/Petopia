@@ -162,6 +162,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                 />
 
             ) : (
+                
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
@@ -181,22 +182,33 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                                         : "default",
                                 }}>
 
-                                {!cleanStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                    <h2> Drag your cursor back and forth for cleaning! </h2>
-                                    <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
-                                </div>}
+                                {cleanStart ? (
 
-                                <img
-                                    className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                    src = {cleanImage[0]} 
-                                    onMouseEnter={() => scrub()}
-                                />
+                                    <>
+                                    
+                                        <img
+                                            className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
+                                            src = {cleanImage} 
+                                            onMouseEnter={() => scrub()}
+                                        />
 
-                                {cleanHover && <img
-                                    className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                    src = {shine} 
-                                    onMouseEnter={() => scrub()}
-                                />}
+                                        {cleanHover && <img
+                                            className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
+                                            src = {shine} 
+                                            onMouseEnter={() => scrub()}
+                                        />}
+
+                                    </>
+
+                                ) : (
+
+                                    <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                        <h2> Drag your cursor back and forth for cleaning! </h2>
+                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
+                                    </div>
+
+                                )}
+
                             </div>
 
                         ) : (
@@ -216,7 +228,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                             )
 
                         )}
-                            
+
                     </div>
                         
                 </div>

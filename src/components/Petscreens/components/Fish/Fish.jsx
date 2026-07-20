@@ -45,23 +45,17 @@ import s2FishSleepTwo from "../../../../images/Fish/Main/Asleep/s21.png";
 import s3FishSleepOne from "../../../../images/Fish/Main/Asleep/s3.png";
 import s3FishSleepTwo from "../../../../images/Fish/Main/Asleep/s31.png";
 
-import s1FishFeedOne from "../../../../images/Fish/Feed/Animation/s1.png";
-import s1FishFeedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
-import s2FishFeedOne from "../../../../images/Fish/Feed/Animation/s2.png";
-import s2FishFeedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
-import s3FishFeedOne from "../../../../images/Fish/Feed/Animation/s3.png";
-import s3FishFeedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
+import s1FishFeed from "../../../../images/Fish/Feed/Animation/s1.gif";
+import s2FishFeed from "../../../../images/Fish/Feed/Animation/s2.gif";
+import s3FishFeed from "../../../../images/Fish/Feed/Animation/s3.gif";
 
 import s1FishClean from "../../../../images/Fish/Clean/Animation/s1.png";
 import s2FishClean from "../../../../images/Fish/Clean/Animation/s2.png";
 import s3FishClean from "../../../../images/Fish/Clean/Animation/s3.png";
 
-import s1FishMedOne from "../../../../images/Fish/Feed/Animation/s1.png";
-import s1FishMedTwo from "../../../../images/Fish/Feed/Animation/s11.png";
-import s2FishMedOne from "../../../../images/Fish/Feed/Animation/s2.png";
-import s2FishMedTwo from "../../../../images/Fish/Feed/Animation/s21.png";
-import s3FishMedOne from "../../../../images/Fish/Feed/Animation/s3.png";
-import s3FishMedTwo from "../../../../images/Fish/Feed/Animation/s31.png";
+import s1FishMed from "../../../../images/Fish/Medicine/Animation/s1.gif";
+import s2FishMed from "../../../../images/Fish/Medicine/Animation/s2.gif";
+import s3FishMed from "../../../../images/Fish/Medicine/Animation/s3.gif";
 
 import shrimp from "../../../../images/Fish/Feed/Options/shrimp.png";
 import worms from "../../../../images/Fish/Feed/Options/worm.png";
@@ -143,7 +137,7 @@ function Fish (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
                                     : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
-                                : [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : [[,], [,]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
 
     const fishMainSleepingImages = ActivePetName !== "" ? 
@@ -152,32 +146,32 @@ function Fish (){
                                         : PetList[ActivePetName][stageKey] === 1 ? 
                                             [s2FishSleepOne, s2FishSleepTwo]
                                         : [s3FishSleepOne, s3FishSleepTwo]
-                                    : [s1FishSleepOne, s1FishSleepTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                    : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     
-    const fishFeedImages = ActivePetName !== "" ? 
+    const fishFeedImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1FishFeedOne, s1FishFeedTwo]
+                                        s1FishFeed
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2FishFeedOne, s2FishFeedTwo]
-                                    : [s3FishFeedOne, s3FishFeedTwo]
-                                : [s1FishFeedOne, s1FishFeedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        s2FishFeed
+                                    : s3FishFeed
+                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const fishCleanImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1FishClean]
+                                        s1FishClean
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2FishClean]
-                                    : [s3FishClean]
-                                : [s1FishClean]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        s2FishClean
+                                    : s3FishClean
+                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
-    const fishMedicineImages = ActivePetName !== "" ? 
+    const fishMedicineImage = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1FishMedOne, s1FishMedTwo]
+                                            s1FishMed
                                         : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2FishMedOne, s2FishMedTwo]
-                                        : [s3FishMedOne, s3FishMedTwo]
-                                    :  [s1FishMedOne, s1FishMedTwo]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                            s2FishMed
+                                        : s3FishMed
+                                    : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
 
     const fishFeedOptionsList = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
     const fishCleanOptionsList = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
@@ -356,7 +350,7 @@ function Fish (){
 
             {fishFeedOpenFlag &&
             <Feed
-                feedAnimationImages={fishFeedImages}
+                feedAnimationImage={fishFeedImage}
                 feedOptionsList={fishFeedOptionsList}
                 feedOptionsDesiredOption = {fishFeedOptionsDesiredOption}
                 setFeedOptionsDesiredOption = {setFishFeedOptionsDesiredOption}
@@ -374,7 +368,7 @@ function Fish (){
 
             {fishMedicineOpenFlag &&
             <Medicine
-                medicineAnimationImages={fishMedicineImages}
+                medicineAnimationImage={fishMedicineImage}
                 medicineOptionsList = {fishMedicineOptionsList}
                 medicineOptionsDesiredOption = {fishMedicineOptionsDesiredOption}
                 setMedicineOptionsDesiredOption = {setFishMedicineOptionsDesiredOption}

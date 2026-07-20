@@ -24,7 +24,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
                 <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
-                        <h1>Pet Guide:</h1>
+                        <h1>Pet Care Guide:</h1>
                         <hr/>
                     </div>
                     <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 

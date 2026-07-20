@@ -20,7 +20,7 @@ import "./Feed.css";
 
 
 
-function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, setFeedOptionsDesiredOption, setFeedOpenFlag}){
+function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, setFeedOptionsDesiredOption, setFeedOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -33,12 +33,9 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
     const [feedDone, setFeedDone] = useState(false);
     const [feedOptionsSelection, setFeedOptionsSelection] = useState(-1);
     const [feedSuccess, setFeedSuccess] = useState(false);
-    const [feedAnimationImage, setFeedAnimationImage] = useState(0);
 
     const feedGlobalTimerRef = useRef(GlobalTimer);
     const feedCurrNumberRef = useRef(feedCurrNumber);
-    const feedAnimationImageRef = useRef(feedAnimationImage);
-
     const feedAudioRef = useRef(new Audio(feed));
 
 
@@ -85,14 +82,14 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
 
     useEffect(() => {
 
-        const preloadImages = [...feedAnimationImages, ...feedOptionsList.map(item => item[optionImageKey])];
+        const preloadImages = [...feedAnimationImage, ...feedOptionsList.map(item => item[optionImageKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
             img.src = src;
         });
 
-    }, [feedAnimationImages]);
+    }, [feedAnimationImage]);
 
     useEffect(() => {
         feedGlobalTimerRef.current = GlobalTimer;
@@ -102,11 +99,6 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
     useEffect(() => {
         feedCurrNumberRef.current = feedCurrNumber;
     }, [feedCurrNumber]);
-
-
-    useEffect(() => {
-        feedAnimationImageRef.current = feedAnimationImage;
-    }, [feedAnimationImage]);
 
 
     useEffect(() => {
@@ -129,26 +121,6 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
             }
 
         }, 1000);
-
-        return () => clearInterval(interval);
-
-    }, [feedStart, feedDone]);
-
-
-    useEffect(() => {
-
-        if (!feedStart || feedDone || PetList[ActivePetName][speciesKey] !== fishSpecies) {
-            return;
-        }
-
-        const interval = setInterval(() => {
-
-            if (feedAnimationImageRef.current === 0) {
-                setFeedAnimationImage(1);
-            } else {
-                setFeedAnimationImage(0);
-            }
-        }, 300);
 
         return () => clearInterval(interval);
 
@@ -202,12 +174,19 @@ function Feed ({feedAnimationImages, feedOptionsList, feedOptionsDesiredOption, 
                             {!feedDone ? (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
-                                    {!feedStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2>Wait for your pet as it eats!</h2> 
-                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeedStart)}> Start <br/> [return]</button>
-                                    </div>}
 
-                                    <img src = {feedAnimationImages[feedAnimationImage]} />
+                                    {feedStart ? (
+
+                                        <img src = {feedAnimationImage} />
+
+                                    ) : (
+
+                                        <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+                                            <h2>Wait for your pet as it eats!</h2> 
+                                            <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeedStart)}> Start <br/> [return]</button>
+                                        </div>
+
+                                    )}
 
                                 </div>
 
