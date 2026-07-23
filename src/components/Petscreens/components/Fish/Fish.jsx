@@ -38,24 +38,23 @@ import s3FishLeftTwo from "../../../../images/Fish/Main/Awake/s31.png";
 import s3FishRightOne from "../../../../images/Fish/Main/Awake/s32.png";
 import s3FishRightTwo from "../../../../images/Fish/Main/Awake/s33.png";
 
-import s1FishSleepOne from "../../../../images/Fish/Main/Asleep/s1.png";
-import s1FishSleepTwo from "../../../../images/Fish/Main/Asleep/s11.png";
-import s2FishSleepOne from "../../../../images/Fish/Main/Asleep/s2.png";
-import s2FishSleepTwo from "../../../../images/Fish/Main/Asleep/s21.png";
-import s3FishSleepOne from "../../../../images/Fish/Main/Asleep/s3.png";
-import s3FishSleepTwo from "../../../../images/Fish/Main/Asleep/s31.png";
+import s1FishSleep from "../../../../images/Fish/Main/Asleep/s1.gif";
+import s2FishSleep from "../../../../images/Fish/Main/Asleep/s2.gif";
+import s3FishSleep from "../../../../images/Fish/Main/Asleep/s3.gif";
 
 import s1FishFeed from "../../../../images/Fish/Feed/Animation/s1.gif";
 import s2FishFeed from "../../../../images/Fish/Feed/Animation/s2.gif";
 import s3FishFeed from "../../../../images/Fish/Feed/Animation/s3.gif";
 
-import s1FishClean from "../../../../images/Fish/Clean/Animation/s1.png";
-import s2FishClean from "../../../../images/Fish/Clean/Animation/s2.png";
-import s3FishClean from "../../../../images/Fish/Clean/Animation/s3.png";
+import s1FishClean from "../../../../images/Fish/Clean/Animation/s1.gif";
+import s2FishClean from "../../../../images/Fish/Clean/Animation/s2.gif";
+import s3FishClean from "../../../../images/Fish/Clean/Animation/s3.gif";
 
 import s1FishMed from "../../../../images/Fish/Medicine/Animation/s1.gif";
 import s2FishMed from "../../../../images/Fish/Medicine/Animation/s2.gif";
 import s3FishMed from "../../../../images/Fish/Medicine/Animation/s3.gif";
+
+import nullPlaceholder from "../../../../images/nullPlaceholder.png";
 
 import shrimp from "../../../../images/Fish/Feed/Options/shrimp.png";
 import worms from "../../../../images/Fish/Feed/Options/worm.png";
@@ -137,16 +136,16 @@ function Fish (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
                                     : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
-                                : [[,], [,]]; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
 
 
-    const fishMainSleepingImages = ActivePetName !== "" ? 
+    const fishMainSleepingImage = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
-                                            [s1FishSleepOne, s1FishSleepTwo]
+                                            s1FishSleep
                                         : PetList[ActivePetName][stageKey] === 1 ? 
-                                            [s2FishSleepOne, s2FishSleepTwo]
-                                        : [s3FishSleepOne, s3FishSleepTwo]
-                                    : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                            s2FishSleep
+                                        : s3FishSleep
+                                    : nullPlaceholder;
 
     
     const fishFeedImage = ActivePetName !== "" ? 
@@ -155,7 +154,7 @@ function Fish (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         s2FishFeed
                                     : s3FishFeed
-                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : nullPlaceholder;
 
     const fishCleanImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -163,7 +162,7 @@ function Fish (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         s2FishClean
                                     : s3FishClean
-                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : nullPlaceholder;
 
     const fishMedicineImage = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
@@ -171,7 +170,7 @@ function Fish (){
                                         : PetList[ActivePetName][stageKey] === 1 ? 
                                             s2FishMed
                                         : s3FishMed
-                                    : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                    : nullPlaceholder;
 
     const fishFeedOptionsList = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
     const fishCleanOptionsList = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
@@ -359,7 +358,7 @@ function Fish (){
 
             {fishCleanOpenFlag &&
             <Clean
-                cleanImage={fishCleanImage}
+                cleanAnimationImage={fishCleanImage}
                 cleanOptionsList={fishCleanOptionsList}
                 cleanOptionsDesiredOption = {fishCleanOptionsDesiredOption}
                 setCleanOptionsDesiredOption = {setFishCleanOptionsDesiredOption}
@@ -427,7 +426,7 @@ function Fish (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={fishMainImages}
-                        mainSleepingImages={fishMainSleepingImages}
+                        mainSleepingImage={fishMainSleepingImage}
                         mainPetAudios={fishAudioRefs}
                         mainPetEnergy = {400}
                         mainPetMood = {fishMood}

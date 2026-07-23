@@ -21,7 +21,7 @@ import "./Clean.css";
 
 
 
-function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, setCleanOpenFlag}){
+function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, setCleanOpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -87,14 +87,14 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
 
     useEffect(() => {
 
-        const preloadImages = [...cleanImage, ...cleanOptionsList.map(item => item[optionImageKey]), ...cleanOptionsList.map(item => item[optionCursorKey])];
+        const preloadImages = [...cleanAnimationImage, ...cleanOptionsList.map(item => item[optionImageKey]), ...cleanOptionsList.map(item => item[optionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
             img.src = src;
         });
 
-    }, [cleanImage]);
+    }, [cleanAnimationImage]);
 
 
     useEffect(() => {
@@ -188,7 +188,7 @@ function Clean ({cleanImage, cleanOptionsList, cleanOptionsDesiredOption, setCle
                                     
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                            src = {cleanImage} 
+                                            src = {cleanAnimationImage} 
                                             onMouseEnter={() => scrub()}
                                         />
 

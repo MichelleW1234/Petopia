@@ -17,7 +17,7 @@ import "./Main.css";
 
 
 
-function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetEnergy, mainPetMood, mainActivityInProgress}){
+function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEnergy, mainPetMood, mainActivityInProgress}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -99,30 +99,6 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
         }
 
     }, [mainAttention, mainPetMood])
-
-
-
-    useEffect(() => {
-
-        if (ActivePetName === "" || !mainPetSleeping){
-
-            return;
-
-        }
-
-        const interval = setInterval(() => {
-
-            if (mainSleepAnimationImageRef.current === 0) {
-                setMainSleepAnimationImage(1);
-            } else {
-                setMainSleepAnimationImage(0);
-            }
-
-        }, 800);
-
-        return () => clearInterval(interval);
-
-    }, [ActivePetName, mainPetSleeping])
 
 
 
@@ -246,7 +222,7 @@ function Main ({mainAnimationImages, mainSleepingImages, mainPetAudios, mainPetE
                                         <img 
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
                                             onMouseEnter={() => showAttention()}
-                                            src = {mainSleepingImages[mainSleepAnimationImage]}
+                                            src = {mainSleepingImage}
                                         />
 
                                         {mainAttention &&

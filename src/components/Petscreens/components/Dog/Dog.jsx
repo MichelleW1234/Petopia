@@ -40,24 +40,23 @@ import s3DogLeftTwo from "../../../../images/Dog/Main/Awake/s31.png";
 import s3DogRightOne from "../../../../images/Dog/Main/Awake/s32.png";
 import s3DogRightTwo from "../../../../images/Dog/Main/Awake/s33.png";
 
-import s1DogSleepOne from "../../../../images/Dog/Main/Asleep/s1.png";
-import s1DogSleepTwo from "../../../../images/Dog/Main/Asleep/s11.png";
-import s2DogSleepOne from "../../../../images/Dog/Main/Asleep/s2.png";
-import s2DogSleepTwo from "../../../../images/Dog/Main/Asleep/s21.png";
-import s3DogSleepOne from "../../../../images/Dog/Main/Asleep/s3.png";
-import s3DogSleepTwo from "../../../../images/Dog/Main/Asleep/s31.png";
+import s1DogSleep from "../../../../images/Dog/Main/Asleep/s1.gif";
+import s2DogSleep from "../../../../images/Dog/Main/Asleep/s2.gif";
+import s3DogSleep from "../../../../images/Dog/Main/Asleep/s3.gif";
 
 import s1DogFeed from "../../../../images/Dog/Feed/Animation/s1.gif";
 import s2DogFeed from "../../../../images/Dog/Feed/Animation/s2.gif";
 import s3DogFeed from "../../../../images/Dog/Feed/Animation/s3.gif";
 
-import s1DogClean from "../../../../images/Dog/Clean/Animation/s1.png";
-import s2DogClean from "../../../../images/Dog/Clean/Animation/s2.png";
-import s3DogClean from "../../../../images/Dog/Clean/Animation/s3.png";
+import s1DogClean from "../../../../images/Dog/Clean/Animation/s1.gif";
+import s2DogClean from "../../../../images/Dog/Clean/Animation/s2.gif";
+import s3DogClean from "../../../../images/Dog/Clean/Animation/s3.gif";
 
 import s1DogMed from "../../../../images/Dog/Medicine/Animation/s1.gif";
 import s2DogMed from "../../../../images/Dog/Medicine/Animation/s2.gif";
 import s3DogMed from "../../../../images/Dog/Medicine/Animation/s3.gif";
+
+import nullPlaceholder from "../../../../images/nullPlaceholder.png";
 
 import beef from "../../../../images/Dog/Feed/Options/beef.png";
 import turkey from "../../../../images/Dog/Feed/Options/turkey.png";
@@ -149,15 +148,15 @@ function Dog (){
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     [[s2DogLeftOne, s2DogLeftTwo], [s2DogRightOne, s2DogRightTwo]]
                                 : [[s3DogLeftOne, s3DogLeftTwo], [s3DogRightOne, s3DogRightTwo]]
-                            : [[,], [,]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                            : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
 
-    const dogMainSleepingImages = ActivePetName !== "" ? 
+    const dogMainSleepingImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1DogSleepOne, s1DogSleepTwo]
+                                        s1DogSleep
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2DogSleepOne, s2DogSleepTwo]
-                                    : [s3DogSleepOne, s3DogSleepTwo]
-                                : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        s2DogSleep
+                                    : s3DogSleep
+                                : nullPlaceholder;
 
     const dogFeedImage = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
@@ -165,7 +164,7 @@ function Dog (){
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     s2DogFeed
                                 : s3DogFeed
-                            : null;  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                            : nullPlaceholder;
 
     const dogCleanImage = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
@@ -173,7 +172,7 @@ function Dog (){
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     s2DogClean
                                 : s3DogClean
-                            : null;  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                            : nullPlaceholder;
 
     const dogMedicineImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -181,7 +180,7 @@ function Dog (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         s2DogMed
                                     : s3DogMed
-                                : null;  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : nullPlaceholder;
 
     const dogFeedOptionsList = [{[optionNameKey]: "beef", [optionImageKey]: beef}, {[optionNameKey]: "turkey", [optionImageKey]: turkey}, {[optionNameKey]: "lamb", [optionImageKey]: lamb}]; 
     const dogCleanOptionsList = [{[optionNameKey]: "soap", [optionImageKey]: soap, [optionCursorKey]: soapCursor}, {[optionNameKey]: "brush", [optionImageKey]: brush, [optionCursorKey]: brushCursor}];
@@ -386,7 +385,7 @@ function Dog (){
 
             {dogCleanOpenFlag &&
             <Clean
-                cleanImage={dogCleanImage}
+                cleanAnimationImage={dogCleanImage}
                 cleanOptionsList={dogCleanOptionsList}
                 cleanOptionsDesiredOption = {dogCleanOptionsDesiredOption}
                 setCleanOptionsDesiredOption = {setDogCleanOptionsDesiredOption}
@@ -463,7 +462,7 @@ function Dog (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={dogMainImages}
-                        mainSleepingImages={dogMainSleepingImages}
+                        mainSleepingImage={dogMainSleepingImage}
                         mainPetAudios={dogAudioRefs}
                         mainPetEnergy = {350}
                         mainPetMood = {dogMood}

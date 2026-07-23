@@ -39,12 +39,9 @@ import s3CatLeftTwo from "../../../../images/Cat/Main/Awake/s31.png";
 import s3CatRightOne from "../../../../images/Cat/Main/Awake/s32.png";
 import s3CatRightTwo from "../../../../images/Cat/Main/Awake/s33.png";
 
-import s1CatSleepOne from "../../../../images/Cat/Main/Asleep/s1.png";
-import s1CatSleepTwo from "../../../../images/Cat/Main/Asleep/s11.png";
-import s2CatSleepOne from "../../../../images/Cat/Main/Asleep/s2.png";
-import s2CatSleepTwo from "../../../../images/Cat/Main/Asleep/s21.png";
-import s3CatSleepOne from "../../../../images/Cat/Main/Asleep/s3.png";
-import s3CatSleepTwo from "../../../../images/Cat/Main/Asleep/s31.png";
+import s1CatSleep from "../../../../images/Cat/Main/Asleep/s1.gif";
+import s2CatSleep from "../../../../images/Cat/Main/Asleep/s2.gif";
+import s3CatSleep from "../../../../images/Cat/Main/Asleep/s3.gif";
 
 import s1CatFeed from "../../../../images/Cat/Feed/Animation/s1.gif";
 import s2CatFeed from "../../../../images/Cat/Feed/Animation/s2.gif";
@@ -53,6 +50,8 @@ import s3CatFeed from "../../../../images/Cat/Feed/Animation/s3.gif";
 import s1CatMed from "../../../../images/Cat/Medicine/Animation/s1.gif";
 import s2CatMed from "../../../../images/Cat/Medicine/Animation/s2.gif";
 import s3CatMed from "../../../../images/Cat/Medicine/Animation/s3.gif";
+
+import nullPlaceholder from "../../../../images/nullPlaceholder.png";
 
 import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
 import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
@@ -131,15 +130,15 @@ function Cat (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[s2CatLeftOne, s2CatLeftTwo], [s2CatRightOne, s2CatRightTwo]]
                                     : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
-                                : [[,], [,]];  //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
 
-    const catMainSleepingImages = ActivePetName !== "" ? 
+    const catMainSleepingImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [s1CatSleepOne, s1CatSleepTwo]
+                                        s1CatSleep
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [s2CatSleepOne, s2CatSleepTwo]
-                                    : [s3CatSleepOne, s3CatSleepTwo]
-                                : []; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                        s2CatSleep
+                                    : s3CatSleep
+                                : nullPlaceholder;
 
     const catFeedImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -147,7 +146,7 @@ function Cat (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         s2CatFeed
                                     : s3CatFeed
-                                : null ; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : nullPlaceholder; 
 
     const catMedicineImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
@@ -155,7 +154,7 @@ function Cat (){
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         s2CatMed
                                     : s3CatMed
-                                : null; //CHANGE THIS TO UNIVERSAL DEFAULT!!!!!!!!!
+                                : nullPlaceholder;
 
 
 
@@ -409,7 +408,7 @@ function Cat (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     <Main
                         mainAnimationImages={catMainImages}
-                        mainSleepingImages = {catMainSleepingImages}
+                        mainSleepingImage = {catMainSleepingImage}
                         mainPetAudios = {catAudioRefs}
                         mainPetEnergy = {450}
                         mainPetMood = {catMood}
