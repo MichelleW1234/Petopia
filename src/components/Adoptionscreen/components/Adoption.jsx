@@ -407,7 +407,7 @@ function Adoption () {
                                 </div>
 
                                 <p> and I am a {adoptionPetGender} {adoptionSelectedPet}.</p>
-                                <p>This form is to verify that you have chosen to adopt me. Also be sure to read the Pet Care Guide!</p>
+                                <p>Thank you for adopting me!</p>
                             </div>
 
                         </div>
