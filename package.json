@@ -40,7 +40,8 @@
       "main.js"
     ],
     "mac": {
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "assets/PetopiaIconMac.icns"
     },
     "directories": {
       "output": "release"
