@@ -2,15 +2,15 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser } from "../../../../helpers/helpers.js";
 
-import "./PetCareGuide.css";
+import "./ReadMe.css";
 
 
 
-function PetCareGuide({setPetCareGuideOpenFlag}) {
+function ReadMe({setReadMeOpenFlag}) {
 
     useKeyboardShortcut("3", () => {
 
-        flagCloser(setPetCareGuideOpenFlag);
+        flagCloser(setReadMeOpenFlag);
 
     },
         ".Close"
@@ -24,7 +24,7 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
                 <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
-                        <h1>Pet Care Guide:</h1>
+                        <h1>Read Me:</h1>
                         <hr/>
                     </div>
                     <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
@@ -38,10 +38,10 @@ function PetCareGuide({setPetCareGuideOpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setPetCareGuideOpenFlag)}> Close <br/> [3]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setReadMeOpenFlag)}> Close <br/> [3]</button>
 
         </div>
     );
 }
   
-export default PetCareGuide;
+export default ReadMe;

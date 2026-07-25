@@ -21,13 +21,13 @@ export const playSound = (soundEffect) => {
 
     const soundDictionary = {
 
-        [buttonSoundKey] : {[buttonAudioKey]: button_click, [buttonVolumeKey]: 0.5},
-        [buttonPressSoundKey] : {[buttonAudioKey]: button_press, [buttonVolumeKey]: 0.25},
+        [buttonSoundKey] : {[buttonAudioKey]: button_click, [buttonVolumeKey]: 1},
+        [buttonPressSoundKey] : {[buttonAudioKey]: button_press, [buttonVolumeKey]: 0.75},
         [gameButtonSoundKey] : {[buttonAudioKey]: gameButton_click, [buttonVolumeKey]: 0.5},
-        [errorSoundKey] : {[buttonAudioKey]: error, [buttonVolumeKey]: 0.25},
-        [startSoundKey] : {[buttonAudioKey]: start, [buttonVolumeKey]: 0.25},
-        [successSoundKey] : {[buttonAudioKey]: success, [buttonVolumeKey]: 0.25},
-        [failSoundKey] : {[buttonAudioKey]: fail, [buttonVolumeKey]: 0.25},
+        [errorSoundKey] : {[buttonAudioKey]: error, [buttonVolumeKey]: 0.5},
+        [startSoundKey] : {[buttonAudioKey]: start, [buttonVolumeKey]: 0.5},
+        [successSoundKey] : {[buttonAudioKey]: success, [buttonVolumeKey]: 0.5},
+        [failSoundKey] : {[buttonAudioKey]: fail, [buttonVolumeKey]: 0.5},
         [confirmedSoundKey] : {[buttonAudioKey]: confirmed, [buttonVolumeKey]: 0.25},
         [clearedSoundKey] : {[buttonAudioKey]: cleared, [buttonVolumeKey]: 0.5},
         [restartSoundKey] : {[buttonAudioKey]: restart, [buttonVolumeKey]: 0.25},

@@ -33,7 +33,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
         }
 
     },
-        ".ClearSelectedPets"
+        ".RemoveSelectedPets"
     );
 
 
@@ -119,7 +119,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
         <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1>Select pet(s) to clear:</h1>
+                <h1>Select pet(s) to remove:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                     {Room.map((petName, index) => (
@@ -162,11 +162,11 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
                 {deletionSelectedPets.length > 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation ClearSelectedPets" onClick={() => clearPets()}>Clear Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets()}>Remove Selected Pets <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Clear Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
 
                 )}
 

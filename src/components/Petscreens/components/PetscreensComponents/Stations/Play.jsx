@@ -139,13 +139,13 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
                             playSuccess ? (
                            
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <h2>You chose the right option!</h2>
+                                    <h2>Success!</h2>
                                 </div>
 
                             ) : (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <h2>You chose the wrong option.</h2>
+                                    <h2>Something's off...</h2>
                                 </div>
 
                             )

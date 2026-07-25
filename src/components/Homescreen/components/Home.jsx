@@ -13,7 +13,7 @@ import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvid
 import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
-import PetCareGuide from "./HomescreenComponents/PetCareGuide.jsx";
+import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 
 import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
@@ -42,7 +42,7 @@ function Home (){
     const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
     const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
-    const [homePetCareGuideOpenFlag, setHomePetCareGuideOpenFlag] = useState(false);
+    const [homeReadMeOpenFlag, setHomeReadMeOpenFlag] = useState(false);
 
     const homeMinPetsAdopted = Room.filter(x => x === null).length < 3;
 
@@ -54,7 +54,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
 
             flagOpener(setHomeMusicVolumeOpenFlag, 1);
 
@@ -67,7 +67,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
 
             flagOpener(setHomeRestartOpenFlag, 0);
 
@@ -80,7 +80,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
 
             flagOpener(setHomeDeletionOpenClearPetsFlag, 0);
 
@@ -93,14 +93,14 @@ function Home (){
     
     useKeyboardShortcut("3", () => {
 
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homePetCareGuideOpenFlag && !homeMusicVolumeOpenFlag){
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
 
-            flagOpener(setHomePetCareGuideOpenFlag, 0);
+            flagOpener(setHomeReadMeOpenFlag, 0);
 
         }
 
     },
-        ".PetCareGuide"
+        ".ReadMe"
     );
 
     
@@ -142,9 +142,9 @@ function Home (){
                 setDeletionOpenClearPetsFlag={setHomeDeletionOpenClearPetsFlag}
             />}
 
-            {homePetCareGuideOpenFlag &&
-            <PetCareGuide
-                setPetCareGuideOpenFlag={setHomePetCareGuideOpenFlag}
+            {homeReadMeOpenFlag &&
+            <ReadMe
+                setReadMeOpenFlag={setHomeReadMeOpenFlag}
             />}
 
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">  
@@ -168,7 +168,7 @@ function Home (){
                     )}
 
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetCareGuide" onClick = {() => flagOpener(setHomePetCareGuideOpenFlag, 0)}> Pet Care Guide <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [3]</button>
                     
                 </div>
 

@@ -203,7 +203,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                                 ) : (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2> Drag your cursor back and forth for cleaning! </h2>
+                                        <h2> Drag your cursor back and forth for cleaning. </h2>
                                         <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
                                     </div>
 
@@ -216,13 +216,13 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                             cleanSuccess ? (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <h2>You chose the right option!</h2>
+                                    <h2>Success!!!</h2>
                                 </div>
 
                             ) : (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <h2>You chose the wrong option.</h2>
+                                    <h2>Something's off...</h2>
                                 </div>
 
                             )

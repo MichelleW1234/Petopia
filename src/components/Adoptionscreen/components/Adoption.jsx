@@ -9,7 +9,7 @@ import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvid
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import PetSpeciesGuide from "./AdoptionscreenComponents/PetSpeciesGuide.jsx";
+import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
@@ -28,7 +28,7 @@ function Adoption () {
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
     const [adoptionMusicVolumeOpenFlag, setAdoptionMusicVolumeOpenFlag] = useState(false);
-    const [adoptionPetSpeciesGuideOpenFlag, setAdoptionPetSpeciesGuideOpenFlag] = useState(false);
+    const [adoptionSpeciesCareGuideOpenFlag, setAdoptionSpeciesCareGuideOpenFlag] = useState(false);
     const [adoptionSelectedPet, setAdoptionSelectedPet] = useState("");
     const [adoptionPetGender, setAdoptionPetGender] = useState("");
     const [adoptionErrorMessage, setAdoptionErrorMessage] = useState("");
@@ -42,7 +42,7 @@ function Adoption () {
 
     useKeyboardShortcut("v", () => {
     
-        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             flagOpener(setAdoptionMusicVolumeOpenFlag, 1);
 
@@ -55,7 +55,7 @@ function Adoption () {
 
     useKeyboardShortcut("1", () => {
         
-        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             quit();
             navigate("/home");
@@ -70,21 +70,21 @@ function Adoption () {
     
     useKeyboardShortcut("2", () => {
         
-        if (!adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
-            flagOpener(setAdoptionPetSpeciesGuideOpenFlag, 0);
+            flagOpener(setAdoptionSpeciesCareGuideOpenFlag, 0);
 
         }
 
     },
-        ".PetSpeciesGuide"
+        ".SpeciesCareGuide"
     );
 
 
 
     useKeyboardShortcut("Enter", () => {
         
-        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             petSelecting();
 
@@ -97,7 +97,7 @@ function Adoption () {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             undo();
 
@@ -110,7 +110,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", (e) => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionPetSpeciesGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
 
             nameChecking(e);
 
@@ -321,9 +321,9 @@ function Adoption () {
                 setMusicVolumeOpenFlag={setAdoptionMusicVolumeOpenFlag}
             />}
 
-            {adoptionPetSpeciesGuideOpenFlag &&
-                <PetSpeciesGuide
-                    setPetSpeciesGuideOpenFlag = {setAdoptionPetSpeciesGuideOpenFlag}
+            {adoptionSpeciesCareGuideOpenFlag &&
+                <SpeciesCareGuide
+                    setSpeciesCareGuideOpenFlag = {setAdoptionSpeciesCareGuideOpenFlag}
                 />
             }
 
@@ -331,14 +331,14 @@ function Adoption () {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => quit()}> Quit and Go Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar PetSpeciesGuide" onClick = {() => flagOpener(setAdoptionPetSpeciesGuideOpenFlag, 0)}> Pet Species Guide <br/> [2]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar SpeciesCareGuide" onClick = {() => flagOpener(setAdoptionSpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
                 {adoptionPetGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1> Select a new Pet: </h1>
+                        <h1> Select a species: </h1>
                         
                         <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
             
@@ -385,7 +385,7 @@ function Adoption () {
                         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument"> 
 
                             <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
-                                <h1>Fill out this form: </h1> 
+                                <h1> Adoption form: </h1> 
                                 <hr/>
                             </div> 
                 
