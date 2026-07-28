@@ -9,11 +9,11 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { failSoundKey, healthCapList, healthKey, medicineKey, optionImageKey, playingKey, speciesKey, stageKey, startSoundKey, successSoundKey } from "../../../../../constants/Constants.js";
+import { activityFailSoundKey, healthCapList, healthKey, medicineKey, optionImageKey, playingKey, speciesKey, stageKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../../../constants/Constants.js";
 import { playSound, flagCloser } from "../../../../../helpers/helpers.js";
 import { pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
 
-import medicine from "../../../../../Music/PetImmersionSounds/Medicine.mp3";
+import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
 
 import "./Medicine.css";
 
@@ -34,7 +34,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
     const medicineGlobalTimerRef = useRef(GlobalTimer);
     const medicineCurrNumberRef = useRef(medicineCurrNumber);
-    const medicineAudioRef = useRef(new Audio(medicine));
+    const medicineAudioRef = useRef(new Audio(GivingMedicine));
 
         
     useKeyboardShortcut("Enter", () => {
@@ -183,12 +183,12 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
         if (medicineOptionsDesiredOption === medicineOptionsSelection){
 
-            playSound(successSoundKey);
+            playSound(activitySuccessSoundKey);
             setMedicineSuccess(true);
 
         } else {
 
-            playSound(failSoundKey);
+            playSound(activityFailSoundKey);
 
         }
 

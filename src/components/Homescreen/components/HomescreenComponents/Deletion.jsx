@@ -6,7 +6,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { buttonPressSoundKey, clearedSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { selectionButtonPressSoundKey, clearPetsSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { playSound, flagCloser } from "../../../../helpers/helpers.js";
 
 import "./Deletion.css";
@@ -51,7 +51,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const addPet = (PetToAdd) => {
 
-        playSound(buttonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
         setDeletionSelectedPets(prev => [...prev, PetToAdd]);
 
     }
@@ -59,7 +59,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const removePet = (PetToRemove) => {
 
-        playSound(buttonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
         setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
@@ -67,7 +67,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const clearPets = () => {
 
-        playSound(clearedSoundKey);
+        playSound(clearPetsSoundKey);
 
         setPetTimeStamps(prev => {
 

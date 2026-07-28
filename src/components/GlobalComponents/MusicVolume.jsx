@@ -5,7 +5,7 @@ import { useVolume } from "../../providers/VolumeProvider.jsx";
 
 import { flagCloser, playSound } from "../../helpers/helpers.js";
 
-import speaker from "../../images/speaker.png";
+import VolumeSpeaker from "../../images/VolumeSpeaker.png";
 
 import "./MusicVolume.css";
 
@@ -64,7 +64,7 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [speaker];
+        const preloadImages = [VolumeSpeaker];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -94,7 +94,7 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1> Music Volume:</h1>
                 <div className="MusicVolume_ComponentContainer-Structure--Widget">
-                    <img className = "test" src = {speaker}/>
+                    <img className = "test" src = {VolumeSpeaker}/>
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MusicVolume_ComponentContainer-Structure--Slider">
                         <h2>[&#x2B05;] [&#x2B95;]</h2>
                         <input

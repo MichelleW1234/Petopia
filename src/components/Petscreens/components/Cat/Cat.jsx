@@ -21,44 +21,44 @@ import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTi
 import { home, pauseAudio } from "../../helpers/helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
 
-import catHappy from "../../../../Music/PetImmersionSounds/catHappy.mp3";
-import catSad from "../../../../Music/PetImmersionSounds/catSad.mp3";
-import catSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-import candle from "../../../../Music/PetImmersionSounds/Candle.mp3";
+import HappyMeow from "../../../../Music/PetImmersionSounds/Cat/HappyMeow.mp3";
+import SadMeow from "../../../../Music/PetImmersionSounds/Cat/SadMeow.mp3";
+import Sleeping from "../../../../Music/PetImmersionSounds/Sleeping.mp3";
+import Candle from "../../../../Music/PetImmersionSounds/Cat/Candle.mp3";
 
-import s1CatLeftOne from "../../../../images/Cat/Main/Awake/s1.png";
-import s1CatLeftTwo from "../../../../images/Cat/Main/Awake/s11.png";
-import s1CatRightOne from "../../../../images/Cat/Main/Awake/s12.png";
-import s1CatRightTwo from "../../../../images/Cat/Main/Awake/s13.png";
-import s2CatLeftOne from "../../../../images/Cat/Main/Awake/s2.png";
-import s2CatLeftTwo from "../../../../images/Cat/Main/Awake/s21.png";
-import s2CatRightOne from "../../../../images/Cat/Main/Awake/s22.png";
-import s2CatRightTwo from "../../../../images/Cat/Main/Awake/s23.png";
-import s3CatLeftOne from "../../../../images/Cat/Main/Awake/s3.png";
-import s3CatLeftTwo from "../../../../images/Cat/Main/Awake/s31.png";
-import s3CatRightOne from "../../../../images/Cat/Main/Awake/s32.png";
-import s3CatRightTwo from "../../../../images/Cat/Main/Awake/s33.png";
+import MainStageOneOne from "../../../../images/Cat/Main/Awake/StageOneOne.png";
+import MainStageOneTwo from "../../../../images/Cat/Main/Awake/StageOneTwo.png";
+import MainStageOneThree from "../../../../images/Cat/Main/Awake/StageOneThree.png";
+import MainStageOneFour from "../../../../images/Cat/Main/Awake/StageOneFour.png";
+import MainStageTwoOne from "../../../../images/Cat/Main/Awake/StageTwoOne.png";
+import MainStageTwoTwo from "../../../../images/Cat/Main/Awake/StageTwoTwo.png";
+import MainStageTwoThree from "../../../../images/Cat/Main/Awake/StageTwoThree.png";
+import MainStageTwoFour from "../../../../images/Cat/Main/Awake/StageTwoFour.png";
+import MainStageThreeOne from "../../../../images/Cat/Main/Awake/StageThreeOne.png";
+import MainStageThreeTwo from "../../../../images/Cat/Main/Awake/StageThreeTwo.png";
+import MainStageThreeThree from "../../../../images/Cat/Main/Awake/StageThreeThree.png";
+import MainStageThreeFour from "../../../../images/Cat/Main/Awake/StageThreeFour.png";
 
-import s1CatSleep from "../../../../images/Cat/Main/Asleep/s1.gif";
-import s2CatSleep from "../../../../images/Cat/Main/Asleep/s2.gif";
-import s3CatSleep from "../../../../images/Cat/Main/Asleep/s3.gif";
+import SleepStageOne from "../../../../images/Cat/Main/Asleep/StageOne.gif";
+import SleepStageTwo from "../../../../images/Cat/Main/Asleep/StageTwo.gif";
+import SleepStageThree from "../../../../images/Cat/Main/Asleep/StageThree.gif";
 
-import s1CatFeed from "../../../../images/Cat/Feed/Animation/s1.gif";
-import s2CatFeed from "../../../../images/Cat/Feed/Animation/s2.gif";
-import s3CatFeed from "../../../../images/Cat/Feed/Animation/s3.gif";
+import FeedStageOne from "../../../../images/Cat/Feed/Animation/StageOne.gif";
+import FeedStageTwo from "../../../../images/Cat/Feed/Animation/StageTwo.gif";
+import FeedStageThree from "../../../../images/Cat/Feed/Animation/StageThree.gif";
 
-import s1CatMed from "../../../../images/Cat/Medicine/Animation/s1.gif";
-import s2CatMed from "../../../../images/Cat/Medicine/Animation/s2.gif";
-import s3CatMed from "../../../../images/Cat/Medicine/Animation/s3.gif";
+import MedicineStageOne from "../../../../images/Cat/Medicine/Animation/StageOne.gif";
+import MedicineStageTwo from "../../../../images/Cat/Medicine/Animation/StageTwo.gif";
+import MedicineStageThree from "../../../../images/Cat/Medicine/Animation/StageThree.gif";
 
-import nullPlaceholder from "../../../../images/nullPlaceholder.png";
+import NullPlaceholder from "../../../../images/NullPlaceholder.png";
 
-import tuna from "../../../../images/Cat/Feed/Options/tuna.png";
-import chicken from "../../../../images/Cat/Feed/Options/chicken.png";
-import salmon from "../../../../images/Cat/Feed/Options/salmon.png";
-import magnifier from "../../../../images/Cat/Play/Options/magnifier.png";
-import pill from "../../../../images/Cat/Medicine/Options/pill.png";
-import tablet from "../../../../images/Cat/Medicine/Options/tablet.png";
+import Tuna from "../../../../images/Cat/Feed/Options/Tuna.png";
+import Chicken from "../../../../images/Cat/Feed/Options/Chicken.png";
+import Salmon from "../../../../images/Cat/Feed/Options/Salmon.png";
+import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
+import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
+import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
 
 import "./Cat.css";
 
@@ -126,44 +126,44 @@ function Cat (){
 
     const catMainImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [[s1CatLeftOne, s1CatLeftTwo], [s1CatRightOne, s1CatRightTwo]]
+                                        [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [[s2CatLeftOne, s2CatLeftTwo], [s2CatRightOne, s2CatRightTwo]]
-                                    : [[s3CatLeftOne, s3CatLeftTwo], [s3CatRightOne, s3CatRightTwo]]
-                                : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
+                                        [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
+                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
+                                : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
 
     const catMainSleepingImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1CatSleep
+                                        SleepStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2CatSleep
-                                    : s3CatSleep
-                                : nullPlaceholder;
+                                        SleepStageTwo
+                                    : SleepStageThree
+                                : NullPlaceholder;
 
     const catFeedImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1CatFeed
+                                        FeedStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2CatFeed
-                                    : s3CatFeed
-                                : nullPlaceholder; 
+                                        FeedStageTwo
+                                    : FeedStageThree
+                                : NullPlaceholder; 
 
     const catMedicineImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1CatMed
+                                        MedicineStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2CatMed
-                                    : s3CatMed
-                                : nullPlaceholder;
+                                        MedicineStageTwo
+                                    : MedicineStageThree
+                                : NullPlaceholder;
 
 
 
-    const catFeedOptionsList = [{[optionNameKey]: "tuna", [optionImageKey]: tuna}, {[optionNameKey]: "chicken", [optionImageKey]: chicken}, {[optionNameKey]: "salmon", [optionImageKey]: salmon}];
-    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: magnifier, [optionGameKey]: MouseHunt}];
-    const catMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "tablet", [optionImageKey]: tablet}];
+    const catFeedOptionsList = [{[optionNameKey]: "Tuna", [optionImageKey]: Tuna}, {[optionNameKey]: "Chicken", [optionImageKey]: Chicken}, {[optionNameKey]: "Salmon", [optionImageKey]: Salmon}];
+    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}];
+    const catMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Tablet", [optionImageKey]: Tablet}];
 
-    const catAudioRefs = useRef({[happyAudioKey]: new Audio(catHappy), [sadAudioKey]: new Audio(catSad), [sleepAudioKey]: new Audio(catSleep)});
-    const catBackgroundAudioRef = useRef(new Audio(candle));
+    const catAudioRefs = useRef({[happyAudioKey]: new Audio(HappyMeow), [sadAudioKey]: new Audio(SadMeow), [sleepAudioKey]: new Audio(Sleeping)});
+    const catBackgroundAudioRef = useRef(new Audio(Candle));
 
     const navigate = useNavigate();
         
@@ -367,7 +367,7 @@ function Cat (){
                 setRecordsOpenFlag = {setCatRecordsOpenFlag}
             />}
         
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 

@@ -22,52 +22,53 @@ import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, 
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
 
-import dogHappy from "../../../../Music/PetImmersionSounds/dogHappy.mp3";
-import dogSad from "../../../../Music/PetImmersionSounds/dogSad.mp3";
-import dogSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-import fireplace from "../../../../Music/PetImmersionSounds/Fireplace.mp3";
+import HappyBarks from "../../../../Music/PetImmersionSounds/Dog/HappyBarks.mp3";
+import SadWhine from "../../../../Music/PetImmersionSounds/Dog/SadWhine.mp3";
+import fireplace from "../../../../Music/PetImmersionSounds/Dog/Fireplace.mp3";
+import Sleeping from "../../../../Music/PetImmersionSounds/Sleeping.mp3";
 
-import s1DogLeftOne from "../../../../images/Dog/Main/Awake/s1.png";
-import s1DogLeftTwo from "../../../../images/Dog/Main/Awake/s11.png";
-import s1DogRightOne from "../../../../images/Dog/Main/Awake/s12.png";
-import s1DogRightTwo from "../../../../images/Dog/Main/Awake/s13.png";
-import s2DogLeftOne from "../../../../images/Dog/Main/Awake/s2.png";
-import s2DogLeftTwo from "../../../../images/Dog/Main/Awake/s21.png";
-import s2DogRightOne from "../../../../images/Dog/Main/Awake/s22.png";
-import s2DogRightTwo from "../../../../images/Dog/Main/Awake/s23.png";
-import s3DogLeftOne from "../../../../images/Dog/Main/Awake/s3.png";
-import s3DogLeftTwo from "../../../../images/Dog/Main/Awake/s31.png";
-import s3DogRightOne from "../../../../images/Dog/Main/Awake/s32.png";
-import s3DogRightTwo from "../../../../images/Dog/Main/Awake/s33.png";
 
-import s1DogSleep from "../../../../images/Dog/Main/Asleep/s1.gif";
-import s2DogSleep from "../../../../images/Dog/Main/Asleep/s2.gif";
-import s3DogSleep from "../../../../images/Dog/Main/Asleep/s3.gif";
+import MainStageOneOne from "../../../../images/Dog/Main/Awake/StageOneOne.png";
+import MainStageOneTwo from "../../../../images/Dog/Main/Awake/StageOneTwo.png";
+import MainStageOneThree from "../../../../images/Dog/Main/Awake/StageOneThree.png";
+import MainStageOneFour from "../../../../images/Dog/Main/Awake/StageOneFour.png";
+import MainStageTwoOne from "../../../../images/Dog/Main/Awake/StageTwoOne.png";
+import MainStageTwoTwo from "../../../../images/Dog/Main/Awake/StageTwoTwo.png";
+import MainStageTwoThree from "../../../../images/Dog/Main/Awake/StageTwoThree.png";
+import MainStageTwoFour from "../../../../images/Dog/Main/Awake/StageTwoFour.png";
+import MainStageThreeOne from "../../../../images/Dog/Main/Awake/StageThreeOne.png";
+import MainStageThreeTwo from "../../../../images/Dog/Main/Awake/StageThreeTwo.png";
+import MainStageThreeThree from "../../../../images/Dog/Main/Awake/StageThreeThree.png";
+import MainStageThreeFour from "../../../../images/Dog/Main/Awake/StageThreeFour.png";
 
-import s1DogFeed from "../../../../images/Dog/Feed/Animation/s1.gif";
-import s2DogFeed from "../../../../images/Dog/Feed/Animation/s2.gif";
-import s3DogFeed from "../../../../images/Dog/Feed/Animation/s3.gif";
+import SleepStageOne from "../../../../images/Dog/Main/Asleep/StageOne.gif";
+import SleepStageTwo from "../../../../images/Dog/Main/Asleep/StageTwo.gif";
+import SleepStageThree from "../../../../images/Dog/Main/Asleep/StageThree.gif";
 
-import s1DogClean from "../../../../images/Dog/Clean/Animation/s1.gif";
-import s2DogClean from "../../../../images/Dog/Clean/Animation/s2.gif";
-import s3DogClean from "../../../../images/Dog/Clean/Animation/s3.gif";
+import FeedStageOne from "../../../../images/Dog/Feed/Animation/StageOne.gif";
+import FeedStageTwo from "../../../../images/Dog/Feed/Animation/StageTwo.gif";
+import FeedStageThree from "../../../../images/Dog/Feed/Animation/StageThree.gif";
 
-import s1DogMed from "../../../../images/Dog/Medicine/Animation/s1.gif";
-import s2DogMed from "../../../../images/Dog/Medicine/Animation/s2.gif";
-import s3DogMed from "../../../../images/Dog/Medicine/Animation/s3.gif";
+import CleanStageOne from "../../../../images/Dog/Clean/Animation/StageOne.gif";
+import CleanStageTwo from "../../../../images/Dog/Clean/Animation/StageTwo.gif";
+import CleanStageThree from "../../../../images/Dog/Clean/Animation/StageThree.gif";
 
-import nullPlaceholder from "../../../../images/nullPlaceholder.png";
+import MedicineStageOne from "../../../../images/Dog/Medicine/Animation/StageOne.gif";
+import MedicineStageTwo from "../../../../images/Dog/Medicine/Animation/StageTwo.gif";
+import MedicineStageThree from "../../../../images/Dog/Medicine/Animation/StageThree.gif";
 
-import beef from "../../../../images/Dog/Feed/Options/beef.png";
-import turkey from "../../../../images/Dog/Feed/Options/turkey.png";
-import lamb from "../../../../images/Dog/Feed/Options/lamb.png";
-import soap from "../../../../images/Dog/Clean/Options/soap.png";
-import brush from "../../../../images/Dog/Clean/Options/brush.png";
-import soapCursor from "../../../../images/Dog/Clean/Options/soap.cur";
-import brushCursor from "../../../../images/Dog/Clean/Options/brush.cur";
-import leash from "../../../../images/Dog/Play/Options/leash.png";
-import pill from "../../../../images/Dog/Medicine/Options/pill.png";
-import chew from "../../../../images/Dog/Medicine/Options/chew.png";
+import NullPlaceholder from "../../../../images/NullPlaceholder.png";
+
+import Beef from "../../../../images/Dog/Feed/Options/Beef.png";
+import Turkey from "../../../../images/Dog/Feed/Options/Turkey.png";
+import Lamb from "../../../../images/Dog/Feed/Options/Lamb.png";
+import Soap from "../../../../images/Dog/Clean/Options/Soap.png";
+import Brush from "../../../../images/Dog/Clean/Options/Brush.png";
+import CursorSoap from "../../../../images/Dog/Clean/Options/Soap.cur";
+import CursorBrush from "../../../../images/Dog/Clean/Options/Brush.cur";
+import Leash from "../../../../images/Dog/Play/Options/Leash.png";
+import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
+import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
 
 import "./Dog.css";
 
@@ -144,50 +145,50 @@ function Dog (){
 
     const dogMainImages = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
-                                    [[s1DogLeftOne, s1DogLeftTwo], [s1DogRightOne, s1DogRightTwo]]
+                                    [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                 : PetList[ActivePetName][stageKey] === 1 ? 
-                                    [[s2DogLeftOne, s2DogLeftTwo], [s2DogRightOne, s2DogRightTwo]]
-                                : [[s3DogLeftOne, s3DogLeftTwo], [s3DogRightOne, s3DogRightTwo]]
-                            : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
+                                    [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
+                                : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
+                            : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
 
     const dogMainSleepingImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1DogSleep
+                                        SleepStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2DogSleep
-                                    : s3DogSleep
-                                : nullPlaceholder;
+                                        SleepStageTwo
+                                    : SleepStageThree
+                                : NullPlaceholder;
 
     const dogFeedImage = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
-                                    s1DogFeed
+                                    FeedStageOne
                                 : PetList[ActivePetName][stageKey] === 1 ? 
-                                    s2DogFeed
-                                : s3DogFeed
-                            : nullPlaceholder;
+                                    FeedStageTwo
+                                : FeedStageThree
+                            : NullPlaceholder;
 
     const dogCleanImage = ActivePetName !== "" ? 
                             PetList[ActivePetName][stageKey] === 0 ? 
-                                    s1DogClean
+                                    CleanStageOne
                                 : PetList[ActivePetName][stageKey] === 1 ? 
-                                    s2DogClean
-                                : s3DogClean
-                            : nullPlaceholder;
+                                    CleanStageTwo
+                                : CleanStageThree
+                            : NullPlaceholder;
 
     const dogMedicineImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1DogMed
+                                        MedicineStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2DogMed
-                                    : s3DogMed
-                                : nullPlaceholder;
+                                        MedicineStageTwo
+                                    : MedicineStageThree
+                                : NullPlaceholder;
 
-    const dogFeedOptionsList = [{[optionNameKey]: "beef", [optionImageKey]: beef}, {[optionNameKey]: "turkey", [optionImageKey]: turkey}, {[optionNameKey]: "lamb", [optionImageKey]: lamb}]; 
-    const dogCleanOptionsList = [{[optionNameKey]: "soap", [optionImageKey]: soap, [optionCursorKey]: soapCursor}, {[optionNameKey]: "brush", [optionImageKey]: brush, [optionCursorKey]: brushCursor}];
-    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: leash, [optionGameKey]: StrollPatrol}];
-    const dogMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "chew", [optionImageKey]: chew}];
+    const dogFeedOptionsList = [{[optionNameKey]: "Beef", [optionImageKey]: Beef}, {[optionNameKey]: "Turkey", [optionImageKey]: Turkey}, {[optionNameKey]: "Lamb", [optionImageKey]: Lamb}]; 
+    const dogCleanOptionsList = [{[optionNameKey]: "Soap", [optionImageKey]: Soap, [optionCursorKey]: CursorSoap}, {[optionNameKey]: "Brush", [optionImageKey]: Brush, [optionCursorKey]: CursorBrush}];
+    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}];
+    const dogMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Chew", [optionImageKey]: Chew}];
 
-    const dogAudioRefs = useRef({[happyAudioKey]: new Audio(dogHappy), [sadAudioKey]: new Audio(dogSad), [sleepAudioKey]: new Audio(dogSleep)});
+    const dogAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBarks), [sadAudioKey]: new Audio(SadWhine), [sleepAudioKey]: new Audio(Sleeping)});
     const dogBackgroundAudioRef = useRef(new Audio(fireplace));
 
     const navigate = useNavigate();
@@ -419,7 +420,7 @@ function Dog (){
                 setRecordsOpenFlag = {setDogRecordsOpenFlag}
             />}
             
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 

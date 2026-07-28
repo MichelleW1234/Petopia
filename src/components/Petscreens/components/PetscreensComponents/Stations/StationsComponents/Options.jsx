@@ -1,11 +1,11 @@
 import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { buttonPressSoundKey, optionImageKey, optionNameKey, portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
+import { selectionButtonPressSoundKey, optionImageKey, optionNameKey, portraitPetImages, speciesKey, stageKey } from "../../../../../../constants/Constants.js";
 import { playSound } from "../../../../../../helpers/helpers.js";
 
-import unwanted from "../../../../../../images/PetUnwanted.png";
-import bubble from "../../../../../../images/thoughtBubble.png";
+import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
+import PetThoughtBubble from "../../../../../../images/PetThoughtBubble.png";
 
 import "./Options.css";
 
@@ -21,7 +21,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
     const judgeSelection = (chosenOption) => {
 
-        playSound(buttonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
 
         if (chosenOption !== optionsDesiredOption) {
 
@@ -46,8 +46,8 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
-                    <img src = {bubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
-                    <img src = {optionsDesiredOption === -1 ? unwanted : optionsList[optionsDesiredOption][optionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer  Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                    <img src = {PetThoughtBubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {optionsDesiredOption === -1 ? PetUnwantedActivity : optionsList[optionsDesiredOption][optionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer  Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                 </div>
 

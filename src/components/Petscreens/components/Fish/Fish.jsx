@@ -16,55 +16,55 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, buttonSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
+import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, navButtonPressSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/helpers.js";
 
-import fishHappy from "../../../../Music/PetImmersionSounds/fishHappy.mp3";
-import fishSad from "../../../../Music/PetImmersionSounds/fishSad.mp3";
-import fishSleep from "../../../../Music/PetImmersionSounds/asleep.mp3";
-import fishTank from "../../../../Music/PetImmersionSounds/Tank.mp3";
+import HappyBubbles from "../../../../Music/PetImmersionSounds/Fish/HappyBubbles.mp3";
+import SadSplash from "../../../../Music/PetImmersionSounds/Fish/SadSplash.mp3";
+import Tank from "../../../../Music/PetImmersionSounds/Fish/Tank.mp3";
+import Sleeping from "../../../../Music/PetImmersionSounds/Sleeping.mp3";
 
-import s1FishLeftOne from "../../../../images/Fish/Main/Awake/s1.png";
-import s1FishLeftTwo from "../../../../images/Fish/Main/Awake/s11.png";
-import s1FishRightOne from "../../../../images/Fish/Main/Awake/s12.png";
-import s1FishRightTwo from "../../../../images/Fish/Main/Awake/s13.png";
-import s2FishLeftOne from "../../../../images/Fish/Main/Awake/s2.png";
-import s2FishLeftTwo from "../../../../images/Fish/Main/Awake/s21.png";
-import s2FishRightOne from "../../../../images/Fish/Main/Awake/s22.png";
-import s2FishRightTwo from "../../../../images/Fish/Main/Awake/s23.png";
-import s3FishLeftOne from "../../../../images/Fish/Main/Awake/s3.png";
-import s3FishLeftTwo from "../../../../images/Fish/Main/Awake/s31.png";
-import s3FishRightOne from "../../../../images/Fish/Main/Awake/s32.png";
-import s3FishRightTwo from "../../../../images/Fish/Main/Awake/s33.png";
+import MainStageOneOne from "../../../../images/Fish/Main/Awake/StageOneOne.png";
+import MainStageOneTwo from "../../../../images/Fish/Main/Awake/StageOneTwo.png";
+import MainStageOneThree from "../../../../images/Fish/Main/Awake/StageOneThree.png";
+import MainStageOneFour from "../../../../images/Fish/Main/Awake/StageOneFour.png";
+import MainStageTwoOne from "../../../../images/Fish/Main/Awake/StageTwoOne.png";
+import MainStageTwoTwo from "../../../../images/Fish/Main/Awake/StageTwoTwo.png";
+import MainStageTwoThree from "../../../../images/Fish/Main/Awake/StageTwoThree.png";
+import MainStageTwoFour from "../../../../images/Fish/Main/Awake/StageTwoFour.png";
+import MainStageThreeOne from "../../../../images/Fish/Main/Awake/StageThreeOne.png";
+import MainStageThreeTwo from "../../../../images/Fish/Main/Awake/StageThreeTwo.png";
+import MainStageThreeThree from "../../../../images/Fish/Main/Awake/StageThreeThree.png";
+import MainStageThreeFour from "../../../../images/Fish/Main/Awake/StageThreeFour.png";
 
-import s1FishSleep from "../../../../images/Fish/Main/Asleep/s1.gif";
-import s2FishSleep from "../../../../images/Fish/Main/Asleep/s2.gif";
-import s3FishSleep from "../../../../images/Fish/Main/Asleep/s3.gif";
+import SleepStageOne from "../../../../images/Fish/Main/Asleep/StageOne.gif";
+import SleepStageTwo from "../../../../images/Fish/Main/Asleep/StageTwo.gif";
+import SleepStageThree from "../../../../images/Fish/Main/Asleep/StageThree.gif";
 
-import s1FishFeed from "../../../../images/Fish/Feed/Animation/s1.gif";
-import s2FishFeed from "../../../../images/Fish/Feed/Animation/s2.gif";
-import s3FishFeed from "../../../../images/Fish/Feed/Animation/s3.gif";
+import FeedStageOne from "../../../../images/Fish/Feed/Animation/StageOne.gif";
+import FeedStageTwo from "../../../../images/Fish/Feed/Animation/StageTwo.gif";
+import FeedStageThree from "../../../../images/Fish/Feed/Animation/StageThree.gif";
 
-import s1FishClean from "../../../../images/Fish/Clean/Animation/s1.gif";
-import s2FishClean from "../../../../images/Fish/Clean/Animation/s2.gif";
-import s3FishClean from "../../../../images/Fish/Clean/Animation/s3.gif";
+import CleanStageOne from "../../../../images/Fish/Clean/Animation/StageOne.gif";
+import CleanStageTwo from "../../../../images/Fish/Clean/Animation/StageTwo.gif";
+import CleanStageThree from "../../../../images/Fish/Clean/Animation/StageThree.gif";
 
-import s1FishMed from "../../../../images/Fish/Medicine/Animation/s1.gif";
-import s2FishMed from "../../../../images/Fish/Medicine/Animation/s2.gif";
-import s3FishMed from "../../../../images/Fish/Medicine/Animation/s3.gif";
+import MedicineStageOne from "../../../../images/Fish/Medicine/Animation/StageOne.gif";
+import MedicineStageTwo from "../../../../images/Fish/Medicine/Animation/StageTwo.gif";
+import MedicineStageThree from "../../../../images/Fish/Medicine/Animation/StageThree.gif";
 
-import nullPlaceholder from "../../../../images/nullPlaceholder.png";
+import NullPlaceholder from "../../../../images/NullPlaceholder.png";
 
-import shrimp from "../../../../images/Fish/Feed/Options/shrimp.png";
-import worms from "../../../../images/Fish/Feed/Options/worm.png";
-import algae from "../../../../images/Fish/Feed/Options/algae.png";
-import sponge from "../../../../images/Fish/Clean/Options/sponge.png";
-import cloth from "../../../../images/Fish/Clean/Options/cloth.png";
-import spongeCursor from "../../../../images/Fish/Clean/Options/sponge.cur";
-import clothCursor from "../../../../images/Fish/Clean/Options/cloth.cur";
-import pill from "../../../../images/Fish/Medicine/Options/pill.png";
-import serum from  "../../../../images/Fish/Medicine/Options/serum.png";
+import Shrimp from "../../../../images/Fish/Feed/Options/Shrimp.png";
+import Worms from "../../../../images/Fish/Feed/Options/Worm.png";
+import Algae from "../../../../images/Fish/Feed/Options/Algae.png";
+import Sponge from "../../../../images/Fish/Clean/Options/Sponge.png";
+import Cloth from "../../../../images/Fish/Clean/Options/Cloth.png";
+import CursorSponge from "../../../../images/Fish/Clean/Options/Sponge.cur";
+import CursorCloth from "../../../../images/Fish/Clean/Options/Cloth.cur";
+import Pill from "../../../../images/Fish/Medicine/Options/Pill.png";
+import Serum from  "../../../../images/Fish/Medicine/Options/Serum.png";
 
 
 import "./Fish.css";
@@ -132,52 +132,52 @@ function Fish (){
 
     const fishMainImages = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        [[s1FishLeftOne, s1FishLeftTwo], [s1FishRightOne, s1FishRightTwo]]
+                                        [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        [[s2FishLeftOne, s2FishLeftTwo], [s2FishRightOne, s2FishRightTwo]]
-                                    : [[s3FishLeftOne, s3FishLeftTwo], [s3FishRightOne, s3FishRightTwo]]
-                                : [[nullPlaceholder,nullPlaceholder], [nullPlaceholder,nullPlaceholder]];
+                                        [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
+                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
+                                : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
 
 
     const fishMainSleepingImage = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
-                                            s1FishSleep
+                                            SleepStageOne
                                         : PetList[ActivePetName][stageKey] === 1 ? 
-                                            s2FishSleep
-                                        : s3FishSleep
-                                    : nullPlaceholder;
+                                            SleepStageTwo
+                                        : SleepStageThree
+                                    : NullPlaceholder;
 
     
     const fishFeedImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1FishFeed
+                                        FeedStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2FishFeed
-                                    : s3FishFeed
-                                : nullPlaceholder;
+                                        FeedStageTwo
+                                    : FeedStageThree
+                                : NullPlaceholder;
 
     const fishCleanImage = ActivePetName !== "" ? 
                                 PetList[ActivePetName][stageKey] === 0 ? 
-                                        s1FishClean
+                                        CleanStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
-                                        s2FishClean
-                                    : s3FishClean
-                                : nullPlaceholder;
+                                        CleanStageTwo
+                                    : CleanStageThree
+                                : NullPlaceholder;
 
     const fishMedicineImage = ActivePetName !== "" ? 
                                     PetList[ActivePetName][stageKey] === 0 ? 
-                                            s1FishMed
+                                            MedicineStageOne
                                         : PetList[ActivePetName][stageKey] === 1 ? 
-                                            s2FishMed
-                                        : s3FishMed
-                                    : nullPlaceholder;
+                                            MedicineStageTwo
+                                        : MedicineStageThree
+                                    : NullPlaceholder;
 
-    const fishFeedOptionsList = [{[optionNameKey]: "shrimp", [optionImageKey]: shrimp}, {[optionNameKey]: "worms", [optionImageKey]: worms}, {[optionNameKey]: "algae", [optionImageKey]: algae}];
-    const fishCleanOptionsList = [{[optionNameKey]: "sponge", [optionImageKey]: sponge, [optionCursorKey] : spongeCursor}, {[optionNameKey]: "cloth", [optionImageKey]: cloth, [optionCursorKey]: clothCursor}];
-    const fishMedicineOptionsList = [{[optionNameKey]: "pill", [optionImageKey]: pill}, {[optionNameKey]: "serum", [optionImageKey]: serum}];
+    const fishFeedOptionsList = [{[optionNameKey]: "Shrimp", [optionImageKey]: Shrimp}, {[optionNameKey]: "Worms", [optionImageKey]: Worms}, {[optionNameKey]: "Algae", [optionImageKey]: Algae}];
+    const fishCleanOptionsList = [{[optionNameKey]: "Sponge", [optionImageKey]: Sponge, [optionCursorKey] : CursorSponge}, {[optionNameKey]: "Cloth", [optionImageKey]: Cloth, [optionCursorKey]: CursorCloth}];
+    const fishMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Serum", [optionImageKey]: Serum}];
 
-    const fishAudioRefs = useRef({[happyAudioKey]: new Audio(fishHappy), [sadAudioKey]: new Audio(fishSad), [sleepAudioKey]: new Audio(fishSleep)});
-    const fishBackgroundAudioRef = useRef(new Audio(fishTank));
+    const fishAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBubbles), [sadAudioKey]: new Audio(SadSplash), [sleepAudioKey]: new Audio(Sleeping)});
+    const fishBackgroundAudioRef = useRef(new Audio(Tank));
 
 
     const navigate = useNavigate();
@@ -385,7 +385,7 @@ function Fish (){
             />}
 
 
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 

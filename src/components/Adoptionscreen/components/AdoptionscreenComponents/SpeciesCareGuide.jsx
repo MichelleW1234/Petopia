@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { buttonSoundKey } from "../../../../constants/Constants.js";
+import { navButtonPressSoundKey } from "../../../../constants/Constants.js";
 import { flagCloser } from "../../../../helpers/helpers.js";
 
 import "./SpeciesCareGuide.css";

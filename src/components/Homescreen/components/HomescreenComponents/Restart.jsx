@@ -5,7 +5,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { playSound, flagCloser } from "../../../../helpers/helpers.js";
-import { buttonSoundKey, restartSoundKey } from "../../../../constants/Constants.js";
+import { navButtonPressSoundKey, restartGameSoundKey } from "../../../../constants/Constants.js";
 
 import "./Restart.css";
 
@@ -39,7 +39,7 @@ function Restart({setRestartOpenFlag}) {
 
     const restartGame = () => {
 
-        playSound(restartSoundKey);
+        playSound(restartGameSoundKey);
         setPetList({});
         setPetTimeStamps({});
         setRoom([null, null, null]);

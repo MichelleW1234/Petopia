@@ -12,7 +12,7 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, buttonPressSoundKey, buttonSoundKey, errorSoundKey, confirmedSoundKey, restartSoundKey, gameButtonSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionConfirmationErrorSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
 import "./Adoption.css";
@@ -124,7 +124,7 @@ function Adoption () {
 
     const quit = () => {
 
-        playSound(buttonSoundKey);
+        playSound(navButtonPressSoundKey);
         setActiveCheckoutRoom(-1);
 
     }
@@ -132,7 +132,7 @@ function Adoption () {
 
     const petSelecting = () => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
         
         const gender = Math.floor(Math.random() * 2);
         
@@ -151,7 +151,7 @@ function Adoption () {
 
     const nameChecking = (e) => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
 
         const trimmedPetName = adoptionConfirmationPetName.trim();
         setAdoptionConfirmationPetName(trimmedPetName);
@@ -183,7 +183,7 @@ function Adoption () {
 
     const showError = (message) => {
 
-        playSound(errorSoundKey);
+        playSound(adoptionConfirmationErrorSoundKey);
 
         setAdoptionErrorMessage(message);
 
@@ -201,7 +201,7 @@ function Adoption () {
 
     const adoptPet = (finalPetName) => {
 
-        playSound(confirmedSoundKey);
+        playSound(adoptionSuccessSoundKey);
 
         const startingTime = GlobalTimer;
 
@@ -295,7 +295,7 @@ function Adoption () {
 
     const undo = () => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
 
         setAdoptionSelectedPet("");
         setAdoptionPetGender("");
@@ -305,7 +305,7 @@ function Adoption () {
 
     const selectPet = (key) => {
 
-        playSound(buttonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
         setAdoptionSelectedPet(key);
 
     }
@@ -327,7 +327,7 @@ function Adoption () {
                 />
             }
 
-            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">
+            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => quit()}> Quit and Go Home <br/> [1]</Link>

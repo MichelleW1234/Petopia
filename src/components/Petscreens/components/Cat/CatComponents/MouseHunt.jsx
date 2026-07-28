@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { playSound } from "../../../../../helpers/helpers.js";
-import { gameButtonSoundKey, startSoundKey } from "../../../../../constants/Constants.js";
+import { screenButtonPressSoundKey, startActivitySoundKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
-import mouse from "../../../../../images/Cat/Play/Games/mouse.png";
-import cord from "../../../../../images/Cat/Play/Games/cord.png";
+import Mouse from "../../../../../images/Cat/Play/Games/Mouse.png";
+import Cord from "../../../../../images/Cat/Play/Games/Cord.png";
 
 import "./MouseHunt.css";
 
@@ -64,7 +64,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     useEffect(() => {
 
-        const preloadImages = [mouse, cord];
+        const preloadImages = [Mouse, Cord];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -102,10 +102,10 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                 const addMouse = Math.floor(Math.random() * 2);
                 if (addMouse === 1){
 
-                    const mouse = Math.floor(Math.random() * (mouseHuntNumberCreatures));
+                    const Mouse = Math.floor(Math.random() * (mouseHuntNumberCreatures));
                     for (let i =0; i<chosenCombos.length; i++){
 
-                        if (i === mouse){
+                        if (i === Mouse){
 
                             finalArray.push({[mouseHuntRowKey] : chosenCombos[i][0], [mouseHuntColumnKey] : chosenCombos[i][1], [mouseHuntTypeKey] : 1});
 
@@ -139,11 +139,11 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
 
     
-    const holeSelected = (mouse) => {
+    const holeSelected = (Mouse) => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
         
-        if (mouse === 0){
+        if (Mouse === 0){
 
             setPlayCurrNumber(prev => Math.max(prev - 1, 0));
 
@@ -180,13 +180,13 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                             mouseHere ? (
 
                                 <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(1)}>
-                                    <img src = {mouse}/>
+                                    <img src = {Mouse}/>
                                 </div>
                                 
                             ) : cordHere ? (
 
                                 <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => holeSelected(0)}>
-                                    <img src = {cord}/>
+                                    <img src = {Cord}/>
                                 </div>
 
                             ) : (

@@ -160,20 +160,23 @@ a:active {
   padding: 4rem;
   gap: 10rem;
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
 }
 
 
-.UIStapleElements_BackgroundBase-Color--Screen {
+.UIStapleElements_BackgroundBase-Template--Screen {
 
   background:
-    url("./images/Background.png"),
+    url("./images/BackgroundOverlay.gif"),
+    url("./images/BackgroundOverlay.gif"),
+    url("./images/AppBackground.png"),
     linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 85%);
 
+  background-size: 20rem auto, 20rem auto, auto, cover;
+  background-position: left 1rem bottom 8rem, right 1rem bottom 8rem, center, center;
+  background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+
 }
+
 
 
 .UIStapleElements_BackgroundOverlay-Structure--FloatingFlag {
@@ -764,7 +767,7 @@ a:active {
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{
 
-  background-image: url("./images/FailBackground.png");
+  background-image: url("./images/ActivityFailBackground.png");
 
 }
 
@@ -772,7 +775,7 @@ a:active {
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess{
 
-  background-image: url("./images/SuccessBackground.png");
+  background-image: url("./images/ActivitySuccessBackground.png");
 
 }
 

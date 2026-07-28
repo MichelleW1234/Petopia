@@ -1,16 +1,16 @@
-import { buttonSoundKey, buttonPressSoundKey, errorSoundKey, startSoundKey, successSoundKey, failSoundKey, gameButtonSoundKey, confirmedSoundKey, clearedSoundKey, restartSoundKey, quitSoundKey} from "../constants/Constants.js";
+import { navButtonPressSoundKey, selectionButtonPressSoundKey, adoptionConfirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey} from "../constants/Constants.js";
 
-import button_click from "../Music/UIIndicatorSounds/button_click.mp3";
-import button_press from "../Music/UIIndicatorSounds/button_press.mp3";
-import gameButton_click from "../Music/UIIndicatorSounds/gameButton_click.mp3";
-import error from "../Music/UIIndicatorSounds/error.mp3";
-import start from "../Music/UIIndicatorSounds/start.mp3";
-import success from "../Music/UIIndicatorSounds/success.mp3";
-import fail from "../Music/UIIndicatorSounds/fail.mp3";
-import confirmed from "../Music/UIIndicatorSounds/confirmed.mp3";
-import cleared from "../Music/UIIndicatorSounds/cleared.mp3";
-import restart from "../Music/UIIndicatorSounds/restart.mp3";
-import quit from "../Music/UIIndicatorSounds/quit.mp3";
+import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
+import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
+import ScreenButtonPress from "../Music/UIIndicatorSounds/ScreenButtonPress.mp3";
+import AdoptionConfirmationError from "../Music/UIIndicatorSounds/AdoptionConfirmationError.mp3";
+import StartActivity from "../Music/UIIndicatorSounds/StartActivity.mp3";
+import ActivitySuccess from "../Music/UIIndicatorSounds/ActivitySuccess.mp3";
+import ActivityFail from "../Music/UIIndicatorSounds/ActivityFail.mp3";
+import AdoptionSuccess from "../Music/UIIndicatorSounds/AdoptionSuccess.mp3";
+import ClearPets from "../Music/UIIndicatorSounds/ClearPets.mp3";
+import RestartGame from "../Music/UIIndicatorSounds/RestartGame.mp3";
+import QuitActivity from "../Music/UIIndicatorSounds/QuitActivity.mp3";
 
 
 
@@ -21,17 +21,17 @@ export const playSound = (soundEffect) => {
 
     const soundDictionary = {
 
-        [buttonSoundKey] : {[buttonAudioKey]: button_click, [buttonVolumeKey]: 1},
-        [buttonPressSoundKey] : {[buttonAudioKey]: button_press, [buttonVolumeKey]: 0.75},
-        [gameButtonSoundKey] : {[buttonAudioKey]: gameButton_click, [buttonVolumeKey]: 0.5},
-        [errorSoundKey] : {[buttonAudioKey]: error, [buttonVolumeKey]: 0.5},
-        [startSoundKey] : {[buttonAudioKey]: start, [buttonVolumeKey]: 0.5},
-        [successSoundKey] : {[buttonAudioKey]: success, [buttonVolumeKey]: 0.5},
-        [failSoundKey] : {[buttonAudioKey]: fail, [buttonVolumeKey]: 0.5},
-        [confirmedSoundKey] : {[buttonAudioKey]: confirmed, [buttonVolumeKey]: 0.25},
-        [clearedSoundKey] : {[buttonAudioKey]: cleared, [buttonVolumeKey]: 0.5},
-        [restartSoundKey] : {[buttonAudioKey]: restart, [buttonVolumeKey]: 0.25},
-        [quitSoundKey] : {[buttonAudioKey]: quit, [buttonVolumeKey]: 0.75}
+        [navButtonPressSoundKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
+        [selectionButtonPressSoundKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
+        [screenButtonPressSoundKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
+        [adoptionConfirmationErrorSoundKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
+        [startActivitySoundKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
+        [activitySuccessSoundKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
+        [activityFailSoundKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
+        [adoptionSuccessSoundKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.25},
+        [clearPetsSoundKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
+        [restartGameSoundKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.25},
+        [quitActivitySoundKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75}
 
     };
 
@@ -46,11 +46,11 @@ export const flagOpener = (setFlagToOpen, flagType) => {
 
     if (flagType === 0){
 
-        playSound(buttonSoundKey);
+        playSound(navButtonPressSoundKey);
 
     } else {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
 
     }
 
@@ -62,7 +62,7 @@ export const flagOpener = (setFlagToOpen, flagType) => {
 
 export const flagCloser = (setFlagToClose) => {
     
-    playSound(gameButtonSoundKey);
+    playSound(screenButtonPressSoundKey);
     setFlagToClose(false);
 
 }

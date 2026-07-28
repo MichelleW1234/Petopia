@@ -15,15 +15,15 @@ import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 
-import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, buttonSoundKey, buttonPressSoundKey } from "../../../constants/Constants.js";
+import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, navButtonPressSoundKey, selectionButtonPressSoundKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/helpers.js";
 
-import red from "../../../images/red.png";
-import orange from "../../../images/orange.png";
-import yellow from "../../../images/yellow.png";
-import green from "../../../images/green.png";
-import gray from "../../../images/gray.png";
-import add from "../../../images/add.png";
+import RedPetBattery from "../../../images/RedPetBattery.png";
+import OrangePetBattery from "../../../images/OrangePetBattery.png";
+import YellowPetBattery from "../../../images/YellowPetBattery.png";
+import GreenPetBattery from "../../../images/GreenPetBattery.png";
+import GrayPetBattery from "../../../images/GrayPetBattery.png";
+import AddNewPet from "../../../images/AddNewPet.png";
 
 import "./Home.css";
 
@@ -108,7 +108,7 @@ function Home (){
 
     const getPet = (petToGet) => {
 
-        playSound(buttonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
         setActivePetName(petToGet);
         
     }
@@ -116,7 +116,7 @@ function Home (){
 
     const checkoutRoom = (roomNumber) => {
 
-        playSound(buttonSoundKey);
+        playSound(navButtonPressSoundKey);
         setActiveCheckoutRoom(roomNumber);
 
     }
@@ -147,7 +147,7 @@ function Home (){
                 setReadMeOpenFlag={setHomeReadMeOpenFlag}
             />}
 
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Color--Screen">  
+            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">  
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
@@ -197,7 +197,7 @@ function Home (){
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
                                             onClick = {() => checkoutRoom(index)}
                                         >
-                                            <img src = {add}/>
+                                            <img src = {AddNewPet}/>
                                         </Link>
 
                                     </div>
@@ -208,36 +208,36 @@ function Home (){
                                             
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
                                             <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
-                                                        green
+                                                        GreenPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
-                                                        yellow
+                                                        YellowPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
-                                                        orange
+                                                        OrangePetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
-                                                        red :
-                                                        gray
+                                                        RedPetBattery :
+                                                        GrayPetBattery
                                                     }
                                             />
                                             <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
-                                                        green
+                                                        GreenPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
-                                                        yellow
+                                                        YellowPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
-                                                        orange
+                                                        OrangePetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
-                                                        red :
-                                                        gray
+                                                        RedPetBattery :
+                                                        GrayPetBattery
                                                     }
                                             />
                                             <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
-                                                        green
+                                                        GreenPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
-                                                        yellow
+                                                        YellowPetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
-                                                        orange
+                                                        OrangePetBattery
                                                         : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
-                                                        red :
-                                                        gray
+                                                        RedPetBattery :
+                                                        GrayPetBattery
                                                     }
                                             />
                                         </div>

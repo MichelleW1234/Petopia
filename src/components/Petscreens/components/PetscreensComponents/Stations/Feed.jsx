@@ -14,7 +14,7 @@ import { dogSpecies, feedingKey, fishSpecies, optionImageKey, speciesKey, stageK
 import { flagCloser } from "../../../../../helpers/helpers.js";
 import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
 
-import feed from "../../../../../Music/PetImmersionSounds/Feed.mp3";
+import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
 import "./Feed.css";
 
@@ -36,7 +36,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     const feedGlobalTimerRef = useRef(GlobalTimer);
     const feedCurrNumberRef = useRef(feedCurrNumber);
-    const feedAudioRef = useRef(new Audio(feed));
+    const feedAudioRef = useRef(new Audio(Feeding));
 
 
     useKeyboardShortcut("Enter", () => {

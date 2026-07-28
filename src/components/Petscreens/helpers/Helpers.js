@@ -1,4 +1,4 @@
-import { activityDamage, activityLastDamageKey, activityLastPerformedKey, buttonSoundKey, cleaningKey, failSoundKey, feedingKey, gameButtonSoundKey, healthKey, playingKey, quitSoundKey, startSoundKey, successSoundKey } from "../../../constants/Constants.js";
+import { activityDamage, activityLastDamageKey, activityLastPerformedKey, navButtonPressSoundKey, cleaningKey, activityFailSoundKey, feedingKey, screenButtonPressSoundKey, healthKey, playingKey, quitActivitySoundKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../constants/Constants.js";
 import { flagCloser, playSound } from "../../../helpers/helpers.js";
 
 
@@ -7,7 +7,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     if (desiredOption === -1){
     //Too much (unwilling)
 
-        playSound(failSoundKey);
+        playSound(activityFailSoundKey);
 
         setPetList(prev => ({
 
@@ -24,7 +24,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     } else if (desiredOption !== selection && desiredOption !== -1){
     // not desired option (willing)
 
-        playSound(failSoundKey);
+        playSound(activityFailSoundKey);
 
         setPetList(prev => ({
 
@@ -40,7 +40,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
 
     } else {
 
-        playSound(successSoundKey);
+        playSound(activitySuccessSoundKey);
         setSuccess(true);
 
     }
@@ -73,14 +73,14 @@ export const pauseAudio = (audio) => {
 
 export const home = (setActivePetName) => {
 
-    playSound(buttonSoundKey);
+    playSound(navButtonPressSoundKey);
     setActivePetName("");
 
 }
 
 export const quitActivity = (audioRef, setFlagToClose) => {
 
-    playSound(quitSoundKey);
+    playSound(quitActivitySoundKey);
     pauseAudio(audioRef.current);
     flagCloser(setFlagToClose);
 
@@ -89,8 +89,8 @@ export const quitActivity = (audioRef, setFlagToClose) => {
 
 export const startActivity = (setStart) => {
 
-    playSound(gameButtonSoundKey);
-    playSound(startSoundKey);
+    playSound(screenButtonPressSoundKey);
+    playSound(startActivitySoundKey);
     setStart(true);
 
 }

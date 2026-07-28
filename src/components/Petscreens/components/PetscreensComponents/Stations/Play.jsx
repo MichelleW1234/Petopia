@@ -14,7 +14,7 @@ import { optionGameKey, optionImageKey, playingKey, speciesKey, stageKey } from 
 import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers.js";
 import { flagCloser } from "../../../../../helpers/helpers.js";
 
-import play from "../../../../../Music/PetImmersionSounds/Play.mp3";
+import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 
 import "./Play.css";
 
@@ -37,7 +37,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
                                     playOptionsList[playOptionsSelection][optionGameKey]
                                     : null;
 
-    const playAudioRef = useRef(new Audio(play));
+    const playAudioRef = useRef(new Audio(Playing));
 
     
     useKeyboardShortcut("Enter", () => {

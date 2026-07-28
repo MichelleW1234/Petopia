@@ -4,11 +4,11 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/helpers.js";
-import { gameButtonSoundKey } from "../../../../../constants/Constants.js";
+import { screenButtonPressSoundKey } from "../../../../../constants/Constants.js";
 
-import ball from "../../../../../images/Dog/Play/Games/ball.png";
-import rock from "../../../../../images/Dog/Play/Games/rock.png";
-import dog from "../../../../../images/Dog/Play/Games/Arrow.png";
+import Ball from "../../../../../images/Dog/Play/Games/Ball.png";
+import Rock from "../../../../../images/Dog/Play/Games/Rock.png";
+import Arrow from "../../../../../images/Dog/Play/Games/Arrow.png";
 
 import "./StrollPatrol.css";
 
@@ -91,7 +91,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useEffect(() => {
 
-        const preloadImages = [ball, rock, dog];
+        const preloadImages = [Ball, Rock, Arrow];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -175,7 +175,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const moveUp = () => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
 
         if (strollPatrolDogPosition[strollPatrolRowKey] > 0){
 
@@ -190,7 +190,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const moveDown = () => {
 
-        playSound(gameButtonSoundKey);
+        playSound(screenButtonPressSoundKey);
         
         if (strollPatrolDogPosition[strollPatrolRowKey] < strollPatrolWindowHeight-1){
 
@@ -210,7 +210,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
             {!strollPatrolStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Lead the dog on your walk to collect all the balls. Avoid the rocks.</h2> 
+                <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
             </div>}
 
@@ -242,10 +242,10 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
                                     key = {row + " & " + col} 
                                     className="StrollPatrol_ComponentContainer-Structure--GridCell" 
                                     src = {dogHere ? 
-                                            dog
+                                            Arrow
                                             : badHere ?
-                                            rock
-                                            : ball
+                                            Rock
+                                            : Ball
                                     }
                                 />
                                 

@@ -1,30 +1,30 @@
-import catStageOne from "../images/Cat/Portrait/s1.png";
-import catStageTwo from "../images/Cat/Portrait/s2.png";
-import catStageThree from "../images/Cat/Portrait/s3.png";
+import CatStageOne from "../images/Cat/Portrait/StageOne.png";
+import CatStageTwo from "../images/Cat/Portrait/StageTwo.png";
+import CatStageThree from "../images/Cat/Portrait/StageThree.png";
 
-import dogStageOne from "../images/Dog/Portrait/s1.png";
-import dogStageTwo from "../images/Dog/Portrait/s2.png";
-import dogStageThree from "../images/Dog/Portrait/s3.png";
+import DogStageOne from "../images/Dog/Portrait/StageOne.png";
+import DogStageTwo from "../images/Dog/Portrait/StageTwo.png";
+import DogStageThree from "../images/Dog/Portrait/StageThree.png";
 
-import fishStageOne from "../images/Fish/Portrait/s1.png";
-import fishStageTwo from "../images/Fish/Portrait/s2.png";
-import fishStageThree from "../images/Fish/Portrait/s3.png";
-
-
+import FishStageOne from "../images/Fish/Portrait/StageOne.png";
+import FishStageTwo from "../images/Fish/Portrait/StageTwo.png";
+import FishStageThree from "../images/Fish/Portrait/StageThree.png";
 
 
 
-export const buttonSoundKey = "button_click";
-export const buttonPressSoundKey = "button_press";
-export const gameButtonSoundKey = "gameButton_click"
-export const errorSoundKey = "error";
-export const startSoundKey = "start";
-export const successSoundKey = "success";
-export const failSoundKey = "fail";
-export const confirmedSoundKey = "confirmed";
-export const clearedSoundKey = "cleared";
-export const restartSoundKey = "restart";
-export const quitSoundKey = "quit";
+
+
+export const navButtonPressSoundKey = "NavButtonPress";
+export const selectionButtonPressSoundKey = "SelectionButtonPress";
+export const screenButtonPressSoundKey = "ScreenButtonPress"
+export const adoptionConfirmationErrorSoundKey = "error";
+export const startActivitySoundKey = "start";
+export const activitySuccessSoundKey = "success";
+export const activityFailSoundKey = "fail";
+export const adoptionSuccessSoundKey = "confirmed";
+export const clearPetsSoundKey = "cleared";
+export const restartGameSoundKey = "restart";
+export const quitActivitySoundKey = "quit";
 
 
 
@@ -126,7 +126,7 @@ export const activityDamage = {
 /* images */
 
 export const portraitPetImages = {
-    [dogSpecies]: [dogStageOne, dogStageTwo, dogStageThree],
-    [catSpecies]: [catStageOne, catStageTwo, catStageThree],
-    [fishSpecies]: [fishStageOne, fishStageTwo, fishStageThree]
+    [dogSpecies]: [DogStageOne, DogStageTwo, DogStageThree],
+    [catSpecies]: [CatStageOne, CatStageTwo, CatStageThree],
+    [fishSpecies]: [FishStageOne, FishStageTwo, FishStageThree]
 }

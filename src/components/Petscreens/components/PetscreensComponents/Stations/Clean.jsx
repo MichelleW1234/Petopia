@@ -14,8 +14,8 @@ import { cleaningKey, optionCursorKey, optionImageKey, speciesKey, stageKey } fr
 import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
 import { flagCloser} from "../../../../../helpers/helpers.js";
 
-import clean from "../../../../../Music/PetImmersionSounds/Clean.mp3";
-import shine from "../../../../../images/Clean.gif";
+import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
+import CleaningSymbol from "../../../../../images/CleaningSymbol.gif";
 
 import "./Clean.css";
 
@@ -37,7 +37,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
     const [cleanHover, setCleanHover] = useState(false);
 
     const cleanTimeoutRef = useRef(null);
-    const cleanAudioRef = useRef(new Audio(clean));
+    const cleanAudioRef = useRef(new Audio(Cleaning));
 
 
 
@@ -194,7 +194,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                                         {cleanHover && <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {shine} 
+                                            src = {CleaningSymbol} 
                                             onMouseEnter={() => scrub()}
                                         />}
 

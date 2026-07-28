@@ -7,11 +7,11 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { catSpecies, dogSpecies, happyAudioKey, healthCapList, healthKey, sadAudioKey, sleepAudioKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
-import Sleep from "../../../../images/Sleep.gif";
-import Angry from "../../../../images/Angry.gif";
-import Happy from "../../../../images/Happy.gif";
-import healthHeartGood from "../../../../images/HeartGood.png";
-import healthHeartBad from "../../../../images/HeartBad.png";
+import Sleep from "../../../../images/PetSleepingSymbol.gif";
+import Angry from "../../../../images/PetUnhappySymbol.gif";
+import Happy from "../../../../images/PetHappySymbol.gif";
+import HealthyPetHeart from "../../../../images/HealthyPetHeart.png";
+import UnhealthyPetHeart from "../../../../images/UnhealthyPetHeart.png";
 
 import "./Main.css";
 
@@ -44,7 +44,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), healthHeartGood, healthHeartBad];
+        const preloadImages = [...mainAnimationImages.flat(1), HealthyPetHeart, UnhealthyPetHeart];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -200,8 +200,8 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                 <img 
                                     key = {num} 
                                     src = {num <= PetList[ActivePetName][healthKey] ? 
-                                                healthHeartGood
-                                            : healthHeartBad}
+                                                HealthyPetHeart
+                                            : UnhealthyPetHeart}
                                     className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"
                                 />
 
