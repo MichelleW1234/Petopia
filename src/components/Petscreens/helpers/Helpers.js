@@ -1,5 +1,5 @@
 import { activityDamage, activityLastDamageKey, activityLastPerformedKey, navButtonPressSoundKey, cleaningKey, activityFailSoundKey, feedingKey, screenButtonPressSoundKey, healthKey, playingKey, quitActivitySoundKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../constants/Constants.js";
-import { flagCloser, playSound } from "../../../helpers/helpers.js";
+import { flagCloser, playSound } from "../../../helpers/Helpers.js";
 
 
 export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, key, desiredOption, setDesiredOption, selection, setSuccess) => {

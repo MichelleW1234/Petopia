@@ -8,7 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents/MusicVolume.jsx";
+import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
@@ -18,8 +18,8 @@ import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHunt from "./CatComponents/MouseHunt.jsx";
 
 import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey } from "../../../../constants/Constants.js";
-import { home, pauseAudio } from "../../helpers/helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
+import { home, pauseAudio } from "../../helpers/Helpers.js";
+import { flagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyMeow from "../../../../Music/PetImmersionSounds/Cat/HappyMeow.mp3";
 import SadMeow from "../../../../Music/PetImmersionSounds/Cat/SadMeow.mp3";
@@ -59,8 +59,6 @@ import Salmon from "../../../../images/Cat/Feed/Options/Salmon.png";
 import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
-
-import "./Cat.css";
 
 
 
@@ -199,26 +197,25 @@ function Cat (){
 
         if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
 
-            flagOpener(setCatScheduleOpenFlag, 0);
-
-        }
-
-    },
-        ".Schedule"
-    );
-    
-
-
-    useKeyboardShortcut("3", () => {
-
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
-
             flagOpener(setCatRecordsOpenFlag, 0);
 
         }
 
     },
         ".Records"
+    );
+
+
+    useKeyboardShortcut("3", () => {
+
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+
+            flagOpener(setCatScheduleOpenFlag, 0);
+
+        }
+
+    },
+        ".Schedule"
     );
         
 
@@ -372,8 +369,8 @@ function Cat (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setCatRecordsOpenFlag, 0)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setCatRecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setCatScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {catAlive ? (
 
@@ -406,6 +403,8 @@ function Cat (){
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+
+                    <h1>Living Room:</h1>
                     <Main
                         mainAnimationImages={catMainImages}
                         mainSleepingImage = {catMainSleepingImage}

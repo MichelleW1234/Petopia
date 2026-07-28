@@ -12,7 +12,7 @@ import Options from "./StationsComponents/Options.jsx";
 
 import { cleaningKey, optionCursorKey, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
-import { flagCloser} from "../../../../../helpers/helpers.js";
+import { flagCloser} from "../../../../../helpers/Helpers.js";
 
 import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
 import CleaningSymbol from "../../../../../images/CleaningSymbol.gif";
@@ -87,7 +87,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useEffect(() => {
 
-        const preloadImages = [...cleanAnimationImage, ...cleanOptionsList.map(item => item[optionImageKey]), ...cleanOptionsList.map(item => item[optionCursorKey])];
+        const preloadImages = [...cleanAnimationImage, ...cleanOptionsList.map(item => item[optionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();

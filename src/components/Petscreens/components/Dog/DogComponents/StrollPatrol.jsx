@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { startActivity } from "../../../helpers/Helpers.js";
-import { playSound } from "../../../../../helpers/helpers.js";
+import { playSound } from "../../../../../helpers/Helpers.js";
 import { screenButtonPressSoundKey } from "../../../../../constants/Constants.js";
 
 import Ball from "../../../../../images/Dog/Play/Games/Ball.png";
@@ -71,6 +71,18 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
 
 
+
+    useEffect(() => {
+
+        const preloadImages = [Ball, Rock];
+
+        preloadImages.forEach((src) => {
+        const img = new Image();
+            img.src = src;
+        });
+
+    }, []);
+
     useEffect(() => {
 
         if (!strollPatrolStart) {
@@ -87,18 +99,6 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         };
 
     }, [strollPatrolStart]);
-
-
-    useEffect(() => {
-
-        const preloadImages = [Ball, Rock, Arrow];
-
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
-        });
-
-    }, []);
 
 
     useEffect(() => {

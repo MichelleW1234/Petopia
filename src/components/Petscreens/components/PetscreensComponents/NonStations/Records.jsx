@@ -1,11 +1,10 @@
-import { useEffect } from "react";
 import { useActivePetName } from "../../../../../providers/ActivePetNameProvider.jsx";
 import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { birthDateKey, genderKey } from "../../../../../constants/Constants.js";
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { flagCloser } from "../../../../../helpers/Helpers.js";
 
 import "./Records.css";
 
@@ -20,7 +19,7 @@ function Records({setRecordsOpenFlag}) {
     const recordsBirthdayString = new Date(PetList[ActivePetName][birthDateKey]).toLocaleString();
 
 
-    useKeyboardShortcut("3", () => {
+    useKeyboardShortcut("2", () => {
 
         flagCloser(setRecordsOpenFlag);
 
@@ -57,7 +56,7 @@ function Records({setRecordsOpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setRecordsOpenFlag)}> Close <br/> [3]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setRecordsOpenFlag)}> Close <br/> [2]</button>
 
         </div>
     );

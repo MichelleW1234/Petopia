@@ -8,7 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents/MusicVolume.jsx";
+import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
@@ -18,7 +18,7 @@ import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, navButtonPressSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
+import { flagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyBubbles from "../../../../Music/PetImmersionSounds/Fish/HappyBubbles.mp3";
 import SadSplash from "../../../../Music/PetImmersionSounds/Fish/SadSplash.mp3";
@@ -65,9 +65,6 @@ import CursorSponge from "../../../../images/Fish/Clean/Options/Sponge.cur";
 import CursorCloth from "../../../../images/Fish/Clean/Options/Cloth.cur";
 import Pill from "../../../../images/Fish/Medicine/Options/Pill.png";
 import Serum from  "../../../../images/Fish/Medicine/Options/Serum.png";
-
-
-import "./Fish.css";
 
 
 
@@ -210,8 +207,21 @@ function Fish (){
     );
 
 
-
     useKeyboardShortcut("2", () => {
+
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+
+            flagOpener(setFishRecordsOpenFlag, 0);
+
+        }
+
+    },
+        ".Records"
+    );
+    
+
+
+    useKeyboardShortcut("3", () => {
 
         if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
 
@@ -224,18 +234,6 @@ function Fish (){
     );
     
 
-    useKeyboardShortcut("3", () => {
-
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
-
-            flagOpener(setFishRecordsOpenFlag, 0);
-
-        }
-
-    },
-        ".Records"
-    );
-    
 
 
     useKeyboardShortcut("4", () => {
@@ -390,8 +388,8 @@ function Fish (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setFishRecordsOpenFlag, 0)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setFishRecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setFishScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {fishAlive ? (
 
@@ -424,6 +422,8 @@ function Fish (){
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+                    
+                    <h1>Living Room:</h1>
                     <Main
                         mainAnimationImages={fishMainImages}
                         mainSleepingImage={fishMainSleepingImage}

@@ -7,8 +7,8 @@
 
   /*Color measurements:*/
 
-  --UIStapleElements_ComponentButton-Measurements--GlobalShadowNoninteracted: 0 0 1rem 0.1rem;
-  --UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted: 0 0 1rem 0.5rem;
+  --UIStapleElements_ComponentButton-Measurements--GlobalShadowNoninteracted: 0 0 16px 1.6px;
+  --UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted: 0 0 16px 8px;
   
   --UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowFirst: 0 0 2px;
   --UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowSecond: 0 0 4px;
@@ -61,7 +61,13 @@
 }
 
 
-body {
+html {
+
+  font-size: 100%;
+
+}
+
+body{
 
   user-select: none;
 
@@ -69,7 +75,7 @@ body {
 
   /*For fallback:*/
   background-color: rgb(100, 0, 125);
-
+  
 }
 
 
@@ -158,9 +164,10 @@ a:active {
   align-items: center;
 
   padding: 4rem;
-  gap: 10rem;
+  gap: 5rem;
 
 }
+
 
 
 .UIStapleElements_BackgroundBase-Template--Screen {
@@ -176,7 +183,6 @@ a:active {
   background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 
 }
-
 
 
 .UIStapleElements_BackgroundOverlay-Structure--FloatingFlag {
@@ -219,13 +225,13 @@ a:active {
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick {
 
   padding: 1.5rem 3rem;
-  border-radius: 4rem;
+  border-radius: 75px;
   border-style: solid;
 
-  border-left-width: 0.35rem;
-  border-bottom-width: 0.35rem;
-  border-right-width: 0.1rem;
-  border-top-width: 0.1rem;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-right-width: 1px;
+  border-top-width: 1px;
 
   transition: transform 0.3s ease;
 
@@ -241,13 +247,13 @@ a:active {
 .UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick {
 
   padding: 1.5rem 3rem;
-  border-radius: 4rem;
+  border-radius: 75px;
   border-style: solid;
 
-  border-left-width: 0.35rem;
-  border-bottom-width: 0.35rem;
-  border-right-width: 0.1rem;
-  border-top-width: 0.1rem;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-right-width: 1px;
+  border-top-width: 1px;
 
 }
 
@@ -266,10 +272,10 @@ a:active {
   padding: 1.5rem;
   border-style: solid;
 
-  border-left-width: 0.35rem;
-  border-bottom-width: 0.35rem;
-  border-right-width: 0.1rem;
-  border-top-width: 0.1rem;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-right-width: 1px;
+  border-top-width: 1px;
 
   transition: transform 0.3s ease;
 
@@ -291,10 +297,10 @@ a:active {
 
 .UIStapleElements_ComponentContainer-Structure--Global{
 
-  border-top-width: 0.15rem;
-  border-right-width: 0.15rem;
-  border-left-width: 0.45rem;
-  border-bottom-width: 0.45rem;
+  border-left-width: 6px;
+  border-bottom-width: 6px;
+  border-right-width: 2px;
+  border-top-width: 2px;
   border-style: solid;
 
 }
@@ -587,7 +593,7 @@ a:active {
 
   gap: 3rem;
   padding: 3rem;
-  border-radius: 3rem;
+  border-radius: 50px;
 
 }
 
@@ -595,7 +601,7 @@ a:active {
 .MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame {
 
   padding: 4rem;
-  border-radius: 4rem;
+  border-radius: 50px;
 
 }
 
@@ -612,7 +618,7 @@ a:active {
 
   border-radius: inherit;
 
-  box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
 
   background-size: cover;
   background-position: center;
@@ -658,7 +664,7 @@ a:active {
 
   gap: 4rem;
   padding: 4rem;
-  border-radius: 2rem;
+  border-radius: 50px;
 
   background-color: rgba(255, 255, 255, 0.25);
 
@@ -677,7 +683,7 @@ a:active {
 
   hr{
 
-    height: 0.25rem;
+    height: 2px;
     width: 100%;
 
     background-color: white;
@@ -711,14 +717,14 @@ a:active {
   flex-direction: row;
   width: fit-content;
 
-  box-shadow: 0 0 0.5rem 0.1rem rgb(255, 255, 255);
+  box-shadow: 0 0 8px 1.6px rgb(255, 255, 255);
 
 }
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell {
 
-  height: 0.75rem;
-  width: 0.3rem;
+  height: 10px;
+  width: 5px;
 
 }
 
@@ -735,7 +741,7 @@ a:active {
 
   padding: 3rem;
   gap: 3rem;
-  border-radius: 4rem;
+  border-radius: inherit;
 
   background-color: rgba(71, 0, 125, 0.75);
 
@@ -744,13 +750,13 @@ a:active {
 
 .MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow{
 
-  border-radius: 1rem;
+  border-radius: 25px;
   padding: 2rem 3rem;
   border: none;
 
   color: white;
   background-color: inherit;
-  box-shadow: 0 0 1rem 0.25rem rgb(255, 255, 255);
+  box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
   transition: transform 0.3s ease;
 
@@ -759,7 +765,7 @@ a:active {
 .MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow:hover,
 .MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow.active {
 
-  box-shadow: 0 0 1rem 0.5rem rgb(255, 255, 255);
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
   transform: scale(1.1);
 
 }

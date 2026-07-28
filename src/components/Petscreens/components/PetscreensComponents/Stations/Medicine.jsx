@@ -10,7 +10,7 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { activityFailSoundKey, healthCapList, healthKey, medicineKey, optionImageKey, playingKey, speciesKey, stageKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../../../constants/Constants.js";
-import { playSound, flagCloser } from "../../../../../helpers/helpers.js";
+import { playSound, flagCloser } from "../../../../../helpers/Helpers.js";
 import { pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
 
 import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
@@ -80,7 +80,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
     useEffect(() => {
 
-        const preloadImages = [...medicineAnimationImage, ...medicineOptionsList.map(item => item[optionImageKey])];
+        const preloadImages = [...medicineAnimationImage];
 
         preloadImages.forEach((src) => {
         const img = new Image();

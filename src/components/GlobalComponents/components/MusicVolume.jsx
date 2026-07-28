@@ -1,11 +1,11 @@
-import{useState, useEffect} from "react";
+import{useState} from "react";
 
-import useKeyboardShortcut from "../../hooks/useKeyboardShortcut.js";
-import { useVolume } from "../../providers/VolumeProvider.jsx";
+import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
+import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { flagCloser, playSound } from "../../helpers/helpers.js";
+import { flagCloser, playSound } from "../../../helpers/Helpers.js";
 
-import VolumeSpeaker from "../../images/VolumeSpeaker.png";
+import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
 import "./MusicVolume.css";
 
@@ -14,8 +14,6 @@ import "./MusicVolume.css";
 function MusicVolume({setMusicVolumeOpenFlag}) {
 
     const {Volume, setVolume} = useVolume();
-    
-
 
 
     useKeyboardShortcut("v", () => {
@@ -57,21 +55,6 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
     },
         ".Slider"
     );
-
-    
-
-
-    // For preloading images:
-    useEffect(() => {
-
-        const preloadImages = [VolumeSpeaker];
-
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
-        });
-
-    }, []);
 
 
 

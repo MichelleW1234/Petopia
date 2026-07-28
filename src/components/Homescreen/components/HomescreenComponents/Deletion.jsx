@@ -7,9 +7,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { selectionButtonPressSoundKey, clearPetsSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
-import { playSound, flagCloser } from "../../../../helpers/helpers.js";
-
-import "./Deletion.css";
+import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
 
 
 

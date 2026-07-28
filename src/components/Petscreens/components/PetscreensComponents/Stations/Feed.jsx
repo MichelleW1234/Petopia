@@ -11,7 +11,7 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { dogSpecies, feedingKey, fishSpecies, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { flagCloser } from "../../../../../helpers/Helpers.js";
 import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
@@ -82,7 +82,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     useEffect(() => {
 
-        const preloadImages = [...feedAnimationImage, ...feedOptionsList.map(item => item[optionImageKey])];
+        const preloadImages = [...feedAnimationImage];
 
         preloadImages.forEach((src) => {
         const img = new Image();

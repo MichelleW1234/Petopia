@@ -10,13 +10,13 @@ import { useActiveCheckoutRoom } from "../../../providers/ActiveCheckoutRoomProv
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
 
-import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
+import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 
 import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, navButtonPressSoundKey, selectionButtonPressSoundKey } from "../../../constants/Constants.js";
-import { flagOpener, playSound } from "../../../helpers/helpers.js";
+import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
 import OrangePetBattery from "../../../images/OrangePetBattery.png";
@@ -104,7 +104,7 @@ function Home (){
     );
 
     
-
+    
 
     const getPet = (petToGet) => {
 
@@ -190,8 +190,14 @@ function Home (){
 
                                 petName === null ? (
 
-                                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot Home_ComponentContainer-Template--EmptySlot">
+                                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
+                                        <div className = "Home_ComponentContainer-Structure--PetAlert">
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
+                                        </div>
+                                        
                                         <Link
                                             to = {"/adopt"}
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
@@ -199,6 +205,8 @@ function Home (){
                                         >
                                             <img src = {AddNewPet}/>
                                         </Link>
+
+                                        <h2>__________</h2>
 
                                     </div>
 

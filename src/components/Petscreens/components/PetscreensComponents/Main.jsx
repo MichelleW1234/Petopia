@@ -7,9 +7,9 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { catSpecies, dogSpecies, happyAudioKey, healthCapList, healthKey, sadAudioKey, sleepAudioKey, speciesKey, stageKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
-import Sleep from "../../../../images/PetSleepingSymbol.gif";
-import Angry from "../../../../images/PetUnhappySymbol.gif";
-import Happy from "../../../../images/PetHappySymbol.gif";
+import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
+import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
+import PetHappySymbol from "../../../../images/PetHappySymbol.gif";
 import HealthyPetHeart from "../../../../images/HealthyPetHeart.png";
 import UnhealthyPetHeart from "../../../../images/UnhealthyPetHeart.png";
 
@@ -44,7 +44,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), HealthyPetHeart, UnhealthyPetHeart];
+        const preloadImages = [...mainAnimationImages.flat(1), mainSleepingImage, PetSleepingSymbol, PetUnhappySymbol, PetHappySymbol];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -108,17 +108,15 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
             return;
 
-        } else {
-
-            const interval = setInterval(() => {
-
-                petPositionChange();
-
-            }, mainPetEnergy);
-
-            return () => clearInterval(interval);
-
         }
+
+        const interval = setInterval(() => {
+
+            petPositionChange();
+
+        }, mainPetEnergy);
+
+        return () => clearInterval(interval);
 
     }, [ActivePetName, mainPetSleeping]);
 
@@ -228,7 +226,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                         {mainAttention &&
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {Sleep} 
+                                            src = {PetSleepingSymbol} 
                                             onMouseEnter={() => showAttention()}
                                         />}
                                     </div>
@@ -255,7 +253,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                                     {mainAttention &&
                                                     <img
                                                         className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                                        src = {mainPetMood <= 1 ? Happy : Angry} 
+                                                        src = {mainPetMood <= 1 ? PetHappySymbol : PetUnhappySymbol} 
                                                         onMouseEnter={() => showAttention()}
                                                     />}
                                                 </div>

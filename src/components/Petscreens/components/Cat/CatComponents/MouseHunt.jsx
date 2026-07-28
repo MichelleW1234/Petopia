@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound } from "../../../../../helpers/helpers.js";
+import { playSound } from "../../../../../helpers/Helpers.js";
 import { screenButtonPressSoundKey, startActivitySoundKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
@@ -40,7 +40,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
         ".Start"
     );
 
-
+    
 
 
     useEffect(() => {
@@ -59,20 +59,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
         };
 
     }, [mouseHuntStart]);
-    
 
-
-    useEffect(() => {
-
-        const preloadImages = [Mouse, Cord];
-
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
-        });
-
-    }, []);
-    
 
 
     useEffect(() => {

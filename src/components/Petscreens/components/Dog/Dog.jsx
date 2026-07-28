@@ -8,7 +8,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents//MusicVolume.jsx";
+import MusicVolume from "../../../GlobalComponents//components/MusicVolume.jsx";
 import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
@@ -20,7 +20,7 @@ import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionCursorKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
-import { flagOpener } from "../../../../helpers/helpers.js";
+import { flagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyBarks from "../../../../Music/PetImmersionSounds/Dog/HappyBarks.mp3";
 import SadWhine from "../../../../Music/PetImmersionSounds/Dog/SadWhine.mp3";
@@ -69,8 +69,6 @@ import CursorBrush from "../../../../images/Dog/Clean/Options/Brush.cur";
 import Leash from "../../../../images/Dog/Play/Options/Leash.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
-
-import "./Dog.css";
 
 
 
@@ -224,19 +222,6 @@ function Dog (){
 
         if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
 
-            flagOpener(setDogScheduleOpenFlag, 0);
-
-        }
-
-    },
-        ".Schedule"
-    );
-    
-
-    useKeyboardShortcut("3", () => {
-
-        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
-
             flagOpener(setDogRecordsOpenFlag, 0);
 
         }
@@ -244,7 +229,21 @@ function Dog (){
     },
         ".Records"
     );
-    
+
+
+
+    useKeyboardShortcut("3", () => {
+
+        if (!dogFeedOpenFlag && !dogCleanOpenFlag && !dogPlayOpenFlag && !dogMedicineOpenFlag && !dogScheduleOpenFlag && !dogRecordsOpenFlag && !dogMusicVolumeOpenFlag){
+
+            flagOpener(setDogScheduleOpenFlag, 0);
+
+        }
+
+    },
+        ".Schedule"
+    );
+
 
 
     useKeyboardShortcut("4", () => {
@@ -425,8 +424,8 @@ function Dog (){
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag, 0)}> Schedule <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setDogRecordsOpenFlag, 0)}> Records <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => flagOpener(setDogRecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => flagOpener(setDogScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {dogAlive ? (
 
@@ -461,6 +460,8 @@ function Dog (){
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+                    
+                    <h1>Living Room:</h1>
                     <Main
                         mainAnimationImages={dogMainImages}
                         mainSleepingImage={dogMainSleepingImage}

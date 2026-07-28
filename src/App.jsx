@@ -18,19 +18,6 @@ import "./App.css";
 
 function App() {
 
-  // For preloading images in Constants.js (globally used images):
-  useEffect(() => {
-
-    const preloadImages = [...Object.values(portraitPetImages).flat(1)];
-
-    preloadImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-
-  }, []);
-
-
   // For removing focus off of buttons that are just pressed:
   useEffect(() => {
 

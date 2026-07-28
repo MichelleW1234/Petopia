@@ -10,10 +10,10 @@ import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvid
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
-import MusicVolume from "../../GlobalComponents/MusicVolume.jsx";
+import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionConfirmationErrorSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
-import { flagOpener, playSound } from "../../../helpers/helpers.js";
+import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
 
@@ -406,8 +406,7 @@ function Adoption () {
                                     </div>
                                 </div>
 
-                                <p> and I am a {adoptionPetGender} {adoptionSelectedPet}.</p>
-                                <p>Thank you for adopting me!</p>
+                                <p> and I am a {adoptionPetGender} {adoptionSelectedPet}. Thank you for adopting me!</p>
                             </div>
 
                         </div>

@@ -12,7 +12,7 @@ import Options from "./StationsComponents/Options.jsx";
 
 import { optionGameKey, optionImageKey, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers.js";
-import { flagCloser } from "../../../../../helpers/helpers.js";
+import { flagCloser } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 
@@ -64,20 +64,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
     },
         ".Quit"
     );
-        
 
-
-
-    useEffect(() => {
-
-        const preloadImages = [...playOptionsList.map(item => item[optionImageKey])];
-
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
-        });
-
-    }, []);
     
     
     useEffect(() => {

@@ -4,10 +4,8 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound, flagCloser } from "../../../../helpers/helpers.js";
+import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
 import { navButtonPressSoundKey, restartGameSoundKey } from "../../../../constants/Constants.js";
-
-import "./Restart.css";
 
 
 

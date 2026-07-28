@@ -1,8 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { flagCloser } from "../../../../helpers/helpers.js";
-
-import "./ReadMe.css";
+import { flagCloser } from "../../../../helpers/Helpers.js";
 
 
 
