@@ -13,7 +13,7 @@ import { RoomProvider } from "./providers/RoomProvider.jsx";
 import { ActiveCheckoutRoomProvider } from "./providers/ActiveCheckoutRoomProvider.jsx";
 
 
-const currentVersion = "0.0.0";
+const currentVersion = "1.0.0";
 const savedVersion = localStorage.getItem("PetopiaAppVersion");
 if (savedVersion !== currentVersion) {
   localStorage.clear();
