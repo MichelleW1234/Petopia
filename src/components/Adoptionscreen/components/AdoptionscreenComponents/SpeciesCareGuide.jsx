@@ -29,29 +29,31 @@ function SpeciesCareGuide({setSpeciesCareGuideOpenFlag}) {
                         <h1>Species Care Guide:</h1>
                         <hr/>
                     </div>
-                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                        <h2>Dog &rarr; High Maintenance Pet</h2>
-                        <div>
-                            <p>&bull; Feed 3 times a day </p>
-                            <p>&bull; Clean 1 time a day </p>
-                            <p>&bull; Play 2 times a day </p>
-                            <p>&bull; Grows every 5 days  </p>
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent">
+                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                            <h2>Dog &rarr; High Maintenance Pet</h2>
+                            <div>
+                                <p>&bull; Feed 3 times a day </p>
+                                <p>&bull; Clean 1 time a day </p>
+                                <p>&bull; Play 2 times a day </p>
+                                <p>&bull; Grows every 5 days  </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                        <h2>Cat &rarr; Medium Maintenance Pet </h2>
-                        <div>
-                            <p>&bull; Feed 2 times a day </p>
-                            <p>&bull; Play 1 time a day </p>
-                            <p>&bull; Grows every 7 days </p>
+                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                            <h2>Cat &rarr; Medium Maintenance Pet </h2>
+                            <div>
+                                <p>&bull; Feed 2 times a day </p>
+                                <p>&bull; Play 1 time a day </p>
+                                <p>&bull; Grows every 7 days </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                        <h2>Fish &rarr; Low Maintenance Pet </h2>
-                        <div>
-                            <p>&bull; Feed 1 time a day </p>
-                            <p>&bull; Clean 1 time a day </p>
-                            <p>&bull; Grows every 3 days</p>
+                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                            <h2>Fish &rarr; Low Maintenance Pet </h2>
+                            <div>
+                                <p>&bull; Feed 1 time a day </p>
+                                <p>&bull; Clean 1 time a day </p>
+                                <p>&bull; Grows every 3 days</p>
+                            </div>
                         </div>
                     </div>
                 </div>

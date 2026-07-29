@@ -39,16 +39,16 @@ function Records({setRecordsOpenFlag}) {
                         <h1>Records:</h1>
                         <hr/>
                     </div>
-                    <div className="Records_ComponentContainer-Structure--Content">
-                        <div className="Records_ComponentContainer-Structure--ContentField">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent">
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>
                             <p> {ActivePetName}</p>
                         </div>
-                        <div className="Records_ComponentContainer-Structure--ContentField">
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2>Gender:</h2>
                             <p>{PetList[ActivePetName][genderKey]}</p>
                         </div>
-                        <div className="Records_ComponentContainer-Structure--ContentField">
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Birthdate: </h2>
                             <p>{recordsBirthdayString}</p>
                         </div>

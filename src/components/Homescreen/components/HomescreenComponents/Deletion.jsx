@@ -158,13 +158,13 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
                 <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setDeletionOpenClearPetsFlag)}>Quit <br/> [esc]</button>
 
-                {deletionSelectedPets.length > 0 ? (
+                {deletionSelectedPets.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets()}>Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets()}>Remove Selected Pets <br/> [return]</button>
 
                 )}
 

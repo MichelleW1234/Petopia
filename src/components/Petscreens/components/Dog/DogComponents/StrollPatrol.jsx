@@ -111,7 +111,6 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         const interval = setInterval(() => {
 
-
             setStrollPatrolObjectPositions(prev => {
 
                 const copy = prev.map(inner =>
@@ -215,14 +214,12 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Up" onClick = {() => moveUp()}> 
                     [&#x2B06;]
                 </button>
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Down" onClick = {() => moveDown()}> 
                     [&#x2B07;]
                 </button>
-
             </div>
 
             <div className="StrollPatrol_ComponentContainer-Structure--Grid">

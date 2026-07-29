@@ -86,88 +86,88 @@ function Fish (){
     const [fishCleanOptionsDesiredOption, setFishCleanOptionsDesiredOption] = useState(-1);
     const [fishMedicineOptionsDesiredOption, setFishMedicineOptionsDesiredOption] = useState(-1);
 
-    const fishAlive = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] > 0 ? 
-                                true
-                                : false
-                            : false;
+    const fishAlive = ActivePetName === "" ? 
+                            false
+                        :    PetList[ActivePetName][healthKey] === 0 ? 
+                                false
+                                : true;
 
-    const fishHungry = ActivePetName !== "" ?  
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
+    const fishHungry = ActivePetName === "" ? 
+                            false 
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
                                 true 
-                                : false
-                            : false;
+                                : false;
                             
-    const fishDirty = ActivePetName !== "" ?  
-                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
-                                true 
-                                : false
-                            : false;
+    const fishDirty = ActivePetName === "" ?  
+                                false
+                            :   (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
+                                    true 
+                                    : false;
 
-    const fishUnwell = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] < healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] ? 
-                                true 
-                                : false
-                            : false;
+    const fishUnwell = ActivePetName === "" ? 
+                            false
+                        :   PetList[ActivePetName][healthKey] >= healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] ? 
+                                false
+                                : true;
 
-    const fishMood = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+    const fishMood = ActivePetName === "" ? 
+                                -1
+                        :   PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                                 0
                                 : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                                 1
                                 : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                                 2
-                                : 3
-                            : -1;
+                                : 3;
     
-    const fishCanReceiveDose = ActivePetName !== "" ? 
-                                    GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                        true
-                                        : false
-                                    : false;
+    const fishCanReceiveDose = ActivePetName === "" ? 
+                                    false
+                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                        false
+                                        : true;
 
 
-    const fishMainImages = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const fishMainImages = ActivePetName === "" ? 
+                                [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
-                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
-                                : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
+                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
 
-    const fishMainSleepingImage = ActivePetName !== "" ? 
-                                    PetList[ActivePetName][stageKey] === 0 ? 
+    const fishMainSleepingImage = ActivePetName === "" ? 
+                                    NullPlaceholder
+                                :   PetList[ActivePetName][stageKey] === 0 ? 
                                             SleepStageOne
                                         : PetList[ActivePetName][stageKey] === 1 ? 
                                             SleepStageTwo
-                                        : SleepStageThree
-                                    : NullPlaceholder;
+                                        : SleepStageThree;
 
     
-    const fishFeedImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const fishFeedImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         FeedStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         FeedStageTwo
-                                    : FeedStageThree
-                                : NullPlaceholder;
+                                    : FeedStageThree;
 
-    const fishCleanImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const fishCleanImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         CleanStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         CleanStageTwo
-                                    : CleanStageThree
-                                : NullPlaceholder;
+                                    : CleanStageThree;
 
-    const fishMedicineImage = ActivePetName !== "" ? 
-                                    PetList[ActivePetName][stageKey] === 0 ? 
+    const fishMedicineImage = ActivePetName === "" ? 
+                                    NullPlaceholder
+                                :    PetList[ActivePetName][stageKey] === 0 ? 
                                             MedicineStageOne
                                         : PetList[ActivePetName][stageKey] === 1 ? 
                                             MedicineStageTwo
-                                        : MedicineStageThree
-                                    : NullPlaceholder;
+                                        : MedicineStageThree;
 
     const fishFeedOptionsList = [{[optionNameKey]: "Shrimp", [optionImageKey]: Shrimp}, {[optionNameKey]: "Worms", [optionImageKey]: Worms}, {[optionNameKey]: "Algae", [optionImageKey]: Algae}];
     const fishCleanOptionsList = [{[optionNameKey]: "Sponge", [optionImageKey]: Sponge, [optionCursorKey] : CursorSponge}, {[optionNameKey]: "Cloth", [optionImageKey]: Cloth, [optionCursorKey]: CursorCloth}];

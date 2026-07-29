@@ -47,15 +47,17 @@ export const playingKey = "playing";
 
 
 
+export const activityLastPerformedKey = "performed";
+export const activityLastDamageKey = "damaged";
+
+
+
 export const speciesKey = "species";
 export const stageKey = "stage";
 export const healthKey = "health";
 export const birthDateKey = "birthDate";
 export const genderKey = "gender"
 export const medicineKey = "medicine";
-
-export const activityLastPerformedKey = "performed";
-export const activityLastDamageKey = "damaged";
 
 
 
@@ -67,7 +69,6 @@ export const femaleGender = "female";
 export const dogSpecies = "dog"; 
 export const catSpecies = "cat"; 
 export const fishSpecies = "fish"; 
-
 
 
 

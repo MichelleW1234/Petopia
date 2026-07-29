@@ -95,7 +95,6 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
         feedGlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);
     
-
     useEffect(() => {
         feedCurrNumberRef.current = feedCurrNumber;
     }, [feedCurrNumber]);
@@ -171,7 +170,23 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                            {!feedDone ? (
+                            {feedDone ? (
+
+                                feedSuccess ? (
+                               
+                                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
+                                        <h2>Success!</h2>
+                                    </div>
+    
+                                ) : (
+    
+                                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
+                                        <h2>Something's off...</h2>
+                                    </div>
+    
+                                )
+
+                            ) : (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
 
@@ -190,22 +205,6 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                                 </div>
 
-                            ) : (
-
-                                feedSuccess ? (
-                               
-                                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                        <h2>Success!</h2>
-                                    </div>
-    
-                                ) : (
-    
-                                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                        <h2>Something's off...</h2>
-                                    </div>
-    
-                                )
-
                             )}
 
                     </div>
@@ -215,18 +214,18 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
             )}
 
 
-            {!feedDone ? (
-
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
-                </div>
-
-            ) : (
+            {feedDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc] </button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setFeedOpenFlag)}>Done <br/> [return]</button>
+                </div>
+               
+            ) : (
+
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 
             )}

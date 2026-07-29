@@ -222,7 +222,23 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        {!medicineDone ? (
+                        {medicineDone ? (
+
+                            medicineSuccess ? (
+                            
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
+                                    <h2>Success!</h2>
+                                </div>
+
+                            ) : (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
+                                    <h2>Something's off...</h2>
+                                </div>
+
+                            )
+
+                        ) : (
 
                             <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Medicine_ComponentContainer-Template--WindowScreen">
 
@@ -241,22 +257,6 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
                             </div>
 
-                        ) : (
-
-                            medicineSuccess ? (
-                            
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <h2>Success!</h2>
-                                </div>
-
-                            ) : (
-
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <h2>Something's off...</h2>
-                                </div>
-
-                            )
-                            
                         )}
 
                     </div>
@@ -265,18 +265,18 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
                 
             )}
 
-            {!medicineDone ? (
+            {medicineDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(medicineAudioRef, setMedicineOpenFlag)}>Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setMedicineOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setMedicineOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(medicineAudioRef, setMedicineOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 
             )}

@@ -18,7 +18,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const mouseHuntWindowWidth = 2;
     const mouseHuntWindowHeight = 4;
-    const mouseHuntNumberCreatures = 3;
+    const mouseHuntNumberObjects = 3;
 
     const mouseHuntRowKey = "row";
     const mouseHuntColumnKey = "column";
@@ -83,13 +83,13 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                     [possibleCombos[i], possibleCombos[j]] = [possibleCombos[j], possibleCombos[i]];
                 }
 
-                const chosenCombos = possibleCombos.slice(0, mouseHuntNumberCreatures);
+                const chosenCombos = possibleCombos.slice(0, mouseHuntNumberObjects);
                 const finalArray = [];
 
                 const addMouse = Math.floor(Math.random() * 2);
                 if (addMouse === 1){
 
-                    const Mouse = Math.floor(Math.random() * (mouseHuntNumberCreatures));
+                    const Mouse = Math.floor(Math.random() * (mouseHuntNumberObjects));
                     for (let i =0; i<chosenCombos.length; i++){
 
                         if (i === Mouse){

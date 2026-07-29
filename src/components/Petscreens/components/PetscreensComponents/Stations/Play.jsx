@@ -33,9 +33,9 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
     const [playCurrNumber, setPlayCurrNumber] = useState(0);
     const [playSuccess, setPlaySuccess] = useState(false);
 
-    const PlaySelectedGameWindow = playOptionsSelection !== -1 ? 
-                                    playOptionsList[playOptionsSelection][optionGameKey]
-                                    : null;
+    const PlaySelectedGameWindow = playOptionsSelection === -1 ? 
+                                    null 
+                                    : playOptionsList[playOptionsSelection][optionGameKey];
 
     const playAudioRef = useRef(new Audio(Playing));
 
@@ -105,23 +105,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
      
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
-                        {!playDone ? (
-
-                            PlaySelectedGameWindow !== null ? (
-
-                                <PlaySelectedGameWindow
-                                    playCurrNumber = {playCurrNumber}
-                                    setPlayCurrNumber = {setPlayCurrNumber}
-                                    playAudioRef = {playAudioRef}
-                                />
-
-                            ) : (
-
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen"></div>
-
-                            )
-
-                        ) : (
+                        {playDone ? (
 
                             playSuccess ? (
                            
@@ -137,6 +121,22 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
                             )
 
+                        ) : (
+
+                            PlaySelectedGameWindow === null ? (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen"></div>
+
+                            ) : (
+
+                                <PlaySelectedGameWindow
+                                    playCurrNumber = {playCurrNumber}
+                                    setPlayCurrNumber = {setPlayCurrNumber}
+                                    playAudioRef = {playAudioRef}
+                                />
+
+                            )
+
                         )}
 
                     </div>
@@ -145,18 +145,18 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
             )}
 
-            {!playDone ? (
+            {playDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => quitActivity(playAudioRef, setPlayOpenFlag)}>Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => quitActivity(playAudioRef, setPlayOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 
             )}

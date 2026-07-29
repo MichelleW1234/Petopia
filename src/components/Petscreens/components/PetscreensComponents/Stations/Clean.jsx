@@ -172,14 +172,30 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
-                        {!cleanDone ? ( 
+                        {cleanDone ? ( 
+
+                            cleanSuccess ? (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
+                                    <h2>Success!!!</h2>
+                                </div>
+
+                            ) : (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
+                                    <h2>Something's off...</h2>
+                                </div>
+
+                            )
+
+                        ) : (
 
                             <div 
                                 className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
                                 style={{
-                                    cursor: cleanOptionsSelection !== -1 && cleanStart
-                                        ? `url('${cleanOptionsList[cleanOptionsSelection][optionCursorKey]}'), auto`
-                                        : "default",
+                                    cursor: cleanStart ?
+                                                `url('${cleanOptionsList[cleanOptionsSelection][optionCursorKey]}'), auto`
+                                            :   "default",
                                 }}>
 
                                 {cleanStart ? (
@@ -211,22 +227,6 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                             </div>
 
-                        ) : (
-
-                            cleanSuccess ? (
-
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <h2>Success!!!</h2>
-                                </div>
-
-                            ) : (
-
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <h2>Something's off...</h2>
-                                </div>
-
-                            )
-
                         )}
 
                     </div>
@@ -235,18 +235,18 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
             )}
 
-            {!cleanDone ? (
+            {cleanDone ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setCleanOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setCleanOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 
             )}

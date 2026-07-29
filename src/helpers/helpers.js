@@ -28,9 +28,9 @@ export const playSound = (soundEffect) => {
         [startActivitySoundKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
         [activitySuccessSoundKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
         [activityFailSoundKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
-        [adoptionSuccessSoundKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.25},
+        [adoptionSuccessSoundKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.5},
         [clearPetsSoundKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
-        [restartGameSoundKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.25},
+        [restartGameSoundKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.5},
         [quitActivitySoundKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75}
 
     };

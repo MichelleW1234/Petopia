@@ -174,13 +174,13 @@ function Home (){
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        {!homeMinPetsAdopted ? (
+                        {homeMinPetsAdopted ? (
 
-                            <h1> Welcome! Adopt up to 3 pets to get started. </h1>
+                            <h1> Your Pets: </h1>
 
                         ) : (
 
-                            <h1> Your Pets: </h1>
+                            <h1> Welcome! Adopt up to 3 pets to get started. </h1>
 
                         )}
 

@@ -81,78 +81,83 @@ function Cat (){
     const [catPlayOptionsDesiredOption, setCatPlayOptionsDesiredOption] = useState(-1);
     const [catMedicineOptionsDesiredOption, setCatMedicineOptionsDesiredOption] = useState(-1);
 
-    const catAlive = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] > 0 ? 
-                                true
-                                : false
-                            : false;
+    const catAlive = ActivePetName === "" ? 
+                            false
+                        :   PetList[ActivePetName][healthKey] === 0 ? 
+                                false
+                                : true;
 
-    const catHungry = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
+
+    const catHungry = ActivePetName === "" ? 
+                            false
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
                                 true 
-                                : false
-                            : false;
+                                : false;
                             
-    const catRestless = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][playingKey]/2 ? 
+    const catRestless = ActivePetName === "" ? 
+                            false
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][playingKey]/2 ? 
                                 true 
-                                : false
-                            : false;
-
-    const catUnwell =  ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey] < healthCapList[catSpecies][PetList[ActivePetName][stageKey]] ? 
-                            true 
-                            : false
-                        : false;
+                                : false;
 
 
-    const catMood = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+    const catUnwell =  ActivePetName === "" ? 
+                            false
+                        :    PetList[ActivePetName][healthKey] >= healthCapList[catSpecies][PetList[ActivePetName][stageKey]] ? 
+                                false
+                                : true;
+
+
+    const catMood = ActivePetName === "" ? 
+                        -1
+                    :   PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                             0
                             : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                             1
                             : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                             2
-                            : 3
-                        : -1;
+                            : 3;
 
-    const catCanReceiveDose = ActivePetName !== "" ? 
-                                    GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                        true
-                                        : false
-                                    : false;
 
-    const catMainImages = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const catCanReceiveDose = ActivePetName === "" ? 
+                                    false
+                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                        false
+                                        : true;
+
+
+    const catMainImages = ActivePetName === "" ? 
+                                [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
-                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
-                                : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
+                                    : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
-    const catMainSleepingImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+
+    const catMainSleepingImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         SleepStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         SleepStageTwo
-                                    : SleepStageThree
-                                : NullPlaceholder;
+                                    : SleepStageThree;
 
-    const catFeedImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const catFeedImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         FeedStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         FeedStageTwo
-                                    : FeedStageThree
-                                : NullPlaceholder; 
+                                    : FeedStageThree; 
 
-    const catMedicineImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const catMedicineImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         MedicineStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         MedicineStageTwo
-                                    : MedicineStageThree
-                                : NullPlaceholder;
+                                    : MedicineStageThree;
 
 
 

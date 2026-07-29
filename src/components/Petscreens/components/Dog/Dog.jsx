@@ -93,93 +93,94 @@ function Dog (){
     const [dogPlayOptionsDesiredOption, setDogPlayOptionsDesiredOption] = useState(-1);
     const [dogMedicineOptionsDesiredOption, setDogMedicineOptionsDesiredOption] = useState(-1);
 
-    const dogAlive = ActivePetName !== "" ? 
-                            PetList[ActivePetName][healthKey] > 0 ? 
-                                true
-                                : false
-                            : false;
+    const dogAlive = ActivePetName === "" ? 
+                            false
+                        :   PetList[ActivePetName][healthKey] === 0 ? 
+                                false
+                                : true;
 
-    const dogHungry = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
+    const dogHungry = ActivePetName === "" ? 
+                            false
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
                                 true 
-                                : false
-                            : false;
+                                : false;
 
-    const dogDirty = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
+    const dogDirty = ActivePetName === "" ? 
+                            false
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
                                 true
-                                : false
-                            : false;
+                                : false;
                             
-    const dogRestless = ActivePetName !== "" ? 
-                            (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
+    const dogRestless = ActivePetName === "" ? 
+                            false
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
                                 true 
-                                : false
-                            : false;
+                                : false;
 
-    const dogUnwell = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey] < healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] ? 
-                            true 
-                            : false
-                        : false;
+    const dogUnwell = ActivePetName === "" ? 
+                        false
+                    :   PetList[ActivePetName][healthKey] >= healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] ? 
+                            false
+                            : true;
 
 
-    const dogMood = ActivePetName !== "" ? 
-                        PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+    const dogMood = ActivePetName === "" ? 
+                        -1
+                    :   PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
                             0
                             : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
                             1
                             : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
                             2
-                            : 3
-                        : -1;
+                            : 3;
 
-    const dogCanReceiveDose = ActivePetName !== "" ? 
-                                    GlobalTimer - PetList[ActivePetName][medicineKey] > medicineDoseTimeGap ? 
-                                        true
-                                        : false
-                                    : false;
+    const dogCanReceiveDose = ActivePetName === "" ? 
+                                    false
+                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                        false
+                                        : true;
 
 
-    const dogMainImages = ActivePetName !== "" ? 
-                            PetList[ActivePetName][stageKey] === 0 ? 
+    const dogMainImages = ActivePetName === "" ? 
+                            [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
+                        :   PetList[ActivePetName][stageKey] === 0 ? 
                                     [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
-                                : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]]
-                            : [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]];
+                                : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
-    const dogMainSleepingImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const dogMainSleepingImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         SleepStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         SleepStageTwo
-                                    : SleepStageThree
-                                : NullPlaceholder;
+                                    : SleepStageThree;
 
-    const dogFeedImage = ActivePetName !== "" ? 
-                            PetList[ActivePetName][stageKey] === 0 ? 
+    const dogFeedImage = ActivePetName === "" ? 
+                            NullPlaceholder
+                        :   PetList[ActivePetName][stageKey] === 0 ? 
                                     FeedStageOne
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     FeedStageTwo
-                                : FeedStageThree
-                            : NullPlaceholder;
+                                : FeedStageThree;
 
-    const dogCleanImage = ActivePetName !== "" ? 
-                            PetList[ActivePetName][stageKey] === 0 ? 
+    const dogCleanImage = ActivePetName === "" ? 
+                            NullPlaceholder
+                        :   PetList[ActivePetName][stageKey] === 0 ? 
                                     CleanStageOne
                                 : PetList[ActivePetName][stageKey] === 1 ? 
                                     CleanStageTwo
-                                : CleanStageThree
-                            : NullPlaceholder;
+                                : CleanStageThree;
 
-    const dogMedicineImage = ActivePetName !== "" ? 
-                                PetList[ActivePetName][stageKey] === 0 ? 
+    const dogMedicineImage = ActivePetName === "" ? 
+                                NullPlaceholder
+                            :   PetList[ActivePetName][stageKey] === 0 ? 
                                         MedicineStageOne
                                     : PetList[ActivePetName][stageKey] === 1 ? 
                                         MedicineStageTwo
-                                    : MedicineStageThree
-                                : NullPlaceholder;
+                                    : MedicineStageThree;
+
 
     const dogFeedOptionsList = [{[optionNameKey]: "Beef", [optionImageKey]: Beef}, {[optionNameKey]: "Turkey", [optionImageKey]: Turkey}, {[optionNameKey]: "Lamb", [optionImageKey]: Lamb}]; 
     const dogCleanOptionsList = [{[optionNameKey]: "Soap", [optionImageKey]: Soap, [optionCursorKey]: CursorSoap}, {[optionNameKey]: "Brush", [optionImageKey]: Brush, [optionCursorKey]: CursorBrush}];

@@ -208,9 +208,17 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                         </div>
                     </div>
 
-                    {PetList[ActivePetName][healthKey] > 0 ? (
+                    {PetList[ActivePetName][healthKey] === 0 ? (
 
-                        !mainActivityInProgress ? (
+                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
+
+                    ) : (
+
+                        mainActivityInProgress ? (
+
+                            <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
+
+                        ) : (
 
                             mainPetSleeping ? (
 
@@ -271,15 +279,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                             )
 
-                        ) : (
-
-                            <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
-
                         )
-
-                    ) : (
-
-                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
 
                     )}
                     

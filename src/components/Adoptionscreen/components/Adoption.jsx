@@ -34,11 +34,11 @@ function Adoption () {
     const [adoptionErrorMessage, setAdoptionErrorMessage] = useState("");
     const [adoptionConfirmationPetName, setAdoptionConfirmationPetName] = useState("");
 
-
     const adoptionConfirmationTimeoutRef = useRef(null);
 
-
     const navigate = useNavigate();
+
+
 
     useKeyboardShortcut("v", () => {
     
@@ -66,7 +66,6 @@ function Adoption () {
         ".QuitAndGoHome"
     );
 
-        
     
     useKeyboardShortcut("2", () => {
         
@@ -366,13 +365,13 @@ function Adoption () {
             
                         </div>
                     
-                        {adoptionSelectedPet !== "" ? (
+                        {adoptionSelectedPet === "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
             
                         ) : (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => petSelecting()}> Go to Confirmation <br/> [return]</button>
             
                         )}  
 
@@ -389,7 +388,7 @@ function Adoption () {
                                 <hr/>
                             </div> 
                 
-                            <div className = "Adoption_ComponentContainer-Structure--FormBody">
+                            <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent Adoption_ComponentContainer-Structure--FormBody">
                                 <p>Hello, my name is </p>
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">

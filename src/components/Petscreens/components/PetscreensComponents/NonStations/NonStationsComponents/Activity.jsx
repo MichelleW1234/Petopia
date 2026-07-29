@@ -22,15 +22,15 @@ function Activity({activityKey, activityTimeGap}) {
                         : PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey] + activityTimeGap;
 
     const activityLastTimeString = activityKey === medicineKey ?
-                                        PetList[ActivePetName][activityKey] > 0 ? 
-                                            (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
+                                        PetList[ActivePetName][activityKey] === 0 ? 
+                                            "N/A"
+                                        :   (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
                                                 year: "numeric",
                                                 month: "2-digit",
                                                 day: "2-digit",
                                                 hour: "2-digit",
                                                 minute: "2-digit",
                                             })
-                                        : "N/A"
                                     :   (new Date(PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey])).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
@@ -39,17 +39,18 @@ function Activity({activityKey, activityTimeGap}) {
                                             minute: "2-digit",
                                         });
 
-    const activityNextTimeString = PetList[ActivePetName][healthKey] > 0 ?
-                                        activityKey === medicineKey ?  
-                                            PetList[ActivePetName][activityKey] > 0 ? 
-                                                (new Date(activityDeadLine)).toLocaleString([], {
+    const activityNextTimeString = PetList[ActivePetName][healthKey] === 0 ?
+                                        "--"
+                                    :   activityKey === medicineKey ?  
+                                            PetList[ActivePetName][activityKey] === 0 ? 
+                                                "On Demand"
+                                            : (new Date(activityDeadLine)).toLocaleString([], {
                                                     year: "numeric",
                                                     month: "2-digit",
                                                     day: "2-digit",
                                                     hour: "2-digit",
                                                     minute: "2-digit",
-                                                }) 
-                                            : "On Demand"
+                                                })
                                         : 
                                             (new Date(activityDeadLine)).toLocaleString([], {
                                                 year: "numeric",
@@ -57,8 +58,7 @@ function Activity({activityKey, activityTimeGap}) {
                                                 day: "2-digit",
                                                 hour: "2-digit",
                                                 minute: "2-digit",
-                                            })
-                                    : "--";
+                                            });
 
     const activityCurrDate = GlobalTimer;
     const activityPercentUntilNextUpdate = activityKey === medicineKey ?  
@@ -98,7 +98,19 @@ function Activity({activityKey, activityTimeGap}) {
                 <p>{activityNextTimeString}</p>
             </div>
     
-            {PetList[ActivePetName][healthKey] > 0 ? (
+            {PetList[ActivePetName][healthKey] === 0 ? (
+
+                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
+
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                        <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
+
+                    ))}
+                    
+                </div>
+
+            ) : (
 
                 <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
                     
@@ -114,18 +126,6 @@ function Activity({activityKey, activityTimeGap}) {
 
                     ))}
 
-                </div>
-
-            ) : (
-
-                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
-
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                        <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
-
-                    ))}
-                    
                 </div>
 
             )} 
