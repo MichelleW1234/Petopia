@@ -49,7 +49,7 @@
 
     input {
 
-        border-radius: 50px;
+        border-radius: 9999px;
         padding: 1.5rem 2rem;
 
         border: 1.6px solid rgba(255, 255, 255);
