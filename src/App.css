@@ -69,7 +69,6 @@ html {
 body{
 
   user-select: none;
-  -webkit-user-drag: none;
 
   color: rgb(255, 255, 255);
 
@@ -80,6 +79,8 @@ body{
 
 
 * {
+
+  -webkit-user-drag: none;
 
   box-sizing: border-box;
   margin: 0;
