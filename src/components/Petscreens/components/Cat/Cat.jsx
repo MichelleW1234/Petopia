@@ -16,6 +16,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHunt from "./CatComponents/MouseHunt.jsx";
+import CatGameTwo from "./CatComponents/CatGameTwo.jsx";
 
 import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey } from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
@@ -162,7 +163,7 @@ function Cat (){
 
 
     const catFeedOptionsList = [{[optionNameKey]: "Tuna", [optionImageKey]: Tuna}, {[optionNameKey]: "Chicken", [optionImageKey]: Chicken}, {[optionNameKey]: "Salmon", [optionImageKey]: Salmon}];
-    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}];
+    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}, {[optionNameKey]: "Game Two", [optionImageKey]: Magnifier, [optionGameKey]: CatGameTwo}];
     const catMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Tablet", [optionImageKey]: Tablet}];
 
     const catAudioRefs = useRef({[happyAudioKey]: new Audio(HappyMeow), [sadAudioKey]: new Audio(SadMeow), [sleepAudioKey]: new Audio(Sleeping)});

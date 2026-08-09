@@ -10,6 +10,7 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import MusicVolume from "../../../GlobalComponents//components/MusicVolume.jsx";
 import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
+import DogGameTwo from "./DogComponents/DogGameTwo.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
@@ -184,7 +185,7 @@ function Dog (){
 
     const dogFeedOptionsList = [{[optionNameKey]: "Beef", [optionImageKey]: Beef}, {[optionNameKey]: "Turkey", [optionImageKey]: Turkey}, {[optionNameKey]: "Lamb", [optionImageKey]: Lamb}]; 
     const dogCleanOptionsList = [{[optionNameKey]: "Soap", [optionImageKey]: Soap, [optionCursorKey]: CursorSoap}, {[optionNameKey]: "Brush", [optionImageKey]: Brush, [optionCursorKey]: CursorBrush}];
-    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}];
+    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}, {[optionNameKey]: "DogGameTwo", [optionImageKey]: Leash, [optionGameKey]: DogGameTwo}];
     const dogMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Chew", [optionImageKey]: Chew}];
 
     const dogAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBarks), [sadAudioKey]: new Audio(SadWhine), [sleepAudioKey]: new Audio(Sleeping)});
