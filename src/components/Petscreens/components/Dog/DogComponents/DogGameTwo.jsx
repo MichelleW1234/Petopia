@@ -13,7 +13,7 @@ import "./DogGameTwo.css";
 
 function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
-    const dogGameTwoWindowHeight = 5;
+    const dogGameTwoWindowHeight = 3;
 
     const dogGameTwoRowKey = "row";
     const dogGameTwoTypeKey = "type";
@@ -77,7 +77,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                 }
 
-                if (!newList.some(move => move[dogGameTwoRowKey] > 2)){
+                if (!newList.some(move => move[dogGameTwoRowKey] > 0)){
 
                     const number = Math.floor(Math.random() * 4);
 
