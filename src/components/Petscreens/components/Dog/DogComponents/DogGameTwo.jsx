@@ -135,7 +135,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen DogGameTwo_ComponentContainer-Template--Screen">
 
             {!dogGameTwoStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Hold the rope down when the light lands in the green area.</h2> 
+                <h2>Copy the moves.</h2> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setDogGameTwoStart)}> Start <br/> [return]</button>
             </div>}
 

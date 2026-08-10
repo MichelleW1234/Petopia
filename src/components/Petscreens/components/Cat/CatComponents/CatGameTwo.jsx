@@ -89,7 +89,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
             {!catGameTwoStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Catch the fishing line when the feather hits the red line.</h2> 
+                <h2>Only catch the fishing line when the feather lands on red.</h2> 
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCatGameTwoStart)}> Start <br/> [return]</button>
             </div>}
 
