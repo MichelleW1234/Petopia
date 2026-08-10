@@ -163,7 +163,7 @@ function Cat (){
 
 
     const catFeedOptionsList = [{[optionNameKey]: "Tuna", [optionImageKey]: Tuna}, {[optionNameKey]: "Chicken", [optionImageKey]: Chicken}, {[optionNameKey]: "Salmon", [optionImageKey]: Salmon}];
-    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}, {[optionNameKey]: "Game Two", [optionImageKey]: Magnifier, [optionGameKey]: CatGameTwo}];
+    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}, {[optionNameKey]: "Game Two", [optionImageKey]: Chicken, [optionGameKey]: CatGameTwo}];
     const catMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Tablet", [optionImageKey]: Tablet}];
 
     const catAudioRefs = useRef({[happyAudioKey]: new Audio(HappyMeow), [sadAudioKey]: new Audio(SadMeow), [sleepAudioKey]: new Audio(Sleeping)});

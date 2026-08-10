@@ -185,7 +185,7 @@ function Dog (){
 
     const dogFeedOptionsList = [{[optionNameKey]: "Beef", [optionImageKey]: Beef}, {[optionNameKey]: "Turkey", [optionImageKey]: Turkey}, {[optionNameKey]: "Lamb", [optionImageKey]: Lamb}]; 
     const dogCleanOptionsList = [{[optionNameKey]: "Soap", [optionImageKey]: Soap, [optionCursorKey]: CursorSoap}, {[optionNameKey]: "Brush", [optionImageKey]: Brush, [optionCursorKey]: CursorBrush}];
-    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}, {[optionNameKey]: "DogGameTwo", [optionImageKey]: Leash, [optionGameKey]: DogGameTwo}];
+    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}, {[optionNameKey]: "DogGameTwo", [optionImageKey]: Brush, [optionGameKey]: DogGameTwo}];
     const dogMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Chew", [optionImageKey]: Chew}];
 
     const dogAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBarks), [sadAudioKey]: new Audio(SadWhine), [sleepAudioKey]: new Audio(Sleeping)});

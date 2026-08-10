@@ -13,10 +13,11 @@ import "./CatGameTwo.css";
 
 function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
-    const catGameTwoWindowWidth = 2;
-    const catGameTwoWindowHeight = 4;
+    const catGameTwoWindowWidth = 8;
+    const catGameTwoWindowHeight = 5;
 
     const [catGameTwoStart, setCatGameTwoStart] = useState(false);
+    const [catGameTwoHookLength, setCatGameTwoHookLength] = useState(0);
 
     useKeyboardShortcut("Enter", () => {
     
@@ -62,7 +63,19 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         const interval = setInterval(() => {
 
-        }, 600);
+            const movement = Math.floor(Math.random() * 2);
+
+            if (movement === 0) {
+
+                setCatGameTwoHookLength(prev => Math.max(prev - 1, 0));
+
+            } else {
+
+                setCatGameTwoHookLength(prev => Math.min(prev + 1, 4));
+
+            }
+
+        }, 400);
 
         return () => clearInterval(interval);
 
@@ -80,15 +93,62 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCatGameTwoStart)}> Start <br/> [return]</button>
             </div>}
 
-            <div className="MouseHunt_ComponentContainer-Structure--Grid">
+            <div className="CatGameTwo_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: catGameTwoWindowHeight}, (_, row) => 
                     Array.from({ length: catGameTwoWindowWidth}, (_, col) => {
 
+                        const hookHead = col === 4 && row === catGameTwoHookLength;
+                        const hookBody = col === 4 && row < catGameTwoHookLength;
+
                         return (
-                            
-                            <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell"></div>
-                        
+
+                            hookHead ? (
+
+                                row === 2 ? (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => prev + 1)}>
+                                        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
+                                    </div>
+
+                                ) : (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget">
+                                        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
+                                    </div>
+
+                                )
+
+                            ) : hookBody ? (
+
+                                row === 2 ? (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}>
+                                        <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
+                                    </div>
+
+                                ) : (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget">
+                                        <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
+                                    </div>
+
+                                )
+
+                            ) : (
+
+                                row === 2 ? (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}></div>
+
+                                ) : (
+
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget"></div>
+
+                                )
+
+                            ) 
+
                         );
 
                     })
