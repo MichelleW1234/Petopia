@@ -18,6 +18,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const [catGameTwoStart, setCatGameTwoStart] = useState(false);
     const [catGameTwoHookLength, setCatGameTwoHookLength] = useState(0);
+    const [catGameTwoHit, setCatGameTwoHit] = useState(false);
 
     useKeyboardShortcut("Enter", () => {
     
@@ -75,11 +76,41 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             }
 
+            if (catGameTwoHit){
+
+                setCatGameTwoHit(false);
+
+            }
+
         }, 400);
 
         return () => clearInterval(interval);
 
-    }, [catGameTwoStart]);
+    }, [catGameTwoStart, catGameTwoHit]);
+
+
+
+    const checkHit = (success) => {
+
+        playSound(screenButtonPressSoundKey);
+
+        if (!catGameTwoHit){
+
+            if (success === 1){
+
+                setPlayCurrNumber(prev => prev + 1);
+
+            } else {
+
+                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+
+            }
+
+            setCatGameTwoHit(true);
+
+        }
+
+    }
 
 
 
@@ -107,7 +138,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => prev + 1)}>
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(1)}>
                                         <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
                                     </div>
 
@@ -123,7 +154,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}>
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}>
                                         <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
                                     </div>
 
@@ -139,7 +170,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => setPlayCurrNumber(prev => Math.max(prev - 1, 0))}></div>
+                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}></div>
 
                                 ) : (
 

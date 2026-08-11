@@ -26,6 +26,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const [mouseHuntStart, setMouseHuntStart] = useState(false);
     const [mouseHuntCreaturePositions, setMouseHuntCreaturePositions] = useState([]);
+    const [mouseHuntHit, setMouseHuntHit] = useState(false);
 
 
     useKeyboardShortcut("Enter", () => {
@@ -118,29 +119,42 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             });
 
+            if (mouseHuntHit){
+
+                setMouseHuntHit(false);
+
+            }
+
         }, 600);
 
         return () => clearInterval(interval);
 
-    }, [mouseHuntStart]);
+    }, [mouseHuntStart, mouseHuntHit]);
 
 
-    
+
     const holeSelected = (Mouse) => {
 
         playSound(screenButtonPressSoundKey);
-        
-        if (Mouse === 0){
 
-            setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+        if (!mouseHuntHit){
 
-        } else {
+            if (Mouse === 0){
 
-            setPlayCurrNumber(prev => prev + 1);
+                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+
+            } else {
+
+                setPlayCurrNumber(prev => prev + 1);
+
+            }
+
+            setMouseHuntHit(true);
 
         }
 
     }
+
 
 
 

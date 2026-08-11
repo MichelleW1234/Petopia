@@ -21,6 +21,8 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     const [dogGameTwoStart, setDogGameTwoStart] = useState(false);
     const [dogGameTwoMoves, setDogGameTwoMoves] = useState([]);
 
+    const [dogGameTwoHit, setDogGameTwoHit] = useState(false);
+
 
     useKeyboardShortcut("Enter", () => {
     
@@ -156,26 +158,39 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             });
 
+            if (dogGameTwoHit){
+
+                setDogGameTwoHit(false);
+
+            }
+
         }, 400);
 
         return () => clearInterval(interval);
 
-    }, [dogGameTwoStart]);
+    }, [dogGameTwoStart, dogGameTwoHit]);
 
 
 
     const checkMove = (moveSelected) => {
 
-        if (moveSelected === dogGameTwoMoves[0][dogGameTwoTypeKey] && dogGameTwoMoves[0][dogGameTwoRowKey] === 0){
+        playSound(screenButtonPressSoundKey);
 
-            setPlayCurrNumber(prev => prev + 1);
+        if (dogGameTwoMoves[0][dogGameTwoRowKey] === 0 && !dogGameTwoHit){
 
-        } else {
+            if (moveSelected === dogGameTwoMoves[0][dogGameTwoTypeKey]) {
 
-            setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+                setPlayCurrNumber(prev => prev + 1);
+            
+            } else {
 
+                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+
+            }
+
+            setDogGameTwoHit(true);
+        
         }
-
 
     }
 
