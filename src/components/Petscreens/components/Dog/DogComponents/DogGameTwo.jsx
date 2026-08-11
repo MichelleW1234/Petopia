@@ -35,6 +35,57 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     );
 
 
+    useKeyboardShortcut("W", () => {
+     
+        if (dogGameTwoStart){
+
+            checkMove("W");
+
+        }
+
+    },
+        ".W"
+    );
+
+    useKeyboardShortcut("A", () => {
+    
+        if (dogGameTwoStart){
+
+            checkMove("A");
+
+        }
+
+    },
+        ".A"
+    );
+
+    useKeyboardShortcut("S", () => {
+     
+        if (dogGameTwoStart){
+
+            checkMove("S");
+
+        }
+
+    },
+        ".S"
+    );
+
+
+    useKeyboardShortcut("D", () => {
+    
+        if (dogGameTwoStart){
+
+            checkMove("D");
+
+        }
+
+    },
+        ".D"
+    );
+
+
+
     useEffect(() => {
 
         if (!dogGameTwoStart) {
@@ -235,10 +286,10 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
             </div>
 
             <div className="DogGameTwo_ComponentContainer-Template--Buttons">
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow" onClick={() => checkMove("W")}> W </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow" onClick={() => checkMove("A")}> A </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow" onClick={() => checkMove("S")}> S </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow" onClick={() => checkMove("D")}> D </button>
+                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow W" onClick={() => checkMove("W")}> W </button>
+                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow A" onClick={() => checkMove("A")}> A </button>
+                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow S" onClick={() => checkMove("S")}> S </button>
+                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow D" onClick={() => checkMove("D")}> D </button>
             </div>
                 
         </div>

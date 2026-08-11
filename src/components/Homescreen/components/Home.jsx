@@ -14,6 +14,7 @@ import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
+import Shop from "./HomescreenComponents/Shop.jsx";
 
 import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, navButtonPressSoundKey, selectionButtonPressSoundKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
@@ -43,6 +44,7 @@ function Home (){
     const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
     const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
     const [homeReadMeOpenFlag, setHomeReadMeOpenFlag] = useState(false);
+    const [homeShopOpenFlag, setHomeShopOpenFlag] = useState(false);
 
     const homeMinPetsAdopted = Room.filter(x => x === null).length < 3;
 
@@ -54,7 +56,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag){
 
             flagOpener(setHomeMusicVolumeOpenFlag, 1);
 
@@ -67,7 +69,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag){
 
             flagOpener(setHomeRestartOpenFlag, 0);
 
@@ -80,7 +82,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag){
 
             flagOpener(setHomeDeletionOpenClearPetsFlag, 0);
 
@@ -93,7 +95,7 @@ function Home (){
     
     useKeyboardShortcut("3", () => {
 
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag){
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag){
 
             flagOpener(setHomeReadMeOpenFlag, 0);
 
@@ -101,6 +103,19 @@ function Home (){
 
     },
         ".ReadMe"
+    );
+
+
+    useKeyboardShortcut("4", () => {
+
+        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag){
+
+            flagOpener(setHomeShopOpenFlag, 0);
+
+        }
+
+    },
+        ".BuyShopItems"
     );
 
     
@@ -147,6 +162,14 @@ function Home (){
                 setReadMeOpenFlag={setHomeReadMeOpenFlag}
             />}
 
+
+            {homeShopOpenFlag &&
+            <Shop
+                setShopOpenFlag={setHomeShopOpenFlag}
+            />
+            }
+
+
             <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">  
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
@@ -169,6 +192,7 @@ function Home (){
 
 
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BuyShopItems" onClick = {() => flagOpener(setHomeShopOpenFlag, 0)}> Buy Shop Items <br/> [4]</button>
                     
                 </div>
 
@@ -276,6 +300,12 @@ function Home (){
                 className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
                 onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
                 Volume <br/> [v]
+            </button>
+
+            <button 
+                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
+                onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                Inventory <br/> [I]
             </button>
 
         </>

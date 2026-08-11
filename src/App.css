@@ -736,6 +736,7 @@ a:active {
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
 
+  max-width: 75vw;
   max-height: 75vh;
   display: flex;
   flex-direction: column;
