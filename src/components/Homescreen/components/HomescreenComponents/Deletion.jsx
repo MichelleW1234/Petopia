@@ -154,7 +154,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                 </div>
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow ">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                 <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setDeletionOpenClearPetsFlag)}>Quit <br/> [esc]</button>
 
