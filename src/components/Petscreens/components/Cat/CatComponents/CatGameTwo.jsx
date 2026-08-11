@@ -18,7 +18,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const [catGameTwoStart, setCatGameTwoStart] = useState(false);
     const [catGameTwoHookLength, setCatGameTwoHookLength] = useState(0);
-    const [catGameTwoHit, setCatGameTwoHit] = useState(false);
+    const [catGameTwoHitAttempt, setCatGameTwoHitAttempt] = useState(false);
 
     useKeyboardShortcut("Enter", () => {
     
@@ -76,9 +76,9 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             }
 
-            if (catGameTwoHit){
+            if (catGameTwoHitAttempt){
 
-                setCatGameTwoHit(false);
+                setCatGameTwoHitAttempt(false);
 
             }
 
@@ -86,7 +86,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         return () => clearInterval(interval);
 
-    }, [catGameTwoStart, catGameTwoHit]);
+    }, [catGameTwoStart, catGameTwoHitAttempt]);
 
 
 
@@ -94,7 +94,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         playSound(screenButtonPressSoundKey);
 
-        if (!catGameTwoHit){
+        if (!catGameTwoHitAttempt){
 
             if (success === 1){
 
@@ -106,7 +106,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             }
 
-            setCatGameTwoHit(true);
+            setCatGameTwoHitAttempt(true);
 
         }
 

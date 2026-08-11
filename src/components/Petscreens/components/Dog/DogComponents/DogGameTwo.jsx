@@ -20,8 +20,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const [dogGameTwoStart, setDogGameTwoStart] = useState(false);
     const [dogGameTwoMoves, setDogGameTwoMoves] = useState([]);
-
-    const [dogGameTwoHit, setDogGameTwoHit] = useState(false);
+    const [dogGameTwoHitAttempt, setDogGameTwoHitAttempt] = useState(false);
 
 
     useKeyboardShortcut("Enter", () => {
@@ -158,9 +157,9 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             });
 
-            if (dogGameTwoHit){
+            if (dogGameTwoHitAttempt){
 
-                setDogGameTwoHit(false);
+                setDogGameTwoHitAttempt(false);
 
             }
 
@@ -168,7 +167,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         return () => clearInterval(interval);
 
-    }, [dogGameTwoStart, dogGameTwoHit]);
+    }, [dogGameTwoStart, dogGameTwoHitAttempt]);
 
 
 
@@ -176,7 +175,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         playSound(screenButtonPressSoundKey);
 
-        if (dogGameTwoMoves[0][dogGameTwoRowKey] === 0 && !dogGameTwoHit){
+        if (dogGameTwoMoves[0][dogGameTwoRowKey] === 0 && !dogGameTwoHitAttempt){
 
             if (moveSelected === dogGameTwoMoves[0][dogGameTwoTypeKey]) {
 
@@ -188,7 +187,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             }
 
-            setDogGameTwoHit(true);
+            setDogGameTwoHitAttempt(true);
         
         }
 

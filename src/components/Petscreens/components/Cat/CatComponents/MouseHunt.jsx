@@ -26,7 +26,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const [mouseHuntStart, setMouseHuntStart] = useState(false);
     const [mouseHuntCreaturePositions, setMouseHuntCreaturePositions] = useState([]);
-    const [mouseHuntHit, setMouseHuntHit] = useState(false);
+    const [mouseHuntHitAttempt, setMouseHuntHitAttempt] = useState(false);
 
 
     useKeyboardShortcut("Enter", () => {
@@ -119,9 +119,9 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             });
 
-            if (mouseHuntHit){
+            if (mouseHuntHitAttempt){
 
-                setMouseHuntHit(false);
+                setMouseHuntHitAttempt(false);
 
             }
 
@@ -129,7 +129,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         return () => clearInterval(interval);
 
-    }, [mouseHuntStart, mouseHuntHit]);
+    }, [mouseHuntStart, mouseHuntHitAttempt]);
 
 
 
@@ -137,7 +137,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         playSound(screenButtonPressSoundKey);
 
-        if (!mouseHuntHit){
+        if (!mouseHuntHitAttempt){
 
             if (Mouse === 0){
 
@@ -149,7 +149,7 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             }
 
-            setMouseHuntHit(true);
+            setMouseHuntHitAttempt(true);
 
         }
 
