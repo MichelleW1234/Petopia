@@ -476,11 +476,20 @@ function Dog (){
 
             </div>
 
-            <button 
-                className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen MiscellaneousElements_ComponentButton-Position--ScreenToggle Volume" 
-                onClick = {() => flagOpener(setDogMusicVolumeOpenFlag, 1)}>
-                Volume <br/> [v]
-            </button>
+            <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
+                <button 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
+                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    Volume <br/> [v]
+                </button>
+
+                <button 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    Inventory <br/> [I]
+                </button>
+            </div>
+            
         </>
 
     );

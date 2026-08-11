@@ -855,9 +855,14 @@ a:active {
 
 
 .MiscellaneousElements_ComponentButton-Position--ScreenToggle{
-    
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   position: fixed;
   bottom: 4rem;
   left: 4rem;
+
+  gap: 3rem;
 
 }
