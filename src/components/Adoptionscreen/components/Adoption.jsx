@@ -11,6 +11,7 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
+import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionConfirmationErrorSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
@@ -28,11 +29,14 @@ function Adoption () {
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
     const [adoptionMusicVolumeOpenFlag, setAdoptionMusicVolumeOpenFlag] = useState(false);
+    const [adoptionInventoryOpenFlag, setAdoptionInventoryOpenFlag] = useState(false);
     const [adoptionSpeciesCareGuideOpenFlag, setAdoptionSpeciesCareGuideOpenFlag] = useState(false);
     const [adoptionSelectedPet, setAdoptionSelectedPet] = useState("");
     const [adoptionPetGender, setAdoptionPetGender] = useState("");
     const [adoptionErrorMessage, setAdoptionErrorMessage] = useState("");
     const [adoptionConfirmationPetName, setAdoptionConfirmationPetName] = useState("");
+
+    const adoptionMinPetsAdopted = Room.filter(x => x === null).length < 3;
 
     const adoptionConfirmationTimeoutRef = useRef(null);
 
@@ -42,7 +46,7 @@ function Adoption () {
 
     useKeyboardShortcut("v", () => {
     
-        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             flagOpener(setAdoptionMusicVolumeOpenFlag, 1);
 
@@ -52,10 +56,23 @@ function Adoption () {
         ".Volume"
     );
 
+    
+    useKeyboardShortcut("i", () => {
+    
+        if (adoptionMinPetsAdopted && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
+
+            flagOpener(setAdoptionInventoryOpenFlag, 1);
+
+        }
+
+    },
+        ".Inventory"
+    );
+
 
     useKeyboardShortcut("1", () => {
         
-        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             quit();
             navigate("/home");
@@ -69,7 +86,7 @@ function Adoption () {
     
     useKeyboardShortcut("2", () => {
         
-        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             flagOpener(setAdoptionSpeciesCareGuideOpenFlag, 0);
 
@@ -83,7 +100,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", () => {
         
-        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender === "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             petSelecting();
 
@@ -96,7 +113,7 @@ function Adoption () {
 
     useKeyboardShortcut("Escape", () => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             undo();
 
@@ -109,7 +126,7 @@ function Adoption () {
 
     useKeyboardShortcut("Enter", (e) => {
         
-        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag){
+        if (adoptionPetGender !== "" && adoptionSelectedPet !== "" && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             nameChecking(e);
 
@@ -152,27 +169,27 @@ function Adoption () {
 
         playSound(screenButtonPressSoundKey);
 
-        const trimmedPetName = adoptionConfirmationPetName.trim();
-        setAdoptionConfirmationPetName(trimmedPetName);
-            
-        if (trimmedPetName === "") {
+        const modifiedPetName = adoptionConfirmationPetName.trim().toLowerCase();
+        setAdoptionConfirmationPetName(modifiedPetName);
+
+        if (modifiedPetName === "") {
 
             e.preventDefault();
             showError("Enter a name for your pet.");
 
-        } else if (trimmedPetName.length > 20){
+        } else if (modifiedPetName.length > 20){
 
             e.preventDefault();
             showError("Shorten the name to 20 characters max.");
 
-        } else if (trimmedPetName in PetList && trimmedPetName in PetTimeStamps) {
+        } else if (modifiedPetName in PetList && modifiedPetName in PetTimeStamps) {
 
             e.preventDefault();
             showError("This name already exists.");
 
         } else {
 
-            adoptPet(trimmedPetName);
+            adoptPet(modifiedPetName);
             navigate("/home");
 
         }
@@ -320,6 +337,11 @@ function Adoption () {
                 setMusicVolumeOpenFlag={setAdoptionMusicVolumeOpenFlag}
             />}
 
+            {adoptionInventoryOpenFlag && 
+            <Inventory
+                setInventoryOpenFlag={setAdoptionInventoryOpenFlag}
+            />}
+
             {adoptionSpeciesCareGuideOpenFlag &&
                 <SpeciesCareGuide
                     setSpeciesCareGuideOpenFlag = {setAdoptionSpeciesCareGuideOpenFlag}
@@ -427,15 +449,25 @@ function Adoption () {
             <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => flagOpener(setAdoptionMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
-                <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
-                    Inventory <br/> [I]
-                </button>
+                {adoptionMinPetsAdopted ? (
+
+                    <button 
+                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                        onClick = {() => flagOpener(setAdoptionInventoryOpenFlag, 1)}>
+                        Inventory <br/> [I]
+                    </button>
+
+                ) : (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                        Inventory <br/> [I]
+                    </button>
+
+                )}
             </div>
 
         </>

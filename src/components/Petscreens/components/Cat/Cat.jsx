@@ -9,6 +9,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
+import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Play from "../PetscreensComponents/Stations/Play.jsx";
@@ -72,6 +73,7 @@ function Cat (){
     const {PetList, setPetList} = usePetList();
 
     const [catMusicVolumeOpenFlag, setCatMusicVolumeOpenFlag] = useState(false);
+    const [catInventoryOpenFlag, setCatInventoryOpenFlag] = useState(false);
     const [catActivityInProgress, setCatActivityInProgress] = useState(false);
     const [catFeedOpenFlag, setCatFeedOpenFlag] = useState(false);
     const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
@@ -174,7 +176,7 @@ function Cat (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatMusicVolumeOpenFlag, 1);
 
@@ -184,10 +186,22 @@ function Cat (){
         ".Volume"
     );
 
+    useKeyboardShortcut("i", () => {
+        
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+
+            flagOpener(setCatInventoryOpenFlag, 1);
+
+        }
+
+    },
+        ".Inventory"
+    );
+
         
     useKeyboardShortcut("1", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -201,7 +215,7 @@ function Cat (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatRecordsOpenFlag, 0);
 
@@ -214,7 +228,7 @@ function Cat (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatScheduleOpenFlag, 0);
 
@@ -228,7 +242,7 @@ function Cat (){
 
     useKeyboardShortcut("4", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatFeedOpenFlag, 0);
 
@@ -241,7 +255,7 @@ function Cat (){
 
     useKeyboardShortcut("5", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatPlayOpenFlag, 0);
 
@@ -255,7 +269,7 @@ function Cat (){
 
     useKeyboardShortcut("6", () => {
 
-        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag){
+        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
 
             flagOpener(setCatMedicineOpenFlag, 0);
 
@@ -332,6 +346,11 @@ function Cat (){
             {catMusicVolumeOpenFlag && 
             <MusicVolume
                 setMusicVolumeOpenFlag={setCatMusicVolumeOpenFlag}
+            />}
+
+            {catInventoryOpenFlag && 
+            <Inventory
+                setInventoryOpenFlag={setCatInventoryOpenFlag}
             />}
 
             {catFeedOpenFlag &&
@@ -426,13 +445,13 @@ function Cat (){
             <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => flagOpener(setCatMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => flagOpener(setCatInventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
             </div>

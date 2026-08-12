@@ -16,6 +16,7 @@ function Inventory({setInventoryOpenFlag}) {
 
     const inventoryItems = ["a", "b", "c", "d", "e"];
     const inventoryPets = [[catSpecies, dogSpecies], [catSpecies, dogSpecies, fishSpecies], [catSpecies, dogSpecies], [catSpecies, dogSpecies], [catSpecies, dogSpecies, fishSpecies]];
+    const inventoryPetSelected = ["chester", null, null, null, null];
 
 
 
@@ -29,51 +30,66 @@ function Inventory({setInventoryOpenFlag}) {
 
 
     
+    const selectPet = (item, petName) => {
+
+
+
+    }
+
+    const deselectPet = (item, petName) => {
+
+
+
+    }
+
+
+    
 
     return (
 
         <div className="UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1> Your Inventory :</h1>
+                <h1> Distribute items to your pets:</h1>
                 
                 {inventoryItems.map((item, index) => (
                     
-                    <div key = {index} className="Inventory_ComponentContainer-Structure--ItemSlot">
+                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemSlotField">
+                        <div className="Inventory_ComponentContainer-Structure--ItemDescription">
                             <h2>{item}</h2>
                             <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzOsXAGnBHRlP3m5OClYHGLxQHkqyJQGVI3Vxk3d6aA&s"/>
                         </div>
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemSlotField">
-                            <h2>Pet attached: </h2>
+                        <div className="Inventory_ComponentContainer-Structure--ItemDescription">
+                            <h2>Give to: </h2>
 
-                            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                            <div className="Inventory_ComponentContainer-Structure--ItemPetButtons">
 
-                                <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--ItemSlotPetButtons">
+                                {Object.entries(PetList).map(([key, value]) => (
 
-                                    {Object.entries(PetList).map(([key, value]) => (
+                                    inventoryPets[index].includes(PetList[key][speciesKey]) ? (
 
-                                        inventoryPets[index].includes(PetList[key][speciesKey]) ? (
+                                        inventoryPetSelected[index] === key ? (
 
-                                            <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive"> 
-                                                <h2>{key}</h2>
-                                            </button>
+                                            <button key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(index, key)}> {key} </button>
 
                                         ) : (
 
-                                            <button  className="MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationInactive"> 
-                                                <h2>{key}</h2>
-                                            </button>
+                                            <button key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, key)}> {key} </button>
 
                                         )
 
-                                    ))}
+                                    ) : (
 
-                                </div>
+                                        <button  key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {key} </button>
+
+                                    )
+
+                                ))}
 
                             </div>
+                            
                         </div>
 
                     </div>

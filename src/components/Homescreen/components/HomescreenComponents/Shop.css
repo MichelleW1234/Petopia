@@ -1,5 +1,6 @@
 .Shop_ComponentContainer-Structure--ItemSlot{
 
+    width: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,11 +10,4 @@
     padding: 3rem 6rem;
     border-radius: 50px;
 
-    img {
-
-        height: auto;
-        width: 15rem;
-
-    }
-        
 }

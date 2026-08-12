@@ -9,6 +9,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
+import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
@@ -76,6 +77,7 @@ function Fish (){
     const {PetList, setPetList} = usePetList();
 
     const [fishMusicVolumeOpenFlag, setFishMusicVolumeOpenFlag] = useState(false);
+    const [fishInventoryOpenFlag, setFishInventoryOpenFlag] = useState(false);
     const [fishActivityInProgress, setFishActivityInProgress] = useState(false);
     const [fishFeedOpenFlag, setFishFeedOpenFlag] = useState(false);
     const [fishCleanOpenFlag, setFishCleanOpenFlag] = useState(false);
@@ -176,26 +178,38 @@ function Fish (){
     const fishAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBubbles), [sadAudioKey]: new Audio(SadSplash), [sleepAudioKey]: new Audio(Sleeping)});
     const fishBackgroundAudioRef = useRef(new Audio(Tank));
 
-
     const navigate = useNavigate();
 
 
     useKeyboardShortcut("v", () => {
                 
-            if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
-    
-                flagOpener(setFishMusicVolumeOpenFlag, 1);
-    
-            }
-    
-        },
-            ".Volume"
-        );
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
+
+            flagOpener(setFishMusicVolumeOpenFlag, 1);
+
+        }
+
+    },
+        ".Volume"
+    );
+
+
+    useKeyboardShortcut("i", () => {
+                
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
+
+            flagOpener(setFishInventoryOpenFlag, 1);
+
+        }
+
+    },
+        ".Inventory"
+    );
     
 
     useKeyboardShortcut("1", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             home(setActivePetName);
             navigate("/home");
@@ -209,7 +223,7 @@ function Fish (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             flagOpener(setFishRecordsOpenFlag, 0);
 
@@ -223,7 +237,7 @@ function Fish (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (!fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             flagOpener(setFishScheduleOpenFlag, 0);
 
@@ -238,7 +252,7 @@ function Fish (){
 
     useKeyboardShortcut("4", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             flagOpener(setFishFeedOpenFlag, 0);
 
@@ -252,7 +266,7 @@ function Fish (){
 
     useKeyboardShortcut("5", () => {
 
-        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (fishAlive && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             flagOpener(setFishCleanOpenFlag, 0);
 
@@ -266,7 +280,7 @@ function Fish (){
 
     useKeyboardShortcut("6", () => {
 
-        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag){
+        if (fishAlive && fishCanReceiveDose && !fishFeedOpenFlag && !fishCleanOpenFlag && !fishMedicineOpenFlag && !fishScheduleOpenFlag && !fishRecordsOpenFlag && !fishMusicVolumeOpenFlag && !fishInventoryOpenFlag){
 
             flagOpener(setFishMedicineOpenFlag, 0);
 
@@ -344,6 +358,12 @@ function Fish (){
             <MusicVolume
                 setMusicVolumeOpenFlag={setFishMusicVolumeOpenFlag}
             />}
+
+            {fishInventoryOpenFlag && 
+            <Inventory
+                setInventoryOpenFlag={setFishInventoryOpenFlag}
+            />}
+
 
             {fishFeedOpenFlag &&
             <Feed
@@ -439,13 +459,13 @@ function Fish (){
             <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => flagOpener(setFishMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => flagOpener(setFishInventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
             </div>

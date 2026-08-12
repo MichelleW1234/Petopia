@@ -71,7 +71,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeInventoryOpenFlag, 1);
 
@@ -110,6 +110,19 @@ function Home (){
     
     useKeyboardShortcut("3", () => {
 
+        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag && !homeInventoryOpenFlag){
+
+            flagOpener(setHomeShopOpenFlag, 0);
+
+        }
+
+    },
+        ".BuyShopItems"
+    );
+
+    
+    useKeyboardShortcut("4", () => {
+
         if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeReadMeOpenFlag, 0);
@@ -121,17 +134,6 @@ function Home (){
     );
 
 
-    useKeyboardShortcut("4", () => {
-
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeShopOpenFlag && !homeInventoryOpenFlag){
-
-            flagOpener(setHomeShopOpenFlag, 0);
-
-        }
-
-    },
-        ".BuyShopItems"
-    );
 
     
     
@@ -167,7 +169,6 @@ function Home (){
                 setInventoryOpenFlag={setHomeInventoryOpenFlag}
             />}
 
-
             {homeRestartOpenFlag &&
             <Restart
                 setRestartOpenFlag={setHomeRestartOpenFlag}
@@ -200,20 +201,21 @@ function Home (){
                         <>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Restart Game <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeDeletionOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BuyShopItems" onClick = {() => flagOpener(setHomeShopOpenFlag, 0)}> Buy Shop Items <br/> [3]</button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar" > Restart Game <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Restart Game <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Buy Shop Items <br/> [3]</button>
                         </>
 
                     )}
 
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [3]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar BuyShopItems" onClick = {() => flagOpener(setHomeShopOpenFlag, 0)}> Buy Shop Items <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
@@ -324,11 +326,22 @@ function Home (){
                     Volume <br/> [v]
                 </button>
 
-                <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => flagOpener(setHomeInventoryOpenFlag, 1)}>
-                    Inventory <br/> [I]
-                </button>
+                {homeMinPetsAdopted ? (
+
+                    <button 
+                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                        onClick = {() => flagOpener(setHomeInventoryOpenFlag, 1)}>
+                        Inventory <br/> [I]
+                    </button>
+
+                ) : (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                        Inventory <br/> [I]
+                    </button>
+
+                )}
+               
             </div>
 
         </>
