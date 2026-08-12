@@ -17,26 +17,3 @@
     }
         
 }
-
-
-.Shop_ComponentButton-Template--PurchaseOption{
-
-    border-radius: 9999px;
-    padding: 2rem 4rem;
-    border: none;
-
-    color: white;
-    background-color: inherit;
-    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
-
-    transition: transform 0.3s ease;
-
-}
-
-.Shop_ComponentButton-Template--PurchaseOption:hover,
-.Shop_ComponentButton-Template--PurchaseOption:active{
-
-    box-shadow: 0 0 16px 8px rgb(255, 255, 255);
-    transform: scale(1.1);
-
-}

@@ -89,8 +89,8 @@ function Shop({setShopOpenFlag}) {
 
                             <h2>Purchasing: {item[shopItemAmountPurchasedKey]}</h2>
                             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "Shop_ComponentButton-Template--PurchaseOption Exit"> + </button>
-                                <button className = "Shop_ComponentButton-Template--PurchaseOption Exit"> - </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive Exit"> + </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive Exit"> - </button>
                             </div>
                         </div>
 

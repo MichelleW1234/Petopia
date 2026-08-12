@@ -789,7 +789,7 @@ a:active {
 .MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow{
 
   border-radius: 25px;
-  padding: 2rem 3rem;
+  padding: 2rem 4rem;
   border: none;
 
   color: white;
@@ -807,6 +807,45 @@ a:active {
   transform: scale(1.1);
 
 }
+
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive{
+
+  border-radius: 9999px;
+  padding: 2rem 4rem;
+  border: none;
+
+  color: white;
+  background-color: inherit;
+  box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+
+  transition: transform 0.3s ease;
+
+}
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive:hover,
+.MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationActive.active {
+
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
+  transform: scale(1.1);
+
+}
+
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlagNonstationInactive{
+
+  border-radius: 9999px;
+  padding: 2rem 4rem;
+  border: none;
+
+  color: rgb(255, 255, 255, 0.5);
+  background-color: inherit;
+  box-shadow: 0 0 16px 4px rgb(255, 255, 255, 0.5);
+
+}
+
+
+
 
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{
