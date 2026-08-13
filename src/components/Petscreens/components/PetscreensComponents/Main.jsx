@@ -3,10 +3,9 @@ import {useState, useEffect, useRef} from "react";
 import {useActivePetName} from "../../../../providers/ActivePetNameProvider.jsx";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
-import { usePetInventory } from "../../../../providers/PetInventoryProvider.jsx";
-import { useShopItems } from "../../../../providers/ShopItemsProvider.jsx";
+import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
-import { catSpecies, ceilingTypeKey, dogSpecies, floorTypeKey, happyAudioKey, healthCapList, healthKey, petInventoryItemIndexKey, petInventoryItemOwnerKey, sadAudioKey, shopItemImageKey, shopItemTypeKey, sleepAudioKey, speciesKey, stageKey, wallTypeKey } from "../../../../constants/Constants.js";
+import { catSpecies, ceilingTypeKey, dogSpecies, floorTypeKey, happyAudioKey, healthCapList, healthKey, sadAudioKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, sleepAudioKey, speciesKey, stageKey, wallTypeKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
@@ -24,8 +23,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
     const {GlobalTimer} = useGlobalTimer();
-    const {PetInventory, setPetInventory} = usePetInventory();
-    const {ShopItems, setShopItems} = useShopItems();
+    const {Inventory, setInventory} = useInventory();
 
     const mainPetWindowLength = 20;
 
@@ -287,21 +285,21 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                     )}
 
-                    {PetInventory.map((item, index) => (
+                    {Inventory.map((item, index) => (
 
-                        item[petInventoryItemOwnerKey] === ActivePetName ? (
+                        item[inventoryItemOwnerKey] === ActivePetName ? (
 
-                            ShopItems[item[petInventoryItemIndexKey]][shopItemTypeKey] === wallTypeKey ? (
+                            item[inventoryItemTypeKey] === wallTypeKey ? (
 
-                                <img className="Main_ComponentImage-Structure--WindowScreenWallDecoration" src = {ShopItems[item[petInventoryItemIndexKey]][shopItemImageKey]}/>
+                                <img key = {index} className="Main_ComponentImage-Structure--WindowScreenWallDecoration" src = {item[inventoryItemImageKey]}/>
 
-                            ) : ShopItems[item[petInventoryItemIndexKey]][shopItemTypeKey] === floorTypeKey ? (
+                            ) : item[inventoryItemTypeKey] === floorTypeKey ? (
 
-                                <img className="Main_ComponentImage-Structure--WindowScreenFloorDecoration" src = {ShopItems[item[petInventoryItemIndexKey]][shopItemImageKey]}/>
+                                <img key = {index} className="Main_ComponentImage-Structure--WindowScreenFloorDecoration" src = {item[inventoryItemImageKey]}/>
 
-                            ) : ShopItems[item[petInventoryItemIndexKey]][shopItemTypeKey] === ceilingTypeKey ? (
+                            ) : item[inventoryItemTypeKey] === ceilingTypeKey ? (
 
-                                <img className="Main_ComponentImage-Structure--WindowScreenCeilingDecoration" src = {ShopItems[item[petInventoryItemIndexKey]][shopItemImageKey]}/>
+                                <img key = {index} className="Main_ComponentImage-Structure--WindowScreenCeilingDecoration" src = {item[inventoryItemImageKey]}/>
 
                             ) : (
 

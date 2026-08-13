@@ -14,7 +14,7 @@ import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 
 import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
-import { errorMessageTimer, flagOpener, playSound } from "../../../helpers/Helpers.js";
+import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
 
@@ -175,17 +175,17 @@ function Adoption () {
         if (modifiedPetName === "") {
 
             e.preventDefault();
-            errorMessageTimer("Enter a name for your pet.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
+            errorMessageTimer("Enter a name for your pet.");
 
         } else if (modifiedPetName.length > 20){
 
             e.preventDefault();
-            errorMessageTimer("Shorten the name to 20 characters max.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
+            errorMessageTimer("Shorten the name to 20 characters max.");
 
         } else if (modifiedPetName in PetList && modifiedPetName in PetTimeStamps) {
 
             e.preventDefault();
-            errorMessageTimer("This name already exists.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
+            errorMessageTimer("This name already exists.");
 
         } else {
 
@@ -308,6 +308,27 @@ function Adoption () {
 
     }
 
+
+    const errorMessageTimer = (message) => {
+    
+        playSound(adoptionConfirmationErrorSoundKey);
+    
+        setAdoptionErrorMessage(message);
+    
+        if (adoptionConfirmationTimeoutRef.current) {
+            clearTimeout(adoptionConfirmationTimeoutRef.current);
+        }
+    
+        adoptionConfirmationTimeoutRef.current = setTimeout(() => {
+            setAdoptionErrorMessage("");
+            adoptionConfirmationTimeoutRef.current = null;
+        }, 5000); 
+    
+    }
+    
+
+
+
     
 
     return (
@@ -325,9 +346,9 @@ function Adoption () {
             />}
 
             {adoptionSpeciesCareGuideOpenFlag &&
-                <SpeciesCareGuide
-                    setSpeciesCareGuideOpenFlag = {setAdoptionSpeciesCareGuideOpenFlag}
-                />
+            <SpeciesCareGuide
+                setSpeciesCareGuideOpenFlag = {setAdoptionSpeciesCareGuideOpenFlag}
+            />
             }
 
             <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">

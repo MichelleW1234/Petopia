@@ -1,13 +1,12 @@
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
-import { useBalance } from "../../../../providers/BalanceProvider.jsx";
-import { usePetInventory } from "../../../../providers/PetInventoryProvider.jsx";
+import {useInventory} from "../../../../providers/InventoryProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
-import { navButtonPressSoundKey, restartGameSoundKey } from "../../../../constants/Constants.js";
+import { catSpecies, ceilingTypeKey, dogSpecies, fishSpecies, floorTypeKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesKey, inventoryItemTypeKey, navButtonPressSoundKey, potionTypeKey, restartGameSoundKey, wallTypeKey } from "../../../../constants/Constants.js";
 
 
 
@@ -15,9 +14,8 @@ function Restart({setRestartOpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {Inventory, setInventory} = useInventory();
     const {Room, setRoom} = useRoom();
-    const {Balance, setBalance} = useBalance();
-    const {PetInventory, setPetInventory} = usePetInventory();
 
     
     useKeyboardShortcut("Enter", () => {
@@ -45,8 +43,15 @@ function Restart({setRestartOpenFlag}) {
         setPetList({});
         setPetTimeStamps({});
         setRoom([null, null, null]);
-        setBalance(0);
-        setPetInventory([]);
+        setInventory([
+                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtL8KDTH3di9zyztqIV4ipLNNB4bWDS_Nrq30WRmEDHA&s=10", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies, fishSpecies], [inventoryItemTypeKey]: potionTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtL8KDTH3di9zyztqIV4ipLNNB4bWDS_Nrq30WRmEDHA&s=10", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies, fishSpecies], [inventoryItemTypeKey]: potionTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtL8KDTH3di9zyztqIV4ipLNNB4bWDS_Nrq30WRmEDHA&s=10", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies, fishSpecies], [inventoryItemTypeKey]: potionTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]: "Painting", [inventoryItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScKL4vZWyVa2l6-eZsM9bFtWiaSJXesFfb2BwEc6vedw&s=10", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies], [inventoryItemTypeKey]: wallTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]: "Rug", [inventoryItemImageKey]: "https://cdn.creativefabrica.com/2022/07/04/Round-bath-rug-Cartoon-mat-icon-Weavin-Graphics-33565311-1.png", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies], [inventoryItemTypeKey]: floorTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]:  "Statue", [inventoryItemImageKey]: "https://i.etsystatic.com/35169377/r/il/901776/6313728576/il_570xN.6313728576_9y2n.jpg", [inventoryItemSpeciesKey]: [fishSpecies], [inventoryItemTypeKey]: floorTypeKey, [inventoryItemOwnerKey]: null},
+                        {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: "https://img.itch.zone/aW1nLzExMTQ1ODI5LnBuZw==/original/x%2BGumF.png", [inventoryItemSpeciesKey]: [dogSpecies, catSpecies], [inventoryItemTypeKey]: ceilingTypeKey, [inventoryItemOwnerKey]: null},
+                    ]);
 
         flagCloser(setRestartOpenFlag);
 

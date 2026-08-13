@@ -11,26 +11,26 @@ import FishStageTwo from "../images/Fish/Portrait/StageTwo.png";
 import FishStageThree from "../images/Fish/Portrait/StageThree.png";
 
 
-export const shopItemNameKey = "name";
-export const shopItemImageKey = "image";
-export const shopItemCostKey = "cost";
-export const shopItemSpeciesKey = "species";
-export const shopItemTypeKey = "type";
+
+
+
+export const inventoryItemNameKey = "name";
+export const inventoryItemImageKey = "image";
+export const inventoryItemSpeciesKey = "species";
+export const inventoryItemTypeKey = "type";
+export const inventoryItemOwnerKey = "owner";
 
 export const potionTypeKey = "potion";
-export const floorTypeKey = "floor";
-export const ceilingTypeKey = "ceiling";
-export const wallTypeKey = "wall";
-
-export const petInventoryItemIndexKey = "index";
-export const petInventoryItemOwnerKey = "owner";
+export const floorTypeKey = "floor decoration";
+export const ceilingTypeKey = "ceiling decoration";
+export const wallTypeKey = "wall decoration";
 
 
 
 export const navButtonPressSoundKey = "NavButtonPress";
 export const selectionButtonPressSoundKey = "SelectionButtonPress";
 export const screenButtonPressSoundKey = "ScreenButtonPress"
-export const confirmationErrorSoundKey = "error";
+export const adoptionConfirmationErrorSoundKey = "error";
 export const startActivitySoundKey = "start";
 export const activitySuccessSoundKey = "success";
 export const activityFailSoundKey = "fail";

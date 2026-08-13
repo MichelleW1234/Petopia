@@ -2,15 +2,14 @@ import{useState} from "react";
 
 import { GlobalTimerProvider, useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
-import { useShopItems } from "../../../providers/ShopItemsProvider.jsx";
-import {usePetInventory} from "../../../providers/PetInventoryProvider.jsx";
+import { useInventory } from "../../../providers/InventoryProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom} from "../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, petInventoryItemIndexKey, petInventoryItemOwnerKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, shopItemImageKey, shopItemNameKey, shopItemSpeciesKey, shopItemTypeKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesKey, inventoryItemTypeKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -20,8 +19,7 @@ function Inventory({setInventoryOpenFlag}) {
     const {Room, setRoom} = useRoom();
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
-    const {ShopItems, setShopItems} = useShopItems();
-    const {PetInventory, setPetInventory} = usePetInventory();
+    const {Inventory, setInventory} = useInventory();
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
 
 
@@ -35,13 +33,11 @@ function Inventory({setInventoryOpenFlag}) {
 
 
     
-    const selectPet = (selectedItem, petName) => {
+    const selectPet = (selectedIndex, petName) => {
 
         playSound(screenButtonPressSoundKey);
 
-        const index = PetInventory.findIndex(item => item === selectedItem);
-
-        if (ShopItems[selectedItem[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey){
+        if (Inventory[selectedIndex][inventoryItemTypeKey] === potionTypeKey){
         
             setPetList(prev => {
 
@@ -64,7 +60,6 @@ function Inventory({setInventoryOpenFlag}) {
                 return copy;
 
             });
-
 
             setPetTimeStamps(prev => {
 
@@ -92,13 +87,13 @@ function Inventory({setInventoryOpenFlag}) {
 
             });
 
-            setPetInventory(prev => {
+            setInventory(prev => {
 
                 const copy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                copy.splice(index, 1);
+                copy.splice(selectedIndex, 1);
 
                 return copy;
 
@@ -106,21 +101,13 @@ function Inventory({setInventoryOpenFlag}) {
 
         } else {
 
-            setPetInventory(prev => {
+            setInventory(prev => {
 
                 const copy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                if (ShopItems[selectedItem[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey){
-
-                    copy.splice(index, 1);
-
-                } else {
-
-                    copy[index][petInventoryItemOwnerKey] = petName;
-
-                }
+                copy[selectedIndex][inventoryItemOwnerKey] = petName;
 
                 return copy;
 
@@ -133,13 +120,13 @@ function Inventory({setInventoryOpenFlag}) {
     const deselectPet = (deselectedIndex) => {
 
         playSound(screenButtonPressSoundKey);
-        setPetInventory(prev => {
+        setInventory(prev => {
 
             const copy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            copy[deselectedIndex][petInventoryItemOwnerKey] = null;
+            copy[deselectedIndex][inventoryItemOwnerKey] = null;
 
             return copy;
 
@@ -156,87 +143,76 @@ function Inventory({setInventoryOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                {PetInventory.length === 0 ? (
-
-                    <h1> Buy items from the shop to add to your inventory. </h1>
-
-                ) : (
-
-                    <h1> Distribute items to your pets:</h1>
-
-                )}
+                <h1> Distribute items to your pets:</h1>
                 
-                {PetInventory.map((item, index) => (
+                {Inventory.map((item, index) => (
                     
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemDescription">
-                            <h2>{ShopItems[item[petInventoryItemIndexKey]][shopItemNameKey]}</h2>
-                            <img src = {ShopItems[item[petInventoryItemIndexKey]][shopItemImageKey]}/>
+                        <h2>{item[inventoryItemNameKey]}</h2>
+
+                        <div className="Inventory_ComponentContainer-Structure--ItemField">
+                            <img src = {item[inventoryItemImageKey]}/>
+                            <div className="Inventory_ComponentContainer-Structure--ItemDescription">
+                                <h2>Type: {item[inventoryItemTypeKey]}</h2>
+                                <h2> 
+                                    For your:                           
+                                    {item[inventoryItemSpeciesKey].map((item, index) => (
+                                        <div key={index}>&gt; {item}</div>
+                                    ))}
+                                </h2>
+                            </div>
+
                         </div>
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemDescription">
-                            <h2>Give to:</h2>
+                        <h2>Give to:</h2>
 
-                            <div className="Inventory_ComponentContainer-Structure--ItemPetButtons">
+                        <div className="Inventory_ComponentContainer-Structure--ItemPetButtons">
 
-                                {Room.map((petName, indexInner) => (
+                            {Room.map((petName, indexInner) => (
 
-                                    petName === null ? (
+                                petName === null ? (
 
-                                        null
+                                    null
 
-                                    ) : (
+                                ) : (
 
-                                        ShopItems[item[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey ? (
+                                    item[inventoryItemTypeKey] === potionTypeKey ? (
 
-                                            PetList[petName][healthKey] === 0 ? (
+                                        PetList[petName][healthKey] === 0 ? (
 
-                                                item[petInventoryItemOwnerKey] === petName ? (
-
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(indexInner)}> {petName} </button>
-
-                                                ) : (
-
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(item, petName)}> {petName} </button>
-
-                                                )
-
-                                            ) : (
-
-                                                <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
-
-                                            )
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
                                         ) : (
 
-                                            ShopItems[item[petInventoryItemIndexKey]][shopItemSpeciesKey].includes(PetList[petName][speciesKey]) ? (
+                                            <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
 
-                                                item[petInventoryItemOwnerKey] === petName ? (
+                                        )
 
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(indexInner)}> {petName} </button>
+                                    ) : (
 
-                                                ) : (
+                                        item[inventoryItemOwnerKey] === petName ? (
 
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(item, petName)}> {petName} </button>
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
 
-                                                )
+                                        ) : item[inventoryItemSpeciesKey].includes(PetList[petName][speciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
-                                            ) : (
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
-                                                <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
+                                        ) : (
 
-                                            )
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
 
                                         )
 
                                     )
 
-                                ))}
+                                )
 
-                            </div>
-                            
+                            ))}
+
                         </div>
+                            
 
                     </div>
 
