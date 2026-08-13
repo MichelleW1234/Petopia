@@ -52,11 +52,15 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
         [ActivePetName]: {
             
             ...prev[ActivePetName],
-            [key]: {[activityLastPerformedKey] : GlobalTimer, [activityLastDamageKey] : prev[ActivePetName][key][1]}
+            [key]: {
+                ...prev[ActivePetName][key],
+                [activityLastPerformedKey]: GlobalTimer         //THIS!!!!
+            }
             
         }
 
     }));
+
 
     setDesiredOption(-1);
 

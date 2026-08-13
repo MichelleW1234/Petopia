@@ -82,7 +82,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     useEffect(() => {
 
-        const preloadImages = [...feedAnimationImage];
+        const preloadImages = [feedAnimationImage];
 
         preloadImages.forEach((src) => {
         const img = new Image();

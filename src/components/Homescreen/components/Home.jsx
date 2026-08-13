@@ -148,7 +148,7 @@ function Home (){
 
     const checkoutRoom = (roomNumber) => {
 
-        playSound(navButtonPressSoundKey);
+        playSound(selectionButtonPressSoundKey);
         setActiveCheckoutRoom(roomNumber);
 
     }

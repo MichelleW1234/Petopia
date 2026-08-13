@@ -1,23 +1,28 @@
 import{useState} from "react";
 
+import { GlobalTimerProvider, useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 import { usePetList } from "../../../providers/PetListProvider.jsx";
+import { useShopItems } from "../../../providers/ShopItemsProvider.jsx";
+import {usePetInventory} from "../../../providers/PetInventoryProvider.jsx";
+import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
+import { useRoom} from "../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { catSpecies, dogSpecies, fishSpecies, portraitPetImages, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, petInventoryItemIndexKey, petInventoryItemOwnerKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, shopItemImageKey, shopItemNameKey, shopItemSpeciesKey, shopItemTypeKey, speciesKey, stageKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
 
 function Inventory({setInventoryOpenFlag}) {
 
+    const {Room, setRoom} = useRoom();
     const {PetList, setPetList} = usePetList();
-
-    const inventoryItems = ["a", "b", "c", "d", "e"];
-    const inventoryPets = [[catSpecies, dogSpecies], [catSpecies, dogSpecies, fishSpecies], [catSpecies, dogSpecies], [catSpecies, dogSpecies], [catSpecies, dogSpecies, fishSpecies]];
-    const inventoryPetSelected = ["chester", null, null, null, null];
-
+    const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
+    const {ShopItems, setShopItems} = useShopItems();
+    const {PetInventory, setPetInventory} = usePetInventory();
+    const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
 
 
     useKeyboardShortcut("i", () => {
@@ -30,15 +35,115 @@ function Inventory({setInventoryOpenFlag}) {
 
 
     
-    const selectPet = (item, petName) => {
+    const selectPet = (selectedItem, petName) => {
+
+        playSound(screenButtonPressSoundKey);
+
+        const index = PetInventory.findIndex(item => item === selectedItem);
+
+        if (ShopItems[selectedItem[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey){
+        
+            setPetList(prev => {
+
+                const copy = structuredClone(prev);
+
+                if (copy[petName][speciesKey] === dogSpecies){
+
+                    copy[petName][healthKey] = healthCapList[dogSpecies][0];
+
+                } else if (copy[petName][speciesKey] === catSpecies){
+
+                    copy[petName][healthKey] = healthCapList[catSpecies][0];
+
+                } else {
+
+                    copy[petName][healthKey] = healthCapList[fishSpecies][0];
+
+                }
+
+                return copy;
+
+            });
 
 
+            setPetTimeStamps(prev => {
+
+                const copy = structuredClone(prev);
+
+                if (feedingKey in copy[petName]){
+
+                    copy[petName][feedingKey][activityLastPerformedKey] = GlobalTimer;
+
+                }
+                
+                if (cleaningKey in copy[petName]){
+
+                    copy[petName][cleaningKey][activityLastPerformedKey] = GlobalTimer;
+
+                }
+
+                if (playingKey in copy[petName]){
+
+                    copy[petName][playingKey][activityLastPerformedKey] = GlobalTimer;
+
+                }
+
+                return copy;
+
+            });
+
+            setPetInventory(prev => {
+
+                const copy = prev.map(inner =>
+                    structuredClone(inner)
+                );
+
+                copy.splice(index, 1);
+
+                return copy;
+
+            });
+
+        } else {
+
+            setPetInventory(prev => {
+
+                const copy = prev.map(inner =>
+                    structuredClone(inner)
+                );
+
+                if (ShopItems[selectedItem[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey){
+
+                    copy.splice(index, 1);
+
+                } else {
+
+                    copy[index][petInventoryItemOwnerKey] = petName;
+
+                }
+
+                return copy;
+
+            });
+
+        }
 
     }
 
-    const deselectPet = (item, petName) => {
+    const deselectPet = (deselectedIndex) => {
 
+        playSound(screenButtonPressSoundKey);
+        setPetInventory(prev => {
 
+            const copy = prev.map(inner =>
+                structuredClone(inner)
+            );
+
+            copy[deselectedIndex][petInventoryItemOwnerKey] = null;
+
+            return copy;
+
+        });
 
     }
 
@@ -50,39 +155,80 @@ function Inventory({setInventoryOpenFlag}) {
         <div className="UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1> Distribute items to your pets:</h1>
+
+                {PetInventory.length === 0 ? (
+
+                    <h1> Buy items from the shop to add to your inventory. </h1>
+
+                ) : (
+
+                    <h1> Distribute items to your pets:</h1>
+
+                )}
                 
-                {inventoryItems.map((item, index) => (
+                {PetInventory.map((item, index) => (
                     
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
                         <div className="Inventory_ComponentContainer-Structure--ItemDescription">
-                            <h2>{item}</h2>
-                            <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLzOsXAGnBHRlP3m5OClYHGLxQHkqyJQGVI3Vxk3d6aA&s"/>
+                            <h2>{ShopItems[item[petInventoryItemIndexKey]][shopItemNameKey]}</h2>
+                            <img src = {ShopItems[item[petInventoryItemIndexKey]][shopItemImageKey]}/>
                         </div>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemDescription">
-                            <h2>Give to: </h2>
+                            <h2>Give to:</h2>
 
                             <div className="Inventory_ComponentContainer-Structure--ItemPetButtons">
 
-                                {Object.entries(PetList).map(([key, value]) => (
+                                {Room.map((petName, indexInner) => (
 
-                                    inventoryPets[index].includes(PetList[key][speciesKey]) ? (
+                                    petName === null ? (
 
-                                        inventoryPetSelected[index] === key ? (
-
-                                            <button key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(index, key)}> {key} </button>
-
-                                        ) : (
-
-                                            <button key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, key)}> {key} </button>
-
-                                        )
+                                        null
 
                                     ) : (
 
-                                        <button  key = {key} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {key} </button>
+                                        ShopItems[item[petInventoryItemIndexKey]][shopItemTypeKey] === potionTypeKey ? (
+
+                                            PetList[petName][healthKey] === 0 ? (
+
+                                                item[petInventoryItemOwnerKey] === petName ? (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(indexInner)}> {petName} </button>
+
+                                                ) : (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(item, petName)}> {petName} </button>
+
+                                                )
+
+                                            ) : (
+
+                                                <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
+
+                                            )
+
+                                        ) : (
+
+                                            ShopItems[item[petInventoryItemIndexKey]][shopItemSpeciesKey].includes(PetList[petName][speciesKey]) ? (
+
+                                                item[petInventoryItemOwnerKey] === petName ? (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(indexInner)}> {petName} </button>
+
+                                                ) : (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(item, petName)}> {petName} </button>
+
+                                                )
+
+                                            ) : (
+
+                                                <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
+
+                                            )
+
+                                        )
 
                                     )
 

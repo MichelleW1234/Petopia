@@ -13,8 +13,8 @@ import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionConfirmationErrorSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
-import { flagOpener, playSound } from "../../../helpers/Helpers.js";
+import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
+import { errorMessageTimer, flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
 
@@ -175,17 +175,17 @@ function Adoption () {
         if (modifiedPetName === "") {
 
             e.preventDefault();
-            showError("Enter a name for your pet.");
+            errorMessageTimer("Enter a name for your pet.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
 
         } else if (modifiedPetName.length > 20){
 
             e.preventDefault();
-            showError("Shorten the name to 20 characters max.");
+            errorMessageTimer("Shorten the name to 20 characters max.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
 
         } else if (modifiedPetName in PetList && modifiedPetName in PetTimeStamps) {
 
             e.preventDefault();
-            showError("This name already exists.");
+            errorMessageTimer("This name already exists.", setAdoptionErrorMessage, adoptionConfirmationTimeoutRef);
 
         } else {
 
@@ -193,24 +193,6 @@ function Adoption () {
             navigate("/home");
 
         }
-
-    }
-
-
-    const showError = (message) => {
-
-        playSound(adoptionConfirmationErrorSoundKey);
-
-        setAdoptionErrorMessage(message);
-
-        if (adoptionConfirmationTimeoutRef.current) {
-            clearTimeout(adoptionConfirmationTimeoutRef.current);
-        }
-
-        adoptionConfirmationTimeoutRef.current = setTimeout(() => {
-            setAdoptionErrorMessage("");
-            adoptionConfirmationTimeoutRef.current = null;
-        }, 5000); 
 
     }
 

@@ -1,4 +1,4 @@
-import { navButtonPressSoundKey, selectionButtonPressSoundKey, adoptionConfirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey} from "../constants/Constants.js";
+import { navButtonPressSoundKey, selectionButtonPressSoundKey, confirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
@@ -24,7 +24,7 @@ export const playSound = (soundEffect) => {
         [navButtonPressSoundKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
         [selectionButtonPressSoundKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
         [screenButtonPressSoundKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
-        [adoptionConfirmationErrorSoundKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
+        [confirmationErrorSoundKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
         [startActivitySoundKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
         [activitySuccessSoundKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
         [activityFailSoundKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
@@ -67,4 +67,21 @@ export const flagCloser = (setFlagToClose) => {
 
 }
 
+
+export const errorMessageTimer = (message, setErrorMessage, confirmationTimeoutRef) => {
+
+    playSound(confirmationErrorSoundKey);
+
+    setErrorMessage(message);
+
+    if (confirmationTimeoutRef.current) {
+        clearTimeout(confirmationTimeoutRef.current);
+    }
+
+    confirmationTimeoutRef.current = setTimeout(() => {
+        setErrorMessage("");
+        confirmationTimeoutRef.current = null;
+    }, 5000); 
+
+}
 

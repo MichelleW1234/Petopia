@@ -80,7 +80,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
     useEffect(() => {
 
-        const preloadImages = [...medicineAnimationImage];
+        const preloadImages = [medicineAnimationImage];
 
         preloadImages.forEach((src) => {
         const img = new Image();

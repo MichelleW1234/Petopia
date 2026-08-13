@@ -87,7 +87,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useEffect(() => {
 
-        const preloadImages = [...cleanAnimationImage, ...cleanOptionsList.map(item => item[optionCursorKey])];
+        const preloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[optionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();

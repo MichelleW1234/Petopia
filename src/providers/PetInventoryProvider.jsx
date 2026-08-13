@@ -1,9 +1,7 @@
 /*
-  For each pet list element:
-    - name 
-    - cost 
+  For each REUSABLE item (not including potions or single use items):
+    - index of item in shop list
     - pet that owns it -> default is null
-    - one time use? -> true/false
 */
 
 import { createContext, useContext, useState, useEffect } from "react";
@@ -15,9 +13,9 @@ export function PetInventoryProvider({ children }) {
   const [PetInventory, setPetInventory] = useState(() => {
     try {
       const stored = JSON.parse(localStorage.getItem("PetInventory"));
-      return stored && typeof stored === "object" ? stored : {};
+      return stored ? stored : [];
     } catch {
-      return {};
+      return [];
     }
   });
 

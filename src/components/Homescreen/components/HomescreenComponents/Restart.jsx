@@ -1,6 +1,8 @@
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
+import { useBalance } from "../../../../providers/BalanceProvider.jsx";
+import { usePetInventory } from "../../../../providers/PetInventoryProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
@@ -14,6 +16,8 @@ function Restart({setRestartOpenFlag}) {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
+    const {Balance, setBalance} = useBalance();
+    const {PetInventory, setPetInventory} = usePetInventory();
 
     
     useKeyboardShortcut("Enter", () => {
@@ -41,6 +45,8 @@ function Restart({setRestartOpenFlag}) {
         setPetList({});
         setPetTimeStamps({});
         setRoom([null, null, null]);
+        setBalance(0);
+        setPetInventory([]);
 
         flagCloser(setRestartOpenFlag);
 

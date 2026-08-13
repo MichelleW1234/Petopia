@@ -1,13 +1,16 @@
-import {useState} from "react";
+import {useState, useRef} from "react";
 
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
+import { useShopItems } from "../../../../providers/ShopItemsProvider.jsx";
+import { usePetInventory } from "../../../../providers/PetInventoryProvider.jsx";
+import { useBalance } from "../../../../providers/BalanceProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
-import { navButtonPressSoundKey, restartGameSoundKey, selectionButtonPressSoundKey } from "../../../../constants/Constants.js";
+import { playSound, flagCloser, errorMessageTimer } from "../../../../helpers/Helpers.js";
+import { navButtonPressSoundKey, petInventoryItemIndexKey, petInventoryItemOwnerKey, restartGameSoundKey, selectionButtonPressSoundKey, shopItemCostKey, shopItemImageKey, shopItemNameKey, shopItemSpeciesKey, shopItemTypeKey } from "../../../../constants/Constants.js";
 
 import "./Shop.css";
 
@@ -16,19 +19,16 @@ import "./Shop.css";
 
 function Shop({setShopOpenFlag}) {
 
-    const shopItemNameKey = "Name";
-    const shopItemImageKey = "Image";
-    const shopItemCostKey = "Cost";
-    const shopItemReusableKey = "Reusable";
+    const {ShopItems, setShopItems} = useShopItems();
+    const {PetInventory, setPetInventory} = usePetInventory();
+    const {Balance, setBalance} = useBalance();
 
     const [shopSelectedItems, setShopSelectedItems] = useState([]);
+    const [shopMessage, setShopMessage] = useState("");
 
-    const shopItems = [
-        {[shopItemNameKey]: "Potion", [shopItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2khG4rZrt-xpupiJM3L8n-9n65PNSCjAEuvQUMg_AKV9o09WwZ6EJTjVn&s=10", [shopItemCostKey]: 1000, [shopItemReusableKey]: "No"},
-        {[shopItemNameKey]: "Rug", [shopItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2khG4rZrt-xpupiJM3L8n-9n65PNSCjAEuvQUMg_AKV9o09WwZ6EJTjVn&s=10", [shopItemCostKey]: 1000, [shopItemReusableKey]: "Yes"},
-        {[shopItemNameKey]: "Painting", [shopItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2khG4rZrt-xpupiJM3L8n-9n65PNSCjAEuvQUMg_AKV9o09WwZ6EJTjVn&s=10", [shopItemCostKey]: 1000, [shopItemReusableKey]: "Yes"},
-        {[shopItemNameKey]: "Statue", [shopItemImageKey]: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2khG4rZrt-xpupiJM3L8n-9n65PNSCjAEuvQUMg_AKV9o09WwZ6EJTjVn&s=10", [shopItemCostKey]: 1000, [shopItemReusableKey]: "Yes"}
-    ]
+    const shopConfirmationTimeoutRef = useRef(null);
+
+
 
     
     useKeyboardShortcut("Escape", () => {
@@ -40,36 +40,77 @@ function Shop({setShopOpenFlag}) {
     );
 
     
-    useKeyboardShortcut("Enter", () => {
-    
-        buyItems();
+    useKeyboardShortcut("Enter", (e) => {
+
+        if (shopSelectedItems.length > 0){
+
+            buyItems(e);
+
+        }
 
     },
         ".PurchaseItems"
     );
 
 
-    const addItem = (itemToAdd) => {
+    const addItem = (itemIndex) => {
     
         playSound(selectionButtonPressSoundKey);
-        setShopSelectedItems(prev => [...prev, itemToAdd]);
-
-        console.log(shopSelectedItems);
+        setShopSelectedItems(prev => [...prev, itemIndex]);
 
     }
 
 
-    const removeItem = (itemToRemove) => {
+    const removeItem = (itemIndex) => {
 
         playSound(selectionButtonPressSoundKey);
-        setShopSelectedItems(prev => prev.filter(item => item !== itemToRemove));
-         console.log(shopSelectedItems);
-        
+        setShopSelectedItems(prev => prev.filter(item => item !== itemIndex));
+
     }
 
-    const buyItems = () => {
+    const buyItems = (e) => {
 
+        let totalCost = 0;
 
+        for (let i = 0; i<shopSelectedItems.length; i++){
+
+            totalCost += ShopItems[shopSelectedItems[i]][shopItemCostKey];
+
+        }
+
+        if (Balance < totalCost){
+
+            e.preventDefault();
+            errorMessageTimer("Your balance is too low.", setShopMessage, shopConfirmationTimeoutRef);
+
+        } else {
+
+            setPetInventory(prev => {
+
+                const copy = prev.map(inner =>
+                    structuredClone(inner)
+                );
+
+                for (let i = 0; i<shopSelectedItems.length; i++){
+
+                    let newItem = 
+                        {
+                            [petInventoryItemIndexKey] : shopSelectedItems[i],
+                            [petInventoryItemOwnerKey] : null
+                        }
+                    
+                    copy.push(newItem);
+
+                }
+
+                return copy;
+
+            });
+
+            setBalance(prev => prev - totalCost);
+            flagCloser(setShopOpenFlag);
+
+        }
 
     }
 
@@ -82,29 +123,36 @@ function Shop({setShopOpenFlag}) {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 
-                    {shopItems.map((item, index) => (
+                    {ShopItems.map((item, index) => (
 
                         <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Shop_ComponentContainer-Structure--ItemSlot">
 
                             <h2>{item[shopItemNameKey]}</h2>
+                            <h2>${item[shopItemCostKey]}</h2>
         
-                            {shopSelectedItems.includes(item[shopItemNameKey]) ? (
+                            {shopSelectedItems.includes(index) ? (
                             
-                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removeItem(item[shopItemNameKey])}> 
+                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removeItem(index)}> 
                                     <img src = {item[shopItemImageKey]}/>
                                 </button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addItem(item[shopItemNameKey])}> 
+                                <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addItem(index)}> 
                                     <img src = {item[shopItemImageKey]}/>
                                 </button>
 
                             )}
 
-                            <h2>Price: {item[shopItemCostKey]}</h2>
+                            <h2>Type: {item[shopItemTypeKey]}</h2>
 
-                            <h2>Reusable: {item[shopItemReusableKey]}</h2>
+                            
+                            <h2> 
+                                For your:                           
+                                {item[shopItemSpeciesKey].map((item, index) => (
+                                    <div key={index}>&gt; {item}</div>
+                                ))}
+                            </h2>
 
                         </div>
 
@@ -112,10 +160,23 @@ function Shop({setShopOpenFlag}) {
                     
                 </div>
             </div>
-            <h1>Balance: 1.5m</h1>
+            <div className="Shop_ComponentContainer-Template--BalanceInfo">
+                <p className="Shop_ComponentContainer-Template--ConfirmationError">{shopMessage}</p>
+                <h1>Balance: {Balance}</h1>
+            </div> 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Exit" onClick = {() => flagCloser(setShopOpenFlag)}> Exit <br/> [esc]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation PurchaseItems" onClick = {() => buyItems()}> Purchase Items <br/> [return]</button>
+
+                {shopSelectedItems.length === 0 ? (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation"> Purchase Items <br/> [return]</button>
+
+                ) : (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation PurchaseItems" onClick = {(e) => buyItems(e)}> Purchase Items <br/> [return]</button>
+
+                )}
+
             </div>
         </div>
     );
