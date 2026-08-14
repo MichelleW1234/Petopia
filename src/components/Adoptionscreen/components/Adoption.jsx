@@ -13,7 +13,7 @@ import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 
-import { portraitPetImages, cleaningKey, birthDateKey, catSpecies, dogSpecies, feedingKey, fishSpecies, healthKey, medicineKey, playingKey, speciesKey, stageKey, genderKey, maleGender, femaleGender, healthCapList, selectionButtonPressSoundKey, navButtonPressSoundKey, adoptionSuccessSoundKey, restartGameSoundKey, screenButtonPressSoundKey, activityLastPerformedKey, activityLastDamageKey } from "../../../constants/Constants.js";
+import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, soundSelectionButtonPressKey, soundNavButtonPressKey, soundAdoptionSuccessKey, soundRestartGameKey, soundScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, soundAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
@@ -140,7 +140,7 @@ function Adoption () {
 
     const quit = () => {
 
-        playSound(navButtonPressSoundKey);
+        playSound(soundNavButtonPressKey);
         setActiveCheckoutRoom(-1);
 
     }
@@ -148,17 +148,17 @@ function Adoption () {
 
     const petSelecting = () => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
         
         const gender = Math.floor(Math.random() * 2);
         
         if (gender === 0){
 
-            setAdoptionPetGender(maleGender);
+            setAdoptionPetGender(petGenderMaleKey);
 
         } else {
 
-            setAdoptionPetGender(femaleGender);
+            setAdoptionPetGender(petGenderFemaleKey);
 
         }
 
@@ -167,7 +167,7 @@ function Adoption () {
 
     const nameChecking = (e) => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
         const modifiedPetName = adoptionConfirmationPetName.trim().toLowerCase();
         setAdoptionConfirmationPetName(modifiedPetName);
@@ -199,22 +199,22 @@ function Adoption () {
 
     const adoptPet = (finalPetName) => {
 
-        playSound(adoptionSuccessSoundKey);
+        playSound(soundAdoptionSuccessKey);
 
         const startingTime = GlobalTimer;
 
-        if (adoptionSelectedPet === dogSpecies){
+        if (adoptionSelectedPet === petSpeciesDogKey){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
-                        [speciesKey]: dogSpecies, 
-                        [stageKey]: 0,
-                        [healthKey]: healthCapList[dogSpecies][0],
-                        [birthDateKey]: startingTime,
-                        [genderKey]: adoptionPetGender,
-                        [medicineKey]: 0
+                        [petSpeciesKey]: petSpeciesDogKey, 
+                        [petStageKey]: 0,
+                        [petHealthKey]: petSpeciesHealthCapList[petSpeciesDogKey][0],
+                        [petBirthDateKey]: startingTime,
+                        [petGenderKey]: adoptionPetGender,
+                        [petMedicineKey]: 0
                     }
             }));
 
@@ -222,24 +222,24 @@ function Adoption () {
                 ...prev,
                 [finalPetName]:
                     {
-                        [feedingKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime},
-                        [cleaningKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime},
-                        [playingKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime}
+                        [petActivityTimeStampFeedingKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime},
+                        [petActivityTimeStampCleaningKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime},
+                        [petActivityTimeStampPlayingKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime}
                     }
             }));
 
-        } else if (adoptionSelectedPet === catSpecies){
+        } else if (adoptionSelectedPet === petSpeciesCatKey){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
-                        [speciesKey]: catSpecies, 
-                        [stageKey]: 0,
-                        [healthKey]: healthCapList[catSpecies][0],
-                        [birthDateKey]: startingTime,
-                        [genderKey]: adoptionPetGender,
-                        [medicineKey]: 0
+                        [petSpeciesKey]: petSpeciesCatKey, 
+                        [petStageKey]: 0,
+                        [petHealthKey]: petSpeciesHealthCapList[petSpeciesCatKey][0],
+                        [petBirthDateKey]: startingTime,
+                        [petGenderKey]: adoptionPetGender,
+                        [petMedicineKey]: 0
                     }
             }));
 
@@ -247,23 +247,23 @@ function Adoption () {
                 ...prev,
                 [finalPetName]:
                     {
-                        [feedingKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime},
-                        [playingKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime}
+                        [petActivityTimeStampFeedingKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime},
+                        [petActivityTimeStampPlayingKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime}
                     }
             }));
 
-        } else if (adoptionSelectedPet === fishSpecies){
+        } else if (adoptionSelectedPet === petSpeciesFishKey){
 
             setPetList(prev => ({
                 ...prev,
                 [finalPetName]: 
                     { 
-                        [speciesKey]: fishSpecies, 
-                        [stageKey]: 0,
-                        [healthKey]: healthCapList[fishSpecies][0],
-                        [birthDateKey]: startingTime,
-                        [genderKey]: adoptionPetGender,
-                        [medicineKey]: 0
+                        [petSpeciesKey]: petSpeciesFishKey, 
+                        [petStageKey]: 0,
+                        [petHealthKey]: petSpeciesHealthCapList[petSpeciesFishKey][0],
+                        [petBirthDateKey]: startingTime,
+                        [petGenderKey]: adoptionPetGender,
+                        [petMedicineKey]: 0
                     }
             }));
 
@@ -271,8 +271,8 @@ function Adoption () {
                 ...prev,
                 [finalPetName]:
                     {
-                        [feedingKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime},
-                        [cleaningKey]: {[activityLastPerformedKey] : startingTime, [activityLastDamageKey] : startingTime},
+                        [petActivityTimeStampFeedingKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime},
+                        [petActivityTimeStampCleaningKey]: {[petActivityTimeStampLastPerformedKey] : startingTime, [petActivityTimeStampLastDamagedKey] : startingTime},
                     }
             }));
 
@@ -293,7 +293,7 @@ function Adoption () {
 
     const undo = () => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
         setAdoptionSelectedPet("");
         setAdoptionPetGender("");
@@ -303,7 +303,7 @@ function Adoption () {
 
     const selectPet = (key) => {
 
-        playSound(selectionButtonPressSoundKey);
+        playSound(soundSelectionButtonPressKey);
         setAdoptionSelectedPet(key);
 
     }
@@ -311,7 +311,7 @@ function Adoption () {
 
     const errorMessageTimer = (message) => {
     
-        playSound(adoptionConfirmationErrorSoundKey);
+        playSound(soundAdoptionConfirmationErrorKey);
     
         setAdoptionErrorMessage(message);
     
@@ -366,19 +366,19 @@ function Adoption () {
                         
                         <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
             
-                            {Object.keys(portraitPetImages).map((key) => (
+                            {Object.keys(petSpeciesImagePortraitList).map((key) => (
             
                                 <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                     {key === adoptionSelectedPet ? (
             
                                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => selectPet("")}>
-                                            <img src = {portraitPetImages[key][0]}/>
+                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
                                         </button>
 
                                     ) : (
             
                                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => selectPet(key)}>
-                                            <img src = {portraitPetImages[key][0]}/>
+                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
                                         </button>
             
                                     )}
@@ -418,7 +418,7 @@ function Adoption () {
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
                                     <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
-                                        <img src = {portraitPetImages[adoptionSelectedPet][0]}/>
+                                        <img src = {petSpeciesImagePortraitList[adoptionSelectedPet][0]}/>
                                     </div>
                                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
                                         <input 

@@ -3,7 +3,7 @@ import { usePetList} from "../../../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { healthKey, feedingKey, cleaningKey, playingKey, medicineKey, activityLastPerformedKey } from "../../../../../../constants/Constants.js";
+import { petHealthKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampLastPerformedKey } from "../../../../../../constants/Constants.js";
 
 import "./Activity.css";
 
@@ -17,11 +17,11 @@ function Activity({activityKey, activityTimeGap}) {
     const {ActivePetName, setActivePetName} = useActivePetName();
 
 
-    const activityDeadLine = activityKey === medicineKey ? 
+    const activityDeadLine = activityKey === petMedicineKey ? 
                             PetList[ActivePetName][activityKey] + activityTimeGap
-                        : PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey] + activityTimeGap;
+                        : PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey] + activityTimeGap;
 
-    const activityLastTimeString = activityKey === medicineKey ?
+    const activityLastTimeString = activityKey === petMedicineKey ?
                                         PetList[ActivePetName][activityKey] === 0 ? 
                                             "N/A"
                                         :   (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
@@ -31,7 +31,7 @@ function Activity({activityKey, activityTimeGap}) {
                                                 hour: "2-digit",
                                                 minute: "2-digit",
                                             })
-                                    :   (new Date(PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey])).toLocaleString([], {
+                                    :   (new Date(PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey])).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
                                             day: "2-digit",
@@ -39,9 +39,9 @@ function Activity({activityKey, activityTimeGap}) {
                                             minute: "2-digit",
                                         });
 
-    const activityNextTimeString = PetList[ActivePetName][healthKey] === 0 ?
+    const activityNextTimeString = PetList[ActivePetName][petHealthKey] === 0 ?
                                         "--"
-                                    :   activityKey === medicineKey ?  
+                                    :   activityKey === petMedicineKey ?  
                                             PetList[ActivePetName][activityKey] === 0 ? 
                                                 "On Demand"
                                             : (new Date(activityDeadLine)).toLocaleString([], {
@@ -61,27 +61,27 @@ function Activity({activityKey, activityTimeGap}) {
                                             });
 
     const activityCurrDate = GlobalTimer;
-    const activityPercentUntilNextUpdate = activityKey === medicineKey ?  
+    const activityPercentUntilNextUpdate = activityKey === petMedicineKey ?  
                                                 PetList[ActivePetName][activityKey] === 0 ? 
                                                     100
                                                 : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetList[ActivePetName][activityKey])/activityTimeGap) * 100)))
-                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][activityLastPerformedKey])/activityTimeGap) * 100)));
+                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey])/activityTimeGap) * 100)));
 
     const activityLastStrings = {
 
-        [feedingKey]: "Last Fed: ",
-        [cleaningKey]: "Last Cleaned: ",
-        [playingKey]: "Last Played: ",
-        [medicineKey]: "Last Dose Recieved: "
+        [petActivityTimeStampFeedingKey]: "Last Fed: ",
+        [petActivityTimeStampCleaningKey]: "Last Cleaned: ",
+        [petActivityTimeStampPlayingKey]: "Last Played: ",
+        [petMedicineKey]: "Last Dose Recieved: "
 
     }
 
     const activityNextStrings = {
 
-        [feedingKey]: "Feed Before: ",
-        [cleaningKey]: "Clean Before: ",
-        [playingKey]: "Play Before: ",
-        [medicineKey]: "Next Dose Available: "
+        [petActivityTimeStampFeedingKey]: "Feed Before: ",
+        [petActivityTimeStampCleaningKey]: "Clean Before: ",
+        [petActivityTimeStampPlayingKey]: "Play Before: ",
+        [petMedicineKey]: "Next Dose Available: "
 
     }
 
@@ -98,7 +98,7 @@ function Activity({activityKey, activityTimeGap}) {
                 <p>{activityNextTimeString}</p>
             </div>
     
-            {PetList[ActivePetName][healthKey] === 0 ? (
+            {PetList[ActivePetName][petHealthKey] === 0 ? (
 
                 <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
 

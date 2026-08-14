@@ -6,7 +6,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { selectionButtonPressSoundKey, clearPetsSoundKey, portraitPetImages, speciesKey, stageKey } from "../../../../constants/Constants.js";
+import { soundSelectionButtonPressKey, soundClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../constants/Constants.js";
 import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
 
 
@@ -49,7 +49,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const addPet = (PetToAdd) => {
 
-        playSound(selectionButtonPressSoundKey);
+        playSound(soundSelectionButtonPressKey);
         setDeletionSelectedPets(prev => [...prev, PetToAdd]);
 
     }
@@ -57,7 +57,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const removePet = (PetToRemove) => {
 
-        playSound(selectionButtonPressSoundKey);
+        playSound(soundSelectionButtonPressKey);
         setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
@@ -65,7 +65,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     const clearPets = () => {
 
-        playSound(clearPetsSoundKey);
+        playSound(soundClearPetsKey);
 
         setPetTimeStamps(prev => {
 
@@ -133,13 +133,13 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
                                 {deletionSelectedPets.includes(petName) ? (
 
                                     <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(petName)}> 
-                                        <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
                                 ) : (
 
                                     <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(petName)}> 
-                                        <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
                                 )}

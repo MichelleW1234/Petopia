@@ -1,4 +1,4 @@
-import { activityDamage, activityLastDamageKey, activityLastPerformedKey, navButtonPressSoundKey, cleaningKey, activityFailSoundKey, feedingKey, screenButtonPressSoundKey, healthKey, playingKey, quitActivitySoundKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, soundNavButtonPressKey, petActivityTimeStampCleaningKey, soundActivityFailKey, petActivityTimeStampFeedingKey, soundScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, soundQuitActivityKey, soundStartActivityKey, soundActivitySuccessKey } from "../../../constants/Constants.js";
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
 
 
@@ -7,7 +7,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     if (desiredOption === -1){
     //Too much (unwilling)
 
-        playSound(activityFailSoundKey);
+        playSound(soundActivityFailKey);
 
         setPetList(prev => ({
 
@@ -16,7 +16,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
             [ActivePetName]: {
 
                 ...prev[ActivePetName],
-                [healthKey]: Math.max(prev[ActivePetName][healthKey] - activityDamage[key], 0)
+                [petHealthKey]: Math.max(prev[ActivePetName][petHealthKey] - petActivityTimeStampDamageList[key], 0)
             }
 
         }));
@@ -24,7 +24,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
     } else if (desiredOption !== selection && desiredOption !== -1){
     // not desired option (willing)
 
-        playSound(activityFailSoundKey);
+        playSound(soundActivityFailKey);
 
         setPetList(prev => ({
 
@@ -33,14 +33,14 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
             [ActivePetName]: {
 
                 ...prev[ActivePetName],
-                [healthKey]: Math.max(prev[ActivePetName][healthKey] - 1, 0)
+                [petHealthKey]: Math.max(prev[ActivePetName][petHealthKey] - 1, 0)
             }
 
         }));
 
     } else {
 
-        playSound(activitySuccessSoundKey);
+        playSound(soundActivitySuccessKey);
         setSuccess(true);
 
     }
@@ -54,7 +54,7 @@ export const manageHealth = (GlobalTimer, setPetTimeStamps, setPetList, ActivePe
             ...prev[ActivePetName],
             [key]: {
                 ...prev[ActivePetName][key],
-                [activityLastPerformedKey]: GlobalTimer         //THIS!!!!
+                [petActivityTimeStampLastPerformedKey]: GlobalTimer         //THIS!!!!
             }
             
         }
@@ -77,14 +77,14 @@ export const pauseAudio = (audio) => {
 
 export const home = (setActivePetName) => {
 
-    playSound(navButtonPressSoundKey);
+    playSound(soundNavButtonPressKey);
     setActivePetName("");
 
 }
 
 export const quitActivity = (audioRef, setFlagToClose) => {
 
-    playSound(quitActivitySoundKey);
+    playSound(soundQuitActivityKey);
     pauseAudio(audioRef.current);
     flagCloser(setFlagToClose);
 
@@ -93,8 +93,8 @@ export const quitActivity = (audioRef, setFlagToClose) => {
 
 export const startActivity = (setStart) => {
 
-    playSound(screenButtonPressSoundKey);
-    playSound(startActivitySoundKey);
+    playSound(soundScreenButtonPressKey);
+    playSound(soundStartActivityKey);
     setStart(true);
 
 }

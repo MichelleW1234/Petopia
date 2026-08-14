@@ -10,7 +10,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { cleaningKey, optionCursorKey, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { petActivityTimeStampCleaningKey, petActivityOptionCursorKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
 import { flagCloser} from "../../../../../helpers/Helpers.js";
 
@@ -87,7 +87,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useEffect(() => {
 
-        const preloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[optionCursorKey])];
+        const preloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[petActivityOptionCursorKey])];
 
         preloadImages.forEach((src) => {
         const img = new Image();
@@ -120,7 +120,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
             pauseAudio(cleanAudioRef.current);
             setCleanDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, cleaningKey, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, cleanOptionsSelection, setCleanSuccess);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, cleanOptionsSelection, setCleanSuccess);
 
         }
     }, [cleanCurrNumber]);
@@ -194,7 +194,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                                 className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
                                 style={{
                                     cursor: cleanStart ?
-                                                `url('${cleanOptionsList[cleanOptionsSelection][optionCursorKey]}'), auto`
+                                                `url('${cleanOptionsList[cleanOptionsSelection][petActivityOptionCursorKey]}'), auto`
                                             :   "default",
                                 }}>
 

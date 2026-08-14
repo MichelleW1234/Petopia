@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { playSound } from "../../../../../helpers/Helpers.js";
-import { screenButtonPressSoundKey, startActivitySoundKey } from "../../../../../constants/Constants.js";
+import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
 import "./CatGameTwo.css";
@@ -92,7 +92,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     const checkHit = (success) => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
         if (!catGameTwoHitAttempt){
 

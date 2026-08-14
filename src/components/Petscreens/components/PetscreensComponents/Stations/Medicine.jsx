@@ -9,7 +9,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { activityFailSoundKey, healthCapList, healthKey, medicineKey, optionImageKey, playingKey, speciesKey, stageKey, startActivitySoundKey, activitySuccessSoundKey } from "../../../../../constants/Constants.js";
+import { soundActivityFailKey, petSpeciesHealthCapList, petHealthKey, petMedicineKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, soundStartActivityKey, soundActivitySuccessKey } from "../../../../../constants/Constants.js";
 import { playSound, flagCloser } from "../../../../../helpers/Helpers.js";
 import { pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
 
@@ -156,8 +156,8 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
                 [ActivePetName]: {
     
                     ...prev[ActivePetName],
-                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 4, healthCapList[prev[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]),
-                    [medicineKey]: currDate
+                    [petHealthKey]: Math.min(prev[ActivePetName][petHealthKey] + 4, petSpeciesHealthCapList[prev[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]),
+                    [petMedicineKey]: currDate
     
                 }
     
@@ -172,8 +172,8 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
                 [ActivePetName]: {
     
                     ...prev[ActivePetName],
-                    [healthKey]: Math.min(prev[ActivePetName][healthKey] + 2, healthCapList[prev[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]),
-                    [medicineKey]: currDate
+                    [petHealthKey]: Math.min(prev[ActivePetName][petHealthKey] + 2, petSpeciesHealthCapList[prev[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]),
+                    [petMedicineKey]: currDate
     
                 }
     
@@ -183,12 +183,12 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
         if (medicineOptionsDesiredOption === medicineOptionsSelection){
 
-            playSound(activitySuccessSoundKey);
+            playSound(soundActivitySuccessKey);
             setMedicineSuccess(true);
 
         } else {
 
-            playSound(activityFailSoundKey);
+            playSound(soundActivityFailKey);
 
         }
 

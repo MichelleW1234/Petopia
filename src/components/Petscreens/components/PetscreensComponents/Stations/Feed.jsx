@@ -10,7 +10,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { dogSpecies, feedingKey, fishSpecies, optionImageKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { flagCloser } from "../../../../../helpers/Helpers.js";
 import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
 
@@ -116,7 +116,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                 pauseAudio(feedAudioRef.current);
                 setFeedDone(true);
-                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, feedingKey, feedOptionsDesiredOption, setFeedOptionsDesiredOption, feedOptionsSelection, setFeedSuccess);
+                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feedOptionsDesiredOption, setFeedOptionsDesiredOption, feedOptionsSelection, setFeedSuccess);
             }
 
         }, 1000);

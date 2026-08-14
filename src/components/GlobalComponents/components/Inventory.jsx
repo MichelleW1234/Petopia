@@ -9,7 +9,7 @@ import { useRoom} from "../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesKey, inventoryItemTypeKey, speciesKey, stageKey, addedDecorationsSoundKey, revivedPetSoundKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -35,26 +35,26 @@ function Inventory({setInventoryOpenFlag}) {
     
     const selectPet = (selectedIndex, petName) => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
-        if (Inventory[selectedIndex][inventoryItemTypeKey] === potionTypeKey){
+        if (Inventory[selectedIndex][inventoryItemTypeKey] === inventoryItemTypePotionKey){
         
-            playSound(revivedPetSoundKey);
+            playSound(soundRevivedPetKey);
             setPetList(prev => {
 
                 const copy = structuredClone(prev);
 
-                if (copy[petName][speciesKey] === dogSpecies){
+                if (copy[petName][petSpeciesKey] === petSpeciesDogKey){
 
-                    copy[petName][healthKey] = healthCapList[dogSpecies][0];
+                    copy[petName][petHealthKey] = petSpeciesHealthCapList[petSpeciesDogKey][0];
 
-                } else if (copy[petName][speciesKey] === catSpecies){
+                } else if (copy[petName][petSpeciesKey] === petSpeciesCatKey){
 
-                    copy[petName][healthKey] = healthCapList[catSpecies][0];
+                    copy[petName][petHealthKey] = petSpeciesHealthCapList[petSpeciesCatKey][0];
 
                 } else {
 
-                    copy[petName][healthKey] = healthCapList[fishSpecies][0];
+                    copy[petName][petHealthKey] = petSpeciesHealthCapList[petSpeciesFishKey][0];
 
                 }
 
@@ -66,21 +66,21 @@ function Inventory({setInventoryOpenFlag}) {
 
                 const copy = structuredClone(prev);
 
-                if (feedingKey in copy[petName]){
+                if (petActivityTimeStampFeedingKey in copy[petName]){
 
-                    copy[petName][feedingKey][activityLastPerformedKey] = GlobalTimer;
+                    copy[petName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
 
                 }
                 
-                if (cleaningKey in copy[petName]){
+                if (petActivityTimeStampCleaningKey in copy[petName]){
 
-                    copy[petName][cleaningKey][activityLastPerformedKey] = GlobalTimer;
+                    copy[petName][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
 
                 }
 
-                if (playingKey in copy[petName]){
+                if (petActivityTimeStampPlayingKey in copy[petName]){
 
-                    copy[petName][playingKey][activityLastPerformedKey] = GlobalTimer;
+                    copy[petName][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
 
                 }
 
@@ -102,7 +102,7 @@ function Inventory({setInventoryOpenFlag}) {
 
         } else {
 
-            playSound(addedDecorationsSoundKey);
+            playSound(soundAddedDecorationsKey);
             setInventory(prev => {
 
                 const copy = prev.map(inner =>
@@ -121,7 +121,7 @@ function Inventory({setInventoryOpenFlag}) {
 
     const deselectPet = (deselectedIndex) => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
         setInventory(prev => {
 
             const copy = prev.map(inner =>
@@ -159,7 +159,7 @@ function Inventory({setInventoryOpenFlag}) {
                                 <h2>Type: {item[inventoryItemTypeKey]}</h2>
                                 <h2> 
                                     For your:                           
-                                    {item[inventoryItemSpeciesKey].map((item, index) => (
+                                    {item[inventoryItemSpeciesAcceptedKey].map((item, index) => (
                                         <div key={index}>&gt; {item}</div>
                                     ))}
                                 </h2>
@@ -179,9 +179,9 @@ function Inventory({setInventoryOpenFlag}) {
 
                                 ) : (
 
-                                    item[inventoryItemTypeKey] === potionTypeKey ? (
+                                    item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
 
-                                        PetList[petName][healthKey] === 0 ? (
+                                        PetList[petName][petHealthKey] === 0 ? (
 
                                             <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
@@ -197,7 +197,7 @@ function Inventory({setInventoryOpenFlag}) {
 
                                             <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
 
-                                        ) : item[inventoryItemSpeciesKey].includes(PetList[petName][speciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+                                        ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[petName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
                                             <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 

@@ -4,7 +4,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/Helpers.js";
-import { screenButtonPressSoundKey } from "../../../../../constants/Constants.js";
+import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import Ball from "../../../../../images/Dog/Play/Games/Ball.png";
 import Rock from "../../../../../images/Dog/Play/Games/Rock.png";
@@ -174,7 +174,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const moveUp = () => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
         if (strollPatrolDogPosition[strollPatrolRowKey] > 0){
 
@@ -189,7 +189,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const moveDown = () => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
         
         if (strollPatrolDogPosition[strollPatrolRowKey] < strollPatrolWindowHeight-1){
 

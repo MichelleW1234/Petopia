@@ -16,133 +16,129 @@ import FishStageThree from "../images/Fish/Portrait/StageThree.png";
 
 export const inventoryItemNameKey = "name";
 export const inventoryItemImageKey = "image";
-export const inventoryItemSpeciesKey = "species";
+export const inventoryItemSpeciesAcceptedKey = "species accepted";
 export const inventoryItemTypeKey = "type";
 export const inventoryItemOwnerKey = "owner";
 
-export const potionTypeKey = "potion";
-export const floorTypeKey = "floor decoration";
-export const ceilingTypeKey = "ceiling decoration";
-export const wallTypeKey = "wall decoration";
+export const inventoryItemTypePotionKey = "potion";
+export const inventoryItemTypeFloorDecorationKey = "floor decoration";
+export const inventoryItemTypeCeilingDecorationKey = "ceiling decoration";
+export const inventoryItemTypeWallDecorationKey = "wall decoration";
 
 
 
-export const navButtonPressSoundKey = "NavButtonPress";
-export const selectionButtonPressSoundKey = "SelectionButtonPress";
-export const screenButtonPressSoundKey = "ScreenButtonPress"
-export const adoptionConfirmationErrorSoundKey = "error";
-export const startActivitySoundKey = "start";
-export const activitySuccessSoundKey = "success";
-export const activityFailSoundKey = "fail";
-export const adoptionSuccessSoundKey = "confirmed";
-export const clearPetsSoundKey = "cleared";
-export const restartGameSoundKey = "restart";
-export const quitActivitySoundKey = "quit";
-export const addedDecorationsSoundKey = "decorationsAdded";
-export const revivedPetSoundKey = "revivedPet";
+export const soundNavButtonPressKey = "nav button press";
+export const soundSelectionButtonPressKey = "selection button press";
+export const soundScreenButtonPressKey = "screen button press"
+export const soundAdoptionConfirmationErrorKey = "adoption confirmation error";
+export const soundStartActivityKey = "start activity";
+export const soundActivitySuccessKey = "activity success";
+export const soundActivityFailKey = "activity fail";
+export const soundAdoptionSuccessKey = "adoption success";
+export const soundClearPetsKey = "clear pets";
+export const soundRestartGameKey = "restart game";
+export const soundQuitActivityKey = "quit activity";
+export const soundAddedDecorationsKey = "added decorations";
+export const soundRevivedPetKey = "revived pet";
 
 
 
-export const optionImageKey = "image";
-export const optionNameKey = "name";
-export const optionCursorKey = "cursor";
-export const optionGameKey = "game";
+export const petActivityOptionImageKey = "image";
+export const petActivityOptionNameKey = "name";
+export const petActivityOptionCursorKey = "cursor";
+export const petActivityOptionGameKey = "game";
 
 
 
-export const sleepAudioKey = "sleep";
-export const happyAudioKey = "happy";
-export const sadAudioKey = "sad";
+export const petSoundSleepKey = "sleep";
+export const petSoundHappyKey = "happy";
+export const petSoundSadKey = "sad";
 
 
 
-export const feedingKey = "feeding";
-export const cleaningKey = "cleaning";
-export const playingKey = "playing";
+export const petActivityTimeStampFeedingKey = "feeding";
+export const petActivityTimeStampCleaningKey = "cleaning";
+export const petActivityTimeStampPlayingKey = "playing";
+
+
+export const petActivityTimeStampLastPerformedKey = "performed";
+export const petActivityTimeStampLastDamagedKey = "damaged";
 
 
 
-export const activityLastPerformedKey = "performed";
-export const activityLastDamageKey = "damaged";
+export const petSpeciesKey = "species";
+export const petStageKey = "stage";
+export const petHealthKey = "health";
+export const petBirthDateKey = "birth date";
+export const petGenderKey = "gender"
+export const petMedicineKey = "medicine";
 
 
 
-export const speciesKey = "species";
-export const stageKey = "stage";
-export const healthKey = "health";
-export const birthDateKey = "birthDate";
-export const genderKey = "gender"
-export const medicineKey = "medicine";
+export const petGenderMaleKey = "male";
+export const petGenderFemaleKey = "female";
 
 
 
-export const maleGender = "male";
-export const femaleGender = "female";
+export const petSpeciesDogKey = "dog"; 
+export const petSpeciesCatKey = "cat"; 
+export const petSpeciesFishKey = "fish"; 
 
 
 
-export const dogSpecies = "dog"; 
-export const catSpecies = "cat"; 
-export const fishSpecies = "fish"; 
+export const petSpeciesHealthCapList = {
 
-
-
-export const healthCapList = {
-
-    [dogSpecies] : [9, 12, 15],
-    [catSpecies] : [12, 16, 20],
-    [fishSpecies] : [3, 4, 5]
+    [petSpeciesDogKey] : [9, 12, 15],
+    [petSpeciesCatKey] : [12, 16, 20],
+    [petSpeciesFishKey] : [3, 4, 5]
 
 }
 
 
-export const timeLimitList = {
+export const petSpeciesActivityTimeStampTimeLimitList = {
 
-    [dogSpecies] :
+    [petSpeciesDogKey] :
     {
-        [feedingKey]: 28800000,
-        [cleaningKey]: 86400000,
-        [playingKey]: 43200000
+        [petActivityTimeStampFeedingKey]: 28800000,
+        [petActivityTimeStampCleaningKey]: 86400000,
+        [petActivityTimeStampPlayingKey]: 43200000
 
     },
     //[180000, 300000, 180000]; //for testing purposes
     //[eat 3 times a day, bath 1 time a day, play 2 times a day]
 
-    [catSpecies] : 
+    [petSpeciesCatKey] : 
     {
-        [feedingKey]: 43200000,
-        [playingKey]: 86400000
+        [petActivityTimeStampFeedingKey]: 43200000,
+        [petActivityTimeStampPlayingKey]: 86400000
 
     },
     //[180000, 180000]; //for testing purposes
     //[eat 2 times a day, doesn't need baths, play 1 time a day]
 
-    [fishSpecies] : 
+    [petSpeciesFishKey] : 
     {
-        [feedingKey]: 86400000, 
-        [cleaningKey]: 86400000
+        [petActivityTimeStampFeedingKey]: 86400000, 
+        [petActivityTimeStampCleaningKey]: 86400000
     }
     // [180000, 300000]; //for testing purposes
     //[eat 1 time a day, clean fish tank 1 time a day, doesn't need to play]
 
 }
 
-export const medicineDoseTimeGap = 86400000;
+export const petActivityTimeStampMedicineDoseTimeGapKey = 86400000;
 
-export const activityDamage = {
+export const petActivityTimeStampDamageList = {
 
-    [feedingKey]: 3,
-    [cleaningKey]: 1,
-    [playingKey]: 2
+    [petActivityTimeStampFeedingKey]: 3,
+    [petActivityTimeStampCleaningKey]: 1,
+    [petActivityTimeStampPlayingKey]: 2
     
 };
 
 
-
-/* images */
-
-export const portraitPetImages = {
-    [dogSpecies]: [DogStageOne, DogStageTwo, DogStageThree],
-    [catSpecies]: [CatStageOne, CatStageTwo, CatStageThree],
-    [fishSpecies]: [FishStageOne, FishStageTwo, FishStageThree]
+export const petSpeciesImagePortraitList = {
+    [petSpeciesDogKey]: [DogStageOne, DogStageTwo, DogStageThree],
+    [petSpeciesCatKey]: [CatStageOne, CatStageTwo, CatStageThree],
+    [petSpeciesFishKey]: [FishStageOne, FishStageTwo, FishStageThree]
 }

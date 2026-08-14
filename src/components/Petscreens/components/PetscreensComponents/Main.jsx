@@ -5,7 +5,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
-import { catSpecies, ceilingTypeKey, dogSpecies, floorTypeKey, happyAudioKey, healthCapList, healthKey, sadAudioKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, sleepAudioKey, speciesKey, stageKey, wallTypeKey } from "../../../../constants/Constants.js";
+import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
@@ -79,17 +79,17 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
             if (mainPetSleeping){
 
-                currSound = mainPetAudios.current[sleepAudioKey];
+                currSound = mainPetAudios.current[petSoundSleepKey];
 
             } else {
 
                 if (mainPetMood <= 1){
 
-                    currSound = mainPetAudios.current[happyAudioKey];
+                    currSound = mainPetAudios.current[petSoundHappyKey];
 
                 } else {
 
-                    currSound = mainPetAudios.current[sadAudioKey];
+                    currSound = mainPetAudios.current[petSoundSadKey];
 
                 }
 
@@ -189,17 +189,17 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
         ) : (
 
             <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
-                <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Template--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][speciesKey]}`}>
+                <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Template--WindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][petSpeciesKey]}`}>
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
                         <h1 className = "Main_ComponentHeading-Template--WindowScreenPetStatsName">{ActivePetName}:</h1>
                         <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                            {Array.from({ length: healthCapList[PetList[ActivePetName][speciesKey]][PetList[ActivePetName][stageKey]]}, (_, i) => i + 1).map(num => (
+                            {Array.from({ length: petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}, (_, i) => i + 1).map(num => (
 
                                 <img 
                                     key = {num} 
-                                    src = {num <= PetList[ActivePetName][healthKey] ? 
+                                    src = {num <= PetList[ActivePetName][petHealthKey] ? 
                                                 HealthyPetHeart
                                             : UnhealthyPetHeart}
                                     className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"
@@ -210,7 +210,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                         </div>
                     </div>
 
-                    {PetList[ActivePetName][healthKey] === 0 ? (
+                    {PetList[ActivePetName][petHealthKey] === 0 ? (
 
                         <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
 
@@ -289,15 +289,15 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                         item[inventoryItemOwnerKey] === ActivePetName ? (
 
-                            item[inventoryItemTypeKey] === wallTypeKey ? (
+                            item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey ? (
 
                                 <img key = {index} className="Main_ComponentImage-Structure--WindowScreenWallDecoration" src = {item[inventoryItemImageKey]}/>
 
-                            ) : item[inventoryItemTypeKey] === floorTypeKey ? (
+                            ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey ? (
 
                                 <img key = {index} className="Main_ComponentImage-Structure--WindowScreenFloorDecoration" src = {item[inventoryItemImageKey]}/>
 
-                            ) : item[inventoryItemTypeKey] === ceilingTypeKey ? (
+                            ) : item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey ? (
 
                                 <img key = {index} className="Main_ComponentImage-Structure--WindowScreenCeilingDecoration" src = {item[inventoryItemImageKey]}/>
 

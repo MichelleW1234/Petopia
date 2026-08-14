@@ -4,7 +4,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/Helpers.js";
-import { screenButtonPressSoundKey } from "../../../../../constants/Constants.js";
+import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import "./DogGameTwo.css";
 
@@ -173,7 +173,7 @@ function DogGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     const checkMove = (moveSelected) => {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
         if (dogGameTwoMoves[0][dogGameTwoRowKey] === 0 && !dogGameTwoHitAttempt){
 

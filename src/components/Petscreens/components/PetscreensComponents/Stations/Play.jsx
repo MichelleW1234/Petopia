@@ -10,7 +10,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
-import { optionGameKey, optionImageKey, playingKey, speciesKey, stageKey } from "../../../../../constants/Constants.js";
+import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers.js";
 import { flagCloser } from "../../../../../helpers/Helpers.js";
 
@@ -35,7 +35,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
     const PlaySelectedGameWindow = playOptionsSelection === -1 ? 
                                     null 
-                                    : playOptionsList[playOptionsSelection][optionGameKey];
+                                    : playOptionsList[playOptionsSelection][petActivityOptionGameKey];
 
     const playAudioRef = useRef(new Audio(Playing));
 
@@ -73,7 +73,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
             pauseAudio(playAudioRef.current);
             setPlayDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, playingKey, playOptionsDesiredOption, setPlayOptionsDesiredOption, playOptionsSelection, setPlaySuccess);
+            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, playOptionsDesiredOption, setPlayOptionsDesiredOption, playOptionsSelection, setPlaySuccess);
 
         }
 

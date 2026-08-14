@@ -4,7 +4,7 @@ import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import {healthKey, stageKey, birthDateKey, speciesKey, feedingKey, cleaningKey, playingKey, catSpecies, dogSpecies, fishSpecies, timeLimitList, activityDamage, healthCapList, activityLastPerformedKey, activityLastDamageKey} from "../constants/Constants.js";
+import {petHealthKey, petStageKey, petBirthDateKey, petSpeciesKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesActivityTimeStampTimeLimitList, petActivityTimeStampDamageList, petSpeciesHealthCapList, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey} from "../constants/Constants.js";
 
 
 export function PetProgressionUpdateProvider({ children }) {
@@ -47,10 +47,10 @@ export function PetProgressionUpdateProvider({ children }) {
         for (const curPetKey in updatedPetTimeStamps){
 
             // Checking for if pet is alive (not already dead and waiting to be cleared):
-            if (updatedPetList[curPetKey][healthKey] > 0) {
+            if (updatedPetList[curPetKey][petHealthKey] > 0) {
 
                 const healthAffected = damageCheck(currDate, updatedPetTimeStamps[curPetKey]);
-                updatedPetList[curPetKey][healthKey] = Math.max(updatedPetList[curPetKey][healthKey] - healthAffected, 0);
+                updatedPetList[curPetKey][petHealthKey] = Math.max(updatedPetList[curPetKey][petHealthKey] - healthAffected, 0);
 
             }
 
@@ -60,14 +60,14 @@ export function PetProgressionUpdateProvider({ children }) {
         for (const curPetKey in updatedPetList){
 
             // Check pet growth stage if pet is still alive after health update:
-            if (updatedPetList[curPetKey][healthKey] > 0){
+            if (updatedPetList[curPetKey][petHealthKey] > 0){
 
                 const currentStage = petAgeCheck(currDate, updatedPetList[curPetKey]);
 
-                if (currentStage !== updatedPetList[curPetKey][stageKey]){
+                if (currentStage !== updatedPetList[curPetKey][petStageKey]){
    
-                    updatedPetList[curPetKey][healthKey] += (healthCapList[updatedPetList[curPetKey][speciesKey]][currentStage] - healthCapList[updatedPetList[curPetKey][speciesKey]][updatedPetList[curPetKey][stageKey]]);
-                    updatedPetList[curPetKey][stageKey] = currentStage; 
+                    updatedPetList[curPetKey][petHealthKey] += (petSpeciesHealthCapList[updatedPetList[curPetKey][petSpeciesKey]][currentStage] - petSpeciesHealthCapList[updatedPetList[curPetKey][petSpeciesKey]][updatedPetList[curPetKey][petStageKey]]);
+                    updatedPetList[curPetKey][petStageKey] = currentStage; 
 
                 }
 
@@ -85,17 +85,17 @@ export function PetProgressionUpdateProvider({ children }) {
 
         let petTimeLimits = {};
 
-        if (feedingKey in currPetTimeStamps && cleaningKey in currPetTimeStamps && playingKey in currPetTimeStamps){
+        if (petActivityTimeStampFeedingKey in currPetTimeStamps && petActivityTimeStampCleaningKey in currPetTimeStamps && petActivityTimeStampPlayingKey in currPetTimeStamps){
 
-            petTimeLimits = timeLimitList[dogSpecies];
+            petTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey];
 
-        } else if (playingKey in currPetTimeStamps){
+        } else if (petActivityTimeStampPlayingKey in currPetTimeStamps){
 
-            petTimeLimits = timeLimitList[catSpecies];
+            petTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey];
 
-        } else if (cleaningKey in currPetTimeStamps){
+        } else if (petActivityTimeStampCleaningKey in currPetTimeStamps){
 
-            petTimeLimits = timeLimitList[fishSpecies];
+            petTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesFishKey];
         
         }
 
@@ -105,10 +105,10 @@ export function PetProgressionUpdateProvider({ children }) {
         for (const curActivityKey in petTimeLimits){
 
             // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another damage update:
-            let subtrahend = Math.max(currPetTimeStamps[curActivityKey][activityLastPerformedKey], currPetTimeStamps[curActivityKey][activityLastDamageKey]); 
+            let subtrahend = Math.max(currPetTimeStamps[curActivityKey][petActivityTimeStampLastPerformedKey], currPetTimeStamps[curActivityKey][petActivityTimeStampLastDamagedKey]); 
 
-            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], activityDamage[curActivityKey]);
-            currPetTimeStamps[curActivityKey][activityLastDamageKey] = newPetTimeStamp;
+            const {addedHealthDamage, newPetTimeStamp} = calculatingNewTimes(currDate, subtrahend, petTimeLimits[curActivityKey], petActivityTimeStampDamageList[curActivityKey]);
+            currPetTimeStamps[curActivityKey][petActivityTimeStampLastDamagedKey] = newPetTimeStamp;
             healthAffected += addedHealthDamage;
 
         }
@@ -144,9 +144,9 @@ export function PetProgressionUpdateProvider({ children }) {
 
     const petAgeCheck = (currDate, pet) => {
 
-        const difference = currDate - pet[birthDateKey];
+        const difference = currDate - pet[petBirthDateKey];
 
-        if(pet[speciesKey] === dogSpecies){
+        if(pet[petSpeciesKey] === petSpeciesDogKey){
         // Grows every 5 days
 
             if (difference > 864000000){
@@ -163,7 +163,7 @@ export function PetProgressionUpdateProvider({ children }) {
 
             }
 
-        } else if (pet[speciesKey] === catSpecies){
+        } else if (pet[petSpeciesKey] === petSpeciesCatKey){
         // Grows every week
 
             if (difference > 1209600000){
@@ -180,7 +180,7 @@ export function PetProgressionUpdateProvider({ children }) {
 
             }
 
-        } else if (pet[speciesKey] === fishSpecies){
+        } else if (pet[petSpeciesKey] === petSpeciesFishKey){
         // Grows every 3 days
 
             if (difference > 518400000){

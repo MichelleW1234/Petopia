@@ -16,7 +16,7 @@ import Deletion from "./HomescreenComponents/Deletion.jsx";
 import Restart from "./HomescreenComponents/Restart.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 
-import { healthCapList, portraitPetImages, healthKey, speciesKey, stageKey, navButtonPressSoundKey, selectionButtonPressSoundKey } from "../../../constants/Constants.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSelectionButtonPressKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
@@ -125,7 +125,7 @@ function Home (){
 
     const getPet = (petToGet) => {
 
-        playSound(selectionButtonPressSoundKey);
+        playSound(soundSelectionButtonPressKey);
         setActivePetName(petToGet);
         
     }
@@ -133,7 +133,7 @@ function Home (){
 
     const checkoutRoom = (roomNumber) => {
 
-        playSound(selectionButtonPressSoundKey);
+        playSound(soundSelectionButtonPressKey);
         setActiveCheckoutRoom(roomNumber);
 
     }
@@ -238,35 +238,35 @@ function Home (){
                                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                             
                                         <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
                                                         GreenPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
                                                         YellowPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
                                                         OrangePetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
                                                         RedPetBattery :
                                                         GrayPetBattery
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
                                                         GreenPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
                                                         YellowPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
                                                         OrangePetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
                                                         RedPetBattery :
                                                         GrayPetBattery
                                                     }
                                             />
-                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 75 ? 
+                                            <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
                                                         GreenPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 50 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
                                                         YellowPetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) >= 25 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
                                                         OrangePetBattery
-                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][healthKey])/healthCapList[PetList[petName][speciesKey]][PetList[petName][stageKey]]) * 100))) > 0 ?
+                                                        : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
                                                         RedPetBattery :
                                                         GrayPetBattery
                                                     }
@@ -274,11 +274,11 @@ function Home (){
                                         </div>
 
                                         <Link
-                                            to = {`/${PetList[petName][speciesKey]}`}
+                                            to = {`/${PetList[petName][petSpeciesKey]}`}
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
                                             onClick = {() => getPet(petName)}
                                         >
-                                            <img src = {portraitPetImages[PetList[petName][speciesKey]][PetList[petName][stageKey]]}/>
+                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </Link>
                                         <h2>{petName}</h2>
                                         

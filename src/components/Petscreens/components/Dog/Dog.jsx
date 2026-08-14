@@ -20,7 +20,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import { stageKey, cleaningKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, dogSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionCursorKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
+import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/Helpers.js";
 
@@ -98,99 +98,99 @@ function Dog (){
 
     const dogAlive = ActivePetName === "" ? 
                             false
-                        :   PetList[ActivePetName][healthKey] === 0 ? 
+                        :   PetList[ActivePetName][petHealthKey] === 0 ? 
                                 false
                                 : true;
 
     const dogHungry = ActivePetName === "" ? 
                             false
-                        :    (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][feedingKey]/2 ? 
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey][petActivityTimeStampFeedingKey]/2 ? 
                                 true 
                                 : false;
 
     const dogDirty = ActivePetName === "" ? 
                             false
-                        :   (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][cleaningKey]/2 ? 
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey][petActivityTimeStampCleaningKey]/2 ? 
                                 true
                                 : false;
                             
     const dogRestless = ActivePetName === "" ? 
                             false
-                        :   (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[dogSpecies][playingKey]/2 ? 
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey][petActivityTimeStampPlayingKey]/2 ? 
                                 true 
                                 : false;
 
     const dogUnwell = ActivePetName === "" ? 
                         false
-                    :   PetList[ActivePetName][healthKey] >= healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] ? 
+                    :   PetList[ActivePetName][petHealthKey] >= petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] ? 
                             false
                             : true;
 
 
     const dogMood = ActivePetName === "" ? 
                         -1
-                    :   PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
                             0
-                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
+                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][healthKey]/healthCapList[dogSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
+                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.25 ? 
                             2
                             : 3;
 
     const dogCanReceiveDose = ActivePetName === "" ? 
                                     false
-                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                :   GlobalTimer - PetList[ActivePetName][petMedicineKey] <= petActivityTimeStampMedicineDoseTimeGapKey ? 
                                         false
                                         : true;
 
 
     const dogMainImages = ActivePetName === "" ? 
                             [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
-                        :   PetList[ActivePetName][stageKey] === 0 ? 
+                        :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
-                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                : PetList[ActivePetName][petStageKey] === 1 ? 
                                     [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
                                 : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
     const dogMainSleepingImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         SleepStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         SleepStageTwo
                                     : SleepStageThree;
 
     const dogFeedImage = ActivePetName === "" ? 
                             NullPlaceholder
-                        :   PetList[ActivePetName][stageKey] === 0 ? 
+                        :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     FeedStageOne
-                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                : PetList[ActivePetName][petStageKey] === 1 ? 
                                     FeedStageTwo
                                 : FeedStageThree;
 
     const dogCleanImage = ActivePetName === "" ? 
                             NullPlaceholder
-                        :   PetList[ActivePetName][stageKey] === 0 ? 
+                        :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     CleanStageOne
-                                : PetList[ActivePetName][stageKey] === 1 ? 
+                                : PetList[ActivePetName][petStageKey] === 1 ? 
                                     CleanStageTwo
                                 : CleanStageThree;
 
     const dogMedicineImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         MedicineStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         MedicineStageTwo
                                     : MedicineStageThree;
 
 
-    const dogFeedOptionsList = [{[optionNameKey]: "Beef", [optionImageKey]: Beef}, {[optionNameKey]: "Turkey", [optionImageKey]: Turkey}, {[optionNameKey]: "Lamb", [optionImageKey]: Lamb}]; 
-    const dogCleanOptionsList = [{[optionNameKey]: "Soap", [optionImageKey]: Soap, [optionCursorKey]: CursorSoap}, {[optionNameKey]: "Brush", [optionImageKey]: Brush, [optionCursorKey]: CursorBrush}];
-    const dogPlayOptionsList = [{[optionNameKey]: "Stroll Patrol", [optionImageKey]: Leash, [optionGameKey]: StrollPatrol}, {[optionNameKey]: "Pawformer", [optionImageKey]: Brush, [optionGameKey]: DogGameTwo}];
-    const dogMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Chew", [optionImageKey]: Chew}];
+    const dogFeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
+    const dogCleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
+    const dogPlayOptionsList = [{[petActivityOptionNameKey]: "Stroll Patrol", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrol}, {[petActivityOptionNameKey]: "Pawformer", [petActivityOptionImageKey]: Brush, [petActivityOptionGameKey]: DogGameTwo}];
+    const dogMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
-    const dogAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBarks), [sadAudioKey]: new Audio(SadWhine), [sleepAudioKey]: new Audio(Sleeping)});
+    const dogAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBarks), [petSoundSadKey]: new Audio(SadWhine), [petSoundSleepKey]: new Audio(Sleeping)});
     const dogBackgroundAudioRef = useRef(new Audio(fireplace));
 
     const navigate = useNavigate();

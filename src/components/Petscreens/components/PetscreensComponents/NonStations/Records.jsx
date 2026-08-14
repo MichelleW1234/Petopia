@@ -3,7 +3,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { birthDateKey, genderKey } from "../../../../../constants/Constants.js";
+import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
 import { flagCloser } from "../../../../../helpers/Helpers.js";
 
 import "./Records.css";
@@ -16,7 +16,7 @@ function Records({setRecordsOpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
 
-    const recordsBirthdayString = new Date(PetList[ActivePetName][birthDateKey]).toLocaleString();
+    const recordsBirthdayString = new Date(PetList[ActivePetName][petBirthDateKey]).toLocaleString();
 
 
     useKeyboardShortcut("2", () => {
@@ -46,7 +46,7 @@ function Records({setRecordsOpenFlag}) {
                         </div>
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2>Gender:</h2>
-                            <p>{PetList[ActivePetName][genderKey]}</p>
+                            <p>{PetList[ActivePetName][petGenderKey]}</p>
                         </div>
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Birthdate: </h2>

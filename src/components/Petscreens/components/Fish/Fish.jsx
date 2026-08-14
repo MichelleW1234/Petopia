@@ -17,7 +17,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
-import { cleaningKey, feedingKey, healthKey, medicineKey, medicineDoseTimeGap, fishSpecies, healthCapList, timeLimitList, stageKey, navButtonPressSoundKey, optionNameKey, optionImageKey, optionCursorKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey} from "../../../../constants/Constants.js";
+import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, soundNavButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/Helpers.js";
 
@@ -90,92 +90,92 @@ function Fish (){
 
     const fishAlive = ActivePetName === "" ? 
                             false
-                        :    PetList[ActivePetName][healthKey] === 0 ? 
+                        :    PetList[ActivePetName][petHealthKey] === 0 ? 
                                 false
                                 : true;
 
     const fishHungry = ActivePetName === "" ? 
                             false 
-                        :    (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][feedingKey]/2 ? 
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesFishKey][petActivityTimeStampFeedingKey]/2 ? 
                                 true 
                                 : false;
                             
     const fishDirty = ActivePetName === "" ?  
                                 false
-                            :   (GlobalTimer - PetTimeStamps[ActivePetName][cleaningKey][activityLastPerformedKey]) >= timeLimitList[fishSpecies][cleaningKey]/2 ? 
+                            :   (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesFishKey][petActivityTimeStampCleaningKey]/2 ? 
                                     true 
                                     : false;
 
     const fishUnwell = ActivePetName === "" ? 
                             false
-                        :   PetList[ActivePetName][healthKey] >= healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] ? 
+                        :   PetList[ActivePetName][petHealthKey] >= petSpeciesHealthCapList[petSpeciesFishKey][PetList[ActivePetName][petStageKey]] ? 
                                 false
                                 : true;
 
     const fishMood = ActivePetName === "" ? 
                                 -1
-                        :   PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+                        :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesFishKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
                                 0
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
+                                : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesFishKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
                                 1
-                                : PetList[ActivePetName][healthKey]/healthCapList[fishSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
+                                : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesFishKey][PetList[ActivePetName][petStageKey]] >= 0.25 ? 
                                 2
                                 : 3;
     
     const fishCanReceiveDose = ActivePetName === "" ? 
                                     false
-                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                :   GlobalTimer - PetList[ActivePetName][petMedicineKey] <= petActivityTimeStampMedicineDoseTimeGapKey ? 
                                         false
                                         : true;
 
 
     const fishMainImages = ActivePetName === "" ? 
                                 [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
                                     : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
 
     const fishMainSleepingImage = ActivePetName === "" ? 
                                     NullPlaceholder
-                                :   PetList[ActivePetName][stageKey] === 0 ? 
+                                :   PetList[ActivePetName][petStageKey] === 0 ? 
                                             SleepStageOne
-                                        : PetList[ActivePetName][stageKey] === 1 ? 
+                                        : PetList[ActivePetName][petStageKey] === 1 ? 
                                             SleepStageTwo
                                         : SleepStageThree;
 
     
     const fishFeedImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         FeedStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         FeedStageTwo
                                     : FeedStageThree;
 
     const fishCleanImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         CleanStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         CleanStageTwo
                                     : CleanStageThree;
 
     const fishMedicineImage = ActivePetName === "" ? 
                                     NullPlaceholder
-                                :    PetList[ActivePetName][stageKey] === 0 ? 
+                                :    PetList[ActivePetName][petStageKey] === 0 ? 
                                             MedicineStageOne
-                                        : PetList[ActivePetName][stageKey] === 1 ? 
+                                        : PetList[ActivePetName][petStageKey] === 1 ? 
                                             MedicineStageTwo
                                         : MedicineStageThree;
 
-    const fishFeedOptionsList = [{[optionNameKey]: "Shrimp", [optionImageKey]: Shrimp}, {[optionNameKey]: "Worms", [optionImageKey]: Worms}, {[optionNameKey]: "Algae", [optionImageKey]: Algae}];
-    const fishCleanOptionsList = [{[optionNameKey]: "Sponge", [optionImageKey]: Sponge, [optionCursorKey] : CursorSponge}, {[optionNameKey]: "Cloth", [optionImageKey]: Cloth, [optionCursorKey]: CursorCloth}];
-    const fishMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Serum", [optionImageKey]: Serum}];
+    const fishFeedOptionsList = [{[petActivityOptionNameKey]: "Shrimp", [petActivityOptionImageKey]: Shrimp}, {[petActivityOptionNameKey]: "Worms", [petActivityOptionImageKey]: Worms}, {[petActivityOptionNameKey]: "Algae", [petActivityOptionImageKey]: Algae}];
+    const fishCleanOptionsList = [{[petActivityOptionNameKey]: "Sponge", [petActivityOptionImageKey]: Sponge, [petActivityOptionCursorKey] : CursorSponge}, {[petActivityOptionNameKey]: "Cloth", [petActivityOptionImageKey]: Cloth, [petActivityOptionCursorKey]: CursorCloth}];
+    const fishMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Serum", [petActivityOptionImageKey]: Serum}];
 
-    const fishAudioRefs = useRef({[happyAudioKey]: new Audio(HappyBubbles), [sadAudioKey]: new Audio(SadSplash), [sleepAudioKey]: new Audio(Sleeping)});
+    const fishAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBubbles), [petSoundSadKey]: new Audio(SadSplash), [petSoundSleepKey]: new Audio(Sleeping)});
     const fishBackgroundAudioRef = useRef(new Audio(Tank));
 
     const navigate = useNavigate();

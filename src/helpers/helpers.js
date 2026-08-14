@@ -1,4 +1,4 @@
-import { navButtonPressSoundKey, selectionButtonPressSoundKey, adoptionConfirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey, addedDecorationsSoundKey, revivedPetSoundKey} from "../constants/Constants.js";
+import { soundNavButtonPressKey, soundSelectionButtonPressKey, soundAdoptionConfirmationErrorKey, soundStartActivityKey, soundActivitySuccessKey, soundActivityFailKey, soundScreenButtonPressKey, soundAdoptionSuccessKey, soundClearPetsKey, soundRestartGameKey, soundQuitActivityKey, soundAddedDecorationsKey, soundRevivedPetKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
@@ -23,19 +23,19 @@ export const playSound = (soundEffect) => {
 
     const soundDictionary = {
 
-        [navButtonPressSoundKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
-        [selectionButtonPressSoundKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
-        [screenButtonPressSoundKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
-        [adoptionConfirmationErrorSoundKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
-        [startActivitySoundKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
-        [activitySuccessSoundKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
-        [activityFailSoundKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
-        [adoptionSuccessSoundKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.5},
-        [clearPetsSoundKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
-        [restartGameSoundKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.5},
-        [quitActivitySoundKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75},
-        [addedDecorationsSoundKey] : {[buttonAudioKey]: AddedDecorations, [buttonVolumeKey]: 0.75},
-        [revivedPetSoundKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75}
+        [soundNavButtonPressKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
+        [soundSelectionButtonPressKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
+        [soundScreenButtonPressKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
+        [soundAdoptionConfirmationErrorKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
+        [soundStartActivityKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
+        [soundActivitySuccessKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
+        [soundActivityFailKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
+        [soundAdoptionSuccessKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.5},
+        [soundClearPetsKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
+        [soundRestartGameKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.5},
+        [soundQuitActivityKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75},
+        [soundAddedDecorationsKey] : {[buttonAudioKey]: AddedDecorations, [buttonVolumeKey]: 0.75},
+        [soundRevivedPetKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75}
 
     };
 
@@ -50,11 +50,11 @@ export const flagOpener = (setFlagToOpen, flagType) => {
 
     if (flagType === 0){
 
-        playSound(navButtonPressSoundKey);
+        playSound(soundNavButtonPressKey);
 
     } else {
 
-        playSound(screenButtonPressSoundKey);
+        playSound(soundScreenButtonPressKey);
 
     }
 
@@ -66,7 +66,7 @@ export const flagOpener = (setFlagToOpen, flagType) => {
 
 export const flagCloser = (setFlagToClose) => {
     
-    playSound(screenButtonPressSoundKey);
+    playSound(soundScreenButtonPressKey);
     setFlagToClose(false);
 
 }

@@ -5,7 +5,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import Activity from "./NonstationsComponents/Activity.jsx";
 
-import { medicineDoseTimeGap, medicineKey, speciesKey, timeLimitList } from "../../../../../constants/Constants.js";
+import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
 import { flagCloser } from "../../../../../helpers/Helpers.js";
 
 
@@ -38,7 +38,7 @@ function Schedule({setScheduleOpenFlag}) {
                         <hr/>
                     </div>
 
-                    {Object.entries(timeLimitList[PetList[ActivePetName][speciesKey]]).map(([key, value]) => (
+                    {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 
                         <Activity
                             key = {key}
@@ -49,8 +49,8 @@ function Schedule({setScheduleOpenFlag}) {
                     ))}
 
                     <Activity
-                        activityKey = {medicineKey}
-                        activityTimeGap = {medicineDoseTimeGap}
+                        activityKey = {petMedicineKey}
+                        activityTimeGap = {petActivityTimeStampMedicineDoseTimeGapKey}
                     />
                 </div>
 

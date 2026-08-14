@@ -19,7 +19,7 @@ import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHunt from "./CatComponents/MouseHunt.jsx";
 import CatGameTwo from "./CatComponents/CatGameTwo.jsx";
 
-import {stageKey, feedingKey, healthKey, playingKey, medicineKey, medicineDoseTimeGap, catSpecies, healthCapList, timeLimitList, optionNameKey, optionImageKey, optionGameKey, happyAudioKey, sadAudioKey, sleepAudioKey, activityLastPerformedKey } from "../../../../constants/Constants.js";
+import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
 import { flagOpener } from "../../../../helpers/Helpers.js";
 
@@ -86,89 +86,89 @@ function Cat (){
 
     const catAlive = ActivePetName === "" ? 
                             false
-                        :   PetList[ActivePetName][healthKey] === 0 ? 
+                        :   PetList[ActivePetName][petHealthKey] === 0 ? 
                                 false
                                 : true;
 
 
     const catHungry = ActivePetName === "" ? 
                             false
-                        :   (GlobalTimer - PetTimeStamps[ActivePetName][feedingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][feedingKey]/2 ? 
+                        :   (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey][petActivityTimeStampFeedingKey]/2 ? 
                                 true 
                                 : false;
                             
     const catRestless = ActivePetName === "" ? 
                             false
-                        :    (GlobalTimer - PetTimeStamps[ActivePetName][playingKey][activityLastPerformedKey]) >= timeLimitList[catSpecies][playingKey]/2 ? 
+                        :    (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey][petActivityTimeStampPlayingKey]/2 ? 
                                 true 
                                 : false;
 
 
     const catUnwell =  ActivePetName === "" ? 
                             false
-                        :    PetList[ActivePetName][healthKey] >= healthCapList[catSpecies][PetList[ActivePetName][stageKey]] ? 
+                        :    PetList[ActivePetName][petHealthKey] >= petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] ? 
                                 false
                                 : true;
 
 
     const catMood = ActivePetName === "" ? 
                         -1
-                    :   PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.75 ? 
+                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
                             0
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.5 ? 
+                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][healthKey]/healthCapList[catSpecies][PetList[ActivePetName][stageKey]] >= 0.25 ? 
+                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.25 ? 
                             2
                             : 3;
 
 
     const catCanReceiveDose = ActivePetName === "" ? 
                                     false
-                                :   GlobalTimer - PetList[ActivePetName][medicineKey] <= medicineDoseTimeGap ? 
+                                :   GlobalTimer - PetList[ActivePetName][petMedicineKey] <= petActivityTimeStampMedicineDoseTimeGapKey ? 
                                         false
                                         : true;
 
 
     const catMainImages = ActivePetName === "" ? 
                                 [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
                                     : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
 
     const catMainSleepingImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         SleepStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         SleepStageTwo
                                     : SleepStageThree;
 
     const catFeedImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         FeedStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         FeedStageTwo
                                     : FeedStageThree; 
 
     const catMedicineImage = ActivePetName === "" ? 
                                 NullPlaceholder
-                            :   PetList[ActivePetName][stageKey] === 0 ? 
+                            :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         MedicineStageOne
-                                    : PetList[ActivePetName][stageKey] === 1 ? 
+                                    : PetList[ActivePetName][petStageKey] === 1 ? 
                                         MedicineStageTwo
                                     : MedicineStageThree;
 
 
 
-    const catFeedOptionsList = [{[optionNameKey]: "Tuna", [optionImageKey]: Tuna}, {[optionNameKey]: "Chicken", [optionImageKey]: Chicken}, {[optionNameKey]: "Salmon", [optionImageKey]: Salmon}];
-    const catPlayOptionsList = [{[optionNameKey]: "Mouse Hunt", [optionImageKey]: Magnifier, [optionGameKey]: MouseHunt}, {[optionNameKey]: "Feather Fishing", [optionImageKey]: Chicken, [optionGameKey]: CatGameTwo}];
-    const catMedicineOptionsList = [{[optionNameKey]: "Pill", [optionImageKey]: Pill}, {[optionNameKey]: "Tablet", [optionImageKey]: Tablet}];
+    const catFeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
+    const catPlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Chicken, [petActivityOptionGameKey]: CatGameTwo}];
+    const catMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
-    const catAudioRefs = useRef({[happyAudioKey]: new Audio(HappyMeow), [sadAudioKey]: new Audio(SadMeow), [sleepAudioKey]: new Audio(Sleeping)});
+    const catAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
     const catBackgroundAudioRef = useRef(new Audio(Candle));
 
     const navigate = useNavigate();
