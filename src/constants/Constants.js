@@ -38,6 +38,8 @@ export const adoptionSuccessSoundKey = "confirmed";
 export const clearPetsSoundKey = "cleared";
 export const restartGameSoundKey = "restart";
 export const quitActivitySoundKey = "quit";
+export const addedDecorationsSoundKey = "decorationsAdded";
+export const revivedPetSoundKey = "revivedPet";
 
 
 

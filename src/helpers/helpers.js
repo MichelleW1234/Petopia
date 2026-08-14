@@ -1,4 +1,4 @@
-import { navButtonPressSoundKey, selectionButtonPressSoundKey, adoptionConfirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey} from "../constants/Constants.js";
+import { navButtonPressSoundKey, selectionButtonPressSoundKey, adoptionConfirmationErrorSoundKey, startActivitySoundKey, activitySuccessSoundKey, activityFailSoundKey, screenButtonPressSoundKey, adoptionSuccessSoundKey, clearPetsSoundKey, restartGameSoundKey, quitActivitySoundKey, addedDecorationsSoundKey, revivedPetSoundKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
@@ -11,6 +11,8 @@ import AdoptionSuccess from "../Music/UIIndicatorSounds/AdoptionSuccess.mp3";
 import ClearPets from "../Music/UIIndicatorSounds/ClearPets.mp3";
 import RestartGame from "../Music/UIIndicatorSounds/RestartGame.mp3";
 import QuitActivity from "../Music/UIIndicatorSounds/QuitActivity.mp3";
+import AddedDecorations from "../Music/UIIndicatorSounds/AddedDecorations.mp3";
+import RevivedPet from "../Music/UIIndicatorSounds/RevivedPet.mp3";
 
 
 
@@ -31,7 +33,9 @@ export const playSound = (soundEffect) => {
         [adoptionSuccessSoundKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.5},
         [clearPetsSoundKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
         [restartGameSoundKey] : {[buttonAudioKey]: RestartGame, [buttonVolumeKey]: 0.5},
-        [quitActivitySoundKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75}
+        [quitActivitySoundKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75},
+        [addedDecorationsSoundKey] : {[buttonAudioKey]: AddedDecorations, [buttonVolumeKey]: 0.75},
+        [revivedPetSoundKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75}
 
     };
 

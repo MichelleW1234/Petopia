@@ -9,7 +9,7 @@ import { useRoom} from "../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesKey, inventoryItemTypeKey, speciesKey, stageKey } from "../../../constants/Constants.js";
+import { activityLastPerformedKey, catSpecies, cleaningKey, dogSpecies, feedingKey, fishSpecies, healthCapList, healthKey, playingKey, portraitPetImages, potionTypeKey, screenButtonPressSoundKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesKey, inventoryItemTypeKey, speciesKey, stageKey, addedDecorationsSoundKey, revivedPetSoundKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -39,6 +39,7 @@ function Inventory({setInventoryOpenFlag}) {
 
         if (Inventory[selectedIndex][inventoryItemTypeKey] === potionTypeKey){
         
+            playSound(revivedPetSoundKey);
             setPetList(prev => {
 
                 const copy = structuredClone(prev);
@@ -101,6 +102,7 @@ function Inventory({setInventoryOpenFlag}) {
 
         } else {
 
+            playSound(addedDecorationsSoundKey);
             setInventory(prev => {
 
                 const copy = prev.map(inner =>
