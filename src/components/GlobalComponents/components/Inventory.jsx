@@ -151,9 +151,9 @@ function Inventory({setInventoryOpenFlag}) {
 
                         <h2>{item[inventoryItemNameKey]}</h2>
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemField">
+                        <div className="Inventory_ComponentContainer-Structure--ItemContent">
                             <img src = {item[inventoryItemImageKey]}/>
-                            <div className="Inventory_ComponentContainer-Structure--ItemDescription">
+                            <div className="Inventory_ComponentContainer-Structure--ItemDetails">
                                 <h2>Type: {item[inventoryItemTypeKey]}</h2>
                                 <h2> 
                                     For your:                           
@@ -167,7 +167,7 @@ function Inventory({setInventoryOpenFlag}) {
 
                         <h2>Give to:</h2>
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemPetButtons">
+                        <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
 
                             {Room.map((petName, indexInner) => (
 
@@ -181,11 +181,11 @@ function Inventory({setInventoryOpenFlag}) {
 
                                         PetList[petName][healthKey] === 0 ? (
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
                                         ) : (
 
-                                            <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
+                                            <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
 
                                         )
 
@@ -193,15 +193,15 @@ function Inventory({setInventoryOpenFlag}) {
 
                                         item[inventoryItemOwnerKey] === petName ? (
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
 
                                         ) : item[inventoryItemSpeciesKey].includes(PetList[petName][speciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
                                         ) : (
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetButtonNonclick"> {petName} </button>
+                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
 
                                         )
 

@@ -642,7 +642,7 @@ a:active {
   justify-content: center;
   position: relative;
 
-  border-radius: inherit;
+  border-radius: transparent;
 
   box-shadow: 0 0 16px 8px rgb(255, 255, 255);
 
@@ -789,11 +789,11 @@ a:active {
 .MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow{
 
   border-radius: 25px;
-  padding: 2rem 4rem;
+  padding: 1.5rem 3rem;
   border: none;
 
   color: white;
-  background-color: inherit;
+  background-color: transparent;
   box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
   transition: transform 0.3s ease;
