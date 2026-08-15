@@ -140,11 +140,48 @@
 
 }
 
-.Main_ComponentImage-Structure--WindowScreenNongridTomb{
 
-    height: 12rem;
+
+.Main_ComponentImage-Structure--WindowScreenFloorDecoration{
+
+    position: absolute;
 
 }
+
+
+.Main_ComponentImage-Structure--WindowScreenFloorDecoration--dog{
+
+    width: 15rem;
+    height: 10rem;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+
+.Main_ComponentImage-Structure--WindowScreenFloorDecoration--cat{
+
+    width: 15rem;
+    height: 10rem;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+.Main_ComponentImage-Structure--WindowScreenFloorDecoration--fish{
+
+    width: 15rem;
+    height: auto;
+    bottom: 5%;
+    left: 25%;
+    transform: translateX(-50%) rotate(-5deg);
+
+}
+
 
 .Main_ComponentImage-Structure--WindowScreenCeilingDecoration{
 
@@ -158,26 +195,39 @@
 
 }
 
-.Main_ComponentImage-Structure--WindowScreenFloorDecoration{
 
-    width: 12rem;
-    height: auto;
-    position: absolute;
 
-    bottom: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-
-}
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration{
 
-    width: 12rem;
+    width: 10rem;
     height: auto;
     position: absolute;
+    
+}
 
-    bottom: 50%;
+.Main_ComponentImage-Structure--WindowScreenWallDecoration--dog{
+
+    bottom: 60%;
+    left: 80%;
+    transform: translateX(-50%) translateY(50%);
+    
+}
+
+
+.Main_ComponentImage-Structure--WindowScreenWallDecoration--cat{
+
+    bottom: 55%;
     left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    
+}
+
+
+.Main_ComponentImage-Structure--WindowScreenWallDecoration--fish{
+
+    bottom: 55%;
+    left: 80%;
     transform: translateX(-50%) translateY(50%);
     
 }
