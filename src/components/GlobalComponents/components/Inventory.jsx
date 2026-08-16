@@ -9,7 +9,7 @@ import { useRoom} from "../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -167,54 +167,81 @@ function Inventory({setInventoryOpenFlag}) {
 
                         </div>
 
-                        <h2>Give to:</h2>
+                        {item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey /* && ADD FIRST ACHIEVEMENT CONDITION */ ? (
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
+                            <>
+                                <h2>Achievement: {/* ADD FIRST ACHIEVEMENT CONDITION */} </h2>
+                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                            </>
 
-                            {Room.map((petName, indexInner) => (
+                        ) : item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey /* && ADD SECOND ACHIEVEMENT CONDITION */ ? (
 
-                                petName === null ? (
+                            <>
+                                <h2>Achievement: {/* ADD SECOND ACHIEVEMENT CONDITION */} </h2>
+                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                            </>
 
-                                    null
+                        ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey /* && ADD THIRD ACHIEVEMENT CONDITION */ ? (
 
-                                ) : (
+                            <>
+                                <h2>Achievement: {/* ADD THIRD ACHIEVEMENT CONDITION */} </h2>
+                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                            </>
 
-                                    item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
+                        ) : (
 
-                                        PetList[petName][petHealthKey] === 0 ? (
+                            <>
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+                                <h2>Give to:</h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
+
+                                    {Room.map((petName, indexInner) => (
+
+                                        petName === null ? (
+
+                                            null
 
                                         ) : (
 
-                                            <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
+                                            item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
+
+                                                PetList[petName][petHealthKey] === 0 ? (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+
+                                                ) : (
+
+                                                    <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
+
+                                                )
+
+                                            ) : (
+
+                                                item[inventoryItemOwnerKey] === petName ? (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
+
+                                                ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[petName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+
+                                                ) : (
+
+                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
+
+                                                )
+
+                                            )
 
                                         )
 
-                                    ) : (
+                                    ))}
 
-                                        item[inventoryItemOwnerKey] === petName ? (
+                                </div>
 
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
+                            </>
 
-                                        ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[petName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
-
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
-
-                                        ) : (
-
-                                            <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
-
-                                        )
-
-                                    )
-
-                                )
-
-                            ))}
-
-                        </div>
-                            
+                        )}  
 
                     </div>
 
