@@ -5,7 +5,7 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
-import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey } from "../../../../constants/Constants.js";
+import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey } from "../../../../constants/Constants.js";
 import { pauseAudio } from "../../helpers/Helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
@@ -289,11 +289,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                         item[inventoryItemOwnerKey] === ActivePetName ? (
 
-                            item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey ? (
-
-                                <img key = {index} className={`Main_ComponentImage-Structure--WindowScreenFloorDecoration Main_ComponentImage-Structure--WindowScreenFloorDecoration--${PetList[ActivePetName][petSpeciesKey]}`} src = {item[inventoryItemImageKey]}/>
-                            
-                            ) : item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey ? (
+                            item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey ? (
 
                                 <img key = {index} className="Main_ComponentImage-Structure--WindowScreenCeilingDecoration" src = {item[inventoryItemImageKey]}/>
 
@@ -301,6 +297,14 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                                 <img key = {index} className={`Main_ComponentImage-Structure--WindowScreenWallDecoration Main_ComponentImage-Structure--WindowScreenWallDecoration--${PetList[ActivePetName][petSpeciesKey]}`} src = {item[inventoryItemImageKey]}/>
 
+                            ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey ? (
+
+                                <img key = {index} className={`Main_ComponentImage-Structure--WindowScreenRoomDecoration Main_ComponentImage-Structure--WindowScreenRoomDecoration--${PetList[ActivePetName][petSpeciesKey]}`} src = {item[inventoryItemImageKey]}/>
+                            
+                            ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey ? (
+
+                                <img key = {index} className={`Main_ComponentImage-Structure--WindowScreenFloorDecoration Main_ComponentImage-Structure--WindowScreenFloorDecoration--${PetList[ActivePetName][petSpeciesKey]}`} src = {item[inventoryItemImageKey]}/>
+                            
                             ) : (
 
                                 null

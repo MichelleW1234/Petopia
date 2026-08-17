@@ -5,11 +5,12 @@ import { usePetList } from "../../../providers/PetListProvider.jsx";
 import { useInventory } from "../../../providers/InventoryProvider.jsx";
 import { usePetTimeStamps } from "../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom} from "../../../providers/RoomProvider.jsx";
+import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
-import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -21,7 +22,7 @@ function Inventory({setInventoryOpenFlag}) {
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Inventory, setInventory} = useInventory();
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
-
+    const {Achievements, setAchievements} = useAchievements();
 
     useKeyboardShortcut("i", () => {
     
@@ -167,24 +168,32 @@ function Inventory({setInventoryOpenFlag}) {
 
                         </div>
 
-                        {item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey /* && ADD FIRST ACHIEVEMENT CONDITION */ ? (
+
+                        {item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey && Achievements[0][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: {/* ADD FIRST ACHIEVEMENT CONDITION */} </h2>
+                                <h2>Achievement: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
                                 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
                             </>
 
-                        ) : item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey /* && ADD SECOND ACHIEVEMENT CONDITION */ ? (
+                        ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey && Achievements[1][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: {/* ADD SECOND ACHIEVEMENT CONDITION */} </h2>
+                                <h2>Achievement: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
                                 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
                             </>
 
-                        ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey /* && ADD THIRD ACHIEVEMENT CONDITION */ ? (
+                        ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey && Achievements[2][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: {/* ADD THIRD ACHIEVEMENT CONDITION */} </h2>
+                                <h2>Achievement: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
+                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                            </>
+
+                        ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey && Achievements[3][achievementStatusKey] === false ? (
+
+                            <>
+                                <h2>Achievement: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
                                 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
                             </>
 

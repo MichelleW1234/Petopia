@@ -13,6 +13,10 @@ import FishStageThree from "../images/Fish/Portrait/StageThree.png";
 
 
 
+export const achievementDescriptionKey = "name";
+export const achievementStatusKey = "status";
+
+
 
 export const inventoryItemNameKey = "name";
 export const inventoryItemImageKey = "image";
@@ -24,6 +28,7 @@ export const inventoryItemTypePotionKey = "potion";
 export const inventoryItemTypeFloorDecorationKey = "floor decoration";
 export const inventoryItemTypeCeilingDecorationKey = "ceiling decoration";
 export const inventoryItemTypeWallDecorationKey = "wall decoration";
+export const inventoryItemTypeRoomDecorationKey = "room decoration";
 
 
 
