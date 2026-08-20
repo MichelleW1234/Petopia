@@ -291,7 +291,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
                             item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey ? (
 
-                                <img key = {index} className="Main_ComponentImage-Structure--WindowScreenCeilingDecoration" src = {item[inventoryItemImageKey]}/>
+                                <img key = {index} className={`Main_ComponentImage-Structure--WindowScreenCeilingDecoration  Main_ComponentImage-Structure--WindowScreenCeilingDecoration--${PetList[ActivePetName][petSpeciesKey]}`} src = {item[inventoryItemImageKey]}/>
 
                             ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey ? (
 

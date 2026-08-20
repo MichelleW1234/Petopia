@@ -9,6 +9,8 @@ import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
+import inventoryItemLock from "../../../images/inventoryItemLock.png";
+
 import { flagCloser, playSound } from "../../../helpers/Helpers.js";
 import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
@@ -172,36 +174,36 @@ function Inventory({setInventoryOpenFlag}) {
                         {item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey && Achievements[0][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
-                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                                <h2>Achievement to Unlock: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
+                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey && Achievements[1][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
-                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                                <h2>Achievement to Unlock: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
+                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey && Achievements[2][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
-                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                                <h2>Achievement to Unlock: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
+                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey && Achievements[3][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
-                                <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWpLmpX9JcVtv3p2v_j06qZItOEP7g3t3-CrtXAJfDXA&s=10"/>
+                                <h2>Achievement to Unlock: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
+                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                             </>
 
                         ) : (
 
                             <>
 
-                                <h2>Give to:</h2>
+                                <h2>Give This Item to:</h2>
                                 <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
 
                                     {Room.map((petName, indexInner) => (

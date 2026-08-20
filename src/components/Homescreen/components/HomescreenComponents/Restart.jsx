@@ -7,8 +7,8 @@ import { useAchievements } from "../../../../providers/AchievementsProvider.jsx"
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import Reviver from "../../../../images/Inventory/Reviver.png";
-import Painting from "../../../../images/Inventory/Painting.png";
-import Chandelier from "../../../../images/Inventory/Chandelier.png";
+import Painting from "../../../../images/Inventory/PaintingOne.png";
+import Chandelier from "../../../../images/Inventory/ChandelierOne.png";
 import Statue from "../../../../images/Inventory/Statue.png";
 import Rug from "../../../../images/Inventory/Rug.png";
 

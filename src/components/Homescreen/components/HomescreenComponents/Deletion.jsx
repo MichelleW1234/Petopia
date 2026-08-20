@@ -3,10 +3,11 @@ import { useState } from "react";
 import {usePetList} from "../../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
+import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { soundSelectionButtonPressKey, soundClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../constants/Constants.js";
+import { soundSelectionButtonPressKey, soundClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
 import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
 
 
@@ -17,6 +18,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
+    const {Inventory, setInventory} = useInventory();
 
     const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
 
@@ -90,6 +92,27 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
             });
 
             return updatedList;
+
+        });
+
+        //CHECK!!!!!!
+        setInventory(prev => {
+
+            const copy = prev.map(inner =>
+                structuredClone(inner)
+            );
+
+            deletionSelectedPets.forEach(petToRemove => {
+
+                copy.forEach(item => {
+                    if (item[inventoryItemOwnerKey] === petToRemove) {
+                        item[inventoryItemOwnerKey] = null;
+                    }
+                });
+            
+            });
+
+            return copy;
 
         });
 

@@ -7,8 +7,17 @@
   justify-content: center;
 
   padding: 3rem 6rem;
-  gap: 2rem;
+  gap: 3rem;
   border-radius: 50px;
+
+  img {
+
+    filter: 
+      drop-shadow(0 0 2px rgb(255, 255, 255))
+      drop-shadow(0 0 4px rgb(255, 255, 255))
+      drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+  }
 
 }
 
@@ -26,11 +35,6 @@
 
     height: auto;
     width: 50%;
-
-    filter: 
-      drop-shadow(0 0 2px rgb(255, 255, 255))
-      drop-shadow(0 0 4px rgb(255, 255, 255))
-      drop-shadow(0 0 6px  rgb(255, 255, 255));
 
   }
 
@@ -123,3 +127,9 @@
 
 } 
 
+
+.Inventory_ComponentImage-Structure--ItemLock{
+
+  height: 15rem;
+
+}

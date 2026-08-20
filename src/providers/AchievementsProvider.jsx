@@ -18,10 +18,10 @@ export function AchievementsProvider({ children }) {
     try {
       const stored = JSON.parse(localStorage.getItem("Achievements"));
       return stored ? stored : [
-                                  {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
-                                  {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
-                                  {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
-                                  {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: false}
+                                  {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: true},
+                                  {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: true},
+                                  {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: true},
+                                  {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: true}
                                 ];
     } catch {
       return  [
@@ -46,6 +46,7 @@ export function AchievementsProvider({ children }) {
                       Achievements[1][achievementStatusKey] === true && adultFish && adultDog || 
                       Achievements[2][achievementStatusKey] === true && adultFish && adultCat;
 
+    //CHECK!!!!!!
     setAchievements(prev => {
 
       const copy = prev.map(inner =>

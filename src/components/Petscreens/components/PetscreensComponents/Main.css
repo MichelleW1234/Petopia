@@ -146,12 +146,33 @@
     height: auto;
     position: absolute;
     top: 0%;
-    left: 50%;
     transform: translateX(-50%);
     z-index: 3;
 
 }
 
+
+
+.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--dog{
+
+    left: 50%;
+
+}
+
+
+
+.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--cat{
+
+    left: 20%;
+
+}
+
+
+.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--fish{
+
+    left: 50%;
+
+}
 
 
 
@@ -206,7 +227,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--dog{
 
-    bottom: 45%;
+    bottom: 50%;
     left: 20%;
     
 }
@@ -214,8 +235,8 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--cat{
 
-    bottom: 45%;
-    left: 80%;
+    bottom: 50%;
+    left: 85%;
     
 }
 
@@ -223,7 +244,8 @@
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--fish{
 
     bottom: 30%;
-    left: 80%;
+    left: 20%;
+    transform: translateX(-50%) translateY(50%);
     
 }
 
@@ -256,16 +278,16 @@
     width: 15rem;
     height: 10rem;
     bottom: 0%;
-    left: 50%;
+    left: 20%;
 
 }
 
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--fish{
 
-    width: 15rem;
+    width: 6rem;
     height: auto;
     bottom: 5%;
-    left: 25%;
+    left: 75%;
 
 }
