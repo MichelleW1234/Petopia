@@ -13,6 +13,11 @@ import FishStageThree from "../images/Fish/Portrait/StageThree.png";
 
 
 
+export const notificationsDescriptionKey = "description";
+export const notificationsDateKey = "date";
+
+
+
 export const achievementDescriptionKey = "name";
 export const achievementStatusKey = "status";
 

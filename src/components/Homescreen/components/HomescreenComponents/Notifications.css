@@ -1,0 +1,47 @@
+.Notifications_ComponentContainer-Structure--Cards{
+
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    position: fixed;
+    right: 4rem;
+    top: 4rem;
+    z-index: 4;
+
+    gap: 0rem;
+    padding: 1rem;
+
+}
+
+
+
+.Notifications_ComponentContainer-Structure--Card{
+
+    position: relative;
+
+    padding: 1rem;
+
+    button{
+
+        position: absolute;
+        right: 0rem;
+        top: 0rem;
+
+    }
+
+}
+
+
+.Notifications_ComponentContainer-Structure--CardContent{
+
+    width: 30rem;
+    position: relative;
+
+    padding: 2rem 4rem;
+    border-radius: 25px;
+
+}
+
+

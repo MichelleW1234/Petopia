@@ -1,0 +1,40 @@
+.FeatherFishing_ComponentContainer-Structure--Screen{
+
+    background-image: url("../../../../../images/Cat/Play/Games/MouseHunt/Background.png");
+
+}
+
+
+.FeatherFishing_ComponentContainer-Structure--Grid{
+
+    display: grid;
+    grid-template-rows: repeat(5, 5rem);
+    grid-template-columns: repeat(8, 5rem);
+
+}
+
+
+.FeatherFishing_ComponentContainer-Template--GridCellNontarget{
+
+    img {
+
+        height: 100%;
+        width: auto;
+
+    }
+
+}
+
+
+.FeatherFishing_ComponentContainer-Template--GridCellTarget{
+
+    background-color: rgb(255, 0, 0, 0.5);
+
+    img {
+
+        height: 100%;
+        width: auto;
+
+    }
+
+}

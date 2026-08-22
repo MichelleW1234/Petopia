@@ -17,7 +17,7 @@ import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
 import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHunt from "./CatComponents/MouseHunt.jsx";
-import CatGameTwo from "./CatComponents/CatGameTwo.jsx";
+import FeatherFishing from "./CatComponents/FeatherFishing.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
 import { home, pauseAudio } from "../../helpers/Helpers.js";
@@ -59,6 +59,7 @@ import Tuna from "../../../../images/Cat/Feed/Options/Tuna.png";
 import Chicken from "../../../../images/Cat/Feed/Options/Chicken.png";
 import Salmon from "../../../../images/Cat/Feed/Options/Salmon.png";
 import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
+import Rod from "../../../../images/Cat/Play/Options/Rod.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
 
@@ -165,7 +166,7 @@ function Cat (){
 
 
     const catFeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const catPlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Chicken, [petActivityOptionGameKey]: CatGameTwo}];
+    const catPlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishing}];
     const catMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const catAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});

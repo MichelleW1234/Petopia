@@ -6,8 +6,8 @@ import { playSound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
-import Mouse from "../../../../../images/Cat/Play/Games/Mouse.png";
-import Cord from "../../../../../images/Cat/Play/Games/Cord.png";
+import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
+import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
 
 import "./MouseHunt.css";
 

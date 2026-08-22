@@ -13,6 +13,7 @@ import { RoomProvider } from "./providers/RoomProvider.jsx";
 import { ActiveCheckoutRoomProvider } from "./providers/ActiveCheckoutRoomProvider.jsx";
 import { InventoryProvider } from "./providers/InventoryProvider.jsx";
 import { AchievementsProvider } from "./providers/AchievementsProvider.jsx";
+import { NotificationsProvider } from "./providers/NotificationsProvider.jsx";
 
 
 const currentVersion = "1.0.0";
@@ -26,11 +27,11 @@ if (savedVersion !== currentVersion) {
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <VolumeProvider>
-      <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider><RoomProvider><InventoryProvider><AchievementsProvider>
-        <PetProgressionUpdateProvider><ActivePetNameProvider><ActiveCheckoutRoomProvider>
+      <BackgroundMusicProvider><GlobalTimerProvider><PetListProvider><PetTimeStampsProvider><RoomProvider><InventoryProvider><NotificationsProvider>
+        <AchievementsProvider><PetProgressionUpdateProvider><ActivePetNameProvider><ActiveCheckoutRoomProvider>
           <App />
-        </ActiveCheckoutRoomProvider></ActivePetNameProvider></PetProgressionUpdateProvider>
-      </AchievementsProvider></InventoryProvider></RoomProvider></PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
+        </ActiveCheckoutRoomProvider></ActivePetNameProvider></PetProgressionUpdateProvider></AchievementsProvider>
+      </NotificationsProvider></InventoryProvider></RoomProvider></PetTimeStampsProvider></PetListProvider></GlobalTimerProvider></BackgroundMusicProvider>
     </VolumeProvider>
   </StrictMode>,
 )

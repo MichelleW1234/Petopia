@@ -11,7 +11,7 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 import MusicVolume from "../../../GlobalComponents//components/MusicVolume.jsx";
 import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
 import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
-import DogGameTwo from "./DogComponents/DogGameTwo.jsx";
+import Pawformer from "./DogComponents/Pawformer.jsx";
 import Main from "../PetscreensComponents/Main.jsx";
 import Feed from "../PetscreensComponents/Stations/Feed.jsx";
 import Clean from "../PetscreensComponents/Stations/Clean.jsx";
@@ -69,6 +69,7 @@ import Brush from "../../../../images/Dog/Clean/Options/Brush.png";
 import CursorSoap from "../../../../images/Dog/Clean/Options/Soap.cur";
 import CursorBrush from "../../../../images/Dog/Clean/Options/Brush.cur";
 import Leash from "../../../../images/Dog/Play/Options/Leash.png";
+import Mask from "../../../../images/Dog/Play/Options/Mask.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
 
@@ -187,7 +188,7 @@ function Dog (){
 
     const dogFeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dogCleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dogPlayOptionsList = [{[petActivityOptionNameKey]: "Stroll Patrol", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrol}, {[petActivityOptionNameKey]: "Pawformer", [petActivityOptionImageKey]: Brush, [petActivityOptionGameKey]: DogGameTwo}];
+    const dogPlayOptionsList = [{[petActivityOptionNameKey]: "Stroll Patrol", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrol}, {[petActivityOptionNameKey]: "Pawformer", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: Pawformer}];
     const dogMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dogAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBarks), [petSoundSadKey]: new Audio(SadWhine), [petSoundSleepKey]: new Audio(Sleeping)});

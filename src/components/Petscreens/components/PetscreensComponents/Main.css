@@ -218,7 +218,6 @@
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration{
 
     width: auto;
-    height: 15rem;
     position: absolute;
     transform: translateX(-50%) translateY(50%);
     z-index: 2;
@@ -227,6 +226,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--dog{
 
+    height: 15rem;
     bottom: 50%;
     left: 20%;
     
@@ -235,6 +235,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--cat{
 
+    height: 15rem;
     bottom: 50%;
     left: 85%;
     
@@ -243,8 +244,9 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--fish{
 
-    bottom: 35%;
-    left: 20%;
+    height: 25rem;
+    bottom: 45%;
+    left: 30%;
     transform: translateX(-50%) translateY(50%);
     
 }
@@ -285,9 +287,9 @@
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--fish{
 
-    width: 6rem;
+    width: 8rem;
     height: auto;
     bottom: 5%;
-    left: 75%;
+    left: 80%;
 
 }

@@ -6,25 +6,25 @@ import { playSound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
-import "./CatGameTwo.css";
+import "./FeatherFishing.css";
 
 
 
 
-function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
-    const catGameTwoWindowWidth = 8;
-    const catGameTwoWindowHeight = 5;
+    const featherFishingWindowWidth = 8;
+    const featherFishingWindowHeight = 5;
 
-    const [catGameTwoStart, setCatGameTwoStart] = useState(false);
-    const [catGameTwoHookLength, setCatGameTwoHookLength] = useState(0);
-    const [catGameTwoHitAttempt, setCatGameTwoHitAttempt] = useState(false);
+    const [featherFishingStart, setFeatherFishingStart] = useState(false);
+    const [featherFishingHookLength, setFeatherFishingHookLength] = useState(0);
+    const [featherFishingHitAttempt, setFeatherFishingHitAttempt] = useState(false);
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!catGameTwoStart){
+        if (!featherFishingStart){
 
-            startActivity(setCatGameTwoStart);
+            startActivity(setFeatherFishingStart);
 
         }
 
@@ -37,7 +37,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     useEffect(() => {
 
-        if (!catGameTwoStart) {
+        if (!featherFishingStart) {
             return;
         }
 
@@ -50,13 +50,13 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
             playAudioRef.current.loop = false;
         };
 
-    }, [catGameTwoStart]);
+    }, [featherFishingStart]);
 
 
 
     useEffect(() => {
 
-        if (!catGameTwoStart){
+        if (!featherFishingStart){
 
             return;
 
@@ -68,17 +68,17 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             if (movement === 0) {
 
-                setCatGameTwoHookLength(prev => Math.max(prev - 1, 0));
+                setFeatherFishingHookLength(prev => Math.max(prev - 1, 0));
 
             } else {
 
-                setCatGameTwoHookLength(prev => Math.min(prev + 1, 4));
+                setFeatherFishingHookLength(prev => Math.min(prev + 1, 4));
 
             }
 
-            if (catGameTwoHitAttempt){
+            if (featherFishingHitAttempt){
 
-                setCatGameTwoHitAttempt(false);
+                setFeatherFishingHitAttempt(false);
 
             }
 
@@ -86,7 +86,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         return () => clearInterval(interval);
 
-    }, [catGameTwoStart, catGameTwoHitAttempt]);
+    }, [featherFishingStart, featherFishingHitAttempt]);
 
 
 
@@ -94,7 +94,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         playSound(soundScreenButtonPressKey);
 
-        if (!catGameTwoHitAttempt){
+        if (!featherFishingHitAttempt){
 
             if (success === 1){
 
@@ -106,7 +106,7 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             }
 
-            setCatGameTwoHitAttempt(true);
+            setFeatherFishingHitAttempt(true);
 
         }
 
@@ -117,20 +117,20 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
-            {!catGameTwoStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+            {!featherFishingStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCatGameTwoStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
             </div>}
 
-            <div className="CatGameTwo_ComponentContainer-Structure--Grid">
+            <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: catGameTwoWindowHeight}, (_, row) => 
-                    Array.from({ length: catGameTwoWindowWidth}, (_, col) => {
+                {Array.from({ length: featherFishingWindowHeight}, (_, row) => 
+                    Array.from({ length: featherFishingWindowWidth}, (_, col) => {
 
-                        const hookHead = col === 4 && row === catGameTwoHookLength;
-                        const hookBody = col === 4 && row < catGameTwoHookLength;
+                        const hookHead = col === 4 && row === featherFishingHookLength;
+                        const hookBody = col === 4 && row < featherFishingHookLength;
 
                         return (
 
@@ -138,13 +138,13 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(1)}>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(1)}>
                                         <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
                                     </div>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget">
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget">
                                         <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
                                     </div>
 
@@ -154,13 +154,13 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}>
                                         <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
                                     </div>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget">
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget">
                                         <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
                                     </div>
 
@@ -170,11 +170,11 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}></div>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="CatGameTwo_ComponentContainer-Template--GridCellNontarget"></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget"></div>
 
                                 )
 
@@ -192,4 +192,4 @@ function CatGameTwo({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
     );
 }
   
-export default CatGameTwo;
+export default FeatherFishing;

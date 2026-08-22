@@ -7,8 +7,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import { usePetList } from "./PetListProvider.jsx";
+import { useNotifications } from "./NotificationsProvider.jsx";
+import {useGlobalTimer} from "./GlobalTimerProvider.jsx";
 
-import { achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey } from "../constants/Constants";
+import { notificationsDescriptionKey, notificationsDateKey, achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey } from "../constants/Constants";
 
 const AchievementsContext = createContext();
 
@@ -34,6 +36,8 @@ export function AchievementsProvider({ children }) {
   });
 
   const {PetList, setPetList} = usePetList();
+  const {Notifications, setNotifications} = useNotifications();
+  const {GlobalTimer} = useGlobalTimer();
 
 
   useEffect(() => {
@@ -71,6 +75,40 @@ export function AchievementsProvider({ children }) {
 
       return copy;
       
+    });
+
+    setNotifications(prev => {
+
+      const copy = prev.map(inner =>
+                structuredClone(inner)
+            );
+
+      const date = new Date(GlobalTimer).toLocaleString([], {
+                                            year: "numeric",
+                                            month: "2-digit",
+                                            day: "2-digit",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                        });
+
+      if (adultFish) {
+        copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: date});
+      }
+
+      if (adultCat) {
+        copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: date});
+      }
+
+      if (adultDog) {
+        copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: date});
+      }
+
+      if (allAdults) {
+        copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: date});
+      }
+
+      return copy;
+
     });
 
   }, [PetList]);
