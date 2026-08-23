@@ -170,7 +170,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             }
 
-        }, 300);
+        }, 250);
 
         return () => clearInterval(interval);
 
