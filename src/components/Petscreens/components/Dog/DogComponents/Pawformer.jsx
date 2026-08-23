@@ -6,10 +6,11 @@ import { startActivity } from "../../../helpers/Helpers.js";
 import { playSound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
-import W from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
-import A from "../../../../../images/Dog/Play/Games/Pawformer/A.png";
-import S from "../../../../../images/Dog/Play/Games/Pawformer/S.png";
-import D from "../../../../../images/Dog/Play/Games/Pawformer/D.png";
+import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
+import a from "../../../../../images/Dog/Play/Games/Pawformer/A.png";
+import s from "../../../../../images/Dog/Play/Games/Pawformer/S.png";
+import d from "../../../../../images/Dog/Play/Games/Pawformer/D.png";
+import arrow from "../../../../../images/Dog/Play/Games/Pawformer/Arrow.png";
 
 import "./Pawformer.css";
 
@@ -169,7 +170,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             }
 
-        }, 250);
+        }, 300);
 
         return () => clearInterval(interval);
 
@@ -212,6 +213,10 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setPawformerStart)}> Start <br/> [return]</button>
             </div>}
 
+            <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
+            <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Bottom" src = {arrow}/>
+            <div className= "Pawformer_ComponentContainer-Template--HitBox"></div>
+
             <div className="Pawformer_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: pawformerWindowWidth}, (_, col) => {
@@ -227,15 +232,11 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             col === pawformerTargetCol ? (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCellActive">
-                                    <img src = {W}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {w}/>
 
                             ) : (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCell">
-                                    <img src = {W}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {w}/>
 
                             )
 
@@ -243,15 +244,11 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             col === pawformerTargetCol ? (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCellActive">
-                                    <img src = {A}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {a}/>
 
                             ) : (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCell">
-                                    <img src = {A}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {a}/>
 
                             )
 
@@ -259,15 +256,11 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             col === pawformerTargetCol ? (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCellActive">
-                                    <img src = {S}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {s}/>
 
                             ) : (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCell">
-                                    <img src = {S}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {s}/>
 
                             )
 
@@ -275,29 +268,17 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             col === pawformerTargetCol ? (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCellActive">
-                                    <img src = {D}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {d}/>
 
                             ) : (
 
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCell">
-                                    <img src = {D}/>
-                                </div>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {d}/>
 
                             )
 
                         ) : (
 
-                            col === pawformerTargetCol ? (
-
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCellActive"></div>
-
-                            ) : (
-
-                                <div key = {col} className="Pawformer_ComponentContainer-Structure--GridCell"></div>
-
-                            )
+                            <div key = {col} ></div>
 
                         )
 

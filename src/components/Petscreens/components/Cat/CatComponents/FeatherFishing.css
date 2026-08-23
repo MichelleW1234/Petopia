@@ -5,36 +5,78 @@
 }
 
 
+
+
+.FeatherFishing_ComponentContainer-Template--HitBox{
+
+    position: absolute;
+    height: 8rem;
+    width: 8rem;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+
+    border-radius: 1rem;
+
+    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+
+}
+
+
+
+
+.FeatherFishing_ComponentContainer-Template--Arrow {
+
+    position: absolute;
+    width: auto;
+    height: 8rem;
+    bottom: 50%;
+
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+}
+
+
+.FeatherFishing_ComponentContainer-Template--Arrow--Left {
+
+    left: 8rem;
+    transform: translateY(50%);
+
+}
+
+
+.FeatherFishing_ComponentContainer-Template--Arrow--Right{
+
+    right: 8rem;
+    transform: translateY(50%) scaleX(-1);
+
+}
+
+
+
+
+
+
 .FeatherFishing_ComponentContainer-Structure--Grid{
 
     display: grid;
     grid-template-rows: repeat(5, 5rem);
-    grid-template-columns: repeat(8, 5rem);
+    grid-template-columns: repeat(9, 5rem);
+
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px  rgb(255, 255, 255));
 
 }
 
 
-.FeatherFishing_ComponentContainer-Template--GridCellNontarget{
+.FeatherFishing_ComponentContainer-Template--GridCell{
 
-    img {
-
-        height: 100%;
-        width: auto;
-
-    }
-
-}
-
-
-.FeatherFishing_ComponentContainer-Template--GridCellTarget{
-
-    background-color: rgb(255, 0, 0, 0.5);
-
-    img {
-
-        height: 100%;
-        width: auto;
-
-    }
+    height: 100%;
+    width: auto;
 
 }

@@ -6,6 +6,10 @@ import { playSound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
 import { startActivity } from "../../../helpers/Helpers.js";
 
+import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
+import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
+import arrow from "../../../../../images/Cat/Play/Games/FeatherFishing/Arrow.png";
+
 import "./FeatherFishing.css";
 
 
@@ -13,7 +17,7 @@ import "./FeatherFishing.css";
 
 function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
-    const featherFishingWindowWidth = 8;
+    const featherFishingWindowWidth = 9;
     const featherFishingWindowHeight = 5;
 
     const [featherFishingStart, setFeatherFishingStart] = useState(false);
@@ -124,6 +128,11 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                 <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
             </div>}
 
+            
+            <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
+            <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>
+            <div className= "FeatherFishing_ComponentContainer-Template--HitBox"></div>
+
             <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: featherFishingWindowHeight}, (_, row) => 
@@ -138,15 +147,11 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(1)}>
-                                        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
-                                    </div>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => checkHit(1)}/>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget">
-                                        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYAqF8KjasQey3t0ylVdk3i3LUwBBMAXB56N4yXQCqQQ&s=10"></img>
-                                    </div>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead}/>
 
                                 )
 
@@ -154,27 +159,23 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 ? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}>
-                                        <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
-                                    </div>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => checkHit(0)}/>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget">
-                                        <img src = "https://img.favpng.com/2/20/14/line-clip-art-png-favpng-Aq2GcCNQxaktrgWaumHyCZw0D_t.jpg"></img>
-                                    </div>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} />
 
                                 )
 
                             ) : (
 
-                                row === 2 ? (
+                                row === 2 && col === 4? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellTarget" onClick = {() => checkHit(0)}></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => checkHit(0)}></div>
 
                                 ) : (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCellNontarget"></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
 
                                 )
 
