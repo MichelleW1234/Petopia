@@ -149,7 +149,7 @@ export function PetProgressionUpdateProvider({ children }) {
         if(pet[petSpeciesKey] === petSpeciesDogKey){
         // Grows every 5 days
 
-            if (difference > 900000){
+            if (difference > 864000000){
 
                 return 2;
 
@@ -166,7 +166,7 @@ export function PetProgressionUpdateProvider({ children }) {
         } else if (pet[petSpeciesKey] === petSpeciesCatKey){
         // Grows every week
 
-            if (difference > 600000){
+            if (difference > 1209600000){
 
                 return 2;
 
@@ -183,7 +183,7 @@ export function PetProgressionUpdateProvider({ children }) {
         } else if (pet[petSpeciesKey] === petSpeciesFishKey){
         // Grows every 3 days
 
-            if (difference > 300000){
+            if (difference > 518400000){
 
                 return 2;
 
