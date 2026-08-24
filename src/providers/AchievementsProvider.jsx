@@ -10,7 +10,7 @@ import { usePetList } from "./PetListProvider.jsx";
 import { useNotifications } from "./NotificationsProvider.jsx";
 import {useGlobalTimer} from "./GlobalTimerProvider.jsx";
 
-import { notificationsDescriptionKey, notificationsDateKey, achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey } from "../constants/Constants";
+import { notificationsDescriptionKey, notificationsDateKey, achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey, petSpeciesCatKey, petSpeciesDogKey } from "../constants/Constants";
 
 const AchievementsContext = createContext();
 
@@ -20,10 +20,10 @@ export function AchievementsProvider({ children }) {
     try {
       const stored = JSON.parse(localStorage.getItem("Achievements"));
       return stored ? stored : [
-                                  {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: true},
-                                  {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: true},
-                                  {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: true},
-                                  {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: true}
+                                  {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
+                                  {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
+                                  {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
+                                  {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: false}
                                 ];
     } catch {
       return  [
@@ -42,13 +42,13 @@ export function AchievementsProvider({ children }) {
 
   useEffect(() => {
 
-    const adultFish = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey);
-    const adultCat = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey);
-    const adultDog = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey);
+    const adultFish = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey && Achievements[0][achievementStatusKey] === false);
+    const adultCat = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey && Achievements[1][achievementStatusKey] === false);
+    const adultDog = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey && Achievements[2][achievementStatusKey] === false);
 
-    const allAdults = Achievements[0][achievementStatusKey] === true && adultCat && adultDog ||
-                      Achievements[1][achievementStatusKey] === true && adultFish && adultDog || 
-                      Achievements[2][achievementStatusKey] === true && adultFish && adultCat;
+    const allAdults = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && adultDog ||
+                      adultFish && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
+                      Achievements[0][achievementStatusKey] === true && adultCat && Achievements[2][achievementStatusKey] === true;
 
     //CHECK!!!!!!
     setAchievements(prev => {
@@ -58,19 +58,19 @@ export function AchievementsProvider({ children }) {
               );
 
       if (adultFish) {
-        copy[0][achievementDescriptionKey] = true;
+        copy[0][achievementStatusKey] = true;
       }
 
       if (adultCat) {
-        copy[1][achievementDescriptionKey] = true;
+        copy[1][achievementStatusKey] = true;
       }
 
       if (adultDog) {
-        copy[2][achievementDescriptionKey] = true;
+        copy[2][achievementStatusKey] = true;
       }
 
       if (allAdults) {
-        copy[3][achievementDescriptionKey] = true;
+        copy[3][achievementStatusKey] = true;
       }
 
       return copy;

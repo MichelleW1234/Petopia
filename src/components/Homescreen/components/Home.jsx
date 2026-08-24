@@ -90,7 +90,7 @@ function Home (){
         }
 
     },
-        ".RestartGame"
+        ".ResetAllPets"
     );
 
 
@@ -178,14 +178,14 @@ function Home (){
                     {homeMinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RestartGame" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Restart Game <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ResetAllPets" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Reset All Pets <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeDeletionOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Restart Game <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Reset All Pets <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [2]</button>
                         </>
 
