@@ -730,14 +730,14 @@ input {
 .MiscellaneousElements_ComponentText-Template--MainTitle{
 
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 
-  padding: 1rem;
-  border-radius: 25px;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
 
-  box-shadow: 0 16px 25.6px rgba(255, 255, 255);
+  box-shadow:
+    0 16px 25.6px rgba(255, 255, 255),
+    0 -16px 25.6px rgba(255, 255, 255);
 
 }
 
@@ -745,9 +745,7 @@ input {
 .MiscellaneousElements_ComponentText-Template--EntryTitle{
 
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 
   padding: 1rem;
   border-radius: 25px;
@@ -772,7 +770,7 @@ input {
   overflow-y: auto;
 
   gap: 4rem;
-  padding: 2rem 8rem;
+  padding: 4rem 8rem;
 
 }
 
@@ -923,7 +921,7 @@ input {
   align-items: center;
   justify-content: center;
 
-  gap: 3rem;
+  gap: 4rem;
 
 }
 
