@@ -17,6 +17,7 @@ import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthD
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
+import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -449,6 +450,8 @@ function Adoption () {
                 )}
         
             </div>
+
+            <Notifications/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

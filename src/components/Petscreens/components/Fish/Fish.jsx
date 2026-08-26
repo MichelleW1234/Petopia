@@ -66,6 +66,7 @@ import CursorSponge from "../../../../images/Fish/Clean/Options/Sponge.cur";
 import CursorCloth from "../../../../images/Fish/Clean/Options/Cloth.cur";
 import Pill from "../../../../images/Fish/Medicine/Options/Pill.png";
 import Serum from  "../../../../images/Fish/Medicine/Options/Serum.png";
+import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -440,6 +441,8 @@ function Fish (){
                     )}
 
                 </div>
+
+                <Notifications/>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     

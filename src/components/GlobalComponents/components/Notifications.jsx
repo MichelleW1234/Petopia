@@ -1,5 +1,5 @@
-import { notificationsDateKey, notificationsDescriptionKey } from "../../../../constants/Constants";
-import { useNotifications } from "../../../../providers/NotificationsProvider";
+import { notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
+import { useNotifications } from "../../../providers/NotificationsProvider";
 
 import "./Notifications.css";
 

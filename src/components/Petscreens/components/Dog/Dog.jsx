@@ -72,6 +72,7 @@ import Leash from "../../../../images/Dog/Play/Options/Leash.png";
 import Mask from "../../../../images/Dog/Play/Options/Mask.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
+import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -481,6 +482,8 @@ function Dog (){
                     )}
                 
                 </div>
+
+                <Notifications/>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     

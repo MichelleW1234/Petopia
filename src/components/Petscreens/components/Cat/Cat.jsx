@@ -62,6 +62,7 @@ import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
 import Rod from "../../../../images/Cat/Play/Options/Rod.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
+import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -442,6 +443,8 @@ function Cat (){
                 </div>
 
             </div>
+
+            <Notifications/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

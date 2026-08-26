@@ -15,7 +15,7 @@ import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 import ClearPets from "./HomescreenComponents/ClearPets.jsx";
 import RearrangePets from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
-import Notifications from "./HomescreenComponents/Notifications.jsx";
+import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSelectionButtonPressKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";

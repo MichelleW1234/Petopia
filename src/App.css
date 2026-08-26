@@ -211,7 +211,7 @@ input {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 5;
+  z-index: 7;
   inset: 0;
 
   gap: 3rem;
@@ -803,7 +803,7 @@ input {
   align-items: center;
   position: absolute;
   inset: 0;
-  z-index: 6;
+  z-index: 9;
 
   padding: 3rem;
   gap: 3rem;
@@ -963,7 +963,7 @@ input {
   position: fixed;
   bottom: 4rem;
   left: 4rem;
-  z-index: 4;
+  z-index: 6;
 
   gap: 3rem;
 
