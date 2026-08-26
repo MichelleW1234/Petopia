@@ -13,14 +13,14 @@ import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
 
 
 
-function Deletion({setDeletionOpenClearPetsFlag}) {
+function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
     const {Inventory, setInventory} = useInventory();
 
-    const [deletionSelectedPets, setDeletionSelectedPets] = useState([]);
+    const [deletionSelectedPets, setClearPetsSelectedPets] = useState([]);
 
 
     
@@ -39,7 +39,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        flagCloser(setDeletionOpenClearPetsFlag);
+        flagCloser(setClearPetsOpenClearPetsFlag);
 
     },
         ".Quit"
@@ -52,7 +52,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     const addPet = (PetToAdd) => {
 
         playSound(soundSelectionButtonPressKey);
-        setDeletionSelectedPets(prev => [...prev, PetToAdd]);
+        setClearPetsSelectedPets(prev => [...prev, PetToAdd]);
 
     }
 
@@ -60,7 +60,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     const removePet = (PetToRemove) => {
 
         playSound(soundSelectionButtonPressKey);
-        setDeletionSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
+        setClearPetsSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
         
     }
 
@@ -129,7 +129,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
         });
 
-        flagCloser(setDeletionOpenClearPetsFlag);
+        flagCloser(setClearPetsOpenClearPetsFlag);
 
     }
 
@@ -137,10 +137,10 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
     return (
 
-        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1>Select pet(s) to remove:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle">Select pet(s) to remove:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                     {Room.map((petName, index) => (
@@ -167,7 +167,9 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
                                 )}
 
-                                <h2>{petName}</h2>
+                                <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                    <h2>{petName}</h2>
+                                </div>
                             </div>
 
                         )
@@ -179,7 +181,7 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setDeletionOpenClearPetsFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setClearPetsOpenClearPetsFlag)}>Quit <br/> [esc]</button>
 
                 {deletionSelectedPets.length === 0 ? (
 
@@ -198,4 +200,4 @@ function Deletion({setDeletionOpenClearPetsFlag}) {
     );
 }
   
-export default Deletion;
+export default ClearPets;

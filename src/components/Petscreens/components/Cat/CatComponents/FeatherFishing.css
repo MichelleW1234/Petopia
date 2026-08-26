@@ -16,9 +16,9 @@
     left: 50%;
     transform: translateX(-50%) translateY(50%);
 
-    border-radius: 1rem;
+    border-radius: 25px;
 
-    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
 
 }
 

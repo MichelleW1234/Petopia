@@ -18,12 +18,10 @@
   /*Color light and saturation percentages:*/
 
   --UIStapleElements_Background-Saturation--GlobalColorBackground: 75%;
-
-  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter: 25%;
-  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundInner: 50%;
-
-  --UIStapleElements_BackgroundOverlay-Light--GlobalColorBackground: 25%;
-  --UIStapleElements_BackgroundOverlay-Transparency--GlobalColorBackground: 75%;
+  --UIStapleElements_Background-Light--ScreenColorBackgroundOuter: 25%;
+  --UIStapleElements_Background-Light--ScreenColorBackgroundInner: 50%;
+  --UIStapleElements_Background-Light--FloatingFlagColorBackground: 25%;
+  --UIStapleElements_Background-Transparency--FloatingFlagColorBackground: 75%;
 
 
 
@@ -125,15 +123,6 @@ button {
 }
 
 
-p,
-input {
-
-  font-family: monospace;
-  font-size: calc(1rem*1.25);
-
-}
-
-
 a:link,
 a:visited,
 a:hover,
@@ -147,6 +136,16 @@ a:active {
   text-decoration: none;
 
 }
+
+
+p,
+input {
+
+  font-family: monospace;
+  font-size: calc(1rem*1.25);
+
+}
+
 
 
 
@@ -182,7 +181,7 @@ a:active {
 /*Backgrounds:*/
 
 
-.UIStapleElements_BackgroundBase-Structure--Screen {
+.UIStapleElements_Background-Template--Screen {
 
   min-height: 100vh;
   display: flex;
@@ -192,17 +191,11 @@ a:active {
   padding: 4rem;
   gap: 5rem;
 
-}
-
-
-
-.UIStapleElements_BackgroundBase-Template--Screen {
-
   background:
     url("./images/BackgroundOverlay.gif"),
     url("./images/BackgroundOverlay.gif"),
     url("./images/AppBackground.png"),
-    linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundOuter)) 85%);
+    linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundOuter)) 85%);
 
   background-size: 20rem auto, 20rem auto, auto, cover;
   background-position: left 1rem bottom 8rem, right 1rem bottom 8rem, center, center;
@@ -211,7 +204,7 @@ a:active {
 }
 
 
-.UIStapleElements_BackgroundOverlay-Structure--FloatingFlag {
+.UIStapleElements_Background-Structure--FloatingFlag {
 
   display: flex;
   flex-direction: column;
@@ -227,15 +220,15 @@ a:active {
 }
 
 
-.UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation {
+.UIStapleElements_Background-Color--FloatingFlag--Nonstation {
 
-  background: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackground) / var(--UIStapleElements_BackgroundOverlay-Transparency--GlobalColorBackground));
+  background: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--FloatingFlagColorBackground) / var(--UIStapleElements_Background-Transparency--FloatingFlagColorBackground));
 
 }
 
-.UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station {
+.UIStapleElements_Background-Color--FloatingFlag--Station {
 
-  background: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackground) / var(--UIStapleElements_BackgroundOverlay-Transparency--GlobalColorBackground));
+  background: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--FloatingFlagColorBackground) / var(--UIStapleElements_Background-Transparency--FloatingFlagColorBackground));
 
 }
 
@@ -644,7 +637,7 @@ a:active {
 
   border-radius: transparent;
 
-  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
+  box-shadow: 0 0 16px 6.4px rgb(255, 255, 255);
 
   background-size: cover;
   background-position: center;
@@ -734,6 +727,41 @@ a:active {
 
 
 
+.MiscellaneousElements_ComponentText-Template--MainTitle{
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 25px;
+
+  box-shadow: 0 16px 25.6px rgba(255, 255, 255);
+
+}
+
+
+.MiscellaneousElements_ComponentText-Template--EntryTitle{
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 1rem;
+  border-radius: 25px;
+
+  box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
+
+}
+
+
+
+
+
+
+
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
 
   max-width: 75vw;
@@ -755,7 +783,7 @@ a:active {
   flex-direction: row;
   width: fit-content;
 
-  box-shadow: 0 0 8px 1.6px rgb(255, 255, 255);
+  box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
 
 }
 
@@ -786,27 +814,75 @@ a:active {
 }
 
 
-.MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow{
 
-  border-radius: 25px;
+
+.MiscellaneousElements_ComponentButton-Structure--FloatingFlag{
+
+  border-radius: 9999px;
   padding: 1.5rem 3rem;
-  border: none;
 
-  color: white;
-  background-color: transparent;
-  box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+}
+
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click{
+
+  border: none;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
+  background: linear-gradient(to bottom, transparent 0%,rgba(255, 255, 255, 0.5) 100%);
 
   transition: transform 0.3s ease;
 
 }
 
-.MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow:hover,
-.MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow.active {
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click:hover,
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click.active {
 
   box-shadow: 0 0 16px 8px rgb(255, 255, 255);
   transform: scale(1.1);
 
 }
+
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick{
+  
+  border: none;
+  color: rgb(255, 255, 255, 0.5);
+  background: transparent;
+  box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
+
+}
+
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected{
+
+  border: none;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
+  background: linear-gradient(to bottom, transparent 0%,rgba(255, 255, 255) 100%);
+
+  transition: transform 0.3s ease;
+
+}
+
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected:hover, 
+.MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected:active{
+
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
+  transform: scale(1.1);
+
+} 
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -852,7 +928,34 @@ a:active {
 }
 
 
-.MiscellaneousElements_ComponentButton-Position--ScreenToggle{
+
+.MiscellaneousElements_ComponentButton-Template--Screen{
+
+  border-radius: 25px;
+  padding: 1.5rem 3rem;
+
+  border: none;
+  color: white;
+  box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
+  background: linear-gradient(to bottom, transparent 0%,rgba(255, 255, 255, 0.5) 100%);
+
+  transition: transform 0.3s ease;
+
+}
+
+
+.MiscellaneousElements_ComponentButton-Template--Screen:hover,
+.MiscellaneousElements_ComponentButton-Template--Screen.active {
+
+  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
+  transform: scale(1.1);
+
+}
+
+
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenToggle{
   
   display: flex;
   flex-direction: row;
@@ -863,5 +966,15 @@ a:active {
   z-index: 4;
 
   gap: 3rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Template--PlaceholderName{
+
+  height: 0.25rem;
+  width: 50%;
+
+  background-color: white;
 
 }

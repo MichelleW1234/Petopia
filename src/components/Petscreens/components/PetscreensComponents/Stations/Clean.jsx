@@ -150,7 +150,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     return (
         
-        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
             {cleanOptionsSelection === -1 ? (
 
@@ -220,7 +220,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2> Drag your cursor back and forth for cleaning. </h2>
-                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}

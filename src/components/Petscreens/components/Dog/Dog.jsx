@@ -442,7 +442,7 @@ function Dog (){
                 setRecordsOpenFlag = {setDogRecordsOpenFlag}
             />}
             
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
+            <div className = "UIStapleElements_Background-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
@@ -484,7 +484,7 @@ function Dog (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
-                    <h1>Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle">Living Room:</h1>
                     <Main
                         mainAnimationImages={dogMainImages}
                         mainSleepingImage={dogMainSleepingImage}
@@ -497,7 +497,7 @@ function Dog (){
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => flagOpener(setDogMusicVolumeOpenFlag, 1)}>

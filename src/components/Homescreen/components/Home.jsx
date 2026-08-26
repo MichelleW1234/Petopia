@@ -12,8 +12,8 @@ import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvid
 
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
-import Deletion from "./HomescreenComponents/Deletion.jsx";
-import Restart from "./HomescreenComponents/Restart.jsx";
+import ClearPets from "./HomescreenComponents/ClearPets.jsx";
+import RearrangePets from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 import Notifications from "./HomescreenComponents/Notifications.jsx";
 
@@ -43,8 +43,8 @@ function Home (){
 
     const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeInventoryOpenFlag, setHomeInventoryOpenFlag] = useState(false);
-    const [homeDeletionOpenClearPetsFlag, setHomeDeletionOpenClearPetsFlag] = useState(false);
-    const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
+    const [homeClearPetsOpenClearPetsFlag, setHomeClearPetsOpenClearPetsFlag] = useState(false);
+    const [homeRearrangePetsOpenFlag, setHomeRearrangePetsOpenFlag] = useState(false);
     const [homeReadMeOpenFlag, setHomeReadMeOpenFlag] = useState(false);
 
     const homeMinPetsAdopted = Room.filter(x => x === null).length < 3;
@@ -57,7 +57,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeMusicVolumeOpenFlag, 1);
 
@@ -70,7 +70,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeInventoryOpenFlag, 1);
 
@@ -83,22 +83,22 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeRestartOpenFlag, 0);
+            flagOpener(setHomeRearrangePetsOpenFlag, 0);
 
         }
 
     },
-        ".ResetAllPets"
+        ".RearrangePets"
     );
 
 
     useKeyboardShortcut("2", () => {
 
-        if (homeMinPetsAdopted && !homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeDeletionOpenClearPetsFlag, 0);
+            flagOpener(setHomeClearPetsOpenClearPetsFlag, 0);
 
         }
 
@@ -109,7 +109,7 @@ function Home (){
     
     useKeyboardShortcut("3", () => {
 
-        if (!homeDeletionOpenClearPetsFlag && !homeRestartOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeReadMeOpenFlag, 0);
 
@@ -155,14 +155,14 @@ function Home (){
                 setInventoryOpenFlag={setHomeInventoryOpenFlag}
             />}
 
-            {homeRestartOpenFlag &&
-            <Restart
-                setRestartOpenFlag={setHomeRestartOpenFlag}
+            {homeRearrangePetsOpenFlag &&
+            <RearrangePets
+                setRearrangePetsOpenFlag={setHomeRearrangePetsOpenFlag}
             />}
 
-            {homeDeletionOpenClearPetsFlag &&
-            <Deletion
-                setDeletionOpenClearPetsFlag={setHomeDeletionOpenClearPetsFlag}
+            {homeClearPetsOpenClearPetsFlag &&
+            <ClearPets
+                setClearPetsOpenClearPetsFlag={setHomeClearPetsOpenClearPetsFlag}
             />}
 
             {homeReadMeOpenFlag &&
@@ -171,26 +171,25 @@ function Home (){
             />}
 
 
-            <div className = "UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">  
+            <div className = "UIStapleElements_Background-Template--Screen">  
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
                     {homeMinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ResetAllPets" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Reset All Pets <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeDeletionOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => flagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Reset All Pets <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Rearrange Pets <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [2]</button>
                         </>
 
                     )}
-
 
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [3]</button>
                     
@@ -200,11 +199,11 @@ function Home (){
 
                     {homeMinPetsAdopted ? (
 
-                        <h1> Your Pets: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Your Pets: </h1>
 
                     ) : (
 
-                        <h1> Welcome! Adopt up to 3 pets to get started. </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Welcome! Adopt up to 3 pets to get started. </h1>
 
                     )}
 
@@ -230,7 +229,9 @@ function Home (){
                                         <img src = {AddNewPet}/>
                                     </Link>
 
-                                    <h2>__________</h2>
+                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                        <h2>[ Name ]</h2>
+                                    </div>
 
                                 </div>
 
@@ -281,7 +282,10 @@ function Home (){
                                     >
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>
-                                    <h2>{petName}</h2>
+
+                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                        <h2>{petName}</h2>
+                                    </div>
                                     
                                 </div>
 
@@ -297,28 +301,19 @@ function Home (){
 
             <Notifications/>
 
-            <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
+                
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
-                {homeMinPetsAdopted ? (
-
-                    <button 
-                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                        onClick = {() => flagOpener(setHomeInventoryOpenFlag, 1)}>
-                        Inventory <br/> [I]
-                    </button>
-
-                ) : (
-
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
-                        Inventory <br/> [I]
-                    </button>
-
-                )}
+                <button 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    onClick = {() => flagOpener(setHomeInventoryOpenFlag, 1)}>
+                    Inventory <br/> [I]
+                </button>
                
             </div>
 

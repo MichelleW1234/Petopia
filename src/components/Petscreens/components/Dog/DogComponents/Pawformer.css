@@ -26,7 +26,7 @@
     border-bottom-right-radius: inherit;
 
     background-color: rgba(71, 0, 125, 0.75);
-    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
 
 }
 
@@ -41,9 +41,9 @@
     left: 50%;
     transform: translateX(-50%) translateY(50%);
 
-    border-radius: 1rem;
+    border-radius: 25px;
 
-    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
 
 }
 

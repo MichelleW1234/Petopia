@@ -210,7 +210,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             {!pawformerStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Copy the moves.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setPawformerStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setPawformerStart)}> Start <br/> [return]</button>
             </div>}
 
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
@@ -289,10 +289,10 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
             </div>
 
             <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow W" onClick={() => checkMove("W")}> W </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow A" onClick={() => checkMove("A")}> A </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow S" onClick={() => checkMove("S")}> S </button>
-                <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow D" onClick={() => checkMove("D")}> D </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click W" onClick={() => checkMove("W")}> W </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click A" onClick={() => checkMove("A")}> A </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click S" onClick={() => checkMove("S")}> S </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click D" onClick={() => checkMove("D")}> D </button>
             </div>
                 
         </div>

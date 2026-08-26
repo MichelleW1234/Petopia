@@ -31,7 +31,7 @@ function Records({setRecordsOpenFlag}) {
 
 
     return (
-        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">

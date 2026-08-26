@@ -144,17 +144,19 @@ function Inventory({setInventoryOpenFlag}) {
 
     return (
 
-        <div className="UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Nonstation">
+        <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1> Distribute items to your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Distribute items to your pets:</h1>
                 
                 {Inventory.map((item, index) => (
                     
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <h2>{item[inventoryItemNameKey]}</h2>
+                        <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                            <h2>{item[inventoryItemNameKey]}</h2>
+                        </div>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemContent">
                             <img src = {item[inventoryItemImageKey]}/>
@@ -206,47 +208,55 @@ function Inventory({setInventoryOpenFlag}) {
                                 <h2>Give This Item to:</h2>
                                 <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
 
-                                    {Room.map((petName, indexInner) => (
+                                    {Room.length === 0 ? (
 
-                                        petName === null ? (
+                                        <h2> Your pets will appear here </h2>
 
-                                            null
+                                    ) : (
 
-                                        ) : (
+                                        Room.map((petName, indexInner) => (
 
-                                            item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
+                                            petName === null ? (
 
-                                                PetList[petName][petHealthKey] === 0 ? (
-
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
-
-                                                ) : (
-
-                                                    <button  key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
-
-                                                )
+                                                null
 
                                             ) : (
 
-                                                item[inventoryItemOwnerKey] === petName ? (
+                                                item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
 
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonSelected" onClick = {() => deselectPet(index)}> {petName} </button>
+                                                    PetList[petName][petHealthKey] === 0 ? (
 
-                                                ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[petName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => selectPet(index, petName)}> {petName} </button>
 
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonClick" onClick = {() => selectPet(index, petName)}> {petName} </button>
+                                                    ) : (
+
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {petName} </button>
+
+                                                    )
 
                                                 ) : (
 
-                                                    <button key = {indexInner} className="Inventory_ComponentButton-Template--ItemPetSelectionButtonNonclick"> {petName} </button>
+                                                    item[inventoryItemOwnerKey] === petName ? (
+
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => deselectPet(index)}> {petName} </button>
+
+                                                    ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[petName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === petName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => selectPet(index, petName)}> {petName} </button>
+
+                                                    ) : (
+
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {petName} </button>
+
+                                                    )
 
                                                 )
 
                                             )
 
-                                        )
+                                        ))
 
-                                    ))}
+                                    )}
 
                                 </div>
 

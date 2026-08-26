@@ -125,7 +125,7 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             {!featherFishingStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
             </div>}
 
             

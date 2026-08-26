@@ -84,7 +84,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
     return (
         
-        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
 
             {playOptionsSelection === -1 ? (
 

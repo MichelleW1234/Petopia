@@ -50,11 +50,11 @@
     input {
 
         border-radius: 9999px;
-        padding: 1.5rem 2rem;
+        padding: 2rem 4rem;
 
         border: 1.6px solid rgba(255, 255, 255);
         background-color: rgb(255, 255, 255, 0.75);
-        box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+        box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
         
     }
 

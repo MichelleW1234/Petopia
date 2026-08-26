@@ -36,7 +36,7 @@ function Notifications() {
                         <h2>Date:</h2>
                         <p>{entry[notificationsDateKey]}</p>
                     </div>
-                    <button className="MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow" onClick = {() => deleteNotification(index)}> X </button>
+                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => deleteNotification(index)}> X </button>
                 </div>
 
             ))}

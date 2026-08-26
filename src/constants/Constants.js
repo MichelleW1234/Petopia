@@ -46,7 +46,6 @@ export const soundActivitySuccessKey = "activity success";
 export const soundActivityFailKey = "activity fail";
 export const soundAdoptionSuccessKey = "adoption success";
 export const soundClearPetsKey = "clear pets";
-export const soundRestartGameKey = "restart game";
 export const soundQuitActivityKey = "quit activity";
 export const soundAddedDecorationsKey = "added decorations";
 export const soundRevivedPetKey = "revived pet";

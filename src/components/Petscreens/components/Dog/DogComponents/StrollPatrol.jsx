@@ -210,14 +210,14 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             {!strollPatrolStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Up" onClick = {() => moveUp()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Up" onClick = {() => moveUp()}> 
                     [&#x2B06;]
                 </button>
-                <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Down" onClick = {() => moveDown()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Down" onClick = {() => moveDown()}> 
                     [&#x2B07;]
                 </button>
             </div>

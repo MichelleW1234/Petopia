@@ -13,7 +13,7 @@ import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 
-import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, soundSelectionButtonPressKey, soundNavButtonPressKey, soundAdoptionSuccessKey, soundRestartGameKey, soundScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, soundAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
+import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, soundSelectionButtonPressKey, soundNavButtonPressKey, soundAdoptionSuccessKey, soundScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, soundAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
 import { flagOpener, playSound } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
@@ -36,8 +36,6 @@ function Adoption () {
     const [adoptionErrorMessage, setAdoptionErrorMessage] = useState("");
     const [adoptionConfirmationPetName, setAdoptionConfirmationPetName] = useState("");
 
-    const adoptionMinPetsAdopted = Room.filter(x => x === null).length < 3;
-
     const adoptionConfirmationTimeoutRef = useRef(null);
 
     const navigate = useNavigate();
@@ -59,7 +57,7 @@ function Adoption () {
     
     useKeyboardShortcut("i", () => {
     
-        if (adoptionMinPetsAdopted && !adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
+        if (!adoptionSpeciesCareGuideOpenFlag && !adoptionMusicVolumeOpenFlag && !adoptionInventoryOpenFlag){
 
             flagOpener(setAdoptionInventoryOpenFlag, 1);
 
@@ -351,7 +349,7 @@ function Adoption () {
             />
             }
 
-            <div className="UIStapleElements_BackgroundBase-Structure--Screen UIStapleElements_BackgroundBase-Template--Screen">
+            <div className="UIStapleElements_Background-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => quit()}> Quit and Go Home <br/> [1]</Link>
@@ -362,7 +360,7 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1> Select a species: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Select a species: </h1>
                         
                         <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
             
@@ -383,7 +381,10 @@ function Adoption () {
             
                                     )}
 
-                                    <h2>{key}</h2>
+                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                        <h2>{key}</h2>
+                                    </div>
+                                    
                                 </div>
             
                             ))}
@@ -449,28 +450,19 @@ function Adoption () {
         
             </div>
 
-            <div className="MiscellaneousElements_ComponentButton-Position--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => flagOpener(setAdoptionMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
-                {adoptionMinPetsAdopted ? (
+                <button 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    onClick = {() => flagOpener(setAdoptionInventoryOpenFlag, 1)}>
+                    Inventory <br/> [I]
+                </button>
 
-                    <button 
-                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                        onClick = {() => flagOpener(setAdoptionInventoryOpenFlag, 1)}>
-                        Inventory <br/> [I]
-                    </button>
-
-                ) : (
-
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
-                        Inventory <br/> [I]
-                    </button>
-
-                )}
             </div>
 
         </>

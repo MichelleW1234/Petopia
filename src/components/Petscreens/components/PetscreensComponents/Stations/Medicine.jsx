@@ -201,7 +201,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
     return (
 
-        <div className = "UIStapleElements_BackgroundOverlay-Structure--FloatingFlag UIStapleElements_BackgroundOverlay-Color--FloatingFlag--Station">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
             {medicineOptionsSelection === -1 ? (
 
@@ -250,7 +250,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2>Wait for your pet as it receives its dose.</h2> 
-                                        <button className = "MiscellaneousElements_ComponentButton-Template--FloatingFlagStationWindow Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}
