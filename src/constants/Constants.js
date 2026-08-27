@@ -39,7 +39,8 @@ export const inventoryItemTypeRoomDecorationKey = "room decoration";
 
 export const soundNavButtonPressKey = "nav button press";
 export const soundSelectionButtonPressKey = "selection button press";
-export const soundScreenButtonPressKey = "screen button press"
+export const soundScreenButtonPressKey = "screen button press";
+export const soundRestartGameKey = "restart game";
 export const soundAdoptionConfirmationErrorKey = "adoption confirmation error";
 export const soundStartActivityKey = "start activity";
 export const soundActivitySuccessKey = "activity success";
@@ -49,6 +50,7 @@ export const soundClearPetsKey = "clear pets";
 export const soundQuitActivityKey = "quit activity";
 export const soundAddedDecorationsKey = "added decorations";
 export const soundRevivedPetKey = "revived pet";
+export const soundSwapPetSpaceKey = "swap pet space";
 
 
 

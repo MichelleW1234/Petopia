@@ -361,7 +361,7 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Select a species: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Select a species: </h1>
                         
                         <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
             
@@ -382,7 +382,7 @@ function Adoption () {
             
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                         <h2>{key}</h2>
                                     </div>
                                     

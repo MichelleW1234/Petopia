@@ -140,7 +140,7 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle">Select pet(s) to remove:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Select pet(s) to remove:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                     {Room.map((petName, index) => (
@@ -167,7 +167,7 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
                                 )}
 
-                                <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>{petName}</h2>
                                 </div>
                             </div>

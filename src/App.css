@@ -727,7 +727,7 @@ input {
 
 
 
-.MiscellaneousElements_ComponentText-Template--MainTitle{
+.MiscellaneousElements_ComponentText-Template--GlobalHeadline{
 
   width: 100%;
   text-align: center;
@@ -742,7 +742,7 @@ input {
 }
 
 
-.MiscellaneousElements_ComponentText-Template--EntryTitle{
+.MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier{
 
   width: 100%;
   text-align: center;

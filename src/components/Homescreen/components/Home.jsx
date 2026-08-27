@@ -12,6 +12,7 @@ import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvid
 
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
+import Restart from "./HomescreenComponents/Restart.jsx";
 import ClearPets from "./HomescreenComponents/ClearPets.jsx";
 import RearrangePets from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
@@ -41,6 +42,7 @@ function Home (){
     const {Room, setRoom} = useRoom();
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
+    const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
     const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
     const [homeInventoryOpenFlag, setHomeInventoryOpenFlag] = useState(false);
     const [homeClearPetsOpenClearPetsFlag, setHomeClearPetsOpenClearPetsFlag] = useState(false);
@@ -57,7 +59,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeMusicVolumeOpenFlag, 1);
 
@@ -70,7 +72,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeInventoryOpenFlag, 1);
 
@@ -81,9 +83,25 @@ function Home (){
     );
 
 
+
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+
+            flagOpener(setHomeRestartOpenFlag, 0);
+
+        }
+
+    },
+        ".Restart"
+    );
+
+
+
+
+    useKeyboardShortcut("2", () => {
+
+        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeRearrangePetsOpenFlag, 0);
 
@@ -94,9 +112,9 @@ function Home (){
     );
 
 
-    useKeyboardShortcut("2", () => {
+    useKeyboardShortcut("3", () => {
 
-        if (homeMinPetsAdopted && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeClearPetsOpenClearPetsFlag, 0);
 
@@ -107,9 +125,9 @@ function Home (){
     );
 
     
-    useKeyboardShortcut("3", () => {
+    useKeyboardShortcut("4", () => {
 
-        if (!homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!homeClearPetsOpenClearPetsFlag && !homeRestartOpenFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
             flagOpener(setHomeReadMeOpenFlag, 0);
 
@@ -155,6 +173,11 @@ function Home (){
                 setInventoryOpenFlag={setHomeInventoryOpenFlag}
             />}
 
+            {homeRestartOpenFlag && 
+            <Restart
+                setRestartOpenFlag={setHomeRestartOpenFlag}
+            />}
+
             {homeRearrangePetsOpenFlag &&
             <RearrangePets
                 setRearrangePetsOpenFlag={setHomeRearrangePetsOpenFlag}
@@ -178,20 +201,22 @@ function Home (){
                     {homeMinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => flagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => flagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Rearrange Pets <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Restart <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [3]</button>
                         </>
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [3]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
@@ -199,11 +224,11 @@ function Home (){
 
                     {homeMinPetsAdopted ? (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Your Pets: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Your Pets: </h1>
 
                     ) : (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Welcome! Adopt up to 3 pets to get started. </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Welcome! Adopt up to 3 pets to get started. </h1>
 
                     )}
 
@@ -229,7 +254,7 @@ function Home (){
                                         <img src = {AddNewPet}/>
                                     </Link>
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                         <h2>[ Name ]</h2>
                                     </div>
 
@@ -283,7 +308,7 @@ function Home (){
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                         <h2>{petName}</h2>
                                     </div>
                                     

@@ -4,7 +4,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
-import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, soundNavButtonPressKey } from "../../../../constants/Constants.js";
+import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSwapPetSpaceKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
 import "./RearrangePets.css";
@@ -28,6 +28,8 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
     const moveForwards = (index) => {
 
+        playSound(soundSwapPetSpaceKey);
+
         setRoom(prev => {
 
             let copy = [...prev];
@@ -48,7 +50,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
             return copy;
 
-        })
+        });
 
     }
 
@@ -59,7 +61,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Switch the order of your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                     {Room.map((petName, index) => (
@@ -68,7 +70,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
                             <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
-                                <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>[ Name ]</h2>
                                 </div>
 
@@ -81,7 +83,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
                             <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
-                                <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>{petName}</h2>
                                 </div>
 

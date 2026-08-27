@@ -1,8 +1,9 @@
-import { soundNavButtonPressKey, soundSelectionButtonPressKey, soundAdoptionConfirmationErrorKey, soundStartActivityKey, soundActivitySuccessKey, soundActivityFailKey, soundScreenButtonPressKey, soundAdoptionSuccessKey, soundClearPetsKey, soundQuitActivityKey, soundAddedDecorationsKey, soundRevivedPetKey} from "../constants/Constants.js";
+import { soundNavButtonPressKey, soundSelectionButtonPressKey, soundAdoptionConfirmationErrorKey, soundStartActivityKey, soundActivitySuccessKey, soundActivityFailKey, soundScreenButtonPressKey, soundAdoptionSuccessKey, soundClearPetsKey, soundQuitActivityKey, soundAddedDecorationsKey, soundRevivedPetKey, soundSwapPetSpaceKey, soundRestartGameKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
 import ScreenButtonPress from "../Music/UIIndicatorSounds/ScreenButtonPress.mp3";
+import RestartGame from "../Music/UIIndicatorSounds/RestartGame.mp3";
 import AdoptionConfirmationError from "../Music/UIIndicatorSounds/AdoptionConfirmationError.mp3";
 import StartActivity from "../Music/UIIndicatorSounds/StartActivity.mp3";
 import ActivitySuccess from "../Music/UIIndicatorSounds/ActivitySuccess.mp3";
@@ -12,6 +13,8 @@ import ClearPets from "../Music/UIIndicatorSounds/ClearPets.mp3";
 import QuitActivity from "../Music/UIIndicatorSounds/QuitActivity.mp3";
 import AddedDecorations from "../Music/UIIndicatorSounds/AddedDecorations.mp3";
 import RevivedPet from "../Music/UIIndicatorSounds/RevivedPet.mp3";
+import SwapPetSpace from "../Music/UIIndicatorSounds/SwapPetSpace.mp3";
+
 
 
 
@@ -25,6 +28,7 @@ export const playSound = (soundEffect) => {
         [soundNavButtonPressKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
         [soundSelectionButtonPressKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
         [soundScreenButtonPressKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
+        [soundRestartGameKey] : {[buttonAudioKey] : RestartGame, [buttonVolumeKey] : 0.25},
         [soundAdoptionConfirmationErrorKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
         [soundStartActivityKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
         [soundActivitySuccessKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
@@ -33,7 +37,8 @@ export const playSound = (soundEffect) => {
         [soundClearPetsKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
         [soundQuitActivityKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75},
         [soundAddedDecorationsKey] : {[buttonAudioKey]: AddedDecorations, [buttonVolumeKey]: 0.75},
-        [soundRevivedPetKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75}
+        [soundRevivedPetKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75},
+        [soundSwapPetSpaceKey] : {[buttonAudioKey]: SwapPetSpace, [buttonVolumeKey] : 0.75}
 
     };
 

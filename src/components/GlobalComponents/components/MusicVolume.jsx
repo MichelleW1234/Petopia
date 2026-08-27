@@ -75,7 +75,7 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
         <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Music Volume:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Music Volume:</h1>
                 <div className="MusicVolume_ComponentContainer-Structure--Widget">
                     <img src = {VolumeSpeaker}/>
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MusicVolume_ComponentContainer-Structure--Slider">

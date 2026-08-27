@@ -61,7 +61,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                             <img src = {option[petActivityOptionImageKey]}/>
                         </button>
 
-                        <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                             <h2>{option[petActivityOptionNameKey]}</h2>
                         </div>
                     </div>

@@ -148,13 +148,13 @@ function Inventory({setInventoryOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle"> Distribute items to your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Distribute items to your pets:</h1>
                 
                 {Inventory.map((item, index) => (
                     
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <div className="MiscellaneousElements_ComponentText-Template--EntryTitle">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                             <h2>{item[inventoryItemNameKey]}</h2>
                         </div>
 

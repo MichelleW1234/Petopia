@@ -446,7 +446,7 @@ function Fish (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--MainTitle">Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
                     <Main
                         mainAnimationImages={fishMainImages}
                         mainSleepingImage={fishMainSleepingImage}
