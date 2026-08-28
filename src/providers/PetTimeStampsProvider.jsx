@@ -16,8 +16,8 @@ export function PetTimeStampsProvider({ children }) {
 
   const [PetTimeStamps, setPetTimeStamps] = useState(() => {
     try {
-      const stored = JSON.parse(localStorage.getItem("PetTimeStamps"));
-      return stored && typeof stored === "object" ? stored : {};
+      const petTimeStampsStored = JSON.parse(localStorage.getItem("PetTimeStamps"));
+      return petTimeStampsStored && typeof petTimeStampsStored === "object" ? petTimeStampsStored : {};
     } catch {
       return {};
     }

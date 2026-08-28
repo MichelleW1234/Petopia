@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound } from "../../../../../helpers/Helpers.js";
+import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
-import { startActivity } from "../../../helpers/Helpers.js";
+import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
@@ -28,7 +28,7 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
     
         if (!featherFishingStart){
 
-            startActivity(setFeatherFishingStart);
+            petScreensHelpersStartActivity(setFeatherFishingStart);
 
         }
 
@@ -66,11 +66,11 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         } 
 
-        const interval = setInterval(() => {
+        const featherFishingInterval = setInterval(() => {
 
-            const movement = Math.floor(Math.random() * 2);
+            const featherFishingIntervalMovement = Math.floor(Math.random() * 2);
 
-            if (movement === 0) {
+            if (featherFishingIntervalMovement === 0) {
 
                 setFeatherFishingHookLength(prev => Math.max(prev - 1, 0));
 
@@ -88,19 +88,19 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         }, 400);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(featherFishingInterval);
 
     }, [featherFishingStart, featherFishingHitAttempt]);
 
 
 
-    const checkHit = (success) => {
+    const featherFishingCheckHit = (featherFishingCheckHitSuccess) => {
 
-        playSound(soundScreenButtonPressKey);
+        helpersPlaySound(soundScreenButtonPressKey);
 
         if (!featherFishingHitAttempt){
 
-            if (success === 1){
+            if (featherFishingCheckHitSuccess === 1){
 
                 setPlayCurrNumber(prev => prev + 1);
 
@@ -125,7 +125,7 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             {!featherFishingStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
             </div>}
 
             
@@ -138,16 +138,16 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
                 {Array.from({ length: featherFishingWindowHeight}, (_, row) => 
                     Array.from({ length: featherFishingWindowWidth}, (_, col) => {
 
-                        const hookHead = col === 4 && row === featherFishingHookLength;
-                        const hookBody = col === 4 && row < featherFishingHookLength;
+                        const featherFishingHookHead = col === 4 && row === featherFishingHookLength;
+                        const featherFishingHookBody = col === 4 && row < featherFishingHookLength;
 
                         return (
 
-                            hookHead ? (
+                            featherFishingHookHead ? (
 
                                 row === 2 ? (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => checkHit(1)}/>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishingCheckHit(1)}/>
 
                                 ) : (
 
@@ -155,11 +155,11 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 )
 
-                            ) : hookBody ? (
+                            ) : featherFishingHookBody ? (
 
                                 row === 2 ? (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => checkHit(0)}/>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishingCheckHit(0)}/>
 
                                 ) : (
 
@@ -171,7 +171,7 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 && col === 4? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => checkHit(0)}></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => featherFishingCheckHit(0)}></div>
 
                                 ) : (
 

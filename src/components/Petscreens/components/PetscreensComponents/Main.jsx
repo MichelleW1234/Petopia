@@ -6,7 +6,7 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey } from "../../../../constants/Constants.js";
-import { pauseAudio } from "../../helpers/Helpers.js";
+import { petScreensHelpersPauseAudio } from "../../helpers/Helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
 import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
@@ -46,11 +46,11 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
     // For preloading images:
     useEffect(() => {
 
-        const preloadImages = [...mainAnimationImages.flat(1), mainSleepingImage, PetSleepingSymbol, PetUnhappySymbol, PetHappySymbol];
+        const mainPreloadImages = [...mainAnimationImages.flat(1), mainSleepingImage, PetSleepingSymbol, PetUnhappySymbol, PetHappySymbol];
 
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
+        mainPreloadImages.forEach((src) => {
+        const mainImg = new Image();
+            mainImg.src = src;
         });
 
     }, [mainAnimationImages]);
@@ -75,28 +75,28 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
         if (mainAttention){
             
-            let currSound;
+            let mainCurrSound;
 
             if (mainPetSleeping){
 
-                currSound = mainPetAudios.current[petSoundSleepKey];
+                mainCurrSound = mainPetAudios.current[petSoundSleepKey];
 
             } else {
 
                 if (mainPetMood <= 1){
 
-                    currSound = mainPetAudios.current[petSoundHappyKey];
+                    mainCurrSound = mainPetAudios.current[petSoundHappyKey];
 
                 } else {
 
-                    currSound = mainPetAudios.current[petSoundSadKey];
+                    mainCurrSound = mainPetAudios.current[petSoundSadKey];
 
                 }
 
             }
 
-            currSound.volume = 0.75;
-            currSound.play();
+            mainCurrSound.volume = 0.75;
+            mainCurrSound.play();
                 
         }
 
@@ -112,20 +112,20 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
 
         }
 
-        const interval = setInterval(() => {
+        const mainInterval = setInterval(() => {
 
-            petPositionChange();
+            mainPetPositionChange();
 
         }, mainPetEnergy);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(mainInterval);
 
     }, [ActivePetName, mainPetSleeping]);
 
 
 
 
-    const petPositionChange = () => {
+    const mainPetPositionChange = () => {
 
         if (mainPetCurrentSpaceRef.current === 0){
 
@@ -150,7 +150,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
     }
 
 
-    const showAttention = () => {
+    const mainShowAttention = () => {
 
         if (ActivePetName === ""){
 
@@ -227,9 +227,9 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                 <div className="Main_ComponentContainer-Structure--WindowScreenNongrid"> 
 
                                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenNongridPet">
-                                        <img 
+                                        <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                            onMouseEnter={() => showAttention()}
+                                            onMouseEnter={() => mainShowAttention()}
                                             src = {mainSleepingImage}
                                         />
 
@@ -237,7 +237,7 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
                                             src = {PetSleepingSymbol} 
-                                            onMouseEnter={() => showAttention()}
+                                            onMouseEnter={() => mainShowAttention()}
                                         />}
                                     </div>
                                 </div>
@@ -247,24 +247,24 @@ function Main ({mainAnimationImages, mainSleepingImage, mainPetAudios, mainPetEn
                                 <div className="Main_ComponentContainer-Structure--WindowScreenGrid"> 
                                     {Array.from({ length: mainPetWindowLength }, (_, i) => i).map(index => {
                                         
-                                        const petHere = mainPetCurrentSpace === index;
+                                        const mainPetHere = mainPetCurrentSpace === index;
 
                                         return(
 
-                                            petHere ? (
+                                            mainPetHere ? (
 
                                                 <div key={index} 
                                                     className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
                                                     <img className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
                                                         src = {mainAnimationImages[mainPetDirection][index % 2]} 
-                                                        onMouseEnter={() => showAttention()}
+                                                        onMouseEnter={() => mainShowAttention()}
                                                     />
 
                                                     {mainAttention &&
                                                     <img
                                                         className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
                                                         src = {mainPetMood <= 1 ? PetHappySymbol : PetUnhappySymbol} 
-                                                        onMouseEnter={() => showAttention()}
+                                                        onMouseEnter={() => mainShowAttention()}
                                                     />}
                                                 </div>
 

@@ -5,18 +5,20 @@ export const VolumeContext = createContext();
 export function VolumeProvider({ children }) {
 
     const [Volume, setVolume] = useState(() => {
+
     try {
-        const stored = JSON.parse(localStorage.getItem("Volume"));
+
+        const volumeStored = JSON.parse(localStorage.getItem("Volume"));
         
-        if (stored === null){
+        if (volumeStored === null){
 
             return 0.5;
 
         }
 
-        const value = Number(stored);
+        const volumeValue = Number(volumeStored);
 
-        return Number.isFinite(value) ? value : 0.5;
+        return Number.isFinite(volumeValue) ? volumeValue : 0.5;
 
     } catch {
         return 0.5;

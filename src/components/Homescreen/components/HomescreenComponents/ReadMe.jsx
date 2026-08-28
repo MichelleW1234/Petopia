@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { flagCloser } from "../../../../helpers/Helpers.js";
+import { helpersFlagCloser } from "../../../../helpers/Helpers.js";
 
 
 
@@ -8,7 +8,7 @@ function ReadMe({setReadMeOpenFlag}) {
 
     useKeyboardShortcut("4", () => {
 
-        flagCloser(setReadMeOpenFlag);
+        helpersFlagCloser(setReadMeOpenFlag);
 
     },
         ".Close"
@@ -38,7 +38,7 @@ function ReadMe({setReadMeOpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setReadMeOpenFlag)}> Close <br/> [4]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setReadMeOpenFlag)}> Close <br/> [4]</button>
 
         </div>
     );

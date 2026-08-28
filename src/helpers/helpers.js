@@ -18,58 +18,58 @@ import SwapPetSpace from "../Music/UIIndicatorSounds/SwapPetSpace.mp3";
 
 
 
-export const playSound = (soundEffect) => {
+export const helpersPlaySound = (helpersPlaySoundSoundEffect) => {
 
-    const buttonAudioKey = "audio";
-    const buttonVolumeKey = "volume";
+    const helpersPlaySoundButtonAudioKey = "helpersPlaySoundAudio";
+    const helpersPlaySoundButtonVolumeKey = "volume";
 
-    const soundDictionary = {
+    const helpersPlaySoundSoundDictionary = {
 
-        [soundNavButtonPressKey] : {[buttonAudioKey]: NavButtonPress, [buttonVolumeKey]: 1},
-        [soundSelectionButtonPressKey] : {[buttonAudioKey]: SelectionButtonPress, [buttonVolumeKey]: 0.75},
-        [soundScreenButtonPressKey] : {[buttonAudioKey]: ScreenButtonPress, [buttonVolumeKey]: 0.5},
-        [soundRestartGameKey] : {[buttonAudioKey] : RestartGame, [buttonVolumeKey] : 0.25},
-        [soundAdoptionConfirmationErrorKey] : {[buttonAudioKey]: AdoptionConfirmationError, [buttonVolumeKey]: 0.5},
-        [soundStartActivityKey] : {[buttonAudioKey]: StartActivity, [buttonVolumeKey]: 0.5},
-        [soundActivitySuccessKey] : {[buttonAudioKey]: ActivitySuccess, [buttonVolumeKey]: 0.5},
-        [soundActivityFailKey] : {[buttonAudioKey]: ActivityFail, [buttonVolumeKey]: 0.5},
-        [soundAdoptionSuccessKey] : {[buttonAudioKey]: AdoptionSuccess, [buttonVolumeKey]: 0.5},
-        [soundClearPetsKey] : {[buttonAudioKey]: ClearPets, [buttonVolumeKey]: 0.5},
-        [soundQuitActivityKey] : {[buttonAudioKey]: QuitActivity, [buttonVolumeKey]: 0.75},
-        [soundAddedDecorationsKey] : {[buttonAudioKey]: AddedDecorations, [buttonVolumeKey]: 0.75},
-        [soundRevivedPetKey] : {[buttonAudioKey]: RevivedPet, [buttonVolumeKey]: 0.75},
-        [soundSwapPetSpaceKey] : {[buttonAudioKey]: SwapPetSpace, [buttonVolumeKey] : 0.75}
+        [soundNavButtonPressKey] : {[helpersPlaySoundButtonAudioKey]: NavButtonPress, [helpersPlaySoundButtonVolumeKey]: 1},
+        [soundSelectionButtonPressKey] : {[helpersPlaySoundButtonAudioKey]: SelectionButtonPress, [helpersPlaySoundButtonVolumeKey]: 0.75},
+        [soundScreenButtonPressKey] : {[helpersPlaySoundButtonAudioKey]: ScreenButtonPress, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundRestartGameKey] : {[helpersPlaySoundButtonAudioKey] : RestartGame, [helpersPlaySoundButtonVolumeKey] : 0.25},
+        [soundAdoptionConfirmationErrorKey] : {[helpersPlaySoundButtonAudioKey]: AdoptionConfirmationError, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundStartActivityKey] : {[helpersPlaySoundButtonAudioKey]: StartActivity, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundActivitySuccessKey] : {[helpersPlaySoundButtonAudioKey]: ActivitySuccess, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundActivityFailKey] : {[helpersPlaySoundButtonAudioKey]: ActivityFail, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundAdoptionSuccessKey] : {[helpersPlaySoundButtonAudioKey]: AdoptionSuccess, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundClearPetsKey] : {[helpersPlaySoundButtonAudioKey]: ClearPets, [helpersPlaySoundButtonVolumeKey]: 0.5},
+        [soundQuitActivityKey] : {[helpersPlaySoundButtonAudioKey]: QuitActivity, [helpersPlaySoundButtonVolumeKey]: 0.75},
+        [soundAddedDecorationsKey] : {[helpersPlaySoundButtonAudioKey]: AddedDecorations, [helpersPlaySoundButtonVolumeKey]: 0.75},
+        [soundRevivedPetKey] : {[helpersPlaySoundButtonAudioKey]: RevivedPet, [helpersPlaySoundButtonVolumeKey]: 0.75},
+        [soundSwapPetSpaceKey] : {[helpersPlaySoundButtonAudioKey]: SwapPetSpace, [helpersPlaySoundButtonVolumeKey] : 0.75}
 
     };
 
-    const audio = new Audio(soundDictionary[soundEffect][buttonAudioKey]);
-    audio.volume = soundDictionary[soundEffect][buttonVolumeKey];
-    audio.play();
+    const helpersPlaySoundAudio = new Audio(helpersPlaySoundSoundDictionary[helpersPlaySoundSoundEffect][helpersPlaySoundButtonAudioKey]);
+    helpersPlaySoundAudio.volume = helpersPlaySoundSoundDictionary[helpersPlaySoundSoundEffect][helpersPlaySoundButtonVolumeKey];
+    helpersPlaySoundAudio.play();
 
 }
 
 
-export const flagOpener = (setFlagToOpen, flagType) => {
+export const helpersFlagOpener = (setHelpersFlagOpenerFlagToOpen, helpersFlagOpenerFlagType) => {
 
-    if (flagType === 0){
+    if (helpersFlagOpenerFlagType === 0){
 
-        playSound(soundNavButtonPressKey);
+        helpersPlaySound(soundNavButtonPressKey);
 
     } else {
 
-        playSound(soundScreenButtonPressKey);
+        helpersPlaySound(soundScreenButtonPressKey);
 
     }
 
-    setFlagToOpen(true);
+    setHelpersFlagOpenerFlagToOpen(true);
 
 }
 
 
 
-export const flagCloser = (setFlagToClose) => {
+export const helpersFlagCloser = (setHelpersFlagCloserFlagToClose) => {
     
-    playSound(soundScreenButtonPressKey);
-    setFlagToClose(false);
+    helpersPlaySound(soundScreenButtonPressKey);
+    setHelpersFlagCloserFlagToClose(false);
 
 }

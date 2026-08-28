@@ -3,7 +3,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
+import { helpersPlaySound, helpersFlagCloser } from "../../../../helpers/Helpers.js";
 import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSwapPetSpaceKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
@@ -18,7 +18,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
         
     useKeyboardShortcut("Enter", () => {
     
-        flagCloser(setRearrangePetsOpenFlag);
+        helpersFlagCloser(setRearrangePetsOpenFlag);
 
     },
         ".Done"
@@ -26,29 +26,29 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
 
 
-    const moveForwards = (index) => {
+    const rearrangePetsMoveForwards = (rearrangePetsMoveForwardsIndex) => {
 
-        playSound(soundSwapPetSpaceKey);
+        helpersPlaySound(soundSwapPetSpaceKey);
 
         setRoom(prev => {
 
-            let copy = [...prev];
+            let rearrangePetsMoveForwardsCopy = [...prev];
 
-            if (index === 2) {
+            if (rearrangePetsMoveForwardsIndex === 2) {
 
-                const temp = copy[0];
-                copy[0] = copy[index];
-                copy[index] = temp;
+                const rearrangePetsMoveForwardsTemp = rearrangePetsMoveForwardsCopy[0];
+                rearrangePetsMoveForwardsCopy[0] = rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex];
+                rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex] = rearrangePetsMoveForwardsTemp;
 
             } else {
 
-                const temp = copy[index+1];
-                copy[index+1] = copy[index];
-                copy[index] = temp;
+                const rearrangePetsMoveForwardsTemp = rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex+1];
+                rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex+1] = rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex];
+                rearrangePetsMoveForwardsCopy[rearrangePetsMoveForwardsIndex] = rearrangePetsMoveForwardsTemp;
 
             }
 
-            return copy;
+            return rearrangePetsMoveForwardsCopy;
 
         });
 
@@ -64,11 +64,11 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                    {Room.map((petName, index) => (
+                    {Room.map((petName, rearrangePetsMoveForwardsIndex) => (
 
                         petName === null ? (
 
-                            <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePetsMoveForwardsIndex} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
                                 <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>[ Name ]</h2>
@@ -76,12 +76,12 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
                                 <img src = {NoPetPortrait}/>
 
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => moveForwards(index)}> &#x2B95; </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePetsMoveForwards(rearrangePetsMoveForwardsIndex)}> &#x2B95; </button>
                             </div>
 
                         ) : (
 
-                            <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePetsMoveForwardsIndex} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
                                 <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>{petName}</h2>
@@ -89,7 +89,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
                                 <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
 
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => moveForwards(index)}> &#x2B95; </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePetsMoveForwards(rearrangePetsMoveForwardsIndex)}> &#x2B95; </button>
                             </div>
 
                         )
@@ -101,7 +101,7 @@ function RearrangePets({setRearrangePetsOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => flagCloser(setRearrangePetsOpenFlag)}> Done <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => helpersFlagCloser(setRearrangePetsOpenFlag)}> Done <br/> [return]</button>
 
             </div>
 

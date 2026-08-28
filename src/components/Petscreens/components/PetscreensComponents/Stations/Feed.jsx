@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { flagCloser } from "../../../../../helpers/Helpers.js";
-import { startActivity, pauseAudio, quitActivity, manageHealth} from "../../../helpers/Helpers.js";
+import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersStartActivity, petScreensHelpersPauseAudio, petScreensHelpersQuitActivity, petScreensHelpersManageHealth} from "../../../helpers/Helpers.js";
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
@@ -43,7 +43,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
     
         if (feedDone){
 
-            flagCloser(setFeedOpenFlag);
+            helpersFlagCloser(setFeedOpenFlag);
 
         }
 
@@ -56,7 +56,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
     
         if (feedOptionsSelection !== -1 && !feedStart && !feedDone){
 
-            startActivity(setFeedStart);
+            petScreensHelpersStartActivity(setFeedStart);
 
         }
 
@@ -70,7 +70,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
         if (!feedDone){
 
-            quitActivity(feedAudioRef, setFeedOpenFlag);
+            petScreensHelpersQuitActivity(feedAudioRef, setFeedOpenFlag);
 
         }
 
@@ -82,11 +82,11 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     useEffect(() => {
 
-        const preloadImages = [feedAnimationImage];
+        const feedPreloadImages = [feedAnimationImage];
 
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
+        feedPreloadImages.forEach((src) => {
+        const feedImg = new Image();
+            feedImg.src = src;
         });
 
     }, [feedAnimationImage]);
@@ -106,22 +106,22 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
             return;
         }
 
-        const interval = setInterval(() => {
+        const feedInterval = setInterval(() => {
 
-            const currSeconds = feedCurrNumberRef.current + 1;
-            setFeedCurrNumber(currSeconds);
+            const feedIntervalCurrSeconds = feedCurrNumberRef.current + 1;
+            setFeedCurrNumber(feedIntervalCurrSeconds);
 
-            if (currSeconds >= feedOptionsTotal){
-                clearInterval(interval);
+            if (feedIntervalCurrSeconds >= feedOptionsTotal){
+                clearInterval(feedInterval);
 
-                pauseAudio(feedAudioRef.current);
+                petScreensHelpersPauseAudio(feedAudioRef.current);
                 setFeedDone(true);
-                manageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feedOptionsDesiredOption, setFeedOptionsDesiredOption, feedOptionsSelection, setFeedSuccess);
+                petScreensHelpersManageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feedOptionsDesiredOption, setFeedOptionsDesiredOption, feedOptionsSelection, setFeedSuccess);
             }
 
         }, 1000);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(feedInterval);
 
     }, [feedStart, feedDone]);
 
@@ -198,7 +198,7 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                                         <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                             <h2>Wait for your pet as it eats.</h2> 
-                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setFeedStart)}> Start <br/> [return]</button>
+                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setFeedStart)}> Start <br/> [return]</button>
                                         </div>
 
                                     )}
@@ -218,13 +218,13 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setFeedOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpersFlagCloser(setFeedOpenFlag)}>Done <br/> [return]</button>
                 </div>
                
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpersQuitActivity(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

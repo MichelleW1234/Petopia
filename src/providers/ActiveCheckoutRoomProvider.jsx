@@ -10,8 +10,8 @@ export function ActiveCheckoutRoomProvider({ children }) {
 
     const [ActiveCheckoutRoom, setActiveCheckoutRoom] = useState(() => {
         try {
-            const stored = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
-            return stored !== null ? stored : -1;
+            const activeCheckoutRoomStored = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
+            return activeCheckoutRoomStored !== null ? activeCheckoutRoomStored : -1;
         } catch {
             return -1;
         }

@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { startActivity } from "../../../helpers/Helpers.js";
-import { playSound } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
+import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
@@ -34,7 +34,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     
         if (!pawformerStart){
 
-            startActivity(setPawformerStart);
+            petScreensHelpersStartActivity(setPawformerStart);
 
         }
 
@@ -47,7 +47,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
      
         if (pawformerStart){
 
-            checkMove("W");
+            pawformerCheckMove("W");
 
         }
 
@@ -59,7 +59,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     
         if (pawformerStart){
 
-            checkMove("A");
+            pawformerCheckMove("A");
 
         }
 
@@ -71,7 +71,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
      
         if (pawformerStart){
 
-            checkMove("S");
+            pawformerCheckMove("S");
 
         }
 
@@ -84,7 +84,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     
         if (pawformerStart){
 
-            checkMove("D");
+            pawformerCheckMove("D");
 
         }
 
@@ -120,47 +120,47 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         } 
 
-        const interval = setInterval(() => {
+        const pawformerInterval = setInterval(() => {
 
             setPawformerMoves(prev => {
 
-                const copy = prev.map(inner =>
+                const pawformerIntervalCopy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                const newList = copy.filter(move => move[pawformerColKey] < pawformerWindowWidth);
+                const pawformerIntervalNewList = pawformerIntervalCopy.filter(move => move[pawformerColKey] < pawformerWindowWidth);
 
-                for (let i = 0; i< newList.length; i++){
+                for (let pawformerIntervalI = 0; pawformerIntervalI< pawformerIntervalNewList.length; pawformerIntervalI++){
 
-                    newList[i][pawformerColKey] += 1;
+                    pawformerIntervalNewList[pawformerIntervalI][pawformerColKey] += 1;
 
                 }
 
-                if (!newList.some(move => move[pawformerColKey] < 3)){
+                if (!pawformerIntervalNewList.some(move => move[pawformerColKey] < 3)){
 
-                    const number = Math.floor(Math.random() * 4);
+                    const pawformerIntervalNumber = Math.floor(Math.random() * 4);
 
-                    if (number === 0){
+                    if (pawformerIntervalNumber === 0){
 
-                        newList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "W"});
+                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "W"});
 
-                    } else if (number === 1){
+                    } else if (pawformerIntervalNumber === 1){
 
-                        newList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "A"});
+                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "A"});
 
-                    } else if (number === pawformerTargetCol){
+                    } else if (pawformerIntervalNumber === pawformerTargetCol){
 
-                        newList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "S"});
+                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "S"});
 
                     } else {
 
-                        newList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "D"});
+                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "D"});
 
                     }
 
                 }
     
-                return newList;
+                return pawformerIntervalNewList;
 
             });
 
@@ -172,21 +172,21 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         }, 250);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(pawformerInterval);
 
     }, [pawformerStart, pawformerHitAttempt]);
 
 
 
-    const checkMove = (moveSelected) => {
+    const pawformerCheckMove = (pawformerCheckMoveMoveSelected) => {
 
-        playSound(soundScreenButtonPressKey);
+        helpersPlaySound(soundScreenButtonPressKey);
 
-        const targetMove = pawformerMoves.findIndex(move => move[pawformerColKey] === pawformerTargetCol);
+        const pawformerCheckMoveTargetMove = pawformerMoves.findIndex(move => move[pawformerColKey] === pawformerTargetCol);
 
-        if (targetMove !== -1 && !pawformerHitAttempt){
+        if (pawformerCheckMoveTargetMove !== -1 && !pawformerHitAttempt){
 
-            if (moveSelected === pawformerMoves[targetMove][pawformerTypeKey]) {
+            if (pawformerCheckMoveMoveSelected === pawformerMoves[pawformerCheckMoveTargetMove][pawformerTypeKey]) {
 
                 setPlayCurrNumber(prev => prev + 1);
             
@@ -210,7 +210,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             {!pawformerStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Copy the moves.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setPawformerStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setPawformerStart)}> Start <br/> [return]</button>
             </div>}
 
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
@@ -221,14 +221,14 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                 {Array.from({ length: pawformerWindowWidth}, (_, col) => {
 
-                    const wHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "W");
-                    const aHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "A");
-                    const sHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "S");
-                    const dHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "D");
+                    const pawformerWHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "W");
+                    const pawformerAHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "A");
+                    const pawformerSHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "S");
+                    const pawformerDHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "D");
 
                     return (
 
-                        wHere ? (
+                        pawformerWHere ? (
 
                             col === pawformerTargetCol ? (
 
@@ -240,7 +240,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : aHere ? (
+                        ) : pawformerAHere ? (
 
                             col === pawformerTargetCol ? (
 
@@ -252,7 +252,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : sHere ? (
+                        ) : pawformerSHere ? (
 
                             col === pawformerTargetCol ? (
 
@@ -264,7 +264,7 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : dHere ? (
+                        ) : pawformerDHere ? (
 
                             col === pawformerTargetCol ? (
 
@@ -289,10 +289,10 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
             </div>
 
             <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click W" onClick={() => checkMove("W")}> W </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click A" onClick={() => checkMove("A")}> A </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click S" onClick={() => checkMove("S")}> S </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click D" onClick={() => checkMove("D")}> D </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click W" onClick={() => pawformerCheckMove("W")}> W </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click A" onClick={() => pawformerCheckMove("A")}> A </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click S" onClick={() => pawformerCheckMove("S")}> S </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click D" onClick={() => pawformerCheckMove("D")}> D </button>
             </div>
                 
         </div>

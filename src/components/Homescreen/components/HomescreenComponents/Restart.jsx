@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { flagCloser, playSound } from "../../../../helpers/Helpers.js";
+import { helpersFlagCloser, helpersPlaySound } from "../../../../helpers/Helpers.js";
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
@@ -28,7 +28,7 @@ import Lamp from "../../../../images/Inventory/Lamp.png";
 import ChandelierOne from "../../../../images/Inventory/ChandelierOne.png";
 import ChandelierTwo from "../../../../images/Inventory/ChandelierTwo.png";
 import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
-import { soundRestartGameKey } from "../../../../constants/Constants.js";
+import { soundRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypePotionKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
 
 
 
@@ -45,7 +45,7 @@ function Restart({setRestartOpenFlag}) {
 
     useKeyboardShortcut("escape", () => {
 
-        flagCloser(setRestartOpenFlag);
+        helpersFlagCloser(setRestartOpenFlag);
 
     },
         ".No"
@@ -53,7 +53,7 @@ function Restart({setRestartOpenFlag}) {
 
     useKeyboardShortcut("Enter", () => {
 
-        restartGame();
+        restartRestartGame();
 
     },
         ".Yes"
@@ -61,9 +61,9 @@ function Restart({setRestartOpenFlag}) {
 
 
 
-    const restartGame = () => {
+    const restartRestartGame = () => {
 
-        playSound(soundRestartGameKey);
+        helpersPlaySound(soundRestartGameKey);
 
         setPetList({});
         setPetTimeStamps({});
@@ -100,7 +100,7 @@ function Restart({setRestartOpenFlag}) {
         setNotifications([]);
         setVolume(0.5);
 
-        flagCloser(setRestartOpenFlag);
+        helpersFlagCloser(setRestartOpenFlag);
 
     }
 
@@ -115,8 +115,8 @@ function Restart({setRestartOpenFlag}) {
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartGame()}> Yes <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => flagCloser(setRestartOpenFlag)}> No <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartRestartGame()}> Yes <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => helpersFlagCloser(setRestartOpenFlag)}> No <br/> [esc]</button>
             </div>
 
         </div>

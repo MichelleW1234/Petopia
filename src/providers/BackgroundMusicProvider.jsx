@@ -8,28 +8,26 @@ export function BackgroundMusicProvider({ children }) {
 
     const {Volume} = useVolume();
 
-    const audioRef = useRef(new Audio(soundtrack));
-
-
+    const backgroundMusicAudioRef = useRef(new Audio(soundtrack));
 
 
     useEffect(() => {
-        audioRef.current.volume = Volume;
+        backgroundMusicAudioRef.current.volume = Volume;
     }, [Volume]);
 
     useEffect(() => {
 
-        const audio = audioRef.current;
-        audio.loop = true;
+        const backgroundMusicAudio = backgroundMusicAudioRef.current;
+        backgroundMusicAudio.loop = true;
 
-        audio.play().catch((err) => {
+        backgroundMusicAudio.play().catch((err) => {
             console.warn('Autoplay failed:', err);
         });
 
         return () => {
-            audio.pause(); // Stop the audio when the component is unmounted
-            audio.currentTime = 0;
-            audio.loop = false;
+            backgroundMusicAudio.pause(); // Stop the backgroundMusicAudio when the component is unmounted
+            backgroundMusicAudio.currentTime = 0;
+            backgroundMusicAudio.loop = false;
         };
 
     }, []);
@@ -37,7 +35,7 @@ export function BackgroundMusicProvider({ children }) {
 
 
     return (
-        <BackgroundMusicContext.Provider value={{audioRef}}>
+        <BackgroundMusicContext.Provider value={{backgroundMusicAudioRef}}>
             {children}
         </BackgroundMusicContext.Provider>
     );

@@ -8,11 +8,11 @@ export function GlobalTimerProvider ({ children }) {
 
     useEffect(() => {
 
-        const interval = setInterval(() => {
+        const globalTimerInterval = setInterval(() => {
             setGlobalTimer(Date.now());
         }, 1000);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(globalTimerInterval);
 
     }, []);
 

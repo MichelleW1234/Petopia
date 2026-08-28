@@ -8,7 +8,7 @@ import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { soundSelectionButtonPressKey, soundClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
-import { playSound, flagCloser } from "../../../../helpers/Helpers.js";
+import { helpersPlaySound, helpersFlagCloser } from "../../../../helpers/Helpers.js";
 
 
 
@@ -20,15 +20,15 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
     const {Room, setRoom} = useRoom();
     const {Inventory, setInventory} = useInventory();
 
-    const [deletionSelectedPets, setClearPetsSelectedPets] = useState([]);
+    const [clearPetsSelectedPets, setClearPetsSelectedPets] = useState([]);
 
 
     
     useKeyboardShortcut("Enter", () => {
         
-        if (deletionSelectedPets.length > 0){
+        if (clearPetsSelectedPets.length > 0){
 
-            clearPets();
+            clearPetsClearPets();
 
         }
 
@@ -39,7 +39,7 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        flagCloser(setClearPetsOpenClearPetsFlag);
+        helpersFlagCloser(setClearPetsOpenClearPetsFlag);
 
     },
         ".Quit"
@@ -49,62 +49,61 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
 
 
-    const addPet = (PetToAdd) => {
+    const clearPetsAddPet = (clearPetsAddPetPetToAdd) => {
 
-        playSound(soundSelectionButtonPressKey);
-        setClearPetsSelectedPets(prev => [...prev, PetToAdd]);
+        helpersPlaySound(soundSelectionButtonPressKey);
+        setClearPetsSelectedPets(prev => [...prev, clearPetsAddPetPetToAdd]);
 
     }
 
 
-    const removePet = (PetToRemove) => {
+    const clearPetsRemovePet = (clearPetsRemovePetPetToRemove) => {
 
-        playSound(soundSelectionButtonPressKey);
-        setClearPetsSelectedPets(prev => prev.filter(pet => pet !== PetToRemove));
+        helpersPlaySound(soundSelectionButtonPressKey);
+        setClearPetsSelectedPets(prev => prev.filter(pet => pet !== clearPetsRemovePetPetToRemove));
         
     }
 
 
-    const clearPets = () => {
+    const clearPetsClearPets = () => {
 
-        playSound(soundClearPetsKey);
+        helpersPlaySound(soundClearPetsKey);
 
         setPetTimeStamps(prev => {
 
-            let updatedList = { ...prev };
+            let clearPetsClearPetsCopy = { ...prev };
 
-            deletionSelectedPets.forEach(petToRemove => {
-                const { [petToRemove]: _, ...rest } = updatedList;
-                updatedList = rest;
+            clearPetsSelectedPets.forEach(petToRemove => {
+                const { [petToRemove]: _, ...clearPetsClearPetsRest } = clearPetsClearPetsCopy;
+                clearPetsClearPetsCopy = clearPetsClearPetsRest;
             });
 
-            return updatedList;
+            return clearPetsClearPetsCopy;
 
         });
 
         setPetList(prev => {
 
-            let updatedList = { ...prev };
+            let clearPetsClearPetsCopy = { ...prev };
 
-            deletionSelectedPets.forEach(petToRemove => {
-                const { [petToRemove]: _, ...rest } = updatedList;
-                updatedList = rest;
+            clearPetsSelectedPets.forEach(petToRemove => {
+                const { [petToRemove]: _, ...clearPetsClearPetsRest } = clearPetsClearPetsCopy;
+                clearPetsClearPetsCopy = clearPetsClearPetsRest;
             });
 
-            return updatedList;
+            return clearPetsClearPetsCopy;
 
         });
 
-        //CHECK!!!!!!
         setInventory(prev => {
 
-            const copy = prev.map(inner =>
+            const clearPetsClearPetsCopy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            deletionSelectedPets.forEach(petToRemove => {
+            clearPetsSelectedPets.forEach(petToRemove => {
 
-                copy.forEach(item => {
+                clearPetsClearPetsCopy.forEach(item => {
                     if (item[inventoryItemOwnerKey] === petToRemove) {
                         item[inventoryItemOwnerKey] = null;
                     }
@@ -112,24 +111,24 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
             
             });
 
-            return copy;
+            return clearPetsClearPetsCopy;
 
         });
 
         setRoom(prev => {
 
-            let updated = [...prev];
+            let clearPetsClearPetsUpdated = [...prev];
 
-            deletionSelectedPets.forEach(petToRemove => {
-                const petRoom = updated.findIndex(room => room === petToRemove);
-                updated[petRoom] = null;
+            clearPetsSelectedPets.forEach(petToRemove => {
+                const clearPetsClearPetsPetRoom = clearPetsClearPetsUpdated.findIndex(room => room === petToRemove);
+                clearPetsClearPetsUpdated[clearPetsClearPetsPetRoom] = null;
             });
 
-            return updated;
+            return clearPetsClearPetsUpdated;
 
         });
 
-        flagCloser(setClearPetsOpenClearPetsFlag);
+        helpersFlagCloser(setClearPetsOpenClearPetsFlag);
 
     }
 
@@ -153,15 +152,15 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
                             <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
-                                {deletionSelectedPets.includes(petName) ? (
+                                {clearPetsSelectedPets.includes(petName) ? (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => removePet(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => clearPetsRemovePet(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
                                 ) : (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => addPet(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => clearPetsAddPet(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
@@ -181,15 +180,15 @@ function ClearPets({setClearPetsOpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => flagCloser(setClearPetsOpenClearPetsFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpersFlagCloser(setClearPetsOpenClearPetsFlag)}>Quit <br/> [esc]</button>
 
-                {deletionSelectedPets.length === 0 ? (
+                {clearPetsSelectedPets.length === 0 ? (
 
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets()}>Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPetsClearPets()}>Remove Selected Pets <br/> [return]</button>
 
                 )}
 

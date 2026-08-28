@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { manageHealth, pauseAudio, quitActivity } from "../../../helpers/Helpers.js";
-import { flagCloser } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersManageHealth, petScreensHelpersPauseAudio, petScreensHelpersQuitActivity } from "../../../helpers/Helpers.js";
+import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 
@@ -44,7 +44,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
     
         if (playDone){
 
-            flagCloser(setPlayOpenFlag);
+            helpersFlagCloser(setPlayOpenFlag);
 
         }
 
@@ -57,7 +57,7 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
         if (!playDone){
 
-            quitActivity(playAudioRef, setPlayOpenFlag);
+            petScreensHelpersQuitActivity(playAudioRef, setPlayOpenFlag);
 
         }
 
@@ -71,9 +71,9 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
         
         if (playCurrNumber >= playOptionsTotal){
 
-            pauseAudio(playAudioRef.current);
+            petScreensHelpersPauseAudio(playAudioRef.current);
             setPlayDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, playOptionsDesiredOption, setPlayOptionsDesiredOption, playOptionsSelection, setPlaySuccess);
+            petScreensHelpersManageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, playOptionsDesiredOption, setPlayOptionsDesiredOption, playOptionsSelection, setPlaySuccess);
 
         }
 
@@ -149,13 +149,13 @@ function Play ({playOptionsList, playOptionsDesiredOption, setPlayOptionsDesired
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => flagCloser(setPlayOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => helpersFlagCloser(setPlayOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => quitActivity(playAudioRef, setPlayOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpersQuitActivity(playAudioRef, setPlayOpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

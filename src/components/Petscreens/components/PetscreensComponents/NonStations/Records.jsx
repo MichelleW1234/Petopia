@@ -4,7 +4,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
-import { flagCloser } from "../../../../../helpers/Helpers.js";
+import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
 
 import "./Records.css";
 
@@ -21,7 +21,7 @@ function Records({setRecordsOpenFlag}) {
 
     useKeyboardShortcut("2", () => {
 
-        flagCloser(setRecordsOpenFlag);
+        helpersFlagCloser(setRecordsOpenFlag);
 
     },
         ".Close"
@@ -56,7 +56,7 @@ function Records({setRecordsOpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setRecordsOpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setRecordsOpenFlag)}> Close <br/> [2]</button>
 
         </div>
     );

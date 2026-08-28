@@ -10,8 +10,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { soundActivityFailKey, petSpeciesHealthCapList, petHealthKey, petMedicineKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, soundStartActivityKey, soundActivitySuccessKey } from "../../../../../constants/Constants.js";
-import { playSound, flagCloser } from "../../../../../helpers/Helpers.js";
-import { pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
+import { helpersPlaySound, helpersFlagCloser } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersPauseAudio, petScreensHelpersQuitActivity, petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
 
 import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
 
@@ -41,7 +41,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
     
         if (medicineDone){
 
-            flagCloser(setMedicineOpenFlag);
+            helpersFlagCloser(setMedicineOpenFlag);
 
         }
 
@@ -54,7 +54,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
     
         if (medicineOptionsSelection !== -1 && !medicineStart && !medicineDone){
 
-            startActivity(setMedicineStart);
+            petScreensHelpersStartActivity(setMedicineStart);
 
         }
 
@@ -68,7 +68,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
         if (!medicineDone){
 
-            quitActivity(medicineAudioRef, setMedicineOpenFlag);
+            petScreensHelpersQuitActivity(medicineAudioRef, setMedicineOpenFlag);
 
         }
 
@@ -80,11 +80,11 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
     useEffect(() => {
 
-        const preloadImages = [medicineAnimationImage];
+        const medicinePreloadImages = [medicineAnimationImage];
 
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
+        medicinePreloadImages.forEach((src) => {
+        const medicineImg = new Image();
+            medicineImg.src = src;
         });
 
     }, [medicineAnimationImage]);
@@ -103,22 +103,22 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
             return;
         }
 
-        const interval = setInterval(() => {
+        const medicineInterval = setInterval(() => {
 
-            const currSeconds = medicineCurrNumberRef.current + 1;
-            setMedicineCurrNumber(currSeconds);
+            const medicineIntervalCurrSeconds = medicineCurrNumberRef.current + 1;
+            setMedicineCurrNumber(medicineIntervalCurrSeconds);
 
-            if (currSeconds >= medicineOptionsTotal){
-                clearInterval(interval);
+            if (medicineIntervalCurrSeconds >= medicineOptionsTotal){
+                clearInterval(medicineInterval);
 
-                pauseAudio(medicineAudioRef.current);
+                petScreensHelpersPauseAudio(medicineAudioRef.current);
                 setMedicineDone(true);
-                manageMedicineEffectiveness();
+                medicineManageMedicineEffectiveness();
             }
 
         }, 1000);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(medicineInterval);
 
     }, [medicineStart, medicineDone]);
 
@@ -142,12 +142,12 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
 
 
-    const manageMedicineEffectiveness = () => {
+    const medicineManageMedicineEffectiveness = () => {
 
-        const currDate = medicineGlobalTimerRef.current;
-        const currentHour = new Date(currDate).getHours();
+        const medicineManageMedicineEffectivenessCurrDate = medicineGlobalTimerRef.current;
+        const medicineManageMedicineEffectivenessCurrHour = new Date(medicineManageMedicineEffectivenessCurrDate).getHours();
         
-        if (currentHour < 6 || currentHour >= 20 && medicineOptionsDesiredOption === medicineOptionsSelection){
+        if (medicineManageMedicineEffectivenessCurrHour < 6 || medicineManageMedicineEffectivenessCurrHour >= 20 && medicineOptionsDesiredOption === medicineOptionsSelection){
     
             setPetList(prev => ({
     
@@ -157,7 +157,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
     
                     ...prev[ActivePetName],
                     [petHealthKey]: Math.min(prev[ActivePetName][petHealthKey] + 4, petSpeciesHealthCapList[prev[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]),
-                    [petMedicineKey]: currDate
+                    [petMedicineKey]: medicineManageMedicineEffectivenessCurrDate
     
                 }
     
@@ -173,7 +173,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
     
                     ...prev[ActivePetName],
                     [petHealthKey]: Math.min(prev[ActivePetName][petHealthKey] + 2, petSpeciesHealthCapList[prev[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]),
-                    [petMedicineKey]: currDate
+                    [petMedicineKey]: medicineManageMedicineEffectivenessCurrDate
     
                 }
     
@@ -183,12 +183,12 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
         if (medicineOptionsDesiredOption === medicineOptionsSelection){
 
-            playSound(soundActivitySuccessKey);
+            helpersPlaySound(soundActivitySuccessKey);
             setMedicineSuccess(true);
 
         } else {
 
-            playSound(soundActivityFailKey);
+            helpersPlaySound(soundActivityFailKey);
 
         }
 
@@ -250,7 +250,7 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2>Wait for your pet as it receives its dose.</h2> 
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setMedicineStart)}> Start <br/> [return]</button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setMedicineStart)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}
@@ -269,13 +269,13 @@ function Medicine ({medicineAnimationImage, medicineOptionsList, medicineOptions
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setMedicineOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpersFlagCloser(setMedicineOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(medicineAudioRef, setMedicineOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpersQuitActivity(medicineAudioRef, setMedicineOpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

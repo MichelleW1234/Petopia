@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { startActivity } from "../../../helpers/Helpers.js";
-import { playSound } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
+import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
@@ -33,7 +33,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
     
         if (!strollPatrolStart){
 
-            startActivity(setStrollPatrolStart);
+            petScreensHelpersStartActivity(setStrollPatrolStart);
 
         }
 
@@ -47,7 +47,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         if (strollPatrolStart){
 
             e.preventDefault();
-            moveUp();
+            strollPatrolMoveUp();
 
         }
 
@@ -61,7 +61,7 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
         if (strollPatrolStart){
 
             e.preventDefault();
-            moveDown();
+            strollPatrolMoveDown();
 
         }
 
@@ -74,11 +74,11 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useEffect(() => {
 
-        const preloadImages = [Ball, Rock];
+        const strollPatrolPreloadImages = [Ball, Rock];
 
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
+        strollPatrolPreloadImages.forEach((src) => {
+        const strollPatrolImg = new Image();
+            strollPatrolImg.src = src;
         });
 
     }, []);
@@ -109,51 +109,51 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         } 
 
-        const interval = setInterval(() => {
+        const strollPatrolInterval = setInterval(() => {
 
             setStrollPatrolObjectPositions(prev => {
 
-                const copy = prev.map(inner =>
+                const strollPatrolIntervalCopy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                for (let i = 0; i< copy.length; i++){
+                for (let strollPatrolIntervalI = 0; strollPatrolIntervalI< strollPatrolIntervalCopy.length; strollPatrolIntervalI++){
 
-                    copy[i][strollPatrolColumnKey] -= 1;
+                    strollPatrolIntervalCopy[strollPatrolIntervalI][strollPatrolColumnKey] -= 1;
 
                 }
 
-                const newList = copy.filter(item => item[strollPatrolColumnKey] >= 0);
+                const strollPatrolIntervalNewList = strollPatrolIntervalCopy.filter(item => item[strollPatrolColumnKey] >= 0);
                 
 
-                if (!newList.some(item => item[strollPatrolColumnKey] > 3)){
+                if (!strollPatrolIntervalNewList.some(item => item[strollPatrolColumnKey] > 3)){
 
-                    newList.push({[strollPatrolColumnKey] : strollPatrolWindowWidth, [strollPatrolRowKey] : Math.floor(Math.random() * strollPatrolWindowHeight), [strollPatrolTypeKey] : Math.floor(Math.random() * 3)});
+                    strollPatrolIntervalNewList.push({[strollPatrolColumnKey] : strollPatrolWindowWidth, [strollPatrolRowKey] : Math.floor(Math.random() * strollPatrolWindowHeight), [strollPatrolTypeKey] : Math.floor(Math.random() * 3)});
 
                 }
 
-                return newList;
+                return strollPatrolIntervalNewList;
 
             });
 
         }, 200);
 
-        return () => clearInterval(interval);
+        return () => clearInterval(strollPatrolInterval);
 
     }, [strollPatrolStart]);
 
     
     useEffect(() => {
 
-        const copy = strollPatrolObjectPositions.map(inner =>
+        const strollPatrolCopy = strollPatrolObjectPositions.map(inner =>
             structuredClone(inner)
         );
 
-        const hitIndex = copy.findIndex(item => item[strollPatrolRowKey] === strollPatrolDogPosition[strollPatrolRowKey] && item[strollPatrolColumnKey] === strollPatrolDogPosition[strollPatrolColumnKey]);
+        const strollPatrolHitIndex = strollPatrolCopy.findIndex(item => item[strollPatrolRowKey] === strollPatrolDogPosition[strollPatrolRowKey] && item[strollPatrolColumnKey] === strollPatrolDogPosition[strollPatrolColumnKey]);
     
-        if (hitIndex !== -1){
+        if (strollPatrolHitIndex !== -1){
 
-            if (copy[hitIndex][strollPatrolTypeKey] === 0){
+            if (strollPatrolCopy[strollPatrolHitIndex][strollPatrolTypeKey] === 0){
 
                 setPlayCurrNumber(prev => prev + 1);
 
@@ -163,8 +163,8 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             }
 
-            copy.splice(hitIndex, 1);
-            setStrollPatrolObjectPositions(copy);
+            strollPatrolCopy.splice(strollPatrolHitIndex, 1);
+            setStrollPatrolObjectPositions(strollPatrolCopy);
             
         }
 
@@ -172,9 +172,9 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
 
 
-    const moveUp = () => {
+    const strollPatrolMoveUp = () => {
 
-        playSound(soundScreenButtonPressKey);
+        helpersPlaySound(soundScreenButtonPressKey);
 
         if (strollPatrolDogPosition[strollPatrolRowKey] > 0){
 
@@ -187,9 +187,9 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     }
 
-    const moveDown = () => {
+    const strollPatrolMoveDown = () => {
 
-        playSound(soundScreenButtonPressKey);
+        helpersPlaySound(soundScreenButtonPressKey);
         
         if (strollPatrolDogPosition[strollPatrolRowKey] < strollPatrolWindowHeight-1){
 
@@ -210,14 +210,14 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             {!strollPatrolStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setStrollPatrolStart)}> Start <br/> [return]</button>
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Up" onClick = {() => moveUp()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Up" onClick = {() => strollPatrolMoveUp()}> 
                     [&#x2B06;]
                 </button>
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Down" onClick = {() => moveDown()}> 
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Down" onClick = {() => strollPatrolMoveDown()}> 
                     [&#x2B07;]
                 </button>
             </div>
@@ -227,20 +227,20 @@ function StrollPatrol({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
                 {Array.from({ length: strollPatrolWindowHeight}, (_, row) => 
                     Array.from({ length: strollPatrolWindowWidth}, (_, col) => {
 
-                        const dogHere = col === strollPatrolDogPosition[strollPatrolColumnKey] && row === strollPatrolDogPosition[strollPatrolRowKey];
-                        const badHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] > 0);
-                        const goodHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] === 0);
+                        const strollPatrolDogHere = col === strollPatrolDogPosition[strollPatrolColumnKey] && row === strollPatrolDogPosition[strollPatrolRowKey];
+                        const strollPatrolBadHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] > 0);
+                        const strollPatrolGoodHere = strollPatrolObjectPositions.find(item => item[strollPatrolColumnKey] === col && item[strollPatrolRowKey] === row && item[strollPatrolTypeKey] === 0);
 
                         return (
                                 
-                            dogHere || badHere || goodHere ? (
+                            strollPatrolDogHere || strollPatrolBadHere || strollPatrolGoodHere ? (
 
                                 <img 
                                     key = {row + " & " + col} 
                                     className="StrollPatrol_ComponentContainer-Structure--GridCell" 
-                                    src = {dogHere ? 
+                                    src = {strollPatrolDogHere ? 
                                             Arrow
-                                            : badHere ?
+                                            : strollPatrolBadHere ?
                                             Rock
                                             : Ball
                                     }

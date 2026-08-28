@@ -3,7 +3,7 @@ import{useState} from "react";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { flagCloser, playSound } from "../../../helpers/Helpers.js";
+import { helpersFlagCloser, helpersPlaySound } from "../../../helpers/Helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
@@ -16,9 +16,9 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
     const {Volume, setVolume} = useVolume();
 
 
-    useKeyboardShortcut("v", () => {
+    useKeyboardShortcut("Enter", () => {
     
-        flagCloser(setMusicVolumeOpenFlag);
+        helpersFlagCloser(setMusicVolumeOpenFlag);
 
     },
         ".Close"
@@ -60,10 +60,10 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
 
 
 
-    const volumeJump = (e) => {
+    const musicVolumeVolumeJump = (musicVolumeVolumeJumpE) => {
 
-        const value = Number(Number(e.target.value).toFixed(2));
-        setVolume(value);
+        const musicVolumeVolumeJumpValue = Number(Number(musicVolumeVolumeJumpE.target.value).toFixed(2));
+        setVolume(musicVolumeVolumeJumpValue);
 
     }
 
@@ -87,14 +87,14 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
                             max="1"
                             step = "0.01"
                             value={Volume}
-                            onChange={volumeJump}
+                            onChange={musicVolumeVolumeJump}
                         />
                     </div>
                 </div>
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => flagCloser(setMusicVolumeOpenFlag)}> Close <br/> [v]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setMusicVolumeOpenFlag)}> Close <br/> [return]</button>
         </div>
     );
 }

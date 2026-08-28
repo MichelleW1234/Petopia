@@ -8,17 +8,17 @@ function Notifications() {
 
     const {Notifications, setNotifications} = useNotifications();
 
-    const deleteNotification = (index) => {
+    const notificationsDeleteNotification = (notificationsDeleteNotificationIndex) => {
 
         setNotifications(prev => {
 
-            const copy = prev.map(inner =>
+            const notificationsDeleteNotificationCopy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            copy.splice(index, 1);
+            notificationsDeleteNotificationCopy.splice(notificationsDeleteNotificationIndex, 1);
 
-            return copy;
+            return notificationsDeleteNotificationCopy;
 
         });
 
@@ -27,16 +27,16 @@ function Notifications() {
     return (
         <div className = "Notifications_ComponentContainer-Structure--Cards">
 
-            {Notifications.map((entry, index) => (
+            {Notifications.map((entry, notificationsDeleteNotificationIndex) => (
 
-                <div key = {index} className="Notifications_ComponentContainer-Structure--Card">
+                <div key = {notificationsDeleteNotificationIndex} className="Notifications_ComponentContainer-Structure--Card">
                     <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Notifications_ComponentContainer-Structure--CardContent">
                         <h2>Alert:</h2>
                         <p>{entry[notificationsDescriptionKey]}</p>
                         <h2>Date:</h2>
                         <p>{entry[notificationsDateKey]}</p>
                     </div>
-                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => deleteNotification(index)}> X </button>
+                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => notificationsDeleteNotification(notificationsDeleteNotificationIndex)}> X </button>
                 </div>
 
             ))}

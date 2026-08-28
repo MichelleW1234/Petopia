@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityOptionCursorKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { manageHealth, pauseAudio, quitActivity, startActivity } from "../../../helpers/Helpers.js";
-import { flagCloser} from "../../../../../helpers/Helpers.js";
+import { petScreensHelpersManageHealth, petScreensHelpersPauseAudio, petScreensHelpersQuitActivity, petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
+import { helpersFlagCloser} from "../../../../../helpers/Helpers.js";
 
 import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
 import CleaningSymbol from "../../../../../images/CleaningSymbol.gif";
@@ -46,7 +46,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
     
         if (cleanDone){
 
-            flagCloser(setCleanOpenFlag);
+            helpersFlagCloser(setCleanOpenFlag);
 
         }
 
@@ -59,7 +59,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
     
         if (cleanOptionsSelection !== -1 && !cleanStart && !cleanDone){
 
-            startActivity(setCleanStart);
+            petScreensHelpersStartActivity(setCleanStart);
 
         }
 
@@ -73,7 +73,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
         if (!cleanDone){
 
-            quitActivity(cleanAudioRef, setCleanOpenFlag);
+            petScreensHelpersQuitActivity(cleanAudioRef, setCleanOpenFlag);
 
         }
 
@@ -87,11 +87,11 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useEffect(() => {
 
-        const preloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[petActivityOptionCursorKey])];
+        const cleanPreloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[petActivityOptionCursorKey])];
 
-        preloadImages.forEach((src) => {
-        const img = new Image();
-            img.src = src;
+        cleanPreloadImages.forEach((src) => {
+        const cleanImg = new Image();
+            cleanImg.src = src;
         });
 
     }, [cleanAnimationImage]);
@@ -118,16 +118,16 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
     useEffect(() => {
         if (cleanCurrNumber >= cleanOptionsTotal){
 
-            pauseAudio(cleanAudioRef.current);
+            petScreensHelpersPauseAudio(cleanAudioRef.current);
             setCleanDone(true);
-            manageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, cleanOptionsSelection, setCleanSuccess);
+            petScreensHelpersManageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, cleanOptionsSelection, setCleanSuccess);
 
         }
     }, [cleanCurrNumber]);
     
 
 
-    const scrub = () => {
+    const cleanScrub = () => {
 
         setCleanCurrNumber(prev => prev + 1);
 
@@ -205,13 +205,14 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
                                             src = {cleanAnimationImage} 
-                                            onMouseEnter={() => scrub()}
+                                            onMouseEnter={() => cleanScrub()}
                                         />
 
-                                        {cleanHover && <img
+                                        {cleanHover && 
+                                        <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
                                             src = {CleaningSymbol} 
-                                            onMouseEnter={() => scrub()}
+                                            onMouseEnter={() => cleanScrub()}
                                         />}
 
                                     </>
@@ -220,7 +221,7 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2> Drag your cursor back and forth for cleaning. </h2>
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => startActivity(setCleanStart)}> Start <br/> [return]</button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setCleanStart)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}
@@ -239,13 +240,13 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => flagCloser(setCleanOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpersFlagCloser(setCleanOpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => quitActivity(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpersQuitActivity(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

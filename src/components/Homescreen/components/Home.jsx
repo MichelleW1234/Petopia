@@ -19,7 +19,7 @@ import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSelectionButtonPressKey } from "../../../constants/Constants.js";
-import { flagOpener, playSound } from "../../../helpers/Helpers.js";
+import { helpersFlagOpener, helpersPlaySound } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
 import OrangePetBattery from "../../../images/OrangePetBattery.png";
@@ -53,7 +53,7 @@ function Home (){
 
 
 
-    const navigate = useNavigate();
+    const homeNavigate = useNavigate();
 
 
 
@@ -61,7 +61,7 @@ function Home (){
         
         if (!homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeMusicVolumeOpenFlag, 1);
+            helpersFlagOpener(setHomeMusicVolumeOpenFlag, 1);
 
         }
 
@@ -74,7 +74,7 @@ function Home (){
         
         if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeInventoryOpenFlag, 1);
+            helpersFlagOpener(setHomeInventoryOpenFlag, 1);
 
         }
 
@@ -88,7 +88,7 @@ function Home (){
 
         if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeRestartOpenFlag, 0);
+            helpersFlagOpener(setHomeRestartOpenFlag, 0);
 
         }
 
@@ -103,7 +103,7 @@ function Home (){
 
         if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeRearrangePetsOpenFlag, 0);
+            helpersFlagOpener(setHomeRearrangePetsOpenFlag, 0);
 
         }
 
@@ -116,7 +116,7 @@ function Home (){
 
         if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeClearPetsOpenClearPetsFlag, 0);
+            helpersFlagOpener(setHomeClearPetsOpenClearPetsFlag, 0);
 
         }
 
@@ -129,7 +129,7 @@ function Home (){
 
         if (!homeClearPetsOpenClearPetsFlag && !homeRestartOpenFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
 
-            flagOpener(setHomeReadMeOpenFlag, 0);
+            helpersFlagOpener(setHomeReadMeOpenFlag, 0);
 
         }
 
@@ -142,18 +142,18 @@ function Home (){
     
     
 
-    const getPet = (petToGet) => {
+    const homeGetPet = (homeGetPetPetToGet) => {
 
-        playSound(soundSelectionButtonPressKey);
-        setActivePetName(petToGet);
+        helpersPlaySound(soundSelectionButtonPressKey);
+        setActivePetName(homeGetPetPetToGet);
         
     }
 
 
-    const checkoutRoom = (roomNumber) => {
+    const homeCheckoutRoom = (homeCheckoutRoomRoomNumber) => {
 
-        playSound(soundSelectionButtonPressKey);
-        setActiveCheckoutRoom(roomNumber);
+        helpersPlaySound(soundSelectionButtonPressKey);
+        setActiveCheckoutRoom(homeCheckoutRoomRoomNumber);
 
     }
 
@@ -201,9 +201,9 @@ function Home (){
                     {homeMinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => flagOpener(setHomeRestartOpenFlag, 0)}> Restart <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => flagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => flagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpersFlagOpener(setHomeRestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpersFlagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpersFlagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
@@ -216,7 +216,7 @@ function Home (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => flagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => helpersFlagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
@@ -249,7 +249,7 @@ function Home (){
                                     <Link
                                         to = {"/adopt"}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => checkoutRoom(index)}
+                                        onClick = {() => homeCheckoutRoom(index)}
                                     >
                                         <img src = {AddNewPet}/>
                                     </Link>
@@ -303,7 +303,7 @@ function Home (){
                                     <Link
                                         to = {`/${PetList[petName][petSpeciesKey]}`}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => getPet(petName)}
+                                        onClick = {() => homeGetPet(petName)}
                                     >
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>
@@ -330,13 +330,13 @@ function Home (){
                 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => flagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpersFlagOpener(setHomeMusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => flagOpener(setHomeInventoryOpenFlag, 1)}>
+                    onClick = {() => helpersFlagOpener(setHomeInventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
                

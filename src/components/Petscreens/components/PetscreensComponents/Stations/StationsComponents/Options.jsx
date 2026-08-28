@@ -2,7 +2,7 @@ import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
 import { soundSelectionButtonPressKey, petActivityOptionImageKey, petActivityOptionNameKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../../../constants/Constants.js";
-import { playSound } from "../../../../../../helpers/Helpers.js";
+import { helpersPlaySound } from "../../../../../../helpers/Helpers.js";
 
 import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
 import PetThoughtBubble from "../../../../../../images/PetThoughtBubble.png";
@@ -19,17 +19,17 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
     const {ActivePetName, setActivePetName} = useActivePetName();
 
 
-    const judgeSelection = (chosenOption) => {
+    const optionsJudgeSelection = (optionsJudgeSelectionChosenOption) => {
 
-        playSound(soundSelectionButtonPressKey);
+        helpersPlaySound(soundSelectionButtonPressKey);
 
-        if (chosenOption !== optionsDesiredOption) {
+        if (optionsJudgeSelectionChosenOption !== optionsDesiredOption) {
 
             setOptionsTotal(prev => prev*2);
 
         }
 
-        setOptionsSelection(chosenOption);
+        setOptionsSelection(optionsJudgeSelectionChosenOption);
 
     }
 
@@ -57,7 +57,7 @@ function Options({optionsDesiredOption, optionsList, setOptionsTotal, setOptions
                 {optionsList.map((option, index) => (
 
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => judgeSelection(index)}>
+                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => optionsJudgeSelection(index)}>
                             <img src = {option[petActivityOptionImageKey]}/>
                         </button>
 

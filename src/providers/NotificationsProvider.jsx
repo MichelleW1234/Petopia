@@ -16,8 +16,8 @@ export function NotificationsProvider({ children }) {
 
   const [Notifications, setNotifications] = useState(() => {
     try {
-      const stored = JSON.parse(localStorage.getItem("Notifications"));
-      return stored ? stored : [];
+      const notificationsStored = JSON.parse(localStorage.getItem("Notifications"));
+      return notificationsStored ? notificationsStored : [];
     } catch {
       return  [];
     }
