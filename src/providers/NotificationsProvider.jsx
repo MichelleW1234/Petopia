@@ -10,14 +10,14 @@ import { usePetList } from "./PetListProvider.jsx";
 
 import { achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey } from "../constants/Constants";
 
-const NotificationsContext = createContext();
+const notifications_Context = createContext();
 
 export function NotificationsProvider({ children }) {
 
   const [Notifications, setNotifications] = useState(() => {
     try {
-      const notificationsStored = JSON.parse(localStorage.getItem("Notifications"));
-      return notificationsStored ? notificationsStored : [];
+      const notifications_Stored = JSON.parse(localStorage.getItem("Notifications"));
+      return notifications_Stored ? notifications_Stored : [];
     } catch {
       return  [];
     }
@@ -29,14 +29,14 @@ export function NotificationsProvider({ children }) {
   }, [Notifications]);
 
   return (
-    <NotificationsContext.Provider value={{ Notifications, setNotifications }}>
+    <notifications_Context.Provider value={{ Notifications, setNotifications }}>
       {children}
-    </NotificationsContext.Provider>
+    </notifications_Context.Provider>
   );
   
 }
 
 export function useNotifications() {
-  return useContext(NotificationsContext);
+  return useContext(notifications_Context);
 }
 

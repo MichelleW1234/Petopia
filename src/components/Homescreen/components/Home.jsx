@@ -8,7 +8,7 @@ import { useRoom } from "../../../providers/RoomProvider.jsx";
 import { useActiveCheckoutRoom } from "../../../providers/ActiveCheckoutRoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
-import { BackgroundMusicContext } from '../../../providers/BackgroundMusicProvider.jsx';
+import { backgroundMusic_Context } from '../../../providers/BackgroundMusicProvider.jsx';
 
 import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
 import Inventory from "../../GlobalComponents/components/Inventory.jsx";
@@ -19,7 +19,7 @@ import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSelectionButtonPressKey } from "../../../constants/Constants.js";
-import { helpersFlagOpener, helpersPlaySound } from "../../../helpers/Helpers.js";
+import { helpers_FlagOpener, helpers_PlaySound } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
 import OrangePetBattery from "../../../images/OrangePetBattery.png";
@@ -34,7 +34,7 @@ import "./Home.css";
 
 function Home (){
 
-    const { audioRef } = useContext(BackgroundMusicContext);
+    const { audioRef } = useContext(backgroundMusic_Context);
 
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
@@ -42,26 +42,26 @@ function Home (){
     const {Room, setRoom} = useRoom();
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
 
-    const [homeRestartOpenFlag, setHomeRestartOpenFlag] = useState(false);
-    const [homeMusicVolumeOpenFlag, setHomeMusicVolumeOpenFlag] = useState(false);
-    const [homeInventoryOpenFlag, setHomeInventoryOpenFlag] = useState(false);
-    const [homeClearPetsOpenClearPetsFlag, setHomeClearPetsOpenClearPetsFlag] = useState(false);
-    const [homeRearrangePetsOpenFlag, setHomeRearrangePetsOpenFlag] = useState(false);
-    const [homeReadMeOpenFlag, setHomeReadMeOpenFlag] = useState(false);
+    const [home_RestartOpenFlag, set_Home_RestartOpenFlag] = useState(false);
+    const [home_MusicVolumeOpenFlag, set_Home_MusicVolumeOpenFlag] = useState(false);
+    const [home_InventoryOpenFlag, set_Home_InventoryOpenFlag] = useState(false);
+    const [home_ClearPetsOpenClearPetsFlag, set_Home_ClearPetsOpenClearPetsFlag] = useState(false);
+    const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
+    const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
 
-    const homeMinPetsAdopted = Room.filter(x => x === null).length < 3;
+    const home_MinPetsAdopted = Room.filter(x => x === null).length < 3;
 
 
 
-    const homeNavigate = useNavigate();
+    const home_Navigate = useNavigate();
 
 
 
     useKeyboardShortcut("v", () => {
         
-        if (!homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeMusicVolumeOpenFlag, 1);
+            helpers_FlagOpener(set_Home_MusicVolumeOpenFlag, 1);
 
         }
 
@@ -72,9 +72,9 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeInventoryOpenFlag, 1);
+            helpers_FlagOpener(set_Home_InventoryOpenFlag, 1);
 
         }
 
@@ -86,9 +86,9 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeRestartOpenFlag, 0);
+            helpers_FlagOpener(set_Home_RestartOpenFlag, 0);
 
         }
 
@@ -101,9 +101,9 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeRearrangePetsOpenFlag, 0);
+            helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0);
 
         }
 
@@ -114,9 +114,9 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (homeMinPetsAdopted && !homeRestartOpenFlag && !homeClearPetsOpenClearPetsFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeClearPetsOpenClearPetsFlag, 0);
+            helpers_FlagOpener(set_Home_ClearPetsOpenClearPetsFlag, 0);
 
         }
 
@@ -127,9 +127,9 @@ function Home (){
     
     useKeyboardShortcut("4", () => {
 
-        if (!homeClearPetsOpenClearPetsFlag && !homeRestartOpenFlag && !homeRearrangePetsOpenFlag && !homeReadMeOpenFlag && !homeMusicVolumeOpenFlag && !homeInventoryOpenFlag){
+        if (!home_ClearPetsOpenClearPetsFlag && !home_RestartOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpersFlagOpener(setHomeReadMeOpenFlag, 0);
+            helpers_FlagOpener(set_Home_ReadMeOpenFlag, 0);
 
         }
 
@@ -142,18 +142,18 @@ function Home (){
     
     
 
-    const homeGetPet = (homeGetPetPetToGet) => {
+    const home_GetPet = (home_GetPet_PetToGet) => {
 
-        helpersPlaySound(soundSelectionButtonPressKey);
-        setActivePetName(homeGetPetPetToGet);
+        helpers_PlaySound(soundSelectionButtonPressKey);
+        setActivePetName(home_GetPet_PetToGet);
         
     }
 
 
-    const homeCheckoutRoom = (homeCheckoutRoomRoomNumber) => {
+    const home_CheckoutRoom = (home_CheckoutRoom_RoomNumber) => {
 
-        helpersPlaySound(soundSelectionButtonPressKey);
-        setActiveCheckoutRoom(homeCheckoutRoomRoomNumber);
+        helpers_PlaySound(soundSelectionButtonPressKey);
+        setActiveCheckoutRoom(home_CheckoutRoom_RoomNumber);
 
     }
 
@@ -163,34 +163,34 @@ function Home (){
 
         <>
 
-            {homeMusicVolumeOpenFlag && 
+            {home_MusicVolumeOpenFlag && 
             <MusicVolume
-                setMusicVolumeOpenFlag={setHomeMusicVolumeOpenFlag}
+                set_MusicVolume_OpenFlag={set_Home_MusicVolumeOpenFlag}
             />}
 
-            {homeInventoryOpenFlag && 
+            {home_InventoryOpenFlag && 
             <Inventory
-                setInventoryOpenFlag={setHomeInventoryOpenFlag}
+                set_Inventory_OpenFlag={set_Home_InventoryOpenFlag}
             />}
 
-            {homeRestartOpenFlag && 
+            {home_RestartOpenFlag && 
             <Restart
-                setRestartOpenFlag={setHomeRestartOpenFlag}
+                set_Restart_OpenFlag={set_Home_RestartOpenFlag}
             />}
 
-            {homeRearrangePetsOpenFlag &&
+            {home_RearrangePetsOpenFlag &&
             <RearrangePets
-                setRearrangePetsOpenFlag={setHomeRearrangePetsOpenFlag}
+                set_RearrangePets_OpenFlag={set_Home_RearrangePetsOpenFlag}
             />}
 
-            {homeClearPetsOpenClearPetsFlag &&
+            {home_ClearPetsOpenClearPetsFlag &&
             <ClearPets
-                setClearPetsOpenClearPetsFlag={setHomeClearPetsOpenClearPetsFlag}
+                set_ClearPets_OpenClearPetsFlag={set_Home_ClearPetsOpenClearPetsFlag}
             />}
 
-            {homeReadMeOpenFlag &&
+            {home_ReadMeOpenFlag &&
             <ReadMe
-                setReadMeOpenFlag={setHomeReadMeOpenFlag}
+                set_ReadMe_OpenFlag={set_Home_ReadMeOpenFlag}
             />}
 
 
@@ -198,12 +198,12 @@ function Home (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    {homeMinPetsAdopted ? (
+                    {home_MinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpersFlagOpener(setHomeRestartOpenFlag, 0)}> Restart <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpersFlagOpener(setHomeRearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpersFlagOpener(setHomeClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_FlagOpener(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_FlagOpener(set_Home_ClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
@@ -216,13 +216,13 @@ function Home (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => helpersFlagOpener(setHomeReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => helpers_FlagOpener(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                    {homeMinPetsAdopted ? (
+                    {home_MinPetsAdopted ? (
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Your Pets: </h1>
 
@@ -249,7 +249,7 @@ function Home (){
                                     <Link
                                         to = {"/adopt"}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => homeCheckoutRoom(index)}
+                                        onClick = {() => home_CheckoutRoom(index)}
                                     >
                                         <img src = {AddNewPet}/>
                                     </Link>
@@ -303,7 +303,7 @@ function Home (){
                                     <Link
                                         to = {`/${PetList[petName][petSpeciesKey]}`}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => homeGetPet(petName)}
+                                        onClick = {() => home_GetPet(petName)}
                                     >
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>
@@ -330,13 +330,13 @@ function Home (){
                 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => helpersFlagOpener(setHomeMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpers_FlagOpener(set_Home_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => helpersFlagOpener(setHomeInventoryOpenFlag, 1)}>
+                    onClick = {() => helpers_FlagOpener(set_Home_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
                

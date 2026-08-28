@@ -9,7 +9,7 @@ import "./Activity.css";
 
 
 
-function Activity({activityKey, activityTimeGap}) {
+function Activity({activity_Key, activity_TimeGap}) {
 
     const {GlobalTimer} = useGlobalTimer();
     const {PetList, setPetList} = usePetList();
@@ -17,21 +17,21 @@ function Activity({activityKey, activityTimeGap}) {
     const {ActivePetName, setActivePetName} = useActivePetName();
 
 
-    const activityDeadLine = activityKey === petMedicineKey ? 
-                            PetList[ActivePetName][activityKey] + activityTimeGap
-                        : PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey] + activityTimeGap;
+    const activity_DeadLine = activity_Key === petMedicineKey ? 
+                            PetList[ActivePetName][activity_Key] + activity_TimeGap
+                        : PetTimeStamps[ActivePetName][activity_Key][petActivityTimeStampLastPerformedKey] + activity_TimeGap;
 
-    const activityLastTimeString = activityKey === petMedicineKey ?
-                                        PetList[ActivePetName][activityKey] === 0 ? 
+    const activity_LastTimeString = activity_Key === petMedicineKey ?
+                                        PetList[ActivePetName][activity_Key] === 0 ? 
                                             "N/A"
-                                        :   (new Date(PetList[ActivePetName][activityKey])).toLocaleString([], {
+                                        :   (new Date(PetList[ActivePetName][activity_Key])).toLocaleString([], {
                                                 year: "numeric",
                                                 month: "2-digit",
                                                 day: "2-digit",
                                                 hour: "2-digit",
                                                 minute: "2-digit",
                                             })
-                                    :   (new Date(PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey])).toLocaleString([], {
+                                    :   (new Date(PetTimeStamps[ActivePetName][activity_Key][petActivityTimeStampLastPerformedKey])).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
                                             day: "2-digit",
@@ -39,12 +39,12 @@ function Activity({activityKey, activityTimeGap}) {
                                             minute: "2-digit",
                                         });
 
-    const activityNextTimeString = PetList[ActivePetName][petHealthKey] === 0 ?
+    const activity_NextTimeString = PetList[ActivePetName][petHealthKey] === 0 ?
                                         "--"
-                                    :   activityKey === petMedicineKey ?  
-                                            PetList[ActivePetName][activityKey] === 0 ? 
+                                    :   activity_Key === petMedicineKey ?  
+                                            PetList[ActivePetName][activity_Key] === 0 ? 
                                                 "On Demand"
-                                            : (new Date(activityDeadLine)).toLocaleString([], {
+                                            : (new Date(activity_DeadLine)).toLocaleString([], {
                                                     year: "numeric",
                                                     month: "2-digit",
                                                     day: "2-digit",
@@ -52,7 +52,7 @@ function Activity({activityKey, activityTimeGap}) {
                                                     minute: "2-digit",
                                                 })
                                         : 
-                                            (new Date(activityDeadLine)).toLocaleString([], {
+                                            (new Date(activity_DeadLine)).toLocaleString([], {
                                                 year: "numeric",
                                                 month: "2-digit",
                                                 day: "2-digit",
@@ -60,14 +60,14 @@ function Activity({activityKey, activityTimeGap}) {
                                                 minute: "2-digit",
                                             });
 
-    const activityCurrDate = GlobalTimer;
-    const activityPercentUntilNextUpdate = activityKey === petMedicineKey ?  
-                                                PetList[ActivePetName][activityKey] === 0 ? 
+    const activity_CurrDate = GlobalTimer;
+    const activity_PercentUntilNextUpdate = activity_Key === petMedicineKey ?  
+                                                PetList[ActivePetName][activity_Key] === 0 ? 
                                                     100
-                                                : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetList[ActivePetName][activityKey])/activityTimeGap) * 100)))
-                                            : Math.min(100, Math.max(0, Math.floor(((activityCurrDate - PetTimeStamps[ActivePetName][activityKey][petActivityTimeStampLastPerformedKey])/activityTimeGap) * 100)));
+                                                : Math.min(100, Math.max(0, Math.floor(((activity_CurrDate - PetList[ActivePetName][activity_Key])/activity_TimeGap) * 100)))
+                                            : Math.min(100, Math.max(0, Math.floor(((activity_CurrDate - PetTimeStamps[ActivePetName][activity_Key][petActivityTimeStampLastPerformedKey])/activity_TimeGap) * 100)));
 
-    const activityLastStrings = {
+    const activity_LastStrings = {
 
         [petActivityTimeStampFeedingKey]: "Last Fed: ",
         [petActivityTimeStampCleaningKey]: "Last Cleaned: ",
@@ -76,7 +76,7 @@ function Activity({activityKey, activityTimeGap}) {
 
     }
 
-    const activityNextStrings = {
+    const activity_NextStrings = {
 
         [petActivityTimeStampFeedingKey]: "Feed Before: ",
         [petActivityTimeStampCleaningKey]: "Clean Before: ",
@@ -90,12 +90,12 @@ function Activity({activityKey, activityTimeGap}) {
 
         <div className = "Activity_ComponentContainer-Structure--Category">
             <div className="Activity_ComponentContainer-Structure--CategoryField">
-                <h2>{activityLastStrings[activityKey]}</h2> 
-                <p>{activityLastTimeString}</p>
+                <h2>{activity_LastStrings[activity_Key]}</h2> 
+                <p>{activity_LastTimeString}</p>
             </div>
             <div className="Activity_ComponentContainer-Structure--CategoryField">
-                <h2>{activityNextStrings[activityKey]}</h2>
-                <p>{activityNextTimeString}</p>
+                <h2>{activity_NextStrings[activity_Key]}</h2>
+                <p>{activity_NextTimeString}</p>
             </div>
     
             {PetList[ActivePetName][petHealthKey] === 0 ? (
@@ -118,7 +118,7 @@ function Activity({activityKey, activityTimeGap}) {
 
                         <div key = {num} className = {num === 50 ?
                                                         "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
-                                                    : num <= activityPercentUntilNextUpdate ? 
+                                                    : num <= activity_PercentUntilNextUpdate ? 
                                                         "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
                                                         : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
                                                     }>

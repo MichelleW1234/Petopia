@@ -32,14 +32,14 @@ import ChandelierThree from "../images/Inventory/ChandelierThree.png";
 
 import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, petSpeciesFishKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypePotionKey, inventoryItemImageKey, inventoryItemTypeKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeWallDecorationKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemTypeRoomDecorationKey } from "../constants/Constants.js";
 
-const InventoryContext = createContext();
+const inventory_Context = createContext();
 
 export function InventoryProvider({ children }) {
 
   const [Inventory, setInventory] = useState(() => {
     try {
-      const inventoryStored = JSON.parse(localStorage.getItem("Inventory"));
-      return inventoryStored ? inventoryStored : [
+      const inventory_Stored = JSON.parse(localStorage.getItem("Inventory"));
+      return inventory_Stored ? inventory_Stored : [
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},
@@ -94,14 +94,14 @@ export function InventoryProvider({ children }) {
   }, [Inventory]);
 
   return (
-    <InventoryContext.Provider value={{ Inventory, setInventory }}>
+    <inventory_Context.Provider value={{ Inventory, setInventory }}>
       {children}
-    </InventoryContext.Provider>
+    </inventory_Context.Provider>
   );
   
 }
 
 export function useInventory() {
-  return useContext(InventoryContext);
+  return useContext(inventory_Context);
 }
 

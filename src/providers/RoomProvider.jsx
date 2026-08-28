@@ -4,14 +4,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const RoomContext = createContext();
+const room_Context = createContext();
 
 export function RoomProvider({ children }) {
 
     const [Room, setRoom] = useState(() => {
         try {
-            const roomStored = JSON.parse(localStorage.getItem("Room"));
-            return roomStored !== null ? roomStored : [null, null, null];
+            const room_Stored = JSON.parse(localStorage.getItem("Room"));
+            return room_Stored !== null ? room_Stored : [null, null, null];
         } catch {
             return [null, null, null];
         }
@@ -22,13 +22,13 @@ export function RoomProvider({ children }) {
     }, [Room]);
 
     return (
-        <RoomContext.Provider value={{ Room, setRoom}}>
+        <room_Context.Provider value={{ Room, setRoom}}>
         {children}
-        </RoomContext.Provider>
+        </room_Context.Provider>
     );
 }
 
 export function useRoom() {
-  return useContext(RoomContext);
+  return useContext(room_Context);
 }
 

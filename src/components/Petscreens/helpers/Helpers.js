@@ -1,60 +1,60 @@
 import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, soundNavButtonPressKey, petActivityTimeStampCleaningKey, soundActivityFailKey, petActivityTimeStampFeedingKey, soundScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, soundQuitActivityKey, soundStartActivityKey, soundActivitySuccessKey } from "../../../constants/Constants.js";
-import { helpersFlagCloser, helpersPlaySound } from "../../../helpers/Helpers.js";
+import { helpers_FlagCloser, helpers_PlaySound } from "../../../helpers/Helpers.js";
 
 
-export const petScreensHelpersManageHealth = (petScreensHelpersManageHealthGlobalTimer, setPetScreensHelpersManageHealthPetTimeStamps, setPetScreensHelpersManageHealthPetList, petScreensHelpersManageHealthActivePetName, petScreensHelpersManageHealthKey, petScreensHelpersManageHealthDesiredOption, setPetScreensHelpersManageHealthDesiredOption, setPetScreensHelpersManageHealthSelection, setPetScreensHelpersManageHealthSuccess) => {
+export const petScreensHelpers_ManageHealth = (petScreensHelpers_ManageHealth_GlobalTimer, set_PetScreensHelpers_ManageHealth_PetTimeStamps, set_PetScreensHelpers_ManageHealth_PetList, petScreensHelpers_ManageHealth_ActivePetName, petScreensHelpers_ManageHealth_Key, petScreensHelpers_ManageHealth_DesiredOption, set_PetScreensHelpers_ManageHealth_DesiredOption, set_PetScreensHelpers_ManageHealth_Selection, set_PetScreensHelpers_ManageHealth_Success) => {
 
-    if (petScreensHelpersManageHealthDesiredOption === -1){
+    if (petScreensHelpers_ManageHealth_DesiredOption === -1){
     //Too much (unwilling)
 
-        helpersPlaySound(soundActivityFailKey);
+        helpers_PlaySound(soundActivityFailKey);
 
-        setPetScreensHelpersManageHealthPetList(prev => ({
+        set_PetScreensHelpers_ManageHealth_PetList(prev => ({
 
             ...prev,
 
-            [petScreensHelpersManageHealthActivePetName]: {
+            [petScreensHelpers_ManageHealth_ActivePetName]: {
 
-                ...prev[petScreensHelpersManageHealthActivePetName],
-                [petHealthKey]: Math.max(prev[petScreensHelpersManageHealthActivePetName][petHealthKey] - petActivityTimeStampDamageList[petScreensHelpersManageHealthKey], 0)
+                ...prev[petScreensHelpers_ManageHealth_ActivePetName],
+                [petHealthKey]: Math.max(prev[petScreensHelpers_ManageHealth_ActivePetName][petHealthKey] - petActivityTimeStampDamageList[petScreensHelpers_ManageHealth_Key], 0)
             }
 
         }));
 
-    } else if (petScreensHelpersManageHealthDesiredOption !== setPetScreensHelpersManageHealthSelection && petScreensHelpersManageHealthDesiredOption !== -1){
+    } else if (petScreensHelpers_ManageHealth_DesiredOption !== set_PetScreensHelpers_ManageHealth_Selection && petScreensHelpers_ManageHealth_DesiredOption !== -1){
     // not desired option (willing)
 
-        helpersPlaySound(soundActivityFailKey);
+        helpers_PlaySound(soundActivityFailKey);
 
-        setPetScreensHelpersManageHealthPetList(prev => ({
+        set_PetScreensHelpers_ManageHealth_PetList(prev => ({
 
             ...prev,
 
-            [petScreensHelpersManageHealthActivePetName]: {
+            [petScreensHelpers_ManageHealth_ActivePetName]: {
 
-                ...prev[petScreensHelpersManageHealthActivePetName],
-                [petHealthKey]: Math.max(prev[petScreensHelpersManageHealthActivePetName][petHealthKey] - 1, 0)
+                ...prev[petScreensHelpers_ManageHealth_ActivePetName],
+                [petHealthKey]: Math.max(prev[petScreensHelpers_ManageHealth_ActivePetName][petHealthKey] - 1, 0)
             }
 
         }));
 
     } else {
 
-        helpersPlaySound(soundActivitySuccessKey);
-        setPetScreensHelpersManageHealthSuccess(true);
+        helpers_PlaySound(soundActivitySuccessKey);
+        set_PetScreensHelpers_ManageHealth_Success(true);
 
     }
 
-    setPetScreensHelpersManageHealthPetTimeStamps(prev => ({
+    set_PetScreensHelpers_ManageHealth_PetTimeStamps(prev => ({
 
         ...prev,
 
-        [petScreensHelpersManageHealthActivePetName]: {
+        [petScreensHelpers_ManageHealth_ActivePetName]: {
             
-            ...prev[petScreensHelpersManageHealthActivePetName],
-            [petScreensHelpersManageHealthKey]: {
-                ...prev[petScreensHelpersManageHealthActivePetName][petScreensHelpersManageHealthKey],
-                [petActivityTimeStampLastPerformedKey]: petScreensHelpersManageHealthGlobalTimer         //THIS!!!!
+            ...prev[petScreensHelpers_ManageHealth_ActivePetName],
+            [petScreensHelpers_ManageHealth_Key]: {
+                ...prev[petScreensHelpers_ManageHealth_ActivePetName][petScreensHelpers_ManageHealth_Key],
+                [petActivityTimeStampLastPerformedKey]: petScreensHelpers_ManageHealth_GlobalTimer         //THIS!!!!
             }
             
         }
@@ -62,39 +62,39 @@ export const petScreensHelpersManageHealth = (petScreensHelpersManageHealthGloba
     }));
 
 
-    setPetScreensHelpersManageHealthDesiredOption(-1);
+    set_PetScreensHelpers_ManageHealth_DesiredOption(-1);
 
 }
 
 
-export const petScreensHelpersPauseAudio = (petScreensHelpersPauseAudioAudio) => {
+export const petScreensHelpers_PauseAudio = (petScreensHelpers_PauseAudio_Audio) => {
 
-    petScreensHelpersPauseAudioAudio.pause();
-    petScreensHelpersPauseAudioAudio.currentTime = 0;
-
-}
-
-
-export const petScreensHelpersHome = (setPetScreensHelpersHomeActivePetName) => {
-
-    helpersPlaySound(soundNavButtonPressKey);
-    setPetScreensHelpersHomeActivePetName("");
-
-}
-
-export const petScreensHelpersQuitActivity = (petScreensHelpersQuitActivityAudioRef, setPetScreensHelpersQuitActivityFlagToClose) => {
-
-    helpersPlaySound(soundQuitActivityKey);
-    petScreensHelpersPauseAudio(petScreensHelpersQuitActivityAudioRef.current);
-    helpersFlagCloser(setPetScreensHelpersQuitActivityFlagToClose);
+    petScreensHelpers_PauseAudio_Audio.pause();
+    petScreensHelpers_PauseAudio_Audio.currentTime = 0;
 
 }
 
 
-export const petScreensHelpersStartActivity = (setPetScreensHelpersStartActivityStart) => {
+export const petScreensHelpers_Home = (set_PetScreensHelpers_Home_ActivePetName) => {
 
-    helpersPlaySound(soundScreenButtonPressKey);
-    helpersPlaySound(soundStartActivityKey);
-    setPetScreensHelpersStartActivityStart(true);
+    helpers_PlaySound(soundNavButtonPressKey);
+    set_PetScreensHelpers_Home_ActivePetName("");
+
+}
+
+export const petScreensHelpers_QuitActivity = (petScreensHelpers_QuitActivity_AudioRef, set_PetScreensHelpers_QuitActivity_FlagToClose) => {
+
+    helpers_PlaySound(soundQuitActivityKey);
+    petScreensHelpers_PauseAudio(petScreensHelpers_QuitActivity_AudioRef.current);
+    helpers_FlagCloser(set_PetScreensHelpers_QuitActivity_FlagToClose);
+
+}
+
+
+export const petScreensHelpers_StartActivity = (set_PetScreensHelpers_StartActivity_Start) => {
+
+    helpers_PlaySound(soundScreenButtonPressKey);
+    helpers_PlaySound(soundStartActivityKey);
+    set_PetScreensHelpers_StartActivity_Start(true);
 
 }

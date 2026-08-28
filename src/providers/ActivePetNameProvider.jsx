@@ -4,14 +4,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const ActivePetNameContext = createContext();
+const activePetName_Context = createContext();
 
 export function ActivePetNameProvider({ children }) {
 
     const [ActivePetName, setActivePetName] = useState(() => {
         try {
-            const activePetNameStored = JSON.parse(sessionStorage.getItem("ActivePetName"));
-            return activePetNameStored !== null ? String(activePetNameStored) : "";
+            const activePetName_Stored = JSON.parse(sessionStorage.getItem("ActivePetName"));
+            return activePetName_Stored !== null ? String(activePetName_Stored) : "";
         } catch {
             return "";
         }
@@ -22,13 +22,13 @@ export function ActivePetNameProvider({ children }) {
     }, [ActivePetName]);
 
     return (
-        <ActivePetNameContext.Provider value={{ ActivePetName, setActivePetName}}>
+        <activePetName_Context.Provider value={{ ActivePetName, setActivePetName}}>
         {children}
-        </ActivePetNameContext.Provider>
+        </activePetName_Context.Provider>
     );
 }
 
 export function useActivePetName() {
-  return useContext(ActivePetNameContext);
+  return useContext(activePetName_Context);
 }
 

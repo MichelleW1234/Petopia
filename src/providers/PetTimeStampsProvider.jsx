@@ -10,14 +10,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const PetTimeStampsContext = createContext();
+const petTimeStamps_Context = createContext();
 
 export function PetTimeStampsProvider({ children }) {
 
   const [PetTimeStamps, setPetTimeStamps] = useState(() => {
     try {
-      const petTimeStampsStored = JSON.parse(localStorage.getItem("PetTimeStamps"));
-      return petTimeStampsStored && typeof petTimeStampsStored === "object" ? petTimeStampsStored : {};
+      const petTimeStamps_Stored = JSON.parse(localStorage.getItem("PetTimeStamps"));
+      return petTimeStamps_Stored && typeof petTimeStamps_Stored === "object" ? petTimeStamps_Stored : {};
     } catch {
       return {};
     }
@@ -28,13 +28,13 @@ export function PetTimeStampsProvider({ children }) {
   }, [PetTimeStamps]);
 
   return (
-    <PetTimeStampsContext.Provider value={{ PetTimeStamps, setPetTimeStamps }}>
+    <petTimeStamps_Context.Provider value={{ PetTimeStamps, setPetTimeStamps }}>
       {children}
-    </PetTimeStampsContext.Provider>
+    </petTimeStamps_Context.Provider>
   );
 }
 
 export function usePetTimeStamps() {
-  return useContext(PetTimeStampsContext);
+  return useContext(petTimeStamps_Context);
 }
 

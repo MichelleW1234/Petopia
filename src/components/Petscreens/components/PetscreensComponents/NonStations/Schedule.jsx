@@ -6,11 +6,11 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import Activity from "./NonstationsComponents/Activity.jsx";
 
 import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
-import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
+import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
 
 
 
-function Schedule({setScheduleOpenFlag}) {
+function Schedule({set_Schedule_OpenFlag}) {
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
@@ -18,7 +18,7 @@ function Schedule({setScheduleOpenFlag}) {
     
     useKeyboardShortcut("3", () => {
 
-        helpersFlagCloser(setScheduleOpenFlag);
+        helpers_FlagCloser(set_Schedule_OpenFlag);
 
     },
         ".Close"
@@ -42,21 +42,21 @@ function Schedule({setScheduleOpenFlag}) {
 
                         <Activity
                             key = {key}
-                            activityKey = {key}
-                            activityTimeGap = {value}
+                            activity_Key = {key}
+                            activity_TimeGap = {value}
                         />
 
                     ))}
 
                     <Activity
-                        activityKey = {petMedicineKey}
-                        activityTimeGap = {petActivityTimeStampMedicineDoseTimeGapKey}
+                        activity_Key = {petMedicineKey}
+                        activity_TimeGap = {petActivityTimeStampMedicineDoseTimeGapKey}
                     />
                 </div>
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpersFlagCloser(setScheduleOpenFlag)}>Close <br/> [3] </button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_FlagCloser(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
 
         </div>
     );

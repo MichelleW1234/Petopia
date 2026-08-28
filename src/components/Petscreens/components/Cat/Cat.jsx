@@ -20,8 +20,8 @@ import MouseHunt from "./CatComponents/MouseHunt.jsx";
 import FeatherFishing from "./CatComponents/FeatherFishing.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
-import { petScreensHelpersHome, petScreensHelpersPauseAudio } from "../../helpers/Helpers.js";
-import { helpersFlagOpener } from "../../../../helpers/Helpers.js";
+import { petScreensHelpers_Home, petScreensHelpers_PauseAudio } from "../../helpers/Helpers.js";
+import { helpers_FlagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyMeow from "../../../../Music/PetImmersionSounds/Cat/HappyMeow.mp3";
 import SadMeow from "../../../../Music/PetImmersionSounds/Cat/SadMeow.mp3";
@@ -74,46 +74,46 @@ function Cat (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
-    const [catMusicVolumeOpenFlag, setCatMusicVolumeOpenFlag] = useState(false);
-    const [catInventoryOpenFlag, setCatInventoryOpenFlag] = useState(false);
-    const [catActivityInProgress, setCatActivityInProgress] = useState(false);
-    const [catFeedOpenFlag, setCatFeedOpenFlag] = useState(false);
-    const [catPlayOpenFlag, setCatPlayOpenFlag] = useState(false);
-    const [catMedicineOpenFlag, setCatMedicineOpenFlag] = useState(false);
-    const [catScheduleOpenFlag, setCatScheduleOpenFlag] = useState(false);
-    const [catRecordsOpenFlag, setCatRecordsOpenFlag] = useState(false);
-    const [catFeedOptionsDesiredOption, setCatFeedOptionsDesiredOption] = useState(-1);
-    const [catPlayOptionsDesiredOption, setCatPlayOptionsDesiredOption] = useState(-1);
-    const [catMedicineOptionsDesiredOption, setCatMedicineOptionsDesiredOption] = useState(-1);
+    const [cat_MusicVolumeOpenFlag, set_Cat_MusicVolumeOpenFlag] = useState(false);
+    const [cat_InventoryOpenFlag, set_Cat_InventoryOpenFlag] = useState(false);
+    const [cat_ActivityInProgress, set_Cat_ActivityInProgress] = useState(false);
+    const [cat_FeedOpenFlag, set_Cat_FeedOpenFlag] = useState(false);
+    const [cat_PlayOpenFlag, set_Cat_PlayOpenFlag] = useState(false);
+    const [cat_MedicineOpenFlag, set_Cat_MedicineOpenFlag] = useState(false);
+    const [cat_ScheduleOpenFlag, set_Cat_ScheduleOpenFlag] = useState(false);
+    const [cat_RecordsOpenFlag, set_Cat_RecordsOpenFlag] = useState(false);
+    const [cat_FeedOptionsDesiredOption, set_Cat_FeedOptionsDesiredOption] = useState(-1);
+    const [cat_PlayOptionsDesiredOption, set_Cat_PlayOptionsDesiredOption] = useState(-1);
+    const [cat_MedicineOptionsDesiredOption, set_Cat_MedicineOptionsDesiredOption] = useState(-1);
 
-    const catAlive = ActivePetName === "" ? 
+    const cat_Alive = ActivePetName === "" ? 
                             false
                         :   PetList[ActivePetName][petHealthKey] === 0 ? 
                                 false
                                 : true;
 
 
-    const catHungry = ActivePetName === "" ? 
+    const cat_Hungry = ActivePetName === "" ? 
                             false
                         :   (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey][petActivityTimeStampFeedingKey]/2 ? 
                                 true 
                                 : false;
                             
-    const catRestless = ActivePetName === "" ? 
+    const cat_Restless = ActivePetName === "" ? 
                             false
                         :    (GlobalTimer - PetTimeStamps[ActivePetName][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey]) >= petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey][petActivityTimeStampPlayingKey]/2 ? 
                                 true 
                                 : false;
 
 
-    const catUnwell =  ActivePetName === "" ? 
+    const cat_Unwell =  ActivePetName === "" ? 
                             false
                         :    PetList[ActivePetName][petHealthKey] >= petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] ? 
                                 false
                                 : true;
 
 
-    const catMood = ActivePetName === "" ? 
+    const cat_Mood = ActivePetName === "" ? 
                         -1
                     :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
                             0
@@ -124,14 +124,14 @@ function Cat (){
                             : 3;
 
 
-    const catCanReceiveDose = ActivePetName === "" ? 
+    const cat_CanReceiveDose = ActivePetName === "" ? 
                                     false
                                 :   GlobalTimer - PetList[ActivePetName][petMedicineKey] <= petActivityTimeStampMedicineDoseTimeGapKey ? 
                                         false
                                         : true;
 
 
-    const catMainImages = ActivePetName === "" ? 
+    const cat_MainImages = ActivePetName === "" ? 
                                 [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
@@ -140,7 +140,7 @@ function Cat (){
                                     : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
 
-    const catMainSleepingImage = ActivePetName === "" ? 
+    const cat_MainSleepingImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         SleepStageOne
@@ -148,7 +148,7 @@ function Cat (){
                                         SleepStageTwo
                                     : SleepStageThree;
 
-    const catFeedImage = ActivePetName === "" ? 
+    const cat_FeedImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         FeedStageOne
@@ -156,7 +156,7 @@ function Cat (){
                                         FeedStageTwo
                                     : FeedStageThree; 
 
-    const catMedicineImage = ActivePetName === "" ? 
+    const cat_MedicineImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         MedicineStageOne
@@ -166,21 +166,21 @@ function Cat (){
 
 
 
-    const catFeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const catPlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishing}];
-    const catMedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
+    const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishing}];
+    const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
-    const catAudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
-    const catBackgroundAudioRef = useRef(new Audio(Candle));
+    const cat_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
+    const cat_BackgroundAudioRef = useRef(new Audio(Candle));
 
-    const catNavigate = useNavigate();
+    const cat_Navigate = useNavigate();
         
 
     useKeyboardShortcut("v", () => {
         
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatMusicVolumeOpenFlag, 1);
+            helpers_FlagOpener(set_Cat_MusicVolumeOpenFlag, 1);
 
         }
 
@@ -190,9 +190,9 @@ function Cat (){
 
     useKeyboardShortcut("i", () => {
         
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatInventoryOpenFlag, 1);
+            helpers_FlagOpener(set_Cat_InventoryOpenFlag, 1);
 
         }
 
@@ -203,10 +203,10 @@ function Cat (){
         
     useKeyboardShortcut("1", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            petScreensHelpersHome(setActivePetName);
-            catNavigate("/home");
+            petScreensHelpers_Home(setActivePetName);
+            cat_Navigate("/home");
 
         }
 
@@ -217,9 +217,9 @@ function Cat (){
 
     useKeyboardShortcut("2", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatRecordsOpenFlag, 0);
+            helpers_FlagOpener(set_Cat_RecordsOpenFlag, 0);
 
         }
 
@@ -230,9 +230,9 @@ function Cat (){
 
     useKeyboardShortcut("3", () => {
 
-        if (!catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatScheduleOpenFlag, 0);
+            helpers_FlagOpener(set_Cat_ScheduleOpenFlag, 0);
 
         }
 
@@ -244,9 +244,9 @@ function Cat (){
 
     useKeyboardShortcut("4", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (cat_Alive && !cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatFeedOpenFlag, 0);
+            helpers_FlagOpener(set_Cat_FeedOpenFlag, 0);
 
         }
 
@@ -257,9 +257,9 @@ function Cat (){
 
     useKeyboardShortcut("5", () => {
 
-        if (catAlive && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (cat_Alive && !cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatPlayOpenFlag, 0);
+            helpers_FlagOpener(set_Cat_PlayOpenFlag, 0);
 
         }
 
@@ -271,9 +271,9 @@ function Cat (){
 
     useKeyboardShortcut("6", () => {
 
-        if (catAlive && catCanReceiveDose && !catFeedOpenFlag && !catPlayOpenFlag && !catMedicineOpenFlag && !catScheduleOpenFlag && !catRecordsOpenFlag && !catMusicVolumeOpenFlag && !catInventoryOpenFlag){
+        if (cat_Alive && cat_CanReceiveDose && !cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            helpersFlagOpener(setCatMedicineOpenFlag, 0);
+            helpers_FlagOpener(set_Cat_MedicineOpenFlag, 0);
 
         }
 
@@ -284,57 +284,57 @@ function Cat (){
 
 
     useEffect(() => {
-        if (catFeedOpenFlag || catPlayOpenFlag || catMedicineOpenFlag) {
-            setCatActivityInProgress(true);
+        if (cat_FeedOpenFlag || cat_PlayOpenFlag || cat_MedicineOpenFlag) {
+            set_Cat_ActivityInProgress(true);
         } else {
-            setCatActivityInProgress(false);
+            set_Cat_ActivityInProgress(false);
         }
-    }, [catFeedOpenFlag, catPlayOpenFlag, catMedicineOpenFlag]);
+    }, [cat_FeedOpenFlag, cat_PlayOpenFlag, cat_MedicineOpenFlag]);
     
     
     useEffect(() => {
 
-        if (ActivePetName === "" || catActivityInProgress){
+        if (ActivePetName === "" || cat_ActivityInProgress){
 
-            Object.values(catAudioRefs.current).forEach(audio => {
-                petScreensHelpersPauseAudio(audio);
+            Object.values(cat_AudioRefs.current).forEach(audio => {
+                petScreensHelpers_PauseAudio(audio);
             });
 
-            petScreensHelpersPauseAudio(catBackgroundAudioRef.current);
+            petScreensHelpers_PauseAudio(cat_BackgroundAudioRef.current);
 
         } else {
 
-            catBackgroundAudioRef.current.play();
-            catBackgroundAudioRef.current.volume = 0.5;
-            catBackgroundAudioRef.current.loop = true;
+            cat_BackgroundAudioRef.current.play();
+            cat_BackgroundAudioRef.current.volume = 0.5;
+            cat_BackgroundAudioRef.current.loop = true;
 
         }
 
-    }, [ActivePetName, catActivityInProgress]);
+    }, [ActivePetName, cat_ActivityInProgress]);
 
 
 
     useEffect(() => {
 
-        if (catHungry){
+        if (cat_Hungry){
 
-            setCatFeedOptionsDesiredOption(Math.floor(Math.random() * catFeedOptionsList.length));
-
-        }
-
-        if (catRestless){
-
-            setCatPlayOptionsDesiredOption(Math.floor(Math.random() * catPlayOptionsList.length));
+            set_Cat_FeedOptionsDesiredOption(Math.floor(Math.random() * cat_FeedOptionsList.length));
 
         }
 
-        if (catUnwell){
+        if (cat_Restless){
 
-            setCatMedicineOptionsDesiredOption(Math.floor(Math.random() * catMedicineOptionsList.length));
+            set_Cat_PlayOptionsDesiredOption(Math.floor(Math.random() * cat_PlayOptionsList.length));
 
         }
 
-    }, [catHungry, catRestless, catUnwell]);
+        if (cat_Unwell){
+
+            set_Cat_MedicineOptionsDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
+
+        }
+
+    }, [cat_Hungry, cat_Restless, cat_Unwell]);
 
 
 
@@ -345,69 +345,69 @@ function Cat (){
 
         <>
 
-            {catMusicVolumeOpenFlag && 
+            {cat_MusicVolumeOpenFlag && 
             <MusicVolume
-                setMusicVolumeOpenFlag={setCatMusicVolumeOpenFlag}
+                set_MusicVolume_OpenFlag={set_Cat_MusicVolumeOpenFlag}
             />}
 
-            {catInventoryOpenFlag && 
+            {cat_InventoryOpenFlag && 
             <Inventory
-                setInventoryOpenFlag={setCatInventoryOpenFlag}
+                set_Inventory_OpenFlag={set_Cat_InventoryOpenFlag}
             />}
 
-            {catFeedOpenFlag &&
+            {cat_FeedOpenFlag &&
             <Feed
-                feedAnimationImage={catFeedImage}
-                feedOptionsList={catFeedOptionsList}
-                feedOptionsDesiredOption = {catFeedOptionsDesiredOption}
-                setFeedOptionsDesiredOption = {setCatFeedOptionsDesiredOption}
-                setFeedOpenFlag = {setCatFeedOpenFlag}
+                feed_AnimationImage={cat_FeedImage}
+                feed_OptionsList={cat_FeedOptionsList}
+                feed_OptionsDesiredOption = {cat_FeedOptionsDesiredOption}
+                set_Feed_OptionsDesiredOption = {set_Cat_FeedOptionsDesiredOption}
+                set_Feed_OpenFlag = {set_Cat_FeedOpenFlag}
             />}
 
-            {catPlayOpenFlag &&
+            {cat_PlayOpenFlag &&
             <Play
-                playOptionsList={catPlayOptionsList}
-                playOptionsDesiredOption = {catPlayOptionsDesiredOption}
-                setPlayOptionsDesiredOption = {setCatPlayOptionsDesiredOption}
-                setPlayOpenFlag = {setCatPlayOpenFlag}
+                play_OptionsList={cat_PlayOptionsList}
+                play_OptionsDesiredOption = {cat_PlayOptionsDesiredOption}
+                set_Play_OptionsDesiredOption = {set_Cat_PlayOptionsDesiredOption}
+                set_Play_OpenFlag = {set_Cat_PlayOpenFlag}
             />}
 
-            {catMedicineOpenFlag &&
+            {cat_MedicineOpenFlag &&
             <Medicine
-                medicineAnimationImage={catMedicineImage}
-                medicineOptionsList={catMedicineOptionsList}
-                medicineOptionsDesiredOption = {catMedicineOptionsDesiredOption}
-                setMedicineOptionsDesiredOption = {setCatMedicineOptionsDesiredOption}
-                setMedicineOpenFlag = {setCatMedicineOpenFlag}
+                medicine_AnimationImage={cat_MedicineImage}
+                medicine_OptionsList={cat_MedicineOptionsList}
+                medicine_OptionsDesiredOption = {cat_MedicineOptionsDesiredOption}
+                set_Medicine_OptionsDesiredOption = {set_Cat_MedicineOptionsDesiredOption}
+                set_Medicine_OpenFlag = {set_Cat_MedicineOpenFlag}
             />}
 
-            {catScheduleOpenFlag &&
+            {cat_ScheduleOpenFlag &&
             <Schedule
-                setScheduleOpenFlag={setCatScheduleOpenFlag}
+                set_Schedule_OpenFlag={set_Cat_ScheduleOpenFlag}
             />}
 
-            {catRecordsOpenFlag &&
+            {cat_RecordsOpenFlag &&
             <Records
-                setRecordsOpenFlag = {setCatRecordsOpenFlag}
+                set_Records_OpenFlag = {set_Cat_RecordsOpenFlag}
             />}
         
             <div className = "UIStapleElements_Background-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpersHome(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpersFlagOpener(setCatRecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpersFlagOpener(setCatScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpers_FlagOpener(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpers_FlagOpener(set_Cat_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
-                    {catAlive ? (
+                    {cat_Alive ? (
 
                         <>
-                            <button className={catHungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => helpersFlagOpener(setCatFeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                            <button className={catRestless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => helpersFlagOpener(setCatPlayOpenFlag, 0)}> Play <br/> [5] </button>
+                            <button className={cat_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {() => helpers_FlagOpener(set_Cat_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={cat_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => helpers_FlagOpener(set_Cat_PlayOpenFlag, 0)}> Play <br/> [5] </button>
 
-                            {catCanReceiveDose ? (
+                            {cat_CanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => helpersFlagOpener(setCatMedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => helpers_FlagOpener(set_Cat_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                             ) : (
 
@@ -433,12 +433,12 @@ function Cat (){
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
                     <Main
-                        mainAnimationImages={catMainImages}
-                        mainSleepingImage = {catMainSleepingImage}
-                        mainPetAudios = {catAudioRefs}
-                        mainPetEnergy = {450}
-                        mainPetMood = {catMood}
-                        mainActivityInProgress = {catActivityInProgress}
+                        main_AnimationImages={cat_MainImages}
+                        main_SleepingImage = {cat_MainSleepingImage}
+                        main_PetAudios = {cat_AudioRefs}
+                        main_PetEnergy = {450}
+                        main_PetMood = {cat_Mood}
+                        main_ActivityInProgress = {cat_ActivityInProgress}
                     />
                 </div>
 
@@ -449,13 +449,13 @@ function Cat (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => helpersFlagOpener(setCatMusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpers_FlagOpener(set_Cat_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => helpersFlagOpener(setCatInventoryOpenFlag, 1)}>
+                    onClick = {() => helpers_FlagOpener(set_Cat_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
             </div>

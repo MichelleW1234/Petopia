@@ -2,32 +2,32 @@ import { createContext, useContext, useRef, useEffect, useState } from 'react';
 import soundtrack from "../Music/PetopiaSoundTrack.mp3";
 import {useVolume} from "./VolumeProvider.jsx";
 
-export const BackgroundMusicContext = createContext();
+export const backgroundMusic_Context = createContext();
 
 export function BackgroundMusicProvider({ children }) {
 
     const {Volume} = useVolume();
 
-    const backgroundMusicAudioRef = useRef(new Audio(soundtrack));
+    const backgroundMusic_AudioRef = useRef(new Audio(soundtrack));
 
 
     useEffect(() => {
-        backgroundMusicAudioRef.current.volume = Volume;
+        backgroundMusic_AudioRef.current.volume = Volume;
     }, [Volume]);
 
     useEffect(() => {
 
-        const backgroundMusicAudio = backgroundMusicAudioRef.current;
-        backgroundMusicAudio.loop = true;
+        const backgroundMusic_Audio = backgroundMusic_AudioRef.current;
+        backgroundMusic_Audio.loop = true;
 
-        backgroundMusicAudio.play().catch((err) => {
+        backgroundMusic_Audio.play().catch((err) => {
             console.warn('Autoplay failed:', err);
         });
 
         return () => {
-            backgroundMusicAudio.pause(); // Stop the backgroundMusicAudio when the component is unmounted
-            backgroundMusicAudio.currentTime = 0;
-            backgroundMusicAudio.loop = false;
+            backgroundMusic_Audio.pause(); // Stop the backgroundMusic_Audio when the component is unmounted
+            backgroundMusic_Audio.currentTime = 0;
+            backgroundMusic_Audio.loop = false;
         };
 
     }, []);
@@ -35,12 +35,12 @@ export function BackgroundMusicProvider({ children }) {
 
 
     return (
-        <BackgroundMusicContext.Provider value={{backgroundMusicAudioRef}}>
+        <backgroundMusic_Context.Provider value={{backgroundMusic_AudioRef}}>
             {children}
-        </BackgroundMusicContext.Provider>
+        </backgroundMusic_Context.Provider>
     );
 }
 
 export function useBackgroundMusic() {
-    return useContext(BackgroundMusicContext);
+    return useContext(backgroundMusic_Context);
 }

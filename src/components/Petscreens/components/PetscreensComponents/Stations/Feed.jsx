@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
-import { petScreensHelpersStartActivity, petScreensHelpersPauseAudio, petScreensHelpersQuitActivity, petScreensHelpersManageHealth} from "../../../helpers/Helpers.js";
+import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_StartActivity, petScreensHelpers_PauseAudio, petScreensHelpers_QuitActivity, petScreensHelpers_ManageHealth} from "../../../helpers/Helpers.js";
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
@@ -20,30 +20,30 @@ import "./Feed.css";
 
 
 
-function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, setFeedOptionsDesiredOption, setFeedOpenFlag}){
+function Feed ({feed_AnimationImage, feed_OptionsList, feed_OptionsDesiredOption, set_Feed_OptionsDesiredOption, set_Feed_OpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [feedStart, setFeedStart] = useState(false);
-    const [feedOptionsTotal, setFeedOptionsTotal] = useState(10);
-    const [feedCurrNumber, setFeedCurrNumber] = useState(0);
-    const [feedDone, setFeedDone] = useState(false);
-    const [feedOptionsSelection, setFeedOptionsSelection] = useState(-1);
-    const [feedSuccess, setFeedSuccess] = useState(false);
+    const [feed_Start, set_Feed_Start] = useState(false);
+    const [feed_OptionsTotal, set_Feed_OptionsTotal] = useState(10);
+    const [feed_CurrNumber, set_Feed_CurrNumber] = useState(0);
+    const [feed_Done, set_Feed_Done] = useState(false);
+    const [feed_OptionsSelection, set_Feed_OptionsSelection] = useState(-1);
+    const [feed_Success, set_Feed_Success] = useState(false);
 
-    const feedGlobalTimerRef = useRef(GlobalTimer);
-    const feedCurrNumberRef = useRef(feedCurrNumber);
-    const feedAudioRef = useRef(new Audio(Feeding));
+    const feed_GlobalTimerRef = useRef(GlobalTimer);
+    const feed_CurrNumberRef = useRef(feed_CurrNumber);
+    const feed_AudioRef = useRef(new Audio(Feeding));
 
 
     useKeyboardShortcut("Enter", () => {
     
-        if (feedDone){
+        if (feed_Done){
 
-            helpersFlagCloser(setFeedOpenFlag);
+            helpers_FlagCloser(set_Feed_OpenFlag);
 
         }
 
@@ -54,9 +54,9 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
     
     useKeyboardShortcut("Enter", () => {
     
-        if (feedOptionsSelection !== -1 && !feedStart && !feedDone){
+        if (feed_OptionsSelection !== -1 && !feed_Start && !feed_Done){
 
-            petScreensHelpersStartActivity(setFeedStart);
+            petScreensHelpers_StartActivity(set_Feed_Start);
 
         }
 
@@ -68,9 +68,9 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     useKeyboardShortcut("Escape", () => {
 
-        if (!feedDone){
+        if (!feed_Done){
 
-            petScreensHelpersQuitActivity(feedAudioRef, setFeedOpenFlag);
+            petScreensHelpers_QuitActivity(feed_AudioRef, set_Feed_OpenFlag);
 
         }
 
@@ -82,67 +82,67 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
     useEffect(() => {
 
-        const feedPreloadImages = [feedAnimationImage];
+        const feed_PreloadImages = [feed_AnimationImage];
 
-        feedPreloadImages.forEach((src) => {
-        const feedImg = new Image();
-            feedImg.src = src;
+        feed_PreloadImages.forEach((src) => {
+        const feed_Img = new Image();
+            feed_Img.src = src;
         });
 
-    }, [feedAnimationImage]);
+    }, [feed_AnimationImage]);
 
     useEffect(() => {
-        feedGlobalTimerRef.current = GlobalTimer;
+        feed_GlobalTimerRef.current = GlobalTimer;
     }, [GlobalTimer]);
     
     useEffect(() => {
-        feedCurrNumberRef.current = feedCurrNumber;
-    }, [feedCurrNumber]);
+        feed_CurrNumberRef.current = feed_CurrNumber;
+    }, [feed_CurrNumber]);
 
 
     useEffect(() => {
 
-        if (!feedStart || feedDone) {
+        if (!feed_Start || feed_Done) {
             return;
         }
 
-        const feedInterval = setInterval(() => {
+        const feed_Interval = setInterval(() => {
 
-            const feedIntervalCurrSeconds = feedCurrNumberRef.current + 1;
-            setFeedCurrNumber(feedIntervalCurrSeconds);
+            const feed_Interval_CurrSeconds = feed_CurrNumberRef.current + 1;
+            set_Feed_CurrNumber(feed_Interval_CurrSeconds);
 
-            if (feedIntervalCurrSeconds >= feedOptionsTotal){
-                clearInterval(feedInterval);
+            if (feed_Interval_CurrSeconds >= feed_OptionsTotal){
+                clearInterval(feed_Interval);
 
-                petScreensHelpersPauseAudio(feedAudioRef.current);
-                setFeedDone(true);
-                petScreensHelpersManageHealth(feedGlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feedOptionsDesiredOption, setFeedOptionsDesiredOption, feedOptionsSelection, setFeedSuccess);
+                petScreensHelpers_PauseAudio(feed_AudioRef.current);
+                set_Feed_Done(true);
+                petScreensHelpers_ManageHealth(feed_GlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feed_OptionsDesiredOption, set_Feed_OptionsDesiredOption, feed_OptionsSelection, set_Feed_Success);
             }
 
         }, 1000);
 
-        return () => clearInterval(feedInterval);
+        return () => clearInterval(feed_Interval);
 
-    }, [feedStart, feedDone]);
+    }, [feed_Start, feed_Done]);
 
 
 
     useEffect(() => {
 
-        if (!feedStart || feedDone) {
+        if (!feed_Start || feed_Done) {
             return;
         }
 
-        feedAudioRef.current.loop = true;
-        feedAudioRef.current.play();
+        feed_AudioRef.current.loop = true;
+        feed_AudioRef.current.play();
 
         return () => {
-            feedAudioRef.current.pause();
-            feedAudioRef.current.currentTime = 0;
-            feedAudioRef.current.loop = false;
+            feed_AudioRef.current.pause();
+            feed_AudioRef.current.currentTime = 0;
+            feed_AudioRef.current.loop = false;
         };
 
-    }, [feedStart, feedDone]);
+    }, [feed_Start, feed_Done]);
 
     
 
@@ -151,13 +151,13 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
-            {feedOptionsSelection === -1 ? (
+            {feed_OptionsSelection === -1 ? (
 
                 <Options
-                    optionsDesiredOption = {feedOptionsDesiredOption}
-                    optionsList = {feedOptionsList} 
-                    setOptionsTotal = {setFeedOptionsTotal}
-                    setOptionsSelection = {setFeedOptionsSelection}
+                    options_DesiredOption = {feed_OptionsDesiredOption}
+                    options_List = {feed_OptionsList} 
+                    set_Options_Total = {set_Feed_OptionsTotal}
+                    set_Options_Selection = {set_Feed_OptionsSelection}
                 />
         
             ) : (
@@ -165,14 +165,14 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
                     <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feedCurrNumber/feedOptionsTotal) * 100)))}
+                        progressBar_PercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feed_CurrNumber/feed_OptionsTotal) * 100)))}
                     />
 
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                            {feedDone ? (
+                            {feed_Done ? (
 
-                                feedSuccess ? (
+                                feed_Success ? (
                                
                                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
                                         <h2>Success!</h2>
@@ -190,15 +190,15 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
 
-                                    {feedStart ? (
+                                    {feed_Start ? (
 
-                                        <img src = {feedAnimationImage} />
+                                        <img src = {feed_AnimationImage} />
 
                                     ) : (
 
                                         <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                             <h2>Wait for your pet as it eats.</h2> 
-                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setFeedStart)}> Start <br/> [return]</button>
+                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_StartActivity(set_Feed_Start)}> Start <br/> [return]</button>
                                         </div>
 
                                     )}
@@ -214,17 +214,17 @@ function Feed ({feedAnimationImage, feedOptionsList, feedOptionsDesiredOption, s
             )}
 
 
-            {feedDone ? (
+            {feed_Done ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpersFlagCloser(setFeedOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_FlagCloser(set_Feed_OpenFlag)}>Done <br/> [return]</button>
                 </div>
                
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpersQuitActivity(feedAudioRef, setFeedOpenFlag)}>Quit <br/> [esc] </button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_QuitActivity(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc] </button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

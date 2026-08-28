@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-export const GlobalTimerContext = createContext();
+export const globalTimer_Context = createContext();
 
 export function GlobalTimerProvider ({ children }) {
 
@@ -8,22 +8,22 @@ export function GlobalTimerProvider ({ children }) {
 
     useEffect(() => {
 
-        const globalTimerInterval = setInterval(() => {
+        const globalTimer_Interval = setInterval(() => {
             setGlobalTimer(Date.now());
         }, 1000);
 
-        return () => clearInterval(globalTimerInterval);
+        return () => clearInterval(globalTimer_Interval);
 
     }, []);
 
     return (
-        <GlobalTimerContext.Provider value={{ GlobalTimer }}>
+        <globalTimer_Context.Provider value={{ GlobalTimer }}>
             {children}
-        </GlobalTimerContext.Provider>
+        </globalTimer_Context.Provider>
     );
 
 };
 
 export function useGlobalTimer() {
-  return useContext(GlobalTimerContext);
+  return useContext(globalTimer_Context);
 }

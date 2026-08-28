@@ -4,14 +4,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const ActiveCheckoutRoomContext = createContext();
+const activeCheckoutRoom_Context = createContext();
 
 export function ActiveCheckoutRoomProvider({ children }) {
 
     const [ActiveCheckoutRoom, setActiveCheckoutRoom] = useState(() => {
         try {
-            const activeCheckoutRoomStored = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
-            return activeCheckoutRoomStored !== null ? activeCheckoutRoomStored : -1;
+            const activeCheckoutRoom_Stored = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
+            return activeCheckoutRoom_Stored !== null ? activeCheckoutRoom_Stored : -1;
         } catch {
             return -1;
         }
@@ -22,13 +22,13 @@ export function ActiveCheckoutRoomProvider({ children }) {
     }, [ActiveCheckoutRoom]);
 
     return (
-        <ActiveCheckoutRoomContext.Provider value={{ ActiveCheckoutRoom, setActiveCheckoutRoom}}>
+        <activeCheckoutRoom_Context.Provider value={{ ActiveCheckoutRoom, setActiveCheckoutRoom}}>
         {children}
-        </ActiveCheckoutRoomContext.Provider>
+        </activeCheckoutRoom_Context.Provider>
     );
 }
 
 export function useActiveCheckoutRoom() {
-  return useContext(ActiveCheckoutRoomContext);
+  return useContext(activeCheckoutRoom_Context);
 }
 

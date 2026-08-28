@@ -10,14 +10,14 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 
-const PetListContext = createContext();
+const petList_Context = createContext();
 
 export function PetListProvider({ children }) {
 
   const [PetList, setPetList] = useState(() => {
     try {
-      const petListStored = JSON.parse(localStorage.getItem("PetList"));
-      return petListStored && typeof petListStored === "object" ? petListStored : {};
+      const petList_Stored = JSON.parse(localStorage.getItem("PetList"));
+      return petList_Stored && typeof petList_Stored === "object" ? petList_Stored : {};
     } catch {
       return {};
     }
@@ -28,14 +28,14 @@ export function PetListProvider({ children }) {
   }, [PetList]);
 
   return (
-    <PetListContext.Provider value={{ PetList, setPetList }}>
+    <petList_Context.Provider value={{ PetList, setPetList }}>
       {children}
-    </PetListContext.Provider>
+    </petList_Context.Provider>
   );
   
 }
 
 export function usePetList() {
-  return useContext(PetListContext);
+  return useContext(petList_Context);
 }
 

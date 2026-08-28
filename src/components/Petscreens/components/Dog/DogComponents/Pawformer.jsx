@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
-import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_StartActivity } from "../../../helpers/Helpers.js";
+import { helpers_PlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
@@ -17,24 +17,24 @@ import "./Pawformer.css";
 
 
 
-function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
+function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
-    const pawformerWindowWidth = 9;
-    const pawformerTargetCol = 4;
+    const pawformer_WindowWidth = 9;
+    const pawformer_TargetCol = 4;
 
-    const pawformerColKey = "col";
-    const pawformerTypeKey = "type";
+    const pawformer_ColKey = "col";
+    const pawformer_TypeKey = "type";
 
-    const [pawformerStart, setPawformerStart] = useState(false);
-    const [pawformerMoves, setPawformerMoves] = useState([]);
-    const [pawformerHitAttempt, setPawformerHitAttempt] = useState(false);
+    const [pawformer_Start, set_Pawformer_Start] = useState(false);
+    const [pawformer_Moves, set_Pawformer_Moves] = useState([]);
+    const [pawformer_HitAttempt, set_Pawformer_HitAttempt] = useState(false);
 
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!pawformerStart){
+        if (!pawformer_Start){
 
-            petScreensHelpersStartActivity(setPawformerStart);
+            petScreensHelpers_StartActivity(set_Pawformer_Start);
 
         }
 
@@ -45,9 +45,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useKeyboardShortcut("W", () => {
      
-        if (pawformerStart){
+        if (pawformer_Start){
 
-            pawformerCheckMove("W");
+            pawformer_CheckMove("W");
 
         }
 
@@ -57,9 +57,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useKeyboardShortcut("A", () => {
     
-        if (pawformerStart){
+        if (pawformer_Start){
 
-            pawformerCheckMove("A");
+            pawformer_CheckMove("A");
 
         }
 
@@ -69,9 +69,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useKeyboardShortcut("S", () => {
      
-        if (pawformerStart){
+        if (pawformer_Start){
 
-            pawformerCheckMove("S");
+            pawformer_CheckMove("S");
 
         }
 
@@ -82,9 +82,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useKeyboardShortcut("D", () => {
     
-        if (pawformerStart){
+        if (pawformer_Start){
 
-            pawformerCheckMove("D");
+            pawformer_CheckMove("D");
 
         }
 
@@ -96,107 +96,107 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
     useEffect(() => {
 
-        if (!pawformerStart) {
+        if (!pawformer_Start) {
             return;
         }
 
-        playAudioRef.current.loop = true;
-        playAudioRef.current.play();
+        play_AudioRef.current.loop = true;
+        play_AudioRef.current.play();
 
         return () => {
-            playAudioRef.current.pause();
-            playAudioRef.current.currentTime = 0;
-            playAudioRef.current.loop = false;
+            play_AudioRef.current.pause();
+            play_AudioRef.current.currentTime = 0;
+            play_AudioRef.current.loop = false;
         };
 
-    }, [pawformerStart]);
+    }, [pawformer_Start]);
 
 
     useEffect(() => {
 
-        if (!pawformerStart){
+        if (!pawformer_Start){
 
             return;
 
         } 
 
-        const pawformerInterval = setInterval(() => {
+        const pawformer_Interval = setInterval(() => {
 
-            setPawformerMoves(prev => {
+            set_Pawformer_Moves(prev => {
 
-                const pawformerIntervalCopy = prev.map(inner =>
+                const pawformer_Interval_Copy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                const pawformerIntervalNewList = pawformerIntervalCopy.filter(move => move[pawformerColKey] < pawformerWindowWidth);
+                const pawformer_Interval_NewList = pawformer_Interval_Copy.filter(move => move[pawformer_ColKey] < pawformer_WindowWidth);
 
-                for (let pawformerIntervalI = 0; pawformerIntervalI< pawformerIntervalNewList.length; pawformerIntervalI++){
+                for (let pawformer_Interval_I = 0; pawformer_Interval_I< pawformer_Interval_NewList.length; pawformer_Interval_I++){
 
-                    pawformerIntervalNewList[pawformerIntervalI][pawformerColKey] += 1;
+                    pawformer_Interval_NewList[pawformer_Interval_I][pawformer_ColKey] += 1;
 
                 }
 
-                if (!pawformerIntervalNewList.some(move => move[pawformerColKey] < 3)){
+                if (!pawformer_Interval_NewList.some(move => move[pawformer_ColKey] < 3)){
 
-                    const pawformerIntervalNumber = Math.floor(Math.random() * 4);
+                    const pawformer_Interval_Number = Math.floor(Math.random() * 4);
 
-                    if (pawformerIntervalNumber === 0){
+                    if (pawformer_Interval_Number === 0){
 
-                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "W"});
+                        pawformer_Interval_NewList.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "W"});
 
-                    } else if (pawformerIntervalNumber === 1){
+                    } else if (pawformer_Interval_Number === 1){
 
-                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "A"});
+                        pawformer_Interval_NewList.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "A"});
 
-                    } else if (pawformerIntervalNumber === pawformerTargetCol){
+                    } else if (pawformer_Interval_Number === pawformer_TargetCol){
 
-                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "S"});
+                        pawformer_Interval_NewList.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "S"});
 
                     } else {
 
-                        pawformerIntervalNewList.push({[pawformerColKey]: 0, [pawformerTypeKey]: "D"});
+                        pawformer_Interval_NewList.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "D"});
 
                     }
 
                 }
     
-                return pawformerIntervalNewList;
+                return pawformer_Interval_NewList;
 
             });
 
-            if (pawformerHitAttempt){
+            if (pawformer_HitAttempt){
 
-                setPawformerHitAttempt(false);
+                set_Pawformer_HitAttempt(false);
 
             }
 
         }, 250);
 
-        return () => clearInterval(pawformerInterval);
+        return () => clearInterval(pawformer_Interval);
 
-    }, [pawformerStart, pawformerHitAttempt]);
+    }, [pawformer_Start, pawformer_HitAttempt]);
 
 
 
-    const pawformerCheckMove = (pawformerCheckMoveMoveSelected) => {
+    const pawformer_CheckMove = (pawformer_CheckMove_MoveSelected) => {
 
-        helpersPlaySound(soundScreenButtonPressKey);
+        helpers_PlaySound(soundScreenButtonPressKey);
 
-        const pawformerCheckMoveTargetMove = pawformerMoves.findIndex(move => move[pawformerColKey] === pawformerTargetCol);
+        const pawformer_CheckMove_TargetMove = pawformer_Moves.findIndex(move => move[pawformer_ColKey] === pawformer_TargetCol);
 
-        if (pawformerCheckMoveTargetMove !== -1 && !pawformerHitAttempt){
+        if (pawformer_CheckMove_TargetMove !== -1 && !pawformer_HitAttempt){
 
-            if (pawformerCheckMoveMoveSelected === pawformerMoves[pawformerCheckMoveTargetMove][pawformerTypeKey]) {
+            if (pawformer_CheckMove_MoveSelected === pawformer_Moves[pawformer_CheckMove_TargetMove][pawformer_TypeKey]) {
 
-                setPlayCurrNumber(prev => prev + 1);
+                set_Play_CurrNumber(prev => prev + 1);
             
             } else {
 
-                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+                set_Play_CurrNumber(prev => Math.max(prev - 1, 0));
 
             }
 
-            setPawformerHitAttempt(true);
+            set_Pawformer_HitAttempt(true);
         
         }
 
@@ -208,9 +208,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Pawformer_ComponentContainer-Template--Screen">
 
-            {!pawformerStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+            {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Copy the moves.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setPawformerStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_StartActivity(set_Pawformer_Start)}> Start <br/> [return]</button>
             </div>}
 
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
@@ -219,18 +219,18 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
             <div className="Pawformer_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: pawformerWindowWidth}, (_, col) => {
+                {Array.from({ length: pawformer_WindowWidth}, (_, col) => {
 
-                    const pawformerWHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "W");
-                    const pawformerAHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "A");
-                    const pawformerSHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "S");
-                    const pawformerDHere = pawformerMoves.some(move => move[pawformerColKey] === col && move[pawformerTypeKey] === "D");
+                    const pawformer_WHere = pawformer_Moves.some(move => move[pawformer_ColKey] === col && move[pawformer_TypeKey] === "W");
+                    const pawformer_AHere = pawformer_Moves.some(move => move[pawformer_ColKey] === col && move[pawformer_TypeKey] === "A");
+                    const pawformer_SHere = pawformer_Moves.some(move => move[pawformer_ColKey] === col && move[pawformer_TypeKey] === "S");
+                    const pawformer_DHere = pawformer_Moves.some(move => move[pawformer_ColKey] === col && move[pawformer_TypeKey] === "D");
 
                     return (
 
-                        pawformerWHere ? (
+                        pawformer_WHere ? (
 
-                            col === pawformerTargetCol ? (
+                            col === pawformer_TargetCol ? (
 
                                 <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {w}/>
 
@@ -240,9 +240,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : pawformerAHere ? (
+                        ) : pawformer_AHere ? (
 
-                            col === pawformerTargetCol ? (
+                            col === pawformer_TargetCol ? (
 
                                 <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {a}/>
 
@@ -252,9 +252,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : pawformerSHere ? (
+                        ) : pawformer_SHere ? (
 
-                            col === pawformerTargetCol ? (
+                            col === pawformer_TargetCol ? (
 
                                 <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {s}/>
 
@@ -264,9 +264,9 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
 
                             )
 
-                        ) : pawformerDHere ? (
+                        ) : pawformer_DHere ? (
 
-                            col === pawformerTargetCol ? (
+                            col === pawformer_TargetCol ? (
 
                                 <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {d}/>
 
@@ -289,10 +289,10 @@ function Pawformer({ playCurrNumber, setPlayCurrNumber, playAudioRef}) {
             </div>
 
             <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click W" onClick={() => pawformerCheckMove("W")}> W </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click A" onClick={() => pawformerCheckMove("A")}> A </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click S" onClick={() => pawformerCheckMove("S")}> S </button>
-                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click D" onClick={() => pawformerCheckMove("D")}> D </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click W" onClick={() => pawformer_CheckMove("W")}> W </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click A" onClick={() => pawformer_CheckMove("A")}> A </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click S" onClick={() => pawformer_CheckMove("S")}> S </button>
+                <button className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click D" onClick={() => pawformer_CheckMove("D")}> D </button>
             </div>
                 
         </div>

@@ -3,7 +3,7 @@ import{useState} from "react";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { helpersFlagCloser, helpersPlaySound } from "../../../helpers/Helpers.js";
+import { helpers_FlagCloser, helpers_PlaySound } from "../../../helpers/Helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
@@ -11,14 +11,14 @@ import "./MusicVolume.css";
 
 
 
-function MusicVolume({setMusicVolumeOpenFlag}) {
+function MusicVolume({set_MusicVolume_OpenFlag}) {
 
     const {Volume, setVolume} = useVolume();
 
 
     useKeyboardShortcut("Enter", () => {
     
-        helpersFlagCloser(setMusicVolumeOpenFlag);
+        helpers_FlagCloser(set_MusicVolume_OpenFlag);
 
     },
         ".Close"
@@ -60,10 +60,10 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
 
 
 
-    const musicVolumeVolumeJump = (musicVolumeVolumeJumpE) => {
+    const musicVolume_VolumeJump = (musicVolume_VolumeJump_E) => {
 
-        const musicVolumeVolumeJumpValue = Number(Number(musicVolumeVolumeJumpE.target.value).toFixed(2));
-        setVolume(musicVolumeVolumeJumpValue);
+        const musicVolume_VolumeJump_Value = Number(Number(musicVolume_VolumeJump_E.target.value).toFixed(2));
+        setVolume(musicVolume_VolumeJump_Value);
 
     }
 
@@ -87,14 +87,14 @@ function MusicVolume({setMusicVolumeOpenFlag}) {
                             max="1"
                             step = "0.01"
                             value={Volume}
-                            onChange={musicVolumeVolumeJump}
+                            onChange={musicVolume_VolumeJump}
                         />
                     </div>
                 </div>
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setMusicVolumeOpenFlag)}> Close <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_MusicVolume_OpenFlag)}> Close <br/> [return]</button>
         </div>
     );
 }

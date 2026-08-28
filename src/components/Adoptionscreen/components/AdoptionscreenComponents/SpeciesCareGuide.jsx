@@ -1,18 +1,18 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { soundNavButtonPressKey } from "../../../../constants/Constants.js";
-import { helpersFlagCloser } from "../../../../helpers/Helpers.js";
+import { helpers_FlagCloser } from "../../../../helpers/Helpers.js";
 
 import "./SpeciesCareGuide.css";
 
 
 
-function SpeciesCareGuide({setSpeciesCareGuideOpenFlag}) {
+function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
     
     useKeyboardShortcut("2", () => {
 
-        helpersFlagCloser(setSpeciesCareGuideOpenFlag);
+        helpers_FlagCloser(set_SpeciesCareGuide_OpenFlag);
 
     },
         ".Close"
@@ -59,7 +59,7 @@ function SpeciesCareGuide({setSpeciesCareGuideOpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setSpeciesCareGuideOpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
         </div>
     );
 }

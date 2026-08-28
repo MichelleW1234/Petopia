@@ -4,24 +4,24 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
-import { helpersFlagCloser } from "../../../../../helpers/Helpers.js";
+import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
 
 import "./Records.css";
 
 
 
-function Records({setRecordsOpenFlag}) {
+function Records({set_Records_OpenFlag}) {
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
 
 
-    const recordsBirthdayString = new Date(PetList[ActivePetName][petBirthDateKey]).toLocaleString();
+    const records_BirthdayString = new Date(PetList[ActivePetName][petBirthDateKey]).toLocaleString();
 
 
     useKeyboardShortcut("2", () => {
 
-        helpersFlagCloser(setRecordsOpenFlag);
+        helpers_FlagCloser(set_Records_OpenFlag);
 
     },
         ".Close"
@@ -50,13 +50,13 @@ function Records({setRecordsOpenFlag}) {
                         </div>
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Birthdate: </h2>
-                            <p>{recordsBirthdayString}</p>
+                            <p>{records_BirthdayString}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpersFlagCloser(setRecordsOpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_Records_OpenFlag)}> Close <br/> [2]</button>
 
         </div>
     );

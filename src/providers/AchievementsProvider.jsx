@@ -12,14 +12,14 @@ import {useGlobalTimer} from "./GlobalTimerProvider.jsx";
 
 import { notificationsDescriptionKey, notificationsDateKey, achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey, petSpeciesCatKey, petSpeciesDogKey } from "../constants/Constants";
 
-const AchievementsContext = createContext();
+const achievements_Context = createContext();
 
 export function AchievementsProvider({ children }) {
 
   const [Achievements, setAchievements] = useState(() => {
     try {
-      const achievementsStored = JSON.parse(localStorage.getItem("Achievements"));
-      return achievementsStored ? achievementsStored : [
+      const achievements_Stored = JSON.parse(localStorage.getItem("Achievements"));
+      return achievements_Stored ? achievements_Stored : [
                                   {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
@@ -42,47 +42,47 @@ export function AchievementsProvider({ children }) {
 
   useEffect(() => {
 
-    const achievementsAdultFish = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey && Achievements[0][achievementStatusKey] === false);
-    const achievementsAdultCat = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey && Achievements[1][achievementStatusKey] === false);
-    const achievementsAdultDog = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey && Achievements[2][achievementStatusKey] === false);
+    const achievements_AdultFish = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey && Achievements[0][achievementStatusKey] === false);
+    const achievements_AdultCat = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey && Achievements[1][achievementStatusKey] === false);
+    const achievements_AdultDog = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey && Achievements[2][achievementStatusKey] === false);
 
-    const achievementsAllAdults = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && achievementsAdultDog ||
-                      achievementsAdultFish && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
-                      Achievements[0][achievementStatusKey] === true && achievementsAdultCat && Achievements[2][achievementStatusKey] === true;
+    const achievements_AllAdults = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && achievements_AdultDog ||
+                      achievements_AdultFish && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
+                      Achievements[0][achievementStatusKey] === true && achievements_AdultCat && Achievements[2][achievementStatusKey] === true;
 
     setAchievements(prev => {
 
-      const achievementsCopy = prev.map(inner =>
+      const achievements_Copy = prev.map(inner =>
                   structuredClone(inner)
               );
 
-      if (achievementsAdultFish) {
-        achievementsCopy[0][achievementStatusKey] = true;
+      if (achievements_AdultFish) {
+        achievements_Copy[0][achievementStatusKey] = true;
       }
 
-      if (achievementsAdultCat) {
-        achievementsCopy[1][achievementStatusKey] = true;
+      if (achievements_AdultCat) {
+        achievements_Copy[1][achievementStatusKey] = true;
       }
 
-      if (achievementsAdultDog) {
-        achievementsCopy[2][achievementStatusKey] = true;
+      if (achievements_AdultDog) {
+        achievements_Copy[2][achievementStatusKey] = true;
       }
 
-      if (achievementsAllAdults) {
-        achievementsCopy[3][achievementStatusKey] = true;
+      if (achievements_AllAdults) {
+        achievements_Copy[3][achievementStatusKey] = true;
       }
 
-      return achievementsCopy;
+      return achievements_Copy;
       
     });
 
     setNotifications(prev => {
 
-      const achievementsCopy = prev.map(inner =>
+      const achievements_Copy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-      const achievementsDate = new Date(GlobalTimer).toLocaleString([], {
+      const achievements_Date = new Date(GlobalTimer).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
                                             day: "2-digit",
@@ -90,23 +90,23 @@ export function AchievementsProvider({ children }) {
                                             minute: "2-digit",
                                         });
 
-      if (achievementsAdultFish) {
-        achievementsCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievementsDate});
+      if (achievements_AdultFish) {
+        achievements_Copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_Date});
       }
 
-      if (achievementsAdultCat) {
-        achievementsCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievementsDate});
+      if (achievements_AdultCat) {
+        achievements_Copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_Date});
       }
 
-      if (achievementsAdultDog) {
-        achievementsCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievementsDate});
+      if (achievements_AdultDog) {
+        achievements_Copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_Date});
       }
 
-      if (achievementsAllAdults) {
-        achievementsCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievementsDate});
+      if (achievements_AllAdults) {
+        achievements_Copy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_Date});
       }
 
-      return achievementsCopy;
+      return achievements_Copy;
 
     });
 
@@ -118,14 +118,14 @@ export function AchievementsProvider({ children }) {
   }, [Achievements]);
 
   return (
-    <AchievementsContext.Provider value={{ Achievements, setAchievements }}>
+    <achievements_Context.Provider value={{ Achievements, setAchievements }}>
       {children}
-    </AchievementsContext.Provider>
+    </achievements_Context.Provider>
   );
   
 }
 
 export function useAchievements() {
-  return useContext(AchievementsContext);
+  return useContext(achievements_Context);
 }
 

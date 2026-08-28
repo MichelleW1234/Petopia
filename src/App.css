@@ -94,7 +94,8 @@ body{
 h1,
 h2,
 a,
-button {
+button,
+input{
 
   font-family: 'Silkscreen', monospace;
 
@@ -114,10 +115,19 @@ h2 {
 
 }
 
+
+a,
+button,
+input,
+p {
+
+  font-size: calc(1rem*1.25);
+
+}
+
 a,
 button {
 
-  font-size: calc(1rem*1.25);
   text-align: center;
 
 }
@@ -138,11 +148,9 @@ a:active {
 }
 
 
-p,
-input {
+p {
 
   font-family: monospace;
-  font-size: calc(1rem*1.25);
 
 }
 

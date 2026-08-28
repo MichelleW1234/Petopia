@@ -8,17 +8,17 @@ function Notifications() {
 
     const {Notifications, setNotifications} = useNotifications();
 
-    const notificationsDeleteNotification = (notificationsDeleteNotificationIndex) => {
+    const notifications_DeleteNotification = (notifications_DeleteNotification_Index) => {
 
         setNotifications(prev => {
 
-            const notificationsDeleteNotificationCopy = prev.map(inner =>
+            const notifications_DeleteNotification_Copy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            notificationsDeleteNotificationCopy.splice(notificationsDeleteNotificationIndex, 1);
+            notifications_DeleteNotification_Copy.splice(notifications_DeleteNotification_Index, 1);
 
-            return notificationsDeleteNotificationCopy;
+            return notifications_DeleteNotification_Copy;
 
         });
 
@@ -27,16 +27,16 @@ function Notifications() {
     return (
         <div className = "Notifications_ComponentContainer-Structure--Cards">
 
-            {Notifications.map((entry, notificationsDeleteNotificationIndex) => (
+            {Notifications.map((entry, notifications_DeleteNotification_Index) => (
 
-                <div key = {notificationsDeleteNotificationIndex} className="Notifications_ComponentContainer-Structure--Card">
+                <div key = {notifications_DeleteNotification_Index} className="Notifications_ComponentContainer-Structure--Card">
                     <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Notifications_ComponentContainer-Structure--CardContent">
                         <h2>Alert:</h2>
                         <p>{entry[notificationsDescriptionKey]}</p>
                         <h2>Date:</h2>
                         <p>{entry[notificationsDateKey]}</p>
                     </div>
-                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => notificationsDeleteNotification(notificationsDeleteNotificationIndex)}> X </button>
+                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => notifications_DeleteNotification(notifications_DeleteNotification_Index)}> X </button>
                 </div>
 
             ))}

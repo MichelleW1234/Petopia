@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpersFlagCloser, helpersPlaySound } from "../../../../helpers/Helpers.js";
+import { helpers_FlagCloser, helpers_PlaySound } from "../../../../helpers/Helpers.js";
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
@@ -32,7 +32,7 @@ import { soundRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inven
 
 
 
-function Restart({setRestartOpenFlag}) {
+function Restart({set_Restart_OpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -45,7 +45,7 @@ function Restart({setRestartOpenFlag}) {
 
     useKeyboardShortcut("escape", () => {
 
-        helpersFlagCloser(setRestartOpenFlag);
+        helpers_FlagCloser(set_Restart_OpenFlag);
 
     },
         ".No"
@@ -63,7 +63,7 @@ function Restart({setRestartOpenFlag}) {
 
     const restartRestartGame = () => {
 
-        helpersPlaySound(soundRestartGameKey);
+        helpers_PlaySound(soundRestartGameKey);
 
         setPetList({});
         setPetTimeStamps({});
@@ -100,7 +100,7 @@ function Restart({setRestartOpenFlag}) {
         setNotifications([]);
         setVolume(0.5);
 
-        helpersFlagCloser(setRestartOpenFlag);
+        helpers_FlagCloser(set_Restart_OpenFlag);
 
     }
 
@@ -116,7 +116,7 @@ function Restart({setRestartOpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartRestartGame()}> Yes <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => helpersFlagCloser(setRestartOpenFlag)}> No <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => helpers_FlagCloser(set_Restart_OpenFlag)}> No <br/> [esc]</button>
             </div>
 
         </div>

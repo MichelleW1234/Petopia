@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityOptionCursorKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpersManageHealth, petScreensHelpersPauseAudio, petScreensHelpersQuitActivity, petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
-import { helpersFlagCloser} from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_ManageHealth, petScreensHelpers_PauseAudio, petScreensHelpers_QuitActivity, petScreensHelpers_StartActivity } from "../../../helpers/Helpers.js";
+import { helpers_FlagCloser} from "../../../../../helpers/Helpers.js";
 
 import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
 import CleaningSymbol from "../../../../../images/CleaningSymbol.gif";
@@ -21,32 +21,32 @@ import "./Clean.css";
 
 
 
-function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, setCleanOpenFlag}){
+function Clean ({clean_AnimationImage, clean_OptionsList, clean_OptionsDesiredOption, set_Clean_OptionsDesiredOption, set_Clean_OpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [cleanStart, setCleanStart] = useState(false);
-    const [cleanOptionsTotal, setCleanOptionsTotal] = useState(30);
-    const [cleanOptionsSelection, setCleanOptionsSelection] = useState(-1);
-    const [cleanCurrNumber, setCleanCurrNumber] = useState(0);
-    const [cleanDone, setCleanDone] = useState(false);
-    const [cleanSuccess, setCleanSuccess] = useState(false);
-    const [cleanHover, setCleanHover] = useState(false);
+    const [clean_Start, set_Clean_Start] = useState(false);
+    const [clean_OptionsTotal, set_Clean_OptionsTotal] = useState(30);
+    const [clean_OptionsSelection, set_Clean_OptionsSelection] = useState(-1);
+    const [clean_CurrNumber, set_Clean_CurrNumber] = useState(0);
+    const [clean_Done, set_Clean_Done] = useState(false);
+    const [clean_Success, set_Clean_Success] = useState(false);
+    const [clean_Hover, set_Clean_Hover] = useState(false);
 
-    const cleanTimeoutRef = useRef(null);
-    const cleanAudioRef = useRef(new Audio(Cleaning));
+    const clean_TimeoutRef = useRef(null);
+    const clean_AudioRef = useRef(new Audio(Cleaning));
 
 
 
     
     useKeyboardShortcut("Enter", () => {
     
-        if (cleanDone){
+        if (clean_Done){
 
-            helpersFlagCloser(setCleanOpenFlag);
+            helpers_FlagCloser(set_Clean_OpenFlag);
 
         }
 
@@ -57,9 +57,9 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
     
     useKeyboardShortcut("Enter", () => {
     
-        if (cleanOptionsSelection !== -1 && !cleanStart && !cleanDone){
+        if (clean_OptionsSelection !== -1 && !clean_Start && !clean_Done){
 
-            petScreensHelpersStartActivity(setCleanStart);
+            petScreensHelpers_StartActivity(set_Clean_Start);
 
         }
 
@@ -71,9 +71,9 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useKeyboardShortcut("Escape", () => {
 
-        if (!cleanDone){
+        if (!clean_Done){
 
-            petScreensHelpersQuitActivity(cleanAudioRef, setCleanOpenFlag);
+            petScreensHelpers_QuitActivity(clean_AudioRef, set_Clean_OpenFlag);
 
         }
 
@@ -87,61 +87,61 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
     useEffect(() => {
 
-        const cleanPreloadImages = [cleanAnimationImage, ...cleanOptionsList.map(item => item[petActivityOptionCursorKey])];
+        const clean_PreloadImages = [clean_AnimationImage, ...clean_OptionsList.map(item => item[petActivityOptionCursorKey])];
 
-        cleanPreloadImages.forEach((src) => {
-        const cleanImg = new Image();
-            cleanImg.src = src;
+        clean_PreloadImages.forEach((src) => {
+        const clean_Img = new Image();
+            clean_Img.src = src;
         });
 
-    }, [cleanAnimationImage]);
+    }, [clean_AnimationImage]);
 
 
     useEffect(() => {
 
-        if (!cleanStart || cleanDone) {
+        if (!clean_Start || clean_Done) {
             return;
         }
 
-        cleanAudioRef.current.loop = true;
-        cleanAudioRef.current.play();
+        clean_AudioRef.current.loop = true;
+        clean_AudioRef.current.play();
 
         return () => {
-            cleanAudioRef.current.pause();
-            cleanAudioRef.current.currentTime = 0;
-            cleanAudioRef.current.loop = false;
+            clean_AudioRef.current.pause();
+            clean_AudioRef.current.currentTime = 0;
+            clean_AudioRef.current.loop = false;
         };
 
-    }, [cleanStart, cleanDone]);
+    }, [clean_Start, clean_Done]);
     
     
     useEffect(() => {
-        if (cleanCurrNumber >= cleanOptionsTotal){
+        if (clean_CurrNumber >= clean_OptionsTotal){
 
-            petScreensHelpersPauseAudio(cleanAudioRef.current);
-            setCleanDone(true);
-            petScreensHelpersManageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, cleanOptionsDesiredOption, setCleanOptionsDesiredOption, cleanOptionsSelection, setCleanSuccess);
+            petScreensHelpers_PauseAudio(clean_AudioRef.current);
+            set_Clean_Done(true);
+            petScreensHelpers_ManageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, clean_OptionsDesiredOption, set_Clean_OptionsDesiredOption, clean_OptionsSelection, set_Clean_Success);
 
         }
-    }, [cleanCurrNumber]);
+    }, [clean_CurrNumber]);
     
 
 
-    const cleanScrub = () => {
+    const clean_Scrub = () => {
 
-        setCleanCurrNumber(prev => prev + 1);
+        set_Clean_CurrNumber(prev => prev + 1);
 
-        setCleanHover(true);
+        set_Clean_Hover(true);
 
         // Cancels any existing timers:
-        if (cleanTimeoutRef.current) {
-            clearTimeout(cleanTimeoutRef.current);
+        if (clean_TimeoutRef.current) {
+            clearTimeout(clean_TimeoutRef.current);
         }
 
         // Starts a fresh 1s timer:
-        cleanTimeoutRef.current = setTimeout(() => {
-            setCleanHover(false);
-            cleanTimeoutRef.current = null;
+        clean_TimeoutRef.current = setTimeout(() => {
+            set_Clean_Hover(false);
+            clean_TimeoutRef.current = null;
         }, 1000);
 
     };
@@ -152,13 +152,13 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
         
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
-            {cleanOptionsSelection === -1 ? (
+            {clean_OptionsSelection === -1 ? (
 
                 <Options
-                    optionsDesiredOption = {cleanOptionsDesiredOption}
-                    optionsList = {cleanOptionsList}
-                    setOptionsTotal = {setCleanOptionsTotal}
-                    setOptionsSelection = {setCleanOptionsSelection}
+                    options_DesiredOption = {clean_OptionsDesiredOption}
+                    options_List = {clean_OptionsList}
+                    set_Options_Total = {set_Clean_OptionsTotal}
+                    set_Options_Selection = {set_Clean_OptionsSelection}
                 />
 
             ) : (
@@ -167,14 +167,14 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
                     <ProgressBar
-                        progressBarPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((cleanCurrNumber/cleanOptionsTotal) * 100)))}
+                        progressBar_PercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((clean_CurrNumber/clean_OptionsTotal) * 100)))}
                     />
 
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
-                        {cleanDone ? ( 
+                        {clean_Done ? ( 
 
-                            cleanSuccess ? (
+                            clean_Success ? (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
                                     <h2>Success!!!</h2>
@@ -193,26 +193,26 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                             <div 
                                 className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
                                 style={{
-                                    cursor: cleanStart ?
-                                                `url('${cleanOptionsList[cleanOptionsSelection][petActivityOptionCursorKey]}'), auto`
+                                    cursor: clean_Start ?
+                                                `url('${clean_OptionsList[clean_OptionsSelection][petActivityOptionCursorKey]}'), auto`
                                             :   "default",
                                 }}>
 
-                                {cleanStart ? (
+                                {clean_Start ? (
 
                                     <>
                                     
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                            src = {cleanAnimationImage} 
-                                            onMouseEnter={() => cleanScrub()}
+                                            src = {clean_AnimationImage} 
+                                            onMouseEnter={() => clean_Scrub()}
                                         />
 
-                                        {cleanHover && 
+                                        {clean_Hover && 
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
                                             src = {CleaningSymbol} 
-                                            onMouseEnter={() => cleanScrub()}
+                                            onMouseEnter={() => clean_Scrub()}
                                         />}
 
                                     </>
@@ -220,8 +220,8 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
                                 ) : (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2> Drag your cursor back and forth for cleaning. </h2>
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setCleanStart)}> Start <br/> [return]</button>
+                                        <h2> Drag your cursor back and forth for clean_ing. </h2>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_StartActivity(set_Clean_Start)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}
@@ -236,17 +236,17 @@ function Clean ({cleanAnimationImage, cleanOptionsList, cleanOptionsDesiredOptio
 
             )}
 
-            {cleanDone ? (
+            {clean_Done ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpersFlagCloser(setCleanOpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_FlagCloser(set_Clean_OpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpersQuitActivity(cleanAudioRef, setCleanOpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_QuitActivity(clean_AudioRef, set_Clean_OpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

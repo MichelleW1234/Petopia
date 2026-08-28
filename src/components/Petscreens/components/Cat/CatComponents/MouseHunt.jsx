@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
+import { helpers_PlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_StartActivity } from "../../../helpers/Helpers.js";
 
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
 import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
@@ -14,26 +14,26 @@ import "./MouseHunt.css";
 
 
 
-function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
-    const mouseHuntWindowWidth = 2;
-    const mouseHuntWindowHeight = 4;
-    const mouseHuntNumberObjects = 3;
+    const mouseHunt_WindowWidth = 2;
+    const mouseHunt_WindowHeight = 4;
+    const mouseHunt_NumberObjects = 3;
 
-    const mouseHuntRowKey = "row";
-    const mouseHuntColumnKey = "column";
-    const mouseHuntTypeKey = "type";
+    const mouseHunt_RowKey = "row";
+    const mouseHunt_ColumnKey = "column";
+    const mouseHunt_TypeKey = "type";
 
-    const [mouseHuntStart, setMouseHuntStart] = useState(false);
-    const [mouseHuntCreaturePositions, setMouseHuntCreaturePositions] = useState([]);
-    const [mouseHuntHitAttempt, setMouseHuntHitAttempt] = useState(false);
+    const [mouseHunt_Start, set_MouseHunt_Start] = useState(false);
+    const [mouseHunt_CreaturePositions, set_MouseHunt_CreaturePositions] = useState([]);
+    const [mouseHunt_HitAttempt, set_MouseHunt_HitAttempt] = useState(false);
 
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!mouseHuntStart){
+        if (!mouseHunt_Start){
 
-            petScreensHelpersStartActivity(setMouseHuntStart);
+            petScreensHelpers_StartActivity(set_MouseHunt_Start);
 
         }
 
@@ -46,60 +46,60 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     useEffect(() => {
 
-        if (!mouseHuntStart) {
+        if (!mouseHunt_Start) {
             return;
         }
 
-        playAudioRef.current.loop = true;
-        playAudioRef.current.play();
+        play_AudioRef.current.loop = true;
+        play_AudioRef.current.play();
 
         return () => {
-            playAudioRef.current.pause();
-            playAudioRef.current.currentTime = 0;
-            playAudioRef.current.loop = false;
+            play_AudioRef.current.pause();
+            play_AudioRef.current.currentTime = 0;
+            play_AudioRef.current.loop = false;
         };
 
-    }, [mouseHuntStart]);
+    }, [mouseHunt_Start]);
 
 
 
     useEffect(() => {
 
-        if (!mouseHuntStart){
+        if (!mouseHunt_Start){
 
             return;
 
         } 
 
-        const mouseHuntInterval = setInterval(() => {
+        const mouseHunt_Interval = setInterval(() => {
 
-            setMouseHuntCreaturePositions(prev => {
+            set_MouseHunt_CreaturePositions(prev => {
 
-                const mouseHuntIntervalPossibleCombos = Array.from({ length: mouseHuntWindowHeight }, (_, a) =>
-                    Array.from({ length: mouseHuntWindowWidth }, (_, b) => [a, b])
+                const mouseHunt_Interval_PossibleCombos = Array.from({ length: mouseHunt_WindowHeight }, (_, a) =>
+                    Array.from({ length: mouseHunt_WindowWidth }, (_, b) => [a, b])
                     ).flat();
 
-                for (let mouseHuntIntervalI = mouseHuntIntervalPossibleCombos.length - 1; mouseHuntIntervalI > 0; mouseHuntIntervalI--) {
-                    const mouseHuntIntervalJ = Math.floor(Math.random() * (mouseHuntIntervalI + 1));
-                    [mouseHuntIntervalPossibleCombos[mouseHuntIntervalI], mouseHuntIntervalPossibleCombos[mouseHuntIntervalJ]] = [mouseHuntIntervalPossibleCombos[mouseHuntIntervalJ], mouseHuntIntervalPossibleCombos[mouseHuntIntervalI]];
+                for (let mouseHunt_Interval_I = mouseHunt_Interval_PossibleCombos.length - 1; mouseHunt_Interval_I > 0; mouseHunt_Interval_I--) {
+                    const mouseHunt_Interval_J = Math.floor(Math.random() * (mouseHunt_Interval_I + 1));
+                    [mouseHunt_Interval_PossibleCombos[mouseHunt_Interval_I], mouseHunt_Interval_PossibleCombos[mouseHunt_Interval_J]] = [mouseHunt_Interval_PossibleCombos[mouseHunt_Interval_J], mouseHunt_Interval_PossibleCombos[mouseHunt_Interval_I]];
                 }
 
-                const mouseHuntIntervalChosenCombos = mouseHuntIntervalPossibleCombos.slice(0, mouseHuntNumberObjects);
-                const mouseHuntIntervalFinalArray = [];
+                const mouseHunt_Interval_ChosenCombos = mouseHunt_Interval_PossibleCombos.slice(0, mouseHunt_NumberObjects);
+                const mouseHunt_Interval_FinalArray = [];
 
-                const mouseHuntIntervalAddMouse = Math.floor(Math.random() * 2);
-                if (mouseHuntIntervalAddMouse === 1){
+                const mouseHunt_Interval_AddMouse = Math.floor(Math.random() * 2);
+                if (mouseHunt_Interval_AddMouse === 1){
 
-                    const mouseHuntIntervalMouse = Math.floor(Math.random() * (mouseHuntNumberObjects));
-                    for (let mouseHuntIntervalI =0; mouseHuntIntervalI<mouseHuntIntervalChosenCombos.length; mouseHuntIntervalI++){
+                    const mouseHunt_Interval_Mouse = Math.floor(Math.random() * (mouseHunt_NumberObjects));
+                    for (let mouseHunt_Interval_I =0; mouseHunt_Interval_I<mouseHunt_Interval_ChosenCombos.length; mouseHunt_Interval_I++){
 
-                        if (mouseHuntIntervalI === mouseHuntIntervalMouse){
+                        if (mouseHunt_Interval_I === mouseHunt_Interval_Mouse){
 
-                            mouseHuntIntervalFinalArray.push({[mouseHuntRowKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][0], [mouseHuntColumnKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][1], [mouseHuntTypeKey] : 1});
+                            mouseHunt_Interval_FinalArray.push({[mouseHunt_RowKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][0], [mouseHunt_ColumnKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][1], [mouseHunt_TypeKey] : 1});
 
                         } else {
 
-                            mouseHuntIntervalFinalArray.push({[mouseHuntRowKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][0], [mouseHuntColumnKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][1], [mouseHuntTypeKey] : 0});
+                            mouseHunt_Interval_FinalArray.push({[mouseHunt_RowKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][0], [mouseHunt_ColumnKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][1], [mouseHunt_TypeKey] : 0});
 
                         }
 
@@ -107,49 +107,49 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                 } else {
 
-                    for (let mouseHuntIntervalI =0; mouseHuntIntervalI<mouseHuntIntervalChosenCombos.length; mouseHuntIntervalI++){
+                    for (let mouseHunt_Interval_I =0; mouseHunt_Interval_I<mouseHunt_Interval_ChosenCombos.length; mouseHunt_Interval_I++){
 
-                        mouseHuntIntervalFinalArray.push({[mouseHuntRowKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][0], [mouseHuntColumnKey] : mouseHuntIntervalChosenCombos[mouseHuntIntervalI][1], [mouseHuntTypeKey] : 0});
+                        mouseHunt_Interval_FinalArray.push({[mouseHunt_RowKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][0], [mouseHunt_ColumnKey] : mouseHunt_Interval_ChosenCombos[mouseHunt_Interval_I][1], [mouseHunt_TypeKey] : 0});
 
                     }
 
                 }
 
-                return mouseHuntIntervalFinalArray;
+                return mouseHunt_Interval_FinalArray;
 
             });
 
-            if (mouseHuntHitAttempt){
+            if (mouseHunt_HitAttempt){
 
-                setMouseHuntHitAttempt(false);
+                set_MouseHunt_HitAttempt(false);
 
             }
 
         }, 600);
 
-        return () => clearInterval(mouseHuntInterval);
+        return () => clearInterval(mouseHunt_Interval);
 
-    }, [mouseHuntStart, mouseHuntHitAttempt]);
+    }, [mouseHunt_Start, mouseHunt_HitAttempt]);
 
 
 
-    const mouseHuntHoleSelected = (mouseHuntHoleSelectedMouse) => {
+    const mouseHunt_HoleSelected = (mouseHunt_HoleSelected_Mouse) => {
 
-        helpersPlaySound(soundScreenButtonPressKey);
+        helpers_PlaySound(soundScreenButtonPressKey);
 
-        if (!mouseHuntHitAttempt){
+        if (!mouseHunt_HitAttempt){
 
-            if (mouseHuntHoleSelectedMouse === 0){
+            if (mouseHunt_HoleSelected_Mouse === 0){
 
-                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+                set_Play_CurrNumber(prev => Math.max(prev - 1, 0));
 
             } else {
 
-                setPlayCurrNumber(prev => prev + 1);
+                set_Play_CurrNumber(prev => prev + 1);
 
             }
 
-            setMouseHuntHitAttempt(true);
+            set_MouseHunt_HitAttempt(true);
 
         }
 
@@ -163,30 +163,30 @@ function MouseHunt({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
-            {!mouseHuntStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Catch the toy mice and avoid the power cords.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setMouseHuntStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_StartActivity(set_MouseHunt_Start)}> Start <br/> [return]</button>
             </div>}
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: mouseHuntWindowHeight}, (_, row) => 
-                    Array.from({ length: mouseHuntWindowWidth}, (_, col) => {
+                {Array.from({ length: mouseHunt_WindowHeight}, (_, row) => 
+                    Array.from({ length: mouseHunt_WindowWidth}, (_, col) => {
 
-                        const mouseHuntMouseHere = mouseHuntCreaturePositions.find(item => item[mouseHuntRowKey] === row && item[mouseHuntColumnKey] === col && item[mouseHuntTypeKey] === 1);
-                        const mouseHuntCordHere = mouseHuntCreaturePositions.find(item => item[mouseHuntRowKey] === row && item[mouseHuntColumnKey] === col && item[mouseHuntTypeKey] === 0);
+                        const mouseHunt_MouseHere = mouseHunt_CreaturePositions.find(item => item[mouseHunt_RowKey] === row && item[mouseHunt_ColumnKey] === col && item[mouseHunt_TypeKey] === 1);
+                        const mouseHunt_CordHere = mouseHunt_CreaturePositions.find(item => item[mouseHunt_RowKey] === row && item[mouseHunt_ColumnKey] === col && item[mouseHunt_TypeKey] === 0);
 
                         return (
                             
-                            mouseHuntMouseHere ? (
+                            mouseHunt_MouseHere ? (
 
-                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHuntHoleSelected(1)}>
+                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHunt_HoleSelected(1)}>
                                     <img src = {Mouse}/>
                                 </div>
                                 
-                            ) : mouseHuntCordHere ? (
+                            ) : mouseHunt_CordHere ? (
 
-                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHuntHoleSelected(0)}>
+                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHunt_HoleSelected(0)}>
                                     <img src = {Cord}/>
                                 </div>
 

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-export const VolumeContext = createContext();
+export const volume_Context = createContext();
 
 export function VolumeProvider({ children }) {
 
@@ -8,17 +8,17 @@ export function VolumeProvider({ children }) {
 
     try {
 
-        const volumeStored = JSON.parse(localStorage.getItem("Volume"));
+        const volume_Stored = JSON.parse(localStorage.getItem("Volume"));
         
-        if (volumeStored === null){
+        if (volume_Stored === null){
 
             return 0.5;
 
         }
 
-        const volumeValue = Number(volumeStored);
+        const volume_Value = Number(volume_Stored);
 
-        return Number.isFinite(volumeValue) ? volumeValue : 0.5;
+        return Number.isFinite(volume_Value) ? volume_Value : 0.5;
 
     } catch {
         return 0.5;
@@ -30,12 +30,12 @@ export function VolumeProvider({ children }) {
     }, [Volume]);
 
     return (
-        <VolumeContext.Provider value={{Volume, setVolume}}>
+        <volume_Context.Provider value={{Volume, setVolume}}>
             {children}
-        </VolumeContext.Provider>
+        </volume_Context.Provider>
     );
 }
 
 export function useVolume() {
-    return useContext(VolumeContext);
+    return useContext(volume_Context);
 }

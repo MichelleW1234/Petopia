@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { helpersPlaySound } from "../../../../../helpers/Helpers.js";
+import { helpers_PlaySound } from "../../../../../helpers/Helpers.js";
 import { soundScreenButtonPressKey, soundStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpersStartActivity } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_StartActivity } from "../../../helpers/Helpers.js";
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
@@ -15,20 +15,20 @@ import "./FeatherFishing.css";
 
 
 
-function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
+function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
-    const featherFishingWindowWidth = 9;
-    const featherFishingWindowHeight = 5;
+    const featherFishing_WindowWidth = 9;
+    const featherFishing_WindowHeight = 5;
 
-    const [featherFishingStart, setFeatherFishingStart] = useState(false);
-    const [featherFishingHookLength, setFeatherFishingHookLength] = useState(0);
-    const [featherFishingHitAttempt, setFeatherFishingHitAttempt] = useState(false);
+    const [featherFishing_Start, set_FeatherFishing_Start] = useState(false);
+    const [featherFishing_HookLength, set_FeatherFishing_HookLength] = useState(0);
+    const [featherFishing_HitAttempt, set_FeatherFishing_HitAttempt] = useState(false);
 
     useKeyboardShortcut("Enter", () => {
     
-        if (!featherFishingStart){
+        if (!featherFishing_Start){
 
-            petScreensHelpersStartActivity(setFeatherFishingStart);
+            petScreensHelpers_StartActivity(set_FeatherFishing_Start);
 
         }
 
@@ -41,76 +41,76 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
     useEffect(() => {
 
-        if (!featherFishingStart) {
+        if (!featherFishing_Start) {
             return;
         }
 
-        playAudioRef.current.loop = true;
-        playAudioRef.current.play();
+        play_AudioRef.current.loop = true;
+        play_AudioRef.current.play();
 
         return () => {
-            playAudioRef.current.pause();
-            playAudioRef.current.currentTime = 0;
-            playAudioRef.current.loop = false;
+            play_AudioRef.current.pause();
+            play_AudioRef.current.currentTime = 0;
+            play_AudioRef.current.loop = false;
         };
 
-    }, [featherFishingStart]);
+    }, [featherFishing_Start]);
 
 
 
     useEffect(() => {
 
-        if (!featherFishingStart){
+        if (!featherFishing_Start){
 
             return;
 
         } 
 
-        const featherFishingInterval = setInterval(() => {
+        const featherFishing_Interval = setInterval(() => {
 
-            const featherFishingIntervalMovement = Math.floor(Math.random() * 2);
+            const featherFishing_Interval_Movement = Math.floor(Math.random() * 2);
 
-            if (featherFishingIntervalMovement === 0) {
+            if (featherFishing_Interval_Movement === 0) {
 
-                setFeatherFishingHookLength(prev => Math.max(prev - 1, 0));
+                set_FeatherFishing_HookLength(prev => Math.max(prev - 1, 0));
 
             } else {
 
-                setFeatherFishingHookLength(prev => Math.min(prev + 1, 4));
+                set_FeatherFishing_HookLength(prev => Math.min(prev + 1, 4));
 
             }
 
-            if (featherFishingHitAttempt){
+            if (featherFishing_HitAttempt){
 
-                setFeatherFishingHitAttempt(false);
+                set_FeatherFishing_HitAttempt(false);
 
             }
 
         }, 400);
 
-        return () => clearInterval(featherFishingInterval);
+        return () => clearInterval(featherFishing_Interval);
 
-    }, [featherFishingStart, featherFishingHitAttempt]);
+    }, [featherFishing_Start, featherFishing_HitAttempt]);
 
 
 
-    const featherFishingCheckHit = (featherFishingCheckHitSuccess) => {
+    const featherFishing_CheckHit = (featherFishing_CheckHit_Success) => {
 
-        helpersPlaySound(soundScreenButtonPressKey);
+        helpers_PlaySound(soundScreenButtonPressKey);
 
-        if (!featherFishingHitAttempt){
+        if (!featherFishing_HitAttempt){
 
-            if (featherFishingCheckHitSuccess === 1){
+            if (featherFishing_CheckHit_Success === 1){
 
-                setPlayCurrNumber(prev => prev + 1);
+                set_Play_CurrNumber(prev => prev + 1);
 
             } else {
 
-                setPlayCurrNumber(prev => Math.max(prev - 1, 0));
+                set_Play_CurrNumber(prev => Math.max(prev - 1, 0));
 
             }
 
-            setFeatherFishingHitAttempt(true);
+            set_FeatherFishing_HitAttempt(true);
 
         }
 
@@ -123,9 +123,9 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
-            {!featherFishingStart && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
+            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpersStartActivity(setFeatherFishingStart)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_StartActivity(set_FeatherFishing_Start)}> Start <br/> [return]</button>
             </div>}
 
             
@@ -135,19 +135,19 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
             <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: featherFishingWindowHeight}, (_, row) => 
-                    Array.from({ length: featherFishingWindowWidth}, (_, col) => {
+                {Array.from({ length: featherFishing_WindowHeight}, (_, row) => 
+                    Array.from({ length: featherFishing_WindowWidth}, (_, col) => {
 
-                        const featherFishingHookHead = col === 4 && row === featherFishingHookLength;
-                        const featherFishingHookBody = col === 4 && row < featherFishingHookLength;
+                        const featherFishing_HookHead = col === 4 && row === featherFishing_HookLength;
+                        const featherFishing_HookBody = col === 4 && row < featherFishing_HookLength;
 
                         return (
 
-                            featherFishingHookHead ? (
+                            featherFishing_HookHead ? (
 
                                 row === 2 ? (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishingCheckHit(1)}/>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_CheckHit(1)}/>
 
                                 ) : (
 
@@ -155,11 +155,11 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 )
 
-                            ) : featherFishingHookBody ? (
+                            ) : featherFishing_HookBody ? (
 
                                 row === 2 ? (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishingCheckHit(0)}/>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_CheckHit(0)}/>
 
                                 ) : (
 
@@ -171,7 +171,7 @@ function FeatherFishing({ playCurrNumber, setPlayCurrNumber, playAudioRef }) {
 
                                 row === 2 && col === 4? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => featherFishingCheckHit(0)}></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => featherFishing_CheckHit(0)}></div>
 
                                 ) : (
 
