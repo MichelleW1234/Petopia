@@ -1,7 +1,7 @@
 import "./ProgressBar.css";
 
 
-function ProgressBar({progressBar_PercentUntilNextUpdate}) {
+function ProgressBar({progressBar_CurrPercentUntilNextUpdate}) {
 
     return (
 
@@ -9,7 +9,7 @@ function ProgressBar({progressBar_PercentUntilNextUpdate}) {
             {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
                 <div key = {num} 
-                    className = {num <= progressBar_PercentUntilNextUpdate ? 
+                    className = {num <= progressBar_CurrPercentUntilNextUpdate ? 
                                 "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellDone"
                                 : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellLeft"
                             }>

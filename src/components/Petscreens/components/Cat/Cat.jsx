@@ -20,7 +20,7 @@ import MouseHunt from "./CatComponents/MouseHunt.jsx";
 import FeatherFishing from "./CatComponents/FeatherFishing.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
-import { petScreensHelpers_Home, petScreensHelpers_PauseAudio } from "../../helpers/Helpers.js";
+import { petScreensHelpers_HomeNavigator, petScreensHelpers_AudioCanceller } from "../../helpers/Helpers.js";
 import { helpers_FlagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyMeow from "../../../../Music/PetImmersionSounds/Cat/HappyMeow.mp3";
@@ -82,9 +82,9 @@ function Cat (){
     const [cat_MedicineOpenFlag, set_Cat_MedicineOpenFlag] = useState(false);
     const [cat_ScheduleOpenFlag, set_Cat_ScheduleOpenFlag] = useState(false);
     const [cat_RecordsOpenFlag, set_Cat_RecordsOpenFlag] = useState(false);
-    const [cat_FeedOptionsDesiredOption, set_Cat_FeedOptionsDesiredOption] = useState(-1);
-    const [cat_PlayOptionsDesiredOption, set_Cat_PlayOptionsDesiredOption] = useState(-1);
-    const [cat_MedicineOptionsDesiredOption, set_Cat_MedicineOptionsDesiredOption] = useState(-1);
+    const [cat_FeedOptionsCurrDesiredOption, set_Cat_FeedOptionsCurrDesiredOption] = useState(-1);
+    const [cat_PlayOptionsCurrDesiredOption, set_Cat_PlayOptionsCurrDesiredOption] = useState(-1);
+    const [cat_MedicineOptionsCurrDesiredOption, set_Cat_MedicineOptionsCurrDesiredOption] = useState(-1);
 
     const cat_Alive = ActivePetName === "" ? 
                             false
@@ -113,15 +113,11 @@ function Cat (){
                                 : true;
 
 
-    const cat_Mood = ActivePetName === "" ? 
+    const cat_CurrMood = ActivePetName === "" ? 
                         -1
-                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
-                            0
-                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
+                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesCatKey][PetList[ActivePetName][petStageKey]] >= 0.25 ? 
-                            2
-                            : 3;
+                        :   0;
 
 
     const cat_CanReceiveDose = ActivePetName === "" ? 
@@ -131,7 +127,7 @@ function Cat (){
                                         : true;
 
 
-    const cat_MainImages = ActivePetName === "" ? 
+    const cat_MainCurrStageAnimationImages = ActivePetName === "" ? 
                                 [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
@@ -140,7 +136,7 @@ function Cat (){
                                     : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
 
-    const cat_MainSleepingImage = ActivePetName === "" ? 
+    const cat_MainCurrStageSleepAnimationImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         SleepStageOne
@@ -148,7 +144,7 @@ function Cat (){
                                         SleepStageTwo
                                     : SleepStageThree;
 
-    const cat_FeedImage = ActivePetName === "" ? 
+    const cat_FeedCurrStageAnimationImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         FeedStageOne
@@ -156,7 +152,7 @@ function Cat (){
                                         FeedStageTwo
                                     : FeedStageThree; 
 
-    const cat_MedicineImage = ActivePetName === "" ? 
+    const cat_MedicineCurrStageAnimationImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         MedicineStageOne
@@ -205,7 +201,7 @@ function Cat (){
 
         if (!cat_FeedOpenFlag && !cat_PlayOpenFlag && !cat_MedicineOpenFlag && !cat_ScheduleOpenFlag && !cat_RecordsOpenFlag && !cat_MusicVolumeOpenFlag && !cat_InventoryOpenFlag){
 
-            petScreensHelpers_Home(setActivePetName);
+            petScreensHelpers_HomeNavigator(setActivePetName);
             cat_Navigate("/home");
 
         }
@@ -297,10 +293,10 @@ function Cat (){
         if (ActivePetName === "" || cat_ActivityInProgress){
 
             Object.values(cat_AudioRefs.current).forEach(audio => {
-                petScreensHelpers_PauseAudio(audio);
+                petScreensHelpers_AudioCanceller(audio);
             });
 
-            petScreensHelpers_PauseAudio(cat_BackgroundAudioRef.current);
+            petScreensHelpers_AudioCanceller(cat_BackgroundAudioRef.current);
 
         } else {
 
@@ -318,19 +314,19 @@ function Cat (){
 
         if (cat_Hungry){
 
-            set_Cat_FeedOptionsDesiredOption(Math.floor(Math.random() * cat_FeedOptionsList.length));
+            set_Cat_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * cat_FeedOptionsList.length));
 
         }
 
         if (cat_Restless){
 
-            set_Cat_PlayOptionsDesiredOption(Math.floor(Math.random() * cat_PlayOptionsList.length));
+            set_Cat_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * cat_PlayOptionsList.length));
 
         }
 
         if (cat_Unwell){
 
-            set_Cat_MedicineOptionsDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
+            set_Cat_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
 
         }
 
@@ -357,27 +353,27 @@ function Cat (){
 
             {cat_FeedOpenFlag &&
             <Feed
-                feed_AnimationImage={cat_FeedImage}
-                feed_OptionsList={cat_FeedOptionsList}
-                feed_OptionsDesiredOption = {cat_FeedOptionsDesiredOption}
-                set_Feed_OptionsDesiredOption = {set_Cat_FeedOptionsDesiredOption}
+                feed_CurrStageAnimationImage={cat_FeedCurrStageAnimationImage}
+                feed_OptionsCurrSpeciesList={cat_FeedOptionsList}
+                feed_OptionsCurrDesiredOption = {cat_FeedOptionsCurrDesiredOption}
+                set_Feed_OptionsCurrDesiredOption = {set_Cat_FeedOptionsCurrDesiredOption}
                 set_Feed_OpenFlag = {set_Cat_FeedOpenFlag}
             />}
 
             {cat_PlayOpenFlag &&
             <Play
-                play_OptionsList={cat_PlayOptionsList}
-                play_OptionsDesiredOption = {cat_PlayOptionsDesiredOption}
-                set_Play_OptionsDesiredOption = {set_Cat_PlayOptionsDesiredOption}
+                play_OptionsCurrSpeciesList={cat_PlayOptionsList}
+                play_OptionsCurrDesiredOption = {cat_PlayOptionsCurrDesiredOption}
+                set_Play_OptionsCurrDesiredOption = {set_Cat_PlayOptionsCurrDesiredOption}
                 set_Play_OpenFlag = {set_Cat_PlayOpenFlag}
             />}
 
             {cat_MedicineOpenFlag &&
             <Medicine
-                medicine_AnimationImage={cat_MedicineImage}
-                medicine_OptionsList={cat_MedicineOptionsList}
-                medicine_OptionsDesiredOption = {cat_MedicineOptionsDesiredOption}
-                set_Medicine_OptionsDesiredOption = {set_Cat_MedicineOptionsDesiredOption}
+                medicine_CurrStageAnimationImage={cat_MedicineCurrStageAnimationImage}
+                medicine_OptionsCurrSpeciesList={cat_MedicineOptionsList}
+                medicine_OptionsCurrDesiredOption = {cat_MedicineOptionsCurrDesiredOption}
+                set_Medicine_OptionsCurrDesiredOption = {set_Cat_MedicineOptionsCurrDesiredOption}
                 set_Medicine_OpenFlag = {set_Cat_MedicineOpenFlag}
             />}
 
@@ -395,7 +391,7 @@ function Cat (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_HomeNavigator(setActivePetName)}> Home <br/> [1]</Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpers_FlagOpener(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpers_FlagOpener(set_Cat_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
@@ -433,11 +429,11 @@ function Cat (){
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
                     <Main
-                        main_AnimationImages={cat_MainImages}
-                        main_SleepingImage = {cat_MainSleepingImage}
-                        main_PetAudios = {cat_AudioRefs}
-                        main_PetEnergy = {450}
-                        main_PetMood = {cat_Mood}
+                        main_CurrStageAnimationImages={cat_MainCurrStageAnimationImages}
+                        main_CurrStageSleepAnimationImage = {cat_MainCurrStageSleepAnimationImage}
+                        main_CurrSpeciesAudios = {cat_AudioRefs}
+                        main_CurrPetEnergy = {450}
+                        main_CurrMood = {cat_CurrMood}
                         main_ActivityInProgress = {cat_ActivityInProgress}
                     />
                 </div>

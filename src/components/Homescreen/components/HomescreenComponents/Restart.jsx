@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_FlagCloser, helpers_PlaySound } from "../../../../helpers/Helpers.js";
+import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../../helpers/Helpers.js";
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
@@ -28,7 +28,7 @@ import Lamp from "../../../../images/Inventory/Lamp.png";
 import ChandelierOne from "../../../../images/Inventory/ChandelierOne.png";
 import ChandelierTwo from "../../../../images/Inventory/ChandelierTwo.png";
 import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
-import { soundRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypePotionKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
+import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypePotionKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
 
 
 
@@ -53,7 +53,7 @@ function Restart({set_Restart_OpenFlag}) {
 
     useKeyboardShortcut("Enter", () => {
 
-        restartRestartGame();
+        restart_GameRestarter();
 
     },
         ".Yes"
@@ -61,9 +61,9 @@ function Restart({set_Restart_OpenFlag}) {
 
 
 
-    const restartRestartGame = () => {
+    const restart_GameRestarter = () => {
 
-        helpers_PlaySound(soundRestartGameKey);
+        helpers_AudioPlayer(audioRestartGameKey);
 
         setPetList({});
         setPetTimeStamps({});
@@ -115,7 +115,7 @@ function Restart({set_Restart_OpenFlag}) {
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restartRestartGame()}> Yes <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restart_GameRestarter()}> Yes <br/> [return]</button>
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => helpers_FlagCloser(set_Restart_OpenFlag)}> No <br/> [esc]</button>
             </div>
 

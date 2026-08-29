@@ -6,7 +6,7 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey } from "../../../../constants/Constants.js";
-import { petScreensHelpers_PauseAudio } from "../../helpers/Helpers.js";
+import { petScreensHelpers_AudioCanceller } from "../../helpers/Helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
 import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
@@ -18,23 +18,21 @@ import "./Main.css";
 
 
 
-function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_PetEnergy, main_PetMood, main_ActivityInProgress}){
+function Main ({main_CurrStageAnimationImages, main_CurrStageSleepAnimationImage, main_CurrSpeciesAudios, main_CurrPetEnergy, main_CurrMood, main_ActivityInProgress}){
 
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
     const {GlobalTimer} = useGlobalTimer();
     const {Inventory, setInventory} = useInventory();
 
-    const main_PetWindowLength = 20;
+    const main_WindowLength = 20;
 
-    const [main_Attention, set_Main_Attention] = useState(false);
-    const [main_PetCurrentSpace, set_Main_PetCurrentSpace] = useState(Math.floor(Math.random() * main_PetWindowLength));
-    const [main_PetDirection, set_Main_PetDirection] = useState(0);
-    const [main_SleepAnimationImage, set_Main_SleepAnimationImage] = useState(0);
+    const [main_GiveAttention, set_Main_GiveAttention] = useState(false);
+    const [main_CurrPetPosition, set_Main_CurrPetPosition] = useState(Math.floor(Math.random() * main_WindowLength));
+    const [main_CurrPetDirection, set_Main_CurrPetDirection] = useState(0);
 
-    const main_PetCurrentSpaceRef = useRef(main_PetCurrentSpace);
-    const main_PetDirectionRef = useRef(main_PetDirection);
-    const main_SleepAnimationImageRef = useRef(main_SleepAnimationImage);
+    const main_CurrPetPositionRef = useRef(main_CurrPetPosition);
+    const main_CurrPetDirectionRef = useRef(main_CurrPetDirection);
     const main_TimeoutRef = useRef(null);
 
     const main_CurrHour = new Date(GlobalTimer).getHours();
@@ -46,61 +44,56 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
     // For preloading images:
     useEffect(() => {
 
-        const main_PreloadImages = [...main_AnimationImages.flat(1), main_SleepingImage, PetSleepingSymbol, PetUnhappySymbol, PetHappySymbol];
+        const main_CurrPreloadImages = [...main_CurrStageAnimationImages.flat(1), main_CurrStageSleepAnimationImage, PetSleepingSymbol, PetUnhappySymbol, PetHappySymbol];
 
-        main_PreloadImages.forEach((src) => {
-        const main_Img = new Image();
+        main_CurrPreloadImages.forEach((src) => {
+            const main_Img = new Image();
             main_Img.src = src;
         });
 
-    }, [main_AnimationImages]);
+    }, [main_CurrStageAnimationImages]);
 
 
     useEffect(() => {
-        main_PetCurrentSpaceRef.current = main_PetCurrentSpace;
-    }, [main_PetCurrentSpace]);
+        main_CurrPetPositionRef.current = main_CurrPetPosition;
+    }, [main_CurrPetPosition]);
 
     useEffect(() => {
-        main_PetDirectionRef.current = main_PetDirection;
-    }, [main_PetDirection]);
-
-
-    useEffect(() => {
-        main_SleepAnimationImageRef.current = main_SleepAnimationImage;
-    }, [main_SleepAnimationImage]);
+        main_CurrPetDirectionRef.current = main_CurrPetDirection;
+    }, [main_CurrPetDirection]);
 
 
 
     useEffect(() => {
 
-        if (main_Attention){
+        if (main_GiveAttention){
             
-            let main_CurrSound;
+            let main_CurrAudio;
 
             if (main_PetSleeping){
 
-                main_CurrSound = main_PetAudios.current[petSoundSleepKey];
+                main_CurrAudio = main_CurrSpeciesAudios.current[petSoundSleepKey];
 
             } else {
 
-                if (main_PetMood <= 1){
+                if (main_CurrMood === 1){
 
-                    main_CurrSound = main_PetAudios.current[petSoundHappyKey];
+                    main_CurrAudio = main_CurrSpeciesAudios.current[petSoundHappyKey];
 
                 } else {
 
-                    main_CurrSound = main_PetAudios.current[petSoundSadKey];
+                    main_CurrAudio = main_CurrSpeciesAudios.current[petSoundSadKey];
 
                 }
 
             }
 
-            main_CurrSound.volume = 0.75;
-            main_CurrSound.play();
+            main_CurrAudio.volume = 0.75;
+            main_CurrAudio.play();
                 
         }
 
-    }, [main_Attention, main_PetMood])
+    }, [main_GiveAttention, main_CurrMood])
 
 
 
@@ -114,9 +107,9 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
 
         const main_Interval = setInterval(() => {
 
-            main_PetPositionChange();
+            main_PetPositionShifter();
 
-        }, main_PetEnergy);
+        }, main_CurrPetEnergy);
 
         return () => clearInterval(main_Interval);
 
@@ -125,32 +118,32 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
 
 
 
-    const main_PetPositionChange = () => {
+    const main_PetPositionShifter = () => {
 
-        if (main_PetCurrentSpaceRef.current === 0){
+        if (main_CurrPetPositionRef.current === 0){
 
-            set_Main_PetCurrentSpace(1);
-            set_Main_PetDirection(1);
+            set_Main_CurrPetPosition(1);
+            set_Main_CurrPetDirection(1);
 
-        } else if (main_PetCurrentSpaceRef.current === main_PetWindowLength - 1){
+        } else if (main_CurrPetPositionRef.current === main_WindowLength - 1){
 
-            set_Main_PetCurrentSpace(main_PetWindowLength - 2);
-            set_Main_PetDirection(0);
+            set_Main_CurrPetPosition(main_WindowLength - 2);
+            set_Main_CurrPetDirection(0);
 
-        } else if (main_PetDirectionRef.current === 0){
+        } else if (main_CurrPetDirectionRef.current === 0){
 
-            set_Main_PetCurrentSpace(prev => prev-1);
+            set_Main_CurrPetPosition(prev => prev-1);
 
-        } else if (main_PetDirectionRef.current === 1){
+        } else if (main_CurrPetDirectionRef.current === 1){
 
-            set_Main_PetCurrentSpace(prev => prev+1);
+            set_Main_CurrPetPosition(prev => prev+1);
             
         }
 
     }
 
 
-    const main_ShowAttention = () => {
+    const main_AttentionTimer = () => {
 
         if (ActivePetName === ""){
 
@@ -158,7 +151,7 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
 
         } else {
                 
-            set_Main_Attention(true);
+            set_Main_GiveAttention(true);
 
             // Cancels any existing timers:
             if (main_TimeoutRef.current) {
@@ -167,7 +160,7 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
 
             // Starts a fresh 3s timer:
             main_TimeoutRef.current = setTimeout(() => {
-                set_Main_Attention(false);
+                set_Main_GiveAttention(false);
                 main_TimeoutRef.current = null;
             }, 3000);
 
@@ -229,15 +222,15 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
                                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenNongridPet">
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                            onMouseEnter={() => main_ShowAttention()}
-                                            src = {main_SleepingImage}
+                                            onMouseEnter={() => main_AttentionTimer()}
+                                            src = {main_CurrStageSleepAnimationImage}
                                         />
 
-                                        {main_Attention &&
+                                        {main_GiveAttention &&
                                         <img
                                             className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
                                             src = {PetSleepingSymbol} 
-                                            onMouseEnter={() => main_ShowAttention()}
+                                            onMouseEnter={() => main_AttentionTimer()}
                                         />}
                                     </div>
                                 </div>
@@ -245,9 +238,9 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
                             ) : (
 
                                 <div className="Main_ComponentContainer-Structure--WindowScreenGrid"> 
-                                    {Array.from({ length: main_PetWindowLength }, (_, i) => i).map(index => {
+                                    {Array.from({ length: main_WindowLength }, (_, i) => i).map(index => {
                                         
-                                        const main_PetHere = main_PetCurrentSpace === index;
+                                        const main_PetHere = main_CurrPetPosition === index;
 
                                         return(
 
@@ -256,15 +249,15 @@ function Main ({main_AnimationImages, main_SleepingImage, main_PetAudios, main_P
                                                 <div key={index} 
                                                     className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
                                                     <img className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                                        src = {main_AnimationImages[main_PetDirection][index % 2]} 
-                                                        onMouseEnter={() => main_ShowAttention()}
+                                                        src = {main_CurrStageAnimationImages[main_CurrPetDirection][index % 2]} 
+                                                        onMouseEnter={() => main_AttentionTimer()}
                                                     />
 
-                                                    {main_Attention &&
+                                                    {main_GiveAttention &&
                                                     <img
                                                         className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                                        src = {main_PetMood <= 1 ? PetHappySymbol : PetUnhappySymbol} 
-                                                        onMouseEnter={() => main_ShowAttention()}
+                                                        src = {main_CurrMood <= 1 ? PetHappySymbol : PetUnhappySymbol} 
+                                                        onMouseEnter={() => main_AttentionTimer()}
                                                     />}
                                                 </div>
 

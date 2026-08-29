@@ -3,7 +3,7 @@ import{useState} from "react";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { helpers_FlagCloser, helpers_PlaySound } from "../../../helpers/Helpers.js";
+import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
@@ -60,10 +60,10 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
 
 
-    const musicVolume_VolumeJump = (musicVolume_VolumeJump_E) => {
+    const musicVolume_VolumeShifter = (musicVolume_VolumeShifter_E) => {
 
-        const musicVolume_VolumeJump_Value = Number(Number(musicVolume_VolumeJump_E.target.value).toFixed(2));
-        setVolume(musicVolume_VolumeJump_Value);
+        const musicVolume_VolumeShifter_CurrVolume = Number(Number(musicVolume_VolumeShifter_E.target.value).toFixed(2));
+        setVolume(musicVolume_VolumeShifter_CurrVolume);
 
     }
 
@@ -87,7 +87,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
                             max="1"
                             step = "0.01"
                             value={Volume}
-                            onChange={musicVolume_VolumeJump}
+                            onChange={musicVolume_VolumeShifter}
                         />
                     </div>
                 </div>

@@ -16,8 +16,13 @@ function Records({set_Records_OpenFlag}) {
     const {PetList, setPetList} = usePetList();
 
 
-    const records_BirthdayString = new Date(PetList[ActivePetName][petBirthDateKey]).toLocaleString();
-
+    const records_CurrPetBirthdateString = new Date(PetList[ActivePetName][petBirthDateKey]).toLocaleString([], {
+                                                                                                year: "numeric",
+                                                                                                month: "2-digit",
+                                                                                                day: "2-digit",
+                                                                                                hour: "2-digit",
+                                                                                                minute: "2-digit",
+                                                                                            });
 
     useKeyboardShortcut("2", () => {
 
@@ -50,7 +55,7 @@ function Records({set_Records_OpenFlag}) {
                         </div>
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Birthdate: </h2>
-                            <p>{records_BirthdayString}</p>
+                            <p>{records_CurrPetBirthdateString}</p>
                         </div>
                     </div>
                 </div>

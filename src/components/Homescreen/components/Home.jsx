@@ -18,8 +18,8 @@ import RearrangePets from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSelectionButtonPressKey } from "../../../constants/Constants.js";
-import { helpers_FlagOpener, helpers_PlaySound } from "../../../helpers/Helpers.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey } from "../../../constants/Constants.js";
+import { helpers_FlagOpener, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
 import OrangePetBattery from "../../../images/OrangePetBattery.png";
@@ -45,13 +45,11 @@ function Home (){
     const [home_RestartOpenFlag, set_Home_RestartOpenFlag] = useState(false);
     const [home_MusicVolumeOpenFlag, set_Home_MusicVolumeOpenFlag] = useState(false);
     const [home_InventoryOpenFlag, set_Home_InventoryOpenFlag] = useState(false);
-    const [home_ClearPetsOpenClearPetsFlag, set_Home_ClearPetsOpenClearPetsFlag] = useState(false);
+    const [home_ClearPetsOpenFlag, set_Home_ClearPetsOpenFlag] = useState(false);
     const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
 
     const home_MinPetsAdopted = Room.filter(x => x === null).length < 3;
-
-
 
     const home_Navigate = useNavigate();
 
@@ -59,7 +57,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_FlagOpener(set_Home_MusicVolumeOpenFlag, 1);
 
@@ -72,7 +70,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_FlagOpener(set_Home_InventoryOpenFlag, 1);
 
@@ -86,7 +84,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_FlagOpener(set_Home_RestartOpenFlag, 0);
 
@@ -101,7 +99,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0);
 
@@ -114,9 +112,9 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenClearPetsFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_ClearPetsOpenClearPetsFlag, 0);
+            helpers_FlagOpener(set_Home_ClearPetsOpenFlag, 0);
 
         }
 
@@ -127,7 +125,7 @@ function Home (){
     
     useKeyboardShortcut("4", () => {
 
-        if (!home_ClearPetsOpenClearPetsFlag && !home_RestartOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_FlagOpener(set_Home_ReadMeOpenFlag, 0);
 
@@ -142,18 +140,18 @@ function Home (){
     
     
 
-    const home_GetPet = (home_GetPet_PetToGet) => {
+    const home_PetNavigator = (home_PetNavigator_UserSelection) => {
 
-        helpers_PlaySound(soundSelectionButtonPressKey);
-        setActivePetName(home_GetPet_PetToGet);
+        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        setActivePetName(home_PetNavigator_UserSelection);
         
     }
 
 
-    const home_CheckoutRoom = (home_CheckoutRoom_RoomNumber) => {
+    const home_AdoptionNavigator = (home_AdoptionNavigator_UserSelection) => {
 
-        helpers_PlaySound(soundSelectionButtonPressKey);
-        setActiveCheckoutRoom(home_CheckoutRoom_RoomNumber);
+        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        setActiveCheckoutRoom(home_AdoptionNavigator_UserSelection);
 
     }
 
@@ -183,9 +181,9 @@ function Home (){
                 set_RearrangePets_OpenFlag={set_Home_RearrangePetsOpenFlag}
             />}
 
-            {home_ClearPetsOpenClearPetsFlag &&
+            {home_ClearPetsOpenFlag &&
             <ClearPets
-                set_ClearPets_OpenClearPetsFlag={set_Home_ClearPetsOpenClearPetsFlag}
+                set_ClearPets_OpenFlag={set_Home_ClearPetsOpenFlag}
             />}
 
             {home_ReadMeOpenFlag &&
@@ -203,7 +201,7 @@ function Home (){
                         <>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_FlagOpener(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_FlagOpener(set_Home_ClearPetsOpenClearPetsFlag, 0)}> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_FlagOpener(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
@@ -249,7 +247,7 @@ function Home (){
                                     <Link
                                         to = {"/adopt"}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => home_CheckoutRoom(index)}
+                                        onClick = {() => home_AdoptionNavigator(index)}
                                     >
                                         <img src = {AddNewPet}/>
                                     </Link>
@@ -303,7 +301,7 @@ function Home (){
                                     <Link
                                         to = {`/${PetList[petName][petSpeciesKey]}`}
                                         className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => home_GetPet(petName)}
+                                        onClick = {() => home_PetNavigator(petName)}
                                     >
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>

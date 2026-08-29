@@ -42,15 +42,15 @@ function Schedule({set_Schedule_OpenFlag}) {
 
                         <Activity
                             key = {key}
-                            activity_Key = {key}
-                            activity_TimeGap = {value}
+                            activity_CurrActivityKey = {key}
+                            activity_CurrActivityTimeLimit = {value}
                         />
 
                     ))}
 
                     <Activity
-                        activity_Key = {petMedicineKey}
-                        activity_TimeGap = {petActivityTimeStampMedicineDoseTimeGapKey}
+                        activity_CurrActivityKey = {petMedicineKey}
+                        activity_CurrActivityTimeLimit = {petActivityTimeStampMedicineDoseTimeGapKey}
                     />
                 </div>
 

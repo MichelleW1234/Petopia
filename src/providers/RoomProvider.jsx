@@ -10,8 +10,8 @@ export function RoomProvider({ children }) {
 
     const [Room, setRoom] = useState(() => {
         try {
-            const room_Stored = JSON.parse(localStorage.getItem("Room"));
-            return room_Stored !== null ? room_Stored : [null, null, null];
+            const room_CurrValue = JSON.parse(localStorage.getItem("Room"));
+            return room_CurrValue !== null ? room_CurrValue : [null, null, null];
         } catch {
             return [null, null, null];
         }

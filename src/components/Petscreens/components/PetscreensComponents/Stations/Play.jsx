@@ -11,7 +11,7 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_ManageHealth, petScreensHelpers_PauseAudio, petScreensHelpers_QuitActivity } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_HealthManager, petScreensHelpers_AudioCanceller, petScreensHelpers_ActivityCanceller } from "../../../helpers/Helpers.js";
 import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
@@ -20,22 +20,22 @@ import "./Play.css";
 
 
 
-function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDesiredOption, set_Play_OpenFlag}){
+function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_Play_OptionsCurrDesiredOption, set_Play_OpenFlag}){
 
     const {GlobalTimer} = useGlobalTimer();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [play_OptionsTotal, set_Play_OptionsTotal] = useState(10);
+    const [play_OptionsTotalNumber, set_Play_OptionsTotalNumber] = useState(10);
     const [play_Done, set_Play_Done] = useState(false);
-    const [play_OptionsSelection, set_Play_OptionsSelection] = useState(-1);
+    const [play_OptionsUserSelection, set_Play_OptionsUserSelection] = useState(-1);
     const [play_CurrNumber, set_Play_CurrNumber] = useState(0);
     const [play_Success, set_Play_Success] = useState(false);
 
-    const Play_SelectedGameWindow = play_OptionsSelection === -1 ? 
+    const Play_GameWindow = play_OptionsUserSelection === -1 ? 
                                     null 
-                                    : play_OptionsList[play_OptionsSelection][petActivityOptionGameKey];
+                                    : play_OptionsCurrSpeciesList[play_OptionsUserSelection][petActivityOptionGameKey];
 
     const play_AudioRef = useRef(new Audio(Playing));
 
@@ -57,7 +57,7 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
 
         if (!play_Done){
 
-            petScreensHelpers_QuitActivity(play_AudioRef, set_Play_OpenFlag);
+            petScreensHelpers_ActivityCanceller(play_AudioRef, set_Play_OpenFlag);
 
         }
 
@@ -69,11 +69,11 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
     
     useEffect(() => {
         
-        if (play_CurrNumber >= play_OptionsTotal){
+        if (play_CurrNumber >= play_OptionsTotalNumber){
 
-            petScreensHelpers_PauseAudio(play_AudioRef.current);
+            petScreensHelpers_AudioCanceller(play_AudioRef.current);
             set_Play_Done(true);
-            petScreensHelpers_ManageHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, play_OptionsDesiredOption, set_Play_OptionsDesiredOption, play_OptionsSelection, set_Play_Success);
+            petScreensHelpers_HealthManager(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, play_OptionsCurrDesiredOption, set_Play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_Success);
 
         }
 
@@ -86,13 +86,13 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
         
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
 
-            {play_OptionsSelection === -1 ? (
+            {play_OptionsUserSelection === -1 ? (
 
                 <Options
-                    options_DesiredOption = {play_OptionsDesiredOption}
-                    options_List = {play_OptionsList} 
-                    set_Options_Total = {set_Play_OptionsTotal}
-                    set_Options_Selection = {set_Play_OptionsSelection}
+                    options_CurrDesiredOption = {play_OptionsCurrDesiredOption}
+                    options_CurrSpeciesList = {play_OptionsCurrSpeciesList} 
+                    set_Options_TotalNumber = {set_Play_OptionsTotalNumber}
+                    set_Options_UserSelection = {set_Play_OptionsUserSelection}
                 />
 
             ) : (
@@ -100,7 +100,7 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
                     <ProgressBar
-                        progressBar_PercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((play_CurrNumber/play_OptionsTotal) * 100)))}
+                        progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((play_CurrNumber/play_OptionsTotalNumber) * 100)))}
                     />
      
                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
@@ -123,13 +123,13 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
 
                         ) : (
 
-                            Play_SelectedGameWindow === null ? (
+                            Play_GameWindow === null ? (
 
                                 <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen"></div>
 
                             ) : (
 
-                                <Play_SelectedGameWindow
+                                <Play_GameWindow
                                     play_CurrNumber = {play_CurrNumber}
                                     set_Play_CurrNumber = {set_Play_CurrNumber}
                                     play_AudioRef = {play_AudioRef}
@@ -155,7 +155,7 @@ function Play ({play_OptionsList, play_OptionsDesiredOption, set_Play_OptionsDes
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_QuitActivity(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_ActivityCanceller(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

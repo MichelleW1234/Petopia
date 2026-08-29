@@ -1,4 +1,4 @@
-import { soundNavButtonPressKey, soundSelectionButtonPressKey, soundAdoptionConfirmationErrorKey, soundStartActivityKey, soundActivitySuccessKey, soundActivityFailKey, soundScreenButtonPressKey, soundAdoptionSuccessKey, soundClearPetsKey, soundQuitActivityKey, soundAddedDecorationsKey, soundRevivedPetKey, soundSwapPetSpaceKey, soundRestartGameKey} from "../constants/Constants.js";
+import { audioNavButtonPressKey, audioSelectionButtonPressKey, audioAdoptionConfirmationErrorKey, audioStartActivityKey, audioActivitySuccessKey, audioActivityFailKey, audioScreenButtonPressKey, audioAdoptionSuccessKey, audioClearPetsKey, audioQuitActivityKey, audioAddedDecorationsKey, audioRevivedPetKey, audioSwapPetSpaceKey, audioRestartGameKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
@@ -18,58 +18,58 @@ import SwapPetSpace from "../Music/UIIndicatorSounds/SwapPetSpace.mp3";
 
 
 
-export const helpers_PlaySound = (helpers_PlaySound_SoundEffect) => {
+export const helpers_AudioPlayer = (helpers_AudioPlayer_CurrAudioKey) => {
 
-    const helpers_PlaySound_ButtonAudioKey = "helpers_PlaySound_Audio";
-    const helpers_PlaySound_ButtonVolumeKey = "volume";
+    const helpers_AudioPlayer_AudioFileKey = "helpers_AudioPlayer_CurrAudio";
+    const helpers_AudioPlayer_AudioVolumeKey = "volume";
 
-    const helpers_PlaySound_SoundDictionary = {
+    const helpers_AudioPlayer_AudioDictionary = {
 
-        [soundNavButtonPressKey] : {[helpers_PlaySound_ButtonAudioKey]: NavButtonPress, [helpers_PlaySound_ButtonVolumeKey]: 1},
-        [soundSelectionButtonPressKey] : {[helpers_PlaySound_ButtonAudioKey]: SelectionButtonPress, [helpers_PlaySound_ButtonVolumeKey]: 0.75},
-        [soundScreenButtonPressKey] : {[helpers_PlaySound_ButtonAudioKey]: ScreenButtonPress, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundRestartGameKey] : {[helpers_PlaySound_ButtonAudioKey] : RestartGame, [helpers_PlaySound_ButtonVolumeKey] : 0.25},
-        [soundAdoptionConfirmationErrorKey] : {[helpers_PlaySound_ButtonAudioKey]: AdoptionConfirmationError, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundStartActivityKey] : {[helpers_PlaySound_ButtonAudioKey]: StartActivity, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundActivitySuccessKey] : {[helpers_PlaySound_ButtonAudioKey]: ActivitySuccess, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundActivityFailKey] : {[helpers_PlaySound_ButtonAudioKey]: ActivityFail, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundAdoptionSuccessKey] : {[helpers_PlaySound_ButtonAudioKey]: AdoptionSuccess, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundClearPetsKey] : {[helpers_PlaySound_ButtonAudioKey]: ClearPets, [helpers_PlaySound_ButtonVolumeKey]: 0.5},
-        [soundQuitActivityKey] : {[helpers_PlaySound_ButtonAudioKey]: QuitActivity, [helpers_PlaySound_ButtonVolumeKey]: 0.75},
-        [soundAddedDecorationsKey] : {[helpers_PlaySound_ButtonAudioKey]: AddedDecorations, [helpers_PlaySound_ButtonVolumeKey]: 0.75},
-        [soundRevivedPetKey] : {[helpers_PlaySound_ButtonAudioKey]: RevivedPet, [helpers_PlaySound_ButtonVolumeKey]: 0.75},
-        [soundSwapPetSpaceKey] : {[helpers_PlaySound_ButtonAudioKey]: SwapPetSpace, [helpers_PlaySound_ButtonVolumeKey] : 0.75}
+        [audioNavButtonPressKey] : {[helpers_AudioPlayer_AudioFileKey]: NavButtonPress, [helpers_AudioPlayer_AudioVolumeKey]: 1},
+        [audioSelectionButtonPressKey] : {[helpers_AudioPlayer_AudioFileKey]: SelectionButtonPress, [helpers_AudioPlayer_AudioVolumeKey]: 0.75},
+        [audioScreenButtonPressKey] : {[helpers_AudioPlayer_AudioFileKey]: ScreenButtonPress, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioRestartGameKey] : {[helpers_AudioPlayer_AudioFileKey] : RestartGame, [helpers_AudioPlayer_AudioVolumeKey] : 0.25},
+        [audioAdoptionConfirmationErrorKey] : {[helpers_AudioPlayer_AudioFileKey]: AdoptionConfirmationError, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioStartActivityKey] : {[helpers_AudioPlayer_AudioFileKey]: StartActivity, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioActivitySuccessKey] : {[helpers_AudioPlayer_AudioFileKey]: ActivitySuccess, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioActivityFailKey] : {[helpers_AudioPlayer_AudioFileKey]: ActivityFail, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioAdoptionSuccessKey] : {[helpers_AudioPlayer_AudioFileKey]: AdoptionSuccess, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioClearPetsKey] : {[helpers_AudioPlayer_AudioFileKey]: ClearPets, [helpers_AudioPlayer_AudioVolumeKey]: 0.5},
+        [audioQuitActivityKey] : {[helpers_AudioPlayer_AudioFileKey]: QuitActivity, [helpers_AudioPlayer_AudioVolumeKey]: 0.75},
+        [audioAddedDecorationsKey] : {[helpers_AudioPlayer_AudioFileKey]: AddedDecorations, [helpers_AudioPlayer_AudioVolumeKey]: 0.75},
+        [audioRevivedPetKey] : {[helpers_AudioPlayer_AudioFileKey]: RevivedPet, [helpers_AudioPlayer_AudioVolumeKey]: 0.75},
+        [audioSwapPetSpaceKey] : {[helpers_AudioPlayer_AudioFileKey]: SwapPetSpace, [helpers_AudioPlayer_AudioVolumeKey] : 0.75}
 
     };
 
-    const helpers_PlaySound_Audio = new Audio(helpers_PlaySound_SoundDictionary[helpers_PlaySound_SoundEffect][helpers_PlaySound_ButtonAudioKey]);
-    helpers_PlaySound_Audio.volume = helpers_PlaySound_SoundDictionary[helpers_PlaySound_SoundEffect][helpers_PlaySound_ButtonVolumeKey];
-    helpers_PlaySound_Audio.play();
+    const helpers_AudioPlayer_CurrAudio = new Audio(helpers_AudioPlayer_AudioDictionary[helpers_AudioPlayer_CurrAudioKey][helpers_AudioPlayer_AudioFileKey]);
+    helpers_AudioPlayer_CurrAudio.volume = helpers_AudioPlayer_AudioDictionary[helpers_AudioPlayer_CurrAudioKey][helpers_AudioPlayer_AudioVolumeKey];
+    helpers_AudioPlayer_CurrAudio.play();
 
 }
 
 
-export const helpers_FlagOpener = (set_Helpers_FlagOpener_FlagToOpen, helpers_FlagOpener_FlagType) => {
+export const helpers_FlagOpener = (set_Helpers_FlagOpener_CurrFlag, helpers_FlagOpener_CurrFlagType) => {
 
-    if (helpers_FlagOpener_FlagType === 0){
+    if (helpers_FlagOpener_CurrFlagType === 0){
 
-        helpers_PlaySound(soundNavButtonPressKey);
+        helpers_AudioPlayer(audioNavButtonPressKey);
 
     } else {
 
-        helpers_PlaySound(soundScreenButtonPressKey);
+        helpers_AudioPlayer(audioScreenButtonPressKey);
 
     }
 
-    set_Helpers_FlagOpener_FlagToOpen(true);
+    set_Helpers_FlagOpener_CurrFlag(true);
 
 }
 
 
 
-export const helpers_FlagCloser = (set_Helpers_FlagCloser_FlagToClose) => {
+export const helpers_FlagCloser = (set_Helpers_FlagCloser_CurrFlag) => {
     
-    helpers_PlaySound(soundScreenButtonPressKey);
-    set_Helpers_FlagCloser_FlagToClose(false);
+    helpers_AudioPlayer(audioScreenButtonPressKey);
+    set_Helpers_FlagCloser_CurrFlag(false);
 
 }

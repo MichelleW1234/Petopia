@@ -21,7 +21,7 @@ import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
-import { petScreensHelpers_Home, petScreensHelpers_PauseAudio } from "../../helpers/Helpers.js";
+import { petScreensHelpers_HomeNavigator, petScreensHelpers_AudioCanceller } from "../../helpers/Helpers.js";
 import { helpers_FlagOpener } from "../../../../helpers/Helpers.js";
 
 import HappyBarks from "../../../../Music/PetImmersionSounds/Dog/HappyBarks.mp3";
@@ -93,10 +93,10 @@ function Dog (){
     const [dog_MedicineOpenFlag, set_Dog_MedicineOpenFlag] = useState(false);
     const [dog_RecordsOpenFlag, set_Dog_RecordsOpenFlag] = useState(false);
     const [dog_ScheduleOpenFlag, set_Dog_ScheduleOpenFlag] = useState(false);
-    const [dog_FeedOptionsDesiredOption, set_Dog_FeedOptionsDesiredOption] = useState(-1);
-    const [dog_CleanOptionsDesiredOption, set_Dog_CleanOptionsDesiredOption] = useState(-1);
-    const [dog_PlayOptionsDesiredOption, set_Dog_PlayOptionsDesiredOption] = useState(-1);
-    const [dog_MedicineOptionsDesiredOption, set_Dog_MedicineOptionsDesiredOption] = useState(-1);
+    const [dog_FeedOptionsCurrDesiredOption, set_Dog_FeedOptionsCurrDesiredOption] = useState(-1);
+    const [dog_CleanOptionsCurrDesiredOption, set_Dog_CleanOptionsCurrDesiredOption] = useState(-1);
+    const [dog_PlayOptionsCurrDesiredOption, set_Dog_PlayOptionsCurrDesiredOption] = useState(-1);
+    const [dog_MedicineOptionsCurrDesiredOption, set_Dog_MedicineOptionsCurrDesiredOption] = useState(-1);
 
     const dog_Alive = ActivePetName === "" ? 
                             false
@@ -129,15 +129,11 @@ function Dog (){
                             : true;
 
 
-    const dog_Mood = ActivePetName === "" ? 
+    const dog_CurrMood = ActivePetName === "" ? 
                         -1
-                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.75 ? 
-                            0
-                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
+                    :   PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.5 ? 
                             1
-                            : PetList[ActivePetName][petHealthKey]/petSpeciesHealthCapList[petSpeciesDogKey][PetList[ActivePetName][petStageKey]] >= 0.25 ? 
-                            2
-                            : 3;
+                        :   0;
 
     const dog_CanReceiveDose = ActivePetName === "" ? 
                                     false
@@ -146,7 +142,7 @@ function Dog (){
                                         : true;
 
 
-    const dog_MainImages = ActivePetName === "" ? 
+    const dog_MainCurrStageAnimationImages = ActivePetName === "" ? 
                             [[NullPlaceholder,NullPlaceholder], [NullPlaceholder,NullPlaceholder]]
                         :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     [[MainStageOneOne, MainStageOneTwo], [MainStageOneThree, MainStageOneFour]]
@@ -154,7 +150,7 @@ function Dog (){
                                     [[MainStageTwoOne, MainStageTwoTwo], [MainStageTwoThree, MainStageTwoFour]]
                                 : [[MainStageThreeOne, MainStageThreeTwo], [MainStageThreeThree, MainStageThreeFour]];
 
-    const dog_MainSleepingImage = ActivePetName === "" ? 
+    const dog_MainCurrStageSleepAnimationImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         SleepStageOne
@@ -162,7 +158,7 @@ function Dog (){
                                         SleepStageTwo
                                     : SleepStageThree;
 
-    const dog_FeedImage = ActivePetName === "" ? 
+    const dog_FeedCurrStageAnimationImage = ActivePetName === "" ? 
                             NullPlaceholder
                         :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     FeedStageOne
@@ -170,7 +166,7 @@ function Dog (){
                                     FeedStageTwo
                                 : FeedStageThree;
 
-    const dog_CleanImage = ActivePetName === "" ? 
+    const dog_CleanCurrStageAnimationImage = ActivePetName === "" ? 
                             NullPlaceholder
                         :   PetList[ActivePetName][petStageKey] === 0 ? 
                                     CleanStageOne
@@ -178,7 +174,7 @@ function Dog (){
                                     CleanStageTwo
                                 : CleanStageThree;
 
-    const dog_MedicineImage = ActivePetName === "" ? 
+    const dog_MedicineCurrStageAnimationImage = ActivePetName === "" ? 
                                 NullPlaceholder
                             :   PetList[ActivePetName][petStageKey] === 0 ? 
                                         MedicineStageOne
@@ -227,7 +223,7 @@ function Dog (){
 
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            petScreensHelpers_Home(setActivePetName);
+            petScreensHelpers_HomeNavigator(setActivePetName);
             dog_Navigate("/home");
 
         }
@@ -337,10 +333,10 @@ function Dog (){
         if (ActivePetName === "" || dog_ActivityInProgress){
 
             Object.values(dog_AudioRefs.current).forEach(audio => {
-                petScreensHelpers_PauseAudio(audio);
+                petScreensHelpers_AudioCanceller(audio);
             });
 
-            petScreensHelpers_PauseAudio(dog_BackgroundAudioRef.current);
+            petScreensHelpers_AudioCanceller(dog_BackgroundAudioRef.current);
 
         } else {
 
@@ -359,25 +355,25 @@ function Dog (){
 
         if (dog_Hungry){
 
-            set_Dog_FeedOptionsDesiredOption(Math.floor(Math.random() * dog_FeedOptionsList.length));
+            set_Dog_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * dog_FeedOptionsList.length));
 
         }
 
         if (dog_Dirty){
 
-            set_Dog_CleanOptionsDesiredOption(Math.floor(Math.random() * dog_CleanOptionsList.length));
+            set_Dog_CleanOptionsCurrDesiredOption(Math.floor(Math.random() * dog_CleanOptionsList.length));
 
         }
 
         if (dog_Restless){
 
-            set_Dog_PlayOptionsDesiredOption(Math.floor(Math.random() * dog_PlayOptionsList.length));
+            set_Dog_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * dog_PlayOptionsList.length));
 
         }
 
         if (dog_Unwell){
 
-            set_Dog_MedicineOptionsDesiredOption(Math.floor(Math.random() * dog_MedicineOptionsList.length));
+            set_Dog_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * dog_MedicineOptionsList.length));
 
         }
 
@@ -400,36 +396,36 @@ function Dog (){
 
             {dog_FeedOpenFlag &&
             <Feed
-                feed_AnimationImage={dog_FeedImage}
-                feed_OptionsList={dog_FeedOptionsList}
-                feed_OptionsDesiredOption = {dog_FeedOptionsDesiredOption}
-                set_Feed_OptionsDesiredOption = {set_Dog_FeedOptionsDesiredOption}
+                feed_CurrStageAnimationImage={dog_FeedCurrStageAnimationImage}
+                feed_OptionsCurrSpeciesList={dog_FeedOptionsList}
+                feed_OptionsCurrDesiredOption = {dog_FeedOptionsCurrDesiredOption}
+                set_Feed_OptionsCurrDesiredOption = {set_Dog_FeedOptionsCurrDesiredOption}
                 set_Feed_OpenFlag = {set_Dog_FeedOpenFlag}
             />}
 
             {dog_CleanOpenFlag &&
             <Clean
-                clean_AnimationImage={dog_CleanImage}
-                clean_OptionsList={dog_CleanOptionsList}
-                clean_OptionsDesiredOption = {dog_CleanOptionsDesiredOption}
-                set_Clean_OptionsDesiredOption = {set_Dog_CleanOptionsDesiredOption}
+                clean_CurrStageAnimationImage={dog_CleanCurrStageAnimationImage}
+                clean_OptionsCurrSpeciesList={dog_CleanOptionsList}
+                clean_OptionsCurrDesiredOption = {dog_CleanOptionsCurrDesiredOption}
+                set_Clean_OptionsCurrDesiredOption = {set_Dog_CleanOptionsCurrDesiredOption}
                 set_Clean_OpenFlag = {set_Dog_CleanOpenFlag}
             />}
 
             {dog_PlayOpenFlag &&
             <Play
-                play_OptionsList={dog_PlayOptionsList}
-                play_OptionsDesiredOption = {dog_PlayOptionsDesiredOption}
-                set_Play_OptionsDesiredOption = {set_Dog_PlayOptionsDesiredOption}
+                play_OptionsCurrSpeciesList={dog_PlayOptionsList}
+                play_OptionsCurrDesiredOption = {dog_PlayOptionsCurrDesiredOption}
+                set_Play_OptionsCurrDesiredOption = {set_Dog_PlayOptionsCurrDesiredOption}
                 set_Play_OpenFlag = {set_Dog_PlayOpenFlag}
             />}
 
             {dog_MedicineOpenFlag &&
             <Medicine
-                medicine_AnimationImage={dog_MedicineImage}
-                medicine_OptionsList={dog_MedicineOptionsList}
-                medicine_OptionsDesiredOption = {dog_MedicineOptionsDesiredOption}
-                set_Medicine_OptionsDesiredOption = {set_Dog_MedicineOptionsDesiredOption}
+                medicine_CurrStageAnimationImage={dog_MedicineCurrStageAnimationImage}
+                medicine_OptionsCurrSpeciesList={dog_MedicineOptionsList}
+                medicine_OptionsCurrDesiredOption = {dog_MedicineOptionsCurrDesiredOption}
+                set_Medicine_OptionsCurrDesiredOption = {set_Dog_MedicineOptionsCurrDesiredOption}
                 set_Medicine_OpenFlag = {set_Dog_MedicineOpenFlag}
             />}
 
@@ -447,7 +443,7 @@ function Dog (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_HomeNavigator(setActivePetName)}> Home <br/> [1]</Link>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpers_FlagOpener(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpers_FlagOpener(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
@@ -489,11 +485,11 @@ function Dog (){
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
                     <Main
-                        main_AnimationImages={dog_MainImages}
-                        main_SleepingImage={dog_MainSleepingImage}
-                        main_PetAudios={dog_AudioRefs}
-                        main_PetEnergy = {350}
-                        main_PetMood = {dog_Mood}
+                        main_CurrStageAnimationImages={dog_MainCurrStageAnimationImages}
+                        main_CurrStageSleepAnimationImage={dog_MainCurrStageSleepAnimationImage}
+                        main_CurrSpeciesAudios={dog_AudioRefs}
+                        main_CurrPetEnergy = {350}
+                        main_CurrMood = {dog_CurrMood}
                         main_ActivityInProgress={dog_ActivityInProgress}
                     />
                 </div>

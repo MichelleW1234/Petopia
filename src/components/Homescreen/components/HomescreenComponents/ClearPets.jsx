@@ -7,28 +7,28 @@ import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { soundSelectionButtonPressKey, soundClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
-import { helpers_PlaySound, helpers_FlagCloser } from "../../../../helpers/Helpers.js";
+import { audioSelectionButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
+import { helpers_AudioPlayer, helpers_FlagCloser } from "../../../../helpers/Helpers.js";
 
 
 
 
-function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
+function ClearPets({set_ClearPets_OpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
     const {Inventory, setInventory} = useInventory();
 
-    const [clearPets_SelectedPets, set_ClearPets_SelectedPets] = useState([]);
+    const [clearPets_CurrSelectedEntries, set_ClearPets_CurrSelectedPets] = useState([]);
 
 
-    
+
     useKeyboardShortcut("Enter", () => {
         
-        if (clearPets_SelectedPets.length > 0){
+        if (clearPets_CurrSelectedEntries.length > 0){
 
-            clearPets_ClearPets();
+            clearPets_SelectedEntriesManager();
 
         }
 
@@ -39,7 +39,7 @@ function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        helpers_FlagCloser(set_ClearPets_OpenClearPetsFlag);
+        helpers_FlagCloser(set_ClearPets_OpenFlag);
 
     },
         ".Quit"
@@ -49,61 +49,61 @@ function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
 
 
 
-    const clearPets_AddPet = (clearPets_AddPet_PetToAdd) => {
+    const clearPets_EntrySelector = (clearPets_EntrySelector_UserSelection) => {
 
-        helpers_PlaySound(soundSelectionButtonPressKey);
-        set_ClearPets_SelectedPets(prev => [...prev, clearPets_AddPet_PetToAdd]);
+        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        set_ClearPets_CurrSelectedPets(prev => [...prev, clearPets_EntrySelector_UserSelection]);
 
     }
 
 
-    const clearPets_RemovePet = (clearPets_RemovePet_PetToRemove) => {
+    const clearPets_EntryDeselector = (clearPets_EntryDeselector_UserSelection) => {
 
-        helpers_PlaySound(soundSelectionButtonPressKey);
-        set_ClearPets_SelectedPets(prev => prev.filter(pet => pet !== clearPets_RemovePet_PetToRemove));
+        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        set_ClearPets_CurrSelectedPets(prev => prev.filter(pet => pet !== clearPets_EntryDeselector_UserSelection));
         
     }
 
 
-    const clearPets_ClearPets = () => {
+    const clearPets_SelectedEntriesManager = () => {
 
-        helpers_PlaySound(soundClearPetsKey);
+        helpers_AudioPlayer(audioClearPetsKey);
 
         setPetTimeStamps(prev => {
 
-            let clearPets_ClearPets_Copy = { ...prev };
+            let clearPets_SelectedEntriesManager_CurrCopy = { ...prev };
 
-            clearPets_SelectedPets.forEach(petToRemove => {
-                const { [petToRemove]: _, ...clearPets_ClearPets_Rest } = clearPets_ClearPets_Copy;
-                clearPets_ClearPets_Copy = clearPets_ClearPets_Rest;
+            clearPets_CurrSelectedEntries.forEach(petToRemove => {
+                const { [petToRemove]: _, ...clearPets_SelectedEntriesManager_CurrRemainder } = clearPets_SelectedEntriesManager_CurrCopy;
+                clearPets_SelectedEntriesManager_CurrCopy = clearPets_SelectedEntriesManager_CurrRemainder;
             });
 
-            return clearPets_ClearPets_Copy;
+            return clearPets_SelectedEntriesManager_CurrCopy;
 
         });
 
         setPetList(prev => {
 
-            let clearPets_ClearPets_Copy = { ...prev };
+            let clearPets_SelectedEntriesManager_CurrCopy = { ...prev };
 
-            clearPets_SelectedPets.forEach(petToRemove => {
-                const { [petToRemove]: _, ...clearPets_ClearPets_Rest } = clearPets_ClearPets_Copy;
-                clearPets_ClearPets_Copy = clearPets_ClearPets_Rest;
+            clearPets_CurrSelectedEntries.forEach(petToRemove => {
+                const { [petToRemove]: _, ...clearPets_SelectedEntriesManager_CurrRemainder } = clearPets_SelectedEntriesManager_CurrCopy;
+                clearPets_SelectedEntriesManager_CurrCopy = clearPets_SelectedEntriesManager_CurrRemainder;
             });
 
-            return clearPets_ClearPets_Copy;
+            return clearPets_SelectedEntriesManager_CurrCopy;
 
         });
 
         setInventory(prev => {
 
-            const clearPets_ClearPets_Copy = prev.map(inner =>
+            const clearPets_SelectedEntriesManager_CurrCopy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            clearPets_SelectedPets.forEach(petToRemove => {
+            clearPets_CurrSelectedEntries.forEach(petToRemove => {
 
-                clearPets_ClearPets_Copy.forEach(item => {
+                clearPets_SelectedEntriesManager_CurrCopy.forEach(item => {
                     if (item[inventoryItemOwnerKey] === petToRemove) {
                         item[inventoryItemOwnerKey] = null;
                     }
@@ -111,24 +111,24 @@ function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
             
             });
 
-            return clearPets_ClearPets_Copy;
+            return clearPets_SelectedEntriesManager_CurrCopy;
 
         });
 
         setRoom(prev => {
 
-            let clearPets_ClearPets_Copy = [...prev];
+            let clearPets_SelectedEntriesManager_CurrCopy = [...prev];
 
-            clearPets_SelectedPets.forEach(petToRemove => {
-                const clearPets_ClearPets_PetRoom = clearPets_ClearPets_Copy.findIndex(room => room === petToRemove);
-                clearPets_ClearPets_Copy[clearPets_ClearPets_PetRoom] = null;
+            clearPets_CurrSelectedEntries.forEach(petToRemove => {
+                const clearPets_SelectedEntriesManager_CurrPetRoom = clearPets_SelectedEntriesManager_CurrCopy.findIndex(room => room === petToRemove);
+                clearPets_SelectedEntriesManager_CurrCopy[clearPets_SelectedEntriesManager_CurrPetRoom] = null;
             });
 
-            return clearPets_ClearPets_Copy;
+            return clearPets_SelectedEntriesManager_CurrCopy;
 
         });
 
-        helpers_FlagCloser(set_ClearPets_OpenClearPetsFlag);
+        helpers_FlagCloser(set_ClearPets_OpenFlag);
 
     }
 
@@ -152,15 +152,15 @@ function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
 
                             <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
-                                {clearPets_SelectedPets.includes(petName) ? (
+                                {clearPets_CurrSelectedEntries.includes(petName) ? (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => clearPets_RemovePet(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => clearPets_EntryDeselector(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
                                 ) : (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => clearPets_AddPet(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => clearPets_EntrySelector(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
@@ -180,15 +180,15 @@ function ClearPets({set_ClearPets_OpenClearPetsFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_FlagCloser(set_ClearPets_OpenClearPetsFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_FlagCloser(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
 
-                {clearPets_SelectedPets.length === 0 ? (
+                {clearPets_CurrSelectedEntries.length === 0 ? (
 
                     <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets_ClearPets()}>Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets_SelectedEntriesManager()}>Remove Selected Pets <br/> [return]</button>
 
                 )}
 

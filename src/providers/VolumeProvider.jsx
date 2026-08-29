@@ -8,15 +8,15 @@ export function VolumeProvider({ children }) {
 
     try {
 
-        const volume_Stored = JSON.parse(localStorage.getItem("Volume"));
+        const volume_CurrValue = JSON.parse(localStorage.getItem("Volume"));
         
-        if (volume_Stored === null){
+        if (volume_CurrValue === null){
 
             return 0.5;
 
         }
 
-        const volume_Value = Number(volume_Stored);
+        const volume_Value = Number(volume_CurrValue);
 
         return Number.isFinite(volume_Value) ? volume_Value : 0.5;
 

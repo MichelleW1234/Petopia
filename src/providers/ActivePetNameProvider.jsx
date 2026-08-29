@@ -10,8 +10,8 @@ export function ActivePetNameProvider({ children }) {
 
     const [ActivePetName, setActivePetName] = useState(() => {
         try {
-            const activePetName_Stored = JSON.parse(sessionStorage.getItem("ActivePetName"));
-            return activePetName_Stored !== null ? String(activePetName_Stored) : "";
+            const activePetName_CurrValue = JSON.parse(sessionStorage.getItem("ActivePetName"));
+            return activePetName_CurrValue !== null ? String(activePetName_CurrValue) : "";
         } catch {
             return "";
         }

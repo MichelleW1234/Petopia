@@ -16,8 +16,8 @@ export function PetListProvider({ children }) {
 
   const [PetList, setPetList] = useState(() => {
     try {
-      const petList_Stored = JSON.parse(localStorage.getItem("PetList"));
-      return petList_Stored && typeof petList_Stored === "object" ? petList_Stored : {};
+      const petList_CurrValue = JSON.parse(localStorage.getItem("PetList"));
+      return petList_CurrValue && typeof petList_CurrValue === "object" ? petList_CurrValue : {};
     } catch {
       return {};
     }

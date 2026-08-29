@@ -11,8 +11,8 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import inventoryItemLock from "../../../images/inventoryItemLock.png";
 
-import { helpers_FlagCloser, helpers_PlaySound } from "../../../helpers/Helpers.js";
-import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, soundScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, soundAddedDecorationsKey, soundRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
+import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
 
@@ -36,85 +36,85 @@ function Inventory({set_Inventory_OpenFlag}) {
 
 
     
-    const inventory_SelectPet = (inventory_SelectPet_SelectedIndex, inventory_SelectPet_PetName) => {
+    const inventory_EntryOwnerSelector = (inventory_EntryOwnerSelector_EntryIndex, inventory_EntryOwnerSelector_UserSelection) => {
 
-        helpers_PlaySound(soundScreenButtonPressKey);
+        helpers_AudioPlayer(audioScreenButtonPressKey);
 
-        if (Inventory[inventory_SelectPet_SelectedIndex][inventoryItemTypeKey] === inventoryItemTypePotionKey){
+        if (Inventory[inventory_EntryOwnerSelector_EntryIndex][inventoryItemTypeKey] === inventoryItemTypePotionKey){
         
-            helpers_PlaySound(soundRevivedPetKey);
+            helpers_AudioPlayer(audioRevivedPetKey);
             setPetList(prev => {
 
-                const inventory_SelectPet_Copy = structuredClone(prev);
+                const inventory_EntryOwnerSelector_CurrCopy = structuredClone(prev);
 
-                if (inventory_SelectPet_Copy[inventory_SelectPet_PetName][petSpeciesKey] === petSpeciesDogKey){
+                if (inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey] === petSpeciesDogKey){
 
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petHealthKey] = petSpeciesHealthCapList[petSpeciesDogKey][0];
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesDogKey][0];
 
-                } else if (inventory_SelectPet_Copy[inventory_SelectPet_PetName][petSpeciesKey] === petSpeciesCatKey){
+                } else if (inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey] === petSpeciesCatKey){
 
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petHealthKey] = petSpeciesHealthCapList[petSpeciesCatKey][0];
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesCatKey][0];
 
                 } else {
 
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petHealthKey] = petSpeciesHealthCapList[petSpeciesFishKey][0];
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesFishKey][0];
 
                 }
 
-                return inventory_SelectPet_Copy;
+                return inventory_EntryOwnerSelector_CurrCopy;
 
             });
 
             setPetTimeStamps(prev => {
 
-                const inventory_SelectPet_Copy = structuredClone(prev);
+                const inventory_EntryOwnerSelector_CurrCopy = structuredClone(prev);
 
-                if (petActivityTimeStampFeedingKey in inventory_SelectPet_Copy[inventory_SelectPet_PetName]){
+                if (petActivityTimeStampFeedingKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
 
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
 
                 }
                 
-                if (petActivityTimeStampCleaningKey in inventory_SelectPet_Copy[inventory_SelectPet_PetName]){
+                if (petActivityTimeStampCleaningKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
 
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
-
-                }
-
-                if (petActivityTimeStampPlayingKey in inventory_SelectPet_Copy[inventory_SelectPet_PetName]){
-
-                    inventory_SelectPet_Copy[inventory_SelectPet_PetName][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
 
                 }
 
-                return inventory_SelectPet_Copy;
+                if (petActivityTimeStampPlayingKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
+
+                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+
+                }
+
+                return inventory_EntryOwnerSelector_CurrCopy;
 
             });
 
             setInventory(prev => {
 
-                const inventory_SelectPet_Copy = prev.map(inner =>
+                const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                inventory_SelectPet_Copy.splice(inventory_SelectPet_SelectedIndex, 1);
+                inventory_EntryOwnerSelector_CurrCopy.splice(inventory_EntryOwnerSelector_EntryIndex, 1);
 
-                return inventory_SelectPet_Copy;
+                return inventory_EntryOwnerSelector_CurrCopy;
 
             });
 
         } else {
 
-            helpers_PlaySound(soundAddedDecorationsKey);
+            helpers_AudioPlayer(audioAddedDecorationsKey);
             setInventory(prev => {
 
-                const inventory_SelectPet_Copy = prev.map(inner =>
+                const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
                     structuredClone(inner)
                 );
 
-                inventory_SelectPet_Copy[inventory_SelectPet_SelectedIndex][inventoryItemOwnerKey] = inventory_SelectPet_PetName;
+                inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_EntryIndex][inventoryItemOwnerKey] = inventory_EntryOwnerSelector_UserSelection;
 
-                return inventory_SelectPet_Copy;
+                return inventory_EntryOwnerSelector_CurrCopy;
 
             });
 
@@ -122,18 +122,18 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     }
 
-    const inventory_DeselectPet = (inventory_DeselectPet_DeselectedIndex) => {
+    const inventory_EntryOwnerDeselector = (inventory_EntryOwnerDeselector_EntryIndex) => {
 
-        helpers_PlaySound(soundScreenButtonPressKey);
+        helpers_AudioPlayer(audioScreenButtonPressKey);
         setInventory(prev => {
 
-            const inventory_DeselectPet_Copy = prev.map(inner =>
+            const inventory_EntryOwnerDeselector_CurrCopy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            inventory_DeselectPet_Copy[inventory_DeselectPet_DeselectedIndex][inventoryItemOwnerKey] = null;
+            inventory_EntryOwnerDeselector_CurrCopy[inventory_EntryOwnerDeselector_EntryIndex][inventoryItemOwnerKey] = null;
 
-            return iinventory_DeselectPet_Copy;
+            return iinventory_EntryOwnerDeselector_CurrCopy;
 
         });
 
@@ -214,9 +214,9 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                     ) : (
 
-                                        Room.map((inventory_SelectPet_PetName, indexInner) => (
+                                        Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
-                                            inventory_SelectPet_PetName === null ? (
+                                            inventory_EntryOwnerSelector_UserSelection === null ? (
 
                                                 null
 
@@ -224,29 +224,29 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                                 item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
 
-                                                    PetList[inventory_SelectPet_PetName][petHealthKey] === 0 ? (
+                                                    PetList[inventory_EntryOwnerSelector_UserSelection][petHealthKey] === 0 ? (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_SelectPet(index, inventory_SelectPet_PetName)}> {inventory_SelectPet_PetName} </button>
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                     ) : (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_SelectPet_PetName} </button>
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                     )
 
                                                 ) : (
 
-                                                    item[inventoryItemOwnerKey] === inventory_SelectPet_PetName ? (
+                                                    item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => inventory_DeselectPet(index)}> {inventory_SelectPet_PetName} </button>
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
-                                                    ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_SelectPet_PetName][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_SelectPet_PetName && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+                                                    ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_SelectPet(index, inventory_SelectPet_PetName)}> {inventory_SelectPet_PetName} </button>
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                     ) : (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_SelectPet_PetName} </button>
+                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                     )
 

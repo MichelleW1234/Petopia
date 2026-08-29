@@ -3,8 +3,8 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_PlaySound, helpers_FlagCloser } from "../../../../helpers/Helpers.js";
-import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, soundNavButtonPressKey, soundSwapPetSpaceKey } from "../../../../constants/Constants.js";
+import { helpers_AudioPlayer, helpers_FlagCloser } from "../../../../helpers/Helpers.js";
+import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
 import "./RearrangePets.css";
@@ -26,29 +26,29 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
 
 
-    const rearrangePets_MoveForwards = (rearrangePets_MoveForwards_Index) => {
+    const rearrangePets_ForwardShifter = (rearrangePets_ForwardShifter_UserSelection) => {
 
-        helpers_PlaySound(soundSwapPetSpaceKey);
+        helpers_AudioPlayer(audioSwapPetSpaceKey);
 
         setRoom(prev => {
 
-            let rearrangePets_MoveForwards_Copy = [...prev];
+            let rearrangePets_ForwardShifter_CurrCopy = [...prev];
 
-            if (rearrangePets_MoveForwards_Index === 2) {
+            if (rearrangePets_ForwardShifter_UserSelection === 2) {
 
-                const rearrangePets_MoveForwards_Temp = rearrangePets_MoveForwards_Copy[0];
-                rearrangePets_MoveForwards_Copy[0] = rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index];
-                rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index] = rearrangePets_MoveForwards_Temp;
+                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[0];
+                rearrangePets_ForwardShifter_CurrCopy[0] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
+                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
 
             } else {
 
-                const rearrangePets_MoveForwards_Temp = rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index+1];
-                rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index+1] = rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index];
-                rearrangePets_MoveForwards_Copy[rearrangePets_MoveForwards_Index] = rearrangePets_MoveForwards_Temp;
+                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1];
+                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
+                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
 
             }
 
-            return rearrangePets_MoveForwards_Copy;
+            return rearrangePets_ForwardShifter_CurrCopy;
 
         });
 
@@ -64,11 +64,11 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                    {Room.map((petName, rearrangePets_MoveForwards_Index) => (
+                    {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
                         petName === null ? (
 
-                            <div key = {rearrangePets_MoveForwards_Index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
                                 <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>[ Name ]</h2>
@@ -76,12 +76,12 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 <img src = {NoPetPortrait}/>
 
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_MoveForwards(rearrangePets_MoveForwards_Index)}> &#x2B95; </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                             </div>
 
                         ) : (
 
-                            <div key = {rearrangePets_MoveForwards_Index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
                                 <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                     <h2>{petName}</h2>
@@ -89,7 +89,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
 
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_MoveForwards(rearrangePets_MoveForwards_Index)}> &#x2B95; </button>
+                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                             </div>
 
                         )

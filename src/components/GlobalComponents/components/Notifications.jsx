@@ -8,17 +8,17 @@ function Notifications() {
 
     const {Notifications, setNotifications} = useNotifications();
 
-    const notifications_DeleteNotification = (notifications_DeleteNotification_Index) => {
+    const notifications_EntryRemover = (notifications_EntryRemover_UserSelection) => {
 
         setNotifications(prev => {
 
-            const notifications_DeleteNotification_Copy = prev.map(inner =>
+            const notifications_EntryRemover_CurrCopy = prev.map(inner =>
                 structuredClone(inner)
             );
 
-            notifications_DeleteNotification_Copy.splice(notifications_DeleteNotification_Index, 1);
+            notifications_EntryRemover_CurrCopy.splice(notifications_EntryRemover_UserSelection, 1);
 
-            return notifications_DeleteNotification_Copy;
+            return notifications_EntryRemover_CurrCopy;
 
         });
 
@@ -27,16 +27,16 @@ function Notifications() {
     return (
         <div className = "Notifications_ComponentContainer-Structure--Cards">
 
-            {Notifications.map((entry, notifications_DeleteNotification_Index) => (
+            {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_DeleteNotification_Index} className="Notifications_ComponentContainer-Structure--Card">
+                <div key = {notifications_EntryRemover_UserSelection} className="Notifications_ComponentContainer-Structure--Card">
                     <div className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Notifications_ComponentContainer-Structure--CardContent">
                         <h2>Alert:</h2>
                         <p>{entry[notificationsDescriptionKey]}</p>
                         <h2>Date:</h2>
                         <p>{entry[notificationsDateKey]}</p>
                     </div>
-                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => notifications_DeleteNotification(notifications_DeleteNotification_Index)}> X </button>
+                    <button className="MiscellaneousElements_ComponentButton-Template--Screen" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> X </button>
                 </div>
 
             ))}

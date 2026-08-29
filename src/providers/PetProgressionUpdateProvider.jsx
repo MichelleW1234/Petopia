@@ -29,31 +29,31 @@ export function PetProgressionUpdateProvider({ children }) {
     useEffect(() => {
 
         const petProgressionUpdate_CurrDate = GlobalTimer;
-        petProgressionUpdate_AllPetChecks(petProgressionUpdate_CurrDate);
+        petProgressionUpdate_PetChecker(petProgressionUpdate_CurrDate);
 
     }, [Math.floor(GlobalTimer / 60000)]);
 
 
 
 
-    const petProgressionUpdate_AllPetChecks = (petProgressionUpdate_AllPetChecks_CurrDate) => {
+    const petProgressionUpdate_PetChecker = (petProgressionUpdate_PetChecker_CurrDate) => {
 
         console.log("checking");
 
-        const petProgressionUpdate_AllPetChecks_UpdatedPetTimeStamps = structuredClone(petProgressionUpdate_PetTimeStampsRef.current);
-        const petProgressionUpdate_AllPetChecks_UpdatedPetList = structuredClone(petProgressionUpdate_PetListRef.current);
+        const petProgressionUpdate_PetChecker_CurrPetTimeStampsCopy = structuredClone(petProgressionUpdate_PetTimeStampsRef.current);
+        const petProgressionUpdate_PetChecker_CurrPetListCopy = structuredClone(petProgressionUpdate_PetListRef.current);
 
-        for (const petProgressionUpdate_AllPetChecks_CurrPetKey in petProgressionUpdate_AllPetChecks_UpdatedPetList){
+        for (const petProgressionUpdate_PetChecker_CurrPetKey in petProgressionUpdate_PetChecker_CurrPetListCopy){
 
             // Checking for if pet is alive:
-            if (petProgressionUpdate_AllPetChecks_UpdatedPetList[petProgressionUpdate_AllPetChecks_CurrPetKey][petHealthKey] > 0) {
+            if (petProgressionUpdate_PetChecker_CurrPetListCopy[petProgressionUpdate_PetChecker_CurrPetKey][petHealthKey] > 0) {
 
-                petProgressionUpdate_DamageCheck(petProgressionUpdate_AllPetChecks_UpdatedPetList[petProgressionUpdate_AllPetChecks_CurrPetKey], petProgressionUpdate_AllPetChecks_CurrDate, petProgressionUpdate_AllPetChecks_UpdatedPetTimeStamps[petProgressionUpdate_AllPetChecks_CurrPetKey]);
+                petProgressionUpdate_DamageChecker(petProgressionUpdate_PetChecker_CurrPetListCopy[petProgressionUpdate_PetChecker_CurrPetKey], petProgressionUpdate_PetChecker_CurrDate, petProgressionUpdate_PetChecker_CurrPetTimeStampsCopy[petProgressionUpdate_PetChecker_CurrPetKey]);
                 
                 // Check pet growth stage if pet is still alive after health update:
-                if (petProgressionUpdate_AllPetChecks_UpdatedPetList[petProgressionUpdate_AllPetChecks_CurrPetKey][petHealthKey] === 0){
+                if (petProgressionUpdate_PetChecker_CurrPetListCopy[petProgressionUpdate_PetChecker_CurrPetKey][petHealthKey] === 0){
 
-                    petProgressionUpdate_PetAgeCheck(petProgressionUpdate_AllPetChecks_CurrDate, petProgressionUpdate_AllPetChecks_UpdatedPetList[petProgressionUpdate_AllPetChecks_CurrPetKey]);
+                    petProgressionUpdate_PetStageChecker(petProgressionUpdate_PetChecker_CurrDate, petProgressionUpdate_PetChecker_CurrPetListCopy[petProgressionUpdate_PetChecker_CurrPetKey]);
 
                 }
 
@@ -61,101 +61,101 @@ export function PetProgressionUpdateProvider({ children }) {
 
         }
 
-        setPetTimeStamps(petProgressionUpdate_AllPetChecks_UpdatedPetTimeStamps);
-        setPetList(petProgressionUpdate_AllPetChecks_UpdatedPetList);
+        setPetTimeStamps(petProgressionUpdate_PetChecker_CurrPetTimeStampsCopy);
+        setPetList(petProgressionUpdate_PetChecker_CurrPetListCopy);
 
     };
 
 
-    const petProgressionUpdate_DamageCheck = (petProgressionUpdate_DamageCheck_CurrPet, petProgressionUpdate_DamageCheck_CurrDate, petProgressionUpdate_DamageCheck_CurrPetTimeStamps) => {
+    const petProgressionUpdate_DamageChecker = (petProgressionUpdate_DamageChecker_CurrPet, petProgressionUpdate_DamageChecker_CurrDate, petProgressionUpdate_DamageChecker_CurrPetTimeStamps) => {
 
-        let petProgressionUpdate_DamageCheck_PetTimeLimits;
+        let petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits;
 
-        if (petActivityTimeStampFeedingKey in petProgressionUpdate_DamageCheck_CurrPetTimeStamps && petActivityTimeStampCleaningKey in petProgressionUpdate_DamageCheck_CurrPetTimeStamps && petActivityTimeStampPlayingKey in petProgressionUpdate_DamageCheck_CurrPetTimeStamps){
+        if (petActivityTimeStampFeedingKey in petProgressionUpdate_DamageChecker_CurrPetTimeStamps && petActivityTimeStampCleaningKey in petProgressionUpdate_DamageChecker_CurrPetTimeStamps && petActivityTimeStampPlayingKey in petProgressionUpdate_DamageChecker_CurrPetTimeStamps){
 
-            petProgressionUpdate_DamageCheck_PetTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey];
+            petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesDogKey];
 
-        } else if (petActivityTimeStampFeedingKey in petProgressionUpdate_DamageCheck_CurrPetTimeStamps && petActivityTimeStampPlayingKey in petProgressionUpdate_DamageCheck_CurrPetTimeStamps){
+        } else if (petActivityTimeStampFeedingKey in petProgressionUpdate_DamageChecker_CurrPetTimeStamps && petActivityTimeStampPlayingKey in petProgressionUpdate_DamageChecker_CurrPetTimeStamps){
 
-            petProgressionUpdate_DamageCheck_PetTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey];
+            petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesCatKey];
 
         } else {
 
-            petProgressionUpdate_DamageCheck_PetTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesFishKey];
+            petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits = petSpeciesActivityTimeStampTimeLimitList[petSpeciesFishKey];
         
         }
 
-        let petProgressionUpdate_DamageCheck_HealthAffected = 0;
+        let petProgressionUpdate_DamageChecker_CurrTotalHealthDamage = 0;
 
         // Iterate through every activity of this pet to see how much health petProgressionUpdateDamage there is:
-        for (const petProgressionUpdate_DamageCheck_CurrActivityKey in petProgressionUpdate_DamageCheck_PetTimeLimits){
+        for (const petProgressionUpdate_DamageChecker_CurrActivityKey in petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits){
 
             // Either last damage update or last activity update (whichever was most recent) used for determining if there should be another petProgressionUpdateDamage update:
-            const petProgressionUpdate_DamageCheck_Subtrahend = Math.max(petProgressionUpdate_DamageCheck_CurrPetTimeStamps[petProgressionUpdate_DamageCheck_CurrActivityKey][petActivityTimeStampLastPerformedKey], petProgressionUpdate_DamageCheck_CurrPetTimeStamps[petProgressionUpdate_DamageCheck_CurrActivityKey][petActivityTimeStampLastDamagedKey]); 
+            const petProgressionUpdate_DamageChecker_CurrSubtrahend = Math.max(petProgressionUpdate_DamageChecker_CurrPetTimeStamps[petProgressionUpdate_DamageChecker_CurrActivityKey][petActivityTimeStampLastPerformedKey], petProgressionUpdate_DamageChecker_CurrPetTimeStamps[petProgressionUpdate_DamageChecker_CurrActivityKey][petActivityTimeStampLastDamagedKey]); 
 
-            const {petProgressionUpdate_CalculatingNewTimes_AddedHealthDamage : petProgressionUpdate_DamageCheck_AddedHealthDamage, petProgressionUpdate_CalculatingNewTimes_NewPetTimeStamp : petProgressionUpdate_DamageCheck_NewPetTimeStamp } = petProgressionUpdate_CalculatingNewTimes(petProgressionUpdate_DamageCheck_CurrDate, petProgressionUpdate_DamageCheck_Subtrahend, petProgressionUpdate_DamageCheck_PetTimeLimits[petProgressionUpdate_DamageCheck_CurrActivityKey], petActivityTimeStampDamageList[petProgressionUpdate_DamageCheck_CurrActivityKey]);
+            const {petProgressionUpdate_CurrActivityDamageChecker_CurrHealthDamage : petProgressionUpdate_DamageChecker_CurrActivityHealthDamage, petProgressionUpdate_CurrActivityDamageChecker_CurrDamageTimeStamp : petProgressionUpdate_DamageChecker_CurrDamageTimeStamp } = petProgressionUpdate_CurrActivityDamageChecker(petProgressionUpdate_DamageChecker_CurrDate, petProgressionUpdate_DamageChecker_CurrSubtrahend, petProgressionUpdate_DamageChecker_CurrSpeciesTimeLimits[petProgressionUpdate_DamageChecker_CurrActivityKey], petActivityTimeStampDamageList[petProgressionUpdate_DamageChecker_CurrActivityKey]);
 
-            if (petProgressionUpdate_DamageCheck_NewPetTimeStamp > petProgressionUpdate_DamageCheck_Subtrahend && petProgressionUpdate_DamageCheck_AddedHealthDamage > 0) {
+            if (petProgressionUpdate_DamageChecker_CurrDamageTimeStamp > petProgressionUpdate_DamageChecker_CurrSubtrahend && petProgressionUpdate_DamageChecker_CurrActivityHealthDamage > 0) {
 
-                petProgressionUpdate_DamageCheck_CurrPetTimeStamps[petProgressionUpdate_DamageCheck_CurrActivityKey][petActivityTimeStampLastDamagedKey] = petProgressionUpdate_DamageCheck_NewPetTimeStamp;
-                petProgressionUpdate_DamageCheck_HealthAffected += petProgressionUpdate_DamageCheck_AddedHealthDamage;
+                petProgressionUpdate_DamageChecker_CurrPetTimeStamps[petProgressionUpdate_DamageChecker_CurrActivityKey][petActivityTimeStampLastDamagedKey] = petProgressionUpdate_DamageChecker_CurrDamageTimeStamp;
+                petProgressionUpdate_DamageChecker_CurrTotalHealthDamage += petProgressionUpdate_DamageChecker_CurrActivityHealthDamage;
 
             }
 
         }
 
         // Update health key with any new damage updates:
-        if (petProgressionUpdate_DamageCheck_HealthAffected > 0){
+        if (petProgressionUpdate_DamageChecker_CurrTotalHealthDamage > 0){
 
-            petProgressionUpdate_DamageCheck_CurrPet[petHealthKey] = Math.max(petProgressionUpdate_DamageCheck_CurrPet[petHealthKey] - petProgressionUpdate_DamageCheck_HealthAffected, 0);
+            petProgressionUpdate_DamageChecker_CurrPet[petHealthKey] = Math.max(petProgressionUpdate_DamageChecker_CurrPet[petHealthKey] - petProgressionUpdate_DamageChecker_CurrTotalHealthDamage, 0);
 
         }
 
     }
 
 
-    const petProgressionUpdate_CalculatingNewTimes = (petProgressionUpdate_CalculatingNewTimes_CurrDate, petProgressionUpdate_CalculatingNewTimes_Subtrahend, petProgressionUpdate_CalculatingNewTimes_Limit, petProgressionUpdate_CalculatingNewTimes_Damage) => {
+    const petProgressionUpdate_CurrActivityDamageChecker = (petProgressionUpdate_CurrActivityDamageChecker_CurrDate, petProgressionUpdate_CurrActivityDamageChecker_CurrSubtrahend, petProgressionUpdate_CurrActivityDamageChecker_CurrActivityTimeLimit, petProgressionUpdate_CurrActivityDamageChecker_CurrActivityDamageValue) => {
 
         // Calculating the number of times the limit has been passed since last check
-        const petProgressionUpdate_CalculatingNewTimes_IntervalsPassed = Math.floor((petProgressionUpdate_CalculatingNewTimes_CurrDate - petProgressionUpdate_CalculatingNewTimes_Subtrahend) / petProgressionUpdate_CalculatingNewTimes_Limit);
+        const petProgressionUpdate_CurrActivityDamageChecker_CurrIntervalsPassed = Math.floor((petProgressionUpdate_CurrActivityDamageChecker_CurrDate - petProgressionUpdate_CurrActivityDamageChecker_CurrSubtrahend) / petProgressionUpdate_CurrActivityDamageChecker_CurrActivityTimeLimit);
 
         // Amount of damage for current activity * intervals passed
-        const petProgressionUpdate_CalculatingNewTimes_AddedHealthDamage = petProgressionUpdate_CalculatingNewTimes_Damage*petProgressionUpdate_CalculatingNewTimes_IntervalsPassed; 
+        const petProgressionUpdate_CurrActivityDamageChecker_CurrHealthDamage = petProgressionUpdate_CurrActivityDamageChecker_CurrActivityDamageValue*petProgressionUpdate_CurrActivityDamageChecker_CurrIntervalsPassed; 
 
-        // Last health timestamp + number of intervals accounted for in new petProgressionUpdate_CalculatingNewTimes_Damage update
-        const petProgressionUpdate_CalculatingNewTimes_NewPetTimeStamp = petProgressionUpdate_CalculatingNewTimes_Subtrahend + petProgressionUpdate_CalculatingNewTimes_IntervalsPassed*petProgressionUpdate_CalculatingNewTimes_Limit; 
+        // Last health timestamp + number of intervals accounted for in new petProgressionUpdate_CurrActivityDamageChecker_CurrActivityDamageValue update
+        const petProgressionUpdate_CurrActivityDamageChecker_CurrDamageTimeStamp = petProgressionUpdate_CurrActivityDamageChecker_CurrSubtrahend + petProgressionUpdate_CurrActivityDamageChecker_CurrIntervalsPassed*petProgressionUpdate_CurrActivityDamageChecker_CurrActivityTimeLimit; 
 
-        return { petProgressionUpdate_CalculatingNewTimes_AddedHealthDamage, petProgressionUpdate_CalculatingNewTimes_NewPetTimeStamp };
+        return { petProgressionUpdate_CurrActivityDamageChecker_CurrHealthDamage, petProgressionUpdate_CurrActivityDamageChecker_CurrDamageTimeStamp };
 
     }
 
 
-    const petProgressionUpdate_PetAgeCheck = (petProgressionUpdate_PetAgeCheck_CurrDate, petProgressionUpdate_PetAgeCheck_UpdatePet) => {
+    const petProgressionUpdate_PetStageChecker = (petProgressionUpdate_PetStageChecker_CurrDate, petProgressionUpdate_PetStageChecker_CurrPet) => {
 
-        let petProgressionUpdate_PetAgeCheck_PetTimeCap;
+        let petProgressionUpdate_PetStageChecker_CurrSpeciesGrowthRate;
 
-        if(petProgressionUpdate_PetAgeCheck_UpdatePet[petSpeciesKey] === petSpeciesDogKey){
+        if(petProgressionUpdate_PetStageChecker_CurrPet[petSpeciesKey] === petSpeciesDogKey){
         // Grows every 5 days
 
-            petProgressionUpdate_PetAgeCheck_PetTimeCap = 432000000;
+            petProgressionUpdate_PetStageChecker_CurrSpeciesGrowthRate = 432000000;
 
-        } else if (petProgressionUpdate_PetAgeCheck_UpdatePet[petSpeciesKey] === petSpeciesCatKey){
+        } else if (petProgressionUpdate_PetStageChecker_CurrPet[petSpeciesKey] === petSpeciesCatKey){
         // Grows every week
 
-            petProgressionUpdate_PetAgeCheck_PetTimeCap = 604800000;
+            petProgressionUpdate_PetStageChecker_CurrSpeciesGrowthRate = 604800000;
 
         } else {
         // Grows every 3 days
 
-            petProgressionUpdate_PetAgeCheck_PetTimeCap = 259200000;
+            petProgressionUpdate_PetStageChecker_CurrSpeciesGrowthRate = 259200000;
 
         }
 
-        const petProgressionUpdate_PetAgeCheck_CheckingStage = Math.max(Math.floor((petProgressionUpdate_PetAgeCheck_CurrDate - petProgressionUpdate_PetAgeCheck_UpdatePet[petBirthDateKey]) / petProgressionUpdate_PetAgeCheck_PetTimeCap), 2);
-        if (petProgressionUpdate_PetAgeCheck_CheckingStage !== petProgressionUpdate_PetAgeCheck_UpdatePet[petStageKey]){
+        const petProgressionUpdate_PetStageChecker_CurrStage = Math.min(Math.floor((petProgressionUpdate_PetStageChecker_CurrDate - petProgressionUpdate_PetStageChecker_CurrPet[petBirthDateKey]) / petProgressionUpdate_PetStageChecker_CurrSpeciesGrowthRate), 2);
+        if (petProgressionUpdate_PetStageChecker_CurrStage > petProgressionUpdate_PetStageChecker_CurrPet[petStageKey]){
 
-            petProgressionUpdate_PetAgeCheck_UpdatePet[petHealthKey] += (petSpeciesHealthCapList[petProgressionUpdate_PetAgeCheck_UpdatePet[petSpeciesKey]][petProgressionUpdate_PetAgeCheck_CheckingStage] - petSpeciesHealthCapList[petProgressionUpdate_PetAgeCheck_UpdatePet[petSpeciesKey]][petProgressionUpdate_PetAgeCheck_UpdatePet[petStageKey]]);
-            petProgressionUpdate_PetAgeCheck_UpdatePet[petStageKey] = petProgressionUpdate_PetAgeCheck_CheckingStage; 
+            petProgressionUpdate_PetStageChecker_CurrPet[petHealthKey] += (petSpeciesHealthCapList[petProgressionUpdate_PetStageChecker_CurrPet[petSpeciesKey]][petProgressionUpdate_PetStageChecker_CurrStage] - petSpeciesHealthCapList[petProgressionUpdate_PetStageChecker_CurrPet[petSpeciesKey]][petProgressionUpdate_PetStageChecker_CurrPet[petStageKey]]);
+            petProgressionUpdate_PetStageChecker_CurrPet[petStageKey] = petProgressionUpdate_PetStageChecker_CurrStage; 
 
         }
 

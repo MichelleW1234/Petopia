@@ -38,8 +38,8 @@ export function InventoryProvider({ children }) {
 
   const [Inventory, setInventory] = useState(() => {
     try {
-      const inventory_Stored = JSON.parse(localStorage.getItem("Inventory"));
-      return inventory_Stored ? inventory_Stored : [
+      const inventory_CurrValue = JSON.parse(localStorage.getItem("Inventory"));
+      return inventory_CurrValue ? inventory_CurrValue : [
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},
                                   {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: null},

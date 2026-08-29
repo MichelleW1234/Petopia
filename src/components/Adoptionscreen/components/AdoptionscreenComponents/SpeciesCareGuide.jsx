@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { soundNavButtonPressKey } from "../../../../constants/Constants.js";
+import { audioNavButtonPressKey } from "../../../../constants/Constants.js";
 import { helpers_FlagCloser } from "../../../../helpers/Helpers.js";
 
 import "./SpeciesCareGuide.css";
@@ -9,7 +9,7 @@ import "./SpeciesCareGuide.css";
 
 function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
-    
+
     useKeyboardShortcut("2", () => {
 
         helpers_FlagCloser(set_SpeciesCareGuide_OpenFlag);
