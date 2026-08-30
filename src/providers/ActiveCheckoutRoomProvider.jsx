@@ -10,8 +10,8 @@ export function ActiveCheckoutRoomProvider({ children }) {
 
     const [ActiveCheckoutRoom, setActiveCheckoutRoom] = useState(() => {
         try {
-            const activeCheckoutRoom_CurrValue = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
-            return activeCheckoutRoom_CurrValue !== null ? activeCheckoutRoom_CurrValue : -1;
+            const bound_Number_ActiveCheckoutRoomStored = JSON.parse(sessionStorage.getItem("ActiveCheckoutRoom"));
+            return bound_Number_ActiveCheckoutRoomStored !== null ? bound_Number_ActiveCheckoutRoomStored : -1;
         } catch {
             return -1;
         }

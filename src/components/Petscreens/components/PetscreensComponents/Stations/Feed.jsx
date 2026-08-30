@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
-import { petScreensHelpers_ActivityStarter, petScreensHelpers_AudioCanceller, petScreensHelpers_ActivityCanceller, petScreensHelpers_HealthManager} from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Manager_PetHealth} from "../../../helpers/Helpers.js";
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
@@ -43,7 +43,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
     
         if (feed_Done){
 
-            helpers_FlagCloser(set_Feed_OpenFlag);
+            helpers_Closer_Flags(set_Feed_OpenFlag);
 
         }
 
@@ -56,7 +56,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
     
         if (feed_OptionsUserSelection !== -1 && !feed_Start && !feed_Done){
 
-            petScreensHelpers_ActivityStarter(set_Feed_Start);
+            petScreensHelpers_Starter_Activities(set_Feed_Start);
 
         }
 
@@ -70,7 +70,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
         if (!feed_Done){
 
-            petScreensHelpers_ActivityCanceller(feed_AudioRef, set_Feed_OpenFlag);
+            petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag);
 
         }
 
@@ -114,9 +114,9 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
             if (feed_Interval_CurrSeconds >= feed_OptionsTotalNumber){
                 clearInterval(feed_Interval);
 
-                petScreensHelpers_AudioCanceller(feed_AudioRef.current);
+                petScreensHelpers_Canceller_PetImmersionSounds(feed_AudioRef.current);
                 set_Feed_Done(true);
-                petScreensHelpers_HealthManager(feed_GlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feed_OptionsCurrDesiredOption, set_Feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_Success);
+                petScreensHelpers_Manager_PetHealth(feed_GlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feed_OptionsCurrDesiredOption, set_Feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_Success);
             }
 
         }, 1000);
@@ -198,7 +198,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                                         <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                             <h2>Wait for your pet as it eats.</h2> 
-                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_Feed_Start)}> Start <br/> [return]</button>
+                                            <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Feed_Start)}> Start <br/> [return]</button>
                                         </div>
 
                                     )}
@@ -218,13 +218,13 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_FlagCloser(set_Feed_OpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_Closer_Flags(set_Feed_OpenFlag)}>Done <br/> [return]</button>
                 </div>
                
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_ActivityCanceller(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc] </button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc] </button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

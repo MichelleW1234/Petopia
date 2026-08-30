@@ -18,8 +18,8 @@ export function AchievementsProvider({ children }) {
 
   const [Achievements, setAchievements] = useState(() => {
     try {
-      const achievements_CurrValue = JSON.parse(localStorage.getItem("Achievements"));
-      return achievements_CurrValue ? achievements_CurrValue : [
+      const bound_Sequence_achievementsStored = JSON.parse(localStorage.getItem("Achievements"));
+      return bound_Sequence_achievementsStored ? bound_Sequence_achievementsStored : [
                                   {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
@@ -42,47 +42,47 @@ export function AchievementsProvider({ children }) {
 
   useEffect(() => {
 
-    const achievements_FishComplete = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey && Achievements[0][achievementStatusKey] === false);
-    const achievements_CatComplete = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey && Achievements[1][achievementStatusKey] === false);
-    const achievements_DogComplete = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey && Achievements[2][achievementStatusKey] === false);
+    const bound_Boolean_FishFullyEvolved = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesFishKey && Achievements[0][achievementStatusKey] === false);
+    const bound_Boolean_CatFullyEvolved = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesCatKey && Achievements[1][achievementStatusKey] === false);
+    const bound_Boolean_DogFullyEvolved = Object.values(PetList).some(pet => pet[petStageKey] === 2 && pet[petSpeciesKey] === petSpeciesDogKey && Achievements[2][achievementStatusKey] === false);
 
-    const achievements_AllPetsComplete = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && achievements_DogComplete ||
-                      achievements_FishComplete && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
-                      Achievements[0][achievementStatusKey] === true && achievements_CatComplete && Achievements[2][achievementStatusKey] === true;
+    const bound_Boolean_AllPetsFullyEvolved = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && bound_Boolean_DogFullyEvolved ||
+                      bound_Boolean_FishFullyEvolved && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
+                      Achievements[0][achievementStatusKey] === true && bound_Boolean_CatFullyEvolved && Achievements[2][achievementStatusKey] === true;
 
     setAchievements(prev => {
 
-      const achievements_CurrCopy = prev.map(inner =>
+      const bound_Copy_Notifications = prev.map(inner =>
                   structuredClone(inner)
               );
 
-      if (achievements_FishComplete) {
-        achievements_CurrCopy[0][achievementStatusKey] = true;
+      if (bound_Boolean_FishFullyEvolved) {
+        bound_Copy_Notifications[0][achievementStatusKey] = true;
       }
 
-      if (achievements_CatComplete) {
-        achievements_CurrCopy[1][achievementStatusKey] = true;
+      if (bound_Boolean_CatFullyEvolved) {
+        bound_Copy_Notifications[1][achievementStatusKey] = true;
       }
 
-      if (achievements_DogComplete) {
-        achievements_CurrCopy[2][achievementStatusKey] = true;
+      if (bound_Boolean_DogFullyEvolved) {
+        bound_Copy_Notifications[2][achievementStatusKey] = true;
       }
 
-      if (achievements_AllPetsComplete) {
-        achievements_CurrCopy[3][achievementStatusKey] = true;
+      if (bound_Boolean_AllPetsFullyEvolved) {
+        bound_Copy_Notifications[3][achievementStatusKey] = true;
       }
 
-      return achievements_CurrCopy;
+      return bound_Copy_Notifications;
       
     });
 
     setNotifications(prev => {
 
-      const achievements_CurrCopy = prev.map(inner =>
+      const bound_Copy_Notifications = prev.map(inner =>
                 structuredClone(inner)
             );
 
-      const achievements_CurrDateString = new Date(GlobalTimer).toLocaleString([], {
+      const bound_String_GlobalTimer = new Date(GlobalTimer).toLocaleString([], {
                                             year: "numeric",
                                             month: "2-digit",
                                             day: "2-digit",
@@ -90,23 +90,23 @@ export function AchievementsProvider({ children }) {
                                             minute: "2-digit",
                                         });
 
-      if (achievements_FishComplete) {
-        achievements_CurrCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_CurrDateString});
+      if (bound_Boolean_FishFullyEvolved) {
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
-      if (achievements_CatComplete) {
-        achievements_CurrCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_CurrDateString});
+      if (bound_Boolean_CatFullyEvolved) {
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
-      if (achievements_DogComplete) {
-        achievements_CurrCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_CurrDateString});
+      if (bound_Boolean_DogFullyEvolved) {
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
-      if (achievements_AllPetsComplete) {
-        achievements_CurrCopy.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: achievements_CurrDateString});
+      if (bound_Boolean_AllPetsFullyEvolved) {
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
-      return achievements_CurrCopy;
+      return bound_Copy_Notifications;
 
     });
 

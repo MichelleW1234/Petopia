@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_AudioPlayer } from "../../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_ActivityStarter } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
@@ -28,7 +28,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
     
         if (!featherFishing_Start){
 
-            petScreensHelpers_ActivityStarter(set_FeatherFishing_Start);
+            petScreensHelpers_Starter_Activities(set_FeatherFishing_Start);
 
         }
 
@@ -96,7 +96,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
     const featherFishing_HitManager = (featherFishing_HitManager_Success) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         if (!featherFishing_HitAttempt){
 
@@ -125,7 +125,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
             {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_FeatherFishing_Start)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> Start <br/> [return]</button>
             </div>}
 
             

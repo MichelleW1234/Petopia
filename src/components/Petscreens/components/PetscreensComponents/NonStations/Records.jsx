@@ -4,7 +4,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
-import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 import "./Records.css";
 
@@ -26,7 +26,7 @@ function Records({set_Records_OpenFlag}) {
 
     useKeyboardShortcut("2", () => {
 
-        helpers_FlagCloser(set_Records_OpenFlag);
+        helpers_Closer_Flags(set_Records_OpenFlag);
 
     },
         ".Close"
@@ -61,7 +61,7 @@ function Records({set_Records_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_Records_OpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
 
         </div>
     );

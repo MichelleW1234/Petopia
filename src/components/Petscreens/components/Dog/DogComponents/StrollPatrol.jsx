@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { petScreensHelpers_ActivityStarter } from "../../../helpers/Helpers.js";
-import { helpers_AudioPlayer } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
@@ -33,7 +33,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     
         if (!strollPatrol_Start){
 
-            petScreensHelpers_ActivityStarter(set_StrollPatrol_Start);
+            petScreensHelpers_Starter_Activities(set_StrollPatrol_Start);
 
         }
 
@@ -174,7 +174,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const strollPatrol_UpwardsShifter = () => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         if (strollPatrol_CurrDogPosition[strollPatrol_RowKey] > 0){
 
@@ -189,7 +189,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const strollPatrol_DownwardsShifter = () => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
         
         if (strollPatrol_CurrDogPosition[strollPatrol_RowKey] < strollPatrol_WindowHeight-1){
 
@@ -210,7 +210,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
             {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_StrollPatrol_Start)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> Start <br/> [return]</button>
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">

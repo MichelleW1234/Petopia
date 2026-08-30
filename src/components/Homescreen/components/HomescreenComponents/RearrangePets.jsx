@@ -3,7 +3,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_AudioPlayer, helpers_FlagCloser } from "../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
 import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
@@ -18,7 +18,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
         
     useKeyboardShortcut("Enter", () => {
     
-        helpers_FlagCloser(set_RearrangePets_OpenFlag);
+        helpers_Closer_Flags(set_RearrangePets_OpenFlag);
 
     },
         ".Done"
@@ -28,7 +28,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
     const rearrangePets_ForwardShifter = (rearrangePets_ForwardShifter_UserSelection) => {
 
-        helpers_AudioPlayer(audioSwapPetSpaceKey);
+        helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
 
         setRoom(prev => {
 
@@ -101,7 +101,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => helpers_FlagCloser(set_RearrangePets_OpenFlag)}> Done <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => helpers_Closer_Flags(set_RearrangePets_OpenFlag)}> Done <br/> [return]</button>
 
             </div>
 

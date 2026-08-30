@@ -10,8 +10,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { audioActivityFailKey, petSpeciesHealthCapList, petHealthKey, petMedicineKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, audioStartActivityKey, audioActivitySuccessKey } from "../../../../../constants/Constants.js";
-import { helpers_AudioPlayer, helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
-import { petScreensHelpers_AudioCanceller, petScreensHelpers_ActivityCanceller, petScreensHelpers_ActivityStarter } from "../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 
 import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
 
@@ -41,7 +41,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
     
         if (medicine_Done){
 
-            helpers_FlagCloser(set_Medicine_OpenFlag);
+            helpers_Closer_Flags(set_Medicine_OpenFlag);
 
         }
 
@@ -54,7 +54,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
     
         if (medicine_OptionsUserSelection !== -1 && !medicine_Start && !medicine_Done){
 
-            petScreensHelpers_ActivityStarter(set_Medicine_Start);
+            petScreensHelpers_Starter_Activities(set_Medicine_Start);
 
         }
 
@@ -68,7 +68,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
         if (!medicine_Done){
 
-            petScreensHelpers_ActivityCanceller(medicine_AudioRef, set_Medicine_OpenFlag);
+            petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag);
 
         }
 
@@ -111,7 +111,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
             if (medicine_Interval_CurrSeconds >= medicine_OptionsTotalNumber){
                 clearInterval(medicine_Interval);
 
-                petScreensHelpers_AudioCanceller(medicine_AudioRef.current);
+                petScreensHelpers_Canceller_PetImmersionSounds(medicine_AudioRef.current);
                 set_Medicine_Done(true);
                 medicine_MedicineEffectivenessManager();
             }
@@ -183,12 +183,12 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
         if (medicine_OptionsCurrDesiredOption === medicine_OptionsUserSelection){
 
-            helpers_AudioPlayer(audioActivitySuccessKey);
+            helpers_Player_UIIndicatorSounds(audioActivitySuccessKey);
             set_Medicine_Success(true);
 
         } else {
 
-            helpers_AudioPlayer(audioActivityFailKey);
+            helpers_Player_UIIndicatorSounds(audioActivityFailKey);
 
         }
 
@@ -250,7 +250,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                                         <h2>Wait for your pet as it receives its dose.</h2> 
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_Medicine_Start)}> Start <br/> [return]</button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Medicine_Start)}> Start <br/> [return]</button>
                                     </div>
 
                                 )}
@@ -269,13 +269,13 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_FlagCloser(set_Medicine_OpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_Closer_Flags(set_Medicine_OpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_ActivityCanceller(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

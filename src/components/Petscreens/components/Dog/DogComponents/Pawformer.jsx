@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { petScreensHelpers_ActivityStarter } from "../../../helpers/Helpers.js";
-import { helpers_AudioPlayer } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
@@ -34,7 +34,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     
         if (!pawformer_Start){
 
-            petScreensHelpers_ActivityStarter(set_Pawformer_Start);
+            petScreensHelpers_Starter_Activities(set_Pawformer_Start);
 
         }
 
@@ -180,7 +180,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const pawformer_MoveManager = (pawformer_MoveManager_UserSelection) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         const pawformer_MoveManager_CurrTargetIndex = pawformer_CurrMovePositions.findIndex(move => move[pawformer_ColKey] === pawformer_TargetCol);
 
@@ -210,7 +210,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
             {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Copy the moves.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_Pawformer_Start)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> Start <br/> [return]</button>
             </div>}
 
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>

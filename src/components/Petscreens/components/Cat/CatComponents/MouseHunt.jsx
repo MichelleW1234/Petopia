@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_AudioPlayer } from "../../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_ActivityStarter } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
 import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
@@ -33,7 +33,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
     
         if (!mouseHunt_Start){
 
-            petScreensHelpers_ActivityStarter(set_MouseHunt_Start);
+            petScreensHelpers_Starter_Activities(set_MouseHunt_Start);
 
         }
 
@@ -135,7 +135,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     const mouseHunt_HitManager = (mouseHunt_HitManager_TargetHit) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         if (!mouseHunt_HitAttempt){
 
@@ -165,7 +165,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
             {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Catch the toy mice and avoid the power cords.</h2> 
-                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_ActivityStarter(set_MouseHunt_Start)}> Start <br/> [return]</button>
+                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> Start <br/> [return]</button>
             </div>}
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">

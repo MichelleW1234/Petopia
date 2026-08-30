@@ -15,7 +15,7 @@ import Inventory from "../../GlobalComponents/components/Inventory.jsx";
 import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioSelectionButtonPressKey, audioNavButtonPressKey, audioAdoptionSuccessKey, audioScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
-import { helpers_FlagOpener, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import "./Adoption.css";
 
@@ -48,7 +48,7 @@ function Adoption () {
     
         if (!adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Adoption_MusicVolumeOpenFlag, 1);
+            helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1);
 
         }
 
@@ -61,7 +61,7 @@ function Adoption () {
     
         if (!adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Adoption_InventoryOpenFlag, 1);
+            helpers_Opener_Flags(set_Adoption_InventoryOpenFlag, 1);
 
         }
 
@@ -88,7 +88,7 @@ function Adoption () {
         
         if (!adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Adoption_SpeciesCareGuideOpenFlag, 0);
+            helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0);
 
         }
 
@@ -140,7 +140,7 @@ function Adoption () {
 
     const adoption_HomeNavigator = () => {
 
-        helpers_AudioPlayer(audioNavButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioNavButtonPressKey);
         setActiveCheckoutRoom(-1);
 
     }
@@ -148,7 +148,7 @@ function Adoption () {
 
     const adoption_PetGenderGenerator = () => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
         
         const adoption_PetGenderGenerator_CurrGenderNumber = Math.floor(Math.random() * 2);
         
@@ -167,7 +167,7 @@ function Adoption () {
 
     const adoption_NameManager = (adoption_NameManager_E) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         const adoption_NameManager_CurrPetName = adoption_UserInput.trim().split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
         set_Adoption_UserInput(adoption_NameManager_CurrPetName);
@@ -189,7 +189,7 @@ function Adoption () {
 
         } else {
 
-            helpers_AudioPlayer(audioAdoptionSuccessKey);
+            helpers_Player_UIIndicatorSounds(audioAdoptionSuccessKey);
 
             const adoption_NameManager_CurrDate = GlobalTimer;
 
@@ -287,7 +287,7 @@ function Adoption () {
 
     const adoption_SpeciesDeselector = () => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         set_Adoption_UserSelection("");
         set_Adoption_PetGender("");
@@ -297,7 +297,7 @@ function Adoption () {
 
     const adoption_SpeciesSelector = (adoption_SpeciesSelector_UserSelection) => {
 
-        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
         set_Adoption_UserSelection(adoption_SpeciesSelector_UserSelection);
 
     }
@@ -305,7 +305,7 @@ function Adoption () {
 
     const adoption_CurrErrorMessageTimer = (adoption_CurrErrorMessageTimer_Message) => {
     
-        helpers_AudioPlayer(audioAdoptionConfirmationErrorKey);
+        helpers_Player_UIIndicatorSounds(audioAdoptionConfirmationErrorKey);
     
         set_Adoption_CurrErrorMessage(adoption_CurrErrorMessageTimer_Message);
     
@@ -349,7 +349,7 @@ function Adoption () {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
                     <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => adoption_HomeNavigator()}> Quit and Go Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar SpeciesCareGuide" onClick = {() => helpers_FlagOpener(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
                 {adoption_PetGender === "" ? (
@@ -451,13 +451,13 @@ function Adoption () {
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => helpers_FlagOpener(set_Adoption_MusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => helpers_FlagOpener(set_Adoption_InventoryOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Adoption_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
 

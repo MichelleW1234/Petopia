@@ -16,8 +16,8 @@ export function NotificationsProvider({ children }) {
 
   const [Notifications, setNotifications] = useState(() => {
     try {
-      const notifications_CurrValue = JSON.parse(localStorage.getItem("Notifications"));
-      return notifications_CurrValue ? notifications_CurrValue : [];
+      const bound_Sequence_NotificationsStored = JSON.parse(localStorage.getItem("Notifications"));
+      return bound_Sequence_NotificationsStored ? bound_Sequence_NotificationsStored : [];
     } catch {
       return  [];
     }

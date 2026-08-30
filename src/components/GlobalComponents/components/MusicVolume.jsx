@@ -3,7 +3,7 @@ import{useState} from "react";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
@@ -18,7 +18,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
     useKeyboardShortcut("Enter", () => {
     
-        helpers_FlagCloser(set_MusicVolume_OpenFlag);
+        helpers_Closer_Flags(set_MusicVolume_OpenFlag);
 
     },
         ".Close"
@@ -94,7 +94,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_MusicVolume_OpenFlag)}> Close <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Close <br/> [return]</button>
         </div>
     );
 }

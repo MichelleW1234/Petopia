@@ -11,8 +11,8 @@ import ProgressBar from "./StationsComponents/ProgressBar.jsx";
 import Options from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_HealthManager, petScreensHelpers_AudioCanceller, petScreensHelpers_ActivityCanceller } from "../../../helpers/Helpers.js";
-import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities } from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 
@@ -44,7 +44,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
     
         if (play_Done){
 
-            helpers_FlagCloser(set_Play_OpenFlag);
+            helpers_Closer_Flags(set_Play_OpenFlag);
 
         }
 
@@ -57,7 +57,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
         if (!play_Done){
 
-            petScreensHelpers_ActivityCanceller(play_AudioRef, set_Play_OpenFlag);
+            petScreensHelpers_Canceller_Activities(play_AudioRef, set_Play_OpenFlag);
 
         }
 
@@ -71,9 +71,9 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
         
         if (play_CurrNumber >= play_OptionsTotalNumber){
 
-            petScreensHelpers_AudioCanceller(play_AudioRef.current);
+            petScreensHelpers_Canceller_PetImmersionSounds(play_AudioRef.current);
             set_Play_Done(true);
-            petScreensHelpers_HealthManager(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, play_OptionsCurrDesiredOption, set_Play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_Success);
+            petScreensHelpers_Manager_PetHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, play_OptionsCurrDesiredOption, set_Play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_Success);
 
         }
 
@@ -149,13 +149,13 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => helpers_FlagCloser(set_Play_OpenFlag)}>Done <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => helpers_Closer_Flags(set_Play_OpenFlag)}>Done <br/> [return]</button>
                 </div>
 
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_ActivityCanceller(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
                 </div>
 

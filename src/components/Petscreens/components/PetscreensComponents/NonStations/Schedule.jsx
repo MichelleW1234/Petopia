@@ -6,7 +6,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import Activity from "./NonstationsComponents/Activity.jsx";
 
 import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
-import { helpers_FlagCloser } from "../../../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 
 
@@ -18,7 +18,7 @@ function Schedule({set_Schedule_OpenFlag}) {
     
     useKeyboardShortcut("3", () => {
 
-        helpers_FlagCloser(set_Schedule_OpenFlag);
+        helpers_Closer_Flags(set_Schedule_OpenFlag);
 
     },
         ".Close"
@@ -56,7 +56,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_FlagCloser(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
 
         </div>
     );

@@ -21,8 +21,8 @@ import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import Records from "../PetscreensComponents/Nonstations/Records.jsx";
 
 import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
-import { petScreensHelpers_HomeNavigator, petScreensHelpers_AudioCanceller } from "../../helpers/Helpers.js";
-import { helpers_FlagOpener } from "../../../../helpers/Helpers.js";
+import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
+import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
 
 import HappyBarks from "../../../../Music/PetImmersionSounds/Dog/HappyBarks.mp3";
 import SadWhine from "../../../../Music/PetImmersionSounds/Dog/SadWhine.mp3";
@@ -198,7 +198,7 @@ function Dog (){
             
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_MusicVolumeOpenFlag, 1);
+            helpers_Opener_Flags(set_Dog_MusicVolumeOpenFlag, 1);
 
         }
 
@@ -210,7 +210,7 @@ function Dog (){
             
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_InventoryOpenFlag, 1);
+            helpers_Opener_Flags(set_Dog_InventoryOpenFlag, 1);
 
         }
 
@@ -223,7 +223,7 @@ function Dog (){
 
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            petScreensHelpers_HomeNavigator(setActivePetName);
+            petScreensHelpers_Navigator_Home(setActivePetName);
             dog_Navigate("/home");
 
         }
@@ -237,7 +237,7 @@ function Dog (){
 
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_RecordsOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0);
 
         }
 
@@ -251,7 +251,7 @@ function Dog (){
 
         if (!dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_ScheduleOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0);
 
         }
 
@@ -265,7 +265,7 @@ function Dog (){
 
         if (dog_Alive && !dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_FeedOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0);
 
         }
 
@@ -278,7 +278,7 @@ function Dog (){
 
         if (dog_Alive && !dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_CleanOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0);
 
         }
 
@@ -293,7 +293,7 @@ function Dog (){
 
         if (dog_Alive && !dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_PlayOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0);
 
         }
 
@@ -307,7 +307,7 @@ function Dog (){
 
         if (dog_Alive && dog_CanReceiveDose && !dog_FeedOpenFlag && !dog_CleanOpenFlag && !dog_PlayOpenFlag && !dog_MedicineOpenFlag && !dog_ScheduleOpenFlag && !dog_RecordsOpenFlag && !dog_MusicVolumeOpenFlag && !dog_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Dog_MedicineOpenFlag, 0);
+            helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0);
 
         }
 
@@ -333,10 +333,10 @@ function Dog (){
         if (ActivePetName === "" || dog_ActivityInProgress){
 
             Object.values(dog_AudioRefs.current).forEach(audio => {
-                petScreensHelpers_AudioCanceller(audio);
+                petScreensHelpers_Canceller_PetImmersionSounds(audio);
             });
 
-            petScreensHelpers_AudioCanceller(dog_BackgroundAudioRef.current);
+            petScreensHelpers_Canceller_PetImmersionSounds(dog_BackgroundAudioRef.current);
 
         } else {
 
@@ -443,20 +443,20 @@ function Dog (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_HomeNavigator(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpers_FlagOpener(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpers_FlagOpener(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {dog_Alive ? (
 
                         <>
-                            <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {(e) => helpers_FlagOpener(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
-                            <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => helpers_FlagOpener(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
-                            <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => helpers_FlagOpener(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
+                            <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
+                            <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                            <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbarUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
 
                             {dog_CanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => helpers_FlagOpener(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
 
                             ) : (
 
@@ -485,12 +485,12 @@ function Dog (){
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
                     <Main
-                        main_CurrStageAnimationImages={dog_MainCurrStageAnimationImages}
-                        main_CurrStageSleepAnimationImage={dog_MainCurrStageSleepAnimationImage}
-                        main_CurrSpeciesAudios={dog_AudioRefs}
-                        main_CurrPetEnergy = {350}
-                        main_CurrMood = {dog_CurrMood}
-                        main_ActivityInProgress={dog_ActivityInProgress}
+                        main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}
+                        main_Image_StageSleepAnimation={dog_MainCurrStageSleepAnimationImage}
+                        main_Sequence_AudioRefs={dog_AudioRefs}
+                        main_Number_PetEnergy = {350}
+                        main_Number_Mood = {dog_CurrMood}
+                        main_Boolean_ActivityInProgress={dog_ActivityInProgress}
                     />
                 </div>
 
@@ -499,13 +499,13 @@ function Dog (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => helpers_FlagOpener(set_Dog_MusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Dog_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => helpers_FlagOpener(set_Dog_InventoryOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Dog_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
             </div>

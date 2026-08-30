@@ -8,26 +8,26 @@ export function BackgroundMusicProvider({ children }) {
 
     const {Volume} = useVolume();
 
-    const backgroundMusic_AudioRef = useRef(new Audio(soundtrack));
+    const backgroundMusic_Ref_PetopiaSoundtrack = useRef(new Audio(soundtrack));
 
 
     useEffect(() => {
-        backgroundMusic_AudioRef.current.volume = Volume;
+        backgroundMusic_Ref_PetopiaSoundtrack.current.volume = Volume;
     }, [Volume]);
 
     useEffect(() => {
 
-        const backgroundMusic_Audio = backgroundMusic_AudioRef.current;
-        backgroundMusic_Audio.loop = true;
+        const bound_Audio_CurrPetopiaSoundtrack = backgroundMusic_Ref_PetopiaSoundtrack.current;
+        bound_Audio_CurrPetopiaSoundtrack.loop = true;
 
-        backgroundMusic_Audio.play().catch((err) => {
+        bound_Audio_CurrPetopiaSoundtrack.play().catch((err) => {
             console.warn('Autoplay failed:', err);
         });
 
         return () => {
-            backgroundMusic_Audio.pause(); // Stop the backgroundMusic_Audio when the component is unmounted
-            backgroundMusic_Audio.currentTime = 0;
-            backgroundMusic_Audio.loop = false;
+            bound_Audio_CurrPetopiaSoundtrack.pause(); // Stop the bound_Audio_CurrPetopiaSoundtrack when the component is unmounted
+            bound_Audio_CurrPetopiaSoundtrack.currentTime = 0;
+            bound_Audio_CurrPetopiaSoundtrack.loop = false;
         };
 
     }, []);
@@ -35,7 +35,7 @@ export function BackgroundMusicProvider({ children }) {
 
 
     return (
-        <backgroundMusic_Context.Provider value={{backgroundMusic_AudioRef}}>
+        <backgroundMusic_Context.Provider value={{backgroundMusic_Ref_PetopiaSoundtrack}}>
             {children}
         </backgroundMusic_Context.Provider>
     );

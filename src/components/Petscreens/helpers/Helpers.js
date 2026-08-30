@@ -1,60 +1,60 @@
 import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, audioNavButtonPressKey, petActivityTimeStampCleaningKey, audioActivityFailKey, petActivityTimeStampFeedingKey, audioScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, audioQuitActivityKey, audioStartActivityKey, audioActivitySuccessKey } from "../../../constants/Constants.js";
-import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 
-export const petScreensHelpers_HealthManager = (petScreensHelpers_HealthManager_CurrDate, set_PetScreensHelpers_HealthManager_PetTimeStamps, set_PetScreensHelpers_HealthManager_PetList, petScreensHelpers_HealthManager_CurrActivePetName, petScreensHelpers_HealthManager_CurrActivityKey, petScreensHelpers_HealthManager_CurrDesiredOption, set_PetScreensHelpers_HealthManager_CurrDesiredOption, set_PetScreensHelpers_HealthManager_UserSelection, set_PetScreensHelpers_HealthManager_Success) => {
+export const petScreensHelpers_Manager_PetHealth = (parameter_Number_Date, set_parameter_Sequence_PetTimeStamps, set_parameter_Sequence_PetList, parameter_String_ActivePetName, parameter_Key_petActivityTimeStamp, parameter_Number_DesiredOption, set_Parameter_Number_DesiredOption, set_Parameter_Number_UserSelection, set_Parameter_Boolean_Success) => {
 
-    if (petScreensHelpers_HealthManager_CurrDesiredOption === -1){
+    if (parameter_Number_DesiredOption === -1){
     //Too much (unwilling)
 
-        helpers_AudioPlayer(audioActivityFailKey);
+        helpers_Player_UIIndicatorSounds(audioActivityFailKey);
 
-        set_PetScreensHelpers_HealthManager_PetList(prev => ({
+        set_parameter_Sequence_PetList(prev => ({
 
             ...prev,
 
-            [petScreensHelpers_HealthManager_CurrActivePetName]: {
+            [parameter_String_ActivePetName]: {
 
-                ...prev[petScreensHelpers_HealthManager_CurrActivePetName],
-                [petHealthKey]: Math.max(prev[petScreensHelpers_HealthManager_CurrActivePetName][petHealthKey] - petActivityTimeStampDamageList[petScreensHelpers_HealthManager_CurrActivityKey], 0)
+                ...prev[parameter_String_ActivePetName],
+                [petHealthKey]: Math.max(prev[parameter_String_ActivePetName][petHealthKey] - petActivityTimeStampDamageList[parameter_Key_petActivityTimeStamp], 0)
             }
 
         }));
 
-    } else if (petScreensHelpers_HealthManager_CurrDesiredOption !== set_PetScreensHelpers_HealthManager_UserSelection && petScreensHelpers_HealthManager_CurrDesiredOption !== -1){
+    } else if (parameter_Number_DesiredOption !== set_Parameter_Number_UserSelection && parameter_Number_DesiredOption !== -1){
     // not desired option (willing)
 
-        helpers_AudioPlayer(audioActivityFailKey);
+        helpers_Player_UIIndicatorSounds(audioActivityFailKey);
 
-        set_PetScreensHelpers_HealthManager_PetList(prev => ({
+        set_parameter_Sequence_PetList(prev => ({
 
             ...prev,
 
-            [petScreensHelpers_HealthManager_CurrActivePetName]: {
+            [parameter_String_ActivePetName]: {
 
-                ...prev[petScreensHelpers_HealthManager_CurrActivePetName],
-                [petHealthKey]: Math.max(prev[petScreensHelpers_HealthManager_CurrActivePetName][petHealthKey] - 1, 0)
+                ...prev[parameter_String_ActivePetName],
+                [petHealthKey]: Math.max(prev[parameter_String_ActivePetName][petHealthKey] - 1, 0)
             }
 
         }));
 
     } else {
 
-        helpers_AudioPlayer(audioActivitySuccessKey);
-        set_PetScreensHelpers_HealthManager_Success(true);
+        helpers_Player_UIIndicatorSounds(audioActivitySuccessKey);
+        set_Parameter_Boolean_Success(true);
 
     }
 
-    set_PetScreensHelpers_HealthManager_PetTimeStamps(prev => ({
+    set_parameter_Sequence_PetTimeStamps(prev => ({
 
         ...prev,
 
-        [petScreensHelpers_HealthManager_CurrActivePetName]: {
+        [parameter_String_ActivePetName]: {
             
-            ...prev[petScreensHelpers_HealthManager_CurrActivePetName],
-            [petScreensHelpers_HealthManager_CurrActivityKey]: {
-                ...prev[petScreensHelpers_HealthManager_CurrActivePetName][petScreensHelpers_HealthManager_CurrActivityKey],
-                [petActivityTimeStampLastPerformedKey]: petScreensHelpers_HealthManager_CurrDate         //THIS!!!!
+            ...prev[parameter_String_ActivePetName],
+            [parameter_Key_petActivityTimeStamp]: {
+                ...prev[parameter_String_ActivePetName][parameter_Key_petActivityTimeStamp],
+                [petActivityTimeStampLastPerformedKey]: parameter_Number_Date         //THIS!!!!
             }
             
         }
@@ -62,39 +62,39 @@ export const petScreensHelpers_HealthManager = (petScreensHelpers_HealthManager_
     }));
 
 
-    set_PetScreensHelpers_HealthManager_CurrDesiredOption(-1);
+    set_Parameter_Number_DesiredOption(-1);
 
 }
 
 
-export const petScreensHelpers_AudioCanceller = (petScreensHelpers_AudioCanceller_CurrAudio) => {
+export const petScreensHelpers_Canceller_PetImmersionSounds = (parameter_Audio_CurrAudio) => {
 
-    petScreensHelpers_AudioCanceller_CurrAudio.pause();
-    petScreensHelpers_AudioCanceller_CurrAudio.currentTime = 0;
-
-}
-
-
-export const petScreensHelpers_HomeNavigator = (set_PetScreensHelpers_HomeNavigator_ActivePetName) => {
-
-    helpers_AudioPlayer(audioNavButtonPressKey);
-    set_PetScreensHelpers_HomeNavigator_ActivePetName("");
-
-}
-
-export const petScreensHelpers_ActivityCanceller = (petScreensHelpers_ActivityCanceller_CurrActivityAudioRef, set_PetScreensHelpers_ActivityQuitter_CurrFlag) => {
-
-    helpers_AudioPlayer(audioQuitActivityKey);
-    petScreensHelpers_AudioCanceller(petScreensHelpers_ActivityCanceller_CurrActivityAudioRef.current);
-    helpers_FlagCloser(set_PetScreensHelpers_ActivityQuitter_CurrFlag);
+    parameter_Audio_CurrAudio.pause();
+    parameter_Audio_CurrAudio.currentTime = 0;
 
 }
 
 
-export const petScreensHelpers_ActivityStarter = (set_PetScreensHelpers_ActivityStarter_Start) => {
+export const petScreensHelpers_Navigator_Home = (set_Parameter_String_ActivePetName) => {
 
-    helpers_AudioPlayer(audioScreenButtonPressKey);
-    helpers_AudioPlayer(audioStartActivityKey);
-    set_PetScreensHelpers_ActivityStarter_Start(true);
+    helpers_Player_UIIndicatorSounds(audioNavButtonPressKey);
+    set_Parameter_String_ActivePetName("");
+
+}
+
+export const petScreensHelpers_Canceller_Activities = (parameter_Ref_Audio, parameter_Boolean_OpenFlag) => {
+
+    helpers_Player_UIIndicatorSounds(audioQuitActivityKey);
+    petScreensHelpers_Canceller_PetImmersionSounds(parameter_Ref_Audio.current);
+    helpers_Closer_Flags(parameter_Boolean_OpenFlag);
+
+}
+
+
+export const petScreensHelpers_Starter_Activities = (set_Parameter_Boolean_Start) => {
+
+    helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+    helpers_Player_UIIndicatorSounds(audioStartActivityKey);
+    set_Parameter_Boolean_Start(true);
 
 }

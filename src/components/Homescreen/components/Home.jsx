@@ -19,7 +19,7 @@ import ReadMe from "./HomescreenComponents/ReadMe.jsx";
 import Notifications from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey } from "../../../constants/Constants.js";
-import { helpers_FlagOpener, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
 import OrangePetBattery from "../../../images/OrangePetBattery.png";
@@ -59,7 +59,7 @@ function Home (){
         
         if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_MusicVolumeOpenFlag, 1);
+            helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1);
 
         }
 
@@ -72,7 +72,7 @@ function Home (){
         
         if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_InventoryOpenFlag, 1);
+            helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1);
 
         }
 
@@ -86,7 +86,7 @@ function Home (){
 
         if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_RestartOpenFlag, 0);
+            helpers_Opener_Flags(set_Home_RestartOpenFlag, 0);
 
         }
 
@@ -101,7 +101,7 @@ function Home (){
 
         if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0);
+            helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0);
 
         }
 
@@ -114,7 +114,7 @@ function Home (){
 
         if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_ClearPetsOpenFlag, 0);
+            helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0);
 
         }
 
@@ -127,7 +127,7 @@ function Home (){
 
         if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            helpers_FlagOpener(set_Home_ReadMeOpenFlag, 0);
+            helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0);
 
         }
 
@@ -142,7 +142,7 @@ function Home (){
 
     const home_PetNavigator = (home_PetNavigator_UserSelection) => {
 
-        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
         setActivePetName(home_PetNavigator_UserSelection);
         
     }
@@ -150,7 +150,7 @@ function Home (){
 
     const home_AdoptionNavigator = (home_AdoptionNavigator_UserSelection) => {
 
-        helpers_AudioPlayer(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
         setActiveCheckoutRoom(home_AdoptionNavigator_UserSelection);
 
     }
@@ -199,9 +199,9 @@ function Home (){
                     {home_MinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_FlagOpener(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpers_FlagOpener(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_FlagOpener(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
@@ -214,7 +214,7 @@ function Home (){
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => helpers_FlagOpener(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
@@ -328,13 +328,13 @@ function Home (){
                 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
-                    onClick = {() => helpers_FlagOpener(set_Home_MusicVolumeOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
-                    onClick = {() => helpers_FlagOpener(set_Home_InventoryOpenFlag, 1)}>
+                    onClick = {() => helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
                

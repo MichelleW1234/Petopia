@@ -11,7 +11,7 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import inventoryItemLock from "../../../images/inventoryItemLock.png";
 
-import { helpers_FlagCloser, helpers_AudioPlayer } from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
 import "./Inventory.css";
@@ -28,7 +28,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     useKeyboardShortcut("Enter", () => {
     
-        helpers_FlagCloser(set_Inventory_OpenFlag);
+        helpers_Closer_Flags(set_Inventory_OpenFlag);
 
     },
         ".Close"
@@ -38,11 +38,11 @@ function Inventory({set_Inventory_OpenFlag}) {
     
     const inventory_EntryOwnerSelector = (inventory_EntryOwnerSelector_EntryIndex, inventory_EntryOwnerSelector_UserSelection) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         if (Inventory[inventory_EntryOwnerSelector_EntryIndex][inventoryItemTypeKey] === inventoryItemTypePotionKey){
         
-            helpers_AudioPlayer(audioRevivedPetKey);
+            helpers_Player_UIIndicatorSounds(audioRevivedPetKey);
             setPetList(prev => {
 
                 const inventory_EntryOwnerSelector_CurrCopy = structuredClone(prev);
@@ -105,7 +105,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
         } else {
 
-            helpers_AudioPlayer(audioAddedDecorationsKey);
+            helpers_Player_UIIndicatorSounds(audioAddedDecorationsKey);
             setInventory(prev => {
 
                 const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
@@ -124,7 +124,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     const inventory_EntryOwnerDeselector = (inventory_EntryOwnerDeselector_EntryIndex) => {
 
-        helpers_AudioPlayer(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
         setInventory(prev => {
 
             const inventory_EntryOwnerDeselector_CurrCopy = prev.map(inner =>
@@ -270,7 +270,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_FlagCloser(set_Inventory_OpenFlag)}> Close <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Close <br/> [return]</button>
         </div>
     );
 }
