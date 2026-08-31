@@ -8,17 +8,18 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents//components/MusicVolume.jsx";
-import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
-import StrollPatrol from "./DogComponents/StrollPatrol.jsx";
-import Pawformer from "./DogComponents/Pawformer.jsx";
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Clean from "../PetscreensComponents/Stations/Clean.jsx";
-import Play from "../PetscreensComponents/Stations/Play.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
+import MusicVolumeComponent from "../../../GlobalComponents//components/MusicVolume.jsx";
+import InventoryComponent from "../../../GlobalComponents/components/Inventory.jsx";
+import StrollPatrolComponent from "./DogComponents/StrollPatrol.jsx";
+import PawformerComponent from "./DogComponents/Pawformer.jsx";
+import MainComponent from "../PetscreensComponents/Main.jsx";
+import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
+import CleanComponent from "../PetscreensComponents/Stations/Clean.jsx";
+import PlayComponent from "../PetscreensComponents/Stations/Play.jsx";
+import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
+import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 
 import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -72,7 +73,6 @@ import Leash from "../../../../images/Dog/Play/Options/Leash.png";
 import Mask from "../../../../images/Dog/Play/Options/Mask.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
-import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -185,7 +185,7 @@ function Dog (){
 
     const dog_FeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dog_CleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Stroll Patrol", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrol}, {[petActivityOptionNameKey]: "Pawformer", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: Pawformer}];
+    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Stroll Patrol", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent}, {[petActivityOptionNameKey]: "Pawformer", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dog_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBarks), [petSoundSadKey]: new Audio(SadWhine), [petSoundSleepKey]: new Audio(Sleeping)});
@@ -385,17 +385,17 @@ function Dog (){
         <>
 
             {dog_MusicVolumeOpenFlag && 
-            <MusicVolume
+            <MusicVolumeComponent
                 set_MusicVolume_OpenFlag={set_Dog_MusicVolumeOpenFlag}
             />}
 
             {dog_InventoryOpenFlag && 
-            <Inventory
+            <InventoryComponent
                 set_Inventory_OpenFlag={set_Dog_InventoryOpenFlag}
             />}
 
             {dog_FeedOpenFlag &&
-            <Feed
+            <FeedComponent
                 feed_CurrStageAnimationImage={dog_FeedCurrStageAnimationImage}
                 feed_OptionsCurrSpeciesList={dog_FeedOptionsList}
                 feed_OptionsCurrDesiredOption = {dog_FeedOptionsCurrDesiredOption}
@@ -404,7 +404,7 @@ function Dog (){
             />}
 
             {dog_CleanOpenFlag &&
-            <Clean
+            <CleanComponent
                 clean_CurrStageAnimationImage={dog_CleanCurrStageAnimationImage}
                 clean_OptionsCurrSpeciesList={dog_CleanOptionsList}
                 clean_OptionsCurrDesiredOption = {dog_CleanOptionsCurrDesiredOption}
@@ -413,7 +413,7 @@ function Dog (){
             />}
 
             {dog_PlayOpenFlag &&
-            <Play
+            <PlayComponent
                 play_OptionsCurrSpeciesList={dog_PlayOptionsList}
                 play_OptionsCurrDesiredOption = {dog_PlayOptionsCurrDesiredOption}
                 set_Play_OptionsCurrDesiredOption = {set_Dog_PlayOptionsCurrDesiredOption}
@@ -421,7 +421,7 @@ function Dog (){
             />}
 
             {dog_MedicineOpenFlag &&
-            <Medicine
+            <MedicineComponent
                 medicine_CurrStageAnimationImage={dog_MedicineCurrStageAnimationImage}
                 medicine_OptionsCurrSpeciesList={dog_MedicineOptionsList}
                 medicine_OptionsCurrDesiredOption = {dog_MedicineOptionsCurrDesiredOption}
@@ -430,12 +430,12 @@ function Dog (){
             />}
 
             {dog_ScheduleOpenFlag &&
-            <Schedule
+            <ScheduleComponent
                 set_Schedule_OpenFlag={set_Dog_ScheduleOpenFlag}
             />}
 
             {dog_RecordsOpenFlag &&
-            <Records
+            <RecordsComponent
                 set_Records_OpenFlag = {set_Dog_RecordsOpenFlag}
             />}
             
@@ -479,12 +479,12 @@ function Dog (){
                 
                 </div>
 
-                <Notifications/>
+                <NotificationsComponent/>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
-                    <Main
+                    <MainComponent
                         main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation={dog_MainCurrStageSleepAnimationImage}
                         main_Sequence_AudioRefs={dog_AudioRefs}

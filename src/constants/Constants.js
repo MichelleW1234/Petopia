@@ -36,7 +36,6 @@ export const inventoryItemTypeWallDecorationKey = "wall decoration";
 export const inventoryItemTypeRoomDecorationKey = "room decoration";
 
 
-
 export const audioNavButtonPressKey = "nav button press";
 export const audioSelectionButtonPressKey = "selection button press";
 export const audioScreenButtonPressKey = "screen button press";

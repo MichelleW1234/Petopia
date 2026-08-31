@@ -7,8 +7,8 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
+import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
+import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
@@ -153,7 +153,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
                 
             {feed_OptionsUserSelection === -1 ? (
 
-                <Options
+                <OptionsComponent
                     options_CurrDesiredOption = {feed_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {feed_OptionsCurrSpeciesList} 
                     set_Options_TotalNumber = {set_Feed_OptionsTotalNumber}
@@ -164,7 +164,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                    <ProgressBar
+                    <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feed_CurrNumber/feed_OptionsTotalNumber) * 100)))}
                     />
 

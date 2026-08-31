@@ -32,6 +32,8 @@ function ReadMe({set_ReadMe_OpenFlag}) {
                         <p> &bull; A pet will also lose health if an actiivty isn't performed on time according to its schedule. Damage varies based on activity.</p>
                         <p> &bull; A pet can gain health when given (the correct) medicine. Medicine is most effective when pets are sleeping (between 8pm and 6am). Only one dose per 24 hours is allowed.</p>
                         <p> &bull; Pets will also gain health (increased health capacity) when they grow to their next stage. There are three stages in total.</p>
+                        <p> &bull; Once you've accomplished the achievement of fully evolving a species to its final stage, items will unlock in your inventory that can be use to decorate your pets' rooms.</p>
+                        <p> &bull; Inside your inventory, there are 3 revival potions that can each be used on any pet that has died, but cannot be reused. You will not recieve any more after they have been used up unless you restart the game.</p>
                         <p> &bull; Try interacting with your pets (hover over them) to see what happens!</p>
                         </div>
                 </div>

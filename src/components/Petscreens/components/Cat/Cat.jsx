@@ -8,16 +8,17 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
-import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Play from "../PetscreensComponents/Stations/Play.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
-import MouseHunt from "./CatComponents/MouseHunt.jsx";
-import FeatherFishing from "./CatComponents/FeatherFishing.jsx";
+import MusicVolumeComponent from "../../../GlobalComponents/components/MusicVolume.jsx";
+import InventoryComponent from "../../../GlobalComponents/components/Inventory.jsx";
+import MainComponent from "../PetscreensComponents/Main.jsx";
+import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
+import PlayComponent from "../PetscreensComponents/Stations/Play.jsx";
+import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
+import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import MouseHuntComponent from "./CatComponents/MouseHunt.jsx";
+import FeatherFishingComponent from "./CatComponents/FeatherFishing.jsx";
+import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -62,7 +63,6 @@ import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
 import Rod from "../../../../images/Cat/Play/Options/Rod.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
-import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -163,7 +163,7 @@ function Cat (){
 
 
     const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHunt}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishing}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Mouse Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent}, {[petActivityOptionNameKey]: "Feather Fishing", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const cat_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
@@ -342,17 +342,17 @@ function Cat (){
         <>
 
             {cat_MusicVolumeOpenFlag && 
-            <MusicVolume
+            <MusicVolumeComponent
                 set_MusicVolume_OpenFlag={set_Cat_MusicVolumeOpenFlag}
             />}
 
             {cat_InventoryOpenFlag && 
-            <Inventory
+            <InventoryComponent
                 set_Inventory_OpenFlag={set_Cat_InventoryOpenFlag}
             />}
 
             {cat_FeedOpenFlag &&
-            <Feed
+            <FeedComponent
                 feed_CurrStageAnimationImage={cat_FeedCurrStageAnimationImage}
                 feed_OptionsCurrSpeciesList={cat_FeedOptionsList}
                 feed_OptionsCurrDesiredOption = {cat_FeedOptionsCurrDesiredOption}
@@ -361,7 +361,7 @@ function Cat (){
             />}
 
             {cat_PlayOpenFlag &&
-            <Play
+            <PlayComponent
                 play_OptionsCurrSpeciesList={cat_PlayOptionsList}
                 play_OptionsCurrDesiredOption = {cat_PlayOptionsCurrDesiredOption}
                 set_Play_OptionsCurrDesiredOption = {set_Cat_PlayOptionsCurrDesiredOption}
@@ -369,7 +369,7 @@ function Cat (){
             />}
 
             {cat_MedicineOpenFlag &&
-            <Medicine
+            <MedicineComponent
                 medicine_CurrStageAnimationImage={cat_MedicineCurrStageAnimationImage}
                 medicine_OptionsCurrSpeciesList={cat_MedicineOptionsList}
                 medicine_OptionsCurrDesiredOption = {cat_MedicineOptionsCurrDesiredOption}
@@ -378,12 +378,12 @@ function Cat (){
             />}
 
             {cat_ScheduleOpenFlag &&
-            <Schedule
+            <ScheduleComponent
                 set_Schedule_OpenFlag={set_Cat_ScheduleOpenFlag}
             />}
 
             {cat_RecordsOpenFlag &&
-            <Records
+            <RecordsComponent
                 set_Records_OpenFlag = {set_Cat_RecordsOpenFlag}
             />}
         
@@ -428,7 +428,7 @@ function Cat (){
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
-                    <Main
+                    <MainComponent
                         main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}
                         main_Sequence_AudioRefs = {cat_AudioRefs}
@@ -440,7 +440,7 @@ function Cat (){
 
             </div>
 
-            <Notifications/>
+            <NotificationsComponent/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

@@ -105,7 +105,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                 clearPets_SelectedEntriesManager_CurrCopy.forEach(item => {
                     if (item[inventoryItemOwnerKey] === petToRemove) {
-                        item[inventoryItemOwnerKey] = null;
+                        item[inventoryItemOwnerKey] = "";
                     }
                 });
             
@@ -121,7 +121,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             clearPets_CurrSelectedEntries.forEach(petToRemove => {
                 const clearPets_SelectedEntriesManager_CurrPetRoom = clearPets_SelectedEntriesManager_CurrCopy.findIndex(room => room === petToRemove);
-                clearPets_SelectedEntriesManager_CurrCopy[clearPets_SelectedEntriesManager_CurrPetRoom] = null;
+                clearPets_SelectedEntriesManager_CurrCopy[clearPets_SelectedEntriesManager_CurrPetRoom] = "";
             });
 
             return clearPets_SelectedEntriesManager_CurrCopy;
@@ -144,7 +144,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                     {Room.map((petName, index) => (
 
-                        petName === null ? (
+                        petName === "" ? (
 
                             null
 

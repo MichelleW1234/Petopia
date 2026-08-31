@@ -3,7 +3,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import Activity from "./NonstationsComponents/Activity.jsx";
+import ActivityComponent from "./NonstationsComponents/Activity.jsx";
 
 import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
@@ -40,7 +40,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
                     {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 
-                        <Activity
+                        <ActivityComponent
                             key = {key}
                             activity_CurrActivityKey = {key}
                             activity_CurrActivityTimeLimit = {value}
@@ -48,7 +48,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
                     ))}
 
-                    <Activity
+                    <ActivityComponent
                         activity_CurrActivityKey = {petMedicineKey}
                         activity_CurrActivityTimeLimit = {petActivityTimeStampMedicineDoseTimeGapKey}
                     />

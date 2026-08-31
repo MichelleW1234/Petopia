@@ -7,8 +7,8 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
+import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
+import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityOptionCursorKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
@@ -154,7 +154,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                 
             {clean_OptionsUserSelection === -1 ? (
 
-                <Options
+                <OptionsComponent
                     options_CurrDesiredOption = {clean_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {clean_OptionsCurrSpeciesList}
                     set_Options_TotalNumber = {set_Clean_OptionsTotalNumber}
@@ -166,7 +166,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                    <ProgressBar
+                    <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((clean_CurrNumber/clean_OptionsTotalNumber) * 100)))}
                     />
 

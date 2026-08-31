@@ -6,19 +6,23 @@ import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
 import {useActivePetName} from "../../../providers/ActivePetNameProvider.jsx";
 import { useRoom } from "../../../providers/RoomProvider.jsx";
 import { useActiveCheckoutRoom } from "../../../providers/ActiveCheckoutRoomProvider.jsx";
+import { useInventory } from "../../../providers/InventoryProvider.jsx";
+import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
+import { useNotifications } from "../../../providers/NotificationsProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { backgroundMusic_Context } from '../../../providers/BackgroundMusicProvider.jsx';
 
-import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
-import Inventory from "../../GlobalComponents/components/Inventory.jsx";
-import Restart from "./HomescreenComponents/Restart.jsx";
-import ClearPets from "./HomescreenComponents/ClearPets.jsx";
-import RearrangePets from "./HomescreenComponents/RearrangePets.jsx";
-import ReadMe from "./HomescreenComponents/ReadMe.jsx";
-import Notifications from "../../GlobalComponents/components/Notifications.jsx";
+import MusicVolumeComponent from "../../GlobalComponents/components/MusicVolume.jsx";
+import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx";
+import RestartComponent from "./HomescreenComponents/Restart.jsx";
+import ClearPetsComponent from "./HomescreenComponents/ClearPets.jsx";
+import RearrangePetsComponent from "./HomescreenComponents/RearrangePets.jsx";
+import ReadMeComponent from "./HomescreenComponents/ReadMe.jsx";
+import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey } from "../../../constants/Constants.js";
+
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
@@ -41,6 +45,9 @@ function Home (){
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {Room, setRoom} = useRoom();
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
+    const {Inventory, setInventory} = useInventory();
+    const {Achievements, setAchievements} = useAchievements();
+    const {Notifications, setNotifications} = useNotifications();
 
     const [home_RestartOpenFlag, set_Home_RestartOpenFlag] = useState(false);
     const [home_MusicVolumeOpenFlag, set_Home_MusicVolumeOpenFlag] = useState(false);
@@ -49,7 +56,14 @@ function Home (){
     const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
 
-    const home_MinPetsAdopted = Room.filter(x => x === null).length < 3;
+    const home_MinPetsAdopted = Room.filter(x => x === "").length < 3;
+    const home_RestartInventoryMissingItems = Inventory.filter(item => item[inventoryItemTypeKey] === inventoryItemTypePotionKey).length < 3;
+    const home_RestartInventoryContainsOwners = Inventory.some(item => item[inventoryItemOwnerKey] !== "");
+    const home_RestartAchievementsUnlocked = Achievements.some(achievement => achievement[achievementStatusKey] === true);
+    const home_RestartNotificationsUncleared = Notifications.length > 0;
+    const home_CanRestart = home_MinPetsAdopted || home_RestartInventoryMissingItems || home_RestartInventoryContainsOwners || home_RestartAchievementsUnlocked || home_RestartNotificationsUncleared
+                            ? true
+                            : false;
 
     const home_Navigate = useNavigate();
 
@@ -84,7 +98,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_CanRestart && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_RestartOpenFlag, 0);
 
@@ -162,32 +176,37 @@ function Home (){
         <>
 
             {home_MusicVolumeOpenFlag && 
-            <MusicVolume
+            <MusicVolumeComponent
                 set_MusicVolume_OpenFlag={set_Home_MusicVolumeOpenFlag}
             />}
 
             {home_InventoryOpenFlag && 
-            <Inventory
+            <InventoryComponent
                 set_Inventory_OpenFlag={set_Home_InventoryOpenFlag}
             />}
 
             {home_RestartOpenFlag && 
-            <Restart
+            <RestartComponent
                 set_Restart_OpenFlag={set_Home_RestartOpenFlag}
+                restart_MinPetsAdopted={home_MinPetsAdopted}
+                restart_InventoryMissingItems={home_RestartInventoryMissingItems}
+                restart_InventoryContainsOwners={home_RestartInventoryContainsOwners}
+                restart_AchievementsUnlocked={home_RestartAchievementsUnlocked}
+                restart_NotificationsUncleared={home_RestartNotificationsUncleared}
             />}
 
             {home_RearrangePetsOpenFlag &&
-            <RearrangePets
+            <RearrangePetsComponent
                 set_RearrangePets_OpenFlag={set_Home_RearrangePetsOpenFlag}
             />}
 
             {home_ClearPetsOpenFlag &&
-            <ClearPets
+            <ClearPetsComponent
                 set_ClearPets_OpenFlag={set_Home_ClearPetsOpenFlag}
             />}
 
             {home_ReadMeOpenFlag &&
-            <ReadMe
+            <ReadMeComponent
                 set_ReadMe_OpenFlag={set_Home_ReadMeOpenFlag}
             />}
 
@@ -196,10 +215,20 @@ function Home (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
 
+                    {home_CanRestart ? (
+
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+
+                    ) : (
+
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Restart <br/> [1]</button>
+
+                    )}
+                    
+
                     {home_MinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
@@ -207,7 +236,6 @@ function Home (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Restart <br/> [1]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Rearrange Pets <br/> [2]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenNavbar"> Clear Pets <br/> [3]</button>
                         </>
@@ -220,7 +248,7 @@ function Home (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                    {home_MinPetsAdopted ? (
+                    {home_CanRestart ? (
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Your Pets: </h1>
 
@@ -234,7 +262,7 @@ function Home (){
 
                         {Room.map((petName, index) => (
 
-                            petName === null ? (
+                            petName === "" ? (
 
                                 <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
@@ -322,7 +350,7 @@ function Home (){
 
             </div>
 
-            <Notifications/>
+            <NotificationsComponent/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 

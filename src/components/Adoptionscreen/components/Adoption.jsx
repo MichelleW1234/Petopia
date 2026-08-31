@@ -9,10 +9,10 @@ import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvid
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import SpeciesCareGuide from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
-import MusicVolume from "../../GlobalComponents/components/MusicVolume.jsx";
-import Inventory from "../../GlobalComponents/components/Inventory.jsx";
-import Notifications from "../../GlobalComponents/components/Notifications.jsx";
+import SpeciesCareGuideComponent from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
+import MusicVolumeComponent from "../../GlobalComponents/components/MusicVolume.jsx";
+import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx";
+import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioSelectionButtonPressKey, audioNavButtonPressKey, audioAdoptionSuccessKey, audioScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
@@ -292,6 +292,18 @@ function Adoption () {
         set_Adoption_UserSelection("");
         set_Adoption_PetGender("");
 
+        if (adoption_CurrErrorMessage !== ""){
+
+            set_Adoption_CurrErrorMessage("");
+
+        }
+
+        if (adoption_UserInput !== ""){
+ 
+            set_Adoption_UserInput("");
+
+        }
+
     }
     
 
@@ -309,13 +321,13 @@ function Adoption () {
     
         set_Adoption_CurrErrorMessage(adoption_CurrErrorMessageTimer_Message);
     
-        if (adoption_ConfirmationTimeoutRef.current) {
-            clearTimeout(adoption_ConfirmationTimeoutRef.current);
+        if (adoption_TimeoutRef.current) {
+            clearTimeout(adoption_TimeoutRef.current);
         }
     
-        adoption_ConfirmationTimeoutRef.current = setTimeout(() => {
+        adoption_TimeoutRef.current = setTimeout(() => {
             set_Adoption_CurrErrorMessage("");
-            adoption_ConfirmationTimeoutRef.current = null;
+            adoption_TimeoutRef.current = null;
         }, 5000); 
     
     }
@@ -330,17 +342,17 @@ function Adoption () {
         <>
 
             {adoption_MusicVolumeOpenFlag && 
-            <MusicVolume
+            <MusicVolumeComponent
                 set_MusicVolume_OpenFlag={set_Adoption_MusicVolumeOpenFlag}
             />}
 
             {adoption_InventoryOpenFlag && 
-            <Inventory
+            <InventoryComponent
                 set_Inventory_OpenFlag={set_Adoption_InventoryOpenFlag}
             />}
 
             {adoption_SpeciesCareGuideOpenFlag &&
-            <SpeciesCareGuide
+            <SpeciesCareGuideComponent
                 set_SpeciesCareGuide_OpenFlag = {set_Adoption_SpeciesCareGuideOpenFlag}
             />
             }
@@ -446,7 +458,7 @@ function Adoption () {
         
             </div>
 
-            <Notifications/>
+            <NotificationsComponent/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

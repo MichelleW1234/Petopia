@@ -1,6 +1,9 @@
 import { createContext, useContext, useRef, useEffect, useState } from 'react';
-import soundtrack from "../Music/PetopiaSoundTrack.mp3";
+
 import {useVolume} from "./VolumeProvider.jsx";
+
+import PetopiaSoundTrack from "../Music/PetopiaSoundTrack.mp3";
+
 
 export const backgroundMusic_Context = createContext();
 
@@ -8,7 +11,7 @@ export function BackgroundMusicProvider({ children }) {
 
     const {Volume} = useVolume();
 
-    const backgroundMusic_Ref_PetopiaSoundtrack = useRef(new Audio(soundtrack));
+    const backgroundMusic_Ref_PetopiaSoundtrack = useRef(new Audio(PetopiaSoundTrack));
 
 
     useEffect(() => {

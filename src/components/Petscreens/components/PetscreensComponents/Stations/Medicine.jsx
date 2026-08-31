@@ -6,8 +6,8 @@ import {usePetList} from "../../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
+import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
+import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { audioActivityFailKey, petSpeciesHealthCapList, petHealthKey, petMedicineKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, audioStartActivityKey, audioActivitySuccessKey } from "../../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
@@ -205,7 +205,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
                 
             {medicine_OptionsUserSelection === -1 ? (
 
-                <Options
+                <OptionsComponent
                     options_CurrDesiredOption = {medicine_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {medicine_OptionsCurrSpeciesList} 
                     set_Options_TotalNumber = {set_Medicine_OptionsTotalNumber}
@@ -216,7 +216,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                    <ProgressBar
+                    <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicine_CurrNumber/medicine_OptionsTotalNumber) * 100)))}
                     />
 

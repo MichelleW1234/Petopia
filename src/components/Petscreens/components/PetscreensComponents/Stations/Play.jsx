@@ -7,8 +7,8 @@ import { usePetTimeStamps } from "../../../../../providers/PetTimeStampsProvider
 
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
-import ProgressBar from "./StationsComponents/ProgressBar.jsx";
-import Options from "./StationsComponents/Options.jsx";
+import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
+import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities } from "../../../helpers/Helpers.js";
@@ -88,7 +88,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
             {play_OptionsUserSelection === -1 ? (
 
-                <Options
+                <OptionsComponent
                     options_CurrDesiredOption = {play_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {play_OptionsCurrSpeciesList} 
                     set_Options_TotalNumber = {set_Play_OptionsTotalNumber}
@@ -99,7 +99,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                    <ProgressBar
+                    <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((play_CurrNumber/play_OptionsTotalNumber) * 100)))}
                     />
      

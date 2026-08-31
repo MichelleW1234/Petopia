@@ -11,9 +11,9 @@ export function RoomProvider({ children }) {
     const [Room, setRoom] = useState(() => {
         try {
             const bound_Sequence_RoomStored = JSON.parse(localStorage.getItem("Room"));
-            return bound_Sequence_RoomStored !== null ? bound_Sequence_RoomStored : [null, null, null];
+            return bound_Sequence_RoomStored !== null ? bound_Sequence_RoomStored : ["", "", ""];
         } catch {
-            return [null, null, null];
+            return ["", "", ""];
         }
     });
 

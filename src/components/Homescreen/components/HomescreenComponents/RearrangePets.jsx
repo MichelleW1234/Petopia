@@ -7,6 +7,7 @@ import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../..
 import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
+
 import "./RearrangePets.css";
 
 
@@ -66,7 +67,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                     {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
-                        petName === null ? (
+                        petName === "" ? (
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 

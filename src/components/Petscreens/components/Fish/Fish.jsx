@@ -8,14 +8,15 @@ import {usePetList} from "../../../../providers/PetListProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import MusicVolume from "../../../GlobalComponents/components/MusicVolume.jsx";
-import Inventory from "../../../GlobalComponents/components/Inventory.jsx";
-import Main from "../PetscreensComponents/Main.jsx";
-import Feed from "../PetscreensComponents/Stations/Feed.jsx";
-import Clean from "../PetscreensComponents/Stations/Clean.jsx";
-import Medicine from "../PetscreensComponents/Stations/Medicine.jsx";
-import Schedule from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import Records from "../PetscreensComponents/Nonstations/Records.jsx";
+import MusicVolumeComponent from "../../../GlobalComponents/components/MusicVolume.jsx";
+import InventoryComponent from "../../../GlobalComponents/components/Inventory.jsx";
+import MainComponent from "../PetscreensComponents/Main.jsx";
+import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
+import CleanComponent from "../PetscreensComponents/Stations/Clean.jsx";
+import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
+import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, audioNavButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -66,7 +67,6 @@ import CursorSponge from "../../../../images/Fish/Clean/Options/Sponge.cur";
 import CursorCloth from "../../../../images/Fish/Clean/Options/Cloth.cur";
 import Pill from "../../../../images/Fish/Medicine/Options/Pill.png";
 import Serum from  "../../../../images/Fish/Medicine/Options/Serum.png";
-import Notifications from "../../../GlobalComponents/components/Notifications.jsx";
 
 
 
@@ -352,18 +352,18 @@ function Fish (){
         <>
 
             {fish_MusicVolumeOpenFlag && 
-            <MusicVolume
+            <MusicVolumeComponent
                 set_MusicVolume_OpenFlag={set_Fish_MusicVolumeOpenFlag}
             />}
 
             {fish_InventoryOpenFlag && 
-            <Inventory
+            <InventoryComponent
                 set_Inventory_OpenFlag={set_Fish_InventoryOpenFlag}
             />}
 
 
             {fish_FeedOpenFlag &&
-            <Feed
+            <FeedComponent
                 feed_CurrStageAnimationImage={fish_FeedCurrStageAnimationImage}
                 feed_OptionsCurrSpeciesList={fish_FeedOptionsList}
                 feed_OptionsCurrDesiredOption = {fish_FeedOptionsCurrDesiredOption}
@@ -372,7 +372,7 @@ function Fish (){
             />}
 
             {fish_CleanOpenFlag &&
-            <Clean
+            <CleanComponent
                 clean_CurrStageAnimationImage={fish_CleanCurrStageAnimationImage}
                 clean_OptionsCurrSpeciesList={fish_CleanOptionsList}
                 clean_OptionsCurrDesiredOption = {fish_CleanOptionsCurrDesiredOption}
@@ -381,7 +381,7 @@ function Fish (){
             />}
 
             {fish_MedicineOpenFlag &&
-            <Medicine
+            <MedicineComponent
                 medicine_CurrStageAnimationImage={fish_MedicineCurrStageAnimationImage}
                 medicine_OptionsCurrSpeciesList = {fish_MedicineOptionsList}
                 medicine_OptionsCurrDesiredOption = {fish_MedicineOptionsCurrDesiredOption}
@@ -390,12 +390,12 @@ function Fish (){
             />}
 
             {fish_ScheduleOpenFlag &&
-            <Schedule
+            <ScheduleComponent
                 set_Schedule_OpenFlag={set_Fish_ScheduleOpenFlag}
             />}
 
             {fish_RecordsOpenFlag &&
-            <Records
+            <RecordsComponent
                 set_Records_OpenFlag = {set_Fish_RecordsOpenFlag}
             />}
 
@@ -438,12 +438,12 @@ function Fish (){
 
                 </div>
 
-                <Notifications/>
+                <NotificationsComponent/>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Living Room:</h1>
-                    <Main
+                    <MainComponent
                         main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation={fish_MainCurrStageSleepAnimationImage}
                         main_Sequence_AudioRefs={fish_AudioRefs}

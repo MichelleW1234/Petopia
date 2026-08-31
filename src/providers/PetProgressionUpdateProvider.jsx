@@ -51,7 +51,7 @@ export function PetProgressionUpdateProvider({ children }) {
                 petProgressionUpdate_Checker_PetHealth(bound_Copy_CurrPetList[bound_Key_CurrPetList], parameter_Number_GlobalTimer, bound_Copy_CurrPetTimeStamps[bound_Key_CurrPetList]);
                 
                 // Check pet growth stage if pet is still alive after health update:
-                if (bound_Copy_CurrPetList[bound_Key_CurrPetList][petHealthKey] === 0){
+                if (bound_Copy_CurrPetList[bound_Key_CurrPetList][petHealthKey] > 0){
 
                     petProgressionUpdate_Checker_PetStage(parameter_Number_GlobalTimer, bound_Copy_CurrPetList[bound_Key_CurrPetList]);
 
@@ -150,6 +150,7 @@ export function PetProgressionUpdateProvider({ children }) {
             bound_Number_SpeciesGrowthRate = 259200000;
 
         }
+
 
         const bound_Number_PetNewStage = Math.min(Math.floor((parameter_Number_GlobalTimer - parameter_Entry_PetList[petBirthDateKey]) / bound_Number_SpeciesGrowthRate), 2);
         if (bound_Number_PetNewStage > parameter_Entry_PetList[petStageKey]){

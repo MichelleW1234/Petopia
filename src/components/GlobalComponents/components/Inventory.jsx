@@ -131,9 +131,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                 structuredClone(inner)
             );
 
-            inventory_EntryOwnerDeselector_CurrCopy[inventory_EntryOwnerDeselector_EntryIndex][inventoryItemOwnerKey] = null;
+            inventory_EntryOwnerDeselector_CurrCopy[inventory_EntryOwnerDeselector_EntryIndex][inventoryItemOwnerKey] = "";
 
-            return iinventory_EntryOwnerDeselector_CurrCopy;
+            return inventory_EntryOwnerDeselector_CurrCopy;
 
         });
 
@@ -155,7 +155,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                     <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
-                            <h2>{item[inventoryItemNameKey]}</h2>
+                            <h1>{item[inventoryItemNameKey]}:</h1>
                         </div>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemContent">
@@ -208,7 +208,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 <h2>Give This Item to:</h2>
                                 <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
 
-                                    {Room.length === 0 ? (
+                                    {Room.filter(x => x === "").length === 3 ? (
 
                                         <h2> Your pets will appear here </h2>
 
@@ -216,7 +216,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                         Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
-                                            inventory_EntryOwnerSelector_UserSelection === null ? (
+                                            inventory_EntryOwnerSelector_UserSelection === "" ? (
 
                                                 null
 
