@@ -16,7 +16,7 @@ import { AchievementsProvider } from "./providers/AchievementsProvider.jsx";
 import { NotificationsProvider } from "./providers/NotificationsProvider.jsx";
 
 
-const currentVersion = "1.0.1-beta";
+const currentVersion = "1.0.1";
 const savedVersion = localStorage.getItem("PetopiaAppVersion");
 if (savedVersion !== currentVersion) {
   localStorage.clear();
