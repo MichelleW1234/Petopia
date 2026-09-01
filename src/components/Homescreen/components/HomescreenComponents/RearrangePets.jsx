@@ -27,6 +27,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
 
 
+
     const rearrangePets_ForwardShifter = (rearrangePets_ForwardShifter_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
@@ -35,21 +36,31 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
             let rearrangePets_ForwardShifter_CurrCopy = [...prev];
 
-            if (rearrangePets_ForwardShifter_UserSelection === 2) {
-
-                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[0];
-                rearrangePets_ForwardShifter_CurrCopy[0] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
-                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
-
-            } else {
-
-                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1];
-                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
-                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
-
-            }
+            const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1];
+            rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
+            rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
 
             return rearrangePets_ForwardShifter_CurrCopy;
+
+        });
+
+    };
+
+
+
+    const rearrangePets_BackwardsShifter = (rearrangePets_BackwardsShifter_UserSelection) => {
+
+        helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
+
+        setRoom(prev => {
+
+            let rearrangePets_BackwardsShifter_CurrCopy = [...prev];
+
+            const rearrangePets_BackwardsShifter_CurrSuccessor = rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection-1];
+            rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection-1] = rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection];
+            rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection] = rearrangePets_BackwardsShifter_CurrSuccessor;
+
+            return rearrangePets_BackwardsShifter_CurrCopy;
 
         });
 
@@ -63,41 +74,62 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
-                    {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
-
-                        petName === "" ? (
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                        {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
-                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
-                                    <h2>[ Name ]</h2>
-                                </div>
+                                {petName === "" ? (
 
-                                <img src = {NoPetPortrait}/>
+                                    <>
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                            <h2>[ Name ]</h2>
+                                        </div>
+                                        <img src = {NoPetPortrait}/>
+                                    </>
 
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
+                                ) : (
+
+                                    <>
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                            <h2>{petName}</h2>
+                                        </div>
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                    </>
+
+                                )}
+
+                                {rearrangePets_ForwardShifter_UserSelection === 0 ? (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick" > &#x2B05; </button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
+                                    </div>
+
+
+                                ) : rearrangePets_ForwardShifter_UserSelection === 1 ? (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
+                                    </div>
+
+                                ) : (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
+                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> &#x2B95; </button>
+                                    </div>
+
+                                )}
+
                             </div>
 
-                        ) : (
 
-                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                        ))}
+                    </div>
 
-                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
-                                    <h2>{petName}</h2>
-                                </div>
-
-                                <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-
-                                <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
-                            </div>
-
-                        )
-
-                    ))}
-                    
-                </div>
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
