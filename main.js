@@ -2,9 +2,14 @@ import { app, BrowserWindow, screen, Menu} from 'electron';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+if (process.arch === 'x64') {
+  app.commandLine.appendSwitch('disable-gpu-compositing');
+}
+
 // Required to construct __dirname in ES module style
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 
 if (process.arch === 'x64') {
   const userDataPath = path.join(app.getPath('appData'), 'Petopia');
