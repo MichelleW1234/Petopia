@@ -80,26 +80,6 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
-                                {petName === "" ? (
-
-                                    <>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
-                                            <h2>[ Name ]</h2>
-                                        </div>
-                                        <img src = {NoPetPortrait}/>
-                                    </>
-
-                                ) : (
-
-                                    <>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
-                                            <h2>{petName}</h2>
-                                        </div>
-                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-                                    </>
-
-                                )}
-
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
@@ -124,8 +104,29 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 )}
 
-                            </div>
+                                {petName === "" ? (
 
+                                    <>
+                                       
+                                        <img src = {NoPetPortrait}/>
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                            <h2>[ Name ]</h2>
+                                        </div>
+                                    </>
+
+                                ) : (
+
+                                    <>
+                                      
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                            <h2>{petName}</h2>
+                                        </div>
+                                    </>
+
+                                )}
+
+                            </div>
 
                         ))}
                     </div>
