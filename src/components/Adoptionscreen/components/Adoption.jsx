@@ -177,6 +177,12 @@ function Adoption () {
             adoption_NameManager_E.preventDefault();
             adoption_CurrErrorMessageTimer("Enter a name for your pet.");
 
+
+        } else if (/[^\p{L}\p{N} .'-]/u.test(adoption_NameManager_CurrPetName)) {
+
+            adoption_NameManager_E.preventDefault();
+            adoption_CurrErrorMessageTimer("Please enter a name that doesn't contain symbol excluding periods, dashes, and single quotes.");
+
         } else if (adoption_NameManager_CurrPetName.length > 20){
 
             adoption_NameManager_E.preventDefault();

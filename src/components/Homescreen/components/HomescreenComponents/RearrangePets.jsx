@@ -102,7 +102,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
-                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick" > &#x2B05; </button>
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
@@ -110,14 +110,14 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 ) : rearrangePets_ForwardShifter_UserSelection === 1 ? (
 
-                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
 
                                 ) : (
 
-                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonEntries">
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> &#x2B95; </button>
                                     </div>

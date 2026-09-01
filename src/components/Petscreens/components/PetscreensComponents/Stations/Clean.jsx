@@ -220,7 +220,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                                 ) : (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2> Drag your cursor back and forth for clean_ing. </h2>
+                                        <h2> Drag your cursor back and forth for cleaning. </h2>
                                         <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> Start <br/> [return]</button>
                                     </div>
 

@@ -1,17 +1,17 @@
 .RearrangePets_ComponentContainer-Template--Slot{
 
-    width: 20rem;
+    width: 25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    gap: 3rem;
-    padding: 2rem;
+    gap: 2rem;
+    padding: 3rem;
     border-radius: 50px;
 
     img {
 
-        width: 70%;
+        width: 50%;
 
         filter: 
             drop-shadow(0 0 2px rgb(255, 255, 255))

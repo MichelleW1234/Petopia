@@ -208,55 +208,47 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 <h2>Give This Item to:</h2>
                                 <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
 
-                                    {Room.filter(x => x === "").length === 3 ? (
+                                    {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
-                                        <h2> Your pets will appear here </h2>
+                                        inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                    ) : (
+                                            <h2> [ Name ] </h2>
 
-                                        Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
+                                        ) : (
 
-                                            inventory_EntryOwnerSelector_UserSelection === "" ? (
+                                            item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
 
-                                                null
+                                                PetList[inventory_EntryOwnerSelector_UserSelection][petHealthKey] === 0 ? (
 
-                                            ) : (
-
-                                                item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
-
-                                                    PetList[inventory_EntryOwnerSelector_UserSelection][petHealthKey] === 0 ? (
-
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
-
-                                                    ) : (
-
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
-
-                                                    )
+                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 ) : (
 
-                                                    item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
+                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                )
 
-                                                    ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+                                            ) : (
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                    ) : (
+                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
-                                                        <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
-                                                    )
+                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+
+                                                ) : (
+
+                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 )
 
                                             )
 
-                                        ))
+                                        )
 
-                                    )}
+                                    ))}
 
                                 </div>
 
