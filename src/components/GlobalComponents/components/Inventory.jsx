@@ -221,7 +221,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                             <>
 
-                                <h2>Give This Item to:</h2>
+                                <h2>This Item Currently Belongs to:</h2>
                                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                                     {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (

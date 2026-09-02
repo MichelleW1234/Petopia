@@ -1,6 +1,6 @@
 .Inventory_ComponentContainer-Structure--Item{
 
-  width: 50rem;
+  width: 45rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
 
-  gap: 3rem;
+  gap: 2rem;
 
 }
 
@@ -28,7 +28,7 @@
 .Inventory_ComponentContainer-Structure--ItemContentImage{
 
   height: auto;
-  width: 60%;
+  width: 50%;
 
   padding: 3rem;
   border-radius: 25px;
@@ -50,7 +50,7 @@
 
 .Inventory_ComponentContainer-Structure--ItemContentDetails{
 
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,23 +62,10 @@
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemPetSelection{
-
-  display: flex;  
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-
-  gap: 2rem;
-
-}
-
-
 
 .Inventory_ComponentImage-Structure--ItemLock{
 
-  height: 15rem;
+  height: 12rem;
   width: 100%;
   display: flex;
   flex-direction: column;

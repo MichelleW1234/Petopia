@@ -824,7 +824,7 @@ p {
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut{
 
   box-shadow: 0 0 16px 1.6px rgb(255, 255, 255);
-  border: 2px solid white;
+  border: 2px solid rgb(255,255,255, 0.75);
   background-color: rgb(255, 255, 255, 0.25);
 
 }
