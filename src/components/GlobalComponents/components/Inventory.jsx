@@ -159,8 +159,11 @@ function Inventory({set_Inventory_OpenFlag}) {
                         </div>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemContent">
-                            <img src = {item[inventoryItemImageKey]}/>
-                            <div className="Inventory_ComponentContainer-Structure--ItemDetails">
+
+                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentContainer-Structure--ItemContentImage">
+                                <img src = {item[inventoryItemImageKey]}/>
+                            </div>
+                            <div className="Inventory_ComponentContainer-Structure--ItemContentDetails">
                                 <h2>Type: {item[inventoryItemTypeKey]}</h2>
                                 <h2> 
                                     For your:                           
@@ -177,28 +180,41 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
-                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+
+                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                    <img src = {inventoryItemLock}/>
+                                </div>
+                            
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey && Achievements[1][achievementStatusKey] === false ? (
 
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
-                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+
+                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                    <img src = {inventoryItemLock}/>
+                                </div>
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey && Achievements[2][achievementStatusKey] === false ? (
 
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
-                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+
+                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                    <img src = {inventoryItemLock}/>
+                                </div>
                             </>
 
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey && Achievements[3][achievementStatusKey] === false ? (
 
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
-                                <img className="Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+
+                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                    <img src = {inventoryItemLock}/>
+                                </div>
                             </>
 
                         ) : (
@@ -206,13 +222,13 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
 
                                 <h2>Give This Item to:</h2>
-                                <div className="Inventory_ComponentContainer-Structure--ItemPetSelection">
+                                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
 
                                     {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
                                         inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                            <h2> [ Name ] </h2>
+                                            <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> [ Name ] </button>
 
                                         ) : (
 

@@ -108,7 +108,9 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                     <>
                                        
+                                        <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut RearrangePets_ComponentContainer-Structure--SlotImage">
                                         <img src = {NoPetPortrait}/>
+                                        </div>
                                         <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                             <h2>[ Name ]</h2>
                                         </div>
@@ -118,7 +120,9 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                     <>
                                       
-                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                        <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut RearrangePets_ComponentContainer-Structure--SlotImage">
+                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                        </div>
                                         <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                                             <h2>{petName}</h2>
                                         </div>

@@ -10,7 +10,33 @@
   gap: 3rem;
   border-radius: 50px;
 
+}
+
+
+.Inventory_ComponentContainer-Structure--ItemContent{
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3rem;
+
+}
+
+
+.Inventory_ComponentContainer-Structure--ItemContentImage{
+
+  height: auto;
+  width: 60%;
+
+  padding: 3rem;
+  border-radius: 25px;
+
   img {
+
+    width: 100%;
+    height: auto;
 
     filter: 
       drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -22,26 +48,9 @@
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemContent{
+.Inventory_ComponentContainer-Structure--ItemContentDetails{
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  gap: 1rem;
-
-  img {
-
-    height: auto;
-    width: 50%;
-
-  }
-
-}
-
-.Inventory_ComponentContainer-Structure--ItemDetails{
-
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,8 +75,29 @@
 }
 
 
+
 .Inventory_ComponentImage-Structure--ItemLock{
 
   height: 15rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  border-radius: 50px;
+
+  img {
+
+    height: 100%; 
+    width: auto;
+
+    filter: 
+      drop-shadow(0 0 2px rgb(255, 255, 255))
+      drop-shadow(0 0 4px rgb(255, 255, 255))
+      drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+  }
 
 }

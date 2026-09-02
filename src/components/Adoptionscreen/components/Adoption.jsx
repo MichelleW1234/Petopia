@@ -432,7 +432,7 @@ function Adoption () {
                                 <p>Hello, my name is </p>
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
-                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
+                                    <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
                                         <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
                                     </div>
                                     <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
