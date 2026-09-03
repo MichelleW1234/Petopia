@@ -14,6 +14,8 @@
   --UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowThird: 0 0 6px;
 
 
+
+
   /*Color light and saturation percentages:*/
 
   --UIStapleElements_Background-Saturation--GlobalColorBackground: 75%;
@@ -21,6 +23,7 @@
   --UIStapleElements_Background-Light--ScreenColorBackgroundInner: 50%;
   --UIStapleElements_Background-Light--FloatingFlagColorBackground: 25%;
   --UIStapleElements_Background-Transparency--FloatingFlagColorBackground: 75%;
+
 
 
   --UIStapleElements_Component-Saturation--GlobalColor: 100%;
@@ -46,13 +49,9 @@
   --UIStapleElements_ComponentButtonBox-Light--GlobalColorFont: 100%;
   --UIStapleElements_ComponentButtonBox-Light--GlobalColorBackgroundBottom: 100%;
 
-  /*
-   3. edit row tag names
-  */
-
-
   --UIStapleElements_ComponentButtonCircle-Light-ColorBackgroundOuter: 50%;
   --UIStapleElements_ComponentButtonCircle-Light--GlobalColorBackgroundInner: 100%;
+
 
   --UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundFirst: 75%;
   --UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundSecond: 50%;
@@ -61,12 +60,16 @@
   --UIStapleElements_ComponentContainerTransparent-Light--GlobalColorBackground: 100%;
   --UIStapleElements_ComponentContainerTransparent-Transparency--GlobalColorBackground: 0.25;
 
+  
+
 
   /*Color hues:*/
 
   --UIStapleElements_BackgroundBase-Hue--GlobalColorBase: 280;
   --UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation: 270;
   --UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation: 260;
+
+
 
 
   /*Color layer:*/
