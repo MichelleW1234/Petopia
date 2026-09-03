@@ -53,6 +53,7 @@
   --UIStapleElements_ComponentButtonCircle-Light--GlobalColorBackgroundInner: 100%;
 
 
+  --UIStapleElements_ComponentContainerColored-Light--GlobalColorFont: 100%;
   --UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundFirst: 75%;
   --UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundSecond: 50%;
 
@@ -60,7 +61,7 @@
   --UIStapleElements_ComponentContainerTransparent-Light--GlobalColorBackground: 100%;
   --UIStapleElements_ComponentContainerTransparent-Transparency--GlobalColorBackground: 0.25;
 
-  
+
 
 
   /*Color hues:*/
@@ -88,8 +89,6 @@ html {
 body{
 
   user-select: none;
-
-  color: rgb(255, 255, 255);
 
   /*For fallback:*/
   background-color: rgb(100, 0, 125);
@@ -534,6 +533,7 @@ p {
 
 .UIStapleElements_ComponentContainerColored-Color--Global--Screen {
 
+  color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorFont));
   border-color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorBorderNoninteractive));
   background: conic-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundFirst)) 0deg,
       hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundSecond)) 90deg,
@@ -695,6 +695,7 @@ p {
 
 .UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation {
 
+  color: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorFont));
   border-color: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorBorderNoninteractive));
   background: conic-gradient(hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundFirst)) 0deg,
       hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundSecond)) 90deg,
@@ -706,6 +707,7 @@ p {
 
 .UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagStation {
 
+  color: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorFont));
   border-color: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorBorderNoninteractive));
   background: conic-gradient(hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundFirst)) 0deg,
       hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentContainerColored-Light--GlobalColorBackgroundSecond)) 90deg,
@@ -891,6 +893,7 @@ p {
   padding: 1rem 2rem;
   border-radius: 9999px;
 
+  color: rgb(255, 255, 255);
   box-shadow:
     0 16px 25.6px rgba(255, 255, 255),
     0 -16px 25.6px rgba(255, 255, 255);
@@ -906,6 +909,7 @@ p {
   padding: 1rem;
   border-radius: 25px;
 
+  color: rgb(255, 255, 255);
   box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
 
 }
