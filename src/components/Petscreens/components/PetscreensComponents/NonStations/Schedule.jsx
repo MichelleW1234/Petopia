@@ -32,8 +32,8 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
-                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                <div className = "UIStapleElements_ComponentContainerTransparent-Template--Global">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
                         <h1>Schedule:</h1>
                         <hr/>
                     </div>
@@ -56,7 +56,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
+            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
 
         </div>
     );

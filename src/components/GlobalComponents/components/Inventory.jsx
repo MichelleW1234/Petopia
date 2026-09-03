@@ -152,7 +152,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                 
                 {Inventory.map((item, index) => (
                     
-                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
+                    <div key = {index} className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
                             <h1>{item[inventoryItemNameKey]}:</h1>
@@ -222,13 +222,13 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
 
                                 <h2>This Item Currently Belongs to:</h2>
-                                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow">
 
                                     {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
                                         inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                            <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> [ Name ] </button>
+                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Template--GlobalNonclick"> [ Name ] </button>
 
                                         ) : (
 
@@ -236,11 +236,11 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                                 PetList[inventory_EntryOwnerSelector_UserSelection][petHealthKey] === 0 ? (
 
-                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 ) : (
 
-                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Template--GlobalNonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 )
 
@@ -248,15 +248,15 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                                 item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 
-                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 ) : (
 
-                                                    <button key = {indexInner} className="MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Template--GlobalNonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 )
 
@@ -278,7 +278,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Close <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Close <br/> [return]</button>
         </div>
     );
 }

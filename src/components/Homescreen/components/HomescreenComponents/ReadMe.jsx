@@ -20,12 +20,12 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                <div className = "UIStapleElements_ComponentContainerTransparent-Template--Global">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
                         <h1>Read Me:</h1>
                         <hr/>
                     </div>
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
                         <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
                         <p> &bull; While an incorrect option can be selected, the activity will take twice as much effort to complete and the pet will lose health.</p>
@@ -40,7 +40,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [4]</button>
+            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [4]</button>
 
         </div>
     );

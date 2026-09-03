@@ -39,12 +39,12 @@ function Records({set_Records_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                <div className="UIStapleElements_ComponentContainerTransparent-Template--Global">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
                         <h1>Records:</h1>
                         <hr/>
                     </div>
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>
                             <p> {ActivePetName}</p>
@@ -61,7 +61,7 @@ function Records({set_Records_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
 
         </div>
     );

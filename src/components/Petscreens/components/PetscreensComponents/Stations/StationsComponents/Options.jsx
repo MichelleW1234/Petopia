@@ -51,11 +51,11 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, set_Option
                 </div>
 
             </div>
-            <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">  
+            <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">  
 
                 {options_CurrSpeciesList.map((option, index) => (
 
-                    <div key = {index} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                    <div key = {index} className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => options_SelectionCorrectnessManager(index)}>
                             <img src = {option[petActivityOptionImageKey]}/>
                         </button>

@@ -140,7 +140,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline">Select pet(s) to remove:</h1>
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
                     {Room.map((petName, index) => (
 
@@ -150,7 +150,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                         ) : (
 
-                            <div key = {index} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div key = {index} className = "UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                                 {clearPets_CurrSelectedEntries.includes(petName) ? (
 
@@ -178,17 +178,17 @@ function ClearPets({set_ClearPets_OpenFlag}) {
                 </div>
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets_SelectedEntriesManager()}>Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets_SelectedEntriesManager()}>Remove Selected Pets <br/> [return]</button>
 
                 )}
 

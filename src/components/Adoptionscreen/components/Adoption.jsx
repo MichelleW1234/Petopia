@@ -365,9 +365,9 @@ function Adoption () {
 
             <div className="UIStapleElements_Background-Template--Screen">
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenNavbar">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar QuitAndGoHome" onClick = {() => adoption_HomeNavigator()}> Quit and Go Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenNavbar SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu QuitAndGoHome" onClick = {() => adoption_HomeNavigator()}> Quit and Go Home <br/> [1]</Link>
+                    <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
                 {adoption_PetGender === "" ? (
@@ -376,11 +376,11 @@ function Adoption () {
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Select a species: </h1>
                         
-                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
             
                             {Object.keys(petSpeciesImagePortraitList).map((key) => (
             
-                                <div key = {key} className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                <div key = {key} className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                     {key === adoption_UserSelection ? (
             
                                         <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => adoption_SpeciesSelector("")}>
@@ -407,11 +407,11 @@ function Adoption () {
                     
                         {adoption_UserSelection === "" ? (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
             
                         ) : (
             
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => adoption_PetGenderGenerator()}> Go to Confirmation <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => adoption_PetGenderGenerator()}> Go to Confirmation <br/> [return]</button>
             
                         )}  
 
@@ -421,21 +421,21 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument"> 
+                        <div className="UIStapleElements_ComponentContainerTransparent-Template--Global"> 
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocumentHeading">
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
                                 <h1> Adoption form: </h1> 
                                 <hr/>
                             </div> 
                 
-                            <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalDocumentWrittenContent Adoption_ComponentContainer-Structure--FormBody">
+                            <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent Adoption_ComponentContainer-Structure--FormBody">
                                 <p>Hello, my name is </p>
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
                                         <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
                                     </div>
-                                    <div className="UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
+                                    <div className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
                                         <input 
                                             type="text"
                                             value={adoption_UserInput}
@@ -452,9 +452,9 @@ function Adoption () {
 
                         <div className = "Adoption_ComponentContainer-Structure--Confirmation">
                             <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => adoption_SpeciesDeselector()}> Undo Selection <br/> [esc]</button>
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => adoption_NameManager(e)}> Confirm Selection <br/> [return]</button>
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                                <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen UndoSelection" onClick = {() => adoption_SpeciesDeselector()}> Undo Selection <br/> [esc]</button>
+                                <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => adoption_NameManager(e)}> Confirm Selection <br/> [return]</button>
                             </div>
                         </div>
 
@@ -468,13 +468,13 @@ function Adoption () {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
+                    className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

@@ -75,31 +75,31 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
 
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
-                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainer-Structure--Global UIStapleElements_ComponentContainer-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick" > &#x2B05; </button>
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow">
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Template--GlobalNonclick"> &#x2B05; </button>
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
 
 
                                 ) : rearrangePets_ForwardShifter_UserSelection === 1 ? (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow">
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
 
                                 ) : (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Click" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
-                                        <button className = "MiscellaneousElements_ComponentButton-Structure--FloatingFlag MiscellaneousElements_ComponentButton-Template--FloatingFlag--Nonclick"> &#x2B95; </button>
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow">
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
+                                        <button className = "UIStapleElements_ComponentButtonPillTransparent-Template--GlobalNonclick"> &#x2B95; </button>
                                     </div>
 
                                 )}
@@ -137,9 +137,9 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => helpers_Closer_Flags(set_RearrangePets_OpenFlag)}> Done <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Done" onClick={() => helpers_Closer_Flags(set_RearrangePets_OpenFlag)}> Done <br/> [return]</button>
 
             </div>
 
