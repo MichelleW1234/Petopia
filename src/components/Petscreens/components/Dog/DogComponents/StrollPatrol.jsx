@@ -210,14 +210,14 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
             {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
-                <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> Start <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> Start <br/> [return]</button>
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-                <button className = "UIStapleElements_ComponentButtonBox-Template--Global Up" onClick = {() => strollPatrol_UpwardsShifter()}> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Up" onClick = {() => strollPatrol_UpwardsShifter()}> 
                     [&#x2B06;]
                 </button>
-                <button className = "UIStapleElements_ComponentButtonBox-Template--Global Down" onClick = {() => strollPatrol_DownwardsShifter()}> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Down" onClick = {() => strollPatrol_DownwardsShifter()}> 
                     [&#x2B07;]
                 </button>
             </div>

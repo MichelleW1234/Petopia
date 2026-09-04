@@ -25,8 +25,8 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Species Care Guide:</h1>
-                <div className="UIStapleElements_ComponentContainerTransparent-Template--Global"> 
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Determine Which Species is Right for You:</h1>
+                <div className="UIStapleElements_ComponentFrameTransparent-Template--Global"> 
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Dog &rarr; High Maintenance Pet</h2>
@@ -57,7 +57,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
         </div>
     );
 }

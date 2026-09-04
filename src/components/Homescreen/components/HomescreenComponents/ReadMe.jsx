@@ -19,8 +19,8 @@ function ReadMe({set_ReadMe_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Me:</h1>
-                <div className = "UIStapleElements_ComponentContainerTransparent-Template--Global">
+                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> How to Play Petopia: </h1>
+                <div className = "UIStapleElements_ComponentFrameTransparent-Template--Global">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
                         <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
@@ -36,7 +36,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [4]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [4]</button>
 
         </div>
     );

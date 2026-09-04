@@ -210,7 +210,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
             {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Copy the moves.</h2> 
-                <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> Start <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> Start <br/> [return]</button>
             </div>}
 
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
@@ -289,10 +289,10 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
             </div>
 
             <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="UIStapleElements_ComponentButtonBox-Template--Global W" onClick={() => pawformer_MoveManager("W")}> W </button>
-                <button className="UIStapleElements_ComponentButtonBox-Template--Global A" onClick={() => pawformer_MoveManager("A")}> A </button>
-                <button className="UIStapleElements_ComponentButtonBox-Template--Global S" onClick={() => pawformer_MoveManager("S")}> S </button>
-                <button className="UIStapleElements_ComponentButtonBox-Template--Global D" onClick={() => pawformer_MoveManager("D")}> D </button>
+                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick W" onClick={() => pawformer_MoveManager("W")}> [W] </button>
+                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick A" onClick={() => pawformer_MoveManager("A")}> [A] </button>
+                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick S" onClick={() => pawformer_MoveManager("S")}> [S] </button>
+                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick D" onClick={() => pawformer_MoveManager("D")}> [D] </button>
             </div>
                 
         </div>

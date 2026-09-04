@@ -125,7 +125,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
             {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
                 <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> Start <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> Start <br/> [return]</button>
             </div>}
 
             

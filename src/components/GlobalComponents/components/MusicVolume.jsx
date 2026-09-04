@@ -21,7 +21,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
         helpers_Closer_Flags(set_MusicVolume_OpenFlag);
 
     },
-        ".Close"
+        ".Done"
     );
 
 
@@ -75,10 +75,10 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
         <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Music Volume:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Music Volume:</h1>
                 <div className="MusicVolume_ComponentContainer-Structure--Widget">
                     <img src = {VolumeSpeaker}/>
-                    <div className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation MusicVolume_ComponentContainer-Structure--Slider">
+                    <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation MusicVolume_ComponentContainer-Structure--Slider">
                         <h2>[&#x2B05;] [&#x2B95;]</h2>
                         <input
                             className="Slider"
@@ -94,7 +94,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Close <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
         </div>
     );
 }

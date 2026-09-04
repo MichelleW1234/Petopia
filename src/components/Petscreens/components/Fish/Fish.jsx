@@ -404,23 +404,23 @@ function Fish (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Schedule" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Schedule" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {fish_Alive ? (
 
                         <>
-                            <button className={fish_Hungry ? "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Feed"} onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                            <button className={fish_Dirty ? "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenuUrgent Clean" : "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Clean"} onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                            <button className={fish_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Feed"} onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={fish_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Clean"} onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
 
                             {fish_CanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--ScreenMenu Medicine" onClick = {() => helpers_Opener_Flags(set_Fish_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Medicine" onClick = {() => helpers_Opener_Flags(set_Fish_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
 
                             )}
 
@@ -429,9 +429,9 @@ function Fish (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--ScreenMenu"> Feed <br/> [4]</button>
-                            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--ScreenMenu"> Clean <br/> [5]</button>
-                            <button className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalNonclick UIStapleElements_ComponentButtonPillColored-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Feed <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Clean <br/> [5]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
                         </>
 
                     )}
@@ -457,13 +457,13 @@ function Fish (){
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen Volume" 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Fish_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen Inventory" 
+                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Fish_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>
