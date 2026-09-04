@@ -214,10 +214,10 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-                <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick Up" onClick = {() => strollPatrol_UpwardsShifter()}> 
+                <button className = "UIStapleElements_ComponentButtonBox-Template--Global Up" onClick = {() => strollPatrol_UpwardsShifter()}> 
                     [&#x2B06;]
                 </button>
-                <button className = "UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick Down" onClick = {() => strollPatrol_DownwardsShifter()}> 
+                <button className = "UIStapleElements_ComponentButtonBox-Template--Global Down" onClick = {() => strollPatrol_DownwardsShifter()}> 
                     [&#x2B07;]
                 </button>
             </div>

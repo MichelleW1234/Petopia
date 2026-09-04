@@ -148,19 +148,19 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Distribute items to your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Distribute items to your pets:</h1>
                 
                 {Inventory.map((item, index) => (
                     
                     <div key = {index} className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                             <h1>{item[inventoryItemNameKey]}:</h1>
                         </div>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemContent">
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentContainer-Structure--ItemContentImage">
+                            <div className="Inventory_ComponentContainer-Structure--ItemContentImage">
                                 <img src = {item[inventoryItemImageKey]}/>
                             </div>
                             <div className="Inventory_ComponentContainer-Structure--ItemContentDetails">
@@ -181,7 +181,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
 
-                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
                                 </div>
                             
@@ -192,7 +192,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
 
-                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
                                 </div>
                             </>
@@ -202,7 +202,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
 
-                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
                                 </div>
                             </>
@@ -212,7 +212,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
                                 <h2>Achievement to Unlock: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
 
-                                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Inventory_ComponentImage-Structure--ItemLock">
+                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
                                 </div>
                             </>
@@ -248,7 +248,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                                 item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick--Selected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillTransparent-Color--GlobalClick--GlobalSelected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
 
                                                 ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
 

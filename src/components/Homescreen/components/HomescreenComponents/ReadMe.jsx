@@ -19,12 +19,8 @@ function ReadMe({set_ReadMe_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-
+                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Me:</h1>
                 <div className = "UIStapleElements_ComponentContainerTransparent-Template--Global">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
-                        <h1>Read Me:</h1>
-                        <hr/>
-                    </div>
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
                         <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
@@ -35,7 +31,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
                         <p> &bull; Once you've accomplished the achievement of fully evolving a species to its final stage, items will unlock in your inventory that can be use to decorate your pets' rooms.</p>
                         <p> &bull; Inside your inventory, there are 3 revival potions that can each be used on any pet that has died, but cannot be reused. You will not recieve any more after they have been used up unless you restart the game.</p>
                         <p> &bull; Try interacting with your pets (hover over them) to see what happens!</p>
-                        </div>
+                    </div>
                 </div>
 
             </div>

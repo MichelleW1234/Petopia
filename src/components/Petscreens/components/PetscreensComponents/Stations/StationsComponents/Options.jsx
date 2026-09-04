@@ -39,7 +39,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, set_Option
 
         <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-            <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Options_ComponentContainer-Structure--PetThought"> 
+            <div className="Options_ComponentContainer-Structure--PetThought"> 
 
                 <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} className = "Options_ComponentImage-Template--PetThoughtPet" />
 
@@ -60,7 +60,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, set_Option
                             <img src = {option[petActivityOptionImageKey]}/>
                         </button>
 
-                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                             <h2>{option[petActivityOptionNameKey]}</h2>
                         </div>
                     </div>

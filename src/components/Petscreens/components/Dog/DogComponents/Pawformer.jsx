@@ -289,10 +289,10 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
             </div>
 
             <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick W" onClick={() => pawformer_MoveManager("W")}> W </button>
-                <button className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick A" onClick={() => pawformer_MoveManager("A")}> A </button>
-                <button className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick S" onClick={() => pawformer_MoveManager("S")}> S </button>
-                <button className="UIStapleElements_ComponentButtonPillTransparent-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick D" onClick={() => pawformer_MoveManager("D")}> D </button>
+                <button className="UIStapleElements_ComponentButtonBox-Template--Global W" onClick={() => pawformer_MoveManager("W")}> W </button>
+                <button className="UIStapleElements_ComponentButtonBox-Template--Global A" onClick={() => pawformer_MoveManager("A")}> A </button>
+                <button className="UIStapleElements_ComponentButtonBox-Template--Global S" onClick={() => pawformer_MoveManager("S")}> S </button>
+                <button className="UIStapleElements_ComponentButtonBox-Template--Global D" onClick={() => pawformer_MoveManager("D")}> D </button>
             </div>
                 
         </div>

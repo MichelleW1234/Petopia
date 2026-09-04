@@ -32,12 +32,8 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Schedule:</h1>
                 <div className = "UIStapleElements_ComponentContainerTransparent-Template--Global">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
-                        <h1>Schedule:</h1>
-                        <hr/>
-                    </div>
-
                     {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 
                         <ActivityComponent

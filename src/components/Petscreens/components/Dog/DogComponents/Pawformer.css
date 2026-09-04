@@ -26,7 +26,7 @@
     border-bottom-right-radius: inherit;
 
     background-color: rgba(71, 0, 125, 0.75);
-    box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 6px rgb(255, 255, 255);
 
 }
 
@@ -43,7 +43,7 @@
 
     border-radius: 25px;
 
-    box-shadow: 0 0 16px 3.2px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
 
 }
 

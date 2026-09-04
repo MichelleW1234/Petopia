@@ -18,6 +18,8 @@
     padding: 2rem;
     border-radius: 25px;
 
+    box-shadow: 0 0 16px 6px rgb(255, 255, 255);
+
     img {
 
         width: 100%;

@@ -73,7 +73,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Switch the order of your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Switch the order of your pets:</h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
@@ -108,10 +108,10 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                     <>
                                        
-                                        <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
                                         <img src = {NoPetPortrait}/>
                                         </div>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                             <h2>[ Name ]</h2>
                                         </div>
                                     </>
@@ -120,10 +120,10 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                     <>
                                       
-                                        <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </div>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                             <h2>{petName}</h2>
                                         </div>
                                     </>

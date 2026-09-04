@@ -133,7 +133,7 @@ function Adoption () {
         }
 
     },
-        ".ConfirmSelection"
+        ".ConfirmAdoption"
     );
 
 
@@ -374,7 +374,7 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Select a species: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a species: </h1>
                         
                         <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
             
@@ -395,7 +395,7 @@ function Adoption () {
             
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                         <h2>{key}</h2>
                                     </div>
                                     
@@ -421,18 +421,15 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <div className="UIStapleElements_ComponentContainerTransparent-Template--Global"> 
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Complete the Adoption Process: </h1> 
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
-                                <h1> Adoption form: </h1> 
-                                <hr/>
-                            </div> 
+                        <div className="UIStapleElements_ComponentContainerTransparent-Template--Global"> 
                 
                             <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent Adoption_ComponentContainer-Structure--FormBody">
                                 <p>Hello, my name is </p>
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
-                                    <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagImageCutOut Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
+                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
                                         <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
                                     </div>
                                     <div className="UIStapleElements_ComponentContainerColored-Structure--Global UIStapleElements_ComponentContainerColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
@@ -454,7 +451,7 @@ function Adoption () {
                             <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
                                 <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen UndoSelection" onClick = {() => adoption_SpeciesDeselector()}> Undo Selection <br/> [esc]</button>
-                                <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen ConfirmSelection" onClick = {(e) => adoption_NameManager(e)}> Confirm Selection <br/> [return]</button>
+                                <button className = "UIStapleElements_ComponentButtonPillColored-Structure--GlobalClick UIStapleElements_ComponentButtonPillColored-Color--GlobalClick--Screen ConfirmAdoption" onClick = {(e) => adoption_NameManager(e)}> Confirm Adoption <br/> [return]</button>
                             </div>
                         </div>
 

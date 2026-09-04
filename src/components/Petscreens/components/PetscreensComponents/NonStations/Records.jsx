@@ -39,11 +39,10 @@ function Records({set_Records_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Records:</h1>
+
                 <div className="UIStapleElements_ComponentContainerTransparent-Template--Global">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalHeading">
-                        <h1>Records:</h1>
-                        <hr/>
-                    </div>
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>

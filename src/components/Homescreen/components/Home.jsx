@@ -250,11 +250,11 @@ function Home (){
 
                     {home_CanRestart ? (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Your Pets: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Your Pets: </h1>
 
                     ) : (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalHeadline"> Welcome! Adopt up to 3 pets to get started. </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Welcome! Adopt up to 3 pets to get started. </h1>
 
                     )}
 
@@ -280,7 +280,7 @@ function Home (){
                                         <img src = {AddNewPet}/>
                                     </Link>
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                         <h2>[ Name ]</h2>
                                     </div>
 
@@ -334,7 +334,7 @@ function Home (){
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </Link>
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryIdentifier">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                         <h2>{petName}</h2>
                                     </div>
                                     
