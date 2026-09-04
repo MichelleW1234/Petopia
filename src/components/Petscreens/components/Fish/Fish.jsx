@@ -442,7 +442,7 @@ function Fish (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : ActivePetName}'s Living Room:</h1>
                     <MainComponent
                         main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation={fish_MainCurrStageSleepAnimationImage}

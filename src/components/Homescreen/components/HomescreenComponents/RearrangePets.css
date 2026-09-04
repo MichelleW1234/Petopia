@@ -26,9 +26,9 @@
         height: auto;
 
         filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
             drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px  rgb(255, 255, 255));
+            drop-shadow(0 0 8px rgb(255, 255, 255))
+            drop-shadow(0 0 12px  rgb(255, 255, 255));
 
     }
 

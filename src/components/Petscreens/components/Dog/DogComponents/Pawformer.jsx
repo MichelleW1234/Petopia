@@ -184,9 +184,9 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         const pawformer_MoveManager_CurrTargetIndex = pawformer_CurrMovePositions.findIndex(move => move[pawformer_ColKey] === pawformer_TargetCol);
 
-        if (pawformer_MoveManager_CurrTargetIndex !== -1 && !pawformer_HitAttempt){
+        if (!pawformer_HitAttempt){
 
-            if (pawformer_MoveManager_UserSelection === pawformer_CurrMovePositions[pawformer_MoveManager_CurrTargetIndex][pawformer_TypeKey]) {
+            if (pawformer_MoveManager_CurrTargetIndex !== -1 && pawformer_MoveManager_UserSelection === pawformer_CurrMovePositions[pawformer_MoveManager_CurrTargetIndex][pawformer_TypeKey]) {
 
                 set_Play_CurrNumber(prev => prev + 1);
             
