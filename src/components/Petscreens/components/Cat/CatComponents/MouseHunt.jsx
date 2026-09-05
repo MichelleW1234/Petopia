@@ -29,20 +29,6 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
     const [mouseHunt_HitAttempt, set_MouseHunt_HitAttempt] = useState(false);
 
 
-    useKeyboardShortcut("Enter", () => {
-    
-        if (!mouseHunt_Start){
-
-            petScreensHelpers_Starter_Activities(set_MouseHunt_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-    
-
 
     useEffect(() => {
 
@@ -164,8 +150,8 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
             {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Catch the toy mice and avoid the power cords.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> Start <br/> [return]</button>
+                <h2>Instructions: Catch the toy mice and avoid the power cords.</h2> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> X </button>
             </div>}
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">

@@ -54,19 +54,6 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
         ".Done"
     );
 
-    
-    useKeyboardShortcut("Enter", () => {
-    
-        if (clean_OptionsUserSelection !== -1 && !clean_Start && !clean_Done){
-
-            petScreensHelpers_Starter_Activities(set_Clean_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
 
 
     useKeyboardShortcut("Escape", () => {
@@ -220,8 +207,8 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                                 ) : (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2> Drag your cursor back and forth for cleaning. </h2>
-                                        <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> Start <br/> [return]</button>
+                                        <h2>Instructions: Drag your cursor back and forth for cleaning. </h2>
+                                        <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> X </button>
                                     </div>
 
                                 )}

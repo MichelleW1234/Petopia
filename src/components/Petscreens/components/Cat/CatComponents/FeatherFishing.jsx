@@ -24,20 +24,6 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
     const [featherFishing_CurrHookLength, set_FeatherFishing_HookLength] = useState(0);
     const [featherFishing_HitAttempt, set_FeatherFishing_HitAttempt] = useState(false);
 
-    useKeyboardShortcut("Enter", () => {
-    
-        if (!featherFishing_Start){
-
-            petScreensHelpers_Starter_Activities(set_FeatherFishing_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-    
-
 
     useEffect(() => {
 
@@ -124,8 +110,8 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
             {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> Start <br/> [return]</button>
+                <h2>Instructions: Only catch the fishing line when the feather lands on red.</h2> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
             </div>}
 
             

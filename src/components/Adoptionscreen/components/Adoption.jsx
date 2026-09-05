@@ -421,7 +421,7 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Fill Out the Adoption Form: </h1> 
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Complete the Adoption Form: </h1> 
 
                         <div className="UIStapleElements_ComponentFrameTransparent-Template--Global"> 
                 

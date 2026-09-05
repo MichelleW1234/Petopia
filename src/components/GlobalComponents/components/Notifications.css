@@ -11,36 +11,25 @@
     z-index: 6;
 
     gap: 0rem;
-    padding: 2rem;
 
 }
-
 
 
 .Notifications_ComponentContainer-Structure--Card{
 
-    position: relative;
-
-    padding: 1rem;
-
-    button{
-
-        position: absolute;
-        right: 0rem;
-        top: 0rem;
-
-    }
-
-}
-
-
-.Notifications_ComponentContainer-Structure--CardContent{
-
-    width: 30rem;
+    width: 35rem;
     position: relative;
 
     padding: 2rem 4rem;
     border-radius: 25px;
+
+    button{
+
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+
+    }
 
 }
 

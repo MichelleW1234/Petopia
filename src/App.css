@@ -789,7 +789,7 @@ p {
   justify-content: center;
   position: relative;
 
-  border-radius: transparent;
+  border-radius: inherit;
 
   box-shadow: 0 0 16px 9px rgb(255, 255, 255);
 
@@ -915,11 +915,19 @@ p {
   inset: 0;
   z-index: 9;
 
+  border-radius: inherit;
   padding: 5rem;
   gap: 3rem;
-  border-radius: inherit;
 
   background-color: rgba(71, 0, 125, 0.75);
+
+  button {
+
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+  }
 
 }
 

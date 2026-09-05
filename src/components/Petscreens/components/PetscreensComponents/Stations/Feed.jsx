@@ -51,20 +51,6 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
         ".Done"
     );
 
-    
-    useKeyboardShortcut("Enter", () => {
-    
-        if (feed_OptionsUserSelection !== -1 && !feed_Start && !feed_Done){
-
-            petScreensHelpers_Starter_Activities(set_Feed_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-
 
     useKeyboardShortcut("Escape", () => {
 
@@ -197,10 +183,9 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
                                     ) : (
 
                                         <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                            <h2>Wait for your pet as it eats.</h2> 
-                                            <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Feed_Start)}> Start <br/> [return]</button>
+                                            <h2>Instructions: Wait for your pet as it eats.</h2>
+                                            <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => petScreensHelpers_Starter_Activities(set_Feed_Start)}> X </button>
                                         </div>
-
                                     )}
 
                                 </div>

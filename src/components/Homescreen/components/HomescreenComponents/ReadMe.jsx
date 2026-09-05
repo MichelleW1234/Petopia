@@ -19,7 +19,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> How to Play Petopia: </h1>
+                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read About How to Play Petopia: </h1>
                 <div className = "UIStapleElements_ComponentFrameTransparent-Template--Global">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 

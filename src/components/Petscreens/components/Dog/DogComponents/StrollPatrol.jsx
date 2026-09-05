@@ -8,7 +8,6 @@ import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js
 
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
 import Rock from "../../../../../images/Dog/Play/Games/StrollPatrol/Rock.png";
-import Arrow from "../../../../../images/Dog/Play/Games/StrollPatrol/Arrow.png";
 
 import "./StrollPatrol.css";
 
@@ -18,7 +17,7 @@ import "./StrollPatrol.css";
 function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const strollPatrol_WindowWidth = 8;
-    const strollPatrol_WindowHeight = 5;
+    const strollPatrol_WindowHeight = 4;
 
     const strollPatrol_RowKey = "row";
     const strollPatrol_ColumnKey = "column";
@@ -26,7 +25,6 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const [strollPatrol_Start, set_StrollPatrol_Start] = useState(false);
     const [strollPatrol_CurrObjectPositions, set_StrollPatrol_CurrObjectPositions] = useState([]);
-    const [strollPatrol_CurrDogPosition, set_StrollPatrol_CurrDogPosition] = useState({[strollPatrol_ColumnKey] : 4, [strollPatrol_RowKey] : 2});
 
 
     useKeyboardShortcut("Enter", () => {
@@ -39,34 +37,6 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     },
         ".Start"
-    );
-
-
-    useKeyboardShortcut("ArrowUp", (e) => {
-    
-        if (strollPatrol_Start){
-
-            e.preventDefault();
-            strollPatrol_UpwardsShifter();
-
-        }
-
-    },
-        ".Up"
-    );
-
-
-    useKeyboardShortcut("ArrowDown", (e) => {
-    
-        if (strollPatrol_Start){
-
-            e.preventDefault();
-            strollPatrol_DownwardsShifter();
-
-        }
-
-    },
-        ".Down"
     );
 
 
@@ -126,7 +96,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
                 const strollPatrol_Interval_CurrFilteredCopy = strollPatrol_Interval_CurrCopy.filter(item => item[strollPatrol_ColumnKey] >= 0);
                 
 
-                if (!strollPatrol_Interval_CurrFilteredCopy.some(item => item[strollPatrol_ColumnKey] > 3)){
+                if (!strollPatrol_Interval_CurrFilteredCopy.some(item => item[strollPatrol_ColumnKey] > 6)){
 
                     strollPatrol_Interval_CurrFilteredCopy.push({[strollPatrol_ColumnKey] : strollPatrol_WindowWidth, [strollPatrol_RowKey] : Math.floor(Math.random() * strollPatrol_WindowHeight), [strollPatrol_TypeKey] : Math.floor(Math.random() * 3)});
 
@@ -142,66 +112,37 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     }, [strollPatrol_Start]);
 
-    
-    useEffect(() => {
 
-        const strollPatrol_CurrCopy = strollPatrol_CurrObjectPositions.map(inner =>
-            structuredClone(inner)
-        );
-
-        const strollPatrol_CurrHitIndex = strollPatrol_CurrCopy.findIndex(item => item[strollPatrol_RowKey] === strollPatrol_CurrDogPosition[strollPatrol_RowKey] && item[strollPatrol_ColumnKey] === strollPatrol_CurrDogPosition[strollPatrol_ColumnKey]);
-    
-        if (strollPatrol_CurrHitIndex !== -1){
-
-            if (strollPatrol_CurrCopy[strollPatrol_CurrHitIndex][strollPatrol_TypeKey] === 0){
-
-                set_Play_CurrNumber(prev => prev + 1);
-
-            } else {
-
-                set_Play_CurrNumber(prev => Math.max(prev - 1, 0));
-
-            }
-
-            strollPatrol_CurrCopy.splice(strollPatrol_CurrHitIndex, 1);
-            set_StrollPatrol_CurrObjectPositions(strollPatrol_CurrCopy);
-            
-        }
-
-    }, [strollPatrol_CurrObjectPositions, strollPatrol_CurrDogPosition]);
-
-
-
-    const strollPatrol_UpwardsShifter = () => {
+    const strollPatrol_HitManager = (row, col, type) => {
 
         helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
-        if (strollPatrol_CurrDogPosition[strollPatrol_RowKey] > 0){
+        set_StrollPatrol_CurrObjectPositions(prev => {
 
-            set_StrollPatrol_CurrDogPosition(prev => ({
-                ...prev,
-                [strollPatrol_RowKey]: prev[strollPatrol_RowKey] - 1
-            }));
+            const strollPatrol_CurrCopy = prev.map(inner =>
+                structuredClone(inner)
+            );
+
+            const hitIndex = strollPatrol_CurrCopy.findIndex(position => position[strollPatrol_RowKey] === row && position[strollPatrol_ColumnKey] === col);
+
+            strollPatrol_CurrCopy.splice(hitIndex, 1);
+
+            return strollPatrol_CurrCopy;
+
+        });
+
+
+        if (type === 0){
+
+            set_Play_CurrNumber(prev => prev + 1);
+
+        } else {
+
+            set_Play_CurrNumber(prev => Math.max(prev - 1, 0));
 
         }
 
     }
-
-    const strollPatrol_DownwardsShifter = () => {
-
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
-        
-        if (strollPatrol_CurrDogPosition[strollPatrol_RowKey] < strollPatrol_WindowHeight-1){
-
-            set_StrollPatrol_CurrDogPosition(prev => ({
-                ...prev,
-                [strollPatrol_RowKey]: prev[strollPatrol_RowKey] + 1
-            }));
-
-        }
-
-    }
-
 
 
     return (
@@ -209,47 +150,42 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
             {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Lead the Arrow on your walk to collect all the balls. Avoid the rocks.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> Start <br/> [return]</button>
+                <h2>Instructions: Click on all the balls to collect them. Avoid the rocks.</h2> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> X </button>
             </div>}
-
-            <div className="StrollPatrol_ComponentContainer-Template--Buttons">
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Up" onClick = {() => strollPatrol_UpwardsShifter()}> 
-                    [&#x2B06;]
-                </button>
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Down" onClick = {() => strollPatrol_DownwardsShifter()}> 
-                    [&#x2B07;]
-                </button>
-            </div>
 
             <div className="StrollPatrol_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: strollPatrol_WindowHeight}, (_, row) => 
                     Array.from({ length: strollPatrol_WindowWidth}, (_, col) => {
 
-                        const strollPatrol_DogHere = col === strollPatrol_CurrDogPosition[strollPatrol_ColumnKey] && row === strollPatrol_CurrDogPosition[strollPatrol_RowKey];
                         const strollPatrol_RockHere = strollPatrol_CurrObjectPositions.find(item => item[strollPatrol_ColumnKey] === col && item[strollPatrol_RowKey] === row && item[strollPatrol_TypeKey] > 0);
                         const strollPatrol_BallHere = strollPatrol_CurrObjectPositions.find(item => item[strollPatrol_ColumnKey] === col && item[strollPatrol_RowKey] === row && item[strollPatrol_TypeKey] === 0);
 
                         return (
-                                
-                            strollPatrol_DogHere || strollPatrol_RockHere || strollPatrol_BallHere ? (
+
+                            strollPatrol_BallHere ? (
 
                                 <img 
                                     key = {row + " & " + col} 
                                     className="StrollPatrol_ComponentContainer-Structure--GridCell" 
-                                    src = {strollPatrol_DogHere ? 
-                                            Arrow
-                                            : strollPatrol_RockHere ?
-                                            Rock
-                                            : Ball
-                                    }
+                                    src = {Ball}
+                                    onClick = {() => strollPatrol_HitManager(row, col, 0)}
                                 />
-                                
+
+                            ) : strollPatrol_RockHere ? (
+
+                                <img 
+                                    key = {row + " & " + col} 
+                                    className="StrollPatrol_ComponentContainer-Structure--GridCell" 
+                                    src = {Rock}
+                                    onClick = {() => strollPatrol_HitManager(row, col, 1)}
+                                />
+
                             ) : (
 
                                 <div key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell"></div>
-        
+
                             )
                         
                         );

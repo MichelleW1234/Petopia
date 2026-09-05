@@ -49,20 +49,6 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
         ".Done"
     );
 
-    
-    useKeyboardShortcut("Enter", () => {
-    
-        if (medicine_OptionsUserSelection !== -1 && !medicine_Start && !medicine_Done){
-
-            petScreensHelpers_Starter_Activities(set_Medicine_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-
 
     useKeyboardShortcut("Escape", () => {
 
@@ -249,8 +235,8 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
                                 ) : (
 
                                     <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2>Wait for your pet as it receives its dose.</h2> 
-                                        <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Medicine_Start)}> Start <br/> [return]</button>
+                                        <h2>Instructions: Wait for your pet as it receives its dose.</h2> 
+                                        <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Medicine_Start)}> X </button>
                                     </div>
 
                                 )}

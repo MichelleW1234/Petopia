@@ -27,72 +27,10 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const [pawformer_Start, set_Pawformer_Start] = useState(false);
     const [pawformer_CurrMovePositions, set_Pawformer_CurrMovePositions] = useState([]);
+    const [pawformer_CurrMoveTarget, set_Pawformer_CurrMoveTarget] = useState(Math.floor(Math.random() * 4));
     const [pawformer_HitAttempt, set_Pawformer_HitAttempt] = useState(false);
 
-
-    useKeyboardShortcut("Enter", () => {
     
-        if (!pawformer_Start){
-
-            petScreensHelpers_Starter_Activities(set_Pawformer_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-
-    useKeyboardShortcut("W", () => {
-     
-        if (pawformer_Start){
-
-            pawformer_MoveManager("W");
-
-        }
-
-    },
-        ".W"
-    );
-
-    useKeyboardShortcut("A", () => {
-    
-        if (pawformer_Start){
-
-            pawformer_MoveManager("A");
-
-        }
-
-    },
-        ".A"
-    );
-
-    useKeyboardShortcut("S", () => {
-     
-        if (pawformer_Start){
-
-            pawformer_MoveManager("S");
-
-        }
-
-    },
-        ".S"
-    );
-
-
-    useKeyboardShortcut("D", () => {
-    
-        if (pawformer_Start){
-
-            pawformer_MoveManager("D");
-
-        }
-
-    },
-        ".D"
-    );
-
-
 
     useEffect(() => {
 
@@ -148,7 +86,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                         pawformer_Interval_CurrFilteredCopy.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "A"});
 
-                    } else if (pawformer_Interval_CurrAddedMoveNumber === pawformer_TargetCol){
+                    } else if (pawformer_Interval_CurrAddedMoveNumber === 2){
 
                         pawformer_Interval_CurrFilteredCopy.push({[pawformer_ColKey]: 0, [pawformer_TypeKey]: "S"});
 
@@ -178,15 +116,34 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
 
 
+
+    useEffect(() => {
+
+        if (!pawformer_Start){
+
+            return;
+
+        } 
+
+        const pawformer_Interval = setInterval(() => {
+
+            set_Pawformer_CurrMoveTarget(Math.floor(Math.random() * 4));
+
+        }, 5000);
+
+        return () => clearInterval(pawformer_Interval);
+
+    }, [pawformer_Start]);
+
+
+
     const pawformer_MoveManager = (pawformer_MoveManager_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
-        const pawformer_MoveManager_CurrTargetIndex = pawformer_CurrMovePositions.findIndex(move => move[pawformer_ColKey] === pawformer_TargetCol);
-
         if (!pawformer_HitAttempt){
 
-            if (pawformer_MoveManager_CurrTargetIndex !== -1 && pawformer_MoveManager_UserSelection === pawformer_CurrMovePositions[pawformer_MoveManager_CurrTargetIndex][pawformer_TypeKey]) {
+            if (pawformer_MoveManager_UserSelection === pawformer_CurrMoveTarget) {
 
                 set_Play_CurrNumber(prev => prev + 1);
             
@@ -209,13 +166,20 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Pawformer_ComponentContainer-Template--Screen">
 
             {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Copy the moves.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> Start <br/> [return]</button>
+                <h2>Instructions: Click the Matching Letter.</h2> 
+                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> X </button>
             </div>}
 
+            <div className="correctMove">
+                <img src = {pawformer_CurrMoveTarget === 0 ? w
+                            : pawformer_CurrMoveTarget === 1 ? a
+                            : pawformer_CurrMoveTarget === 2 ? s
+                            : d
+                }/>
+            </div>
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Bottom" src = {arrow}/>
-            <div className= "Pawformer_ComponentContainer-Template--HitBox"></div>
+            <div className = "Pawformer_ComponentContainer-Template--HitBox"></div>
 
             <div className="Pawformer_ComponentContainer-Structure--Grid">
 
@@ -232,7 +196,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {w}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {w} onClick={() => pawformer_MoveManager(0)}/>
 
                             ) : (
 
@@ -244,7 +208,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {a}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {a} onClick={() => pawformer_MoveManager(1)}/>
 
                             ) : (
 
@@ -256,7 +220,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {s}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {s} onClick={() => pawformer_MoveManager(2)}/>
 
                             ) : (
 
@@ -268,7 +232,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {d}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {d} onClick={() => pawformer_MoveManager(3)}/>
 
                             ) : (
 
@@ -286,13 +250,6 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                 })}
 
-            </div>
-
-            <div className="Pawformer_ComponentContainer-Template--Buttons">
-                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick W" onClick={() => pawformer_MoveManager("W")}> [W] </button>
-                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick A" onClick={() => pawformer_MoveManager("A")}> [A] </button>
-                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick S" onClick={() => pawformer_MoveManager("S")}> [S] </button>
-                <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick D" onClick={() => pawformer_MoveManager("D")}> [D] </button>
             </div>
                 
         </div>

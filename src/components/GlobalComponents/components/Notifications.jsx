@@ -29,13 +29,11 @@ function Notifications() {
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_EntryRemover_UserSelection} className="Notifications_ComponentContainer-Structure--Card">
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Notifications_ComponentContainer-Structure--CardContent">
-                        <h2>Alert:</h2>
-                        <p>{entry[notificationsDescriptionKey]}</p>
-                        <h2>Date:</h2>
-                        <p>{entry[notificationsDateKey]}</p>
-                    </div>
+                <div key = {notifications_EntryRemover_UserSelection}  className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Notifications_ComponentContainer-Structure--Card">
+                    <h2>Alert:</h2>
+                    <p>{entry[notificationsDescriptionKey]}</p>
+                    <h2>Date:</h2>
+                    <p>{entry[notificationsDateKey]}</p>
                     <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> X </button>
                 </div>
 

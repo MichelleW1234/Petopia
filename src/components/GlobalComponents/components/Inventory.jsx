@@ -148,7 +148,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Distribute Items to Your Pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Pet for Each Item:</h1>
                 
                 {Inventory.map((item, index) => (
                     
@@ -228,7 +228,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                         inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> [ Name ] </button>
+                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> &lt; Name &gt; </button>
 
                                         ) : (
 

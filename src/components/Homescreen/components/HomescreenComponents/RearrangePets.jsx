@@ -73,7 +73,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Switch the order of your pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Swap the order of your pets:</h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
@@ -112,7 +112,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                                         <img src = {NoPetPortrait}/>
                                         </div>
                                         <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                            <h2>[ Name ]</h2>
+                                            <h2>&lt; Name &gt;</h2>
                                         </div>
                                     </>
 
