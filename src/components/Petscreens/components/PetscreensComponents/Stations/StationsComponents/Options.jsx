@@ -19,6 +19,8 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
     const options_SelectionManager = (options_SelectionManager_UserSelection) => {
 
+        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+
         if (options_UserSelection === options_SelectionManager_UserSelection){
 
             set_Options_UserSelection(-1)

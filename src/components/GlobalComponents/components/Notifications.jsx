@@ -1,4 +1,5 @@
-import { notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
+import { audioScreenButtonPressKey, notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
+import { helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers";
 import { useNotifications } from "../../../providers/NotificationsProvider";
 
 import "./Notifications.css";
@@ -9,6 +10,8 @@ function Notifications() {
     const {Notifications, setNotifications} = useNotifications();
 
     const notifications_EntryRemover = (notifications_EntryRemover_UserSelection) => {
+
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         setNotifications(prev => {
 

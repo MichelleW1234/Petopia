@@ -11,7 +11,7 @@ import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { audioActivityFailKey, petSpeciesHealthCapList, petHealthKey, petMedicineKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, audioStartActivityKey, audioActivitySuccessKey } from "../../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
-import { petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Starter_Activities, optionSelectionManager } from "../../../helpers/Helpers.js";
 
 import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
 
@@ -29,8 +29,9 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
     const [medicine_OptionsTotalNumber, set_Medicine_OptionsTotalNumber] = useState(10);
     const [medicine_OptionsUserSelection, set_Medicine_OptionsUserSelection] = useState(-1);
     const [medicine_CurrNumber, set_Medicine_CurrNumber] = useState(0);
-    const [medicine_Done, set_Medicine_Done] = useState(false);
     const [medicine_Success, set_Medicine_Success] = useState(false);
+    const [medicine_Confirmed, set_Medicine_Confirmed] = useState(false);
+    const [medicine_Done, set_Medicine_Done] = useState(false);
 
     const medicine_GlobalTimerRef = useRef(GlobalTimer);
     const medicine_CurrNumberRef = useRef(medicine_CurrNumber);
@@ -39,14 +40,14 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
         
     useKeyboardShortcut("Enter", () => {
     
-        if (medicine_Done){
+        if (medicine_OptionsUserSelection !== -1 && !medicine_Confirmed){
 
-            helpers_Closer_Flags(set_Medicine_OpenFlag);
+            optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed);
 
         }
 
     },
-        ".Done"
+        ".Confirm"
     );
 
 
@@ -127,6 +128,24 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
     }, [medicine_Start, medicine_Done]);
 
 
+    useEffect(() => {
+
+        if (!medicine_Done){
+
+            return;
+
+        }
+
+        const timer = setTimeout(() => {
+            helpers_Closer_Flags(set_Medicine_OpenFlag);
+        }, 3000); 
+
+        return () => clearTimeout(timer);
+
+    }, [medicine_Done]);
+
+
+
 
     const medicine_MedicineEffectivenessManager = () => {
 
@@ -189,12 +208,12 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
-            {medicine_OptionsUserSelection === -1 ? (
+            {!medicine_Confirmed ? (
 
                 <OptionsComponent
                     options_CurrDesiredOption = {medicine_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {medicine_OptionsCurrSpeciesList} 
-                    set_Options_TotalNumber = {set_Medicine_OptionsTotalNumber}
+                    options_UserSelection={medicine_OptionsUserSelection}
                     set_Options_UserSelection = {set_Medicine_OptionsUserSelection}
                 />
 
@@ -256,21 +275,30 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
                 
             )}
 
-            {medicine_Done ? (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+
+                {medicine_Done ? (
+                                
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_Closer_Flags(set_Medicine_OpenFlag)}>Done <br/> [return]</button>
-                </div>
 
-            ) : (
+                ) : (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
-                </div>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
 
-            )}
+                )}
+
+                {medicine_OptionsUserSelection === -1 || medicine_Confirmed ? (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation"> Confirm <br/> [return]</button>                    
+
+                ) : (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Confirm" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed)}> Confirm <br/> [return]</button>
+
+                )}
+
+            </div>
 
         </div>
 

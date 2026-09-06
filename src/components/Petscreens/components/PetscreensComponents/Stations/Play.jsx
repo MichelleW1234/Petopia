@@ -11,7 +11,7 @@ import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
 import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, SelectionCorrectnessManager } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, optionSelectionManager } from "../../../helpers/Helpers.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
@@ -40,11 +40,13 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
     const play_AudioRef = useRef(new Audio(Playing));
 
+
+
     useKeyboardShortcut("Enter", () => {
     
         if (play_OptionsUserSelection !== -1 && !play_Confirmed){
 
-            SelectionCorrectnessManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed);
+            optionSelectionManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed);
 
         }
 
@@ -52,17 +54,6 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
         ".Confirm"
     );
     
-    useKeyboardShortcut("Enter", () => {
-    
-        if (play_Done) {
-
-            helpers_Closer_Flags(set_Play_OpenFlag);
-
-        }
-
-    },
-        ".Done"
-    );
 
 
     useKeyboardShortcut("Escape", () => {
@@ -193,7 +184,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Confirm" onClick={() => SelectionCorrectnessManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Confirm" onClick={() => optionSelectionManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed)}> Confirm <br/> [return]</button>
 
                 )}
 

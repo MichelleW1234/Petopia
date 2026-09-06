@@ -12,7 +12,7 @@ import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
-import { petScreensHelpers_Starter_Activities, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Manager_PetHealth} from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Starter_Activities, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Manager_PetHealth, optionSelectionManager} from "../../../helpers/Helpers.js";
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
@@ -30,9 +30,10 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
     const [feed_Start, set_Feed_Start] = useState(false);
     const [feed_OptionsTotalNumber, set_Feed_OptionsTotalNumber] = useState(10);
     const [feed_CurrNumber, set_Feed_CurrNumber] = useState(0);
-    const [feed_Done, set_Feed_Done] = useState(false);
     const [feed_OptionsUserSelection, set_Feed_OptionsUserSelection] = useState(-1);
     const [feed_Success, set_Feed_Success] = useState(false);
+    const [feed_Confirmed, set_Feed_Confirmed] = useState(false);
+    const [feed_Done, set_Feed_Done] = useState(false);
 
     const feed_GlobalTimerRef = useRef(GlobalTimer);
     const feed_CurrNumberRef = useRef(feed_CurrNumber);
@@ -41,14 +42,14 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
     useKeyboardShortcut("Enter", () => {
     
-        if (feed_Done){
+        if (feed_OptionsUserSelection !== -1 && !feed_Confirmed){
 
-            helpers_Closer_Flags(set_Feed_OpenFlag);
+            optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed);
 
         }
 
     },
-        ".Done"
+        ".Confirm"
     );
 
 
@@ -131,18 +132,35 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
     }, [feed_Start, feed_Done]);
 
     
+    useEffect(() => {
+
+        if (!feed_Done){
+
+            return;
+
+        }
+
+        const timer = setTimeout(() => {
+            helpers_Closer_Flags(set_Feed_OpenFlag);
+        }, 3000); 
+
+        return () => clearTimeout(timer);
+
+    }, [feed_Done]);
+
+
 
 
     return (
 
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
                 
-            {feed_OptionsUserSelection === -1 ? (
+            {!feed_Confirmed ? (
 
                 <OptionsComponent
                     options_CurrDesiredOption = {feed_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {feed_OptionsCurrSpeciesList} 
-                    set_Options_TotalNumber = {set_Feed_OptionsTotalNumber}
+                    options_UserSelection={feed_OptionsUserSelection}
                     set_Options_UserSelection = {set_Feed_OptionsUserSelection}
                 />
         
@@ -204,21 +222,29 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
             )}
 
 
-            {feed_Done ? (
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            
+                {feed_Done ? (
+                
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Done" onClick = {() => helpers_Closer_Flags(set_Feed_OpenFlag)}>Done <br/> [return]</button>
-                </div>
-               
-            ) : (
+                ) : (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Quit" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc] </button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
-                </div>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc]</button>
 
-            )}
+                )}
+
+                {feed_OptionsUserSelection === -1 || feed_Confirmed ? (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation"> Confirm <br/> [return]</button>                    
+
+                ) : (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Confirm" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed)}> Confirm <br/> [return]</button>
+
+                )}
+
+            </div>
 
         </div>
 

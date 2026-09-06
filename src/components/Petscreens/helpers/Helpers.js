@@ -2,11 +2,11 @@ import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, pet
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 
-export const SelectionCorrectnessManager = (options_CurrDesiredOption, options_SelectionCorrectnessManager_UserSelection, set_Options_TotalNumber, set_Confirmed) => {
+export const optionSelectionManager = (options_CurrDesiredOption, options_optionSelectionManager_UserSelection, set_Options_TotalNumber, set_Confirmed) => {
 
-    helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+    helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
-    if (options_SelectionCorrectnessManager_UserSelection !== options_CurrDesiredOption) {
+    if (options_optionSelectionManager_UserSelection !== options_CurrDesiredOption) {
 
         set_Options_TotalNumber(prev => prev*2);
 
