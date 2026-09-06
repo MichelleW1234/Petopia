@@ -165,21 +165,23 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Pawformer_ComponentContainer-Template--Screen">
 
-            {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Instructions: Click the Matching Letter.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> X </button>
+            {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">
+                        <h2>Instructions: Click the Matching Letter When It Lands on the Target.</h2> 
+                    </div>
+                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> X </button>
+                </div>
             </div>}
 
-            <div className="correctMove">
-                <img src = {pawformer_CurrMoveTarget === 0 ? w
-                            : pawformer_CurrMoveTarget === 1 ? a
-                            : pawformer_CurrMoveTarget === 2 ? s
-                            : d
-                }/>
-            </div>
+          
+            <img className="Pawformer_ComponentImage-Template--CorrectMove" src = {pawformer_CurrMoveTarget === 0 ? w
+                        : pawformer_CurrMoveTarget === 1 ? a
+                        : pawformer_CurrMoveTarget === 2 ? s
+                        : d
+            }/>
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
             <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Bottom" src = {arrow}/>
-            <div className = "Pawformer_ComponentContainer-Template--HitBox"></div>
 
             <div className="Pawformer_ComponentContainer-Structure--Grid">
 
@@ -196,11 +198,11 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {w} onClick={() => pawformer_MoveManager(0)}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Active" src = {w} onClick={() => pawformer_MoveManager(0)}/>
 
                             ) : (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {w}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Nonactive" src = {w} onClick={() => pawformer_MoveManager(-1)}/>
 
                             )
 
@@ -208,11 +210,11 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {a} onClick={() => pawformer_MoveManager(1)}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Active" src = {a} onClick={() => pawformer_MoveManager(1)}/>
 
                             ) : (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {a}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Nonactive" src = {a} onClick={() => pawformer_MoveManager(-1)}/>
 
                             )
 
@@ -220,11 +222,11 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {s} onClick={() => pawformer_MoveManager(2)}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Active" src = {s} onClick={() => pawformer_MoveManager(2)}/>
 
                             ) : (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {s}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Nonactive" src = {s} onClick={() => pawformer_MoveManager(-1)}/>
 
                             )
 
@@ -232,11 +234,11 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             col === pawformer_TargetCol ? (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Active" src = {d} onClick={() => pawformer_MoveManager(3)}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Active" src = {d} onClick={() => pawformer_MoveManager(3)}/>
 
                             ) : (
 
-                                <img key = {col} className="Pawformer_ComponentContainer-Structure--GridCell Pawformer_ComponentContainer-Structure--GridCell--Nonactive" src = {d}/>
+                                <img key = {col} className="Pawformer_ComponentContainer-Template--GridCell Pawformer_ComponentContainer-Template--GridCell--Nonactive" src = {d} onClick={() => pawformer_MoveManager(-1)}/>
 
                             )
 

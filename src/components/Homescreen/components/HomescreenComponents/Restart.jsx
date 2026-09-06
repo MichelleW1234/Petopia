@@ -47,7 +47,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
         helpers_Closer_Flags(set_Restart_OpenFlag);
 
     },
-        ".No"
+        ".Quit"
     );
 
     useKeyboardShortcut("Enter", () => {
@@ -55,7 +55,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
         restart_GameRestarter();
 
     },
-        ".Yes"
+        ".Confirm"
     );
 
 
@@ -132,8 +132,8 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Yes" onClick = {() => restart_GameRestarter()}> Yes <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation No" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> No <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>
 
         </div>

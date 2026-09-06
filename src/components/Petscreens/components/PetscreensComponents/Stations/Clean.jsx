@@ -206,9 +206,13 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
                                 ) : (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                                        <h2>Instructions: Drag your cursor back and forth for cleaning. </h2>
-                                        <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> X </button>
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
+                                        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
+                                            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">          
+                                                <h2>Instructions: Drag your cursor back and forth for cleaning. </h2>
+                                            </div>
+                                            <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> X </button>
+                                        </div>
                                     </div>
 
                                 )}

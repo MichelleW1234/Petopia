@@ -328,7 +328,7 @@ p {
   border: none;
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) calc(var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont) / var(--UIStapleElements_ComponentButtonRectangle-Ratio--GlobalLightColorFontNoninteractive)));
-  background: linear-gradient(to bottom, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomNoninteractive)) 100%);
+  background: linear-gradient(to right, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomNoninteractive)) 100%);
 
 }
 
@@ -405,7 +405,7 @@ p {
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) calc(var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont) / var( --UIStapleElements_ComponentButtonRectangle-Ratio--GlobalLightColorFontInteractive)));
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowNoninteracted) hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
-  background: linear-gradient(to bottom, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomInteractive)) 100%);
+  background: linear-gradient(to right, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomInteractive)) 100%);
 
 }
 
@@ -422,7 +422,7 @@ p {
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) calc(var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont) / var(--UIStapleElements_ComponentButtonRectangle-Ratio--GlobalLightColorFontInteractive)));
   box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
-  background: linear-gradient(to bottom, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomInteractive)) 100%);
+  background: linear-gradient(to right, transparent 0%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorBackgroundBottom) / var(--UIStapleElements_ComponentButtonRectangle-Transparency--GlobalColorBackgroundBottomInteractive)) 100%);
 
 }
 
@@ -905,29 +905,52 @@ p {
 }
 
 
-.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag{
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done {
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(255, 255, 255);
+
+}
+
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining {
+
+  background-color: rgb(255, 255, 255, 0.25);
+
+}
+
+
+
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground{
+
   position: absolute;
-  inset: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  inset: 0rem;
   z-index: 9;
 
   border-radius: inherit;
-  padding: 5rem;
-  gap: 3rem;
 
-  background-color: rgba(71, 0, 125, 0.75);
+  background-color: rgb(0, 0, 0, 0.75);
 
-  button {
+}
 
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
 
-  }
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions{
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent{
+
+  width: 30rem;
+
+  padding: 3rem;
+  border-radius: 25px;
 
 }
 

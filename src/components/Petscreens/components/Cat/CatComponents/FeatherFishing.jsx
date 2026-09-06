@@ -18,7 +18,7 @@ import "./FeatherFishing.css";
 function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     const featherFishing_WindowWidth = 9;
-    const featherFishing_WindowHeight = 5;
+    const featherFishing_WindowHeight = 6;
 
     const [featherFishing_Start, set_FeatherFishing_Start] = useState(false);
     const [featherFishing_CurrHookLength, set_FeatherFishing_HookLength] = useState(0);
@@ -109,15 +109,18 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
-            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Instructions: Only catch the fishing line when the feather lands on red.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
+            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">
+                        <h2>Instructions: Catch the Feather When It Lands on the Target.</h2> 
+                    </div>
+                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
+                </div>
             </div>}
 
             
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>
-            <div className= "FeatherFishing_ComponentContainer-Template--HitBox"></div>
 
             <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
@@ -137,7 +140,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
                                 ) : (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead}/>
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_HitManager(0)}/>
 
                                 )
 
@@ -149,15 +152,15 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
                                 ) : (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} />
+                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
 
                                 )
 
                             ) : (
 
-                                row === 2 && col === 4? (
+                                row === 2 && col === 4 ? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" onClick = {() => featherFishing_HitManager(0)}></div>
+                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
 
                                 ) : (
 

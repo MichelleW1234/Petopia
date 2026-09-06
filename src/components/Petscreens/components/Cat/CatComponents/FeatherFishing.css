@@ -6,24 +6,6 @@
 
 
 
-
-.FeatherFishing_ComponentContainer-Template--HitBox{
-
-    position: absolute;
-    height: 8rem;
-    width: 8rem;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
-
-    border-radius: 25px;
-
-    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
-
-}
-
-
-
 .FeatherFishing_ComponentContainer-Template--Arrow {
 
     position: absolute;
@@ -41,7 +23,7 @@
 
 .FeatherFishing_ComponentContainer-Template--Arrow--Left {
 
-    left: 8rem;
+    left: 10rem;
     transform: translateY(50%);
 
 }
@@ -49,7 +31,7 @@
 
 .FeatherFishing_ComponentContainer-Template--Arrow--Right{
 
-    right: 8rem;
+    right: 10rem;
     transform: translateY(50%) scaleX(-1);
 
 }
@@ -65,6 +47,14 @@
     grid-template-rows: repeat(5, 5rem);
     grid-template-columns: repeat(9, 5rem);
 
+}
+
+
+.FeatherFishing_ComponentContainer-Template--GridCell{
+
+    height: 100%;
+    width: auto;
+
     filter: 
         drop-shadow(0 0 1px rgb(255, 255, 255))
         drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -73,9 +63,12 @@
 }
 
 
-.FeatherFishing_ComponentContainer-Template--GridCell{
+.FeatherFishing_ComponentContainer-Template--GridCell:hover,
+.FeatherFishing_ComponentContainer-Template--GridCell:active{
 
-    height: 100%;
-    width: auto;
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px  rgb(255, 255, 255));
 
 }

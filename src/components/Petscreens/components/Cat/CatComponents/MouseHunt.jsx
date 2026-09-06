@@ -18,7 +18,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     const mouseHunt_WindowWidth = 2;
     const mouseHunt_WindowHeight = 4;
-    const mouseHunt_TotalObjects = 3;
+    const mouseHunt_TotalObjects = 8;
 
     const mouseHunt_RowKey = "row";
     const mouseHunt_ColumnKey = "column";
@@ -149,9 +149,13 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
-            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Instructions: Catch the toy mice and avoid the power cords.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> X </button>
+            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">
+                        <h2>Instructions: Catch the toy mice. Avoid the power cords.</h2> 
+                    </div>
+                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> X </button>
+                </div>
             </div>}
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">
@@ -160,7 +164,6 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
                     Array.from({ length: mouseHunt_WindowWidth}, (_, col) => {
 
                         const mouseHunt_MouseHere = mouseHunt_CurrObjectPositions.find(item => item[mouseHunt_RowKey] === row && item[mouseHunt_ColumnKey] === col && item[mouseHunt_TypeKey] === 1);
-                        const mouseHunt_CordHere = mouseHunt_CurrObjectPositions.find(item => item[mouseHunt_RowKey] === row && item[mouseHunt_ColumnKey] === col && item[mouseHunt_TypeKey] === 0);
 
                         return (
                             
@@ -170,16 +173,12 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
                                     <img src = {Mouse}/>
                                 </div>
                                 
-                            ) : mouseHunt_CordHere ? (
+                            ) : (
 
                                 <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHunt_HitManager(false)}>
                                     <img src = {Cord}/>
                                 </div>
 
-                            ) : (
-
-                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell"></div>
-        
                             )
                         
                         );

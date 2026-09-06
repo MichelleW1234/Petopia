@@ -10,26 +10,32 @@
     top: 4rem;
     z-index: 6;
 
-    gap: 0rem;
+    gap: 1rem;
+    padding: 2rem;
 
 }
 
 
 .Notifications_ComponentContainer-Structure--Card{
 
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: nowrap;
+
+    gap: 2rem;
+
+}
+
+
+.Notifications_ComponentContainer-Structure--CardContent{
+
     width: 35rem;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 
-    padding: 2rem 4rem;
+    padding: 2rem;
     border-radius: 25px;
-
-    button{
-
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-
-    }
 
 }
 

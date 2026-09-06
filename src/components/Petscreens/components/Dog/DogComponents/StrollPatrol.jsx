@@ -106,7 +106,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
             });
 
-        }, 200);
+        }, 250);
 
         return () => clearInterval(strollPatrol_Interval);
 
@@ -149,9 +149,13 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
-            {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowStartFlag">
-                <h2>Instructions: Click on all the balls to collect them. Avoid the rocks.</h2> 
-                <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> X </button>
+            {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">
+                        <h2>Instructions: Click on all the balls. Avoid the rocks.</h2> 
+                    </div>
+                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> X </button>
+                </div>
             </div>}
 
             <div className="StrollPatrol_ComponentContainer-Structure--Grid">

@@ -7,28 +7,11 @@
 }
 
 
-.Pawformer_ComponentContainer-Template--HitBox{
-
-    position: absolute;
-    height: 10rem;
-    width: 10rem;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
-
-    border-radius: 25px;
-
-    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
-
-}
-
-
-
 
 .Pawformer_ComponentContainer-Template--Arrow {
 
     position: absolute;
-    width: 6rem;
+    width: 8rem;
     height: auto;
     left: 50%;
 
@@ -69,7 +52,7 @@
     
 }
 
-.Pawformer_ComponentContainer-Structure--GridCell{
+.Pawformer_ComponentContainer-Template--GridCell{
 
     align-self: center;
 
@@ -78,43 +61,38 @@
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 3px  rgb(255, 255, 255));
 
-}
-
-.Pawformer_ComponentContainer-Structure--GridCell--Nonactive{
-
-    width: 50%;
 
 }
 
-
-.Pawformer_ComponentContainer-Structure--GridCell--Active{
+.Pawformer_ComponentContainer-Template--GridCell {
 
     width: 80%;
 
 }
 
-.correctMove {
+.Pawformer_ComponentContainer-Template--GridCell:hover,
+.Pawformer_ComponentContainer-Template--GridCell:active{
+
+    filter: 
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+}
+
+.Pawformer_ComponentImage-Template--CorrectMove {
 
     position: absolute;
-    top: 0;
-    left: 0;
+    height: 25rem;
+    width: auto;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
 
-    padding: 3rem;
-    border-top-left-radius: inherit;
-    border-bottom-right-radius: 2rem;
+    filter: 
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 8px rgb(255, 255, 255))
+        drop-shadow(0 0 12px  rgb(255, 255, 255));
 
-    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
-
-    img {
-
-        height: 4rem;
-        width: auto;
-
-        filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-    }
 
 }

@@ -1,6 +1,3 @@
-import "./ProgressBar.css";
-
-
 function ProgressBar({progressBar_CurrPercentUntilNextUpdate}) {
 
     return (
@@ -10,8 +7,8 @@ function ProgressBar({progressBar_CurrPercentUntilNextUpdate}) {
 
                 <div key = {num} 
                     className = {num <= progressBar_CurrPercentUntilNextUpdate ? 
-                                "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellDone"
-                                : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell ProgressBar_ComponentContainer-Color--CellLeft"
+                                "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done"
+                                : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining"
                             }>
                 </div>
 

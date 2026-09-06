@@ -80,7 +80,7 @@ function Adoption () {
         }
 
     },
-        ".QuitAndGoHome"
+        ".Home"
     );
 
     
@@ -98,16 +98,24 @@ function Adoption () {
 
 
 
-    useKeyboardShortcut("Enter", () => {
+    useKeyboardShortcut("Enter", (e) => {
         
-        if (adoption_PetGender === "" && adoption_UserSelection !== "" && !adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
+        if (adoption_UserSelection !== "" && !adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
 
-            adoption_PetGenderGenerator();
+            if (adoption_PetGender === ""){
+
+                adoption_PetGenderGenerator();
+
+            } else {
+
+                adoption_NameManager(e);
+
+            }
 
         }
 
     },
-        ".GoToConfirmation"
+        ".Confirm"
     );
 
 
@@ -120,22 +128,8 @@ function Adoption () {
         }
 
     },
-        ".UndoSelection"
+        ".Quit"
     );
-
-
-    useKeyboardShortcut("Enter", (e) => {
-        
-        if (adoption_PetGender !== "" && adoption_UserSelection !== "" && !adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
-
-            adoption_NameManager(e);
-
-        }
-
-    },
-        ".ConfirmAdoption"
-    );
-
 
 
     const adoption_HomeNavigator = () => {
@@ -366,7 +360,7 @@ function Adoption () {
             <div className="UIStapleElements_Background-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu QuitAndGoHome" onClick = {() => adoption_HomeNavigator()}> Quit and Go Home <br/> [1]</Link>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
@@ -404,16 +398,6 @@ function Adoption () {
                             ))}
             
                         </div>
-                    
-                        {adoption_UserSelection === "" ? (
-            
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Go to Confirmation <br/> [return]</button>
-            
-                        ) : (
-            
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen GoToConfirmation" onClick = {() => adoption_PetGenderGenerator()}> Go to Confirmation <br/> [return]</button>
-            
-                        )}  
 
                     </div>
 
@@ -447,17 +431,40 @@ function Adoption () {
 
                         </div>
 
-                        <div className = "Adoption_ComponentContainer-Structure--Confirmation">
-                            <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen UndoSelection" onClick = {() => adoption_SpeciesDeselector()}> Undo Selection <br/> [esc]</button>
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ConfirmAdoption" onClick = {(e) => adoption_NameManager(e)}> Confirm Adoption <br/> [return]</button>
-                            </div>
-                        </div>
-
                     </div>
 
-                )}
+                )} 
+
+                <div className = "Adoption_ComponentContainer-Structure--Confirmation">
+                    <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
+                  
+                    {adoption_PetGender === "" ? (
+
+                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
+
+                            {adoption_UserSelection === "" ? (
+
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
+
+                            ) : (
+
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
+
+                            )}
+                            
+                        </div>
+        
+                    ) : (
+        
+                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
+                        </div>
+        
+                    )} 
+
+                </div>
         
             </div>
 

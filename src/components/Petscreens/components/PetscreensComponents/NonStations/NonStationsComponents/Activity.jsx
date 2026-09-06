@@ -119,8 +119,8 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
                         <div key = {num} className = {num === 50 ?
                                                         "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
                                                     : num <= activity_CurrPercentUntilNextUpdate ? 
-                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDone"
-                                                        : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellLeft"
+                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done"
+                                                        : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining"
                                                     }>
                         </div>
 

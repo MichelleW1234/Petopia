@@ -33,7 +33,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
         }
 
     },
-        ".RemoveSelectedPets"
+        ".Confirm"
     );
 
 
@@ -184,11 +184,11 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Confirm <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation RemoveSelectedPets" onClick={() => clearPets_SelectedEntriesManager()}>Remove Selected Pets <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Confirm" onClick={() => clearPets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
 
                 )}
 
