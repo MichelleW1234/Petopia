@@ -18,7 +18,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
         
     useKeyboardShortcut("Enter", () => {
-    
+        
         helpers_Closer_Flags(set_RearrangePets_OpenFlag);
 
     },
@@ -79,6 +79,20 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
+                                       
+                                {petName === "" ? (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <img src = {NoPetPortrait}/>
+                                    </div>
+
+                                ) : (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                    </div>
+
+                                )}
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
@@ -104,29 +118,18 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 )}
 
+
                                 {petName === "" ? (
 
-                                    <>
-                                       
-                                        <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
-                                        <img src = {NoPetPortrait}/>
-                                        </div>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                            <h2>&lt; Name &gt;</h2>
-                                        </div>
-                                    </>
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                        <h2>&lt; Name &gt;</h2>
+                                    </div>
 
                                 ) : (
 
-                                    <>
-                                      
-                                        <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
-                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-                                        </div>
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                            <h2>{petName}</h2>
-                                        </div>
-                                    </>
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                        <h2>{petName}</h2>
+                                    </div>
 
                                 )}
 

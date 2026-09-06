@@ -109,10 +109,11 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
-            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
-                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">
-                        <h2>Instructions: Catch the Feather When It Lands on the Target.</h2> 
+            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
+                        <h2>Instructions:</h2> 
+                        <p>Catch the Feather When It Lands on the Target.</p>
                     </div>
                     <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
                 </div>

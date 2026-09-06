@@ -24,6 +24,15 @@ export default function useKeyboardShortcut(keys, callback, selector) {
     const handleKeyDown = (event) => {
       if (isTyping(event)) return;
       if (keysArray.some(k => event.key.toLowerCase() === k.toLowerCase())) {
+
+        if (
+          event.key === "Enter" ||
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowRight"
+        ) { 
+            event.preventDefault();
+        }
+
         if (elements) {
           elements.forEach(el => el.classList.add("active"));
         }

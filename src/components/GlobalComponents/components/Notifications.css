@@ -1,4 +1,4 @@
-.Notifications_ComponentContainer-Structure--Cards{
+.MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxs{
 
     max-height: 75vh;
     display: flex;
@@ -12,30 +12,6 @@
 
     gap: 1rem;
     padding: 2rem;
-
-}
-
-
-.Notifications_ComponentContainer-Structure--Card{
-
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    flex-wrap: nowrap;
-
-    gap: 2rem;
-
-}
-
-
-.Notifications_ComponentContainer-Structure--CardContent{
-
-    width: 35rem;
-    display: flex;
-    flex-direction: column;
-
-    padding: 2rem;
-    border-radius: 25px;
 
 }
 

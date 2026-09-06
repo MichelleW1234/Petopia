@@ -234,10 +234,11 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                                 ) : (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
-                                        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
-                                            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">      
-                                                <h2>Instructions: Wait for your pet as it receives its dose.</h2> 
+                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+                                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
+                                            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">      
+                                                <h2>Instructions:</h2> 
+                                                <p>Wait for your pet as it receives its dose.</p>
                                             </div>
                                             <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Medicine_Start)}> X </button>
                                         </div>

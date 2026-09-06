@@ -1,5 +1,22 @@
-import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, audioNavButtonPressKey, petActivityTimeStampCleaningKey, audioActivityFailKey, petActivityTimeStampFeedingKey, audioScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, audioQuitActivityKey, audioStartActivityKey, audioActivitySuccessKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, audioNavButtonPressKey, petActivityTimeStampCleaningKey, audioActivityFailKey, petActivityTimeStampFeedingKey, audioScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, audioQuitActivityKey, audioStartActivityKey, audioActivitySuccessKey, audioSelectionButtonPressKey } from "../../../constants/Constants.js";
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
+
+
+export const SelectionCorrectnessManager = (options_CurrDesiredOption, options_SelectionCorrectnessManager_UserSelection, set_Options_TotalNumber, set_Confirmed) => {
+
+    helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+
+    if (options_SelectionCorrectnessManager_UserSelection !== options_CurrDesiredOption) {
+
+        set_Options_TotalNumber(prev => prev*2);
+
+    }
+
+    set_Confirmed(true);
+
+}
+
+
 
 
 export const petScreensHelpers_Manager_PetHealth = (parameter_Number_Date, set_parameter_Sequence_PetTimeStamps, set_parameter_Sequence_PetList, parameter_String_ActivePetName, parameter_Key_petActivityTimeStamp, parameter_Number_DesiredOption, set_Parameter_Number_DesiredOption, set_Parameter_Number_UserSelection, set_Parameter_Boolean_Success) => {

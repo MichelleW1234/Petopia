@@ -26,8 +26,8 @@ function Inventory({set_Inventory_OpenFlag}) {
     const {GlobalTimer, setGlobalTimer} = useGlobalTimer();
     const {Achievements, setAchievements} = useAchievements();
 
-    useKeyboardShortcut("Enter", () => {
-    
+    useKeyboardShortcut("Enter", (e) => {
+        
         helpers_Closer_Flags(set_Inventory_OpenFlag);
 
     },
@@ -164,13 +164,20 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 <img src = {item[inventoryItemImageKey]}/>
                             </div>
                             <div className="Inventory_ComponentContainer-Structure--ItemContentDetails">
-                                <h2>Type: {item[inventoryItemTypeKey]}</h2>
-                                <h2> 
-                                    For your:                           
-                                    {item[inventoryItemSpeciesAcceptedKey].map((item, index) => (
-                                        <div key={index}>&gt; {item}</div>
-                                    ))}
-                                </h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemContentDetailsField">
+                                    <h2>Type:</h2>
+                                    <p>{item[inventoryItemTypeKey]}</p>
+                                </div>
+                                <div className="Inventory_ComponentContainer-Structure--ItemContentDetailsField">
+                                    <h2> 
+                                        For your:                           
+                                    </h2>
+                                    <p>
+                                        {item[inventoryItemSpeciesAcceptedKey].map((item, index) => (
+                                            <div key={index}>&gt; {item}</div>
+                                        ))}
+                                    </p>
+                                </div>
                             </div>
 
                         </div>

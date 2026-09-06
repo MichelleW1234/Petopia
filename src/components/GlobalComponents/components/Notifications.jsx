@@ -25,12 +25,12 @@ function Notifications() {
     };
     
     return (
-        <div className = "Notifications_ComponentContainer-Structure--Cards">
+        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxs">
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_EntryRemover_UserSelection} className="Notifications_ComponentContainer-Structure--Card">
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Notifications_ComponentContainer-Structure--CardContent">
+                <div key = {notifications_EntryRemover_UserSelection} className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox">
+                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
                         <h2>Alert:</h2>
                         <p>{entry[notificationsDescriptionKey]}</p>
                         <h2>Date:</h2>

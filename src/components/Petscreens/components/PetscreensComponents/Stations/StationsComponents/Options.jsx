@@ -12,23 +12,23 @@ import "./Options.css";
 
 
 
-function Options({options_CurrDesiredOption, options_CurrSpeciesList, set_Options_TotalNumber, set_Options_UserSelection}) {
+function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_UserSelection, set_Options_UserSelection}) {
 
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
 
+    const options_SelectionManager = (options_SelectionManager_UserSelection) => {
 
-    const options_SelectionCorrectnessManager = (options_SelectionCorrectnessManager_UserSelection) => {
+        if (options_UserSelection === options_SelectionManager_UserSelection){
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+            set_Options_UserSelection(-1)
 
-        if (options_SelectionCorrectnessManager_UserSelection !== options_CurrDesiredOption) {
+        } else {
 
-            set_Options_TotalNumber(prev => prev*2);
+            set_Options_UserSelection(options_SelectionManager_UserSelection);
 
         }
 
-        set_Options_UserSelection(options_SelectionCorrectnessManager_UserSelection);
 
     }
 
@@ -56,9 +56,20 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, set_Option
                 {options_CurrSpeciesList.map((option, index) => (
 
                     <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => options_SelectionCorrectnessManager(index)}>
-                            <img src = {option[petActivityOptionImageKey]}/>
-                        </button>
+
+                        {options_UserSelection === index ? (
+
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStationSelected" onClick = {() => options_SelectionManager(index)}>
+                                <img src = {option[petActivityOptionImageKey]}/>
+                            </button>
+
+                        ) : (
+
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => options_SelectionManager(index)}>
+                                <img src = {option[petActivityOptionImageKey]}/>
+                            </button>
+
+                        )}
 
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                             <h2>{option[petActivityOptionNameKey]}</h2>

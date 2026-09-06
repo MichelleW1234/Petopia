@@ -671,6 +671,23 @@ p {
 
 }
 
+.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStationSelected {
+
+  border-color: hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonCircle-Light--GlobalColorBorder));
+  background: radial-gradient(circle, hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonCircle-Light--GlobalColorBackgroundInner)) 0%, hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonCircle-Light-ColorBackgroundOuter)) 100%);
+  box-shadow: var(--UIStapleElements_ComponentButton-Measurements--GlobalShadowInteracted) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive));
+
+  img{
+
+    filter: 
+      drop-shadow(var(--UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowFirst) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive)))
+      drop-shadow(var(--UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowSecond) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive)))
+      drop-shadow(var(--UIStapleElements_ComponentButtonCircle-Measurements--GlobalImageDropShadowThird) hsl(calc(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseStation) + var(--UIStapleElements_Component-Layer--GlobalHue)) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_Component-Light--GlobalColorShadowInteractive)));
+
+  }
+
+}
+
 .UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation {
 
   color: hsl(var(--UIStapleElements_BackgroundOverlay-Hue--GlobalColorBaseNonstation) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorFont));
@@ -870,6 +887,26 @@ p {
 }
 
 
+.MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox{
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent{
+
+  width: 30rem;
+  
+  padding: 2rem 4rem;
+  border-radius: 25px;
+
+}
+
+
+
 
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
@@ -919,7 +956,7 @@ p {
 
 
 
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground{
+.MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground{
 
   position: absolute;
   display: flex;
@@ -934,26 +971,6 @@ p {
   background-color: rgb(0, 0, 0, 0.75);
 
 }
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions{
-
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-}
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent{
-
-  width: 30rem;
-
-  padding: 3rem;
-  border-radius: 25px;
-
-}
-
 
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{

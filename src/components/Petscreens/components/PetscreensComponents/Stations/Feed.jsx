@@ -182,10 +182,11 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                                     ) : (
 
-                                        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsBackground">
-                                            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructions"> 
-                                                <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--FloatingFlagStationWindowInstructionsContent">      
-                                                    <h2>Instructions: Wait for your pet as it eats.</h2>
+                                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+                                            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
+                                                <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">      
+                                                    <h2>Instructions:</h2>
+                                                    <p>Wait for your pet as it eats.</p>
                                                 </div>
                                                 <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => petScreensHelpers_Starter_Activities(set_Feed_Start)}> X </button>
                                             </div>

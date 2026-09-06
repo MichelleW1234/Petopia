@@ -11,7 +11,7 @@ import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
 import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, SelectionCorrectnessManager } from "../../../helpers/Helpers.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
@@ -28,10 +28,11 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
     const {PetList, setPetList} = usePetList();
 
     const [play_OptionsTotalNumber, set_Play_OptionsTotalNumber] = useState(10);
-    const [play_Done, set_Play_Done] = useState(false);
     const [play_OptionsUserSelection, set_Play_OptionsUserSelection] = useState(-1);
     const [play_CurrNumber, set_Play_CurrNumber] = useState(0);
     const [play_Success, set_Play_Success] = useState(false);
+    const [play_Confirmed, set_Play_Confirmed] = useState(false);
+    const [play_Done, set_Play_Done] = useState(false);
 
     const Play_GameWindow = play_OptionsUserSelection === -1 ? 
                                     null 
@@ -39,10 +40,21 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
     const play_AudioRef = useRef(new Audio(Playing));
 
+    useKeyboardShortcut("Enter", () => {
+    
+        if (play_OptionsUserSelection !== -1 && !play_Confirmed){
+
+            SelectionCorrectnessManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed);
+
+        }
+
+    },
+        ".Confirm"
+    );
     
     useKeyboardShortcut("Enter", () => {
     
-        if (play_Done){
+        if (play_Done) {
 
             helpers_Closer_Flags(set_Play_OpenFlag);
 
@@ -80,18 +92,35 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
     }, [play_CurrNumber]);
 
 
+    useEffect(() => {
+
+        if (!play_Done){
+
+            return;
+
+        }
+
+        const timer = setTimeout(() => {
+            helpers_Closer_Flags(set_Play_OpenFlag);
+        }, 3000); 
+
+        return () => clearTimeout(timer);
+
+    }, [play_Done]);
+
+
 
 
     return (
         
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Station">
 
-            {play_OptionsUserSelection === -1 ? (
+            {!play_Confirmed ? (
 
                 <OptionsComponent
                     options_CurrDesiredOption = {play_OptionsCurrDesiredOption}
                     options_CurrSpeciesList = {play_OptionsCurrSpeciesList} 
-                    set_Options_TotalNumber = {set_Play_OptionsTotalNumber}
+                    options_UserSelection = {play_OptionsUserSelection}
                     set_Options_UserSelection = {set_Play_OptionsUserSelection}
                 />
 
@@ -145,21 +174,30 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
             )}
 
-            {play_Done ? (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+
+                {play_Done ? (
+                
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => helpers_Closer_Flags(set_Play_OpenFlag)}>Done <br/> [return]</button>
-                </div>
 
-            ) : (
+                ) : (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Done <br/> [return]</button>
-                </div>
 
-            )}
+                )}
+
+                {play_OptionsUserSelection === -1 || play_Confirmed ? (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation"> Confirm <br/> [return]</button>                    
+
+                ) : (
+
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation Confirm" onClick={() => SelectionCorrectnessManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed)}> Confirm <br/> [return]</button>
+
+                )}
+
+            </div>
 
         </div>
 

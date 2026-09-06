@@ -22,7 +22,7 @@ import ReadMeComponent from "./HomescreenComponents/ReadMe.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey } from "../../../constants/Constants.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
@@ -55,6 +55,7 @@ function Home (){
     const [home_ClearPetsOpenFlag, set_Home_ClearPetsOpenFlag] = useState(false);
     const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
+    const [home_UserSelection, set_Home_UserSelection] = useState(-1);
 
     const home_MinPetsAdopted = Room.filter(x => x === "").length < 3;
     const home_RestartInventoryMissingItems = Inventory.filter(item => item[inventoryItemTypeKey] === inventoryItemTypePotionKey).length < 3;
@@ -95,6 +96,19 @@ function Home (){
     );
 
 
+    useKeyboardShortcut("Enter", () => {
+
+        if (home_UserSelection !== -1 && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+
+            GoToSelection();
+
+        }
+
+    },
+        ".Confirm"
+    );
+
+
 
     useKeyboardShortcut("1", () => {
 
@@ -107,7 +121,6 @@ function Home (){
     },
         ".Restart"
     );
-
 
 
 
@@ -151,24 +164,41 @@ function Home (){
 
 
 
+    const GoToSelection = () => {
+
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+
+        if (Room[home_UserSelection] === ""){
+
+            setActiveCheckoutRoom(home_UserSelection);
+            home_Navigate("/adopt");
+
+        } else {
+
+            setActivePetName(Room[home_UserSelection]);
+            home_Navigate(`/${PetList[Room[home_UserSelection]][petSpeciesKey]}`);
+
+        }
+
+    }
     
     
 
-    const home_PetNavigator = (home_PetNavigator_UserSelection) => {
+    const home_Selection = (home_PetNavigator_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
-        setActivePetName(home_PetNavigator_UserSelection);
+
+        if (home_PetNavigator_UserSelection === home_UserSelection) {
+
+            set_Home_UserSelection(-1);
+
+        } else {
+
+            set_Home_UserSelection(home_PetNavigator_UserSelection);
+
+        }
         
     }
-
-
-    const home_AdoptionNavigator = (home_AdoptionNavigator_UserSelection) => {
-
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
-        setActiveCheckoutRoom(home_AdoptionNavigator_UserSelection);
-
-    }
-
 
 
     return (
@@ -272,13 +302,25 @@ function Home (){
                                         <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
                                     </div>
                                     
-                                    <Link
-                                        to = {"/adopt"}
-                                        className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => home_AdoptionNavigator(index)}
-                                    >
-                                        <img src = {AddNewPet}/>
-                                    </Link>
+                                    {home_UserSelection === index ? (
+
+                                        <button
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected"
+                                            onClick = {() => home_Selection(index)}
+                                        >
+                                            <img src = {AddNewPet}/>
+                                        </button>
+
+                                    ) : (
+
+                                        <button
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
+                                            onClick = {() => home_Selection(index)}
+                                        >
+                                            <img src = {AddNewPet}/>
+                                        </button>
+
+                                    )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                         <h2>[ Name ]</h2>
@@ -326,13 +368,25 @@ function Home (){
                                         />
                                     </div>
 
-                                    <Link
-                                        to = {`/${PetList[petName][petSpeciesKey]}`}
-                                        className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
-                                        onClick = {() => home_PetNavigator(petName)}
-                                    >
-                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-                                    </Link>
+                                    {home_UserSelection === index ? (
+
+                                        <button
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected"
+                                            onClick = {() => home_Selection(index)}
+                                        >
+                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                        </button>
+
+                                    ) : (
+
+                                        <button 
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
+                                            onClick = {() => home_Selection(index)}
+                                        >
+                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                        </button>
+
+                                    )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                                         <h2>{petName}</h2>
@@ -347,6 +401,22 @@ function Home (){
                     </div>
 
                 </div>
+
+                {home_UserSelection === -1 ? (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                        Confirm <br/> [return]
+                    </button>
+
+                ) : (
+
+                    <button
+                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
+                        onClick = {() => GoToSelection()}>
+                        Confirm <br/> [return]
+                    </button>
+
+                )}
 
             </div>
 

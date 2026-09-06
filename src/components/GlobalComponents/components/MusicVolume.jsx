@@ -17,7 +17,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
 
     useKeyboardShortcut("Enter", () => {
-    
+
         helpers_Closer_Flags(set_MusicVolume_OpenFlag);
 
     },
@@ -25,9 +25,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
     );
 
 
-    useKeyboardShortcut("ArrowLeft", (e) => {
-    
-        e.preventDefault();
+    useKeyboardShortcut("ArrowLeft", () => {
 
         setVolume(prev => {
 
@@ -41,9 +39,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
     );
 
     
-    useKeyboardShortcut("ArrowRight", (e) => {
-    
-        e.preventDefault();
+    useKeyboardShortcut("ArrowRight", () => {
 
         setVolume(prev => {
 
