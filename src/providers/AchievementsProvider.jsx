@@ -23,14 +23,14 @@ export function AchievementsProvider({ children }) {
                                   {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
                                   {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
-                                  {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: false}
+                                  {[achievementDescriptionKey]: "Evolve all pet species to their final stages", [achievementStatusKey]: false}
                                 ];
     } catch {
       return  [
                 {[achievementDescriptionKey]: "Evolve a fish to its final stage", [achievementStatusKey]: false},
                 {[achievementDescriptionKey]: "Evolve a cat to its final stage", [achievementStatusKey]: false},
                 {[achievementDescriptionKey]: "Evolve a dog to its final stage", [achievementStatusKey]: false},
-                {[achievementDescriptionKey]: "Evolve all three pet species to their final stages", [achievementStatusKey]: false}
+                {[achievementDescriptionKey]: "Evolve all pet species to their final stages", [achievementStatusKey]: false}
               ];
     }
   });

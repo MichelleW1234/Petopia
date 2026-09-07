@@ -163,12 +163,12 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <div className="Inventory_ComponentContainer-Structure--ItemContentImage">
                                 <img src = {item[inventoryItemImageKey]}/>
                             </div>
-                            <div className="Inventory_ComponentContainer-Structure--ItemContentDetails">
-                                <div className="Inventory_ComponentContainer-Structure--ItemContentDetailsField">
+                            <div className="Inventory_ComponentContainer-Structure--ItemField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
                                     <h2>Type:</h2>
                                     <p>{item[inventoryItemTypeKey]}</p>
                                 </div>
-                                <div className="Inventory_ComponentContainer-Structure--ItemContentDetailsField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
                                     <h2> 
                                         For your:                           
                                     </h2>
@@ -186,7 +186,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                         {item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey && Achievements[0][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement to Unlock: <br/> {Achievements[0][achievementDescriptionKey]} </h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                    <h2>Achievement to Unlock:</h2>
+                                    <p>{Achievements[0][achievementDescriptionKey]}</p>
+                                </div>
 
                                 <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
@@ -197,7 +200,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey && Achievements[1][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement to Unlock: <br/> {Achievements[1][achievementDescriptionKey]} </h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                    <h2>Achievement to Unlock:</h2>
+                                    <p>{Achievements[1][achievementDescriptionKey]}</p>
+                                </div>
 
                                 <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
@@ -207,7 +213,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey && Achievements[2][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement to Unlock: <br/> {Achievements[2][achievementDescriptionKey]} </h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                    <h2>Achievement to Unlock:</h2>
+                                    <p>{Achievements[2][achievementDescriptionKey]}</p>
+                                </div>
 
                                 <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>
@@ -217,7 +226,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey && Achievements[3][achievementStatusKey] === false ? (
 
                             <>
-                                <h2>Achievement to Unlock: <br/> {Achievements[3][achievementDescriptionKey]} </h2>
+                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                    <h2>Achievement to Unlock:</h2>
+                                    <p>{Achievements[3][achievementDescriptionKey]}</p>
+                                </div>
 
                                 <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                     <img src = {inventoryItemLock}/>

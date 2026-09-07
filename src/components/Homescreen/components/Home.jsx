@@ -400,23 +400,23 @@ function Home (){
 
                     </div>
 
+                    {home_UserSelection === -1 ? (
+
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                            Confirm <br/> [return]
+                        </button>
+
+                    ) : (
+
+                        <button
+                            className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
+                            onClick = {() => GoToSelection()}>
+                            Confirm <br/> [return]
+                        </button>
+
+                    )}
+
                 </div>
-
-                {home_UserSelection === -1 ? (
-
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
-                        Confirm <br/> [return]
-                    </button>
-
-                ) : (
-
-                    <button
-                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
-                        onClick = {() => GoToSelection()}>
-                        Confirm <br/> [return]
-                    </button>
-
-                )}
 
             </div>
 

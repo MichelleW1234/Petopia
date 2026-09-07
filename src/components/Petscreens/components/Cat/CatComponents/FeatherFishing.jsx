@@ -17,8 +17,7 @@ import "./FeatherFishing.css";
 
 function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
-    const featherFishing_WindowWidth = 9;
-    const featherFishing_WindowHeight = 6;
+    const featherFishing_WindowHeight = 5;
 
     const [featherFishing_Start, set_FeatherFishing_Start] = useState(false);
     const [featherFishing_CurrHookLength, set_FeatherFishing_HookLength] = useState(0);
@@ -125,56 +124,54 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
             <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: featherFishing_WindowHeight}, (_, row) => 
-                    Array.from({ length: featherFishing_WindowWidth}, (_, col) => {
+                {Array.from({ length: featherFishing_WindowHeight}, (_, row) => {
 
-                        const featherFishing_HookHeadHere = col === 4 && row === featherFishing_CurrHookLength;
-                        const featherFishing_HookBodyHere = col === 4 && row < featherFishing_CurrHookLength;
+                    const featherFishing_HookHeadHere = row === featherFishing_CurrHookLength;
+                    const featherFishing_HookBodyHere = row < featherFishing_CurrHookLength;
 
-                        return (
+                    return (
 
-                            featherFishing_HookHeadHere ? (
+                        featherFishing_HookHeadHere ? (
 
-                                row === 2 ? (
+                            row === 2 ? (
 
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_HitManager(1)}/>
-
-                                ) : (
-
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_HitManager(0)}/>
-
-                                )
-
-                            ) : featherFishing_HookBodyHere ? (
-
-                                row === 2 ? (
-
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
-
-                                ) : (
-
-                                    <img key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
-
-                                )
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_HitManager(1)}/>
 
                             ) : (
 
-                                row === 2 && col === 4 ? (
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherHead} onClick = {() => featherFishing_HitManager(0)}/>
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+                            )
 
-                                ) : (
+                        ) : featherFishing_HookBodyHere ? (
 
-                                    <div key = {row + " & " + col} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+                            row === 2 ? (
 
-                                )
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
 
-                            ) 
+                            ) : (
 
-                        );
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
 
-                    })
-                )}
+                            )
+
+                        ) : (
+
+                            row === 2 ? (
+
+                                <div key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+
+                            ) : (
+
+                                <div key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+
+                            )
+
+                        ) 
+
+                    );
+
+                })};
 
             </div>
                 

@@ -23,7 +23,7 @@
 
 .FeatherFishing_ComponentContainer-Template--Arrow--Left {
 
-    left: 10rem;
+    left: 12rem;
     transform: translateY(50%);
 
 }
@@ -31,7 +31,7 @@
 
 .FeatherFishing_ComponentContainer-Template--Arrow--Right{
 
-    right: 10rem;
+    right: 12rem;
     transform: translateY(50%) scaleX(-1);
 
 }
@@ -44,8 +44,8 @@
 .FeatherFishing_ComponentContainer-Structure--Grid{
 
     display: grid;
-    grid-template-rows: repeat(5, 5rem);
-    grid-template-columns: repeat(9, 5rem);
+    grid-template-rows: repeat(5, 6rem);
+    grid-template-columns: repeat(1, auto);
 
 }
 

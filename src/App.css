@@ -123,13 +123,13 @@ input{
 
 h1 {
 
-  font-size: calc(1rem*2.25);
+  font-size: calc(1rem*2.20);
 
 }
 
 h2 {
 
-  font-size: calc(1rem*1.75);
+  font-size: calc(1rem*1.80);
 
 }
 
@@ -139,7 +139,7 @@ button,
 input,
 p {
 
-  font-size: calc(1rem*1.25);
+  font-size: calc(1rem*1.40);
 
 }
 
@@ -215,7 +215,7 @@ p {
   align-items: center;
 
   padding: 4rem;
-  gap: 5rem;
+  gap: 8rem;
 
   background:
     url("./images/BackgroundOverlay.gif"),
@@ -241,7 +241,7 @@ p {
   inset: 0;
 
   gap: 3rem;
-  padding: 5rem;
+  padding: 6rem;
 
 }
 
@@ -269,7 +269,7 @@ p {
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick {
 
-  padding: 1.5rem 3rem;
+  padding: 2rem 4rem;
   border-radius: 9999px;
   border-style: solid;
 
@@ -285,13 +285,13 @@ p {
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick:hover,
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick.active {
 
-  transform: scale(1.1);
+  transform: scale(1.10);
 
 }
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick {
 
-  padding: 1.5rem 3rem;
+  padding: 2rem 4rem;
   border-radius: 9999px;
   border-style: solid;
 
@@ -305,7 +305,7 @@ p {
 .UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick{
 
   border-radius: 25px;
-  padding: 1.5rem 3rem;
+  padding: 2rem 4rem;
   border: none;
 
   transition: transform 0.3s ease;
@@ -316,7 +316,7 @@ p {
 .UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick:hover,
 .UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick.active {
 
-  transform: scale(1.1);
+  transform: scale(1.10);
 
 }
 
@@ -324,7 +324,7 @@ p {
 .UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick{
 
   border-radius: 25px;
-  padding: 1.5rem 3rem;
+  padding: 2rem 4rem;
   border: none;
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) calc(var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont) / var(--UIStapleElements_ComponentButtonRectangle-Ratio--GlobalLightColorFontNoninteractive)));
@@ -336,8 +336,8 @@ p {
 
 .UIStapleElements_ComponentButtonCircle-Structure--Global {
 
-  height: 12rem;
-  width: 12rem;
+  height: 13rem;
+  width: 13rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -365,15 +365,15 @@ p {
 .UIStapleElements_ComponentButtonCircle-Structure--Global:hover,
 .UIStapleElements_ComponentButtonCircle-Structure--Global.active{
 
-  transform: scale(1.1);
+  transform: scale(1.10);
 
 }
 
 
 .UIStapleElements_ComponentFrameColored-Structure--Global{
 
-  border-left-width: 6px;
-  border-bottom-width: 6px;
+  border-left-width: 10px;
+  border-bottom-width: 10px;
   border-right-width: 2px;
   border-top-width: 2px;
   border-style: solid;
@@ -383,14 +383,14 @@ p {
 
 .UIStapleElements_ComponentFrameTransparent-Template--Global{
 
-  width: 50rem;
+  width: 55rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 4rem;
-  padding: 4rem;
+  gap: 5rem;
+  padding: 5rem;
   border-radius: 50px;
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorFont));
@@ -764,7 +764,7 @@ p {
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 3rem;
 
 }
 
@@ -775,7 +775,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot {
 
-  width: 20rem;
+  width: 22rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -791,22 +791,22 @@ p {
 .MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame {
 
   padding: 4rem;
-  border-radius: 50px;
+  border-radius: 75px;
 
 }
 
 
 .MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen{
 
-  height: 30rem;
-  width: 50rem;
+  height: 35rem;
+  width: 55rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
 
-  border-radius: inherit;
+  border-radius: 50px;
 
   box-shadow: 0 0 16px 9px rgb(255, 255, 255);
 
@@ -1013,15 +1013,5 @@ p {
   z-index: 6;
 
   gap: 3rem;
-
-}
-
-
-.MiscellaneousElements_ComponentContainer-Template--PlaceholderName{
-
-  height: 0.25rem;
-  width: 50%;
-
-  background-color: white;
 
 }

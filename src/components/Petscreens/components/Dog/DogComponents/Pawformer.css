@@ -1,7 +1,5 @@
 .Pawformer_ComponentContainer-Template--Screen{
 
-    gap: 3rem;
-
     background-image: url("../../../../../images/Dog/Play/Games/Pawformer/Background.png");
 
 }
@@ -11,8 +9,8 @@
 .Pawformer_ComponentContainer-Template--Arrow {
 
     position: absolute;
-    width: 8rem;
-    height: auto;
+    width: auto;
+    height: 8rem;
     left: 50%;
 
     filter: 
@@ -45,11 +43,9 @@
 
     height: 100%;
     display: grid;
-    grid-template-rows: repeat(1, 100%);
+    grid-template-rows: repeat(1, auto);
     grid-template-columns: repeat(9, 5rem);
 
-    padding: 1rem;
-    
 }
 
 .Pawformer_ComponentContainer-Template--GridCell{

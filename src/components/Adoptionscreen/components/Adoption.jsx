@@ -175,9 +175,9 @@ function Adoption () {
 
             adoption_CurrErrorMessageTimer("Please enter a name that doesn't contain symbol excluding periods, dashes, and single quotes.");
 
-        } else if (adoption_NameManager_CurrPetName.length > 20){
+        } else if (adoption_NameManager_CurrPetName.length > 16){
 
-            adoption_CurrErrorMessageTimer("Shorten the name to 20 characters max.");
+            adoption_CurrErrorMessageTimer("Shorten the name to 16 characters max.");
 
         } else if (adoption_NameManager_CurrPetName in PetList && adoption_NameManager_CurrPetName in PetTimeStamps) {
 

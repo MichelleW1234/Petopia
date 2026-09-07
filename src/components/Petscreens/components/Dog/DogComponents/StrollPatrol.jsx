@@ -17,7 +17,7 @@ import "./StrollPatrol.css";
 function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const strollPatrol_WindowWidth = 8;
-    const strollPatrol_WindowHeight = 4;
+    const strollPatrol_WindowHeight = 5;
 
     const strollPatrol_RowKey = "row";
     const strollPatrol_ColumnKey = "column";
