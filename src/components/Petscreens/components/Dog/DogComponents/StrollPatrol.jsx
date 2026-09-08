@@ -16,7 +16,7 @@ import "./StrollPatrol.css";
 
 function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
-    const strollPatrol_WindowWidth = 8;
+    const strollPatrol_WindowWidth = 9;
     const strollPatrol_WindowHeight = 5;
 
     const strollPatrol_RowKey = "row";
@@ -149,7 +149,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
 
-            {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+            {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
                     <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
                         <h2>Instructions:</h2>

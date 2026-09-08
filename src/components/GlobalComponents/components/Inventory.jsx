@@ -191,8 +191,16 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[0][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                    <img src = {inventoryItemLock}/>
+                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
                                 </div>
                             
                             </>
@@ -205,8 +213,16 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[1][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                    <img src = {inventoryItemLock}/>
+                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
                                 </div>
                             </>
 
@@ -218,8 +234,16 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[2][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                    <img src = {inventoryItemLock}/>
+                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
                                 </div>
                             </>
 
@@ -231,8 +255,16 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[3][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                    <img src = {inventoryItemLock}/>
+                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {inventoryItemLock}/>
+                                    </div>
                                 </div>
                             </>
 

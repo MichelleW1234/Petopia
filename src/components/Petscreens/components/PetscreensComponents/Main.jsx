@@ -176,7 +176,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
         ActivePetName === "" ? (
 
             <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
-                <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
+                <div className= "MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Color--WindowScreen--none"></div>
             </div>
 
         ) : (
@@ -186,7 +186,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                        {Array.from({ length: petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}, (_, i) => i + 1).map(num => (
+                        {Array.from({ length: petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][2]}, (_, i) => i + 1).map(num => (
 
                             <img 
                                 key = {num} 
@@ -253,7 +253,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
                                                     {main_Boolean_GiveAttention &&
                                                     <img
                                                         className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                                        src = {main_Number_Mood <= 1 ? PetHappySymbol : PetUnhappySymbol} 
+                                                        src = {main_Number_Mood === 1 ? PetHappySymbol : PetUnhappySymbol} 
                                                         onMouseEnter={() => main_Timer_EmotionExpression()}
                                                     />}
                                                 </div>

@@ -5,9 +5,9 @@
     align-items: end;
     justify-content: center;
 
-    padding: 3rem 9rem;
+    padding: 2rem 6rem;
     border-radius: 50px;
-    gap: 3rem;
+    gap: 2rem;
 
     box-shadow: 0 0 16px 6px rgb(255, 255, 255);
     
@@ -25,33 +25,27 @@
 
 .Options_ComponentImage-Template--PetThoughtPet{
 
-    width: 8rem;
-    height: 8rem;
+    width: auto;
+    height: 11rem;
 
 }
 
 .Options_ComponentContainer-Structure--PetThoughtDesiredOption {
 
-    height: 12rem;
-    width: 12rem;
-
+    height: 15rem;
+    width: 20rem;
 }
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{
 
     height: 100%;
     width: auto;
-    
+  
 }
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionObject{
 
-    width: 50%;
     height: 50%;
-
-    filter:
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
+    width: auto;
 
 }

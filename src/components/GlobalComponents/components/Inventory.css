@@ -1,13 +1,14 @@
 .Inventory_ComponentContainer-Structure--Item{
 
   width: 50rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 4rem;
-  gap: 4rem;
+  padding: 6rem;
+  gap: 3rem;
   border-radius: 75px;
 
 }
@@ -25,8 +26,8 @@
 
 .Inventory_ComponentContainer-Structure--ItemContentImage{
 
-  height: auto;
   width: 50%;
+  height: auto;
 
   padding: 3rem;
   border-radius: 25px;
@@ -51,6 +52,7 @@
 .Inventory_ComponentContainer-Structure--ItemField{
 
   width: 50%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,25 +64,30 @@
 }
 
 
+.Inventory_ComponentContainer-Structure--ItemLocks{
 
-.Inventory_ComponentImage-Structure--ItemLock{
-
-  height: 13rem;
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 
+  gap: 3rem;
+
+}
+
+.Inventory_ComponentImage-Structure--ItemLock{
+
+  width: 25%;
+
   padding: 2rem;
-  border-radius: 50px;
+  border-radius: 25px;
 
   box-shadow: 0 0 16px 6px rgb(255, 255, 255);
 
   img {
 
-    height: 100%; 
-    width: auto;
+    width: 100%;
+    height: auto;
 
     filter: 
       drop-shadow(0 0 4px rgb(255, 255, 255))

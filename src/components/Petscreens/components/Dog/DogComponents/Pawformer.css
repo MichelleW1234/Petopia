@@ -9,8 +9,8 @@
 .Pawformer_ComponentContainer-Template--Arrow {
 
     position: absolute;
+    height: 25%;
     width: auto;
-    height: 8rem;
     left: 50%;
 
     filter: 
@@ -42,32 +42,18 @@
 .Pawformer_ComponentContainer-Structure--Grid{
 
     height: 100%;
+    width: auto;
     display: grid;
     grid-template-rows: repeat(1, auto);
-    grid-template-columns: repeat(9, 5rem);
+    grid-template-columns: repeat(9, 6rem);
 
 }
 
 .Pawformer_ComponentContainer-Template--GridCell{
 
     align-self: center;
-
-    filter: 
-        drop-shadow(0 0 1px rgb(255, 255, 255))
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 3px  rgb(255, 255, 255));
-
-
-}
-
-.Pawformer_ComponentContainer-Template--GridCell {
-
-    width: 80%;
-
-}
-
-.Pawformer_ComponentContainer-Template--GridCell:hover,
-.Pawformer_ComponentContainer-Template--GridCell:active{
+    width: 100%;
+    height: auto;
 
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -76,11 +62,22 @@
 
 }
 
+
+.Pawformer_ComponentContainer-Template--GridCell:hover,
+.Pawformer_ComponentContainer-Template--GridCell:active{
+
+    filter: 
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 8px rgb(255, 255, 255))
+        drop-shadow(0 0 12px  rgb(255, 255, 255));
+
+}
+
 .Pawformer_ComponentImage-Template--CorrectMove {
 
-    position: absolute;
-    height: 25rem;
+    height: 85%;
     width: auto;
+    position: absolute;
     bottom: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(50%);

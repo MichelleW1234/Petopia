@@ -200,7 +200,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                                     ) : (
 
-                                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+                                        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
                                             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
                                                 <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">      
                                                     <h2>Instructions:</h2>

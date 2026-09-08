@@ -1,8 +1,13 @@
-.Adoption_ComponentContainer-Structure--FormBody{
+.Adoption_ComponentContainer-Template--FormBody {
 
-    text-align: center;
+    width: 60rem;
+
+    padding: 6rem;
+    border-radius: 50px;
 
 }
+
+
 
 
 .Adoption_ComponentContainer-Template--FormBodyNameRow {
@@ -19,24 +24,22 @@
 
 .Adoption_ComponentContainer-Template--FormBodyNameRowPetImage {
 
-    height: 10rem;
-    width: 10rem;
-
-    padding: 1rem;
+    width: 25%;
+    height: auto;
+    padding: 2rem;
     border-radius: 25px;
 
     box-shadow: 0 0 16px 3px rgb(255, 255, 255);
 
     img {
 
-        height: 100%;
+        width: 100%;
+        height: auto;
 
-        padding: 1rem;
-        
         filter: 
+            drop-shadow(0 0 1px rgb(255, 255, 255))
             drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px  rgb(255, 255, 255));
+            drop-shadow(0 0 3px  rgb(255, 255, 255));
 
     }
 

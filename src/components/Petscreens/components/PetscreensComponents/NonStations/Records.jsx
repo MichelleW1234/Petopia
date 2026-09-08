@@ -42,7 +42,7 @@ function Records({set_Records_OpenFlag}) {
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Your Pet's Identity Information:</h1>
 
-                <div className="UIStapleElements_ComponentFrameTransparent-Template--Global">
+                <div className="UIStapleElements_ComponentFrameTransparent-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>

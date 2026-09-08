@@ -149,7 +149,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
-            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
                     <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
                         <h2>Instructions:</h2>

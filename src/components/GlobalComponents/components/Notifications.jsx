@@ -28,7 +28,7 @@ function Notifications() {
     };
     
     return (
-        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxs">
+        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxes">
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 

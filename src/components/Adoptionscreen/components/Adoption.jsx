@@ -360,105 +360,109 @@ function Adoption () {
                     <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
-                {adoption_PetGender === "" ? (
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
 
-                    <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
-
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a species: </h1>
-                        
-                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
-            
-                            {Object.keys(petSpeciesImagePortraitList).map((key) => (
-            
-                                <div key = {key} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                                    {key === adoption_UserSelection ? (
-            
-                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => adoption_SpeciesSelector("")}>
-                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
-                                        </button>
-
-                                    ) : (
-            
-                                        <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => adoption_SpeciesSelector(key)}>
-                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
-                                        </button>
-            
-                                    )}
-
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                        <h2>{key}</h2>
-                                    </div>
-                                    
-                                </div>
-            
-                            ))}
-            
-                        </div>
-
-                    </div>
-
-                ) : (
-
-                    <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
-
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Complete the Adoption Form: </h1> 
-
-                        <div className="UIStapleElements_ComponentFrameTransparent-Template--Global"> 
-                
-                            <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent Adoption_ComponentContainer-Structure--FormBody">
-                                <p>Hello, my name is </p>
-
-                                <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
-                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
-                                        <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
-                                    </div>
-                                    <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
-                                        <input 
-                                            type="text"
-                                            value={adoption_UserInput}
-                                            onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                            placeholder="Name your pet..."
-                                        />
-                                    </div>
-                                </div>
-
-                                <p> and I am a {adoption_PetGender} {adoption_UserSelection}. Thank you for adopting me!</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                )} 
-
-                <div className = "Adoption_ComponentContainer-Structure--Confirmation">
-                    <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
-                  
                     {adoption_PetGender === "" ? (
 
-                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
+                        <>
 
-                            {adoption_UserSelection === "" ? (
-
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
-
-                            ) : (
-
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
-
-                            )}
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a species: </h1>
                             
-                        </div>
-        
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
+                
+                                {Object.keys(petSpeciesImagePortraitList).map((key) => (
+                
+                                    <div key = {key} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                        {key === adoption_UserSelection ? (
+                
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => adoption_SpeciesSelector("")}>
+                                                <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                            </button>
+
+                                        ) : (
+                
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => adoption_SpeciesSelector(key)}>
+                                                <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                            </button>
+                
+                                        )}
+
+                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                            <h2>{key}</h2>
+                                        </div>
+                                        
+                                    </div>
+                
+                                ))}
+                
+                            </div>
+
+                        </>
+
                     ) : (
-        
-                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
-                        </div>
-        
+
+                        <>
+
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Complete the Adoption Form: </h1> 
+
+                            <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Adoption_ComponentContainer-Template--FormBody"> 
+                    
+                                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
+
+                                    <p>Hello, friend! My name is </p>
+                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
+                                        <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
+                                            <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
+                                        </div>
+                                        <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
+                                            <input 
+                                                type="text"
+                                                value={adoption_UserInput}
+                                                onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
+                                                placeholder="Name your pet..."
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <p> and I am a {adoption_PetGender} {adoption_UserSelection}. Thank you for adopting me!</p>
+                                </div>
+
+                            </div>
+
+                        </>
+
                     )} 
+
+                    <div className = "Adoption_ComponentContainer-Structure--Confirmation">
+                        <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
+                    
+                        {adoption_PetGender === "" ? (
+
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
+
+                                {adoption_UserSelection === "" ? (
+
+                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
+
+                                ) : (
+
+                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
+
+                                )}
+                                
+                            </div>
+            
+                        ) : (
+            
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
+                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
+                            </div>
+            
+                        )} 
+
+                    </div>
 
                 </div>
         

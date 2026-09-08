@@ -108,7 +108,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
 
-            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxBackground">
+            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
                     <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
                         <h2>Instructions:</h2> 
@@ -117,7 +117,6 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
                     <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
                 </div>
             </div>}
-
             
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>
@@ -171,7 +170,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
                     );
 
-                })};
+                })}
 
             </div>
                 

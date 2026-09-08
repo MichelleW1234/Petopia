@@ -8,9 +8,20 @@
 
     gap: 3rem;
 
+}
+
+
+.MusicVolume_ComponentContainer-Structure--WidgetImage{
+
+    padding: 1rem;
+    border-radius: 25px;
+
+    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
+
     img {
 
         height: 8rem;
+        width: auto;
 
         filter: 
             drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -22,6 +33,8 @@
 }
 
 
+
+
 .MusicVolume_ComponentContainer-Structure--Slider{
 
     display: flex;
@@ -29,15 +42,15 @@
     align-items: center;
     justify-content: center;
 
-    padding: 2rem 4rem;
+    padding: 1rem 3rem;
     border-radius: 25px;
-    gap: 2rem;
+    gap: 3rem;
 
     input {
 
         -webkit-appearance: none;
 
-        width: 30rem;           
+        width: 35rem;           
         height: 15px;       
         border-radius: 9999px;
 

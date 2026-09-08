@@ -1,7 +1,8 @@
 .Main_ComponentContainer-Color--WindowScreen--dog{ 
 
     background: 
-        linear-gradient(to bottom, rgba(255, 0, 255, 0.5), rgba(61, 0, 131, 0.5)),
+        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
+        url("./../../../../images/PetBackgroundLayer.png"),
         url("./../../../../images/Dog/RoomBackground.gif");
 
 
@@ -10,7 +11,8 @@
 .Main_ComponentContainer-Color--WindowScreen--cat{
 
     background: 
-        linear-gradient(to bottom, rgba(255, 0, 255, 0.5), rgba(61, 0, 131, 0.5)),
+        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
+        url("./../../../../images/PetBackgroundLayer.png"),
         url("./../../../../images/Cat/RoomBackground.gif");
 
 }
@@ -18,10 +20,19 @@
 .Main_ComponentContainer-Color--WindowScreen--fish{
 
     background: 
-        linear-gradient(to bottom, rgba(255, 0, 255, 0.5), rgba(61, 0, 131, 0.5)),
+        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
+        url("./../../../../images/PetBackgroundLayer.png"),
         url("./../../../../images/Fish/RoomBackground.gif");
 
 }
+
+
+.Main_ComponentContainer-Color--WindowScreen--none{
+
+    background: url("./../../../../images/NoPetBackground.png");
+
+}
+
 
 
 .Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
@@ -29,7 +40,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 12rem;
+    height: 35%;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -37,14 +48,15 @@
     flex-wrap: wrap;
     z-index: 5;
 
-    padding: 3rem;
+    padding: 2rem;
 
 }
 
 
 .Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart {
 
-    height: 3rem;
+    height: 50%;
+    width: auto;
 
     filter: 
         drop-shadow(0 0 1px rgb(255, 255, 255))
@@ -61,28 +73,29 @@
     bottom: 0;
     display: grid;
     grid-template-columns: repeat(20, auto);
+    grid-template-rows: repeat(1, 16rem);;
 
 }
 
 
 .Main_ComponentContainer-Structure--WindowScreenGridCellNonpet {
 
-    height: 16rem;
     width: 2rem;
+    height: 100%;
 
 }
 
 
 .Main_ComponentContainer-Structure--WindowScreenGridCellPet {
 
-    height: 16rem;
-    width: 8rem;
-    
+    height: 100%;
+    width: 10rem;
     z-index: 4;
 
     img {
 
         width: 100%;
+        height: auto;
 
         filter: 
             drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -100,7 +113,7 @@
     position: absolute;
     bottom: 0;
     height: 16rem;
-    width: 46rem;
+    width: 48rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,13 +124,14 @@
 
 .Main_ComponentContainer-Structure--WindowScreenNongridPet{
 
-    height: 5rem;
-    width: 10rem;
+    height: 100%;
+    width: 11rem;
     z-index: 4;
 
     img {
 
         width: 100%;
+        height: auto;
 
         filter: 
             drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -131,8 +145,8 @@
 
 .Main_ComponentImage-Structure--WindowScreenCeilingDecoration{
 
-    width: 12rem;
-    height: auto;
+    height: 40%;
+    width: auto;
     position: absolute;
     top: 0%;
     transform: translateX(-50%);
@@ -172,8 +186,8 @@
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration{
 
-    width: 10rem;
-    height: auto;
+    height: 35%;
+    width: auto;
     position: absolute;
 
     filter: 
@@ -194,7 +208,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration--cat{
 
-    bottom: 55%;
+    bottom: 60%;
     left: 50%;
     transform: translateX(-50%) translateY(50%);
     
@@ -218,6 +232,7 @@
 
     width: auto;
     position: absolute;
+    bottom: 45%;
     transform: translateX(-50%) translateY(50%);
     z-index: 2;
 
@@ -230,8 +245,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--dog{
 
-    height: 15rem;
-    bottom: 50%;
+    height: 40%;
     left: 20%;
     
 }
@@ -239,19 +253,16 @@
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--cat{
 
-    height: 15rem;
-    bottom: 50%;
-    left: 80%;
+    height: 40%;
+    left: 85%;
 
 }
 
 
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--fish{
 
-    height: 25rem;
-    bottom: 45%;
+    height: 75%;
     left: 30%;
-    transform: translateX(-50%) translateY(50%);
     
 }
 
@@ -271,8 +282,8 @@
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--dog{
 
-    width: 15rem;
-    height: 10rem;
+    width: 35%;
+    height: 35%;
     bottom: 0%;
     left: 50%;
 
@@ -286,8 +297,8 @@
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--cat{
 
-    width: 15rem;
-    height: 10rem;
+    width: 35%;
+    height: 35%;
     bottom: 0%;
     left: 20%;
 
@@ -301,10 +312,10 @@
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--fish{
 
-    width: 8rem;
-    height: auto;
+    height: 25%;
+    width: auto;
     bottom: 5%;
-    left: 85%;
+    left: 80%;
 
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))

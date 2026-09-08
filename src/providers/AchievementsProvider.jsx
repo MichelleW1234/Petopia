@@ -48,7 +48,11 @@ export function AchievementsProvider({ children }) {
 
     const bound_Boolean_AllPetsFullyEvolved = Achievements[0][achievementStatusKey] === true && Achievements[1][achievementStatusKey] === true && bound_Boolean_DogFullyEvolved ||
                       bound_Boolean_FishFullyEvolved && Achievements[1][achievementStatusKey] === true && Achievements[2][achievementStatusKey] === true || 
-                      Achievements[0][achievementStatusKey] === true && bound_Boolean_CatFullyEvolved && Achievements[2][achievementStatusKey] === true;
+                      Achievements[0][achievementStatusKey] === true && bound_Boolean_CatFullyEvolved && Achievements[2][achievementStatusKey] === true ||
+                      Achievements[0][achievementStatusKey] === true && bound_Boolean_CatFullyEvolved && bound_Boolean_DogFullyEvolved || 
+                      bound_Boolean_FishFullyEvolved && Achievements[1][achievementStatusKey] === true && bound_Boolean_DogFullyEvolved ||
+                      bound_Boolean_FishFullyEvolved && bound_Boolean_CatFullyEvolved && Achievements[2][achievementStatusKey] === true ||
+                      bound_Boolean_FishFullyEvolved && bound_Boolean_CatFullyEvolved && bound_Boolean_DogFullyEvolved;
 
     setAchievements(prev => {
 
