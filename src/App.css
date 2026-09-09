@@ -195,7 +195,7 @@ p {
   border-radius: 9999px;
 
   background-color: rgb(255, 255, 255, 0.5);
-  border: 1px solid rgb(0,0,0); 
+  border: 1px solid rgb(255, 255, 255); 
 
 }
 
@@ -216,8 +216,8 @@ p {
   flex-direction: column;
   align-items: center;
 
-  padding: 4rem;
-  gap: 8rem;
+  padding: 3rem;
+  gap: 6rem;
 
   background:
     url("./images/BackgroundOverlay.gif"),
@@ -226,7 +226,7 @@ p {
     linear-gradient(hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundOuter)) 15%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundInner)) 50%, hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Background-Saturation--GlobalColorBackground) var(--UIStapleElements_Background-Light--ScreenColorBackgroundOuter)) 85%);
 
   background-size: 25rem auto, 25rem auto, auto, cover;
-  background-position: left 1rem bottom 8rem, right 1rem bottom 8rem, center, center;
+  background-position: left 0% bottom 15%, right 0% bottom 15%, center, center;
   background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 
 }
@@ -234,6 +234,8 @@ p {
 
 .UIStapleElements_Background-Structure--FloatingFlag {
 
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -271,6 +273,9 @@ p {
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalClick {
 
+  width: auto;
+  height: auto;
+
   padding: 2rem 4rem;
   border-radius: 9999px;
   border-style: solid;
@@ -292,6 +297,9 @@ p {
 }
 
 .UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick {
+
+  width: auto;
+  height: auto;
 
   padding: 2rem 4rem;
   border-radius: 9999px;
@@ -324,6 +332,9 @@ p {
 
 
 .UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick{
+
+  width: auto;
+  height: auto;
 
   border-radius: 25px;
   padding: 2rem 4rem;
@@ -372,6 +383,9 @@ p {
 
 .UIStapleElements_ComponentFrameColored-Structure--Global{
 
+  height: auto;
+  width: auto;
+
   border-left-width: 12px;
   border-bottom-width: 12px;
   border-right-width: 3px;
@@ -383,11 +397,13 @@ p {
 
 .UIStapleElements_ComponentFrameTransparent-Template--Global{
 
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  padding: 6rem;
+  border-radius: 75px;
 
   color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorFont));
   background-color: hsl(var(--UIStapleElements_BackgroundBase-Hue--GlobalColorBase) var(--UIStapleElements_Component-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrameTransparent-Light--GlobalColorBackground) / var(--UIStapleElements_ComponentFrameTransparent-Transparency--GlobalColorBackground));
@@ -718,6 +734,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow {
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -734,13 +752,13 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-
+  align-items: start;
+    
   gap: 3rem;
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow {
+.MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow {
 
   display: flex;
   flex-direction: row;
@@ -751,20 +769,6 @@ p {
   gap: 3rem;
 
 }
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow {
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  gap: 3rem;
-
-}
-
 
 
 
@@ -788,6 +792,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame {
 
+  width: auto;
+  height: auto;
   padding: 4rem;
   border-radius: 75px;
 
@@ -807,10 +813,6 @@ p {
   border-radius: 50px;
 
   box-shadow: 0 0 16px 9px rgb(255, 255, 255);
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
 }
 
@@ -849,9 +851,6 @@ p {
   width: 55rem;
   height: auto;
 
-  padding: 6rem;
-  border-radius: 50px;
-
 }
 
 
@@ -859,6 +858,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent{
 
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -901,6 +902,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox{
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -939,10 +942,10 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar {
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: row;
-  width: fit-content;
-  height: auto;
 
   box-shadow: 0 0 16px 3px rgb(255, 255, 255);
 
@@ -972,6 +975,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground{
 
+  width: 100%;
+  height: 100%;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -1004,12 +1009,14 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--Screen {
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 4rem;
+  gap: 3rem;
 
 }
 
@@ -1018,12 +1025,14 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenToggle{
   
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   position: fixed;
-  bottom: 4rem;
-  left: 4rem;
+  bottom: 5%;
+  left: 5%;
   z-index: 6;
 
   gap: 3rem;

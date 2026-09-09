@@ -9,6 +9,7 @@ import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
 import Rock from "../../../../../images/Dog/Play/Games/StrollPatrol/Rock.png";
 
+import "../../../../../App.css";
 import "./StrollPatrol.css";
 
 

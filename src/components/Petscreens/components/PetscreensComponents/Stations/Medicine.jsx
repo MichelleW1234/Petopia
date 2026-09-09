@@ -15,6 +15,7 @@ import { petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Cance
 
 import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedicine.mp3";
 
+import "../../../../../App.css";
 import "./Medicine.css";
 
 
@@ -276,7 +277,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
             )}
 
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
                 {medicine_Done ? (
                                 

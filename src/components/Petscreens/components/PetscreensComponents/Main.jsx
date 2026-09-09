@@ -14,6 +14,7 @@ import PetHappySymbol from "../../../../images/PetHappySymbol.gif";
 import HealthyPetHeart from "../../../../images/HealthyPetHeart.png";
 import UnhealthyPetHeart from "../../../../images/UnhealthyPetHeart.png";
 
+import "../../../../App.css";
 import "./Main.css";
 
 
@@ -186,7 +187,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                        {Array.from({ length: petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][2]}, (_, i) => i + 1).map(num => (
+                        {Array.from({ length: petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}, (_, i) => i + 1).map(num => (
 
                             <img 
                                 key = {num} 
@@ -260,7 +261,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                                             ) : (
 
-                                                <div key={index} className = "Main_ComponentContainer-Structure--WindowScreenGridCellNonpet"></div>
+                                                <div key={index} className="Main_ComponentContainer-Structure--WindowScreenGridCellNonpet"></div>
 
                                             )
                                 

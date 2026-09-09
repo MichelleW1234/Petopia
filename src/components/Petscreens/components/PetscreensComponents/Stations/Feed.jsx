@@ -16,6 +16,7 @@ import { petScreensHelpers_Starter_Activities, petScreensHelpers_Canceller_PetIm
 
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
+import "../../../../../App.css";
 import "./Feed.css";
 
 
@@ -222,7 +223,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
             )}
 
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
             
                 {feed_Done ? (
                 

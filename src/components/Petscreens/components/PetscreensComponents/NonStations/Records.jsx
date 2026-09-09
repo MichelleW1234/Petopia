@@ -6,6 +6,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
+import "../../../../../App.css";
 import "./Records.css";
 
 
@@ -40,7 +41,7 @@ function Records({set_Records_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Your Pet's Identity Information:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Your Pet's Identity Records:</h1>
 
                 <div className="UIStapleElements_ComponentFrameTransparent-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">

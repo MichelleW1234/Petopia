@@ -1,5 +1,7 @@
 .Activity_ComponentContainer-Structure--Category{
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,12 +13,14 @@
 
 .Activity_ComponentContainer-Structure--CategoryField{
 
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 3rem;
 
 }
 
@@ -24,18 +28,6 @@
 .Activity_ComponentContainer-Color--TimebarCellHalfway {
 
   background-color: rgb(0, 0, 0);
-
-}
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done {
-
-  background-color: rgb(255, 255, 255);
-
-}
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining {
-
-  background-color: rgb(255, 255, 255, 0.25);
 
 }
 

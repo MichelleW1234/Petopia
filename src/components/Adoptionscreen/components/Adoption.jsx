@@ -17,6 +17,7 @@ import NotificationsComponent from "../../GlobalComponents/components/Notificati
 import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioSelectionButtonPressKey, audioNavButtonPressKey, audioAdoptionSuccessKey, audioScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
+import "../../../App.css";
 import "./Adoption.css";
 
 
@@ -366,7 +367,7 @@ function Adoption () {
 
                         <>
 
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a species: </h1>
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a new species: </h1>
                             
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
                 
@@ -403,7 +404,7 @@ function Adoption () {
 
                         <>
 
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Complete the Adoption Form: </h1> 
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Adoption Form: </h1> 
 
                             <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Adoption_ComponentContainer-Template--FormBody"> 
                     
@@ -419,7 +420,7 @@ function Adoption () {
                                                 type="text"
                                                 value={adoption_UserInput}
                                                 onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                                placeholder="Name your pet..."
+                                                placeholder="&lt; Name &gt;"
                                             />
                                         </div>
                                     </div>
@@ -438,7 +439,7 @@ function Adoption () {
                     
                         {adoption_PetGender === "" ? (
 
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
 
                                 {adoption_UserSelection === "" ? (
@@ -455,7 +456,7 @@ function Adoption () {
             
                         ) : (
             
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
                                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
                             </div>
@@ -467,7 +468,7 @@ function Adoption () {
                 </div>
         
             </div>
-
+            
             <NotificationsComponent/>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">

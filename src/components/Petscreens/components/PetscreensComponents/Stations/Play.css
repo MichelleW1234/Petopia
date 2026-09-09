@@ -1,4 +1,8 @@
-.Play_ComponentContainer-Template--WindowScreen{
+.Play_ComponentContainer-Color--WindowScreen{
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     background: inherit;
 

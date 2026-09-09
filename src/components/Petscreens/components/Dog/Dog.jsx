@@ -74,6 +74,7 @@ import Mask from "../../../../images/Dog/Play/Options/Mask.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
 
+import "../../../../App.css";
 
 
 

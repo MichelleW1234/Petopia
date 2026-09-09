@@ -16,6 +16,7 @@ import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 
+import "../../../../../App.css";
 import "./Play.css";
 
 
@@ -145,7 +146,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                             Play_GameWindow === null ? (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Template--WindowScreen"></div>
+                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Color--WindowScreen"></div>
 
                             ) : (
 
@@ -166,7 +167,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
             )}
 
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
                 {play_Done ? (
                 

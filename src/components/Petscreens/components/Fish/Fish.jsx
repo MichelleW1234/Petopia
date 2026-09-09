@@ -68,6 +68,7 @@ import CursorCloth from "../../../../images/Fish/Clean/Options/Cloth.cur";
 import Pill from "../../../../images/Fish/Medicine/Options/Pill.png";
 import Serum from  "../../../../images/Fish/Medicine/Options/Serum.png";
 
+import "../../../../App.css";
 
 
 function Fish (){

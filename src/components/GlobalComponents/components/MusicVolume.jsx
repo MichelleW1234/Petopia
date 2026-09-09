@@ -7,6 +7,7 @@ import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../..
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 
+import "../../../App.css";
 import "./MusicVolume.css";
 
 
@@ -71,7 +72,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
         <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Music Volume:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Background Music Volume:</h1>
                 <div className="MusicVolume_ComponentContainer-Structure--Widget">
                     <div className="MusicVolume_ComponentContainer-Structure--WidgetImage">
                         <img src = {VolumeSpeaker}/>

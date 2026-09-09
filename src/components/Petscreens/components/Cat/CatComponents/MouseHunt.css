@@ -2,18 +2,32 @@
 
     background-image: url("../../../../../images/Cat/Play/Games/MouseHunt/Background.png");
 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 .MouseHunt_ComponentContainer-Structure--Grid{
 
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
     display: grid;
-    grid-template-rows: repeat(2, 13rem);
-    grid-template-columns: repeat(4, 13rem);
+    grid-template-rows: repeat(2, 35%);
+    grid-template-columns: repeat(4, auto);
     gap: 1rem;
 
 }
 
 .MouseHunt_ComponentContainer-Template--GridCell{
+
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1/1;
 
     border-radius: 50%;
     padding: 2rem;

@@ -1,5 +1,7 @@
 .Options_ComponentContainer-Structure--PetThought {
 
+    height: auto;
+    width: auto;
     display: flex;
     flex-direction: row;
     align-items: end;
@@ -34,6 +36,7 @@
 
     height: 15rem;
     width: 20rem;
+
 }
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{

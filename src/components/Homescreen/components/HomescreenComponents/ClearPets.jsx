@@ -10,6 +10,7 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 import { audioSelectionButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
 
+import "../../../../App.css";
 
 
 
@@ -139,7 +140,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
         <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select pet(s) to remove:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select Pet(s) to Remove:</h1>
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
                     {Room.map((petName, index) => (
@@ -178,7 +179,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
                 </div>
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
                 <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
 

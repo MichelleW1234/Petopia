@@ -10,6 +10,7 @@ import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/Fea
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
 import arrow from "../../../../../images/Cat/Play/Games/FeatherFishing/Arrow.png";
 
+import "../../../../../App.css";
 import "./FeatherFishing.css";
 
 

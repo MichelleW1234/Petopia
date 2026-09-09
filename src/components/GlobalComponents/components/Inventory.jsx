@@ -14,6 +14,8 @@ import inventoryItemLock from "../../../images/inventoryItemLock.png";
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
+
+import "../../../App.css";
 import "./Inventory.css";
 
 
@@ -154,9 +156,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                     
                     <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
 
-                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                            <h1>{item[inventoryItemNameKey]}:</h1>
-                        </div>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">{item[inventoryItemNameKey]}:</h1>
 
                         <div className="Inventory_ComponentContainer-Structure--ItemContent">
 
@@ -273,7 +273,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
 
                                 <h2>This Item Currently Belongs to:</h2>
-                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagSecondaryButtonRow">
+                                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
                                     {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 

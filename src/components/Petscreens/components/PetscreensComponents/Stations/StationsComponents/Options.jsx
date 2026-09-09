@@ -7,6 +7,7 @@ import { helpers_Player_UIIndicatorSounds } from "../../../../../../helpers/Help
 import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
 import PetThoughtBubble from "../../../../../../images/PetThoughtBubble.png";
 
+import "../../../../../../App.css";
 import "./Options.css";
 
 
@@ -48,7 +49,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
                     <img src = {PetThoughtBubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
-                    <img src = {options_CurrDesiredOption === -1 ? PetUnwantedActivity : options_CurrSpeciesList[options_CurrDesiredOption][petActivityOptionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer  Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
+                    <img src = {options_CurrDesiredOption === -1 ? PetUnwantedActivity : options_CurrSpeciesList[options_CurrDesiredOption][petActivityOptionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                 </div>
 

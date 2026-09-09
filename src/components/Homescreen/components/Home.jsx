@@ -32,6 +32,7 @@ import GreenPetBattery from "../../../images/GreenPetBattery.png";
 import GrayPetBattery from "../../../images/GrayPetBattery.png";
 import AddNewPet from "../../../images/AddNewPet.png";
 
+import "../../../App.css";
 import "./Home.css";
 
 
@@ -280,11 +281,11 @@ function Home (){
 
                     {home_CanRestart ? (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Your Pets: </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Room: </h1>
 
                     ) : (
 
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Welcome! Adopt up to 3 pets to get started. </h1>
+                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Welcome! Select a Room to Get Started: </h1>
 
                     )}
 
@@ -323,7 +324,7 @@ function Home (){
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                        <h2>[ Name ]</h2>
+                                        <h2>&lt; Name &gt;</h2>
                                     </div>
 
                                 </div>

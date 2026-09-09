@@ -1,3 +1,5 @@
+import "../../../../../../App.css";
+
 function ProgressBar({progressBar_CurrPercentUntilNextUpdate}) {
 
     return (

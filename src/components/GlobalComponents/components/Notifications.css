@@ -1,13 +1,14 @@
 .MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxes{
 
     max-height: 75vh;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
     position: fixed;
-    right: 4rem;
-    top: 4rem;
+    right: 5%;
+    top: 5%;
     z-index: 6;
 
     gap: 3rem;

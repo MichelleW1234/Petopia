@@ -17,6 +17,7 @@ import { helpers_Closer_Flags} from "../../../../../helpers/Helpers.js";
 import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
 import CleaningSymbol from "../../../../../images/CleaningSymbol.gif";
 
+import "../../../../../App.css";
 import "./Clean.css";
 
 
@@ -248,7 +249,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
             )}
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
                 {clean_Done ? (
                                 

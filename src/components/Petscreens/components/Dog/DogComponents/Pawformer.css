@@ -2,15 +2,19 @@
 
     background-image: url("../../../../../images/Dog/Play/Games/Pawformer/Background.png");
 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 
 
 
 .Pawformer_ComponentContainer-Template--Arrow {
 
-    position: absolute;
     height: 25%;
     width: auto;
+    position: absolute;
     left: 50%;
 
     filter: 
@@ -42,16 +46,19 @@
 .Pawformer_ComponentContainer-Structure--Grid{
 
     height: 100%;
-    width: auto;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
     display: grid;
     grid-template-rows: repeat(1, auto);
-    grid-template-columns: repeat(9, 6rem);
+    grid-template-columns: repeat(9, 10%);
 
 }
 
 .Pawformer_ComponentContainer-Template--GridCell{
 
-    align-self: center;
     width: 100%;
     height: auto;
 

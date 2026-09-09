@@ -8,6 +8,7 @@ import ActivityComponent from "./NonstationsComponents/Activity.jsx";
 import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
 
+import "../../../../../App.css";
 import "./Schedule.css";
 
 
@@ -33,7 +34,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Your Pet's Activity Timing Tracker:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Your Pet's Activities Schedule:</h1>
                 <div className = "UIStapleElements_ComponentFrameTransparent-Template--Global Schedule_ComponentContainer-Structure--Schedule">
                     {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 

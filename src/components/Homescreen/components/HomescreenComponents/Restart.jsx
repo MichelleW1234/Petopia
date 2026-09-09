@@ -30,6 +30,8 @@ import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
 
 import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypePotionKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
 
+import "../../../../App.css";
+
 
 
 function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_InventoryMissingItems, restart_InventoryContainsOwners, restart_AchievementsUnlocked, restart_NotificationsUncleared}) {
@@ -131,7 +133,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalNavigationButtonRow">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>

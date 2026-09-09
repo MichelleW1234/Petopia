@@ -5,6 +5,7 @@ import {useActivePetName} from "../../../../../../providers/ActivePetNameProvide
 
 import { petHealthKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampLastPerformedKey } from "../../../../../../constants/Constants.js";
 
+import "../../../../../../App.css";
 import "./Activity.css";
 
 

@@ -9,6 +9,7 @@ import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.j
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
 import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
 
+import "../../../../../App.css";
 import "./MouseHunt.css";
 
 

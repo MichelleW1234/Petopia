@@ -12,6 +12,7 @@ import s from "../../../../../images/Dog/Play/Games/Pawformer/S.png";
 import d from "../../../../../images/Dog/Play/Games/Pawformer/D.png";
 import arrow from "../../../../../images/Dog/Play/Games/Pawformer/Arrow.png";
 
+import "../../../../../App.css";
 import "./Pawformer.css";
 
 

@@ -64,6 +64,7 @@ import Rod from "../../../../images/Cat/Play/Options/Rod.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
 
+import "../../../../App.css";
 
 
 

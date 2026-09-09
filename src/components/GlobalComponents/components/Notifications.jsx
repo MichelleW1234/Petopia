@@ -2,6 +2,7 @@ import { audioScreenButtonPressKey, notificationsDateKey, notificationsDescripti
 import { helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers";
 import { useNotifications } from "../../../providers/NotificationsProvider";
 
+import "../../../App.css";
 import "./Notifications.css";
 
 

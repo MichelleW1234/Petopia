@@ -3,6 +3,7 @@ import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 import { audioNavButtonPressKey } from "../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
 
+import "../../../../App.css";
 import "./SpeciesCareGuide.css";
 
 
@@ -25,7 +26,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read About Maintenance Requirements for Sach Species:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read the Species Maintenance Requirements:</h1>
                 <div className="UIStapleElements_ComponentFrameTransparent-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
