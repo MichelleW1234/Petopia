@@ -279,7 +279,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                         inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> &lt; Name &gt; </button>
+                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> &lt;Pet Name&gt; </button>
 
                                         ) : (
 

@@ -1,6 +1,8 @@
 .Medicine_ComponentContainer-Template--WindowScreen{
 
-    background-image: url("../../../../../images/MedicineBackground.png");
+    background: 
+        linear-gradient(to bottom, rgb(0,0,0, 0), rgb(0,0,0, 0.5)),
+        url("../../../../../images/MedicineBackground.png");
 
     background-size: cover;
     background-position: center;

@@ -19,6 +19,7 @@ import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../..
 
 import "../../../App.css";
 import "./Adoption.css";
+import { useNotifications } from "../../../providers/NotificationsProvider.jsx";
 
 
 
@@ -30,6 +31,7 @@ function Adoption () {
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {Room, setRoom} = useRoom();
     const {ActiveCheckoutRoom, setActiveCheckoutRoom} = useActiveCheckoutRoom();
+    const {Notifications, setNotifications} = useNotifications();
 
     const [adoption_MusicVolumeOpenFlag, set_Adoption_MusicVolumeOpenFlag] = useState(false);
     const [adoption_InventoryOpenFlag, set_Adoption_InventoryOpenFlag] = useState(false);
@@ -357,8 +359,8 @@ function Adoption () {
             <div className="UIStapleElements_Background-Template--Screen">
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
+                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
                 </div>
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
@@ -404,30 +406,29 @@ function Adoption () {
 
                         <>
 
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Adoption Form: </h1> 
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
 
                             <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Adoption_ComponentContainer-Template--FormBody"> 
-                    
-                                <div className = "MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
 
-                                    <p>Hello, friend! My name is </p>
-                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRow">
-                                        <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
-                                            <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
-                                        </div>
-                                        <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
-                                            <input 
-                                                type="text"
-                                                value={adoption_UserInput}
-                                                onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                                placeholder="&lt; Name &gt;"
-                                            />
-                                        </div>
+                                <div className="Adoption_ComponentContainer-Template--FormBodyRow">
+                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
+                                        <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
                                     </div>
-
-                                    <p> and I am a {adoption_PetGender} {adoption_UserSelection}. Thank you for adopting me!</p>
+                                    <div className="Adoption_ComponentContainer-Template--FormWrittenContent">
+                                        <p>Hello, friend! I am a {adoption_PetGender} {adoption_UserSelection}.</p>
+                                        <p>Thank you for adopting me!</p>
+                                    </div>
                                 </div>
 
+                            </div>
+
+                            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
+                                <input 
+                                    type="text"
+                                    value={adoption_UserInput}
+                                    onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
+                                    placeholder="&lt;Pet Name&gt;"
+                                />
                             </div>
 
                         </>
@@ -469,7 +470,16 @@ function Adoption () {
         
             </div>
             
-            <NotificationsComponent/>
+            {Notifications.length > 0 ? (
+
+                <NotificationsComponent/>
+
+            ) : (
+
+                null
+
+            )}
+            
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

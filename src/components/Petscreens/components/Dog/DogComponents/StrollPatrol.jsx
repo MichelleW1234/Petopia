@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
-
-import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
@@ -24,23 +21,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     const strollPatrol_ColumnKey = "column";
     const strollPatrol_TypeKey = "type";
 
-    const [strollPatrol_Start, set_StrollPatrol_Start] = useState(false);
     const [strollPatrol_CurrObjectPositions, set_StrollPatrol_CurrObjectPositions] = useState([]);
-
-
-    useKeyboardShortcut("Enter", () => {
-    
-        if (!strollPatrol_Start){
-
-            petScreensHelpers_Starter_Activities(set_StrollPatrol_Start);
-
-        }
-
-    },
-        ".Start"
-    );
-
-
 
 
     useEffect(() => {
@@ -56,10 +37,6 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     useEffect(() => {
 
-        if (!strollPatrol_Start) {
-            return;
-        }
-
         play_AudioRef.current.loop = true;
         play_AudioRef.current.play();
 
@@ -69,16 +46,10 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
             play_AudioRef.current.loop = false;
         };
 
-    }, [strollPatrol_Start]);
+    }, []);
 
 
     useEffect(() => {
-
-        if (!strollPatrol_Start){
-
-            return;
-
-        } 
 
         const strollPatrol_Interval = setInterval(() => {
 
@@ -111,7 +82,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         return () => clearInterval(strollPatrol_Interval);
 
-    }, [strollPatrol_Start]);
+    }, []);
 
 
     const strollPatrol_HitManager = (row, col, type) => {
@@ -149,16 +120,6 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     return (
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen StrollPatrol_ComponentContainer-Template--Screen">
-
-            {!strollPatrol_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <h2>Instructions:</h2>
-                        <p>Click on all the balls. Avoid the rocks.</p> 
-                    </div>
-                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_StrollPatrol_Start)}> X </button>
-                </div>
-            </div>}
 
             <div className="StrollPatrol_ComponentContainer-Structure--Grid">
 

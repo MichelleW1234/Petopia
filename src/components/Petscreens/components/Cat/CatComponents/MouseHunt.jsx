@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 
-import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
-
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
 import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
@@ -25,17 +22,12 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
     const mouseHunt_ColumnKey = "column";
     const mouseHunt_TypeKey = "type";
 
-    const [mouseHunt_Start, set_MouseHunt_Start] = useState(false);
     const [mouseHunt_CurrObjectPositions, set_MouseHunt_CurrObjectPositions] = useState([]);
     const [mouseHunt_HitAttempt, set_MouseHunt_HitAttempt] = useState(false);
 
 
 
     useEffect(() => {
-
-        if (!mouseHunt_Start) {
-            return;
-        }
 
         play_AudioRef.current.loop = true;
         play_AudioRef.current.play();
@@ -46,17 +38,11 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
             play_AudioRef.current.loop = false;
         };
 
-    }, [mouseHunt_Start]);
+    }, []);
 
 
 
     useEffect(() => {
-
-        if (!mouseHunt_Start){
-
-            return;
-
-        } 
 
         const mouseHunt_Interval = setInterval(() => {
 
@@ -116,7 +102,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
         return () => clearInterval(mouseHunt_Interval);
 
-    }, [mouseHunt_Start, mouseHunt_HitAttempt]);
+    }, [mouseHunt_HitAttempt]);
 
 
 
@@ -150,16 +136,6 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
 
-            {!mouseHunt_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <h2>Instructions:</h2>
-                        <p>Catch the toy mice. Avoid the power cords.</p> 
-                    </div>
-                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_MouseHunt_Start)}> X </button>
-                </div>
-            </div>}
-
             <div className="MouseHunt_ComponentContainer-Structure--Grid">
 
                 {Array.from({ length: mouseHunt_WindowHeight}, (_, row) => 
@@ -171,15 +147,11 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
                             
                             mouseHunt_MouseHere ? (
 
-                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHunt_HitManager(true)}>
-                                    <img src = {Mouse}/>
-                                </div>
+                                <img key = {row + " & " + col} src = {Mouse} onClick = {() => mouseHunt_HitManager(true)} className="MouseHunt_ComponentContainer-Template--GridCell"/>
                                 
                             ) : (
 
-                                <div key = {row + " & " + col} className="MouseHunt_ComponentContainer-Template--GridCell" onClick = {() => mouseHunt_HitManager(false)}>
-                                    <img src = {Cord}/>
-                                </div>
+                                <img key = {row + " & " + col} src = {Cord} onClick = {() => mouseHunt_HitManager(false)} className="MouseHunt_ComponentContainer-Template--GridCell"/>
 
                             )
                         

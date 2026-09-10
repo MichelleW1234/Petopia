@@ -246,7 +246,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                                                 <div key={index} 
                                                     className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
-                                                    <img className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
+                                                    <img
                                                         src = {main_Sequence_StageAnimationImages[main_Number_PetDirection][index % 2]} 
                                                         onMouseEnter={() => main_Timer_EmotionExpression()}
                                                     />

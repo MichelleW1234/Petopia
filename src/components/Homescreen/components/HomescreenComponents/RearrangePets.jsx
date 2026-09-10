@@ -80,20 +80,6 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation RearrangePets_ComponentContainer-Template--Slot">
-                                       
-                                {petName === "" ? (
-
-                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
-                                        <img src = {NoPetPortrait}/>
-                                    </div>
-
-                                ) : (
-
-                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
-                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-                                    </div>
-
-                                )}
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
@@ -118,12 +104,25 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                                     </div>
 
                                 )}
+                                       
+                                {petName === "" ? (
 
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <img src = {NoPetPortrait}/>
+                                    </div>
+
+                                ) : (
+
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotImage">
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                    </div>
+
+                                )}
 
                                 {petName === "" ? (
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                        <h2>&lt; Name &gt;</h2>
+                                        <h2>&lt;Pet Name&gt;</h2>
                                     </div>
 
                                 ) : (

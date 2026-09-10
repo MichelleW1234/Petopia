@@ -20,7 +20,7 @@ import MouseHuntComponent from "./CatComponents/MouseHunt.jsx";
 import FeatherFishingComponent from "./CatComponents/FeatherFishing.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 
-import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey } from "../../../../constants/Constants.js";
+import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey } from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
 import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
 
@@ -65,6 +65,7 @@ import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
 
 import "../../../../App.css";
+import { useNotifications } from "../../../../providers/NotificationsProvider.jsx";
 
 
 
@@ -74,6 +75,7 @@ function Cat (){
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
+    const {Notifications, setNotifications} = useNotifications();
 
     const [cat_MusicVolumeOpenFlag, set_Cat_MusicVolumeOpenFlag] = useState(false);
     const [cat_InventoryOpenFlag, set_Cat_InventoryOpenFlag] = useState(false);
@@ -164,7 +166,7 @@ function Cat (){
 
 
     const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent, [petActivityOptionGameInstructionsKey]: "Catch the toy mice. Avoid the power cords:"}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent, [petActivityOptionGameInstructionsKey]: "Catch the Feather When It Lands on the Target:"}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const cat_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
@@ -392,23 +394,23 @@ function Cat (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Schedule" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Schedule" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {cat_Alive ? (
 
                         <>
-                            <button className={cat_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Feed"} onClick = {() => helpers_Opener_Flags(set_Cat_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                            <button className={cat_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Play"} onClick = {() => helpers_Opener_Flags(set_Cat_PlayOpenFlag, 0)}> Play <br/> [5] </button>
+                            <button className={cat_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {() => helpers_Opener_Flags(set_Cat_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={cat_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play"} onClick = {() => helpers_Opener_Flags(set_Cat_PlayOpenFlag, 0)}> Play <br/> [5] </button>
 
                             {cat_CanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Medicine" onClick = {() => helpers_Opener_Flags(set_Cat_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Medicine" onClick = {() => helpers_Opener_Flags(set_Cat_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [6]</button>
 
                             )}
                         
@@ -417,9 +419,9 @@ function Cat (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Feed <br/> [4]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Play <br/> [5]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Feed <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Play <br/> [5]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [6]</button>
                         </>
 
                     )}
@@ -441,7 +443,15 @@ function Cat (){
 
             </div>
 
-            <NotificationsComponent/>
+            {Notifications.length > 0 ? (
+
+                <NotificationsComponent/>
+
+            ) : (
+
+                null
+
+            )}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

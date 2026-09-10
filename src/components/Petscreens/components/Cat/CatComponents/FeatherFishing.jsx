@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 
-import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
-
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
@@ -27,10 +24,6 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
     useEffect(() => {
 
-        if (!featherFishing_Start) {
-            return;
-        }
-
         play_AudioRef.current.loop = true;
         play_AudioRef.current.play();
 
@@ -40,17 +33,11 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
             play_AudioRef.current.loop = false;
         };
 
-    }, [featherFishing_Start]);
+    }, []);
 
 
 
     useEffect(() => {
-
-        if (!featherFishing_Start){
-
-            return;
-
-        } 
 
         const featherFishing_Interval = setInterval(() => {
 
@@ -76,7 +63,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
         return () => clearInterval(featherFishing_Interval);
 
-    }, [featherFishing_Start, featherFishing_HitAttempt]);
+    }, [featherFishing_HitAttempt]);
 
 
 
@@ -108,16 +95,6 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
     return (
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
-
-            {!featherFishing_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <h2>Instructions:</h2> 
-                        <p>Catch the Feather When It Lands on the Target.</p>
-                    </div>
-                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_FeatherFishing_Start)}> X </button>
-                </div>
-            </div>}
             
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>

@@ -41,8 +41,10 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
     return (
 
         <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+        
+            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth for cleaning:</h1>
 
-            <div className="Options_ComponentContainer-Structure--PetThought"> 
+            <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Options_ComponentContainer-Structure--PetThought"> 
 
                 <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} className = "Options_ComponentImage-Template--PetThoughtPet" />
 
@@ -54,6 +56,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
                 </div>
 
             </div>
+
             <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">  
 
                 {options_CurrSpeciesList.map((option, index) => (

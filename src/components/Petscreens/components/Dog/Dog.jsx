@@ -21,7 +21,7 @@ import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx"
 import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 
-import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
+import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
 import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
 
@@ -75,6 +75,7 @@ import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
 
 import "../../../../App.css";
+import { useNotifications } from "../../../../providers/NotificationsProvider.jsx";
 
 
 
@@ -84,6 +85,7 @@ function Dog (){
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {ActivePetName, setActivePetName} = useActivePetName();
     const {PetList, setPetList} = usePetList();
+    const {Notifications, setNotifications} = useNotifications();
 
     const [dog_MusicVolumeOpenFlag, set_Dog_MusicVolumeOpenFlag] = useState(false);
     const [dog_InventoryOpenFlag, set_Dog_InventoryOpenFlag] = useState(false);
@@ -186,7 +188,7 @@ function Dog (){
 
     const dog_FeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dog_CleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent}];
+    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent, [petActivityOptionGameInstructionsKey]: "Click on all the balls. Avoid the rocks: "}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent, [petActivityOptionGameInstructionsKey]: "Click the Matching Letter When It Lands on the Target: "}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dog_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBarks), [petSoundSadKey]: new Audio(SadWhine), [petSoundSleepKey]: new Audio(Sleeping)});
@@ -444,24 +446,24 @@ function Dog (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
 
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
 
                     {dog_Alive ? (
 
                         <>
-                            <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
-                            <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
-                            <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
+                            <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
+                            <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                            <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
 
                             {dog_CanReceiveDose ? (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
 
                             ) : (
 
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [7]</button>
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7]</button>
 
                             )}
                         
@@ -470,17 +472,25 @@ function Dog (){
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Feed <br/> [4]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Clean <br/> [5]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Play <br/> [6]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Medicine <br/> [7] </button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Feed <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clean <br/> [5]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Play <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7] </button>
                         </>
 
                     )}
                 
                 </div>
 
-                <NotificationsComponent/>
+                {Notifications.length > 0 ? (
+
+                    <NotificationsComponent/>
+
+                ) : (
+
+                    null
+
+                )}
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     

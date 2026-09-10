@@ -1,8 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 
-import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
-
-import { petScreensHelpers_Starter_Activities } from "../../../helpers/Helpers.js";
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
 import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
@@ -26,7 +23,6 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     const pawformer_ColKey = "col";
     const pawformer_TypeKey = "type";
 
-    const [pawformer_Start, set_Pawformer_Start] = useState(false);
     const [pawformer_CurrMovePositions, set_Pawformer_CurrMovePositions] = useState([]);
     const [pawformer_CurrMoveTarget, set_Pawformer_CurrMoveTarget] = useState(Math.floor(Math.random() * 4));
     const [pawformer_HitAttempt, set_Pawformer_HitAttempt] = useState(false);
@@ -34,10 +30,6 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     
 
     useEffect(() => {
-
-        if (!pawformer_Start) {
-            return;
-        }
 
         play_AudioRef.current.loop = true;
         play_AudioRef.current.play();
@@ -48,16 +40,10 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
             play_AudioRef.current.loop = false;
         };
 
-    }, [pawformer_Start]);
+    }, []);
 
 
     useEffect(() => {
-
-        if (!pawformer_Start){
-
-            return;
-
-        } 
 
         const pawformer_Interval = setInterval(() => {
 
@@ -113,18 +99,12 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         return () => clearInterval(pawformer_Interval);
 
-    }, [pawformer_Start, pawformer_HitAttempt]);
+    }, [pawformer_HitAttempt]);
 
 
 
 
     useEffect(() => {
-
-        if (!pawformer_Start){
-
-            return;
-
-        } 
 
         const pawformer_Interval = setInterval(() => {
 
@@ -134,7 +114,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
         return () => clearInterval(pawformer_Interval);
 
-    }, [pawformer_Start]);
+    }, []);
 
 
 
@@ -165,17 +145,6 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
     return (
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Pawformer_ComponentContainer-Template--Screen">
-
-            {!pawformer_Start && <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <h2>Instructions:</h2>
-                        <p>Click the Matching Letter When It Lands on the Target.</p> 
-                    </div>
-                    <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Pawformer_Start)}> X </button>
-                </div>
-            </div>}
-
           
             <img className="Pawformer_ComponentImage-Template--CorrectMove" src = {pawformer_CurrMoveTarget === 0 ? w
                         : pawformer_CurrMoveTarget === 1 ? a

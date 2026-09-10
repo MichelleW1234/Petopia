@@ -22,7 +22,7 @@ import ReadMeComponent from "./HomescreenComponents/ReadMe.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey } from "../../../constants/Constants.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
 import RedPetBattery from "../../../images/RedPetBattery.png";
@@ -31,6 +31,8 @@ import YellowPetBattery from "../../../images/YellowPetBattery.png";
 import GreenPetBattery from "../../../images/GreenPetBattery.png";
 import GrayPetBattery from "../../../images/GrayPetBattery.png";
 import AddNewPet from "../../../images/AddNewPet.png";
+import NoPetPortraitHome from "../../../images/NoPetPortraitHome.png";
+
 
 import "../../../App.css";
 import "./Home.css";
@@ -248,11 +250,11 @@ function Home (){
 
                     {home_CanRestart ? (
 
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
 
                     ) : (
 
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Restart <br/> [1]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Restart <br/> [1]</button>
 
                     )}
                     
@@ -260,20 +262,20 @@ function Home (){
                     {home_MinPetsAdopted ? (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
                         </>
 
                     ) : (
 
                         <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Rearrange Pets <br/> [2]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--ScreenMenu"> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Rearrange Pets <br/> [2]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clear Pets <br/> [3]</button>
                         </>
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenu ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
                     
                 </div>
 
@@ -296,12 +298,6 @@ function Home (){
                             petName === "" ? (
 
                                 <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-
-                                    <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {GrayPetBattery}/>
-                                    </div>
                                     
                                     {home_UserSelection === index ? (
 
@@ -309,7 +305,7 @@ function Home (){
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {AddNewPet}/>
+                                            <img src = {NoPetPortraitHome}/>
                                         </button>
 
                                     ) : (
@@ -318,21 +314,22 @@ function Home (){
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {AddNewPet}/>
+                                            <img src = {NoPetPortraitHome}/>
                                         </button>
 
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
-                                        <h2>&lt; Name &gt;</h2>
+                                        <h2>&lt;Pet Name&gt;</h2>
                                     </div>
 
                                 </div>
 
                             ) : (
 
+                
                                 <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                                        
+                                                    {/*    
                                     <div className = "Home_ComponentContainer-Structure--PetAlert">
                                         <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
                                                     GreenPetBattery
@@ -368,6 +365,7 @@ function Home (){
                                                 }
                                         />
                                     </div>
+                                    */}
 
                                     {home_UserSelection === index ? (
 
@@ -421,7 +419,15 @@ function Home (){
 
             </div>
 
-            <NotificationsComponent/>
+            {Notifications.length > 0 ? (
+
+                <NotificationsComponent/>
+
+            ) : (
+
+                null
+
+            )}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 

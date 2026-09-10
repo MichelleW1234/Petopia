@@ -57,6 +57,7 @@ export const petActivityOptionImageKey = "image";
 export const petActivityOptionNameKey = "name";
 export const petActivityOptionCursorKey = "cursor";
 export const petActivityOptionGameKey = "game";
+export const petActivityOptionGameInstructionsKey = "instructions";
 
 
 

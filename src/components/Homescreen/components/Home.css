@@ -24,3 +24,16 @@
   }
 
 }
+
+
+.Home_ComponentContainer-Structure--DoorDecor {
+
+  width: 50%;
+  height: auto;
+
+  filter: 
+      drop-shadow(0 0 1px rgb(255, 255, 255))
+      drop-shadow(0 0 2px rgb(255, 255, 255))
+      drop-shadow(0 0 3px  rgb(255, 255, 255));
+
+}

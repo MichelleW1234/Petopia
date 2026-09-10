@@ -13,6 +13,7 @@ export const optionSelectionManager = (options_CurrDesiredOption, options_option
     }
 
     set_Confirmed(true);
+    helpers_Player_UIIndicatorSounds(audioStartActivityKey);
 
 }
 
@@ -104,14 +105,5 @@ export const petScreensHelpers_Canceller_Activities = (parameter_Ref_Audio, para
     helpers_Player_UIIndicatorSounds(audioQuitActivityKey);
     petScreensHelpers_Canceller_PetImmersionSounds(parameter_Ref_Audio.current);
     helpers_Closer_Flags(parameter_Boolean_OpenFlag);
-
-}
-
-
-export const petScreensHelpers_Starter_Activities = (set_Parameter_Boolean_Start) => {
-
-    helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
-    helpers_Player_UIIndicatorSounds(audioStartActivityKey);
-    set_Parameter_Boolean_Start(true);
 
 }

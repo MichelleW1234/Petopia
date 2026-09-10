@@ -11,7 +11,7 @@ import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
 import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityOptionCursorKey, petActivityOptionImageKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Starter_Activities, optionSelectionManager } from "../../../helpers/Helpers.js";
+import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, optionSelectionManager } from "../../../helpers/Helpers.js";
 import { helpers_Closer_Flags} from "../../../../../helpers/Helpers.js";
 
 import Cleaning from "../../../../../Music/PetImmersionSounds/Cleaning.mp3";
@@ -29,14 +29,12 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
 
-    const [clean_Start, set_Clean_Start] = useState(false);
     const [clean_OptionsTotalNumber, set_Clean_OptionsTotalNumber] = useState(30);
     const [clean_OptionsUserSelection, set_Clean_OptionsUserSelection] = useState(-1);
     const [clean_CurrNumber, set_Clean_CurrNumber] = useState(0);
     const [clean_Success, set_Clean_Success] = useState(false);
     const [clean_Hover, set_Clean_Hover] = useState(false);
     const [clean_Confirmed, set_Clean_Confirmed] = useState(false);
-    const [clean_Done, set_Clean_Done] = useState(false);
 
     const clean_TimeoutRef = useRef(null);
     const clean_AudioRef = useRef(new Audio(Cleaning));
@@ -60,11 +58,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
     useKeyboardShortcut("Escape", () => {
 
-        if (!clean_Done){
-
-            petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag);
-
-        }
+        petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag);
 
     },
         ".Quit"
@@ -88,7 +82,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
     useEffect(() => {
 
-        if (!clean_Start || clean_Done) {
+        if (!clean_Confirmed) {
             return;
         }
 
@@ -101,15 +95,15 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
             clean_AudioRef.current.loop = false;
         };
 
-    }, [clean_Start, clean_Done]);
+    }, [clean_Confirmed]);
     
     
     useEffect(() => {
         if (clean_CurrNumber >= clean_OptionsTotalNumber){
 
             petScreensHelpers_Canceller_PetImmersionSounds(clean_AudioRef.current);
-            set_Clean_Done(true);
             petScreensHelpers_Manager_PetHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampCleaningKey, clean_OptionsCurrDesiredOption, set_Clean_OptionsCurrDesiredOption, clean_OptionsUserSelection, set_Clean_Success);
+            helpers_Closer_Flags(set_Clean_OpenFlag);
 
         }
     }, [clean_CurrNumber]);
@@ -136,25 +130,6 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
     };
 
 
-    useEffect(() => {
-
-        if (!clean_Done){
-
-            return;
-
-        }
-
-        const timer = setTimeout(() => {
-            helpers_Closer_Flags(set_Clean_OpenFlag);
-        }, 3000); 
-
-        return () => clearTimeout(timer);
-
-    }, [clean_Done]);
-
-
-
-
 
     return (
         
@@ -171,8 +146,9 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
             ) : (
                 
-
                 <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth for cleaning:</h1>
 
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((clean_CurrNumber/clean_OptionsTotalNumber) * 100)))}
@@ -180,68 +156,30 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
                     <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
-                        {clean_Done ? ( 
+                        <div 
+                            className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
+                            style={{
+                                cursor: `url('${clean_OptionsCurrSpeciesList[clean_OptionsUserSelection][petActivityOptionCursorKey]}'), auto`
+                            }}>
 
-                            clean_Success ? (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess">
-                                    <h2>Success!!!</h2>
-                                </div>
+                            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Clean_ComponentContainer-Template--Overlay">
+                            
+                                <img
+                                    src = {clean_CurrStageAnimationImage} 
+                                    onMouseEnter={() => clean_SparkleTimer()}
+                                />
 
-                            ) : (
-
-                                <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail">
-                                    <h2>Something's off...</h2>
-                                </div>
-
-                            )
-
-                        ) : (
-
-                            <div 
-                                className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
-                                style={{
-                                    cursor: clean_Start ?
-                                                `url('${clean_OptionsCurrSpeciesList[clean_OptionsUserSelection][petActivityOptionCursorKey]}'), auto`
-                                            :   "default",
-                                }}>
-
-                                {clean_Start ? (
-
-                                    <>
-                                    
-                                        <img
-                                            className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase"
-                                            src = {clean_CurrStageAnimationImage} 
-                                            onMouseEnter={() => clean_SparkleTimer()}
-                                        />
-
-                                        {clean_Hover && 
-                                        <img
-                                            className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {CleaningSymbol} 
-                                            onMouseEnter={() => clean_SparkleTimer()}
-                                        />}
-
-                                    </>
-
-                                ) : (
-
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground">
-                                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox"> 
-                                            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">          
-                                                <h2>Instructions: </h2>
-                                                <p>Drag your cursor back and forth for cleaning.</p>
-                                            </div>
-                                            <button className = "UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick Start" onClick = {() => petScreensHelpers_Starter_Activities(set_Clean_Start)}> X </button>
-                                        </div>
-                                    </div>
-
-                                )}
+                                {clean_Hover && 
+                                <img
+                                    className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
+                                    src = {CleaningSymbol} 
+                                    onMouseEnter={() => clean_SparkleTimer()}
+                                />}
 
                             </div>
 
-                        )}
+                        </div>
 
                     </div>
                         
@@ -251,15 +189,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                {clean_Done ? (
-                                
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagStation">Quit <br/> [esc]</button>
-
-                ) : (
-
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag)}>Quit <br/> [esc]</button>
-
-                )}
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagStation" onClick = {() => petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {clean_OptionsUserSelection === -1 || clean_Confirmed ? (
 
