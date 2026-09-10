@@ -42,11 +42,13 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
         <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
         
-            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth for cleaning:</h1>
+            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
 
             <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Options_ComponentContainer-Structure--PetThought"> 
 
-                <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} className = "Options_ComponentImage-Template--PetThoughtPet" />
+                <div className = "Options_ComponentImage-Template--PetThoughtPet">
+                    <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} />
+                </div>
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 

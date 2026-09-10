@@ -10,15 +10,13 @@
     padding: 2rem 6rem;
     border-radius: 50px;
     gap: 2rem;
-
-    box-shadow: 0 0 16px 6px rgb(255, 255, 255);
     
     img{
 
         filter:
+            drop-shadow(0 0 2px rgb(255, 255, 255))
             drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 8px rgb(255, 255, 255))
-            drop-shadow(0 0 12px rgb(255, 255, 255));
+            drop-shadow(0 0 6px rgb(255, 255, 255));
     
     }
 
@@ -29,6 +27,18 @@
 
     width: auto;
     height: 11rem;
+
+    padding: 2rem;
+    border-radius: 25px;
+
+    box-shadow: 0 0 16px 6px rgb(255, 255, 255);
+
+    img{
+
+        width: auto;
+        height: 100%;
+    
+    }
 
 }
 
