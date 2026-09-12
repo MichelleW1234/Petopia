@@ -414,8 +414,8 @@ function Fish (){
                     {fish_Alive ? (
 
                         <>
-                            <button className={fish_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                            <button className={fish_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--ScreenMenuUrgent Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean"} onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                            <button className={fish_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                            <button className={fish_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean"} onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
 
                             {fish_CanReceiveDose ? (
 

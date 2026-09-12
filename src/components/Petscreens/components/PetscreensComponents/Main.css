@@ -1,9 +1,9 @@
 .Main_ComponentContainer-Color--WindowScreen--dog{ 
 
     background: 
-        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
-        url("./../../../../images/PetBackgroundLayer.png"),
-        url("./../../../../images/Dog/RoomBackground.gif");
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/Dog/RoomBackground.gif");
 
 
     background-repeat: no-repeat, no-repeat, no-repeat;
@@ -15,9 +15,9 @@
 .Main_ComponentContainer-Color--WindowScreen--cat{
 
     background: 
-        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
-        url("./../../../../images/PetBackgroundLayer.png"),
-        url("./../../../../images/Cat/RoomBackground.gif");
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/Cat/RoomBackground.gif");
 
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-size: cover, cover, cover;
@@ -28,9 +28,9 @@
 .Main_ComponentContainer-Color--WindowScreen--fish{
 
     background: 
-        linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%),
-        url("./../../../../images/PetBackgroundLayer.png"),
-        url("./../../../../images/Fish/RoomBackground.gif");
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/Fish/RoomBackground.gif");
 
     background-repeat: no-repeat, no-repeat, no-repeat;
     background-size: cover, cover, cover;
@@ -41,7 +41,7 @@
 
 .Main_ComponentContainer-Color--WindowScreen--none{
 
-    background: url("./../../../../images/NoPetBackground.png");
+    background: url("../../../../images/BackgroundLayer.png");
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -57,7 +57,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
     flex-wrap: wrap;
     z-index: 5;
     position: absolute;

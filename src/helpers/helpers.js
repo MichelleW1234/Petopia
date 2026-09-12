@@ -1,4 +1,4 @@
-import { audioNavButtonPressKey, audioSelectionButtonPressKey, audioAdoptionConfirmationErrorKey, audioStartActivityKey, audioActivitySuccessKey, audioActivityFailKey, audioScreenButtonPressKey, audioAdoptionSuccessKey, audioClearPetsKey, audioQuitActivityKey, audioAddedDecorationsKey, audioRevivedPetKey, audioSwapPetSpaceKey, audioRestartGameKey} from "../constants/Constants.js";
+import { audioNavButtonPressKey, audioSelectionButtonPressKey, audioAdoptionConfirmationErrorKey, audioStartActivityKey, audioActivitySuccessKey, audioActivityFailKey, audioScreenButtonPressKey, audioAdoptionSuccessKey, audioClearPetsKey, audioQuitActivityKey, audioAddedDecorationsKey, audioRevivePetKey, audioSwapPetSpaceKey, audioRestartGameKey} from "../constants/Constants.js";
 
 import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
 import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
@@ -37,7 +37,7 @@ export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
         [audioClearPetsKey] : {[AudioFileKey]: ClearPets, [AudioVolumeKey]: 0.5},
         [audioQuitActivityKey] : {[AudioFileKey]: QuitActivity, [AudioVolumeKey]: 0.75},
         [audioAddedDecorationsKey] : {[AudioFileKey]: AddedDecorations, [AudioVolumeKey]: 0.75},
-        [audioRevivedPetKey] : {[AudioFileKey]: RevivedPet, [AudioVolumeKey]: 0.75},
+        [audioRevivePetKey] : {[AudioFileKey]: RevivedPet, [AudioVolumeKey]: 0.75},
         [audioSwapPetSpaceKey] : {[AudioFileKey]: SwapPetSpace, [AudioVolumeKey] : 0.75}
 
     };

@@ -1,12 +1,13 @@
 .FeatherFishing_ComponentContainer-Structure--Screen{
 
     background: 
-        linear-gradient(to bottom, rgb(0,0,0, 0), rgb(0,0,0, 0.5)),
+        url("../../../../../images/BackgroundLayer.png"),
         url("../../../../../images/Cat/Play/Games/MouseHunt/Background.png");
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
 
 }
 

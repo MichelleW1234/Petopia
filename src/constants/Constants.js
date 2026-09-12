@@ -29,7 +29,6 @@ export const inventoryItemSpeciesAcceptedKey = "species accepted";
 export const inventoryItemTypeKey = "type";
 export const inventoryItemOwnerKey = "owner";
 
-export const inventoryItemTypePotionKey = "potion";
 export const inventoryItemTypeFloorDecorationKey = "floor decoration";
 export const inventoryItemTypeCeilingDecorationKey = "ceiling decoration";
 export const inventoryItemTypeWallDecorationKey = "wall decoration";
@@ -46,9 +45,9 @@ export const audioActivitySuccessKey = "activity success";
 export const audioActivityFailKey = "activity fail";
 export const audioAdoptionSuccessKey = "adoption success";
 export const audioClearPetsKey = "clear pets";
+export const audioRevivePetKey = "revived pet";
 export const audioQuitActivityKey = "quit activity";
 export const audioAddedDecorationsKey = "added decorations";
-export const audioRevivedPetKey = "revived pet";
 export const audioSwapPetSpaceKey = "swap pet space";
 
 

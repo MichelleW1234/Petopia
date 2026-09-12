@@ -7,7 +7,7 @@ import "../../../../App.css";
 
 function ReadMe({set_ReadMe_OpenFlag}) {
 
-    useKeyboardShortcut("4", () => {
+    useKeyboardShortcut("5", () => {
 
         helpers_Closer_Flags(set_ReadMe_OpenFlag);
 
@@ -17,11 +17,11 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
     
     return (
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
-                <div className = "UIStapleElements_ComponentFrameTransparent-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
+                <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
                         <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
@@ -37,7 +37,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [4]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [5]</button>
 
         </div>
     );

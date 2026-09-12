@@ -5,7 +5,7 @@ function ProgressBar({progressBar_CurrPercentUntilNextUpdate}) {
 
     return (
 
-        <div className="UIStapleElements_ComponentFrameTransparent-Template--Global ProgressBar_ComponentContainer-Structure--BarBackground">
+        <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag ProgressBar_ComponentContainer-Structure--BarBackground">
             <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
                 {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 

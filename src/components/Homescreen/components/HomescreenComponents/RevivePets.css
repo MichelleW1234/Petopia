@@ -1,0 +1,33 @@
+.potionImageContainer{
+
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 8rem);
+    grid-template-rows: repeat(1, auto);
+
+    gap: 2rem;
+    padding: 1rem 2rem;
+
+    border-radius: 25px;
+
+}
+
+.potionImage{
+
+    height: auto;
+    width: auto;
+
+    padding: 1rem;
+    border-radius: 25px;
+
+    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
+
+    img {
+
+        height: auto;
+        width: 100%;
+
+    }
+
+}

@@ -378,13 +378,13 @@ function Adoption () {
                                     <div key = {key} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                         {key === adoption_UserSelection ? (
                 
-                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected" onClick = {() => adoption_SpeciesSelector("")}>
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
                                                 <img src = {petSpeciesImagePortraitList[key][0]}/>
                                             </button>
 
                                         ) : (
                 
-                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen" onClick = {() => adoption_SpeciesSelector(key)}>
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
                                                 <img src = {petSpeciesImagePortraitList[key][0]}/>
                                             </button>
                 
@@ -408,7 +408,7 @@ function Adoption () {
 
                             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
 
-                            <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Adoption_ComponentContainer-Template--FormBody"> 
+                            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBody"> 
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyRow">
                                     <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
@@ -417,18 +417,16 @@ function Adoption () {
                                     <div className="Adoption_ComponentContainer-Template--FormWrittenContent">
                                         <p>Hello, friend! I am a {adoption_PetGender} {adoption_UserSelection}.</p>
                                         <p>Thank you for adopting me!</p>
+                                        <input 
+                                            className="Adoption_ComponentContainer-Template--FormInput"
+                                            type="text"
+                                            value={adoption_UserInput}
+                                            onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
+                                            placeholder="&lt;Pet Name&gt;"
+                                        />
                                     </div>
                                 </div>
 
-                            </div>
-
-                            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBodyNameRowName">
-                                <input 
-                                    type="text"
-                                    value={adoption_UserInput}
-                                    onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                    placeholder="&lt;Pet Name&gt;"
-                                />
                             </div>
 
                         </>

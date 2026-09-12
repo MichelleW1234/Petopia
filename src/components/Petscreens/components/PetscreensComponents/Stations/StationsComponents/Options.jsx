@@ -44,7 +44,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
         
             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
 
-            <div className="UIStapleElements_ComponentFrameTransparent-Template--Global Options_ComponentContainer-Structure--PetThought"> 
+            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag Options_ComponentContainer-Structure--PetThought"> 
 
                 <div className = "Options_ComponentImage-Template--PetThoughtPet">
                     <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} />
@@ -52,7 +52,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
 
-                    <img src = {PetThoughtBubble} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayBase Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
+                    <img src = {PetThoughtBubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
                     <img src = {options_CurrDesiredOption === -1 ? PetUnwantedActivity : options_CurrSpeciesList[options_CurrDesiredOption][petActivityOptionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
 
                 </div>
@@ -63,17 +63,17 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                 {options_CurrSpeciesList.map((option, index) => (
 
-                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagStation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                         {options_UserSelection === index ? (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStationSelected" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 
                         ) : (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagStation" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 

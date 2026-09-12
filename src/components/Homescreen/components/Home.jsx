@@ -20,22 +20,18 @@ import ClearPetsComponent from "./HomescreenComponents/ClearPets.jsx";
 import RearrangePetsComponent from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMeComponent from "./HomescreenComponents/ReadMe.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
+import RevivePetsComponent from "./HomescreenComponents/RevivePets.jsx";
 
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypePotionKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
-import RedPetBattery from "../../../images/RedPetBattery.png";
-import OrangePetBattery from "../../../images/OrangePetBattery.png";
-import YellowPetBattery from "../../../images/YellowPetBattery.png";
-import GreenPetBattery from "../../../images/GreenPetBattery.png";
-import GrayPetBattery from "../../../images/GrayPetBattery.png";
-import AddNewPet from "../../../images/AddNewPet.png";
 import NoPetPortraitHome from "../../../images/NoPetPortraitHome.png";
 
 
 import "../../../App.css";
 import "./Home.css";
+import { useRevivers } from "../../../providers/ReviversProvider.jsx";
 
 
 
@@ -51,21 +47,23 @@ function Home (){
     const {Inventory, setInventory} = useInventory();
     const {Achievements, setAchievements} = useAchievements();
     const {Notifications, setNotifications} = useNotifications();
+    const {Revivers, setRevivers} = useRevivers();
 
     const [home_RestartOpenFlag, set_Home_RestartOpenFlag] = useState(false);
     const [home_MusicVolumeOpenFlag, set_Home_MusicVolumeOpenFlag] = useState(false);
     const [home_InventoryOpenFlag, set_Home_InventoryOpenFlag] = useState(false);
     const [home_ClearPetsOpenFlag, set_Home_ClearPetsOpenFlag] = useState(false);
     const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
+    const [home_RevivePetsOpenFlag, set_Home_RevivePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
     const [home_UserSelection, set_Home_UserSelection] = useState(-1);
 
     const home_MinPetsAdopted = Room.filter(x => x === "").length < 3;
-    const home_RestartInventoryMissingItems = Inventory.filter(item => item[inventoryItemTypeKey] === inventoryItemTypePotionKey).length < 3;
     const home_RestartInventoryContainsOwners = Inventory.some(item => item[inventoryItemOwnerKey] !== "");
     const home_RestartAchievementsUnlocked = Achievements.some(achievement => achievement[achievementStatusKey] === true);
     const home_RestartNotificationsUncleared = Notifications.length > 0;
-    const home_CanRestart = home_MinPetsAdopted || home_RestartInventoryMissingItems || home_RestartInventoryContainsOwners || home_RestartAchievementsUnlocked || home_RestartNotificationsUncleared
+    const home_ReviversUsed = Revivers.length < 3;
+    const home_CanRestart = home_MinPetsAdopted || home_RestartInventoryContainsOwners || home_RestartAchievementsUnlocked || home_RestartNotificationsUncleared || home_ReviversUsed
                             ? true
                             : false;
 
@@ -75,7 +73,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1);
 
@@ -88,7 +86,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1);
 
@@ -101,7 +99,7 @@ function Home (){
 
     useKeyboardShortcut("Enter", () => {
 
-        if (home_UserSelection !== -1 && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_UserSelection !== -1 && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             GoToSelection();
 
@@ -115,7 +113,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (home_CanRestart && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_CanRestart && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_RestartOpenFlag, 0);
 
@@ -129,7 +127,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0);
 
@@ -142,7 +140,7 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0);
 
@@ -152,10 +150,27 @@ function Home (){
         ".ClearPets"
     );
 
-    
     useKeyboardShortcut("4", () => {
 
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+
+            if (Revivers > 0 && Object.values(PetList).some(pet => pet[petHealthKey] === 0)) {
+
+                helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0);
+
+            }
+
+        }
+
+    },
+        ".RevivePets"
+    );
+
+
+    
+    useKeyboardShortcut("5", () => {
+
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0);
 
@@ -222,10 +237,10 @@ function Home (){
             <RestartComponent
                 set_Restart_OpenFlag={set_Home_RestartOpenFlag}
                 restart_MinPetsAdopted={home_MinPetsAdopted}
-                restart_InventoryMissingItems={home_RestartInventoryMissingItems}
                 restart_InventoryContainsOwners={home_RestartInventoryContainsOwners}
                 restart_AchievementsUnlocked={home_RestartAchievementsUnlocked}
                 restart_NotificationsUncleared={home_RestartNotificationsUncleared}
+                restart_ReviversUsed = {home_ReviversUsed}
             />}
 
             {home_RearrangePetsOpenFlag &&
@@ -236,6 +251,11 @@ function Home (){
             {home_ClearPetsOpenFlag &&
             <ClearPetsComponent
                 set_ClearPets_OpenFlag={set_Home_ClearPetsOpenFlag}
+            />}
+
+            {home_RevivePetsOpenFlag &&
+            <RevivePetsComponent
+                set_RevivePets_OpenFlag={set_Home_RevivePetsOpenFlag}
             />}
 
             {home_ReadMeOpenFlag &&
@@ -264,6 +284,17 @@ function Home (){
                         <>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+
+                            {Revivers > 0 && Object.values(PetList).some(pet => pet[petHealthKey] === 0) ? (
+
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
+
+                            ) : (
+
+                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Revive Pets <br/> [4]</button>
+
+                            )}
+
                         </>
 
                     ) : (
@@ -271,11 +302,12 @@ function Home (){
                         <>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Rearrange Pets <br/> [2]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clear Pets <br/> [3]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Revive Pets <br/> [4]</button>
                         </>
 
                     )}
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [4]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
                     
                 </div>
 
@@ -302,7 +334,7 @@ function Home (){
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortraitHome}/>
@@ -311,7 +343,7 @@ function Home (){
                                     ) : (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortraitHome}/>
@@ -328,49 +360,12 @@ function Home (){
                             ) : (
 
                 
-                                <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                                                    {/*    
-                                    <div className = "Home_ComponentContainer-Structure--PetAlert">
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
-                                                    GreenPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
-                                                    YellowPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
-                                                    OrangePetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
-                                                    RedPetBattery :
-                                                    GrayPetBattery
-                                                }
-                                        />
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
-                                                    GreenPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
-                                                    YellowPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
-                                                    OrangePetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
-                                                    RedPetBattery :
-                                                    GrayPetBattery
-                                                }
-                                        />
-                                        <img className="Home_ComponentContainer-Template--PetAlertBattery" src = {Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 75 ? 
-                                                    GreenPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 50 ?
-                                                    YellowPetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) >= 25 ?
-                                                    OrangePetBattery
-                                                    : Math.min(100, Math.max(0, Math.floor(((PetList[petName][petHealthKey])/petSpeciesHealthCapList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]) * 100))) > 0 ?
-                                                    RedPetBattery :
-                                                    GrayPetBattery
-                                                }
-                                        />
-                                    </div>
-                                    */}
-
+                                <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">  
+                                    
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
@@ -379,7 +374,7 @@ function Home (){
                                     ) : (
 
                                         <button 
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>

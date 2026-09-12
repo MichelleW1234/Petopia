@@ -8,7 +8,9 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    gap: 3rem;
+    border-radius: 25px;
+    padding: 2rem 4rem;
+    gap: 4rem;
 
 }
 
@@ -17,6 +19,7 @@
 
     height: auto;
     width: auto;
+
     padding: 1rem;
     border-radius: 25px;
 
@@ -48,8 +51,6 @@
     align-items: center;
     justify-content: center;
 
-    padding: 2rem 1rem;
-    border-radius: 25px;
     gap: 2rem;
 
     input {

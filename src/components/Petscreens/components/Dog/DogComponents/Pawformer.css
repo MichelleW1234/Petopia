@@ -1,12 +1,13 @@
 .Pawformer_ComponentContainer-Template--Screen{
 
     background: 
-        linear-gradient(to bottom, rgb(0,0,0, 0), rgb(0,0,0, 0.5)),
+        url("../../../../../images/BackgroundLayer.png"),
         url("../../../../../images/Dog/Play/Games/Pawformer/Background.png");
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
 
 }
 

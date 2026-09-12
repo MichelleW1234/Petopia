@@ -22,12 +22,12 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
     
 
     return (
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read the Species Maintenance Requirements:</h1>
-                <div className="UIStapleElements_ComponentFrameTransparent-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
+                <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Dog &rarr; High Maintenance Pet</h2>
@@ -58,7 +58,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
         </div>
     );
 }

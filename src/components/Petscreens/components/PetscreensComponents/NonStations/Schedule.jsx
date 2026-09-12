@@ -30,12 +30,12 @@ function Schedule({set_Schedule_OpenFlag}) {
 
     return (
 
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
             
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Your Pet's Activities Schedule:</h1>
-                <div className = "UIStapleElements_ComponentFrameTransparent-Template--Global Schedule_ComponentContainer-Structure--Schedule">
+                <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag Schedule_ComponentContainer-Structure--Schedule">
                     {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 
                         <ActivityComponent
@@ -54,7 +54,7 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
 
         </div>
     );

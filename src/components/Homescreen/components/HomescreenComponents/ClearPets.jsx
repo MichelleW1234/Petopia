@@ -13,7 +13,6 @@ import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../..
 import "../../../../App.css";
 
 
-
 function ClearPets({set_ClearPets_OpenFlag}) {
 
     const {PetList, setPetList} = usePetList();
@@ -137,7 +136,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
     return (
 
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select Pet(s) to Remove:</h1>
@@ -151,17 +150,17 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                         ) : (
 
-                            <div key = {index} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div key = {index} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                                 {clearPets_CurrSelectedEntries.includes(petName) ? (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstationSelected" onClick = {() => clearPets_EntryDeselector(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => clearPets_EntryDeselector(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
                                 ) : (
 
-                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagNonstation" onClick = {() => clearPets_EntrySelector(petName)}> 
+                                    <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => clearPets_EntrySelector(petName)}> 
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                     </button>
 
@@ -181,15 +180,15 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlagNonstation">Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag">Confirm <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Confirm" onClick={() => clearPets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick={() => clearPets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
 
                 )}
 

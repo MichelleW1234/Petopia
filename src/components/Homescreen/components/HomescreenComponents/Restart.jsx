@@ -28,13 +28,14 @@ import ChandelierOne from "../../../../images/Inventory/ChandelierOne.png";
 import ChandelierTwo from "../../../../images/Inventory/ChandelierTwo.png";
 import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
 
-import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypePotionKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
+import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
 
 import "../../../../App.css";
+import { useRevivers } from "../../../../providers/ReviversProvider.jsx";
 
 
 
-function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_InventoryMissingItems, restart_InventoryContainsOwners, restart_AchievementsUnlocked, restart_NotificationsUncleared}) {
+function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_InventoryContainsOwners, restart_AchievementsUnlocked, restart_NotificationsUncleared, restart_ReviversUsed}) {
 
     const {PetList, setPetList} = usePetList();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
@@ -42,6 +43,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
     const {Inventory, setInventory} = useInventory();
     const {Achievements, setAchievements} = useAchievements();
     const {Notifications, setNotifications} = useNotifications();
+    const {Revivers, setRevivers} = useRevivers();
 
 
     useKeyboardShortcut("escape", () => {
@@ -74,12 +76,9 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
         }
 
-        if (restart_InventoryMissingItems || restart_InventoryContainsOwners){
+        if (restart_InventoryContainsOwners){
 
             setInventory([
-                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Reviver", [inventoryItemImageKey]: Reviver, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypePotionKey, [inventoryItemOwnerKey]: ""},
                         {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
                         {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
                         {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
@@ -119,13 +118,19 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
         }
 
+        if (restart_ReviversUsed){
+
+            setRevivers(3);
+
+        }
+
         helpers_Closer_Flags(set_Restart_OpenFlag);
 
     }
 
     
     return (
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
@@ -134,8 +139,8 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>
 
         </div>

@@ -1,12 +1,13 @@
 .Feed_ComponentContainer-Template--WindowScreen{
 
     background: 
-        linear-gradient(to bottom, rgb(0,0,0, 0), rgb(0,0,0, 0.5)),
+        url("../../../../../images/BackgroundLayer.png"),
         url("../../../../../images/FeedingBackground.png");
 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
 
     img {
 

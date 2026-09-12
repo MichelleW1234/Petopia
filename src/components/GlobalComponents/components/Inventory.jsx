@@ -12,7 +12,7 @@ import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import inventoryItemLock from "../../../images/inventoryItemLock.png";
 
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
-import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, inventoryItemTypePotionKey, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivedPetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivePetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
 
 
 import "../../../App.css";
@@ -41,86 +41,27 @@ function Inventory({set_Inventory_OpenFlag}) {
     const inventory_EntryOwnerSelector = (inventory_EntryOwnerSelector_EntryIndex, inventory_EntryOwnerSelector_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioAddedDecorationsKey);
 
-        if (Inventory[inventory_EntryOwnerSelector_EntryIndex][inventoryItemTypeKey] === inventoryItemTypePotionKey){
-        
-            helpers_Player_UIIndicatorSounds(audioRevivedPetKey);
-            setPetList(prev => {
+        setInventory(prev => {
 
-                const inventory_EntryOwnerSelector_CurrCopy = structuredClone(prev);
+            const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
+                structuredClone(inner)
+            );
 
-                if (inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey] === petSpeciesDogKey){
+            const oldItem = inventory_EntryOwnerSelector_CurrCopy.find(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_EntryIndex][inventoryItemTypeKey]);
 
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesDogKey][0];
+            if (oldItem !== undefined) {
 
-                } else if (inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey] === petSpeciesCatKey){
+                oldItem[inventoryItemOwnerKey] = "";
 
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesCatKey][0];
+            }
 
-                } else {
+            inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_EntryIndex][inventoryItemOwnerKey] = inventory_EntryOwnerSelector_UserSelection;
 
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petHealthKey] = petSpeciesHealthCapList[petSpeciesFishKey][0];
+            return inventory_EntryOwnerSelector_CurrCopy;
 
-                }
-
-                return inventory_EntryOwnerSelector_CurrCopy;
-
-            });
-
-            setPetTimeStamps(prev => {
-
-                const inventory_EntryOwnerSelector_CurrCopy = structuredClone(prev);
-
-                if (petActivityTimeStampFeedingKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
-
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
-
-                }
-                
-                if (petActivityTimeStampCleaningKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
-
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
-
-                }
-
-                if (petActivityTimeStampPlayingKey in inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection]){
-
-                    inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_UserSelection][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
-
-                }
-
-                return inventory_EntryOwnerSelector_CurrCopy;
-
-            });
-
-            setInventory(prev => {
-
-                const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
-                    structuredClone(inner)
-                );
-
-                inventory_EntryOwnerSelector_CurrCopy.splice(inventory_EntryOwnerSelector_EntryIndex, 1);
-
-                return inventory_EntryOwnerSelector_CurrCopy;
-
-            });
-
-        } else {
-
-            helpers_Player_UIIndicatorSounds(audioAddedDecorationsKey);
-            setInventory(prev => {
-
-                const inventory_EntryOwnerSelector_CurrCopy = prev.map(inner =>
-                    structuredClone(inner)
-                );
-
-                inventory_EntryOwnerSelector_CurrCopy[inventory_EntryOwnerSelector_EntryIndex][inventoryItemOwnerKey] = inventory_EntryOwnerSelector_UserSelection;
-
-                return inventory_EntryOwnerSelector_CurrCopy;
-
-            });
-
-        }
+        });
 
     }
 
@@ -146,7 +87,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     return (
 
-        <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Nonstation">
+        <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
@@ -154,7 +95,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                 
                 {Inventory.map((item, index) => (
                     
-                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlagNonstation Inventory_ComponentContainer-Structure--Item">
+                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag Inventory_ComponentContainer-Structure--Item">
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">{item[inventoryItemNameKey]}:</h1>
 
@@ -174,7 +115,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     </h2>
                                     <p>
                                         {item[inventoryItemSpeciesAcceptedKey].map((item, index) => (
-                                            <div key={index}>&gt; {item}</div>
+                                            <span key={index} style={{ display: "block" }}>
+                                                &gt; {item}
+                                            </span>
                                         ))}
                                     </p>
                                 </div>
@@ -195,12 +138,6 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                         <img src = {inventoryItemLock}/>
                                     </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
                                 </div>
                             
                             </>
@@ -214,12 +151,6 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 </div>
 
                                 <div className="Inventory_ComponentContainer-Structure--ItemLocks">
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
                                     <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                         <img src = {inventoryItemLock}/>
                                     </div>
@@ -238,12 +169,6 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                         <img src = {inventoryItemLock}/>
                                     </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
                                 </div>
                             </>
 
@@ -259,12 +184,6 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <div className = "Inventory_ComponentImage-Structure--ItemLock">
                                         <img src = {inventoryItemLock}/>
                                     </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
                                 </div>
                             </>
 
@@ -273,51 +192,56 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
 
                                 <h2>This Item Currently Belongs to:</h2>
-                                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                                    {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
-                                        inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                            <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> &lt;Pet Name&gt; </button>
+                                {Object.values(PetList).some(pet => item[inventoryItemSpeciesAcceptedKey].includes(pet[petSpeciesKey])) ? (
+                                 
+                                    <div className="inventorybuttonrow">
 
-                                        ) : (
+                                        {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
-                                            item[inventoryItemTypeKey] === inventoryItemTypePotionKey ? (
+                                            inventory_EntryOwnerSelector_UserSelection === "" ? (
 
-                                                PetList[inventory_EntryOwnerSelector_UserSelection][petHealthKey] === 0 ? (
-
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
-
-                                                ) : (
-
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
-
-                                                )
+                                                null
 
                                             ) : (
 
                                                 item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick--GlobalSelected" onClick = {() => inventory_EntryOwnerDeselector(index)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <div className="inventoryPet">
+                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected inventoryPetButton" onClick = {() => inventory_EntryOwnerDeselector(index)}> 
+                                                            <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
+                                                        </button>
+                                                        <h2 className="inventoryPetName">{inventory_EntryOwnerSelector_UserSelection}</h2>
+                                                    </div>
 
-                                                ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) && !Inventory.some(curItem => curItem[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection && curItem[inventoryItemTypeKey] === item[inventoryItemTypeKey]) ? (
+                                                ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) ? (
 
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    <div className="inventoryPet">
+                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag inventoryPetButton" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                            <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
+                                                        </button>
+                                                        <h2 className="inventoryPetName">{inventory_EntryOwnerSelector_UserSelection}</h2>
+                                                    </div>
 
                                                 ) : (
 
-                                                    <button key = {indexInner} className="UIStapleElements_ComponentButtonRectangle-Template--GlobalNonclick"> {inventory_EntryOwnerSelector_UserSelection} </button>
+                                                    null
 
                                                 )
 
                                             )
 
-                                        )
+                                        ))}
 
-                                    ))}
+                                    </div>
 
-                                </div>
+                                ) : (
+
+                                    <p>You have no pets that can own this item.</p>
+
+                                )}
 
                             </>
 
@@ -329,7 +253,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlagNonstation Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Done <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Done <br/> [return]</button>
         </div>
     );
 }

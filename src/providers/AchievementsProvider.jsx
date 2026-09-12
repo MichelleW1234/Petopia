@@ -95,19 +95,19 @@ export function AchievementsProvider({ children }) {
                                         });
 
       if (bound_Boolean_FishFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_CatFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_DogFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_AllPetsFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "One or more achievement(s) unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       return bound_Copy_Notifications;

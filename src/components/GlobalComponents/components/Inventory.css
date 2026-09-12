@@ -4,8 +4,6 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   padding: 6rem;
   gap: 3rem;
@@ -115,4 +113,41 @@
 
   gap: 1rem;
   
+}
+
+.inventorybuttonrow{
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  gap: 3rem;
+
+}
+
+
+.inventoryPet{
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+
+}
+
+.inventoryPetName{
+
+  width: 90%;
+
+}
+
+.inventoryPetButton{
+
+  width: 30%;
+  padding: 2rem;
+
 }

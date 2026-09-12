@@ -33,14 +33,20 @@ function Notifications() {
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_EntryRemover_UserSelection} className="MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox">
-                    <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <h2>Alert:</h2>
-                        <p>{entry[notificationsDescriptionKey]}</p>
-                        <h2>Date:</h2>
-                        <p>{entry[notificationsDateKey]}</p>
+                <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--Screen  MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox">
+                    <button className="UIStapleElements_ComponentButtonRectangle-Structure--Global UIStapleElements_ComponentButtonRectangle-Color--Global--Screen" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
+                        X  
+                    </button>
+                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
+                        <div className="WrittenContentField">
+                            <h2>Alert:</h2>
+                            <p>{entry[notificationsDescriptionKey]}</p>
+                            </div>
+                            <div className="WrittenContentField">
+                            <h2>Date:</h2>
+                            <p>{entry[notificationsDateKey]}</p>
+                        </div>
                     </div>
-                    <button className="UIStapleElements_ComponentButtonRectangle-Structure--GlobalClick UIStapleElements_ComponentButtonRectangle-Color--GlobalClick" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> X </button>
                 </div>
 
             ))}
