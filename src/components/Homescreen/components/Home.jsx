@@ -9,6 +9,7 @@ import { useActiveCheckoutRoom } from "../../../providers/ActiveCheckoutRoomProv
 import { useInventory } from "../../../providers/InventoryProvider.jsx";
 import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
 import { useNotifications } from "../../../providers/NotificationsProvider.jsx";
+import { useRevivers } from "../../../providers/ReviversProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { backgroundMusic_Context } from '../../../providers/BackgroundMusicProvider.jsx';
@@ -26,12 +27,11 @@ import RevivePetsComponent from "./HomescreenComponents/RevivePets.jsx";
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 
-import NoPetPortraitHome from "../../../images/NoPetPortraitHome.png";
+import NoPetPortrait from "../../../images/NoPetPortrait.png";
 
 
 import "../../../App.css";
 import "./Home.css";
-import { useRevivers } from "../../../providers/ReviversProvider.jsx";
 
 
 
@@ -337,7 +337,7 @@ function Home (){
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {NoPetPortraitHome}/>
+                                            <img src = {NoPetPortrait}/>
                                         </button>
 
                                     ) : (
@@ -346,7 +346,7 @@ function Home (){
                                             className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {NoPetPortraitHome}/>
+                                            <img src = {NoPetPortrait}/>
                                         </button>
 
                                     )}

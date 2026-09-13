@@ -23,7 +23,7 @@
     padding: 1rem;
     border-radius: 25px;
 
-    box-shadow: 0 0 16px 3px rgb(255, 255, 255);
+    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
     img {
 
@@ -63,7 +63,7 @@
 
         background-color: rgb(255, 255, 255, 0.75);
         border: 1px solid rgba(255, 255, 255);
-        box-shadow: 0 0 16px 3px rgb(255, 255, 255);
+        box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
     }
 
