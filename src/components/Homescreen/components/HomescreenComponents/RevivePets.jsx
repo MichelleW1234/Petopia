@@ -138,7 +138,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Pet to Revive:</h1>
 
-                <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag potionImageContainer">
+                <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag potionImageContainer">
                     {Array.from({ length: 3}, (_, col) => (
 
                         Revivers > col ? (
@@ -167,7 +167,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                         ) : (
 
-                            <div key = {index} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div key = {index} className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                                 {RevivePets_UserSelection === petName ? (
 

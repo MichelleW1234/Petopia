@@ -176,13 +176,13 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
         ActivePetName === "" ? (
 
-            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+            <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className= "MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Color--WindowScreen--none"></div>
             </div>
 
         ) : (
 
-            <div className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+            <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Main_ComponentContainer-Color--WindowScreen--${PetList[ActivePetName][petSpeciesKey]}`}>
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">

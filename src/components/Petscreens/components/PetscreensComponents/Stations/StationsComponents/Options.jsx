@@ -44,7 +44,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
         
             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
 
-            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameTransparent-Color--Global--FloatingFlag Options_ComponentContainer-Structure--PetThought"> 
+            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag Options_ComponentContainer-Structure--PetThought"> 
 
                 <div className = "Options_ComponentImage-Template--PetThoughtPet">
                     <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} />
@@ -63,7 +63,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                 {options_CurrSpeciesList.map((option, index) => (
 
-                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                    <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                         {options_UserSelection === index ? (
 

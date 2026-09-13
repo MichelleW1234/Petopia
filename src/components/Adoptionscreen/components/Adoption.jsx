@@ -375,7 +375,7 @@ function Adoption () {
                 
                                 {Object.keys(petSpeciesImagePortraitList).map((key) => (
                 
-                                    <div key = {key} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                    <div key = {key} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                         {key === adoption_UserSelection ? (
                 
                                             <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
@@ -408,7 +408,7 @@ function Adoption () {
 
                             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
 
-                            <div className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--Screen Adoption_ComponentContainer-Template--FormBody"> 
+                            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen Adoption_ComponentContainer-Template--FormBody"> 
 
                                 <div className="Adoption_ComponentContainer-Template--FormBodyRow">
                                     <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">

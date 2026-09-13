@@ -79,7 +79,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
-                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag RearrangePets_ComponentContainer-Template--Slot">
+                            <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag RearrangePets_ComponentContainer-Template--Slot">
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 

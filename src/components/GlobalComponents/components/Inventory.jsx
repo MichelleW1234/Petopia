@@ -95,7 +95,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                 
                 {Inventory.map((item, index) => (
                     
-                    <div key = {index} className="UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag Inventory_ComponentContainer-Structure--Item">
+                    <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag Inventory_ComponentContainer-Structure--Item">
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">{item[inventoryItemNameKey]}:</h1>
 

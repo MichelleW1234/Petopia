@@ -150,7 +150,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                         ) : (
 
-                            <div key = {index} className = "UIStapleElements_ComponentFrameColored-Structure--Global UIStapleElements_ComponentFrameColored-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div key = {index} className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                                 {clearPets_CurrSelectedEntries.includes(petName) ? (
 
