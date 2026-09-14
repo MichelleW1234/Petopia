@@ -7,16 +7,16 @@
   /*Color hue, light, and saturation:*/
 
   --UIStapleElements_-Saturation--GlobalColor: 100%;
-  --UIStapleElements_-Hue--GlobalColorBase: 270;
+  --UIStapleElements_-Hue--GlobalColorBase: 285;
 
   
 
-  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundFirst: 50%;
-  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundSecond: 25%;
+  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundFirst: 25%;
+  --UIStapleElements_BackgroundBase-Light--GlobalColorBackgroundSecond: 0%;
 
-  --UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground: 75%;
   --UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundFirst: 50%;
   --UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundSecond: 25%;
+  --UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground: 75%;
 
 
 
@@ -768,23 +768,6 @@ p {
 
 }
 
-
-
-
-
-.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenFail{
-
-  background-image: url("./images/ActivityFailBackground.png");
-
-}
-
-
-
-.MiscellaneousElements_ComponentContainer-Template--FloatingFlagStationWindowScreenSuccess{
-
-  background-image: url("./images/ActivitySuccessBackground.png");
-
-}
 
 
 .MiscellaneousElements_ComponentContainer-Structure--Screen {

@@ -5,6 +5,10 @@ import {useActivePetName} from "../../../../../../providers/ActivePetNameProvide
 
 import { petHealthKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampLastPerformedKey } from "../../../../../../constants/Constants.js";
 
+import Red from "../../../../../../images/RedProgressBarCell.png";
+import Green from "../../../../../../images/GreenProgressBarCell.png";
+import Black from "../../../../../../images/BlackProgressBarCell.png";
+
 import "../../../../../../App.css";
 import "./Activity.css";
 
@@ -115,17 +119,47 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                 <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
                     
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                    {activity_CurrPercentUntilNextUpdate <= 50 ? (
 
-                        <div key = {num} className = {num === 50 ?
-                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellHalfway"
-                                                    : num <= activity_CurrPercentUntilNextUpdate ? 
-                                                        "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done"
-                                                        : "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining"
-                                                    }>
-                        </div>
+                        Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                    ))}
+                            num === 50 ? (
+
+                                <img src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+
+                            ) : num <= activity_CurrPercentUntilNextUpdate ?  (
+
+                                <img src = {Green} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+
+                            ) : (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                
+                            )
+
+                        ))
+
+                    ) : (
+
+                        Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+
+                            num === 50 ? (
+
+                                <img src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+
+                            ) : num <= activity_CurrPercentUntilNextUpdate ? (
+
+                                <img src = {Red} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                            
+                            ) : (
+
+                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                
+                            )
+
+                        ))
+
+                    )}
 
                 </div>
 

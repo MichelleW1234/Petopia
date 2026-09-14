@@ -1,7 +1,7 @@
 .Clean_ComponentContainer-Template--WindowScreen{
 
     background: 
-        url("../../../../../images/BackgroundLayer.png"),
+        url("../../../../../images/ActivityBackgroundLayer.png"),
         url("../../../../../images/CleaningBackground.png");
 
     background-size: cover, cover;

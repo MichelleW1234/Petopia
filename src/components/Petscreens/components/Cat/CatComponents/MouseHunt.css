@@ -1,7 +1,7 @@
 .MouseHunt_ComponentContainer-Structure--Screen{
 
     background: 
-        url("../../../../../images/BackgroundLayer.png"),
+        url("../../../../../images/ActivityBackgroundLayer.png"),
         url("../../../../../images/Cat/Play/Games/MouseHunt/Background.png");
 
     background-size: cover, cover;

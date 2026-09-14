@@ -1,7 +1,7 @@
 .Medicine_ComponentContainer-Template--WindowScreen{
 
     background: 
-        url("../../../../../images/BackgroundLayer.png"),
+        url("../../../../../images/ActivityBackgroundLayer.png"),
         url("../../../../../images/MedicineBackground.png");
 
     background-size: cover, cover;

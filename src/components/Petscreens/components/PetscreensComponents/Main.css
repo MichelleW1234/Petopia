@@ -1,8 +1,8 @@
 .Main_ComponentContainer-Color--WindowScreen--dog{ 
 
     background: 
-        url("../../../../images/BackgroundLayer.png"),
-        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
         url("../../../../images/Dog/RoomBackground.gif");
 
 
@@ -15,8 +15,8 @@
 .Main_ComponentContainer-Color--WindowScreen--cat{
 
     background: 
-        url("../../../../images/BackgroundLayer.png"),
-        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
         url("../../../../images/Cat/RoomBackground.gif");
 
     background-repeat: no-repeat, no-repeat, no-repeat;
@@ -28,8 +28,8 @@
 .Main_ComponentContainer-Color--WindowScreen--fish{
 
     background: 
-        url("../../../../images/BackgroundLayer.png"),
-        url("../../../../images/BackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
+        url("../../../../images/PetBackgroundLayer.png"),
         url("../../../../images/Fish/RoomBackground.gif");
 
     background-repeat: no-repeat, no-repeat, no-repeat;
