@@ -133,7 +133,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
     return (
         
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className = "UIStapleElements_Background-Template--FloatingFlag">
                 
             {!clean_Confirmed ? (
 

@@ -154,7 +154,7 @@ function Home (){
 
         if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
-            if (Revivers > 0 && Object.values(PetList).some(pet => pet[petHealthKey] === 0)) {
+            if (Revivers > 0) {
 
                 helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0);
 
@@ -285,7 +285,7 @@ function Home (){
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
                             <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
 
-                            {Revivers > 0 && Object.values(PetList).some(pet => pet[petHealthKey] === 0) ? (
+                            {Revivers > 0 ? (
 
                                 <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
 

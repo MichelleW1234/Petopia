@@ -185,7 +185,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
     return (
 
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className = "UIStapleElements_Background-Template--FloatingFlag">
                 
             {!medicine_Confirmed ? (
 

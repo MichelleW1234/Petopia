@@ -10,6 +10,7 @@ import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
 import inventoryItemLock from "../../../images/inventoryItemLock.png";
+import PetUnwantedActivity from "../../../images/PetUnwantedActivity.png";
 
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
 import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivePetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
@@ -87,7 +88,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     return (
 
-        <div className="UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className="UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 
@@ -134,10 +135,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[0][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
+                                <div className="Inventory_ComponentImage-Structure--ItemLockContainer">
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                                 </div>
                             
                             </>
@@ -150,10 +151,11 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[1][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
+
+                                <div className="Inventory_ComponentImage-Structure--ItemLockContainer">
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                                 </div>
                             </>
 
@@ -165,10 +167,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[2][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
+                                <div className="Inventory_ComponentImage-Structure--ItemLockContainer">
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                                 </div>
                             </>
 
@@ -180,10 +182,10 @@ function Inventory({set_Inventory_OpenFlag}) {
                                     <p>{Achievements[3][achievementDescriptionKey]}</p>
                                 </div>
 
-                                <div className="Inventory_ComponentContainer-Structure--ItemLocks">
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {inventoryItemLock}/>
-                                    </div>
+                                <div className="Inventory_ComponentImage-Structure--ItemLockContainer">
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
+                                    <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {inventoryItemLock}/>
                                 </div>
                             </>
 
@@ -192,8 +194,6 @@ function Inventory({set_Inventory_OpenFlag}) {
                             <>
 
                                 <h2>This Item Currently Belongs to:</h2>
-
-
 
                                 {Object.values(PetList).some(pet => item[inventoryItemSpeciesAcceptedKey].includes(pet[petSpeciesKey])) ? (
                                  
@@ -239,8 +239,10 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 ) : (
 
-                                    <p>You have no pets that can own this item.</p>
-
+                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
+                                        <img src = {PetUnwantedActivity}/>
+                                    </div>
+                    
                                 )}
 
                             </>

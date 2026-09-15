@@ -129,7 +129,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
     return (
 
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className = "UIStapleElements_Background-Template--FloatingFlag">
                 
             {!feed_Confirmed ? (
 

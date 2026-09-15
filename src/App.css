@@ -7,7 +7,7 @@
   /*Color hue, light, and saturation:*/
 
   --UIStapleElements_-Saturation--GlobalColor: 100%;
-  --UIStapleElements_-Hue--GlobalColorBase: 275;
+  --UIStapleElements_-Hue--GlobalColorBase: 290;
 
   
 
@@ -16,19 +16,20 @@
 
   --UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundFirst: 50%;
   --UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundSecond: 25%;
+  --UIStapleElements_BackgroundOverlay-Light--FloatingFlagColorFont: 25%;
   --UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground: 75%;
 
 
 
   --UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundFirst: 50%;
   --UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundSecond: 0%;
-  --UIStapleElements_ComponentFrame-Light--GlobalColorFont: 75%;
+  --UIStapleElements_ComponentFrame-Light--GlobalColorFont: 100%;
   --UIStapleElements_ComponentFrame-Light--GlobalColorBorder: 0%;
 
   --UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst: 100%;
   --UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond: 50%;
-  --UIStapleElements_ComponentButtonPill-Light--GlobalColorFont: 25%;
-  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont: 25%;
+  --UIStapleElements_ComponentButtonPill-Light--GlobalColorFont: 0%;
+  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont: 0%;
   --UIStapleElements_ComponentButton-Light--GlobalColorBorder: 50%;
   --UIStapleElements_ComponentButton-Light--GlobalColorShadow: 100%;
 
@@ -189,7 +190,7 @@ p {
 }
 
 
-.UIStapleElements_Background-Structure--FloatingFlag {
+.UIStapleElements_Background-Template--FloatingFlag {
 
   width: 100%;
   min-height: 100vh;
@@ -199,16 +200,13 @@ p {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 7;
+  z-index: 8;
   inset: 0;
 
   gap: 2rem;
 
-}
 
-
-.UIStapleElements_Background-Color--FloatingFlag--Global {
-
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--FloatingFlagColorFont));
   background: linear-gradient(to bottom, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundFirst) / var(--UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundSecond) / var(--UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground)) 100%);
 
 }
@@ -652,7 +650,6 @@ p {
 }
 
 
-/*Here*/
 .MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent{
 
   width: 100%;
@@ -674,11 +671,11 @@ p {
   height: auto;
   text-align: center;
 
+  color: rgb(255, 255, 255);
   border-radius: 9999px;
 
-  color: rgb(255, 255, 255);
-
 }
+
 
 .MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview{
 
@@ -695,7 +692,6 @@ p {
   box-shadow: 0 0 16px 8px rgb(255, 255, 255);
 
 }
-
 
 
 
@@ -731,40 +727,6 @@ p {
 
   height: 10px;
   width: 5px;
-
-}
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Done {
-
-  background-color: rgb(255, 255, 255);
-
-}
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell--Remaining {
-
-  background-color: rgb(255, 255, 255, 0.25);
-
-}
-
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagInstructionsFlagBackground{
-
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  inset: 0rem;
-  z-index: 9;
-
-  gap: 3rem;
-  border-radius: inherit;
-
-  background-color: rgb(0, 0, 0, 0.75);
 
 }
 

@@ -22,7 +22,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
     
 
     return (
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 

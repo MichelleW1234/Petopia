@@ -17,6 +17,7 @@ import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
 import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
+import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, audioNavButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -91,6 +92,7 @@ function Fish (){
     const [fish_FeedOptionsCurrDesiredOption, set_Fish_FeedOptionsCurrDesiredOption] = useState(-1);
     const [fish_CleanOptionsCurrDesiredOption, set_Fish_CleanOptionsCurrDesiredOption] = useState(-1);
     const [fish_MedicineOptionsCurrDesiredOption, set_Fish_MedicineOptionsCurrDesiredOption] = useState(-1);
+    const [fish_WarningShowNotification, set_Fish_WarningShowNotification] = useState(false);
 
     const fish_Alive = ActivePetName === "" ? 
                             false
@@ -345,7 +347,17 @@ function Fish (){
 
         }
 
-    }, [fish_Hungry, fish_Dirty, fish_Unwell]);
+        if ((fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && !fish_WarningShowNotification) {
+
+            set_Fish_WarningShowNotification(true);
+
+        } else if (!(fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && fish_WarningShowNotification) {
+
+            set_Fish_WarningShowNotification(false);
+
+        }
+
+    }, [fish_Hungry, fish_Dirty, fish_Unwell, fish_CanReceiveDose, fish_WarningShowNotification]);
 
     
 
@@ -441,16 +453,6 @@ function Fish (){
 
                 </div>
 
-                {Notifications.length > 0 ? (
-
-                    <NotificationsComponent/>
-
-                ) : (
-
-                    null
-
-                )}
-
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
@@ -465,6 +467,12 @@ function Fish (){
                 </div>
 
             </div>
+
+            {Notifications.length > 0 && 
+            <NotificationsComponent/>}
+
+            {fish_WarningShowNotification &&
+            <WarningComponent/>}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

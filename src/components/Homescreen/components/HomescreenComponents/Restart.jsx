@@ -8,7 +8,7 @@ import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 import { useAchievements } from "../../../../providers/AchievementsProvider.jsx";
 import { useNotifications } from "../../../../providers/NotificationsProvider.jsx";
 
-import Reviver from "../../../../images/Inventory/Reviver.png";
+import Reviver from "../../../../images/Reviver.png";
 import PaintingOne from "../../../../images/Inventory/PaintingOne.png";
 import PaintingTwo from "../../../../images/Inventory/PaintingTwo.png";
 import PaintingThree from "../../../../images/Inventory/PaintingThree.png";
@@ -130,7 +130,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
     
     return (
-        <div className = "UIStapleElements_Background-Structure--FloatingFlag UIStapleElements_Background-Color--FloatingFlag--Global">
+        <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
 

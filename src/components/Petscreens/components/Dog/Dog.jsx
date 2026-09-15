@@ -20,6 +20,7 @@ import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
 import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
 import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
+import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -100,6 +101,7 @@ function Dog (){
     const [dog_CleanOptionsCurrDesiredOption, set_Dog_CleanOptionsCurrDesiredOption] = useState(-1);
     const [dog_PlayOptionsCurrDesiredOption, set_Dog_PlayOptionsCurrDesiredOption] = useState(-1);
     const [dog_MedicineOptionsCurrDesiredOption, set_Dog_MedicineOptionsCurrDesiredOption] = useState(-1);
+    const [dog_WarningShowNotification, set_Dog_WarningShowNotification] = useState(false);
 
     const dog_Alive = ActivePetName === "" ? 
                             false
@@ -380,7 +382,17 @@ function Dog (){
 
         }
 
-    }, [dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell]);
+        if ((dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && !dog_WarningShowNotification) {
+
+            set_Dog_WarningShowNotification(true);
+
+        } else if (!(dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && dog_WarningShowNotification) {
+
+            set_Dog_WarningShowNotification(false);
+
+        }
+
+    }, [dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose, dog_WarningShowNotification]);
 
     
     return (
@@ -482,16 +494,6 @@ function Dog (){
                 
                 </div>
 
-                {Notifications.length > 0 ? (
-
-                    <NotificationsComponent/>
-
-                ) : (
-
-                    null
-
-                )}
-
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
@@ -507,6 +509,13 @@ function Dog (){
                 </div>
 
             </div>
+
+
+            {Notifications.length > 0 &&
+            <NotificationsComponent/>}
+
+            {dog_WarningShowNotification &&
+            <WarningComponent/>}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 

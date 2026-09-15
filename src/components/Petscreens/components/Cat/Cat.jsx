@@ -19,6 +19,7 @@ import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
 import MouseHuntComponent from "./CatComponents/MouseHunt.jsx";
 import FeatherFishingComponent from "./CatComponents/FeatherFishing.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
+import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey } from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
@@ -88,6 +89,7 @@ function Cat (){
     const [cat_FeedOptionsCurrDesiredOption, set_Cat_FeedOptionsCurrDesiredOption] = useState(-1);
     const [cat_PlayOptionsCurrDesiredOption, set_Cat_PlayOptionsCurrDesiredOption] = useState(-1);
     const [cat_MedicineOptionsCurrDesiredOption, set_Cat_MedicineOptionsCurrDesiredOption] = useState(-1);
+    const [cat_WarningShowNotification, set_Cat_WarningShowNotification] = useState(false);
 
     const cat_Alive = ActivePetName === "" ? 
                             false
@@ -333,7 +335,18 @@ function Cat (){
 
         }
 
-    }, [cat_Hungry, cat_Restless, cat_Unwell]);
+        if ((cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && !cat_WarningShowNotification) {
+
+            set_Cat_WarningShowNotification(true);
+
+        } else if (!(cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && cat_WarningShowNotification) {
+
+            set_Cat_WarningShowNotification(false);
+
+        }
+
+
+    }, [cat_Hungry, cat_Restless, cat_Unwell, cat_CanReceiveDose, cat_WarningShowNotification]);
 
 
 
@@ -443,15 +456,11 @@ function Cat (){
 
             </div>
 
-            {Notifications.length > 0 ? (
+            {Notifications.length > 0 &&
+            <NotificationsComponent/>}
 
-                <NotificationsComponent/>
-
-            ) : (
-
-                null
-
-            )}
+            {cat_WarningShowNotification &&
+            <WarningComponent/>}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
                 <button 
