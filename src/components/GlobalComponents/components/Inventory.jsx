@@ -239,8 +239,10 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 ) : (
 
-                                    <div className = "Inventory_ComponentImage-Structure--ItemLock">
-                                        <img src = {PetUnwantedActivity}/>
+                                    <div className="Inventory_ComponentImage-Structure--ItemEmptyPetContainer">
+                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
+                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
+                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
                                     </div>
                     
                                 )}

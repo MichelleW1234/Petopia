@@ -162,11 +162,21 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                 {!Object.values(PetList).some(pet => pet[petHealthKey] === 0) ? (
 
-                    <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag NoPetImageBar">
-                        <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
-                            <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
-                            <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
-                            <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
+                    <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
+                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
+                                <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
+                            </div>
+                        </div>
+                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
+                                <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
+                            </div>
+                        </div>
+                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
+                                <img src = {NoPets} className="RevivePets_ComponentImage-Structure--NoPetImage"/>
+                            </div>
                         </div>
                     </div>
 
