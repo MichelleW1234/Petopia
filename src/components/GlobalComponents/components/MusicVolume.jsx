@@ -3,7 +3,7 @@ import{useState} from "react";
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { useVolume } from "../../../providers/VolumeProvider.jsx";
 
-import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
+import { helpers_Closer_Flags} from "../../../helpers/Helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
 

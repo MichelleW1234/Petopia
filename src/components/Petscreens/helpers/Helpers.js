@@ -4,6 +4,7 @@ import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../..
 
 export const optionSelectionManager = (options_CurrDesiredOption, options_optionSelectionManager_UserSelection, set_Options_TotalNumber, set_Confirmed, set_ActivitySuccess) => {
 
+    helpers_Player_UIIndicatorSounds(audioStartActivityKey);
     helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
     if (options_optionSelectionManager_UserSelection !== options_CurrDesiredOption) {
@@ -17,7 +18,6 @@ export const optionSelectionManager = (options_CurrDesiredOption, options_option
     }
 
     set_Confirmed(true);
-    helpers_Player_UIIndicatorSounds(audioStartActivityKey);
 
 }
 

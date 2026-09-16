@@ -329,38 +329,51 @@ function Fish (){
 
     useEffect(() => {
 
-        if (fish_Hungry){
+        if (fish_Alive){
 
-            set_Fish_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * fish_FeedOptionsList.length));
+            if (fish_Hungry){
+
+                set_Fish_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * fish_FeedOptionsList.length));
+
+            }
+
+            if (fish_Dirty){
+
+                set_Fish_CleanOptionsCurrDesiredOption(Math.floor(Math.random() * fish_CleanOptionsList.length));
+
+            }
+
+            if (fish_Unwell){
+
+                set_Fish_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * fish_MedicineOptionsList.length));
+
+            }
+
+            if ((fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && !fish_WarningShowNotification) {
+
+                set_Fish_WarningShowNotification(true);
+
+            } else if (!(fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && fish_WarningShowNotification) {
+
+                set_Fish_WarningShowNotification(false);
+
+            }
+
+        } else {
+
+            if (fish_WarningShowNotification){
+
+                set_Fish_WarningShowNotification(false);
+
+            }
 
         }
-
-        if (fish_Dirty){
-
-            set_Fish_CleanOptionsCurrDesiredOption(Math.floor(Math.random() * fish_CleanOptionsList.length));
-
-        }
-
-        if (fish_Unwell){
-
-            set_Fish_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * fish_MedicineOptionsList.length));
-
-        }
-
-        if ((fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && !fish_WarningShowNotification) {
-
-            set_Fish_WarningShowNotification(true);
-
-        } else if (!(fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && fish_WarningShowNotification) {
-
-            set_Fish_WarningShowNotification(false);
-
-        }
-
-    }, [fish_Hungry, fish_Dirty, fish_Unwell, fish_CanReceiveDose, fish_WarningShowNotification]);
 
     
 
+    }, [fish_Alive, fish_Hungry, fish_Dirty, fish_Unwell, fish_CanReceiveDose, fish_WarningShowNotification]);
+
+    
     
     return (
 

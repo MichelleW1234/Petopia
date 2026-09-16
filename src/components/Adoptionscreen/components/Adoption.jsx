@@ -164,15 +164,12 @@ function Adoption () {
 
     const adoption_NameManager = (adoption_NameManager_E) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
-
         const adoption_NameManager_CurrPetName = adoption_UserInput.trim().split(/\s+/).map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
         set_Adoption_UserInput(adoption_NameManager_CurrPetName);
 
         if (adoption_NameManager_CurrPetName === "") {
 
             adoption_CurrErrorMessageTimer("Enter a name for your pet.");
-
 
         } else if (/[^\p{L}\p{N} .'-]/u.test(adoption_NameManager_CurrPetName)) {
 
@@ -280,6 +277,8 @@ function Adoption () {
             adoption_Navigate("/home");
 
         }
+
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
     }
 

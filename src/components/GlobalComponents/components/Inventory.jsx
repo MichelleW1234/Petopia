@@ -41,8 +41,8 @@ function Inventory({set_Inventory_OpenFlag}) {
     
     const inventory_EntryOwnerSelector = (inventory_EntryOwnerSelector_EntryIndex, inventory_EntryOwnerSelector_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
         helpers_Player_UIIndicatorSounds(audioAddedDecorationsKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         setInventory(prev => {
 

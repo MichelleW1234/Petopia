@@ -36,7 +36,7 @@ export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
         [audioAdoptionSuccessKey] : {[AudioFileKey]: AdoptionSuccess, [AudioVolumeKey]: 0.5},
         [audioClearPetsKey] : {[AudioFileKey]: ClearPets, [AudioVolumeKey]: 0.5},
         [audioQuitActivityKey] : {[AudioFileKey]: QuitActivity, [AudioVolumeKey]: 0.75},
-        [audioAddedDecorationsKey] : {[AudioFileKey]: AddedDecorations, [AudioVolumeKey]: 0.75},
+        [audioAddedDecorationsKey] : {[AudioFileKey]: AddedDecorations, [AudioVolumeKey]: 0.5},
         [audioRevivePetKey] : {[AudioFileKey]: RevivedPet, [AudioVolumeKey]: 0.75},
         [audioSwapPetSpaceKey] : {[AudioFileKey]: SwapPetSpace, [AudioVolumeKey] : 0.75}
 

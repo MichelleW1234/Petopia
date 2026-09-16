@@ -317,36 +317,48 @@ function Cat (){
 
     useEffect(() => {
 
-        if (cat_Hungry){
+        if (cat_Alive) {
 
-            set_Cat_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * cat_FeedOptionsList.length));
+            if (cat_Hungry){
+
+                set_Cat_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * cat_FeedOptionsList.length));
+
+            }
+
+            if (cat_Restless){
+
+                set_Cat_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * cat_PlayOptionsList.length));
+
+            }
+
+            if (cat_Unwell){
+
+                set_Cat_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
+
+            }
+
+            if ((cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && !cat_WarningShowNotification) {
+
+                set_Cat_WarningShowNotification(true);
+
+            } else if (!(cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && cat_WarningShowNotification) {
+
+                set_Cat_WarningShowNotification(false);
+
+            }
+
+        } else {
+
+            if (cat_WarningShowNotification){
+
+                set_Cat_WarningShowNotification(false);
+
+            }
 
         }
 
-        if (cat_Restless){
 
-            set_Cat_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * cat_PlayOptionsList.length));
-
-        }
-
-        if (cat_Unwell){
-
-            set_Cat_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
-
-        }
-
-        if ((cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && !cat_WarningShowNotification) {
-
-            set_Cat_WarningShowNotification(true);
-
-        } else if (!(cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && cat_WarningShowNotification) {
-
-            set_Cat_WarningShowNotification(false);
-
-        }
-
-
-    }, [cat_Hungry, cat_Restless, cat_Unwell, cat_CanReceiveDose, cat_WarningShowNotification]);
+    }, [cat_Alive, cat_Hungry, cat_Restless, cat_Unwell, cat_CanReceiveDose, cat_WarningShowNotification]);
 
 
 

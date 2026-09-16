@@ -358,41 +358,54 @@ function Dog (){
     
     useEffect(() => {
 
-        if (dog_Hungry){
+        if (dog_Alive){
 
-            set_Dog_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * dog_FeedOptionsList.length));
+            if (dog_Hungry){
+
+                set_Dog_FeedOptionsCurrDesiredOption(Math.floor(Math.random() * dog_FeedOptionsList.length));
+
+            }
+
+            if (dog_Dirty){
+
+                set_Dog_CleanOptionsCurrDesiredOption(Math.floor(Math.random() * dog_CleanOptionsList.length));
+
+            }
+
+            if (dog_Restless){
+
+                set_Dog_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * dog_PlayOptionsList.length));
+
+            }
+
+            if (dog_Unwell){
+
+                set_Dog_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * dog_MedicineOptionsList.length));
+
+            }
+
+            if ((dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && !dog_WarningShowNotification) {
+
+                set_Dog_WarningShowNotification(true);
+
+            } else if (!(dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && dog_WarningShowNotification) {
+
+                set_Dog_WarningShowNotification(false);
+
+            }
+
+
+        } else {
+
+            if (dog_WarningShowNotification){
+
+                set_Dog_WarningShowNotification(false);
+
+            }
 
         }
 
-        if (dog_Dirty){
-
-            set_Dog_CleanOptionsCurrDesiredOption(Math.floor(Math.random() * dog_CleanOptionsList.length));
-
-        }
-
-        if (dog_Restless){
-
-            set_Dog_PlayOptionsCurrDesiredOption(Math.floor(Math.random() * dog_PlayOptionsList.length));
-
-        }
-
-        if (dog_Unwell){
-
-            set_Dog_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * dog_MedicineOptionsList.length));
-
-        }
-
-        if ((dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && !dog_WarningShowNotification) {
-
-            set_Dog_WarningShowNotification(true);
-
-        } else if (!(dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && dog_WarningShowNotification) {
-
-            set_Dog_WarningShowNotification(false);
-
-        }
-
-    }, [dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose, dog_WarningShowNotification]);
+    }, [dog_Alive, dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose, dog_WarningShowNotification]);
 
     
     return (
