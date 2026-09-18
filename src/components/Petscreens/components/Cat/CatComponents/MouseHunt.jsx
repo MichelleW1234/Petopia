@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
 import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
 
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";

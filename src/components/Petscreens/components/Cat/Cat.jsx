@@ -22,8 +22,8 @@ import NotificationsComponent from "../../../GlobalComponents/components/Notific
 import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import {petStageKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesCatKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey } from "../../../../constants/Constants.js";
-import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
-import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
+import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/helpers.js";
+import { helpers_Opener_Flags } from "../../../../helpers/helpers.js";
 
 import HappyMeow from "../../../../Music/PetImmersionSounds/Cat/HappyMeow.mp3";
 import SadMeow from "../../../../Music/PetImmersionSounds/Cat/SadMeow.mp3";
@@ -306,7 +306,7 @@ function Cat (){
         } else {
 
             cat_BackgroundAudioRef.current.play();
-            cat_BackgroundAudioRef.current.volume = 0.5;
+            cat_BackgroundAudioRef.current.volume = 0.25;
             cat_BackgroundAudioRef.current.loop = true;
 
         }

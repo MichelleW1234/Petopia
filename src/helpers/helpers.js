@@ -20,30 +20,27 @@ import SwapPetSpace from "../Music/UIIndicatorSounds/SwapPetSpace.mp3";
 
 export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
 
-    const AudioFileKey = "file";
-    const AudioVolumeKey = "volume";
-
     const bound_Sequence_SoundDictionary = {
 
-        [audioNavButtonPressKey] : {[AudioFileKey]: NavButtonPress, [AudioVolumeKey]: 1},
-        [audioSelectionButtonPressKey] : {[AudioFileKey]: SelectionButtonPress, [AudioVolumeKey]: 0.75},
-        [audioScreenButtonPressKey] : {[AudioFileKey]: ScreenButtonPress, [AudioVolumeKey]: 0.5},
-        [audioRestartGameKey] : {[AudioFileKey] : RestartGame, [AudioVolumeKey] : 0.25},
-        [audioAdoptionConfirmationErrorKey] : {[AudioFileKey]: AdoptionConfirmationError, [AudioVolumeKey]: 0.5},
-        [audioStartActivityKey] : {[AudioFileKey]: StartActivity, [AudioVolumeKey]: 0.5},
-        [audioActivitySuccessKey] : {[AudioFileKey]: ActivitySuccess, [AudioVolumeKey]: 0.5},
-        [audioActivityFailKey] : {[AudioFileKey]: ActivityFail, [AudioVolumeKey]: 0.5},
-        [audioAdoptionSuccessKey] : {[AudioFileKey]: AdoptionSuccess, [AudioVolumeKey]: 0.5},
-        [audioClearPetsKey] : {[AudioFileKey]: ClearPets, [AudioVolumeKey]: 0.5},
-        [audioQuitActivityKey] : {[AudioFileKey]: QuitActivity, [AudioVolumeKey]: 0.75},
-        [audioAddedDecorationsKey] : {[AudioFileKey]: AddedDecorations, [AudioVolumeKey]: 0.5},
-        [audioRevivePetKey] : {[AudioFileKey]: RevivedPet, [AudioVolumeKey]: 0.75},
-        [audioSwapPetSpaceKey] : {[AudioFileKey]: SwapPetSpace, [AudioVolumeKey] : 0.75}
+        [audioNavButtonPressKey] : NavButtonPress,
+        [audioSelectionButtonPressKey] : SelectionButtonPress,
+        [audioScreenButtonPressKey] : ScreenButtonPress,
+        [audioRestartGameKey] : RestartGame,
+        [audioAdoptionConfirmationErrorKey] : AdoptionConfirmationError,
+        [audioStartActivityKey] : StartActivity,
+        [audioActivitySuccessKey] : ActivitySuccess,
+        [audioActivityFailKey] : ActivityFail,
+        [audioAdoptionSuccessKey] : AdoptionSuccess,
+        [audioClearPetsKey] : ClearPets,
+        [audioQuitActivityKey] : QuitActivity,
+        [audioAddedDecorationsKey] : AddedDecorations,
+        [audioRevivePetKey] : RevivedPet,
+        [audioSwapPetSpaceKey] : SwapPetSpace
 
     };
 
-    const bound_Audio_SoundDictionaryEntry = new Audio(bound_Sequence_SoundDictionary[parameter_Key_SoundToPlay][AudioFileKey]);
-    bound_Audio_SoundDictionaryEntry.volume = bound_Sequence_SoundDictionary[parameter_Key_SoundToPlay][AudioVolumeKey];
+    const bound_Audio_SoundDictionaryEntry = new Audio(bound_Sequence_SoundDictionary[parameter_Key_SoundToPlay]);
+    bound_Audio_SoundDictionaryEntry.volume = 0.5;
     bound_Audio_SoundDictionaryEntry.play();
 
 }

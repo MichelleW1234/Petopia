@@ -15,7 +15,7 @@ import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx"
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
 import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioSelectionButtonPressKey, audioNavButtonPressKey, audioAdoptionSuccessKey, audioScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
-import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
+import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 import "../../../App.css";
 import "./Adoption.css";

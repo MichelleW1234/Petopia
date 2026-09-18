@@ -11,8 +11,8 @@ import ProgressBarComponent from "./StationsComponents/ProgressBar.jsx";
 import OptionsComponent from "./StationsComponents/Options.jsx";
 
 import { petActivityOptionGameInstructionsKey, petActivityOptionGameKey, petActivityOptionImageKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey } from "../../../../../constants/Constants.js";
-import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, optionSelectionManager } from "../../../helpers/Helpers.js";
-import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
+import { petScreensHelpers_Manager_PetHealth, petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, optionSelectionManager } from "../../../helpers/helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/helpers.js";
 
 import Playing from "../../../../../Music/PetImmersionSounds/Playing.mp3";
 

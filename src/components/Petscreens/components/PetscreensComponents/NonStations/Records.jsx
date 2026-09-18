@@ -4,7 +4,7 @@ import { usePetList } from "../../../../../providers/PetListProvider.jsx";
 import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 
 import { petBirthDateKey, petGenderKey } from "../../../../../constants/Constants.js";
-import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/helpers.js";
 
 import "../../../../../App.css";
 import "./Records.css";

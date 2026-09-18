@@ -23,8 +23,8 @@ import NotificationsComponent from "../../../GlobalComponents/components/Notific
 import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import { petStageKey, petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petActivityTimeStampPlayingKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesDogKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petActivityOptionGameKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey, petActivityOptionGameInstructionsKey} from "../../../../constants/Constants.js";
-import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
-import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
+import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/helpers.js";
+import { helpers_Opener_Flags } from "../../../../helpers/helpers.js";
 
 import HappyBarks from "../../../../Music/PetImmersionSounds/Dog/HappyBarks.mp3";
 import SadWhine from "../../../../Music/PetImmersionSounds/Dog/SadWhine.mp3";
@@ -346,7 +346,7 @@ function Dog (){
         } else {
 
             dog_BackgroundAudioRef.current.play();
-            dog_BackgroundAudioRef.current.volume = 0.5;
+            dog_BackgroundAudioRef.current.volume = 0.25;
             dog_BackgroundAudioRef.current.loop = true;
 
         }

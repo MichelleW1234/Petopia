@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
 import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
 
 import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";

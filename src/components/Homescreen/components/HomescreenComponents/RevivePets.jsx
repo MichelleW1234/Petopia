@@ -9,7 +9,7 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { audioSelectionButtonPressKey, audioRevivePetKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, petHealthKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, petSpeciesHealthCapList, petActivityTimeStampFeedingKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey } from "../../../../constants/Constants.js";
-import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
 
 import Reviver from "../../../../images/Reviver.png";
 import EmptyReviver from "../../../../images/EmptyReviver.png";

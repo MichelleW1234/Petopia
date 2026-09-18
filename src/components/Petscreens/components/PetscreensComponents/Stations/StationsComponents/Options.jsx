@@ -2,7 +2,7 @@ import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
 import { audioSelectionButtonPressKey, petActivityOptionImageKey, petActivityOptionNameKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../../../constants/Constants.js";
-import { helpers_Player_UIIndicatorSounds } from "../../../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds } from "../../../../../../helpers/helpers.js";
 
 import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
 import PetThoughtBubble from "../../../../../../images/PetThoughtBubble.png";

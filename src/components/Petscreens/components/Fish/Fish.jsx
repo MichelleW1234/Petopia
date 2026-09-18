@@ -20,8 +20,8 @@ import NotificationsComponent from "../../../GlobalComponents/components/Notific
 import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
 import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, audioNavButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
-import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
-import { helpers_Opener_Flags } from "../../../../helpers/Helpers.js";
+import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/helpers.js";
+import { helpers_Opener_Flags } from "../../../../helpers/helpers.js";
 
 import HappyBubbles from "../../../../Music/PetImmersionSounds/Fish/HappyBubbles.mp3";
 import SadSplash from "../../../../Music/PetImmersionSounds/Fish/SadSplash.mp3";
@@ -318,7 +318,7 @@ function Fish (){
         } else {
 
             fish_BackgroundAudioRef.current.play();
-            fish_BackgroundAudioRef.current.volume = 0.5;
+            fish_BackgroundAudioRef.current.volume = 0.25;
             fish_BackgroundAudioRef.current.loop = true;
 
         }

@@ -6,7 +6,7 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import { petSpeciesCatKey, inventoryItemTypeCeilingDecorationKey, petSpeciesDogKey, inventoryItemTypeFloorDecorationKey, petSoundHappyKey, petSpeciesHealthCapList, petHealthKey, petSoundSadKey, inventoryItemImageKey, inventoryItemOwnerKey, inventoryItemTypeKey, petSoundSleepKey, petSpeciesKey, petStageKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey } from "../../../../constants/Constants.js";
-import { petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/Helpers.js";
+import { petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/helpers.js";
 
 import PetSleepingSymbol from "../../../../images/PetSleepingSymbol.gif";
 import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
@@ -89,7 +89,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
             }
 
-            bound_Audio_CurrPetSound.volume = 0.75;
+            bound_Audio_CurrPetSound.volume = 0.5;
             bound_Audio_CurrPetSound.play();
                 
         }

@@ -8,7 +8,7 @@ import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { audioSelectionButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
-import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
 
 import "../../../../App.css";
 

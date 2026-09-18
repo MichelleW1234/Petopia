@@ -3,8 +3,8 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
-import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey } from "../../../../constants/Constants.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
+import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey, audioScreenButtonPressKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
 
@@ -32,6 +32,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
     const rearrangePets_ForwardShifter = (rearrangePets_ForwardShifter_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         setRoom(prev => {
 
@@ -52,6 +53,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
     const rearrangePets_BackwardsShifter = (rearrangePets_BackwardsShifter_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
+        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
 
         setRoom(prev => {
 

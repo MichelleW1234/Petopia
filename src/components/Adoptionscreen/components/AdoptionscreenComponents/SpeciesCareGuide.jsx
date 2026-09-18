@@ -1,7 +1,7 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { audioNavButtonPressKey } from "../../../../constants/Constants.js";
-import { helpers_Closer_Flags } from "../../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../helpers/helpers.js";
 
 import "../../../../App.css";
 import "./SpeciesCareGuide.css";

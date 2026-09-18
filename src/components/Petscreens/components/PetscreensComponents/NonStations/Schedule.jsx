@@ -6,7 +6,7 @@ import useKeyboardShortcut from "../../../../../hooks/useKeyboardShortcut.js";
 import ActivityComponent from "./NonstationsComponents/Activity.jsx";
 
 import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesKey, petSpeciesActivityTimeStampTimeLimitList } from "../../../../../constants/Constants.js";
-import { helpers_Closer_Flags } from "../../../../../helpers/Helpers.js";
+import { helpers_Closer_Flags } from "../../../../../helpers/helpers.js";
 
 import "../../../../../App.css";
 import "./Schedule.css";

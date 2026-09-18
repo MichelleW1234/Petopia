@@ -25,7 +25,7 @@ import RevivePetsComponent from "./HomescreenComponents/RevivePets.jsx";
 
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
-import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers.js";
+import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 import NoPetPortrait from "../../../images/NoPetPortrait.png";
 
