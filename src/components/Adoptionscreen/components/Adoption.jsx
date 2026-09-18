@@ -357,12 +357,7 @@ function Adoption () {
 
             <div className="UIStapleElements_Background-Template--Screen">
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
-                </div>
-
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
 
                     {adoption_PetGender === "" ? (
 
@@ -465,6 +460,11 @@ function Adoption () {
 
                 </div>
         
+            </div>
+
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
+                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
+                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
             </div>
             
             {Notifications.length > 0 ? (

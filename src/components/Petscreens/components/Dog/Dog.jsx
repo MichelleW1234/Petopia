@@ -469,45 +469,7 @@ function Dog (){
             
             <div className = "UIStapleElements_Background-Template--Screen">
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow">
-
-                    <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
-
-                    {dog_Alive ? (
-
-                        <>
-                            <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
-                            <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
-                            <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
-
-                            {dog_CanReceiveDose ? (
-
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
-
-                            ) : (
-
-                                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7]</button>
-
-                            )}
-                        
-                        </>
-
-                    ) : (
-
-                        <>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Feed <br/> [4]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clean <br/> [5]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Play <br/> [6]</button>
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7] </button>
-                        </>
-
-                    )}
-                
-                </div>
-
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--Screen">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
                     
@@ -521,6 +483,45 @@ function Dog (){
                     />
                 </div>
 
+            </div>
+
+
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
+
+                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+
+                {dog_Alive ? (
+
+                    <>
+                        <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
+                        <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                        <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play" : "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
+
+                        {dog_CanReceiveDose ? (
+
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
+
+                        ) : (
+
+                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7]</button>
+
+                        )}
+                    
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clean <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Play <br/> [6]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Medicine <br/> [7] </button>
+                    </>
+
+                )}
+            
             </div>
 
 

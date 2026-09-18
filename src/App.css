@@ -173,6 +173,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   gap: 6rem;
 
@@ -536,19 +537,6 @@ p {
 
 }
 
-.MiscellaneousElements_ComponentContainer-Structure--ScreenMenuButtonRow {
-
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: start;
-    
-  gap: 3rem;
-  padding: 3rem;
-
-}
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow {
 
@@ -561,9 +549,6 @@ p {
   gap: 2rem;
 
 }
-
-
-
 
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot {
@@ -636,20 +621,6 @@ p {
 }
 
 
-
-
-
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
-
-  width: 55rem;
-  height: auto;
-
-  padding: 6rem;
-  border-radius: 75px;
-
-}
-
-
 .MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent{
 
   width: 100%;
@@ -696,6 +667,9 @@ p {
 
 
 
+
+
+
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
 
   max-width: 90%;
@@ -707,6 +681,16 @@ p {
 
   gap: 3rem;
   padding: 3rem 6rem;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
+
+  width: 55rem;
+  height: auto;
+
+  padding: 6rem;
+  border-radius: 75px;
 
 }
 
@@ -732,7 +716,7 @@ p {
 
 
 
-.MiscellaneousElements_ComponentContainer-Structure--Screen {
+.MiscellaneousElements_ComponentContainer-Structure--ScreenContent {
 
   width: auto;
   height: auto;
@@ -756,10 +740,29 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   position: fixed;
-  bottom: 5%;
-  left: 5%;
+  bottom: 3%;
+  left: 3%;
   z-index: 6;
 
+  gap: 3rem;
+
+}
+
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenMenu {
+
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 3%;
+  z-index: 6;
+
+  padding-left: 3rem;
+  padding-right: 3rem;
   gap: 3rem;
 
 }

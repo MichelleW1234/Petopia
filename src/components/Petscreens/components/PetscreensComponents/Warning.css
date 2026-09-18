@@ -1,8 +1,8 @@
 .warning {
 
   position: fixed;
-  bottom: 20%;
-  left: 5%;
+  bottom: 15%;
+  right: 3%;
   z-index: 7;
 
 }
