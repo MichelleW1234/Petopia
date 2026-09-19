@@ -417,7 +417,7 @@ function Cat (){
         
             <div className = "UIStapleElements_Background-Template--Screen">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
                     <MainComponent
@@ -428,6 +428,7 @@ function Cat (){
                         main_Number_Mood = {cat_CurrMood}
                         main_Boolean_ActivityInProgress = {cat_ActivityInProgress}
                     />
+                    
                 </div>
 
             </div>

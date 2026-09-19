@@ -19,7 +19,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
     return (
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
                 <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">

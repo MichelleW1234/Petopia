@@ -39,7 +39,7 @@ function Records({set_Records_OpenFlag}) {
     return (
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Your Pet's Identity Records:</h1>
 

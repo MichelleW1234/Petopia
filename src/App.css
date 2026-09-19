@@ -168,14 +168,14 @@ p {
 
 .UIStapleElements_Background-Template--Screen {
 
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 6rem;
+  gap: 2rem;
 
   background:
     url("./images/ScreenOverlay.png"),
@@ -194,8 +194,7 @@ p {
 .UIStapleElements_Background-Template--FloatingFlag {
 
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -205,7 +204,6 @@ p {
   inset: 0;
 
   gap: 2rem;
-
 
   color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--FloatingFlagColorFont));
   background: linear-gradient(to bottom, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundFirst) / var(--UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_BackgroundOverlay-Light--GlobalColorBackgroundSecond) / var(--UIStapleElements_BackgroundOverlay-Transparency--FloatingFlagColorBackground)) 100%);
@@ -524,6 +522,20 @@ p {
 
 /*Other cross-component tags:*/
 
+.MiscellaneousElements_ComponentContainer-Structure--GlobalContent {
+
+  max-width: 90%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+
+  gap: 3rem;
+  padding: 3rem 6rem;
+
+}
+
 .MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow {
 
   width: auto;
@@ -670,19 +682,6 @@ p {
 
 
 
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlag {
-
-  max-width: 90%;
-  max-height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-
-  gap: 3rem;
-  padding: 3rem 6rem;
-
-}
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
@@ -711,21 +710,6 @@ p {
 
   height: 10px;
   width: 5px;
-
-}
-
-
-
-.MiscellaneousElements_ComponentContainer-Structure--ScreenContent {
-
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 3rem;
 
 }
 

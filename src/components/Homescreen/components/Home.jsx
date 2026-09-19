@@ -265,7 +265,7 @@ function Home (){
 
             <div className = "UIStapleElements_Background-Template--Screen">  
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     {home_CanRestart ? (
 
@@ -312,7 +312,6 @@ function Home (){
                                 </div>
 
                             ) : (
-
                 
                                 <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">  
                                     
@@ -348,23 +347,23 @@ function Home (){
 
                     </div>
 
-                    {home_UserSelection === -1 ? (
-
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
-                            Confirm <br/> [return]
-                        </button>
-
-                    ) : (
-
-                        <button
-                            className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
-                            onClick = {() => GoToSelection()}>
-                            Confirm <br/> [return]
-                        </button>
-
-                    )}
-
                 </div>
+
+                {home_UserSelection === -1 ? (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                        Confirm <br/> [return]
+                    </button>
+
+                ) : (
+
+                    <button
+                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
+                        onClick = {() => GoToSelection()}>
+                        Confirm <br/> [return]
+                    </button>
+
+                )}
 
             </div>
 

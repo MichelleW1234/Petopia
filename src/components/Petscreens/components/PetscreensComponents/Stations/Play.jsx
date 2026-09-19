@@ -96,7 +96,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
             ) : (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">{play_OptionsCurrSpeciesList[play_OptionsUserSelection][petActivityOptionGameInstructionsKey]}</h1>
 

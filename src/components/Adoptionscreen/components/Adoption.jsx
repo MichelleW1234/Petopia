@@ -427,38 +427,35 @@ function Adoption () {
 
                     )} 
 
-                    <div className = "Adoption_ComponentContainer-Structure--Confirmation">
-                        <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
-                    
-                        {adoption_PetGender === "" ? (
-
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
-
-                                {adoption_UserSelection === "" ? (
-
-                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
-
-                                ) : (
-
-                                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
-
-                                )}
-                                
-                            </div>
-            
-                        ) : (
-            
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
-                                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
-                            </div>
-            
-                        )} 
-
-                    </div>
+                    <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
 
                 </div>
+
+                {adoption_PetGender === "" ? (
+
+                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
+
+                        {adoption_UserSelection === "" ? (
+
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
+
+                        ) : (
+
+                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
+
+                        )}
+                        
+                    </div>
+    
+                ) : (
+    
+                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
+                    </div>
+    
+                )} 
         
             </div>
 

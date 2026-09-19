@@ -146,7 +146,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
             ) : (
                 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth for cleaning:</h1>
 

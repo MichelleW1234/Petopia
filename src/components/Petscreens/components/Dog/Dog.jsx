@@ -469,7 +469,7 @@ function Dog (){
             
             <div className = "UIStapleElements_Background-Template--Screen">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
                     
@@ -481,6 +481,7 @@ function Dog (){
                         main_Number_Mood = {dog_CurrMood}
                         main_Boolean_ActivityInProgress={dog_ActivityInProgress}
                     />
+                    
                 </div>
 
             </div>

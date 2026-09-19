@@ -40,7 +40,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
         
             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
 

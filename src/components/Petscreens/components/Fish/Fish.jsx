@@ -430,7 +430,7 @@ function Fish (){
 
             <div className = "UIStapleElements_Background-Template--Screen">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
                     <MainComponent
@@ -441,11 +441,11 @@ function Fish (){
                         main_Number_Mood = {fish_CurrMood}
                         main_Boolean_ActivityInProgress={fish_ActivityInProgress}
                     />
+
                 </div>
 
             </div>
-
-
+            
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
 

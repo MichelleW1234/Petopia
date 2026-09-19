@@ -142,7 +142,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
         
             ) : (
 
-                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet as it eats:</h1>
                     

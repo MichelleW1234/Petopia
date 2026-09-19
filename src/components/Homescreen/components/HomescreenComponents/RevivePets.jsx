@@ -137,7 +137,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlag">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Pet to Revive:</h1>
 
@@ -221,22 +221,22 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                     </div>
 
                 )}
-                
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick={() => helpers_Closer_Flags(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
+            </div>
 
-                    {RevivePets_UserSelection === "" ? (
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag">Confirm <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick={() => helpers_Closer_Flags(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
 
-                    ) : (
+                {RevivePets_UserSelection === "" ? (
 
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag">Confirm <br/> [return]</button>
 
-                    )}
+                ) : (
 
-                </div>
+                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+
+                )}
 
             </div>
 
