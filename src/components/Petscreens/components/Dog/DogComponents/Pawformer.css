@@ -3,7 +3,6 @@
     height: 25%;
     width: auto;
     position: absolute;
-    left: 50%;
 
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -15,16 +14,15 @@
 
 .Pawformer_ComponentContainer-Template--Arrow--Top {
 
-    top: 0%;
-    transform: translateY(50%) translateX(-50%);
+    top: 10%;
 
 }
 
 
 .Pawformer_ComponentContainer-Template--Arrow--Bottom{
 
-    bottom: 0%;
-    transform: translateY(-50%) translateX(-50%) scaleY(-1);
+    bottom: 10%;
+    transform: scaleY(-1);
 
 }
 
@@ -71,14 +69,10 @@
     height: 85%;
     width: auto;
     position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
 
     filter: 
         drop-shadow(0 0 4px rgb(255, 255, 255))
         drop-shadow(0 0 8px rgb(255, 255, 255))
         drop-shadow(0 0 12px  rgb(255, 255, 255));
-
 
 }

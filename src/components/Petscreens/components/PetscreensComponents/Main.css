@@ -44,7 +44,7 @@
     grid-template-columns: repeat(20, auto);
     grid-template-rows: repeat(1, auto);
     position: absolute;
-    bottom: 5%;
+    bottom: 0%;
 
 }
 
@@ -88,7 +88,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 5%;
+    bottom: 0%;
 
     padding: 2rem;
 
@@ -122,7 +122,6 @@
     width: auto;
     position: absolute;
     top: 0%;
-    transform: translateX(-50%);
     z-index: 3;
 
     filter: 
@@ -134,26 +133,18 @@
 
 
 
-.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--dog{
-
-    left: 50%;
-
-}
+.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--dog{}
 
 
 
 .Main_ComponentImage-Structure--WindowScreenCeilingDecoration--cat{
 
-    left: 20%;
+    left: 10%;
 
 }
 
 
-.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--fish{
-
-    left: 50%;
-
-}
+.Main_ComponentImage-Structure--WindowScreenCeilingDecoration--fish{}
 
 
 
@@ -172,29 +163,21 @@
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration--dog{
 
-    bottom: 60%;
-    left: 80%;
-    transform: translateX(-50%) translateY(50%);
+    bottom: 45%;
+    left: 70%;
     
 }
 
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration--cat{
 
-    bottom: 60%;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%);
+    bottom: 40%;
+    left: 40%;
     
 }
 
 
-.Main_ComponentImage-Structure--WindowScreenWallDecoration--fish{
-
-    bottom: 55%;
-    left: 80%;
-    transform: translateX(-50%) translateY(50%);
-    
-}
+.Main_ComponentImage-Structure--WindowScreenWallDecoration--fish{}
 
 
 
@@ -205,8 +188,6 @@
 
     width: auto;
     position: absolute;
-    bottom: 45%;
-    transform: translateX(-50%) translateY(50%);
     z-index: 2;
 
     filter: 
@@ -219,7 +200,8 @@
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--dog{
 
     height: 40%;
-    left: 20%;
+    bottom: 25%;
+    left: 10%;
     
 }
 
@@ -227,7 +209,8 @@
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--cat{
 
     height: 40%;
-    left: 85%;
+    bottom: 25%;
+    left: 75%;
 
 }
 
@@ -235,7 +218,8 @@
 .Main_ComponentImage-Structure--WindowScreenRoomDecoration--fish{
 
     height: 75%;
-    left: 30%;
+    bottom: 5%;
+    left: 5%;
     
 }
 
@@ -247,7 +231,6 @@
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration{
 
     position: absolute;
-    transform: translateX(-50%);
     z-index: 1;
 
 }
@@ -258,7 +241,6 @@
     width: 35%;
     height: 35%;
     bottom: 0%;
-    left: 50%;
 
     filter: 
         drop-shadow(0 0 4px rgb(255, 255, 255))
@@ -273,7 +255,7 @@
     width: 35%;
     height: 35%;
     bottom: 0%;
-    left: 20%;
+    left: 5%;
 
     filter: 
         drop-shadow(0 0 4px rgb(255, 255, 255))
@@ -288,8 +270,8 @@
     height: 25%;
     width: auto;
     bottom: 5%;
-    left: 80%;
-
+    right: 15%;
+    
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 4px rgb(255, 255, 255))
