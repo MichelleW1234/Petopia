@@ -109,7 +109,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                         {Play_GameWindow === null ? (
 
-                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Play_ComponentContainer-Color--WindowScreen"></div>
+                            <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--DefaultPlay"></div>
 
                         ) : (
 

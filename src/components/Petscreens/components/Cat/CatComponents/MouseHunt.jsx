@@ -134,7 +134,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MouseHunt_ComponentContainer-Structure--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--MouseHunt">
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">
 

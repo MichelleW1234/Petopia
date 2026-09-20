@@ -100,17 +100,17 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                         <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">{item[inventoryItemNameKey]}:</h1>
 
-                        <div className="Inventory_ComponentContainer-Structure--ItemContent">
+                        <div className="Inventory_ComponentContainer-Structure--ItemDescription">
 
-                            <div className="Inventory_ComponentContainer-Structure--ItemContentImage">
+                            <div className="Inventory_ComponentContainer-Structure--ItemDescriptionImage">
                                 <img src = {item[inventoryItemImageKey]}/>
                             </div>
-                            <div className="Inventory_ComponentContainer-Structure--ItemField">
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                            <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContent">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2>Type:</h2>
                                     <p>{item[inventoryItemTypeKey]}</p>
                                 </div>
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2> 
                                         For your:                           
                                     </h2>
@@ -130,7 +130,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                         {item[inventoryItemTypeKey] === inventoryItemTypeCeilingDecorationKey && Achievements[0][achievementStatusKey] === false ? (
 
                             <>
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2>Achievement to Unlock:</h2>
                                     <p>{Achievements[0][achievementDescriptionKey]}</p>
                                 </div>
@@ -146,7 +146,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeWallDecorationKey && Achievements[1][achievementStatusKey] === false ? (
 
                             <>
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2>Achievement to Unlock:</h2>
                                     <p>{Achievements[1][achievementDescriptionKey]}</p>
                                 </div>
@@ -162,7 +162,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeRoomDecorationKey && Achievements[2][achievementStatusKey] === false ? (
 
                             <>
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2>Achievement to Unlock:</h2>
                                     <p>{Achievements[2][achievementDescriptionKey]}</p>
                                 </div>
@@ -177,7 +177,7 @@ function Inventory({set_Inventory_OpenFlag}) {
                         ) : item[inventoryItemTypeKey] === inventoryItemTypeFloorDecorationKey && Achievements[3][achievementStatusKey] === false ? (
 
                             <>
-                                <div className="Inventory_ComponentContainer-Structure--ItemFieldField">
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
                                     <h2>Achievement to Unlock:</h2>
                                     <p>{Achievements[3][achievementDescriptionKey]}</p>
                                 </div>
@@ -197,7 +197,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 {Object.values(PetList).some(pet => item[inventoryItemSpeciesAcceptedKey].includes(pet[petSpeciesKey])) ? (
                                  
-                                    <div className="inventorybuttonrow">
+                                    <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
 
                                         {Room.map((inventory_EntryOwnerSelector_UserSelection, indexInner) => (
 
@@ -209,20 +209,20 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                                 item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
-                                                    <div className="inventoryPet">
-                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected inventoryPetButton" onClick = {() => inventory_EntryOwnerDeselector(index)}> 
+                                                    <div className="Inventory_ComponentContainer-Structure--PossiblePetOwner">
+                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerDeselector(index)}> 
                                                             <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
                                                         </button>
-                                                        <h2 className="inventoryPetName">{inventory_EntryOwnerSelector_UserSelection}</h2>
+                                                        <h2 className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">{inventory_EntryOwnerSelector_UserSelection}</h2>
                                                     </div>
 
                                                 ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) ? (
 
-                                                    <div className="inventoryPet">
-                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag inventoryPetButton" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                    <div className="Inventory_ComponentContainer-Structure--PossiblePetOwner">
+                                                        <button key = {indexInner} className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
                                                             <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
                                                         </button>
-                                                        <h2 className="inventoryPetName">{inventory_EntryOwnerSelector_UserSelection}</h2>
+                                                        <h2 className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">{inventory_EntryOwnerSelector_UserSelection}</h2>
                                                     </div>
 
                                                 ) : (
@@ -239,10 +239,10 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 ) : (
 
-                                    <div className="Inventory_ComponentImage-Structure--ItemEmptyPetContainer">
-                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
-                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
-                                        <img className = "Inventory_ComponentImage-Structure--ItemLock" src = {PetUnwantedActivity}/>
+                                    <div className="Inventory_ComponentContainer-Structure--ItemNoPetOwners">
+                                        <img className = "Inventory_ComponentImage-Structure--ItemNoPetOwners" src = {PetUnwantedActivity}/>
+                                        <img className = "Inventory_ComponentImage-Structure--ItemNoPetOwners" src = {PetUnwantedActivity}/>
+                                        <img className = "Inventory_ComponentImage-Structure--ItemNoPetOwners" src = {PetUnwantedActivity}/>
                                     </div>
                     
                                 )}

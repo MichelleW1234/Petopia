@@ -94,7 +94,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen FeatherFishing_ComponentContainer-Structure--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing">
             
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
             <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>

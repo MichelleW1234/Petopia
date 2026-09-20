@@ -14,7 +14,7 @@
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemContent{
+.Inventory_ComponentContainer-Structure--ItemDescription{
 
   width: 100%;
   height: auto;
@@ -23,10 +23,12 @@
   align-items: center;
   justify-content: center;
 
+  gap: 2rem;
+
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemContentImage{
+.Inventory_ComponentContainer-Structure--ItemDescriptionImage{
 
   width: 50%;
   height: auto;
@@ -51,7 +53,7 @@
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemField{
+.Inventory_ComponentContainer-Structure--ItemDescriptionContent{
 
   width: 50%;
   height: auto;
@@ -65,15 +67,31 @@
 
 }
 
+.Inventory_ComponentContainer-Structure--ItemDescriptionContentField{
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+  
+}
+
 
 .Inventory_ComponentImage-Structure--ItemLockContainer{
 
   width: 100%;
   height: auto;
-
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
   display: grid;
   grid-template-rows: repeat(1, auto);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 25%);
 
   padding: 2rem;
   gap: 2rem;
@@ -97,20 +115,8 @@
 }
 
 
-.Inventory_ComponentContainer-Structure--ItemFieldField{
 
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 1rem;
-  
-}
-
-.inventorybuttonrow{
+.Inventory_ComponentContainer-Structure--PossiblePetOwners{
 
   width: 100%;
   display: flex;
@@ -122,7 +128,7 @@
 }
 
 
-.inventoryPet{
+.Inventory_ComponentContainer-Structure--PossiblePetOwner{
 
   width: 100%;
   display: flex;
@@ -130,34 +136,38 @@
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 4rem;
 
 
 }
 
-.inventoryPetName{
+.Inventory_ComponentContainer-Structure--PossiblePetOwnerName{
 
-  width: 90%;
+  width: 50%;
+  height: auto;
 
 }
 
-.inventoryPetButton{
+.Inventory_ComponentButton-Structure--PossiblePetOwner{
 
-  width: 30%;
+  width: 25%;
+  height: auto;
+
   padding: 2rem;
 
 }
 
 
 
-
-
-.Inventory_ComponentImage-Structure--ItemEmptyPetContainer{
+.Inventory_ComponentContainer-Structure--ItemNoPetOwners{
 
   width: 100%;
   height: auto;
-
   display: grid;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(1, 20%);
 
@@ -169,7 +179,7 @@
 }
 
 
-.Inventory_ComponentImage-Structure--ItemLock{
+.Inventory_ComponentImage-Structure--ItemNoPetOwners{
 
   width: 100%;
   height: auto;

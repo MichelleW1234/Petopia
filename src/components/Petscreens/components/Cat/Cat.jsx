@@ -433,7 +433,7 @@ function Cat (){
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
                 <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
@@ -475,7 +475,7 @@ function Cat (){
             {cat_WarningShowNotification &&
             <WarningComponent/>}
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Cat_MusicVolumeOpenFlag, 1)}>

@@ -17,7 +17,7 @@
 
 .MusicVolume_ComponentContainer-Structure--WidgetImage{
 
-    height: auto;
+    height: 9rem;
     width: auto;
 
     padding: 1rem;
@@ -27,7 +27,7 @@
 
     img {
 
-        height: 8rem;
+        height: 100%;
         width: auto;
 
         filter: 
@@ -38,8 +38,6 @@
     }
 
 }
-
-
 
 
 .MusicVolume_ComponentContainer-Structure--Slider{

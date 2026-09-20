@@ -1,84 +1,33 @@
-.Main_ComponentContainer-Color--WindowScreen--dog{ 
-
-    background: 
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/Dog/RoomBackground.gif");
-
-
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: cover, cover, cover;
-    background-position: center, center, center;
-
-}
-
-.Main_ComponentContainer-Color--WindowScreen--cat{
-
-    background: 
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/Cat/RoomBackground.gif");
-
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: cover, cover, cover;
-    background-position: center, center, center;
-
-}
-
-.Main_ComponentContainer-Color--WindowScreen--fish{
-
-    background: 
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/PetBackgroundLayer.png"),
-        url("../../../../images/Fish/RoomBackground.gif");
-
-    background-repeat: no-repeat, no-repeat, no-repeat;
-    background-size: cover, cover, cover;
-    background-position: center, center, center;
-
-}
-
-
-.Main_ComponentContainer-Color--WindowScreen--none{
-
-    background: url("../../../../images/BackgroundLayer.png");
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-}
-
-
-
 .Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
 
-    height: 35%;
+    height: auto;
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    align-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    z-index: 5;
+    justify-content: center;
+    justify-items: center;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(10, 8%);
     position: absolute;
     top: 0%;
-    left: 0%;
+    z-index: 5;
 
     padding: 2rem;
+
 
 }
 
 
 .Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart {
 
-    height: 50%;
-    width: auto;
+    height: auto;
+    width: 100%;
 
     filter: 
         drop-shadow(0 0 1px rgb(255, 255, 255))
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 3px rgb(255, 255, 255));
-
 
 }
  
@@ -86,16 +35,16 @@
 .Main_ComponentContainer-Structure--WindowScreenGrid {
 
     width: 100%;
-    height: 45%;
+    height: auto;
     align-content: center;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     justify-items: center;
-    position: absolute;
-    bottom: 0%;
     display: grid;
     grid-template-columns: repeat(20, auto);
-    grid-template-rows: repeat(1, 100%);
+    grid-template-rows: repeat(1, auto);
+    position: absolute;
+    bottom: 5%;
 
 }
 
@@ -132,14 +81,14 @@
 
 .Main_ComponentContainer-Structure--WindowScreenNongrid{
 
-    width: 100%;
-    height: 45%;
-    position: absolute;
-    bottom: 0%;
+    width: auto;
+    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    bottom: 5%;
 
     padding: 2rem;
 
@@ -148,9 +97,8 @@
 
 .Main_ComponentContainer-Structure--WindowScreenNongridPet{
 
-    height: 12rem;
+    height: 100%;
     width: auto;
-
     z-index: 4;
 
     img {

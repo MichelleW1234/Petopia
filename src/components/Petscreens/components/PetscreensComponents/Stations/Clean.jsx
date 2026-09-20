@@ -158,7 +158,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                     <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
 
                         <div 
-                            className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Clean_ComponentContainer-Template--WindowScreen`} 
+                            className={`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Clean`} 
                             style={{
                                 cursor: `url('${clean_OptionsCurrSpeciesList[clean_OptionsUserSelection][petActivityOptionCursorKey]}'), auto`
                             }}>

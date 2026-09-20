@@ -367,7 +367,7 @@ function Home (){
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 {home_CanRestart ? (
 
@@ -422,7 +422,7 @@ function Home (){
 
             )}
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 

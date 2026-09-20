@@ -29,20 +29,20 @@ function Notifications() {
     };
     
     return (
-        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxes">
+        <div className = "Notification_ComponentContainer-Structure--Entries">
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen  MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBox">
+                <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen  Notification_ComponentContainer-Structure--Entry">
                     <button className="UIStapleElements_ComponentButtonRectangle-Structure--Global UIStapleElements_ComponentButtonRectangle-Color--Global--Screen" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
                         X  
                     </button>
-                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalDialogBoxContent">
-                        <div className="WrittenContentField">
+                    <div className = "Notification_ComponentContainer-Structure--EntryContent">
+                        <div className="Notification_ComponentContainer-Structure--EntryContentField">
                             <h2>Alert:</h2>
                             <p>{entry[notificationsDescriptionKey]}</p>
                             </div>
-                            <div className="WrittenContentField">
+                            <div className="Notification_ComponentContainer-Structure--EntryContentField">
                             <h2>Date:</h2>
                             <p>{entry[notificationsDateKey]}</p>
                         </div>

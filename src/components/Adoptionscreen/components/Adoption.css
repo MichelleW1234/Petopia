@@ -1,18 +1,6 @@
-.Adoption_ComponentContainer-Template--FormBody {
+.Adoption_ComponentContainer-Template--Form {
 
     width: 60rem;
-    height: auto;
-
-    padding: 6rem;
-    border-radius: 75px;
-
-}
-
-
-
-.Adoption_ComponentContainer-Template--FormBodyRow {
-
-    width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -20,16 +8,19 @@
     justify-content: center;
     flex-wrap: wrap;
 
+    padding: 6rem;
+    border-radius: 75px;
     gap: 2rem;
 
 }
 
 
 
-.Adoption_ComponentContainer-Template--FormBodyNameRowPetImage {
+.Adoption_ComponentContainer-Template--FormPetImage {
 
     width: 25%;
     height: auto;
+    
     padding: 2rem;
     border-radius: 25px;
 
@@ -50,11 +41,10 @@
 }
 
 
-.Adoption_ComponentContainer-Template--FormWrittenContent {
+.Adoption_ComponentContainer-Template--FormContent {
 
     width: 70%;
     height: auto;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,11 +55,12 @@
 }
 
 
-.Adoption_ComponentContainer-Template--FormInput{
+.Adoption_ComponentContainer-Template--FormContentInput{
 
     width: 85%;
     height: auto;
     text-align: center;
+
     border-radius: 9999px;
     padding: 2rem 4rem;
 
@@ -78,21 +69,6 @@
     box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
 }
- 
-
-.Adoption_ComponentContainer-Structure--Confirmation{
-
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 2rem;
-
-}
-
 
 .Adoption_ComponentContainer-Template--ConfirmationError {
 

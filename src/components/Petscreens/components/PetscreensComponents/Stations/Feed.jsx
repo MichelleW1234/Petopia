@@ -153,7 +153,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                     <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Feed_ComponentContainer-Template--WindowScreen">
+                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Feed">
 
                             <img src = {feed_CurrStageAnimationImage} />
 

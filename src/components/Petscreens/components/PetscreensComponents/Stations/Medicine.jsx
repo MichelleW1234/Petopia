@@ -209,7 +209,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                     <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Medicine_ComponentContainer-Template--WindowScreen">
+                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Medicine">
                             
                             <img src = {medicine_CurrStageAnimationImage} />
 

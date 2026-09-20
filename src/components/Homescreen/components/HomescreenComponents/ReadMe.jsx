@@ -22,7 +22,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
                 <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
                         <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
                         <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
                         <p> &bull; While an incorrect option can be selected, the activity will take twice as much effort to complete and the pet will lose health.</p>

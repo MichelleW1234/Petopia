@@ -109,7 +109,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell Activity_ComponentContainer-Color--TimebarCellDead"></div>
+                        <div key = {num} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"></div>
 
                     ))}
                     
@@ -125,15 +125,15 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                             num === 50 ? (
 
-                                <img src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                                <img key = {num} src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                             ) : num <= activity_CurrPercentUntilNextUpdate ?  (
 
-                                <img src = {Green} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                                <img key = {num}  src = {Green} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                             ) : (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                <div key = {num}  className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
                                 
                             )
 
@@ -145,15 +145,15 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                             num === 50 ? (
 
-                                <img src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                                <img key = {num}  src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                             ) : num <= activity_CurrPercentUntilNextUpdate ? (
 
-                                <img src = {Red} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                                <img key = {num}  src = {Red} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
                             
                             ) : (
 
-                                <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                <div key = {num}  className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
                                 
                             )
 

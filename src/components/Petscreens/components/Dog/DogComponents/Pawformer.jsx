@@ -144,7 +144,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen Pawformer_ComponentContainer-Template--Screen">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Pawformer">
           
             <img className="Pawformer_ComponentImage-Template--CorrectMove" src = {pawformer_CurrMoveTarget === 0 ? w
                         : pawformer_CurrMoveTarget === 1 ? a

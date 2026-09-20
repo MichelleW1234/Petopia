@@ -44,7 +44,7 @@ function Records({set_Records_OpenFlag}) {
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Your Pet's Identity Records:</h1>
 
                 <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent">
+                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>
                             <p> {ActivePetName}</p>

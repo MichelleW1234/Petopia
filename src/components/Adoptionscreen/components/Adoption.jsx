@@ -357,7 +357,7 @@ function Adoption () {
 
             <div className="UIStapleElements_Background-Template--Screen">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenContent">
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                     {adoption_PetGender === "" ? (
 
@@ -402,23 +402,21 @@ function Adoption () {
 
                             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
 
-                            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen Adoption_ComponentContainer-Template--FormBody"> 
+                            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen Adoption_ComponentContainer-Template--Form"> 
 
-                                <div className="Adoption_ComponentContainer-Template--FormBodyRow">
-                                    <div className="Adoption_ComponentContainer-Template--FormBodyNameRowPetImage">
-                                        <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
-                                    </div>
-                                    <div className="Adoption_ComponentContainer-Template--FormWrittenContent">
-                                        <p>Hello, friend! I am a {adoption_PetGender} {adoption_UserSelection}.</p>
-                                        <p>Thank you for adopting me!</p>
-                                        <input 
-                                            className="Adoption_ComponentContainer-Template--FormInput"
-                                            type="text"
-                                            value={adoption_UserInput}
-                                            onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                            placeholder="&lt;Pet Name&gt;"
-                                        />
-                                    </div>
+                                <div className="Adoption_ComponentContainer-Template--FormPetImage">
+                                    <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
+                                </div>
+                                <div className="Adoption_ComponentContainer-Template--FormContent">
+                                    <p>Hello, friend! I am a {adoption_PetGender} {adoption_UserSelection}.</p>
+                                    <p>Thank you for adopting me!</p>
+                                    <input 
+                                        className="Adoption_ComponentContainer-Template--FormContentInput"
+                                        type="text"
+                                        value={adoption_UserInput}
+                                        onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
+                                        placeholder="&lt;Pet Name&gt;"
+                                    />
                                 </div>
 
                             </div>
@@ -459,7 +457,7 @@ function Adoption () {
         
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenMenu">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
                 <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
             </div>
@@ -475,7 +473,7 @@ function Adoption () {
             )}
             
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenToggle">
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
                     className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>

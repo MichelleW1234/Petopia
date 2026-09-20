@@ -526,6 +526,8 @@ p {
 
   max-width: 90%;
   max-height: 80%;
+  height: auto;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -552,13 +554,15 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow {
 
+  height: auto;
+  width: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: start;
 
-  gap: 2rem;
+  gap: 3rem;
 
 }
 
@@ -617,6 +621,179 @@ p {
 }
 
 
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--dog{ 
+
+    background: 
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/Dog/RoomBackground.gif");
+
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--cat{
+
+    background: 
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/Cat/RoomBackground.gif");
+
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--fish{
+
+    background: 
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/PetBackgroundLayer.png"),
+        url("./images/Fish/RoomBackground.gif");
+
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--NoPet{
+
+  background: url("./images/BackgroundLayer.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--DefaultPlay{
+
+  background: inherit;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Medicine{
+
+  background: 
+      url("./images/ActivityBackgroundLayer.png"),
+      url("./images/MedicineBackground.png");
+
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+
+  img {
+
+    height: 40%;
+    width: auto;
+
+    filter: 
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 8px rgb(255, 255, 255))
+        drop-shadow(0 0 12px  rgb(255, 255, 255));
+
+  }
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Feed{
+
+  background: 
+      url("./images/ActivityBackgroundLayer.png"),
+      url("./images/FeedingBackground.png");
+
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+
+  img {
+
+      height: 40%;
+      width: auto;
+
+      filter: 
+          drop-shadow(0 0 4px rgb(255, 255, 255))
+          drop-shadow(0 0 8px rgb(255, 255, 255))
+          drop-shadow(0 0 12px  rgb(255, 255, 255));
+
+  }
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Clean{
+
+  background: 
+      url("./images/ActivityBackgroundLayer.png"),
+      url("./images/CleaningBackground.png");
+
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--StrollPatrol{
+
+    background: 
+        url("./images/ActivityBackgroundLayer.png"),
+        url("./images/Dog/Play/Games/StrollPatrol/Background.png");
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Pawformer{
+
+    background: 
+        url("./images/ActivityBackgroundLayer.png"),
+        url("./images/Dog/Play/Games/Pawformer/Background.png");
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--MouseHunt{
+
+    background: 
+        url("./images/ActivityBackgroundLayer.png"),
+        url("./images/Cat/Play/Games/MouseHunt/Background.png");
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing{
+
+    background: 
+        url("./images/ActivityBackgroundLayer.png"),
+        url("./images/Cat/Play/Games/MouseHunt/Background.png");
+
+    background-size: cover, cover;
+    background-position: center, center;
+    background-repeat: no-repeat, no-repeat;
+
+}
+
+
+
+
+
+
 .MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay {
 
   position: relative;
@@ -633,7 +810,7 @@ p {
 }
 
 
-.MiscellaneousElements_ComponentContainer-Template--GlobalWrittenContent{
+.MiscellaneousElements_ComponentContainer-Template--GlobalDocument{
 
   width: 100%;
   height: auto;
@@ -698,9 +875,13 @@ p {
 
   width: auto;
   height: auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
   display: grid;
   grid-template-rows: repeat(1, auto);
-  grid-template-columns: repeat(100, 1fr);
+  grid-template-columns: repeat(100, auto);
 
   box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
@@ -715,38 +896,34 @@ p {
 
 
 
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons{
 
-.MiscellaneousElements_ComponentContainer-Structure--ScreenToggle{
-  
   width: auto;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   position: fixed;
-  bottom: 3%;
-  left: 3%;
-  z-index: 6;
 
-  gap: 3rem;
-
-}
-
-
-
-.MiscellaneousElements_ComponentContainer-Structure--ScreenMenu {
-
-  position: fixed;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  position: fixed;
-  top: 3%;
+  left: 0%;
   z-index: 6;
 
   padding-left: 3rem;
   padding-right: 3rem;
   gap: 3rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle{
+  
+  bottom: 3%;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu {
+
+  top: 3%;
 
 }

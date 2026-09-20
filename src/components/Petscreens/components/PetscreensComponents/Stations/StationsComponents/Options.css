@@ -10,15 +10,6 @@
     padding: 2rem 6rem;
     border-radius: 50px;
     gap: 2rem;
-    
-    img{
-
-        filter:
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
-    
-    }
 
 }
 
@@ -37,6 +28,12 @@
 
         width: auto;
         height: 100%;
+
+        filter:
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+    
     
     }
 
@@ -45,7 +42,16 @@
 .Options_ComponentContainer-Structure--PetThoughtDesiredOption {
 
     height: 15rem;
-    width: 20rem;
+    width: auto;
+
+    img {
+
+        filter:
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
 
 }
 
