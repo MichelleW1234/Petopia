@@ -21,23 +21,21 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
-                <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
-                        <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
-                        <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
-                        <p> &bull; While an incorrect option can be selected, the activity will take twice as much effort to complete and the pet will lose health.</p>
-                        <p> &bull; A pet will also lose health if an actiivty isn't performed on time according to its schedule. Damage varies based on activity.</p>
-                        <p> &bull; A pet can gain health when given (the correct) medicine. Medicine is most effective when pets are sleeping (between 8pm and 6am). Only one dose per 24 hours is allowed.</p>
-                        <p> &bull; Pets will also gain health (increased health capacity) when they grow to their next stage. There are three stages in total.</p>
-                        <p> &bull; Once you've accomplished the achievement of fully evolving a species to its final stage, items will unlock in your inventory that can be use to decorate your pets' rooms.</p>
-                        <p> &bull; Inside your inventory, there are 3 revival potions that can each be used on any pet that has died, but cannot be reused. You will not recieve any more after they have been used up unless you restart the game.</p>
-                        <p> &bull; Try interacting with your pets (hover over them) to see what happens!</p>
-                    </div>
+                <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
+                    <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
+                    <p> &bull; Be sure to select the option that the pet wants for an activity. If an activity isn't currently needed, there will be no desired option (an X).</p>
+                    <p> &bull; While an incorrect option can be selected, the activity will take twice as much effort to complete and the pet will lose health.</p>
+                    <p> &bull; A pet will also lose health if an actiivty isn't performed on time according to its schedule. Damage varies based on activity.</p>
+                    <p> &bull; A pet can gain health when given (the correct) medicine. Medicine is most effective when pets are sleeping (between 8pm and 6am). Only one dose per 24 hours is allowed.</p>
+                    <p> &bull; Pets will also gain health (increased health capacity) when they grow to their next stage. There are three stages in total.</p>
+                    <p> &bull; Once you've accomplished the achievement of fully evolving a species to its final stage, items will unlock in your inventory that can be use to decorate your pets' rooms.</p>
+                    <p> &bull; Inside your inventory, there are 3 revival potions that can each be used on any pet that has died, but cannot be reused. You will not recieve any more after they have been used up unless you restart the game.</p>
+                    <p> &bull; Try interacting with your pets (hover over them) to see what happens!</p>
                 </div>
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [5]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [5]</button>
 
         </div>
     );

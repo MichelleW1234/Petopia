@@ -141,7 +141,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Pet to Revive:</h1>
 
-                <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag potionBar">
+                <div className="UIStapleElements_ComponentFrame-Template--Global potionBar">
 
                     <div className="potionImageContainer">
                         {Array.from({ length: 3}, (_, col) => (
@@ -158,26 +158,29 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                         ))}
                     </div>
+                    
                 </div>
 
                 {!Object.values(PetList).some(pet => pet[petHealthKey] === 0) ? (
 
-                    <div className="RevivePets_ComponentImage-Structure--NoPetImageContainer">
-                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
+
+                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag imageBox">
+                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
                         </div>
+                        
                     </div>
 
                 ) : (
@@ -192,17 +195,17 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                             ) : (
 
-                                <div key = {index} className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                <div key = {index} className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                                     {RevivePets_UserSelection === petName ? (
 
-                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
+                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </button>
 
                                     ) : (
 
-                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
+                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </button>
 
@@ -226,15 +229,15 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick={() => helpers_Closer_Flags(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Closer_Flags(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {RevivePets_UserSelection === "" ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag">Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick ">Confirm <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
 
                 )}
 

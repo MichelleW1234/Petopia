@@ -2,12 +2,9 @@
 
     width: 100%;
     height: auto;
-    align-content: center;
-    align-items: center;
     justify-content: center;
-    justify-items: center;
     display: grid;
-    grid-template-rows: repeat(2, auto);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(4, 20%);
 
     gap: 2rem;

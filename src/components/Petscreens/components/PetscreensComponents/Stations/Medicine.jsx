@@ -17,7 +17,6 @@ import GivingMedicine from "../../../../../Music/PetImmersionSounds/GivingMedici
 
 
 import "../../../../../App.css";
-import "./Medicine.css";
 
 
 
@@ -207,7 +206,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
                         progressBar_ActivitySuccess={medicine_Success}
                     />
 
-                    <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
                         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Medicine">
                             
@@ -224,15 +223,15 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick " onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {medicine_OptionsUserSelection === -1 || medicine_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag"> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Confirm" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> Confirm <br/> [return]</button>
 
                 )}
 

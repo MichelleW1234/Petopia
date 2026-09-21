@@ -3,12 +3,13 @@ import "./ProgressBar.css";
 
 import Red from "../../../../../../images/RedProgressBarCell.png";
 import Green from "../../../../../../images/GreenProgressBarCell.png";
+import Blank from "../../../../../../images/BlankGridSpace.png";
 
 function ProgressBar({progressBar_CurrPercentUntilNextUpdate, progressBar_ActivitySuccess}) {
 
     return (
 
-        <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag ProgressBar_ComponentContainer-Structure--BarBackground">
+        <div className="UIStapleElements_ComponentFrame-Template--Global ProgressBar_ComponentContainer-Structure--BarBackground">
             <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
 
                 {progressBar_ActivitySuccess ? (
@@ -21,7 +22,7 @@ function ProgressBar({progressBar_CurrPercentUntilNextUpdate, progressBar_Activi
 
                         ) : (
 
-                            <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                            <img key = {num} src = {Blank} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                         )
                 
@@ -38,7 +39,7 @@ function ProgressBar({progressBar_CurrPercentUntilNextUpdate, progressBar_Activi
 
                         ) : (
 
-                            <div key = {num} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                            <img key = {num} src = {Blank} className = "MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                         )
 

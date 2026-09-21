@@ -27,38 +27,36 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read the Species Maintenance Requirements:</h1>
-                <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
-                    <div className="MiscellaneousElements_ComponentContainer-Template--GlobalDocument">
-                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Dog &rarr; High Maintenance Pet</h2>
-                            <div>
-                                <p>&bull; Feed 3 times a day </p>
-                                <p>&bull; Clean 1 time a day </p>
-                                <p>&bull; Play 2 times a day </p>
-                                <p>&bull; Grows every 5 days  </p>
-                            </div>
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
+                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                        <h2>Dog &rarr; High Maintenance Pet</h2>
+                        <div>
+                            <p>&bull; Feed 3 times a day </p>
+                            <p>&bull; Clean 1 time a day </p>
+                            <p>&bull; Play 2 times a day </p>
+                            <p>&bull; Grows every 5 days  </p>
                         </div>
-                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Cat &rarr; Medium Maintenance Pet </h2>
-                            <div>
-                                <p>&bull; Feed 2 times a day </p>
-                                <p>&bull; Play 1 time a day </p>
-                                <p>&bull; Grows every 7 days </p>
-                            </div>
+                    </div>
+                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                        <h2>Cat &rarr; Medium Maintenance Pet </h2>
+                        <div>
+                            <p>&bull; Feed 2 times a day </p>
+                            <p>&bull; Play 1 time a day </p>
+                            <p>&bull; Grows every 7 days </p>
                         </div>
-                        <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Fish &rarr; Low Maintenance Pet </h2>
-                            <div>
-                                <p>&bull; Feed 1 time a day </p>
-                                <p>&bull; Clean 1 time a day </p>
-                                <p>&bull; Grows every 3 days</p>
-                            </div>
+                    </div>
+                    <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
+                        <h2>Fish &rarr; Low Maintenance Pet </h2>
+                        <div>
+                            <p>&bull; Feed 1 time a day </p>
+                            <p>&bull; Clean 1 time a day </p>
+                            <p>&bull; Grows every 3 days</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
         </div>
     );
 }

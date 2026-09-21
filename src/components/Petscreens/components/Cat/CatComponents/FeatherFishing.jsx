@@ -5,7 +5,8 @@ import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../..
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
-import arrow from "../../../../../images/Cat/Play/Games/FeatherFishing/Arrow.png";
+import arrow from "../../../../../images/ActivityGameTargetArrow.png";
+import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./FeatherFishing.css";
@@ -15,7 +16,7 @@ import "./FeatherFishing.css";
 
 function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
-    const featherFishing_WindowHeight = 5;
+    const featherFishing_WindowWidth = 5;
 
     const [featherFishing_Start, set_FeatherFishing_Start] = useState(false);
     const [featherFishing_CurrHookLength, set_FeatherFishing_HookLength] = useState(0);
@@ -96,12 +97,12 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
         <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing">
             
-            <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Left" src = {arrow}/>
-            <img className = "FeatherFishing_ComponentContainer-Template--Arrow FeatherFishing_ComponentContainer-Template--Arrow--Right" src = {arrow}/>
+            <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Top" src = {arrow}/>
+            <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Bottom" src = {arrow}/>
 
             <div className="FeatherFishing_ComponentContainer-Structure--Grid">
 
-                {Array.from({ length: featherFishing_WindowHeight}, (_, row) => {
+                {Array.from({ length: featherFishing_WindowWidth}, (_, row) => {
 
                     const featherFishing_HookHeadHere = row === featherFishing_CurrHookLength;
                     const featherFishing_HookBodyHere = row < featherFishing_CurrHookLength;
@@ -136,11 +137,11 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
                             row === 2 ? (
 
-                                <div key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCellBlank" src={Blank}/>
 
                             ) : (
 
-                                <div key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell"></div>
+                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCellBlank" src={Blank}/>
 
                             )
 

@@ -73,7 +73,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Background Music Volume:</h1>
-                <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MusicVolume_ComponentContainer-Structure--Widget">
+                <div className="UIStapleElements_ComponentFrame-Template--Global MusicVolume_ComponentContainer-Structure--Widget">
                     <div className="MusicVolume_ComponentContainer-Structure--WidgetImage">
                         <img src = {VolumeSpeaker}/>
                     </div>
@@ -92,7 +92,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
                 </div>
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
+            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
         </div>
     );
 }

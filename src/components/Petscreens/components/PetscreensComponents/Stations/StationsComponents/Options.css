@@ -1,23 +1,23 @@
 .Options_ComponentContainer-Structure--PetThought {
 
     height: auto;
-    width: auto;
+    width: 50rem;
     display: flex;
     flex-direction: row;
     align-items: end;
     justify-content: center;
 
-    padding: 2rem 6rem;
+    padding: 3rem 6rem;
     border-radius: 50px;
-    gap: 2rem;
+    gap: 3rem;
 
 }
 
 
 .Options_ComponentImage-Template--PetThoughtPet{
 
-    width: auto;
-    height: 11rem;
+    width: 35%;
+    height: auto;
 
     padding: 2rem;
     border-radius: 25px;
@@ -26,8 +26,8 @@
 
     img{
 
-        width: auto;
-        height: 100%;
+        width: 100%;
+        height: auto;
 
         filter:
             drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -41,8 +41,8 @@
 
 .Options_ComponentContainer-Structure--PetThoughtDesiredOption {
 
-    height: 15rem;
-    width: auto;
+    height: auto;
+    width: 50%;
 
     img {
 
@@ -57,14 +57,14 @@
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{
 
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
   
 }
 
 .Options_ComponentImage-Template--PetThoughtDesiredOptionObject{
 
-    height: 50%;
-    width: auto;
+    height: auto;
+    width: 40%;
 
 }

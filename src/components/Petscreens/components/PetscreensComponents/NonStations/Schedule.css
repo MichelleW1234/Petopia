@@ -1,8 +1,11 @@
 .Schedule_ComponentContainer-Structure--Schedule{
 
-  width: auto;
+  width: 50rem;
   height: auto;
+  display: flex;
+  flex-direction: column;
 
+  gap: 2rem;
   padding: 6rem;
   border-radius: 75px;
   

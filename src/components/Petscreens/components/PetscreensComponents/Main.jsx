@@ -13,6 +13,7 @@ import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
 import PetHappySymbol from "../../../../images/PetHappySymbol.gif";
 import HealthyPetHeart from "../../../../images/HealthyPetHeart.png";
 import UnhealthyPetHeart from "../../../../images/UnhealthyPetHeart.png";
+import Blank from "../../../../images/BlankGridSpace.png";
 
 import "../../../../App.css";
 import "./Main.css";
@@ -176,13 +177,13 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
         ActivePetName === "" ? (
 
-            <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+            <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className= "MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--NoPet"></div>
             </div>
 
         ) : (
 
-            <div className = "UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
+            <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--${PetList[ActivePetName][petSpeciesKey]}`}>
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
@@ -201,7 +202,11 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                             ) : (
 
-                                <div key = {num}  className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"></div>
+                                <img
+                                    key={num}
+                                    className="Main_ComponentImage-Template--WindowScreenPetStatsHealthCellBlank"
+                                    src = {Blank} 
+                                />
 
                             )
 
@@ -211,38 +216,36 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                     {PetList[ActivePetName][petHealthKey] === 0 ? (
 
-                        <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
+                        null
 
                     ) : (
 
                         main_Boolean_ActivityInProgress ? (
 
-                            <div className= "Main_ComponentContainer-Structure--WindowScreenNongrid"></div>
+                            null
 
                         ) : (
 
                             main_Boolean_PetSleeping ? (
 
-                                <div className="Main_ComponentContainer-Structure--WindowScreenNongrid"> 
+                                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenNongridPet">
+                                    <img
+                                        onMouseEnter={() => main_Timer_EmotionExpression()}
+                                        src = {main_Image_StageSleepAnimation}
+                                    />
 
-                                    <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenNongridPet">
-                                        <img
-                                            onMouseEnter={() => main_Timer_EmotionExpression()}
-                                            src = {main_Image_StageSleepAnimation}
-                                        />
-
-                                        {main_Boolean_GiveAttention &&
-                                        <img
-                                            className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
-                                            src = {PetSleepingSymbol} 
-                                            onMouseEnter={() => main_Timer_EmotionExpression()}
-                                        />}
-                                    </div>
+                                    {main_Boolean_GiveAttention &&
+                                    <img
+                                        className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer"
+                                        src = {PetSleepingSymbol} 
+                                        onMouseEnter={() => main_Timer_EmotionExpression()}
+                                    />}
                                 </div>
 
                             ) : (
 
                                 <div className="Main_ComponentContainer-Structure--WindowScreenGrid"> 
+
                                     {Array.from({ length: main_Number_WindowLength }, (_, i) => i).map(index => {
                                         
                                         const bound_Boolean_PetHere = main_Number_PetPosition === index;
@@ -268,13 +271,18 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                                             ) : (
 
-                                                <div key={index} className="Main_ComponentContainer-Structure--WindowScreenGridCellNonpet"></div>
+                                                <img
+                                                    key={index}
+                                                    className="Main_ComponentContainer-Structure--WindowScreenGridCellBlank"
+                                                    src = {Blank} 
+                                                />
 
                                             )
                                 
                                         )
 
                                     })}
+
                                 </div>
 
                             )

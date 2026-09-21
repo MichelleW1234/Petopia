@@ -1,6 +1,6 @@
 .Activity_ComponentContainer-Structure--Category{
 
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 
 .Activity_ComponentContainer-Structure--CategoryField{
 
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: row;

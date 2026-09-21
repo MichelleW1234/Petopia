@@ -216,7 +216,7 @@ p {
 
 /*Components:*/
 
-.UIStapleElements_ComponentButtonPill-Structure--GlobalClick {
+.UIStapleElements_ComponentButtonPill-Template--GlobalClick {
 
   width: auto;
   height: auto;
@@ -229,19 +229,26 @@ p {
   border-bottom-width: 5px;
   border-right-width: 1px;
   border-top-width: 1px;
+
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
   transition: transform 0.3s ease;
 
 }
 
-.UIStapleElements_ComponentButtonPill-Structure--GlobalClick:hover,
-.UIStapleElements_ComponentButtonPill-Structure--GlobalClick.active {
+.UIStapleElements_ComponentButtonPill-Template--GlobalClick:hover,
+.UIStapleElements_ComponentButtonPill-Template--GlobalClick.active {
+
+  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
   transform: scale(1.10);
 
 }
 
-.UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick {
+.UIStapleElements_ComponentButtonPill-Template--GlobalNonclick {
 
   width: auto;
   height: auto;
@@ -255,11 +262,15 @@ p {
   border-right-width: 1px;
   border-top-width: 1px;
 
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+
 }
 
 
 
-.UIStapleElements_ComponentButtonRectangle-Structure--Global {
+.UIStapleElements_ComponentButtonRectangle-Template--Global {
 
   width: auto;
   height: auto;
@@ -273,13 +284,20 @@ p {
   border-right-width: 1px;
   border-top-width: 1px;
 
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont));
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
+
   transition: transform 0.3s ease;
 
 }
 
 
-.UIStapleElements_ComponentButtonRectangle-Structure--Global:hover,
-.UIStapleElements_ComponentButtonRectangle-Structure--Global.active {
+.UIStapleElements_ComponentButtonRectangle-Template--Global:hover,
+.UIStapleElements_ComponentButtonRectangle-Template--Global.active {
+
+  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
   transform: scale(1.10);
 
@@ -316,7 +334,7 @@ p {
 }
 
 
-.UIStapleElements_ComponentFrame-Structure--Global{
+.UIStapleElements_ComponentFrame-Template--Global{
 
   border-left-width: 10px;
   border-bottom-width: 10px;
@@ -324,97 +342,6 @@ p {
   border-top-width: 2px;
   border-style: solid;
 
-}
-
-
-
-
-.UIStapleElements_ComponentButtonRectangle-Color--Global--Screen{
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-
-.UIStapleElements_ComponentButtonRectangle-Color--Global--Screen:hover,
-.UIStapleElements_ComponentButtonRectangle-Color--Global--Screen.active {
-  
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--Screen {
-
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  img{
-
-    filter: 
-      drop-shadow(0 0 2px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 6px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
-  }
-
-}
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--Screen:hover,
-.UIStapleElements_ComponentButtonCircle-Color--Global--Screen.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected {
-
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  img{
-
-    filter: 
-      drop-shadow(0 0 2px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 6px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
-  }
-
-}
-
-
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen {
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen:hover,
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen {
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-
-}
-
-
-.UIStapleElements_ComponentFrame-Color--Global--Screen {
-
   color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorFont));
   border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBorder));
   background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundSecond)) 100%);
@@ -422,51 +349,9 @@ p {
 }
 
 
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag {
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag:hover,
-.UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--FloatingFlag {
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-
-}
 
 
-
-.UIStapleElements_ComponentButtonRectangle-Color--Global--FloatingFlag{
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-
-.UIStapleElements_ComponentButtonRectangle-Color--Global--FloatingFlag:hover,
-.UIStapleElements_ComponentButtonRectangle-Color--Global--FloatingFlag.active {
-  
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag {
+.UIStapleElements_ComponentButtonCircle-Color--Global--Global {
 
   border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
   background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
@@ -483,14 +368,14 @@ p {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag:hover,
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag.active {
+.UIStapleElements_ComponentButtonCircle-Color--Global--Global:hover,
+.UIStapleElements_ComponentButtonCircle-Color--Global--Global.active {
 
   box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected {
+.UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected {
 
   border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
   background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
@@ -506,15 +391,6 @@ p {
   }
 
 }
-
-.UIStapleElements_ComponentFrame-Color--Global--FloatingFlag {
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentFrame-Light--GlobalColorBackgroundSecond)) 100%);
-  
-}
-
 
 
 
@@ -810,20 +686,6 @@ p {
 }
 
 
-.MiscellaneousElements_ComponentContainer-Template--GlobalDocument{
-
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 1rem;
-
-}
-
-
 
 .MiscellaneousElements_ComponentText-Template--GlobalDescriptor{
 
@@ -858,17 +720,21 @@ p {
 
 
 
-
-
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
   width: 55rem;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   padding: 6rem;
+  gap: 1rem;
   border-radius: 75px;
-
+  
 }
+
 
 
 .MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar {
@@ -880,8 +746,8 @@ p {
   justify-content: center;
   justify-items: center;
   display: grid;
-  grid-template-rows: repeat(1, auto);
-  grid-template-columns: repeat(100, auto);
+  grid-template-rows: repeat(1, 10px);
+  grid-template-columns: repeat(100, 5px);
 
   box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
@@ -889,10 +755,53 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell {
 
-  height: 10px;
-  width: 5px;
+  height: 100%;
+  width: 100%;
 
 }
+
+
+.MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow {
+
+  height: 25%;
+  width: auto;
+  position: absolute;
+
+  filter: 
+      drop-shadow(0 0 2px rgb(255, 255, 255))
+      drop-shadow(0 0 4px rgb(255, 255, 255))
+      drop-shadow(0 0 6px  rgb(255, 255, 255));
+
+}
+
+
+.MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Top {
+
+  top: 10%;
+
+}
+
+
+.MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Bottom{
+
+  bottom: 10%;
+  transform: scaleY(-1);
+
+}
+
+
+.MiscellaneousElements_ComponentImage-Structure--GridCellBlank{
+
+  width: 100%;
+  height: 100%;
+
+}
+
+
+
+
+
+
 
 
 
@@ -908,8 +817,8 @@ p {
   left: 0%;
   z-index: 6;
 
-  padding-left: 3rem;
-  padding-right: 3rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
   gap: 3rem;
 
 }
@@ -917,13 +826,15 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle{
   
-  bottom: 3%;
+  bottom: 0%;
+  margin-bottom: 2rem;
 
 }
 
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu {
 
-  top: 3%;
+  top: 0%;
+  margin-top: 2rem;
 
 }

@@ -7,7 +7,8 @@ import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
 import a from "../../../../../images/Dog/Play/Games/Pawformer/A.png";
 import s from "../../../../../images/Dog/Play/Games/Pawformer/S.png";
 import d from "../../../../../images/Dog/Play/Games/Pawformer/D.png";
-import arrow from "../../../../../images/Dog/Play/Games/Pawformer/Arrow.png";
+import arrow from "../../../../../images/ActivityGameTargetArrow.png";
+import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./Pawformer.css";
@@ -151,8 +152,8 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
                         : pawformer_CurrMoveTarget === 2 ? s
                         : d
             }/>
-            <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Top" src = {arrow}/>
-            <img className = "Pawformer_ComponentContainer-Template--Arrow Pawformer_ComponentContainer-Template--Arrow--Bottom" src = {arrow}/>
+            <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Top" src = {arrow}/>
+            <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Bottom" src = {arrow}/>
 
             <div className="Pawformer_ComponentContainer-Structure--Grid">
 
@@ -215,7 +216,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                         ) : (
 
-                            <div key = {col} className="Pawformer_ComponentContainer-Template--GridCell"></div>
+                            <img key = {col} className="Pawformer_ComponentContainer-Template--GridCellBlank" src = {Blank}/>
 
                         )
 

@@ -18,11 +18,13 @@ import { ReviversProvider } from "./providers/ReviversProvider.jsx";
 
 
 const currentVersion = "1.0.1";
+/*
 const savedVersion = localStorage.getItem("PetopiaAppVersion");
 if (savedVersion !== currentVersion) {
   localStorage.clear();
   localStorage.setItem("PetopiaAppVersion", currentVersion);
 }
+*/
 
 
 createRoot(document.getElementById("root")).render(

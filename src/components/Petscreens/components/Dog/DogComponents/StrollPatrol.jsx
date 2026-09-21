@@ -5,6 +5,7 @@ import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js
 
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
 import Rock from "../../../../../images/Dog/Play/Games/StrollPatrol/Rock.png";
+import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./StrollPatrol.css";
@@ -151,7 +152,11 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             ) : (
 
-                                <div key = {row + " & " + col} className="StrollPatrol_ComponentContainer-Structure--GridCell"></div>
+                                <img 
+                                    key = {row + " & " + col} 
+                                    className="StrollPatrol_ComponentContainer-Structure--GridCellBlank" 
+                                    src = {Blank}
+                                />
 
                             )
                         

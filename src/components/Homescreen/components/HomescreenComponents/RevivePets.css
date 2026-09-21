@@ -22,7 +22,7 @@
     grid-template-rows: repeat(1, 8rem);
 
     padding: 1rem 2rem;
-    gap: 1rem;
+    gap: 2rem;
     border-radius: 25px;
 
     box-shadow: 0 0 16px 4px rgb(255, 255, 255);
@@ -38,22 +38,6 @@
         drop-shadow(0 0 2px rgb(255, 255, 255))
         drop-shadow(0 0 4px rgb(255, 255, 255))
         drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-}
-
-
-.RevivePets_ComponentImage-Structure--NoPetImageContainer{
-
-  width: auto;
-  height: auto;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  gap: 3rem;
 
 }
 

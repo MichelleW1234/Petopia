@@ -369,16 +369,16 @@ function Adoption () {
                 
                                 {Object.keys(petSpeciesImagePortraitList).map((key) => (
                 
-                                    <div key = {key} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                    <div key = {key} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                         {key === adoption_UserSelection ? (
                 
-                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
                                                 <img src = {petSpeciesImagePortraitList[key][0]}/>
                                             </button>
 
                                         ) : (
                 
-                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
+                                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
                                                 <img src = {petSpeciesImagePortraitList[key][0]}/>
                                             </button>
                 
@@ -402,7 +402,7 @@ function Adoption () {
 
                             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
 
-                            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen Adoption_ComponentContainer-Template--Form"> 
+                            <div className="UIStapleElements_ComponentFrame-Template--Global Adoption_ComponentContainer-Template--Form"> 
 
                                 <div className="Adoption_ComponentContainer-Template--FormPetImage">
                                     <img src = {petSpeciesImagePortraitList[adoption_UserSelection][0]}/>
@@ -432,15 +432,15 @@ function Adoption () {
                 {adoption_PetGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Quit <br/> [esc]</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Quit <br/> [esc]</button>
 
                         {adoption_UserSelection === "" ? (
 
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Confirm <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>
 
                         ) : (
 
-                            <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
 
                         )}
                         
@@ -449,8 +449,8 @@ function Adoption () {
                 ) : (
     
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
-                        <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
+                        <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
                     </div>
     
                 )} 
@@ -458,8 +458,8 @@ function Adoption () {
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
-                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
+                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
             </div>
             
             {Notifications.length > 0 ? (
@@ -475,13 +475,13 @@ function Adoption () {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
+                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

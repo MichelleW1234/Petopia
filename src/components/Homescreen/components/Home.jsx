@@ -31,7 +31,6 @@ import NoPetPortrait from "../../../images/NoPetPortrait.png";
 
 
 import "../../../App.css";
-import "./Home.css";
 
 
 
@@ -283,12 +282,12 @@ function Home (){
 
                             petName === "" ? (
 
-                                <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                                     
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortrait}/>
@@ -297,7 +296,7 @@ function Home (){
                                     ) : (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortrait}/>
@@ -313,12 +312,12 @@ function Home (){
 
                             ) : (
                 
-                                <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">  
+                                <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">  
                                     
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--ScreenSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
@@ -327,7 +326,7 @@ function Home (){
                                     ) : (
 
                                         <button 
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Screen MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
@@ -351,14 +350,14 @@ function Home (){
 
                 {home_UserSelection === -1 ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen">
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick ">
                         Confirm <br/> [return]
                     </button>
 
                 ) : (
 
                     <button
-                        className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Confirm" 
+                        className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" 
                         onClick = {() => GoToSelection()}>
                         Confirm <br/> [return]
                     </button>
@@ -371,11 +370,11 @@ function Home (){
 
                 {home_CanRestart ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Restart <br/> [1]</button>
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Restart <br/> [1]</button>
 
                 )}
                 
@@ -383,16 +382,16 @@ function Home (){
                 {home_MinPetsAdopted ? (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
 
                         {Revivers > 0 ? (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
 
                         ) : (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Revive Pets <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
 
                         )}
 
@@ -401,14 +400,14 @@ function Home (){
                 ) : (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Clear Pets <br/> [3]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalNonclick UIStapleElements_ComponentButtonPill-Color--GlobalNonclick--Screen"> Revive Pets <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clear Pets <br/> [3]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
                     </>
 
                 )}
 
-                <button className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
                 
             </div>
 
@@ -425,13 +424,13 @@ function Home (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Volume" 
+                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--Screen Inventory" 
+                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

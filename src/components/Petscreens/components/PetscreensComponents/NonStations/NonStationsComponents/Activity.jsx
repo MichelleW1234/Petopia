@@ -8,6 +8,7 @@ import { petHealthKey, petActivityTimeStampFeedingKey, petActivityTimeStampClean
 import Red from "../../../../../../images/RedProgressBarCell.png";
 import Green from "../../../../../../images/GreenProgressBarCell.png";
 import Black from "../../../../../../images/BlackProgressBarCell.png";
+import Blank from "../../../../../../images/BlankGridSpace.png";
 
 import "../../../../../../App.css";
 import "./Activity.css";
@@ -77,7 +78,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
         [petActivityTimeStampFeedingKey]: "Last Fed: ",
         [petActivityTimeStampCleaningKey]: "Last Cleaned: ",
         [petActivityTimeStampPlayingKey]: "Last Played: ",
-        [petMedicineKey]: "Last Dose Recieved: "
+        [petMedicineKey]: "Last Dose: "
 
     }
 
@@ -86,7 +87,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
         [petActivityTimeStampFeedingKey]: "Feed Before: ",
         [petActivityTimeStampCleaningKey]: "Clean Before: ",
         [petActivityTimeStampPlayingKey]: "Play Before: ",
-        [petMedicineKey]: "Next Dose Available: "
+        [petMedicineKey]: "Next Dose: "
 
     }
 
@@ -109,7 +110,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <div key = {num} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"></div>
+                        <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
 
                     ))}
                     
@@ -133,7 +134,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
                             ) : (
 
-                                <div key = {num}  className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
                                 
                             )
 
@@ -153,7 +154,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
                             
                             ) : (
 
-                                <div key = {num}  className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"> </div>
+                                <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
                                 
                             )
 

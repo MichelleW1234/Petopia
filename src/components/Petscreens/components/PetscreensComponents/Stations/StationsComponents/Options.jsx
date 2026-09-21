@@ -44,7 +44,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
         
             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
 
-            <div className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag Options_ComponentContainer-Structure--PetThought"> 
+            <div className="UIStapleElements_ComponentFrame-Template--Global Options_ComponentContainer-Structure--PetThought"> 
 
                 <div className = "Options_ComponentImage-Template--PetThoughtPet">
                     <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} />
@@ -63,17 +63,17 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                 {options_CurrSpeciesList.map((option, index) => (
 
-                    <div key = {index} className="UIStapleElements_ComponentFrame-Structure--Global UIStapleElements_ComponentFrame-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                    <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
                         {options_UserSelection === index ? (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlagSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 
                         ) : (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--FloatingFlag MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 
@@ -82,6 +82,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
                             <h2>{option[petActivityOptionNameKey]}</h2>
                         </div>
+                        
                     </div>
 
                 ))}

@@ -1,40 +1,8 @@
-.Pawformer_ComponentContainer-Template--Arrow {
-
-    height: 25%;
-    width: auto;
-    position: absolute;
-
-    filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px  rgb(255, 255, 255));
-
-}
-
-
-.Pawformer_ComponentContainer-Template--Arrow--Top {
-
-    top: 10%;
-
-}
-
-
-.Pawformer_ComponentContainer-Template--Arrow--Bottom{
-
-    bottom: 10%;
-    transform: scaleY(-1);
-
-}
-
-
 .Pawformer_ComponentContainer-Structure--Grid{
 
     height: auto;
     width: 100%;
-    align-content: center;
-    align-items: center;
     justify-content: center;
-    justify-items: center;
     display: grid;
     grid-template-rows: repeat(1, auto);
     grid-template-columns: repeat(9, 10%);
@@ -63,6 +31,16 @@
         drop-shadow(0 0 12px  rgb(255, 255, 255));
 
 }
+
+
+.Pawformer_ComponentContainer-Template--GridCellBlank{
+
+    width: 100%;
+    height: 100%;
+
+}
+
+
 
 .Pawformer_ComponentImage-Template--CorrectMove {
 

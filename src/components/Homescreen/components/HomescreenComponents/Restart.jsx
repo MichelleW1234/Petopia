@@ -139,8 +139,8 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Structure--GlobalClick UIStapleElements_ComponentButtonPill-Color--GlobalClick--FloatingFlag Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>
 
         </div>
