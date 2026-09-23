@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
-import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
+import { audioRectangleButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
 
 import featherHead from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import featherBody from "../../../../../images/Cat/Play/Games/FeatherFishing/FeatherBody.png";
 import arrow from "../../../../../images/ActivityGameTargetArrow.png";
-import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./FeatherFishing.css";
@@ -70,7 +69,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
     const featherFishing_HitManager = (featherFishing_HitManager_Success) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         if (!featherFishing_HitAttempt){
 
@@ -123,27 +122,15 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
                         ) : featherFishing_HookBodyHere ? (
 
-                            row === 2 ? (
-
-                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
-
-                            ) : (
-
-                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
-
-                            )
+                            <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCell" src = {featherBody} onClick = {() => featherFishing_HitManager(0)}/>
 
                         ) : (
 
-                            row === 2 ? (
-
-                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCellBlank" src={Blank}/>
-
-                            ) : (
-
-                                <img key = {row} className="FeatherFishing_ComponentContainer-Template--GridCellBlank" src={Blank}/>
-
-                            )
+                            <div 
+                                key = {row} 
+                                className="FeatherFishing_ComponentContainer-Template--GridCell"
+                            >
+                            </div>
 
                         ) 
 

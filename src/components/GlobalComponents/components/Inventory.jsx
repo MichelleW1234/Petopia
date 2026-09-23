@@ -13,7 +13,7 @@ import inventoryItemLock from "../../../images/inventoryItemLock.png";
 import PetUnwantedActivity from "../../../images/PetUnwantedActivity.png";
 
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
-import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, audioScreenButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivePetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampLastPerformedKey, petSpeciesCatKey, petActivityTimeStampCleaningKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petSpeciesHealthCapList, petHealthKey, petActivityTimeStampPlayingKey, petSpeciesImagePortraitList, audioRectangleButtonPressKey, inventoryItemImageKey, inventoryItemNameKey, inventoryItemOwnerKey, inventoryItemSpeciesAcceptedKey, inventoryItemTypeKey, petSpeciesKey, petStageKey, audioAddedDecorationsKey, audioRevivePetKey, inventoryItemTypeFloorDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeRoomDecorationKey, achievementStatusKey, achievementDescriptionKey, audioCircleButtonPressKey } from "../../../constants/Constants.js";
 
 
 import "../../../App.css";
@@ -42,7 +42,7 @@ function Inventory({set_Inventory_OpenFlag}) {
     const inventory_EntryOwnerSelector = (inventory_EntryOwnerSelector_EntryIndex, inventory_EntryOwnerSelector_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioAddedDecorationsKey);
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
 
         setInventory(prev => {
 
@@ -68,7 +68,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
     const inventory_EntryOwnerDeselector = (inventory_EntryOwnerDeselector_EntryIndex) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         setInventory(prev => {
 
             const inventory_EntryOwnerDeselector_CurrCopy = prev.map(inner =>
@@ -257,7 +257,12 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Done <br/> [return]</button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Done <br/> [return]</button>
+
+            </div>
+            
         </div>
     );
 }

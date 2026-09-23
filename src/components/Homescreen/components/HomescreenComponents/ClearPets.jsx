@@ -7,8 +7,8 @@ import { useInventory } from "../../../../providers/InventoryProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { audioSelectionButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey } from "../../../../constants/Constants.js";
-import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
+import { audioCircleButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, audioQuitActivityKey, audioConfirmedKey } from "../../../../constants/Constants.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags, helpers_Quit } from "../../../../helpers/helpers.js";
 
 import "../../../../App.css";
 
@@ -39,7 +39,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        helpers_Closer_Flags(set_ClearPets_OpenFlag);
+        helpers_Quit(set_ClearPets_OpenFlag);
 
     },
         ".Quit"
@@ -51,7 +51,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
     const clearPets_EntrySelector = (clearPets_EntrySelector_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         set_ClearPets_CurrSelectedPets(prev => [...prev, clearPets_EntrySelector_UserSelection]);
 
     }
@@ -59,7 +59,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
     const clearPets_EntryDeselector = (clearPets_EntryDeselector_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         set_ClearPets_CurrSelectedPets(prev => prev.filter(pet => pet !== clearPets_EntryDeselector_UserSelection));
         
     }
@@ -67,6 +67,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
     const clearPets_SelectedEntriesManager = () => {
 
+        helpers_Player_UIIndicatorSounds(audioConfirmedKey);
         helpers_Player_UIIndicatorSounds(audioClearPetsKey);
 
         setPetTimeStamps(prev => {
@@ -180,7 +181,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Closer_Flags(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 

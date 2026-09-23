@@ -8,8 +8,8 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { audioSelectionButtonPressKey, audioRevivePetKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, petHealthKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, petSpeciesHealthCapList, petActivityTimeStampFeedingKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey } from "../../../../constants/Constants.js";
-import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
+import { audioCircleButtonPressKey, audioRevivePetKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, petHealthKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, petSpeciesHealthCapList, petActivityTimeStampFeedingKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, audioConfirmedKey } from "../../../../constants/Constants.js";
+import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags, helpers_Quit } from "../../../../helpers/helpers.js";
 
 import Reviver from "../../../../images/Reviver.png";
 import EmptyReviver from "../../../../images/EmptyReviver.png";
@@ -47,19 +47,17 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
     useKeyboardShortcut("Escape", () => {
         
-        helpers_Closer_Flags(set_RevivePets_OpenFlag);
+        helpers_Quit(set_RevivePets_OpenFlag);
 
     },
         ".Quit"
     );
-    
-
 
 
 
     const RevivePets_EntrySelector = (RevivePets_EntrySelector_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         set_RevivePets_CurrSelectedPets(RevivePets_EntrySelector_UserSelection);
 
     }
@@ -67,7 +65,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
     const RevivePets_EntryDeselector = () => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         set_RevivePets_CurrSelectedPets("");
         
     }
@@ -75,7 +73,9 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
     const RevivePets_SelectedEntriesManager = () => {
 
-        helpers_Player_UIIndicatorSounds(audioRevivePetKey);
+
+        helpers_Player_UIIndicatorSounds(audioRevivePetKey);        
+        helpers_Player_UIIndicatorSounds(audioConfirmedKey);
 
         setPetList(prev => {
 
@@ -229,7 +229,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Closer_Flags(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {RevivePets_UserSelection === "" ? (
 

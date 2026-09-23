@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
-import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
+import { audioRectangleButtonPressKey } from "../../../../../constants/Constants.js";
 
 import w from "../../../../../images/Dog/Play/Games/Pawformer/W.png";
 import a from "../../../../../images/Dog/Play/Games/Pawformer/A.png";
 import s from "../../../../../images/Dog/Play/Games/Pawformer/S.png";
 import d from "../../../../../images/Dog/Play/Games/Pawformer/D.png";
 import arrow from "../../../../../images/ActivityGameTargetArrow.png";
-import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./Pawformer.css";
@@ -121,7 +120,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const pawformer_MoveManager = (pawformer_MoveManager_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         if (!pawformer_HitAttempt){
 
@@ -216,7 +215,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                         ) : (
 
-                            <img key = {col} className="Pawformer_ComponentContainer-Template--GridCellBlank" src = {Blank}/>
+                            <div key = {col} className="Pawformer_ComponentContainer-Template--GridCell"></div>
 
                         )
 

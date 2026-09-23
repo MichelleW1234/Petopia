@@ -1,7 +1,7 @@
 import { usePetList } from "../../../../../../providers/PetListProvider.jsx";
 import { useActivePetName } from "../../../../../../providers/ActivePetNameProvider.jsx";
 
-import { audioSelectionButtonPressKey, petActivityOptionImageKey, petActivityOptionNameKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../../../constants/Constants.js";
+import { audioCircleButtonPressKey, petActivityOptionImageKey, petActivityOptionNameKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds } from "../../../../../../helpers/helpers.js";
 
 import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
@@ -20,7 +20,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
     const options_SelectionManager = (options_SelectionManager_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
 
         if (options_UserSelection === options_SelectionManager_UserSelection){
 

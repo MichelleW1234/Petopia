@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../../helpers/helpers.js";
+import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds, helpers_Quit } from "../../../../helpers/helpers.js";
 import { usePetList } from "../../../../providers/PetListProvider.jsx";
 import { usePetTimeStamps } from "../../../../providers/PetTimeStampsProvider.jsx";
 import { useRoom } from "../../../../providers/RoomProvider.jsx";
@@ -28,7 +28,7 @@ import ChandelierOne from "../../../../images/Inventory/ChandelierOne.png";
 import ChandelierTwo from "../../../../images/Inventory/ChandelierTwo.png";
 import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
 
-import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey} from "../../../../constants/Constants.js";
+import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey, audioQuitActivityKey, audioConfirmedKey} from "../../../../constants/Constants.js";
 
 import "../../../../App.css";
 import { useRevivers } from "../../../../providers/ReviversProvider.jsx";
@@ -48,7 +48,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
     useKeyboardShortcut("escape", () => {
 
-        helpers_Closer_Flags(set_Restart_OpenFlag);
+        helpers_Quit(set_Restart_OpenFlag);
 
     },
         ".Quit"
@@ -66,6 +66,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
     const restart_GameRestarter = () => {
 
+        helpers_Player_UIIndicatorSounds(audioConfirmedKey);
         helpers_Player_UIIndicatorSounds(audioRestartGameKey);
 
         if (restart_MinPetsAdopted){
@@ -140,7 +141,7 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                 <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick = {() => helpers_Closer_Flags(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>
 
         </div>

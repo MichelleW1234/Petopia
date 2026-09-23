@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
-import { audioScreenButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
+import { audioRectangleButtonPressKey, audioStartActivityKey } from "../../../../../constants/Constants.js";
 
 import Mouse from "../../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
 import Cord from "../../../../../images/Cat/Play/Games/MouseHunt/Cord.png";
@@ -108,7 +108,7 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     const mouseHunt_HitManager = (mouseHunt_HitManager_TargetHit) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         if (!mouseHunt_HitAttempt){
 

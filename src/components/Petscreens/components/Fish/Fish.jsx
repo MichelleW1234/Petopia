@@ -14,12 +14,12 @@ import MainComponent from "../PetscreensComponents/Main.jsx";
 import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
 import CleanComponent from "../PetscreensComponents/Stations/Clean.jsx";
 import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
-import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import ScheduleComponent from "../PetscreensComponents/NonStations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/NonStations/Records.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
-import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, audioNavButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
+import { petActivityTimeStampCleaningKey, petActivityTimeStampFeedingKey, petHealthKey, petMedicineKey, petActivityTimeStampMedicineDoseTimeGapKey, petSpeciesFishKey, petSpeciesHealthCapList, petSpeciesActivityTimeStampTimeLimitList, petStageKey, audioPillButtonPressKey, petActivityOptionNameKey, petActivityOptionImageKey, petActivityOptionCursorKey, petSoundHappyKey, petSoundSadKey, petSoundSleepKey, petActivityTimeStampLastPerformedKey} from "../../../../constants/Constants.js";
 import { petScreensHelpers_Navigator_Home, petScreensHelpers_Canceller_PetImmersionSounds } from "../../helpers/helpers.js";
 import { helpers_Opener_Flags } from "../../../../helpers/helpers.js";
 
@@ -92,7 +92,6 @@ function Fish (){
     const [fish_FeedOptionsCurrDesiredOption, set_Fish_FeedOptionsCurrDesiredOption] = useState(-1);
     const [fish_CleanOptionsCurrDesiredOption, set_Fish_CleanOptionsCurrDesiredOption] = useState(-1);
     const [fish_MedicineOptionsCurrDesiredOption, set_Fish_MedicineOptionsCurrDesiredOption] = useState(-1);
-    const [fish_WarningShowNotification, set_Fish_WarningShowNotification] = useState(false);
 
     const fish_Alive = ActivePetName === "" ? 
                             false
@@ -349,29 +348,10 @@ function Fish (){
 
             }
 
-            if ((fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && !fish_WarningShowNotification) {
-
-                set_Fish_WarningShowNotification(true);
-
-            } else if (!(fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && fish_WarningShowNotification) {
-
-                set_Fish_WarningShowNotification(false);
-
-            }
-
-        } else {
-
-            if (fish_WarningShowNotification){
-
-                set_Fish_WarningShowNotification(false);
-
-            }
-
         }
 
-    
 
-    }, [fish_Alive, fish_Hungry, fish_Dirty, fish_Unwell, fish_CanReceiveDose, fish_WarningShowNotification]);
+    }, [fish_Alive, fish_Hungry, fish_Dirty, fish_Unwell, fish_CanReceiveDose]);
 
     
     
@@ -427,25 +407,9 @@ function Fish (){
                 set_Records_OpenFlag = {set_Fish_RecordsOpenFlag}
             />}
 
+            {Notifications.length > 0 && 
+            <NotificationsComponent/>}
 
-            <div className = "UIStapleElements_Background-Template--Screen">
-
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-                    
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
-                    <MainComponent
-                        main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}
-                        main_Image_StageSleepAnimation={fish_MainCurrStageSleepAnimationImage}
-                        main_Sequence_AudioRefs={fish_AudioRefs}
-                        main_Number_PetEnergy = {400}
-                        main_Number_Mood = {fish_CurrMood}
-                        main_Boolean_ActivityInProgress={fish_ActivityInProgress}
-                    />
-
-                </div>
-
-            </div>
-            
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
@@ -483,11 +447,31 @@ function Fish (){
 
             </div>
 
-            {Notifications.length > 0 && 
-            <NotificationsComponent/>}
 
-            {fish_WarningShowNotification &&
-            <WarningComponent/>}
+            <div className = "UIStapleElements_Background-Template--Screen">
+
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
+                    
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+
+                    <MainComponent
+                        main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}
+                        main_Image_StageSleepAnimation={fish_MainCurrStageSleepAnimationImage}
+                        main_Sequence_AudioRefs={fish_AudioRefs}
+                        main_Number_PetEnergy = {400}
+                        main_Number_Mood = {fish_CurrMood}
+                        main_Boolean_ActivityInProgress={fish_ActivityInProgress}
+                    />
+
+                </div>
+
+            </div>
+            
+
+            {fish_Alive && (fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && 
+            <WarningComponent
+                warning_types={[fish_Hungry, fish_Dirty, false, (fish_Unwell && fish_CanReceiveDose)]}
+            />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 

@@ -71,7 +71,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
             petScreensHelpers_Canceller_PetImmersionSounds(play_AudioRef.current);
             petScreensHelpers_Manager_PetHealth(GlobalTimer, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampPlayingKey, play_OptionsCurrDesiredOption, set_Play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_Success);
-            helpers_Closer_Flags(set_Play_OpenFlag);
+            set_Play_OpenFlag(false);
 
         }
 

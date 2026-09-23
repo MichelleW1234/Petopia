@@ -69,12 +69,3 @@
     box-shadow: 0 0 16px 4px rgb(255, 255, 255);
 
 }
-
-.Adoption_ComponentContainer-Template--ConfirmationError {
-
-    height: 1rem;
-    width: auto;
-    
-    color: rgb(255, 255, 255);
-
-}

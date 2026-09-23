@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
 import { helpers_Player_UIIndicatorSounds } from "../../../../../helpers/helpers.js";
-import { audioScreenButtonPressKey } from "../../../../../constants/Constants.js";
+import { audioRectangleButtonPressKey } from "../../../../../constants/Constants.js";
 
 import Ball from "../../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
 import Rock from "../../../../../images/Dog/Play/Games/StrollPatrol/Rock.png";
-import Blank from "../../../../../images/BlankGridSpace.png";
 
 import "../../../../../App.css";
 import "./StrollPatrol.css";
@@ -88,7 +87,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     const strollPatrol_HitManager = (row, col, type) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         set_StrollPatrol_CurrObjectPositions(prev => {
 
@@ -152,11 +151,11 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
                             ) : (
 
-                                <img 
+                                <div
                                     key = {row + " & " + col} 
-                                    className="StrollPatrol_ComponentContainer-Structure--GridCellBlank" 
-                                    src = {Blank}
-                                />
+                                    className="StrollPatrol_ComponentContainer-Structure--GridCell" 
+                                >
+                                </div>
 
                             )
                         

@@ -1,11 +1,12 @@
-import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, audioNavButtonPressKey, petActivityTimeStampCleaningKey, audioActivityFailKey, petActivityTimeStampFeedingKey, audioScreenButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, audioQuitActivityKey, audioStartActivityKey, audioActivitySuccessKey, audioSelectionButtonPressKey } from "../../../constants/Constants.js";
+import { petActivityTimeStampDamageList, petActivityTimeStampLastDamagedKey, petActivityTimeStampLastPerformedKey, audioPillButtonPressKey, petActivityTimeStampCleaningKey, audioActivityFailKey, petActivityTimeStampFeedingKey, audioRectangleButtonPressKey, petHealthKey, petActivityTimeStampPlayingKey, audioQuitActivityKey, audioStartActivityKey, audioActivitySuccessKey, audioCircleButtonPressKey, audioConfirmedKey } from "../../../constants/Constants.js";
 import { helpers_Closer_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 
 export const optionSelectionManager = (options_CurrDesiredOption, options_optionSelectionManager_UserSelection, set_Options_TotalNumber, set_Confirmed, set_ActivitySuccess) => {
 
     helpers_Player_UIIndicatorSounds(audioStartActivityKey);
-    helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+    helpers_Player_UIIndicatorSounds(audioConfirmedKey);
+    helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
 
     if (options_optionSelectionManager_UserSelection !== options_CurrDesiredOption) {
 
@@ -99,7 +100,7 @@ export const petScreensHelpers_Canceller_PetImmersionSounds = (parameter_Audio_C
 
 export const petScreensHelpers_Navigator_Home = (set_Parameter_String_ActivePetName) => {
 
-    helpers_Player_UIIndicatorSounds(audioNavButtonPressKey);
+    helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
     set_Parameter_String_ActivePetName("");
 
 }

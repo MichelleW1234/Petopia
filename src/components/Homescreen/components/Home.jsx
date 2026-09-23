@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 
 import {usePetList} from "../../../providers/PetListProvider.jsx";
 import {usePetTimeStamps} from "../../../providers/PetTimeStampsProvider.jsx";
@@ -24,13 +24,14 @@ import NotificationsComponent from "../../GlobalComponents/components/Notificati
 import RevivePetsComponent from "./HomescreenComponents/RevivePets.jsx";
 
 
-import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSelectionButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioScreenButtonPressKey, inventoryItemImageKey } from "../../../constants/Constants.js";
+import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioPillButtonPressKey, audioCircleButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioRectangleButtonPressKey, inventoryItemImageKey, audioConfirmedKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 import NoPetPortrait from "../../../images/NoPetPortrait.png";
 
 
 import "../../../App.css";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 
 
 
@@ -38,6 +39,7 @@ function Home (){
 
     const { audioRef } = useContext(backgroundMusic_Context);
 
+    const {GlobalTimer} = useGlobalTimer();
     const {PetTimeStamps, setPetTimeStamps} = usePetTimeStamps();
     const {PetList, setPetList} = usePetList();
     const {ActivePetName, setActivePetName} = useActivePetName();
@@ -56,6 +58,7 @@ function Home (){
     const [home_RevivePetsOpenFlag, set_Home_RevivePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
     const [home_UserSelection, set_Home_UserSelection] = useState(-1);
+    const [home_Greeting, set_Home_Greeting] = useState("");
 
     const home_MinPetsAdopted = Room.filter(x => x === "").length < 3;
     const home_RestartInventoryContainsOwners = Inventory.some(item => item[inventoryItemOwnerKey] !== "");
@@ -66,6 +69,7 @@ function Home (){
                             ? true
                             : false;
 
+    const home_TimeoutRef= useRef(null);
     const home_Navigate = useNavigate();
 
 
@@ -180,10 +184,37 @@ function Home (){
     );
 
 
+    useEffect(() =>  {
+
+        const homeScreenNotes = ["Have a paw-some day!",
+                                "Pawsome job!",
+                                "Keep those tails wagging!",
+                                "Happy pets, happy home!",
+                                "Purr-sue your goals!",
+                                "Fintastic things ahead!",
+                                "Just keep swimming!",
+                                "You're doing dog-gone great!",
+                                "Seas the day!",
+                                "Keep fetching those goals!",
+                                "Don't flounder!",
+                                "Purr-sistence pays off!",
+                                "You're one cool cat!"
+        ];
+
+        set_Home_Greeting(homeScreenNotes[Math.floor(Math.random() * homeScreenNotes.length)]);
+    
+        home_TimeoutRef.current = setTimeout(() => {
+            set_Home_Greeting("");
+            home_TimeoutRef.current = null;
+        }, 3000);
+
+    }, []);
+
 
     const GoToSelection = () => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioConfirmedKey);
+        helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
 
         if (Room[home_UserSelection] === ""){
 
@@ -203,7 +234,7 @@ function Home (){
 
     const home_Selection = (home_PetNavigator_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
 
         if (home_PetNavigator_UserSelection === home_UserSelection) {
 
@@ -262,19 +293,68 @@ function Home (){
                 set_ReadMe_OpenFlag={set_Home_ReadMeOpenFlag}
             />}
 
+            {Notifications.length > 0 ? (
+
+                <NotificationsComponent/>
+
+            ) : (
+
+                null
+
+            )}
+
+
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
+
+                {home_CanRestart ? (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+
+                ) : (
+
+                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Restart <br/> [1]</button>
+
+                )}
+                
+
+                {home_MinPetsAdopted ? (
+
+                    <>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+
+                        {Revivers > 0 ? (
+
+                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
+
+                        ) : (
+
+                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
+
+                        )}
+
+                    </>
+
+                ) : (
+
+                    <>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clear Pets <br/> [3]</button>
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
+                    </>
+
+                )}
+
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
+                
+            </div>
+
+
             <div className = "UIStapleElements_Background-Template--Screen">  
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    {home_CanRestart ? (
-
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Room: </h1>
-
-                    ) : (
-
-                        <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Welcome! Select a Room to Get Started: </h1>
-
-                    )}
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Room: </h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
@@ -348,78 +428,43 @@ function Home (){
 
                 </div>
 
-                {home_UserSelection === -1 ? (
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick ">
-                        Confirm <br/> [return]
-                    </button>
+                    {home_UserSelection === -1 ? (
 
-                ) : (
+                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick">
+                            Confirm <br/> [return]
+                        </button>
 
-                    <button
-                        className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" 
-                        onClick = {() => GoToSelection()}>
-                        Confirm <br/> [return]
-                    </button>
+                    ) : (
 
-                )}
+                        <button
+                            className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" 
+                            onClick = {() => GoToSelection()}>
+                            Confirm <br/> [return]
+                        </button>
+
+                    )}
+
+                </div>
 
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
-                {home_CanRestart ? (
+           {home_Greeting !== "" ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
-
-                ) : (
-
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Restart <br/> [1]</button>
-
-                )}
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
+                        <p>{home_Greeting}</p>
+                    </div>
+                </div>
                 
-
-                {home_MinPetsAdopted ? (
-
-                    <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
-
-                        {Revivers > 0 ? (
-
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
-
-                        ) : (
-
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
-
-                        )}
-
-                    </>
-
-                ) : (
-
-                    <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clear Pets <br/> [3]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
-                    </>
-
-                )}
-
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
-                
-            </div>
-
-            {Notifications.length > 0 ? (
-
-                <NotificationsComponent/>
-
             ) : (
 
                 null
 
-            )}
+           )}
+
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 

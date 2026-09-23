@@ -6,6 +6,7 @@ import { useVolume } from "../../../providers/VolumeProvider.jsx";
 import { helpers_Closer_Flags} from "../../../helpers/helpers.js";
 
 import VolumeSpeaker from "../../../images/VolumeSpeaker.png";
+import VolumeMusicNote from "../../../images/VolumeMusicNote.png";
 
 import "../../../App.css";
 import "./MusicVolume.css";
@@ -80,7 +81,6 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
                     <div className="MusicVolume_ComponentContainer-Structure--Slider">
                         <h2>[&#x2B05;] [&#x2B95;]</h2>
                         <input
-                            className="Slider"
                             type="range"
                             min="0"
                             max="1"
@@ -92,7 +92,12 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
                 </div>
             </div>
 
-            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
+                
+            </div>
+
         </div>
     );
 }

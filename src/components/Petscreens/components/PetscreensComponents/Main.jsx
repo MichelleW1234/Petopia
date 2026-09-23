@@ -13,7 +13,6 @@ import PetUnhappySymbol from "../../../../images/PetUnhappySymbol.gif";
 import PetHappySymbol from "../../../../images/PetHappySymbol.gif";
 import HealthyPetHeart from "../../../../images/HealthyPetHeart.png";
 import UnhealthyPetHeart from "../../../../images/UnhealthyPetHeart.png";
-import Blank from "../../../../images/BlankGridSpace.png";
 
 import "../../../../App.css";
 import "./Main.css";
@@ -27,10 +26,10 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
     const {GlobalTimer} = useGlobalTimer();
     const {Inventory, setInventory} = useInventory();
 
-    const main_Number_WindowLength = 20;
+    const main_Number_WindowWidth = 25;
 
     const [main_Boolean_GiveAttention, set_Main_Boolean_GiveAttention] = useState(false);
-    const [main_Number_PetPosition, set_Main_Number_PetPosition] = useState(Math.floor(Math.random() * main_Number_WindowLength));
+    const [main_Number_PetPosition, set_Main_Number_PetPosition] = useState(Math.floor(Math.random() * main_Number_WindowWidth));
     const [main_Number_PetDirection, set_Main_Number_PetDirection] = useState(0);
 
     const main_Ref_PetPosition = useRef(main_Number_PetPosition);
@@ -127,9 +126,9 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
             set_Main_Number_PetPosition(1);
             set_Main_Number_PetDirection(1);
 
-        } else if (main_Ref_PetPosition.current === main_Number_WindowLength - 1){
+        } else if (main_Ref_PetPosition.current === main_Number_WindowWidth - 1){
 
-            set_Main_Number_PetPosition(main_Number_WindowLength - 2);
+            set_Main_Number_PetPosition(main_Number_WindowWidth - 2);
             set_Main_Number_PetDirection(0);
 
         } else if (main_Ref_PetDirection.current === 0){
@@ -188,7 +187,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                     <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                        {Array.from({ length: 20}, (_, i) => i + 1).map(num => (
+                        {Array.from({ length: main_Number_WindowWidth}, (_, i) => i + 1).map(num => (
 
                             num <= petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]] ? (
 
@@ -197,16 +196,16 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
                                     src = {num <= PetList[ActivePetName][petHealthKey] ? 
                                                 HealthyPetHeart
                                             : UnhealthyPetHeart}
-                                    className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart"
+                                    className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
                                 />
 
                             ) : (
 
-                                <img
+                                <div
                                     key={num}
-                                    className="Main_ComponentImage-Template--WindowScreenPetStatsHealthCellBlank"
-                                    src = {Blank} 
-                                />
+                                    className="Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
+                                >
+                                </div>
 
                             )
 
@@ -246,7 +245,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                                 <div className="Main_ComponentContainer-Structure--WindowScreenGrid"> 
 
-                                    {Array.from({ length: main_Number_WindowLength }, (_, i) => i).map(index => {
+                                    {Array.from({ length: main_Number_WindowWidth }, (_, i) => i).map(index => {
                                         
                                         const bound_Boolean_PetHere = main_Number_PetPosition === index;
 
@@ -255,7 +254,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
                                             bound_Boolean_PetHere ? (
 
                                                 <div key={index} 
-                                                    className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCellPet">
+                                                    className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Main_ComponentContainer-Structure--WindowScreenGridCell">
                                                     <img
                                                         src = {main_Sequence_StageAnimationImages[main_Number_PetDirection][index % 2]} 
                                                         onMouseEnter={() => main_Timer_EmotionExpression()}
@@ -271,11 +270,11 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
                                             ) : (
 
-                                                <img
+                                                <div
                                                     key={index}
-                                                    className="Main_ComponentContainer-Structure--WindowScreenGridCellBlank"
-                                                    src = {Blank} 
-                                                />
+                                                    className="Main_ComponentContainer-Structure--WindowScreenGridCell"
+                                                >
+                                                </div>
 
                                             )
                                 

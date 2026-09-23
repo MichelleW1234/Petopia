@@ -14,7 +14,7 @@ import MusicVolumeComponent from "../../GlobalComponents/components/MusicVolume.
 import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
-import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioSelectionButtonPressKey, audioNavButtonPressKey, audioAdoptionSuccessKey, audioScreenButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey } from "../../../constants/Constants.js";
+import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioCircleButtonPressKey, audioPillButtonPressKey, audioAdoptionSuccessKey, audioRectangleButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey, audioQuitActivityKey, audioConfirmedKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 import "../../../App.css";
@@ -137,7 +137,7 @@ function Adoption () {
 
     const adoption_HomeNavigator = () => {
 
-        helpers_Player_UIIndicatorSounds(audioNavButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
         setActiveCheckoutRoom(-1);
 
     }
@@ -145,7 +145,8 @@ function Adoption () {
 
     const adoption_PetGenderGenerator = () => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioConfirmedKey);
+        helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
         
         const adoption_PetGenderGenerator_CurrGenderNumber = Math.floor(Math.random() * 2);
         
@@ -173,7 +174,7 @@ function Adoption () {
 
         } else if (/[^\p{L}\p{N} .'-]/u.test(adoption_NameManager_CurrPetName)) {
 
-            adoption_CurrErrorMessageTimer("Please enter a name that doesn't contain symbol excluding periods, dashes, and single quotes.");
+            adoption_CurrErrorMessageTimer("Please enter a name that doesn't contain symbols excluding periods, dashes, and single quotes.");
 
         } else if (adoption_NameManager_CurrPetName.length > 16){
 
@@ -185,6 +186,7 @@ function Adoption () {
 
         } else {
 
+            helpers_Player_UIIndicatorSounds(audioConfirmedKey);
             helpers_Player_UIIndicatorSounds(audioAdoptionSuccessKey);
 
             const adoption_NameManager_CurrDate = GlobalTimer;
@@ -278,14 +280,15 @@ function Adoption () {
 
         }
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
 
     }
 
 
     const adoption_SpeciesDeselector = () => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioQuitActivityKey);
+        helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
 
         set_Adoption_UserSelection("");
         set_Adoption_PetGender("");
@@ -307,7 +310,7 @@ function Adoption () {
 
     const adoption_SpeciesSelector = (adoption_SpeciesSelector_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioSelectionButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioCircleButtonPressKey);
         set_Adoption_UserSelection(adoption_SpeciesSelector_UserSelection);
 
     }
@@ -352,8 +355,24 @@ function Adoption () {
             {adoption_SpeciesCareGuideOpenFlag &&
             <SpeciesCareGuideComponent
                 set_SpeciesCareGuide_OpenFlag = {set_Adoption_SpeciesCareGuideOpenFlag}
-            />
-            }
+            />}
+            
+            
+            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
+                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
+            </div>
+            
+            {Notifications.length > 0 ? (
+
+                <NotificationsComponent/>
+
+            ) : (
+
+                null
+
+            )}  
+
 
             <div className="UIStapleElements_Background-Template--Screen">
 
@@ -425,18 +444,19 @@ function Adoption () {
 
                     )} 
 
-                    <p className = "Adoption_ComponentContainer-Template--ConfirmationError">{adoption_CurrErrorMessage}</p>
+                  
 
                 </div>
 
                 {adoption_PetGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                        <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Quit <br/> [esc]</button>
+                        
+                        <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick"> Quit <br/> [esc]</button>
 
                         {adoption_UserSelection === "" ? (
 
-                            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick"> Confirm <br/> [return]</button>
 
                         ) : (
 
@@ -457,18 +477,20 @@ function Adoption () {
         
             </div>
 
-            <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
-                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => adoption_HomeNavigator()}> Home <br/> [1]</Link>
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> Species Care Guide <br/> [2]</button>
-            </div>
             
-            {Notifications.length > 0 ? (
+            
+            {adoption_CurrErrorMessage === "" ? (
 
-                <NotificationsComponent/>
+                null
 
             ) : (
 
-                null
+                <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
+                        <h2>Error: </h2>
+                        <p>{adoption_CurrErrorMessage}</p>
+                    </div>
+                </div>
 
             )}
             

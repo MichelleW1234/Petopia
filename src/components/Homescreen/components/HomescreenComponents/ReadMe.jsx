@@ -20,6 +20,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
+                
                 <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
                 <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <p> &bull; Complete an activity when its button is RED. You can predict when this will happen by looking at the pet's schedule. </p> 
@@ -35,7 +36,11 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [5]</button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> Close <br/> [5]</button>
+
+            </div>
 
         </div>
     );

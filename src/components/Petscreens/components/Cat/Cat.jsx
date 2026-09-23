@@ -14,8 +14,8 @@ import MainComponent from "../PetscreensComponents/Main.jsx";
 import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
 import PlayComponent from "../PetscreensComponents/Stations/Play.jsx";
 import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
-import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import ScheduleComponent from "../PetscreensComponents/NonStations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/NonStations/Records.jsx";
 import MouseHuntComponent from "./CatComponents/MouseHunt.jsx";
 import FeatherFishingComponent from "./CatComponents/FeatherFishing.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
@@ -89,7 +89,7 @@ function Cat (){
     const [cat_FeedOptionsCurrDesiredOption, set_Cat_FeedOptionsCurrDesiredOption] = useState(-1);
     const [cat_PlayOptionsCurrDesiredOption, set_Cat_PlayOptionsCurrDesiredOption] = useState(-1);
     const [cat_MedicineOptionsCurrDesiredOption, set_Cat_MedicineOptionsCurrDesiredOption] = useState(-1);
-    const [cat_WarningShowNotification, set_Cat_WarningShowNotification] = useState(false);
+
 
     const cat_Alive = ActivePetName === "" ? 
                             false
@@ -337,28 +337,10 @@ function Cat (){
 
             }
 
-            if ((cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && !cat_WarningShowNotification) {
-
-                set_Cat_WarningShowNotification(true);
-
-            } else if (!(cat_Hungry || cat_Restless|| (cat_Unwell && cat_CanReceiveDose)) && cat_WarningShowNotification) {
-
-                set_Cat_WarningShowNotification(false);
-
-            }
-
-        } else {
-
-            if (cat_WarningShowNotification){
-
-                set_Cat_WarningShowNotification(false);
-
-            }
-
         }
 
 
-    }, [cat_Alive, cat_Hungry, cat_Restless, cat_Unwell, cat_CanReceiveDose, cat_WarningShowNotification]);
+    }, [cat_Alive, cat_Hungry, cat_Restless, cat_Unwell, cat_CanReceiveDose]);
 
 
 
@@ -414,25 +396,12 @@ function Cat (){
             <RecordsComponent
                 set_Records_OpenFlag = {set_Cat_RecordsOpenFlag}
             />}
-        
-            <div className = "UIStapleElements_Background-Template--Screen">
 
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
-                    <MainComponent
-                        main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
-                        main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}
-                        main_Sequence_AudioRefs = {cat_AudioRefs}
-                        main_Number_PetEnergy = {450}
-                        main_Number_Mood = {cat_CurrMood}
-                        main_Boolean_ActivityInProgress = {cat_ActivityInProgress}
-                    />
-                    
-                </div>
-
-            </div>
-
+            {Notifications.length > 0 &&
+            <NotificationsComponent/>}
+            
+            
+            
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
@@ -469,11 +438,31 @@ function Cat (){
 
             </div>
 
-            {Notifications.length > 0 &&
-            <NotificationsComponent/>}
+        
+            <div className = "UIStapleElements_Background-Template--Screen">
 
-            {cat_WarningShowNotification &&
-            <WarningComponent/>}
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
+
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+                    <MainComponent
+                        main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
+                        main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}
+                        main_Sequence_AudioRefs = {cat_AudioRefs}
+                        main_Number_PetEnergy = {450}
+                        main_Number_Mood = {cat_CurrMood}
+                        main_Boolean_ActivityInProgress = {cat_ActivityInProgress}
+                    />
+                    
+                </div>
+
+            </div>
+
+
+
+            {cat_Alive && (cat_Hungry || cat_Restless || (cat_Unwell && cat_CanReceiveDose)) &&
+            <WarningComponent
+                warning_types={[cat_Hungry, false, cat_Restless, (cat_Unwell && cat_CanReceiveDose)]}
+            />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 

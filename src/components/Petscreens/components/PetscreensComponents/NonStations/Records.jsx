@@ -59,8 +59,10 @@ function Records({set_Records_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
-
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
+            </div>
+            
         </div>
     );
 }

@@ -1,8 +1,8 @@
-import { audioNavButtonPressKey, audioSelectionButtonPressKey, audioAdoptionConfirmationErrorKey, audioStartActivityKey, audioActivitySuccessKey, audioActivityFailKey, audioScreenButtonPressKey, audioAdoptionSuccessKey, audioClearPetsKey, audioQuitActivityKey, audioAddedDecorationsKey, audioRevivePetKey, audioSwapPetSpaceKey, audioRestartGameKey} from "../constants/Constants.js";
+import { audioPillButtonPressKey, audioCircleButtonPressKey, audioAdoptionConfirmationErrorKey, audioStartActivityKey, audioActivitySuccessKey, audioActivityFailKey, audioRectangleButtonPressKey, audioAdoptionSuccessKey, audioClearPetsKey, audioQuitActivityKey, audioAddedDecorationsKey, audioRevivePetKey, audioSwapPetSpaceKey, audioRestartGameKey, audioConfirmedKey} from "../constants/Constants.js";
 
-import NavButtonPress from "../Music/UIIndicatorSounds/NavButtonPress.mp3";
-import SelectionButtonPress from "../Music/UIIndicatorSounds/SelectionButtonPress.mp3";
-import ScreenButtonPress from "../Music/UIIndicatorSounds/ScreenButtonPress.mp3";
+import PillButtonPress from "../Music/UIIndicatorSounds/PillButtonPress.mp3";
+import CircleButtonPress from "../Music/UIIndicatorSounds/CircleButtonPress.mp3";
+import RectangleButtonPress from "../Music/UIIndicatorSounds/RectangleButtonPress.mp3";
 import RestartGame from "../Music/UIIndicatorSounds/RestartGame.mp3";
 import AdoptionConfirmationError from "../Music/UIIndicatorSounds/AdoptionConfirmationError.mp3";
 import StartActivity from "../Music/UIIndicatorSounds/StartActivity.mp3";
@@ -14,6 +14,7 @@ import QuitActivity from "../Music/UIIndicatorSounds/QuitActivity.mp3";
 import AddedDecorations from "../Music/UIIndicatorSounds/AddedDecorations.mp3";
 import RevivedPet from "../Music/UIIndicatorSounds/RevivedPet.mp3";
 import SwapPetSpace from "../Music/UIIndicatorSounds/SwapPetSpace.mp3";
+import Confirmed from "../Music/UIIndicatorSounds/Confirmed.mp3";
 
 
 
@@ -22,9 +23,9 @@ export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
 
     const bound_Sequence_SoundDictionary = {
 
-        [audioNavButtonPressKey] : NavButtonPress,
-        [audioSelectionButtonPressKey] : SelectionButtonPress,
-        [audioScreenButtonPressKey] : ScreenButtonPress,
+        [audioPillButtonPressKey] : PillButtonPress,
+        [audioCircleButtonPressKey] : CircleButtonPress,
+        [audioRectangleButtonPressKey] : RectangleButtonPress,
         [audioRestartGameKey] : RestartGame,
         [audioAdoptionConfirmationErrorKey] : AdoptionConfirmationError,
         [audioStartActivityKey] : StartActivity,
@@ -35,7 +36,8 @@ export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
         [audioQuitActivityKey] : QuitActivity,
         [audioAddedDecorationsKey] : AddedDecorations,
         [audioRevivePetKey] : RevivedPet,
-        [audioSwapPetSpaceKey] : SwapPetSpace
+        [audioSwapPetSpaceKey] : SwapPetSpace,
+        [audioConfirmedKey] : Confirmed
 
     };
 
@@ -48,15 +50,7 @@ export const helpers_Player_UIIndicatorSounds = (parameter_Key_SoundToPlay) => {
 
 export const helpers_Opener_Flags = (set_parameter_Boolean_OpenFlag, parameter_Number_FlagToOpenType) => {
 
-    if (parameter_Number_FlagToOpenType === 0){
-
-        helpers_Player_UIIndicatorSounds(audioNavButtonPressKey);
-
-    } else {
-
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
-
-    }
+    helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
     set_parameter_Boolean_OpenFlag(true);
 
@@ -66,7 +60,16 @@ export const helpers_Opener_Flags = (set_parameter_Boolean_OpenFlag, parameter_N
 
 export const helpers_Closer_Flags = (set_parameter_Boolean_OpenFlag) => {
     
-    helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+    helpers_Player_UIIndicatorSounds(audioPillButtonPressKey);
     set_parameter_Boolean_OpenFlag(false);
+
+}
+
+
+
+export const helpers_Quit = (set_parameter_Boolean_OpenFlag) => {
+
+    helpers_Player_UIIndicatorSounds(audioQuitActivityKey);
+    helpers_Closer_Flags(set_parameter_Boolean_OpenFlag);
 
 }

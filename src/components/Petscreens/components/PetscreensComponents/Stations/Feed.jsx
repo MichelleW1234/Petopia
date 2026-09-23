@@ -97,7 +97,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                 petScreensHelpers_Canceller_PetImmersionSounds(feed_AudioRef.current);
                 petScreensHelpers_Manager_PetHealth(feed_GlobalTimerRef.current, setPetTimeStamps, setPetList, ActivePetName, petActivityTimeStampFeedingKey, feed_OptionsCurrDesiredOption, set_Feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_Success);
-                helpers_Closer_Flags(set_Feed_OpenFlag);
+                set_Feed_OpenFlag(false);
             }
 
         }, 1000);
@@ -166,9 +166,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
             
-
                 <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick " onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc]</button>
-
 
                 {feed_OptionsUserSelection === -1 || feed_Confirmed ? (
 

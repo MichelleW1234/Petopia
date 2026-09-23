@@ -1,6 +1,6 @@
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { audioNavButtonPressKey } from "../../../../constants/Constants.js";
+import { audioPillButtonPressKey } from "../../../../constants/Constants.js";
 import { helpers_Closer_Flags } from "../../../../helpers/helpers.js";
 
 import "../../../../App.css";
@@ -56,7 +56,10 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                 </div>
             </div>
 
-            <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+            </div>
+            
         </div>
     );
 }

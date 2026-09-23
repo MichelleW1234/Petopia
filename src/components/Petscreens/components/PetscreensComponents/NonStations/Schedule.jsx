@@ -9,7 +9,6 @@ import { petActivityTimeStampMedicineDoseTimeGapKey, petMedicineKey, petSpeciesK
 import { helpers_Closer_Flags } from "../../../../../helpers/helpers.js";
 
 import "../../../../../App.css";
-import "./Schedule.css";
 
 
 function Schedule({set_Schedule_OpenFlag}) {
@@ -35,7 +34,8 @@ function Schedule({set_Schedule_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
             
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read Your Pet's Activities Schedule:</h1>
-                <div className = "UIStapleElements_ComponentFrame-Template--Global Schedule_ComponentContainer-Structure--Schedule">
+
+                <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
 
                         <ActivityComponent
@@ -54,7 +54,9 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             </div>
             
-            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}>Close <br/> [3] </button>
+            <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}> Close <br/> [3] </button>
+            </div>
 
         </div>
     );

@@ -1,5 +1,5 @@
-import { audioScreenButtonPressKey, notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
-import { helpers_Player_UIIndicatorSounds } from "../../../helpers/Helpers";
+import { audioClearPetsKey, audioRectangleButtonPressKey, notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
+import { helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 import { useNotifications } from "../../../providers/NotificationsProvider";
 
 import "../../../App.css";
@@ -12,7 +12,8 @@ function Notifications() {
 
     const notifications_EntryRemover = (notifications_EntryRemover_UserSelection) => {
 
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioClearPetsKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         setNotifications(prev => {
 
@@ -29,17 +30,18 @@ function Notifications() {
     };
     
     return (
-        <div className = "Notification_ComponentContainer-Structure--Entries">
+        
+        <div className = "MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Notifications">
 
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
-                <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global Notification_ComponentContainer-Structure--Entry">
+                <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
                     <button className="UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
                         X  
                     </button>
                     <div className = "Notification_ComponentContainer-Structure--EntryContent">
                         <div className="Notification_ComponentContainer-Structure--EntryContentField">
-                            <h2>Alert:</h2>
+                            <h2>Message: </h2>
                             <p>{entry[notificationsDescriptionKey]}</p>
                             </div>
                             <div className="Notification_ComponentContainer-Structure--EntryContentField">

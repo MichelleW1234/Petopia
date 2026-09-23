@@ -106,11 +106,11 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
     
             {PetList[ActivePetName][petHealthKey] === 0 ? (
 
-                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
+                <div className = "Activity_ComponentContainer-Template--Progressionbar">
 
                     {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                        <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                        <img key = {num} src = {Blank} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
 
                     ))}
                     
@@ -118,49 +118,25 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
             ) : (
 
-                <div className = "MiscellaneousElements_ComponentContainer-Template--FloatingFlagProgressionbar">
-                    
-                    {activity_CurrPercentUntilNextUpdate <= 50 ? (
+                <div className = "Activity_ComponentContainer-Template--Progressionbar">
 
-                        Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
+                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
 
-                            num === 50 ? (
+                        num === 50 ? (
 
-                                <img key = {num} src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                            <img key = {num} src = {Green} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
 
-                            ) : num <= activity_CurrPercentUntilNextUpdate ?  (
+                        ) : num <= activity_CurrPercentUntilNextUpdate ?  (
 
-                                <img key = {num}  src = {Green} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                            <img key = {num}  src = {Red} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
 
-                            ) : (
+                        ) : (
 
-                                <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
-                                
-                            )
-
-                        ))
-
-                    ) : (
-
-                        Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                            num === 50 ? (
-
-                                <img key = {num}  src = {Black} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
-
-                            ) : num <= activity_CurrPercentUntilNextUpdate ? (
-
-                                <img key = {num}  src = {Red} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
+                            <div key = {num} className="Activity_ComponentContainer-Structure--ProgressionbarCell"></div>
                             
-                            ) : (
+                        )
 
-                                <img key = {num}  src = {Blank} className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagProgressionbarCell"/>
-                                
-                            )
-
-                        ))
-
-                    )}
+                    ))}
 
                 </div>
 

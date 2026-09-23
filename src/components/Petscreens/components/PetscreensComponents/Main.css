@@ -1,10 +1,10 @@
 .Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
 
-    height: auto;
-    width: 100%;
+    height: 35%;
+    width: auto;
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(10, 8%);
+    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: repeat(10, 1fr);
     position: absolute;
     top: 0%;
     left: 0%;
@@ -15,10 +15,10 @@
 }
 
 
-.Main_ComponentImage-Template--WindowScreenPetStatsHealthHeart {
+.Main_ComponentImage-Template--WindowScreenPetStatsHealthCell {
 
-    height: auto;
-    width: 100%;
+    height: 100%;
+    width: auto;
 
     filter: 
         drop-shadow(0 0 1px rgb(255, 255, 255))
@@ -27,37 +27,31 @@
 
 }
 
-.Main_ComponentImage-Template--WindowScreenPetStatsHealthCellBlank {
-
-    height: 100%;
-    width: 100%;
-
-}
- 
 
 .Main_ComponentContainer-Structure--WindowScreenGrid {
 
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 50%;
+    align-content: center;
     display: grid;
-    grid-template-columns: repeat(20, auto);
-    grid-template-rows: repeat(1, auto);
+    grid-template-rows: repeat(1, 75%);
+    grid-template-columns: repeat(25, 1fr);
     position: absolute;
-    bottom: 15%;
+    bottom: 10%;
+    z-index: 4;
 
 }
 
 
-.Main_ComponentContainer-Structure--WindowScreenGridCellPet {
+.Main_ComponentContainer-Structure--WindowScreenGridCell {
 
-    width: 10rem;
-    height: auto;
-    z-index: 4;
+    width: auto;
+    height: 100%;
 
     img {
 
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
 
         filter: 
             drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -66,13 +60,6 @@
 
 
     }
-
-}
-
-.Main_ComponentContainer-Structure--WindowScreenGridCellBlank {
-
-    width: 2rem;
-    height: 100%;
 
 }
 

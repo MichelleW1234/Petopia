@@ -95,7 +95,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                 petScreensHelpers_Canceller_PetImmersionSounds(medicine_AudioRef.current);
                 medicine_MedicineEffectivenessManager();
-                helpers_Closer_Flags(set_Medicine_OpenFlag);
+                set_Medicine_OpenFlag(false);
             }
 
         }, 1000);

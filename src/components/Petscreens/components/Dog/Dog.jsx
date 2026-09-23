@@ -17,8 +17,8 @@ import FeedComponent from "../PetscreensComponents/Stations/Feed.jsx";
 import CleanComponent from "../PetscreensComponents/Stations/Clean.jsx";
 import PlayComponent from "../PetscreensComponents/Stations/Play.jsx";
 import MedicineComponent from "../PetscreensComponents/Stations/Medicine.jsx";
-import ScheduleComponent from "../PetscreensComponents/Nonstations/Schedule.jsx";
-import RecordsComponent from "../PetscreensComponents/Nonstations/Records.jsx";
+import ScheduleComponent from "../PetscreensComponents/NonStations/Schedule.jsx";
+import RecordsComponent from "../PetscreensComponents/NonStations/Records.jsx";
 import NotificationsComponent from "../../../GlobalComponents/components/Notifications.jsx";
 import WarningComponent from "../PetscreensComponents/Warning.jsx";
 
@@ -101,7 +101,6 @@ function Dog (){
     const [dog_CleanOptionsCurrDesiredOption, set_Dog_CleanOptionsCurrDesiredOption] = useState(-1);
     const [dog_PlayOptionsCurrDesiredOption, set_Dog_PlayOptionsCurrDesiredOption] = useState(-1);
     const [dog_MedicineOptionsCurrDesiredOption, set_Dog_MedicineOptionsCurrDesiredOption] = useState(-1);
-    const [dog_WarningShowNotification, set_Dog_WarningShowNotification] = useState(false);
 
     const dog_Alive = ActivePetName === "" ? 
                             false
@@ -384,28 +383,9 @@ function Dog (){
 
             }
 
-            if ((dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && !dog_WarningShowNotification) {
-
-                set_Dog_WarningShowNotification(true);
-
-            } else if (!(dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) && dog_WarningShowNotification) {
-
-                set_Dog_WarningShowNotification(false);
-
-            }
-
-
-        } else {
-
-            if (dog_WarningShowNotification){
-
-                set_Dog_WarningShowNotification(false);
-
-            }
-
         }
 
-    }, [dog_Alive, dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose, dog_WarningShowNotification]);
+    }, [dog_Alive, dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose]);
 
     
     return (
@@ -466,27 +446,11 @@ function Dog (){
             <RecordsComponent
                 set_Records_OpenFlag = {set_Dog_RecordsOpenFlag}
             />}
+
+            {Notifications.length > 0 &&
+            <NotificationsComponent/>}
+
             
-            <div className = "UIStapleElements_Background-Template--Screen">
-
-                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-                    
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
-                    
-                    <MainComponent
-                        main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}
-                        main_Image_StageSleepAnimation={dog_MainCurrStageSleepAnimationImage}
-                        main_Sequence_AudioRefs={dog_AudioRefs}
-                        main_Number_PetEnergy = {350}
-                        main_Number_Mood = {dog_CurrMood}
-                        main_Boolean_ActivityInProgress={dog_ActivityInProgress}
-                    />
-                    
-                </div>
-
-            </div>
-
-
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
@@ -525,12 +489,31 @@ function Dog (){
             
             </div>
 
+            
+            <div className = "UIStapleElements_Background-Template--Screen">
 
-            {Notifications.length > 0 &&
-            <NotificationsComponent/>}
+                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
+                    
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+                    
+                    <MainComponent
+                        main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}
+                        main_Image_StageSleepAnimation={dog_MainCurrStageSleepAnimationImage}
+                        main_Sequence_AudioRefs={dog_AudioRefs}
+                        main_Number_PetEnergy = {350}
+                        main_Number_Mood = {dog_CurrMood}
+                        main_Boolean_ActivityInProgress={dog_ActivityInProgress}
+                    />
+                    
+                </div>
 
-            {dog_WarningShowNotification &&
-            <WarningComponent/>}
+            </div>
+
+
+            {dog_Alive && (dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) &&
+            <WarningComponent
+                warning_types={[dog_Hungry, dog_Dirty, dog_Restless, (dog_Unwell && dog_CanReceiveDose)]}
+            />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 

@@ -1,7 +1,7 @@
 .potionBar{
 
     height: auto;
-    width: auto;
+    width: 40rem;
 
     padding: 2rem 4rem;
     border-radius: 25px;
@@ -11,17 +11,17 @@
 
 .potionImageContainer{
 
-    width: auto;
+    width: 100%;
     height: auto;
     align-content: center;
     align-items: center;
     justify-content: center;
     justify-items: center;
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(1, 8rem);
+    grid-template-columns: repeat(3, 25%);
+    grid-template-rows: repeat(1, 1fr);
 
-    padding: 1rem 2rem;
+    padding: 2rem 4rem;
     gap: 2rem;
     border-radius: 25px;
 
@@ -31,8 +31,8 @@
 
 .potionImage{
 
-    height: 100%;
-    width: auto;
+    height: auto;
+    width: 100%;
 
     filter: 
         drop-shadow(0 0 2px rgb(255, 255, 255))
@@ -44,8 +44,8 @@
 
 .imageBox{
 
-    height: auto;
-    width: auto;
+    height: 15rem;
+    width: 15rem;
 
     padding: 2rem;
     border-radius: 25px;
@@ -55,8 +55,8 @@
 
 .RevivePets_ComponentImage-Structure--NoPetImage{
 
-    width: auto;
-    height: 12rem;
+    width: 100%;
+    height: 100%;
 
     padding: 2rem;
     border-radius: 25px;
@@ -65,7 +65,7 @@
 
     img {
 
-        width: auto;
+        width: 100%;
         height: 100%;
 
         filter: 

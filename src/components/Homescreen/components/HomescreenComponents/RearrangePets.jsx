@@ -4,7 +4,7 @@ import { useRoom } from "../../../../providers/RoomProvider.jsx";
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags } from "../../../../helpers/helpers.js";
-import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioNavButtonPressKey, audioSwapPetSpaceKey, audioScreenButtonPressKey } from "../../../../constants/Constants.js";
+import { petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, audioPillButtonPressKey, audioSwapPetSpaceKey, audioRectangleButtonPressKey } from "../../../../constants/Constants.js";
 
 import NoPetPortrait from "../../../../images/NoPetPortrait.png";
 
@@ -32,7 +32,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
     const rearrangePets_ForwardShifter = (rearrangePets_ForwardShifter_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         setRoom(prev => {
 
@@ -53,7 +53,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
     const rearrangePets_BackwardsShifter = (rearrangePets_BackwardsShifter_UserSelection) => {
 
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
-        helpers_Player_UIIndicatorSounds(audioScreenButtonPressKey);
+        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
         setRoom(prev => {
 
@@ -76,9 +76,11 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
+                
                 <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Order of Your Pets:</h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
+
                         {Room.map((petName, rearrangePets_ForwardShifter_UserSelection) => (
 
                             <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrame-Template--Global RearrangePets_ComponentContainer-Template--Slot">
@@ -136,6 +138,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                             </div>
 
                         ))}
+
                     </div>
 
             </div>
