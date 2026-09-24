@@ -40,12 +40,13 @@ function Notifications() {
                         X  
                     </button>
                     <h2>Achievement Alert: </h2>
-                    <p>Congratulations! You unlocked "{entry[notificationsDescriptionKey]}" on {entry[notificationsDateKey]}.</p>
+                    <p>You unlocked "{entry[notificationsDescriptionKey]}" on {entry[notificationsDateKey]}.</p>
                 </div>
 
             ))}
 
         </div>
+        
     );
 }
   

@@ -411,6 +411,7 @@ p {
   align-items: center;
   overflow-y: auto;
 
+
   gap: 3rem;
   padding: 3rem 6rem;
 
@@ -448,7 +449,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot {
 
-  width: 22rem;
+  width: 24rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -464,7 +465,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton{
 
-  width: 95%;
+  width: 90%;
   height: auto;
 
   padding: 3rem;
@@ -810,23 +811,24 @@ p {
 
   height: auto;
   width: auto;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  position: fixed;
   right: 0%;
   z-index: 7;
 
   margin: 2rem;
   gap: 2rem;
   padding: 1rem;
-
+  
 }
+
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Notifications {
 
-  max-height: 50vh;
+  max-height: 35vh;
   top: 0%;
 
 }
@@ -834,7 +836,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts {
 
-  max-height: 30vh;
+  max-height: 45vh;
   bottom: 0%;
 
 }
@@ -843,7 +845,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry {
 
-  width: 38rem;
+  width: 34rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -851,8 +853,7 @@ p {
   align-items: start;
 
   gap: 2rem;
-  padding: 2rem 4rem;
-  border-radius: 25px;
+  padding: 4rem;
+  border-radius: 50px;
 
 }
-

@@ -487,7 +487,7 @@ function Adoption () {
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Name Input Alert: </h2>
+                        <h2>Name Input Error: </h2>
                         <p>{adoption_CurrErrorMessage}</p>
                     </div>
                 </div>
