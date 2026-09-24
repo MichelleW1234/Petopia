@@ -36,10 +36,12 @@ function Notifications() {
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
                 <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                    <button className="UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
-                        X  
-                    </button>
-                    <h2>Achievement Alert: </h2>
+                    <div className="Notifications_HeadingRow">
+                        <button className="UIStapleElements_ComponentButtonRectangle-Template--Global Notifications_HeadingRowButton" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
+                            X  
+                        </button>
+                        <h2 className = "Notifications_HeadingRowTitle">Achievement Alert: </h2>
+                    </div>
                     <p>You unlocked "{entry[notificationsDescriptionKey]}" on {entry[notificationsDateKey]}.</p>
                 </div>
 

@@ -455,7 +455,7 @@ function Home (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Creator Note:</h2>
+                        <h2>Positive Message:</h2>
                         <p>{home_Greeting}</p>
                     </div>
                 </div>

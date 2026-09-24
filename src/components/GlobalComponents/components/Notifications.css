@@ -1,0 +1,28 @@
+.Notifications_HeadingRow{
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 3rem;
+
+}
+
+.Notifications_HeadingRowButton{
+
+    width: 25%;
+    height: auto;
+
+}
+
+.Notifications_HeadingRowTitle {
+
+    width: 60%;
+    height: auto;
+
+}

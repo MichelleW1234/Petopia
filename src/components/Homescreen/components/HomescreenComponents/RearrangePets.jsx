@@ -87,21 +87,21 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
                                         <button className = "UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
 
 
                                 ) : rearrangePets_ForwardShifter_UserSelection === 1 ? (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
                                         <button className = "UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
                                         <button className = "UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B95; </button>
                                     </div>
 
                                 ) : (
 
-                                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
+                                    <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
                                         <button className = "UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}> &#x2B05; </button>
                                     </div>
 
