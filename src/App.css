@@ -177,7 +177,7 @@ p {
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 4rem;
 
   background:
     url("./images/ScreenOverlay.png"),
@@ -403,7 +403,7 @@ p {
 .MiscellaneousElements_ComponentContainer-Structure--GlobalContent {
 
   max-width: 90%;
-  max-height: 80%;
+  max-height: 75%;
   height: auto;
   width: auto;
   display: flex;
@@ -766,6 +766,10 @@ p {
   transform: scaleY(-1);
 
 }
+
+
+
+
 
 
 

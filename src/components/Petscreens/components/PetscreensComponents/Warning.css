@@ -1,0 +1,61 @@
+.Warning_image {
+
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+
+    gap: 1rem;
+    padding: 1rem 4rem;
+    border-radius: 25px;
+
+    box-shadow: 0 0 16px 4px rgb(255, 255, 255);
+
+}
+
+
+
+.Options_ComponentImage-Template--PetThoughtPet{
+
+    width: 30%;
+    height: auto;
+
+    filter:
+        drop-shadow(0 0 2px rgb(255, 255, 255))
+        drop-shadow(0 0 4px rgb(255, 255, 255))
+        drop-shadow(0 0 6px rgb(255, 255, 255));
+
+}
+
+.Options_ComponentContainer-Structure--PetThoughtDesiredOption {
+
+    height: auto;
+    width: 65%;
+
+    img {
+
+        filter:
+            drop-shadow(0 0 2px rgb(255, 255, 255))
+            drop-shadow(0 0 4px rgb(255, 255, 255))
+            drop-shadow(0 0 6px rgb(255, 255, 255));
+
+    }
+
+}
+
+.Options_ComponentImage-Template--PetThoughtDesiredOptionBubble{
+
+    height: auto;
+    width: 100%;
+  
+}
+
+.Options_ComponentImage-Template--PetThoughtDesiredOptionObject{
+
+    height: auto;
+    width: 40%;
+
+}

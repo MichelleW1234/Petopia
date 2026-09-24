@@ -1,4 +1,4 @@
-import { audioClearPetsKey, audioRectangleButtonPressKey, notificationsDateKey, notificationsDescriptionKey } from "../../../constants/Constants";
+import { audioClearPetsKey, audioRectangleButtonPressKey, notificationsDateKey, notificationsDescriptionKey} from "../../../constants/Constants";
 import { helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 import { useNotifications } from "../../../providers/NotificationsProvider";
 
@@ -39,16 +39,8 @@ function Notifications() {
                     <button className="UIStapleElements_ComponentButtonRectangle-Template--Global" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
                         X  
                     </button>
-                    <div className = "Notification_ComponentContainer-Structure--EntryContent">
-                        <div className="Notification_ComponentContainer-Structure--EntryContentField">
-                            <h2>Message: </h2>
-                            <p>{entry[notificationsDescriptionKey]}</p>
-                            </div>
-                            <div className="Notification_ComponentContainer-Structure--EntryContentField">
-                            <h2>Date:</h2>
-                            <p>{entry[notificationsDateKey]}</p>
-                        </div>
-                    </div>
+                    <h2>Achievement Alert: </h2>
+                    <p>Congratulations! You unlocked "{entry[notificationsDescriptionKey]}" on {entry[notificationsDateKey]}.</p>
                 </div>
 
             ))}

@@ -10,7 +10,7 @@ import { usePetList } from "./PetListProvider.jsx";
 import { useNotifications } from "./NotificationsProvider.jsx";
 import {useGlobalTimer} from "./GlobalTimerProvider.jsx";
 
-import { notificationsDescriptionKey, notificationsDateKey, achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey, petSpeciesCatKey, petSpeciesDogKey } from "../constants/Constants";
+import {achievementDescriptionKey, achievementStatusKey, petSpeciesFishKey, petSpeciesKey, petStageKey, petSpeciesCatKey, petSpeciesDogKey, notificationsDateKey, notificationsDescriptionKey } from "../constants/Constants";
 
 const achievements_Context = createContext();
 
@@ -95,19 +95,19 @@ export function AchievementsProvider({ children }) {
                                         });
 
       if (bound_Boolean_FishFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey] : Achievements[0][achievementDescriptionKey], [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_CatFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey] : Achievements[1][achievementDescriptionKey], [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_DogFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey] : Achievements[2][achievementDescriptionKey], [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       if (bound_Boolean_AllPetsFullyEvolved) {
-        bound_Copy_Notifications.push({[notificationsDescriptionKey]: "Achievement unlocked!", [notificationsDateKey]: bound_String_GlobalTimer});
+        bound_Copy_Notifications.push({[notificationsDescriptionKey] : Achievements[3][achievementDescriptionKey], [notificationsDateKey]: bound_String_GlobalTimer});
       }
 
       return bound_Copy_Notifications;

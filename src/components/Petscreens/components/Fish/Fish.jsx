@@ -176,6 +176,12 @@ function Fish (){
     const fish_CleanOptionsList = [{[petActivityOptionNameKey]: "Sponge", [petActivityOptionImageKey]: Sponge, [petActivityOptionCursorKey] : CursorSponge}, {[petActivityOptionNameKey]: "Cloth", [petActivityOptionImageKey]: Cloth, [petActivityOptionCursorKey]: CursorCloth}];
     const fish_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Serum", [petActivityOptionImageKey]: Serum}];
 
+    const fish_needs = [fish_FeedOptionsCurrDesiredOption !== -1 ? fish_FeedOptionsList[fish_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        fish_CleanOptionsCurrDesiredOption !== -1 ? fish_CleanOptionsList[fish_CleanOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        null, 
+                        fish_MedicineOptionsCurrDesiredOption !== -1 ? fish_MedicineOptionsList[fish_MedicineOptionsCurrDesiredOption][petActivityOptionImageKey] : null];
+
+
     const fish_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBubbles), [petSoundSadKey]: new Audio(SadSplash), [petSoundSleepKey]: new Audio(Sleeping)});
     const fish_BackgroundAudioRef = useRef(new Audio(Tank));
 
@@ -342,7 +348,7 @@ function Fish (){
 
             }
 
-            if (fish_Unwell){
+            if (fish_Unwell && fish_CanReceiveDose){
 
                 set_Fish_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * fish_MedicineOptionsList.length));
 
@@ -470,7 +476,7 @@ function Fish (){
 
             {fish_Alive && (fish_Hungry || fish_Dirty || (fish_Unwell && fish_CanReceiveDose)) && 
             <WarningComponent
-                warning_types={[fish_Hungry, fish_Dirty, false, (fish_Unwell && fish_CanReceiveDose)]}
+                warning_types={fish_needs}
             />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">

@@ -171,6 +171,11 @@ function Cat (){
     const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent, [petActivityOptionGameInstructionsKey]: "Catch the toy mice. Avoid the power cords:"}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent, [petActivityOptionGameInstructionsKey]: "Catch the Feather When It Lands on the Target:"}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
+    const cat_needs = [cat_FeedOptionsCurrDesiredOption !== -1 ? cat_FeedOptionsList[cat_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        null, 
+                        cat_PlayOptionsCurrDesiredOption !== -1 ? cat_PlayOptionsList[cat_PlayOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        cat_MedicineOptionsCurrDesiredOption !== -1 ? cat_MedicineOptionsList[cat_MedicineOptionsCurrDesiredOption][petActivityOptionImageKey] : null];
+
     const cat_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyMeow), [petSoundSadKey]: new Audio(SadMeow), [petSoundSleepKey]: new Audio(Sleeping)});
     const cat_BackgroundAudioRef = useRef(new Audio(Candle));
 
@@ -331,7 +336,7 @@ function Cat (){
 
             }
 
-            if (cat_Unwell){
+            if (cat_Unwell && cat_CanReceiveDose){
 
                 set_Cat_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * cat_MedicineOptionsList.length));
 
@@ -461,7 +466,7 @@ function Cat (){
 
             {cat_Alive && (cat_Hungry || cat_Restless || (cat_Unwell && cat_CanReceiveDose)) &&
             <WarningComponent
-                warning_types={[cat_Hungry, false, cat_Restless, (cat_Unwell && cat_CanReceiveDose)]}
+                warning_types={cat_needs}
             />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">

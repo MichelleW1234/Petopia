@@ -15,11 +15,11 @@ function ProgressBar({progressBar_CurrPercentUntilNextUpdate, progressBar_Activi
 
                     num <= progressBar_CurrPercentUntilNextUpdate ? (
 
-                        <img key = {num} src = {Green} className = "ProgressBar_ComponentContainer-Template--ProgressionbarCell"/>
+                        <div key = {num} className="ProgressBar_ComponentContainer-Template--ProgressionbarCell ProgressBar_ComponentContainer-Template--ProgressionbarCell--Done"></div>
 
                     ) : (
 
-                        <div key = {num} className="Activity_ComponentContainer-Structure--ProgressionbarCell"></div>
+                        <div key = {num} className="ProgressBar_ComponentContainer-Template--ProgressionbarCell"></div>
 
                     )
             

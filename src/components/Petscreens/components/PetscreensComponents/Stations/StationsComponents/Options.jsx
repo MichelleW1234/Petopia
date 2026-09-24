@@ -4,11 +4,7 @@ import { useActivePetName } from "../../../../../../providers/ActivePetNameProvi
 import { audioCircleButtonPressKey, petActivityOptionImageKey, petActivityOptionNameKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds } from "../../../../../../helpers/helpers.js";
 
-import PetUnwantedActivity from "../../../../../../images/PetUnwantedActivity.png";
-import PetThoughtBubble from "../../../../../../images/PetThoughtBubble.png";
-
 import "../../../../../../App.css";
-import "./Options.css";
 
 
 
@@ -43,21 +39,6 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
         
             <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
-
-            <div className="UIStapleElements_ComponentFrame-Template--Global Options_ComponentContainer-Structure--PetThought"> 
-
-                <div className = "Options_ComponentImage-Template--PetThoughtPet">
-                    <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]} />
-                </div>
-
-                <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
-
-                    <img src = {PetThoughtBubble} className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble"/>
-                    <img src = {options_CurrDesiredOption === -1 ? PetUnwantedActivity : options_CurrSpeciesList[options_CurrDesiredOption][petActivityOptionImageKey]} className="MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Options_ComponentImage-Template--PetThoughtDesiredOptionObject"/>
-
-                </div>
-
-            </div>
 
             <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">  
 

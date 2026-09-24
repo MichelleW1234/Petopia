@@ -1,8 +1,18 @@
 import "../../../../App.css";
 import "./Warning.css";
 
+import PetThoughtBubble from "../../../../images/PetThoughtBubble.png";
+
+import { usePetList } from "../../../../providers/PetListProvider";
+import { useActivePetName } from "../../../../providers/ActivePetNameProvider";
+
+import { petSpeciesImagePortraitList, petSpeciesKey, petStageKey } from "../../../../constants/Constants";
+
 
 function Warning({warning_types}) {
+
+    const {PetList, setPetList} = usePetList();
+    const {ActivePetName, setActivePetName} = useActivePetName();
 
     return (
 
@@ -10,35 +20,21 @@ function Warning({warning_types}) {
 
             {warning_types.map((type, index) => (
 
-                index === 0 && type ? (
+                index === 0 && type !== null ? (
 
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Alert:</h2>
-                        <p>Your pet is hungry!</p>
+                        <h2>Pet Activity Alert:</h2>
+
+                        <div className="Warning_image">
+                            <img className="Options_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
+                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Options_ComponentContainer-Structure--PetThoughtDesiredOption">
+                                <img className="Options_ComponentImage-Template--PetThoughtDesiredOptionBubble" src = {PetThoughtBubble}/>
+                                <img className = "MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Options_ComponentImage-Template--PetThoughtDesiredOptionObject" src = {warning_types[index]} /> 
+                            </div>
+                        </div>
                     </div>
                 
-                ) : index === 1 && type ? (
-
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Alert:</h2>
-                        <p>Your pet is dirty!</p>
-                    </div>
-
-                ) : index === 2 && type ? (
-
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Alert:</h2>
-                        <p>Your pet wants to play!</p>
-                    </div>
-
-                ) : index === 3 && type ? (
-
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <h2>Alert:</h2>
-                        <p>Your pet needs to take its dose!</p>
-                    </div>
-
-                ) : (
+                ) :  (
 
                     null
 

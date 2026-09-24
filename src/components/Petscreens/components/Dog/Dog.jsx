@@ -192,6 +192,11 @@ function Dog (){
     const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent, [petActivityOptionGameInstructionsKey]: "Click on all the balls. Avoid the rocks: "}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent, [petActivityOptionGameInstructionsKey]: "Click the Matching Letter When It Lands on the Target: "}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
+    const dog_needs = [dog_FeedOptionsCurrDesiredOption !== -1 ? dog_FeedOptionsList[dog_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        dog_CleanOptionsCurrDesiredOption !== -1 ? dog_CleanOptionsList[dog_CleanOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        dog_PlayOptionsCurrDesiredOption !== -1 ? dog_PlayOptionsList[dog_PlayOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
+                        dog_MedicineOptionsCurrDesiredOption !== -1 ? dog_MedicineOptionsList[dog_MedicineOptionsCurrDesiredOption][petActivityOptionImageKey] : null];
+
     const dog_AudioRefs = useRef({[petSoundHappyKey]: new Audio(HappyBarks), [petSoundSadKey]: new Audio(SadWhine), [petSoundSleepKey]: new Audio(Sleeping)});
     const dog_BackgroundAudioRef = useRef(new Audio(fireplace));
 
@@ -377,13 +382,13 @@ function Dog (){
 
             }
 
-            if (dog_Unwell){
+            if (dog_Unwell && dog_CanReceiveDose){
 
                 set_Dog_MedicineOptionsCurrDesiredOption(Math.floor(Math.random() * dog_MedicineOptionsList.length));
 
             }
 
-        }
+        } 
 
     }, [dog_Alive, dog_Hungry, dog_Dirty, dog_Restless, dog_Unwell, dog_CanReceiveDose]);
 
@@ -512,7 +517,7 @@ function Dog (){
 
             {dog_Alive && (dog_Hungry || dog_Dirty || dog_Restless || (dog_Unwell && dog_CanReceiveDose)) &&
             <WarningComponent
-                warning_types={[dog_Hungry, dog_Dirty, dog_Restless, (dog_Unwell && dog_CanReceiveDose)]}
+                warning_types={dog_needs}
             />}
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">

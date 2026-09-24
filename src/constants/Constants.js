@@ -17,8 +17,7 @@ export const notificationsDescriptionKey = "description";
 export const notificationsDateKey = "date";
 
 
-
-export const achievementDescriptionKey = "name";
+export const achievementDescriptionKey = "description";
 export const achievementStatusKey = "status";
 
 

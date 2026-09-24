@@ -40,38 +40,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
                                             hour: "2-digit",
                                             minute: "2-digit",
                                         });
-
-    const activity_CurrDeadLine = activity_CurrActivityKey === petMedicineKey ? 
-                        PetList[ActivePetName][activity_CurrActivityKey] + activity_CurrActivityTimeLimit
-                    : PetTimeStamps[ActivePetName][activity_CurrActivityKey][petActivityTimeStampLastPerformedKey] + activity_CurrActivityTimeLimit;
-
-    const activity_CurrDeadLineString = PetList[ActivePetName][petHealthKey] === 0 ?
-                                        "--"
-                                    :   activity_CurrActivityKey === petMedicineKey ?  
-                                            PetList[ActivePetName][activity_CurrActivityKey] === 0 ? 
-                                                "On Demand"
-                                            : (new Date(activity_CurrDeadLine)).toLocaleString([], {
-                                                    year: "numeric",
-                                                    month: "2-digit",
-                                                    day: "2-digit",
-                                                    hour: "2-digit",
-                                                    minute: "2-digit",
-                                                })
-                                        : 
-                                            (new Date(activity_CurrDeadLine)).toLocaleString([], {
-                                                year: "numeric",
-                                                month: "2-digit",
-                                                day: "2-digit",
-                                                hour: "2-digit",
-                                                minute: "2-digit",
-                                            });
-
-    const activity_CurrDate = GlobalTimer;
-    const activity_CurrPercentUntilNextUpdate = activity_CurrActivityKey === petMedicineKey ?  
-                                                PetList[ActivePetName][activity_CurrActivityKey] === 0 ? 
-                                                    100
-                                                : Math.min(100, Math.max(0, Math.floor(((activity_CurrDate - PetList[ActivePetName][activity_CurrActivityKey])/activity_CurrActivityTimeLimit) * 100)))
-                                            : Math.min(100, Math.max(0, Math.floor(((activity_CurrDate - PetTimeStamps[ActivePetName][activity_CurrActivityKey][petActivityTimeStampLastPerformedKey])/activity_CurrActivityTimeLimit) * 100)));
+                                        
 
     const activity_LastPerformedStrings = {
 
@@ -82,66 +51,12 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
 
     }
 
-    const activity_DeadLineStrings = {
-
-        [petActivityTimeStampFeedingKey]: "Feed Before: ",
-        [petActivityTimeStampCleaningKey]: "Clean Before: ",
-        [petActivityTimeStampPlayingKey]: "Play Before: ",
-        [petMedicineKey]: "Next Dose: "
-
-    }
-
 
     return (
 
         <div className = "Activity_ComponentContainer-Structure--Category">
-            <div className="Activity_ComponentContainer-Structure--CategoryField">
-                <h2>{activity_LastPerformedStrings[activity_CurrActivityKey]}</h2> 
-                <p>{activity_CurrLastPerformedString}</p>
-            </div>
-            <div className="Activity_ComponentContainer-Structure--CategoryField">
-                <h2>{activity_DeadLineStrings[activity_CurrActivityKey]}</h2>
-                <p>{activity_CurrDeadLineString}</p>
-            </div>
-    
-            {PetList[ActivePetName][petHealthKey] === 0 ? (
-
-                <div className = "Activity_ComponentContainer-Template--Progressionbar">
-
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                        <img key = {num} src = {Blank} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
-
-                    ))}
-                    
-                </div>
-
-            ) : (
-
-                <div className = "Activity_ComponentContainer-Template--Progressionbar">
-
-                    {Array.from({ length: 100 }, (_, i) => i + 1).map(num => (
-
-                        num === 50 ? (
-
-                            <img key = {num} src = {Green} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
-
-                        ) : num <= activity_CurrPercentUntilNextUpdate ?  (
-
-                            <img key = {num}  src = {Red} className="Activity_ComponentContainer-Structure--ProgressionbarCell"/>
-
-                        ) : (
-
-                            <div key = {num} className="Activity_ComponentContainer-Structure--ProgressionbarCell"></div>
-                            
-                        )
-
-                    ))}
-
-                </div>
-
-            )} 
-
+            <h2>{activity_LastPerformedStrings[activity_CurrActivityKey]}</h2> 
+            <p>{activity_CurrLastPerformedString}</p>
         </div>
         
     );
