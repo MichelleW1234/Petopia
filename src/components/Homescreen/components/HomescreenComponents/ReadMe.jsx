@@ -21,7 +21,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 
-                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read How to Play Petopia: </h1>
+                <h1 className = "MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Read Me: </h1>
                 <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
                     <p> &bull; Complete an activity when its alert flag pops up in the bottom right corner of a pet's screen. As you spend more time taking care of a species, you can begin to predict the time range for when this occurs. </p> 
                     <p> &bull; Be sure to select the option that the pet wants for an activity.</p>

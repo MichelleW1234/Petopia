@@ -354,7 +354,7 @@ function Home (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Room: </h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a room: </h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 

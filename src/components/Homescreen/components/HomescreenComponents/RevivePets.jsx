@@ -139,7 +139,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a Pet to Revive:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a pet:</h1>
 
                 <div className="UIStapleElements_ComponentFrame-Template--Global potionBar">
 

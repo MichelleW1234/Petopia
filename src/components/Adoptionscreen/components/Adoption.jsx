@@ -419,7 +419,7 @@ function Adoption () {
 
                         <>
 
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the Input Section: </h1> 
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Modify the name section: </h1> 
 
                             <div className="UIStapleElements_ComponentFrame-Template--Global Adoption_ComponentContainer-Template--Form"> 
 

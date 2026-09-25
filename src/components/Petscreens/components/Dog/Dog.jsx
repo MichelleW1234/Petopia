@@ -189,7 +189,7 @@ function Dog (){
 
     const dog_FeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dog_CleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent, [petActivityOptionGameInstructionsKey]: "Click on all the balls. Avoid the rocks: "}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent, [petActivityOptionGameInstructionsKey]: "Click the Matching Letter When It Lands on the Target: "}];
+    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent, [petActivityOptionGameInstructionsKey]: "Select all the balls: "}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent, [petActivityOptionGameInstructionsKey]: "Select the matching letter when it reaches the target: "}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dog_needs = [dog_FeedOptionsCurrDesiredOption !== -1 ? dog_FeedOptionsList[dog_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -265,7 +265,7 @@ function Dog (){
         }
 
     },
-        ".Schedule"
+        ".ActivityTracker"
     );
 
 
@@ -459,8 +459,8 @@ function Dog (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Schedule" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {dog_Alive ? (
 
@@ -499,7 +499,7 @@ function Dog (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
                     
                     <MainComponent
                         main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}

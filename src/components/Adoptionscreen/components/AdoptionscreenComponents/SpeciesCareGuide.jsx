@@ -26,7 +26,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Read the Species Maintenance Requirements:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Species Care Guide:</h1>
                 <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
                     <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                         <h2>Dog &rarr; High Maintenance Pet</h2>

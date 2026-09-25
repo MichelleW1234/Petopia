@@ -38,7 +38,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
         
-            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select the Option that Your Pet Wants:</h1>
+            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select an option:</h1>
 
             <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">  
 

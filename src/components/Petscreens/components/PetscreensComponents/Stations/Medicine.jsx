@@ -199,7 +199,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet as it receives its dose:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet to finish receiving its dose:</h1>
 
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicine_CurrNumber/medicine_OptionsTotalNumber) * 100)))}

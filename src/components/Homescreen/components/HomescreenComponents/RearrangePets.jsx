@@ -77,7 +77,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
        
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the Order of Your Pets:</h1>
+                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the order of your pets:</h1>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 

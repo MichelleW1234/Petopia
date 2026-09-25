@@ -168,7 +168,7 @@ function Cat (){
 
 
     const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent, [petActivityOptionGameInstructionsKey]: "Catch the toy mice. Avoid the power cords:"}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent, [petActivityOptionGameInstructionsKey]: "Catch the Feather When It Lands on the Target:"}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent, [petActivityOptionGameInstructionsKey]: "Select the toy mice:"}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent, [petActivityOptionGameInstructionsKey]: "Select the feathers when they reach the target:"}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const cat_needs = [cat_FeedOptionsCurrDesiredOption !== -1 ? cat_FeedOptionsList[cat_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -243,7 +243,7 @@ function Cat (){
         }
 
     },
-        ".Schedule"
+        ".ActivityTracker"
     );
         
 
@@ -411,7 +411,7 @@ function Cat (){
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
                 <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Schedule" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {cat_Alive ? (
 
@@ -448,7 +448,7 @@ function Cat (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
                     <MainComponent
                         main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}

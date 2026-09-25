@@ -251,7 +251,7 @@ function Fish (){
         }
 
     },
-        ".Schedule"
+        ".ActivityTracker"
     );
     
 
@@ -420,8 +420,8 @@ function Fish (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Schedule" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Schedule <br/> [3]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {fish_Alive ? (
 
@@ -458,7 +458,7 @@ function Fish (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> {ActivePetName === "" ? null : `${ActivePetName}'s`} Living Room:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
 
                     <MainComponent
                         main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}

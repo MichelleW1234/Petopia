@@ -148,7 +148,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth for cleaning:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth to clean:</h1>
 
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((clean_CurrNumber/clean_OptionsTotalNumber) * 100)))}

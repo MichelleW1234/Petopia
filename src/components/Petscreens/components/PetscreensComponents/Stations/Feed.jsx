@@ -143,7 +143,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet as it eats:</h1>
+                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet to finish eating:</h1>
                     
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feed_CurrNumber/feed_OptionsTotalNumber) * 100)))}
