@@ -180,7 +180,7 @@ p {
   align-items: center;
   justify-content: center;
 
-  padding: 8rem;
+  padding: 4rem;
   gap: 2rem;
 
   background:
@@ -816,6 +816,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags {
 
+  max-height: 40vh;
   height: auto;
   width: auto;
   position: fixed;
@@ -837,7 +838,6 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Notifications {
 
-  max-height: 35vh;
   top: 0%;
 
 }
@@ -845,9 +845,8 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts {
 
-  max-height: 45vh;
   bottom: 0%;
-
+  
 }
 
 

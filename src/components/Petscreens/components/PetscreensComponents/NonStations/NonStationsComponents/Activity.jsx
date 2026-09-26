@@ -26,7 +26,7 @@ function Activity({activity_CurrActivityKey, activity_CurrActivityTimeLimit}) {
     const activity_CurrLastPerformedString = activity_CurrActivityKey === petMedicineKey ?
                                         PetList[ActivePetName][activity_CurrActivityKey] === 0 ? 
                                             "N/A"
-                                        :   (new Date(PetList[ActivePetName][activity_CurrActivityKey])).toLocaleString([], {
+                                        :   (new Date(PetList[ActivePetName][petMedicineKey])).toLocaleString([], {
                                                 year: "numeric",
                                                 month: "2-digit",
                                                 day: "2-digit",

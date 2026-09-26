@@ -20,7 +20,7 @@ function Warning({warning_types}) {
 
             {warning_types.map((type, index) => (
 
-                index === 0 && type !== null ? (
+                type !== null ? (
 
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
                         <h2>Pet Activity Alert:</h2>
