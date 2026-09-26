@@ -140,7 +140,7 @@ p {
 
 ::-webkit-scrollbar {
 
-  width: 5px; 
+  width: 4px; 
   height: auto;
 
 }
@@ -733,7 +733,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
-  width: 55rem;
+  width: 56rem;
   height: auto;
   display: flex;
   flex-direction: column;
