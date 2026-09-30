@@ -38,8 +38,6 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
         <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
         
-            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Select an option:</h1>
-
             <div className= "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">  
 
                 {options_CurrSpeciesList.map((option, index) => (
@@ -48,19 +46,19 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                         {options_UserSelection === index ? (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 
                         ) : (
 
-                            <button className = "UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
+                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
                                 <img src = {option[petActivityOptionImageKey]}/>
                             </button>
 
                         )}
 
-                        <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
                             <h2>{option[petActivityOptionNameKey]}</h2>
                         </div>
                         

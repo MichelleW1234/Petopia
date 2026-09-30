@@ -22,17 +22,16 @@ function Warning({warning_types}) {
 
                 type !== null ? (
 
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
+                    <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent">
                         <h2>Pet Activity Alert:</h2>
-
                         <div className="Warning_image">
-                            <div className="Warning_ComponentImage-Template--PetThoughtPet">
-                                <img src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
-                            </div>
+                            <img className="Warning_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Warning_ComponentContainer-Structure--PetThoughtDesiredOption">
                                 <img className="Warning_ComponentImage-Template--PetThoughtDesiredOptionBubble" src = {PetThoughtBubble}/>
                                 <img className = "MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Warning_ComponentImage-Template--PetThoughtDesiredOptionObject" src = {warning_types[index]} /> 
                             </div>
+                        </div>
                         </div>
                     </div>
                 

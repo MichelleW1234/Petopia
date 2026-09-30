@@ -21,9 +21,8 @@
     width: auto;
 
     filter: 
-        drop-shadow(0 0 1px rgb(255, 255, 255))
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 3px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
@@ -54,10 +53,8 @@
         height: 100%;
 
         filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
-
+            drop-shadow(0 0 10px rgb(255, 255, 255))
+            drop-shadow(0 0 5px rgb(255, 255, 255));
 
     }
 
@@ -78,9 +75,8 @@
         width: auto;
 
         filter: 
-            drop-shadow(0 0 2px rgb(255, 255, 255))
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 6px rgb(255, 255, 255));
+            drop-shadow(0 0 10px rgb(255, 255, 255))
+            drop-shadow(0 0 5px rgb(255, 255, 255));
 
     }
 
@@ -96,9 +92,8 @@
     z-index: 3;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
@@ -110,7 +105,7 @@
 
 .Main_ComponentImage-Structure--WindowScreenCeilingDecoration--cat{
 
-    left: 10%;
+    left: 5%;
 
 }
 
@@ -126,16 +121,15 @@
     position: absolute;
 
     filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
     
 }
 
 .Main_ComponentImage-Structure--WindowScreenWallDecoration--dog{
 
     bottom: 45%;
-    left: 70%;
+    right: 5%;
     
 }
 
@@ -143,7 +137,6 @@
 .Main_ComponentImage-Structure--WindowScreenWallDecoration--cat{
 
     bottom: 40%;
-    left: 40%;
     
 }
 
@@ -160,9 +153,8 @@
     z-index: 2;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
     
 }
 
@@ -170,7 +162,7 @@
 
     height: 40%;
     bottom: 25%;
-    left: 10%;
+    left: 5%;
     
 }
 
@@ -179,7 +171,7 @@
 
     height: 40%;
     bottom: 25%;
-    left: 75%;
+    right: 5%;
 
 }
 
@@ -205,29 +197,26 @@
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--dog{
 
-    width: 35%;
-    height: 35%;
+    width: 40%;
+    height: 30%;
     bottom: 0%;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
 
 .Main_ComponentImage-Structure--WindowScreenFloorDecoration--cat{
 
-    width: 35%;
-    height: 35%;
+    width: 40%;
+    height: 30%;
     bottom: 0%;
-    left: 5%;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
@@ -240,8 +229,7 @@
     right: 15%;
     
     filter: 
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }

@@ -1,4 +1,4 @@
-.RearrangePets_ComponentContainer-Template--Slot{
+.RearrangePets_ComponentContainer-Structure--Slot{
 
     width: 28rem;
     height: auto;
@@ -6,34 +6,45 @@
     flex-direction: column;
     align-items: center;
 
+    gap: 2rem;
+
+}
+
+.RearrangePets_ComponentContainer-Template--Slot{
+
+    width: 100%;
+    height: auto;
+
+    padding: 3rem;    
+    border-radius: 25px;
+
+}
+
+.rearrangepetsslot{
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     gap: 3rem;
     padding: 3rem;
-    border-radius: 50px;
+    border-radius: 25px;
+  
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }
 
 
 .RearrangePets_ComponentContainer-Structure--SlotImage{
 
-    width: 55%;
+    width: 75%;
     height: auto;
 
-    padding: 2rem;
-    border-radius: 25px;
-
-    box-shadow: 0 0 16px 8px rgb(255, 255, 255);
-
-    img {
-
-        width: 100%;
-        height: auto;
-
-        filter: 
-            drop-shadow(0 0 4px rgb(255, 255, 255))
-            drop-shadow(0 0 8px rgb(255, 255, 255))
-            drop-shadow(0 0 12px  rgb(255, 255, 255));
-
-    }
+    filter: 
+        drop-shadow(0 0 10px rgb(255, 255, 255))
+        drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
@@ -53,4 +64,20 @@
 
 }
 
+
+.RearrangePets_ComponentContainer-Structure--SlotButton{
+
+  width: 10rem;
+  height: auto;
+  
+  padding: 2rem;
+
+  img {
+
+    width: 100%;
+    height: auto;
+        
+  }
+
+}
 

@@ -143,8 +143,6 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet to finish eating:</h1>
-                    
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((feed_CurrNumber/feed_OptionsTotalNumber) * 100)))}
                         progressBar_ActivitySuccess={feed_Success}
@@ -166,15 +164,15 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
             
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick " onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {feed_OptionsUserSelection === -1 || feed_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Confirm" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> Confirm <br/> [return]</button>
 
                 )}
 

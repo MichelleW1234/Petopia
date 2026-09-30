@@ -189,7 +189,7 @@ function Dog (){
 
     const dog_FeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dog_CleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Walk", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent, [petActivityOptionGameInstructionsKey]: "Select all the balls: "}, {[petActivityOptionNameKey]: "Train", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent, [petActivityOptionGameInstructionsKey]: "Select the matching letter when it reaches the target: "}];
+    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Balls", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent}, {[petActivityOptionNameKey]: "Match the Letter", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dog_needs = [dog_FeedOptionsCurrDesiredOption !== -1 ? dog_FeedOptionsList[dog_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -458,24 +458,24 @@ function Dog (){
             
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
-                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
+                <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {dog_Alive ? (
 
                     <>
-                        <button className={dog_Hungry ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed"} onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
-                        <button className={dog_Dirty ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Clean" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Clean"} onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
-                        <button className={dog_Restless ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Play" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Play"} onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Feed" onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> Feed <br/> [4] </button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Clean" onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Play" onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> Play <br/> [6]</button>
 
                         {dog_CanReceiveDose ? (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
+                            <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> Medicine <br/> [7]</button>
 
                         ) : (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [7]</button>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [7]</button>
 
                         )}
                     
@@ -484,10 +484,10 @@ function Dog (){
                 ) : (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Feed <br/> [4]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clean <br/> [5]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Play <br/> [6]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [7] </button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Clean <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Play <br/> [6]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [7] </button>
                     </>
 
                 )}
@@ -499,7 +499,11 @@ function Dog (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
+                        </div>
+                    </div>
                     
                     <MainComponent
                         main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}
@@ -522,13 +526,13 @@ function Dog (){
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Volume" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Dog_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Inventory" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Dog_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

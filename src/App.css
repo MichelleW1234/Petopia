@@ -28,8 +28,7 @@
 
   --UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst: 100%;
   --UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond: 50%;
-  --UIStapleElements_ComponentButtonPill-Light--GlobalColorFont: 0%;
-  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont: 0%;
+  --UIStapleElements_ComponentButton-Light--GlobalColorFont: 0%;
   --UIStapleElements_ComponentButton-Light--GlobalColorBorder: 50%;
   --UIStapleElements_ComponentButton-Light--GlobalColorShadow: 100%;
 
@@ -140,7 +139,7 @@ p {
 
 ::-webkit-scrollbar {
 
-  width: 4px; 
+  width: 1rem; 
   height: auto;
 
 }
@@ -153,10 +152,9 @@ p {
 
 ::-webkit-scrollbar-thumb {
 
-  border-radius: 9999px;
+  border-radius: 1000px;
 
-  background-color: rgb(255, 255, 255, 0.5);
-  border: 1px solid rgb(255, 255, 255, 0.5); 
+  background-color: rgb(255, 255, 255, 0.75);
 
 }
 
@@ -173,8 +171,8 @@ p {
 
   height: 100vh;
   width: 100%;
-  min-width: 1024px;
-  min-height: 640px;
+  min-width: 64rem;
+  min-height: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -201,8 +199,8 @@ p {
 
   width: 100%;
   height: 100vh;
-  min-width: 1024px;
-  min-height: 640px;
+  min-width: 64rem;
+  min-height: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -225,99 +223,9 @@ p {
 
 /*Components:*/
 
-.UIStapleElements_ComponentButtonPill-Template--GlobalClick {
+.UIStapleElements_ComponentButton-Structure--GlobalClick {
 
-  width: auto;
-  height: auto;
-
-  padding: 2rem 4rem;
-  border-radius: 9999px;
-  border-style: solid;
-
-  border-left-width: 5px;
-  border-bottom-width: 5px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  transition: transform 0.3s ease;
-
-}
-
-.UIStapleElements_ComponentButtonPill-Template--GlobalClick:hover,
-.UIStapleElements_ComponentButtonPill-Template--GlobalClick.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  transform: scale(1.10);
-
-}
-
-.UIStapleElements_ComponentButtonPill-Template--GlobalNonclick {
-
-  width: auto;
-  height: auto;
-
-  padding: 2rem 4rem;
-  border-radius: 9999px;
-  border-style: solid;
-
-  border-left-width: 5px;
-  border-bottom-width: 5px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButtonPill-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-
-}
-
-
-
-.UIStapleElements_ComponentButtonRectangle-Template--Global {
-
-  width: auto;
-  height: auto;
-
-  padding: 2rem;
-  border-radius: 25px;
-  border-style: solid;
-
-  border-left-width: 5px;
-  border-bottom-width: 5px;
-  border-right-width: 1px;
-  border-top-width: 1px;
-
-  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(  --UIStapleElements_ComponentButtonRectangle-Light--GlobalColorFont));
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  transition: transform 0.3s ease;
-
-}
-
-
-.UIStapleElements_ComponentButtonRectangle-Template--Global:hover,
-.UIStapleElements_ComponentButtonRectangle-Template--Global.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  transform: scale(1.10);
-
-}
-
-
-.UIStapleElements_ComponentButtonCircle-Structure--Global {
-
-  aspect-ratio: 1/1;
-
-  border-radius: 50%;
+  border-radius: 1000px;
   border-style: solid;
   border-left-width: 5px;
   border-bottom-width: 5px;
@@ -326,7 +234,7 @@ p {
 
   transition: transform 0.3s ease;
 
-  img {
+  img{
 
     width: 100%;
     height: auto;
@@ -335,13 +243,103 @@ p {
 
 }
 
-.UIStapleElements_ComponentButtonCircle-Structure--Global:hover,
-.UIStapleElements_ComponentButtonCircle-Structure--Global.active{
+.UIStapleElements_ComponentButton-Structure--GlobalClick:hover,
+.UIStapleElements_ComponentButton-Structure--GlobalClick.active {
 
   transform: scale(1.10);
 
 }
 
+.UIStapleElements_ComponentButton-Template--GlobalNonclick {
+
+  border-radius: 1000px;
+  border-style: solid;
+
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-right-width: 1px;
+  border-top-width: 1px;
+
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorFont));
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+
+  img{
+
+    width: 100%;
+    height: auto;
+
+    filter: 
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+  }
+
+}
+
+
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected{
+
+  color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorFont));
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+  box-shadow: 0 0 20px 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
+
+  img{
+
+    filter: 
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+  }
+
+}
+
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected:hover,
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected:active{
+
+  box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
+
+  img{
+
+    filter: 
+      drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+  }
+
+}
+
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected {
+
+  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
+  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
+  box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
+
+  img{
+
+    filter: 
+      drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+  }
+
+}
+
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected:hover,
+.UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected:active{
+
+  box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
+
+  img{
+
+    filter: 
+      drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+  }
+
+}
 
 .UIStapleElements_ComponentFrame-Template--Global{
 
@@ -360,52 +358,29 @@ p {
 
 
 
-.UIStapleElements_ComponentButtonCircle-Color--Global--Global {
-
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  img{
-
-    filter: 
-      drop-shadow(0 0 2px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 6px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
-  }
-
-}
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--Global:hover,
-.UIStapleElements_ComponentButtonCircle-Color--Global--Global.active {
-
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-}
-
-.UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected {
-
-  border-color: hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBorder));
-  background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
-  box-shadow: 0 0 16px 12px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
-
-  img{
-
-    filter: 
-      drop-shadow(0 0 2px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 4px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 6px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
-  }
-
-}
-
-
-
-
-
 /*Other cross-component tags:*/
+
+
+.MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton{
+
+  width: auto;
+  height: auto;
+
+  padding: 2rem 4rem;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton{
+
+  width: 90%;
+  height: auto;
+
+  padding: 3rem;
+
+}
+
+
 
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalContent {
@@ -451,6 +426,16 @@ p {
   align-items: start;
 
   gap: 3rem;
+
+}
+
+.MiscellaneousElements_ComponentButton-Template--GlobalWordButton {
+
+  width: auto;
+  height: auto;
+
+  padding: 2rem 4rem;
+
 }
 
 
@@ -465,45 +450,37 @@ p {
 
   gap: 3rem;
   padding: 3rem;
-  border-radius: 50px;
+  border-radius: 25px;
 
 }
 
-
-.MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton{
-
-  width: 90%;
-  height: auto;
-
-  padding: 3rem;
-
-}
 
 
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame {
 
-  height: 38rem;
-  width: 58rem;
+  height: auto;
+  width: auto;
   padding: 4rem;
-  border-radius: 75px;
+
+  border-radius: 25px;
 
 }
 
 
 .MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen{
 
-  height: 100%;
-  width: 100%;
+  height: 30rem;
+  width: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  
-  border-radius: 50px;
 
-  box-shadow: 0 0 16px 12px rgb(255, 255, 255);
+  border-radius: 25px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }
 
@@ -581,9 +558,8 @@ p {
     width: auto;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px  rgb(255, 255, 255));
+        drop-shadow(0 0 10px rgb(255, 255, 255))
+        drop-shadow(0 0 5px rgb(255, 255, 255));
 
   }
 
@@ -605,9 +581,8 @@ p {
     width: auto;
 
     filter: 
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px  rgb(255, 255, 255));
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
   }
 
@@ -698,42 +673,25 @@ p {
 
 
 
-.MiscellaneousElements_ComponentText-Template--GlobalDescriptor{
+.MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor{
 
   width: 100%;
   height: auto;
-  text-align: center;
+  text-align: center;  
+  
+  padding: 1rem 2rem;
+  border-radius: 1000px;
 
   color: rgb(255, 255, 255);
-  border-radius: 9999px;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }
-
-
-.MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview{
-
-  padding: 1rem 5rem;
-
-  box-shadow: 0 0 16px 12px rgba(255, 255, 255);
-
-}
-
-.MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry{
-
-  padding: 1rem;
-
-  box-shadow: 0 0 16px 8px rgb(255, 255, 255);
-
-}
-
-
-
 
 
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
-  width: 56rem;
+  width: 60rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -742,7 +700,25 @@ p {
 
   padding: 6rem;
   gap: 2rem;
-  border-radius: 75px;
+  border-radius: 25px;
+  
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent{
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5rem;
+  gap: 1rem;
+  border-radius: 25px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
   
 }
 
@@ -754,9 +730,8 @@ p {
   position: absolute;
 
   filter: 
-    drop-shadow(0 0 2px rgb(255, 255, 255))
-    drop-shadow(0 0 4px rgb(255, 255, 255))
-    drop-shadow(0 0 6px  rgb(255, 255, 255));
+    drop-shadow(0 0 10px rgb(255, 255, 255))
+    drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
 
@@ -816,7 +791,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags {
 
-  max-height: 40vh;
+  max-height: 45vh;
   height: auto;
   width: auto;
   position: fixed;
@@ -853,15 +828,67 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry {
 
-  width: 34rem;
+  width: 38rem;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
 
-  gap: 2rem;
+  gap: 4rem;
   padding: 4rem;
-  border-radius: 50px;
+  border-radius: 25px;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent {
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  padding: 2rem 4rem;
+  gap: 2rem;
+  border-radius: 25px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
+
+}
+
+
+
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSign {
+
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem 4rem;
+  border-radius: 1000px;
+
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent {
+
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 4rem;
+  border-radius: 1000px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }

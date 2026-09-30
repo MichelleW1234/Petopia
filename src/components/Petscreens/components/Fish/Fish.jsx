@@ -419,23 +419,23 @@ function Fish (){
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
-                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
+                <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Records" onClick = {() => helpers_Opener_Flags(set_Fish_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Fish_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {fish_Alive ? (
 
                     <>
-                        <button className={fish_Hungry ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed"} onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                        <button className={fish_Dirty ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Clean" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Clean"} onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Feed" onClick = {() => helpers_Opener_Flags(set_Fish_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Clean" onClick = {() => helpers_Opener_Flags(set_Fish_CleanOpenFlag, 0)}> Clean <br/> [5]</button>
 
                         {fish_CanReceiveDose ? (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Medicine" onClick = {() => helpers_Opener_Flags(set_Fish_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Medicine" onClick = {() => helpers_Opener_Flags(set_Fish_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                         ) : (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [6]</button>
 
                         )}
 
@@ -444,9 +444,9 @@ function Fish (){
                 ) : (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Feed <br/> [4]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clean <br/> [5]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [6]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Clean <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [6]</button>
                     </>
 
                 )}
@@ -458,7 +458,11 @@ function Fish (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                     
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
+                        </div>
+                    </div>
 
                     <MainComponent
                         main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}
@@ -481,13 +485,13 @@ function Fish (){
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Volume" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Fish_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Inventory" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Fish_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

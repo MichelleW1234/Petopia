@@ -33,29 +33,29 @@ function Schedule({set_Schedule_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
             
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Activity Tracker:</h1>
-
                 <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                        {Object.entries(petSpeciesActivityTimeStampTimeLimitList[PetList[ActivePetName][petSpeciesKey]]).map(([key, value]) => (
+
+                            <ActivityComponent
+                                key = {key}
+                                activity_CurrActivityKey = {key}
+                                activity_CurrActivityTimeLimit = {value}
+                            />
+
+                        ))}
 
                         <ActivityComponent
-                            key = {key}
-                            activity_CurrActivityKey = {key}
-                            activity_CurrActivityTimeLimit = {value}
+                            activity_CurrActivityKey = {petMedicineKey}
+                            activity_CurrActivityTimeLimit = {petActivityTimeStampMedicineDoseTimeGapKey}
                         />
-
-                    ))}
-
-                    <ActivityComponent
-                        activity_CurrActivityKey = {petMedicineKey}
-                        activity_CurrActivityTimeLimit = {petActivityTimeStampMedicineDoseTimeGapKey}
-                    />
+                    </div>
                 </div>
 
             </div>
             
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}> Close <br/> [3] </button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}> Close <br/> [3] </button>
             </div>
 
         </div>

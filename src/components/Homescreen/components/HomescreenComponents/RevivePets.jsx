@@ -139,8 +139,6 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a pet:</h1>
-
                 <div className="UIStapleElements_ComponentFrame-Template--Global potionBar">
 
                     <div className="potionImageContainer">
@@ -199,19 +197,19 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                                     {RevivePets_UserSelection === petName ? (
 
-                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
+                                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </button>
 
                                     ) : (
 
-                                        <button className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
+                                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         </button>
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
                                         <h2>{petName}</h2>
                                     </div>
 
@@ -229,15 +227,15 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {RevivePets_UserSelection === "" ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick ">Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
 
                 )}
 

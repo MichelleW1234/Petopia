@@ -97,8 +97,6 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">{play_OptionsCurrSpeciesList[play_OptionsUserSelection][petActivityOptionGameInstructionsKey]}</h1>
-
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((play_CurrNumber/play_OptionsTotalNumber) * 100)))}
                         progressBar_ActivitySuccess={play_Success}
@@ -129,15 +127,15 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick " onClick = {() => petScreensHelpers_Canceller_Activities(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton" onClick = {() => petScreensHelpers_Canceller_Activities(play_AudioRef, set_Play_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {play_OptionsUserSelection === -1 || play_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Confirm" onClick={() => optionSelectionManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed, set_Play_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => optionSelectionManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed, set_Play_Success)}> Confirm <br/> [return]</button>
 
                 )}
 

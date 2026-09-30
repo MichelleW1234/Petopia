@@ -168,7 +168,7 @@ function Cat (){
 
 
     const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Hunt", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent, [petActivityOptionGameInstructionsKey]: "Select the toy mice:"}, {[petActivityOptionNameKey]: "Catch", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent, [petActivityOptionGameInstructionsKey]: "Select the feathers when they reach the target:"}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Mice", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent}, {[petActivityOptionNameKey]: "Hit the Feather", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const cat_needs = [cat_FeedOptionsCurrDesiredOption !== -1 ? cat_FeedOptionsList[cat_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -409,23 +409,23 @@ function Cat (){
             
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
 
-                <Link to = "/home" className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
+                <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> Home <br/> [1]</Link>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> Records <br/> [2]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> Activity Tracker <br/> [3]</button>
 
                 {cat_Alive ? (
 
                     <>
-                        <button className={cat_Hungry ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Feed"} onClick = {() => helpers_Opener_Flags(set_Cat_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
-                        <button className={cat_Restless ? "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Play" : "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Play"} onClick = {() => helpers_Opener_Flags(set_Cat_PlayOpenFlag, 0)}> Play <br/> [5] </button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Feed" onClick = {() => helpers_Opener_Flags(set_Cat_FeedOpenFlag, 0)}> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Play" onClick = {() => helpers_Opener_Flags(set_Cat_PlayOpenFlag, 0)}> Play <br/> [5] </button>
 
                         {cat_CanReceiveDose ? (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Medicine" onClick = {() => helpers_Opener_Flags(set_Cat_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Medicine" onClick = {() => helpers_Opener_Flags(set_Cat_MedicineOpenFlag, 0)}> Medicine <br/> [6]</button>
 
                         ) : (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [6]</button>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [6]</button>
 
                         )}
                     
@@ -434,9 +434,9 @@ function Cat (){
                 ) : (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Feed <br/> [4]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Play <br/> [5]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Medicine <br/> [6]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Feed <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Play <br/> [5]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Medicine <br/> [6]</button>
                     </>
 
                 )}
@@ -448,7 +448,11 @@ function Cat (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Observe {ActivePetName === "" ? null : `${ActivePetName}'s`} room:</h1>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
+                        </div>
+                    </div>
                     <MainComponent
                         main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}
@@ -471,13 +475,13 @@ function Cat (){
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Volume" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Cat_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick  Inventory" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Cat_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

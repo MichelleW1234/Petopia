@@ -40,27 +40,27 @@ function Records({set_Records_OpenFlag}) {
         <div className = "UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Records:</h1>
-
+                
                 <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="Records_ComponentContainer-Structure--DocumentField">
-                        <h2> Name: </h2>
-                        <p> {ActivePetName}</p>
-                    </div>
-                    <div className="Records_ComponentContainer-Structure--DocumentField">
-                        <h2>Gender:</h2>
-                        <p>{PetList[ActivePetName][petGenderKey]}</p>
-                    </div>
-                    <div className="Records_ComponentContainer-Structure--DocumentField">
-                        <h2> Birthdate: </h2>
-                        <p>{records_CurrPetBirthdateString}</p>
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
+                            <h2> Name: </h2>
+                            <p> {ActivePetName}</p>
+                        </div>
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
+                            <h2>Gender:</h2>
+                            <p>{PetList[ActivePetName][petGenderKey]}</p>
+                        </div>
+                        <div className="Records_ComponentContainer-Structure--DocumentField">
+                            <h2> Birthdate: </h2>
+                            <p>{records_CurrPetBirthdateString}</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> Close <br/> [2]</button>
             </div>
             
         </div>

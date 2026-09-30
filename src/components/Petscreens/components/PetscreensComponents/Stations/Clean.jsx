@@ -148,8 +148,6 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
                 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Drag your cursor back and forth to clean:</h1>
-
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((clean_CurrNumber/clean_OptionsTotalNumber) * 100)))}
                         progressBar_ActivitySuccess={clean_Success}
@@ -190,15 +188,15 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick" onClick = {() => petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => petScreensHelpers_Canceller_Activities(clean_AudioRef, set_Clean_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {clean_OptionsUserSelection === -1 || clean_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick"> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Confirm" onClick={() => optionSelectionManager(clean_OptionsCurrDesiredOption, clean_OptionsUserSelection, set_Clean_OptionsTotalNumber, set_Clean_Confirmed, set_Clean_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => optionSelectionManager(clean_OptionsCurrDesiredOption, clean_OptionsUserSelection, set_Clean_OptionsTotalNumber, set_Clean_Confirmed, set_Clean_Success)}> Confirm <br/> [return]</button>
 
                 )}
 

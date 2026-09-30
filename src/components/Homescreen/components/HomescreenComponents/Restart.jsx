@@ -28,7 +28,7 @@ import ChandelierOne from "../../../../images/Inventory/ChandelierOne.png";
 import ChandelierTwo from "../../../../images/Inventory/ChandelierTwo.png";
 import ChandelierThree from "../../../../images/Inventory/ChandelierThree.png";
 
-import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey, audioQuitActivityKey, audioConfirmedKey} from "../../../../constants/Constants.js";
+import { audioRestartGameKey, inventoryItemNameKey, inventoryItemImageKey, inventoryItemSpeciesAcceptedKey, inventoryItemOwnerKey, inventoryItemTypeKey, inventoryItemTypeRoomDecorationKey, inventoryItemTypeCeilingDecorationKey, inventoryItemTypeWallDecorationKey, inventoryItemTypeFloorDecorationKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, achievementDescriptionKey, achievementStatusKey, audioQuitActivityKey, audioConfirmedKey, inventoryItemDescriptionKey} from "../../../../constants/Constants.js";
 
 import "../../../../App.css";
 import { useRevivers } from "../../../../providers/ReviversProvider.jsx";
@@ -80,25 +80,25 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
         if (restart_InventoryContainsOwners){
 
             setInventory([
-                        {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]:  "Chandelier", [inventoryItemImageKey]: ChandelierThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Painting", [inventoryItemImageKey]: PaintingOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Painting", [inventoryItemImageKey]: PaintingTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Painting", [inventoryItemImageKey]: PaintingThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]:  "Statue", [inventoryItemImageKey]: Statue, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]:  "Castle", [inventoryItemImageKey]: Castle, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]:  "Kelp", [inventoryItemImageKey]: Kelp, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Coat Stand", [inventoryItemImageKey]: CoatStand, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Tree", [inventoryItemImageKey]: Tree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Lamp", [inventoryItemImageKey]: Lamp, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Shell", [inventoryItemImageKey]: Shell, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Pearl", [inventoryItemImageKey]: Pearl, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Starfish", [inventoryItemImageKey]: Starfish, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Rug", [inventoryItemImageKey]: RugOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Rug", [inventoryItemImageKey]: RugTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
-                        {[inventoryItemNameKey]: "Rug", [inventoryItemImageKey]: RugThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""}
-                    ]);
+                            {[inventoryItemNameKey]:  "Chandelier", [inventoryItemDescriptionKey]: "Hang this dazzling golden chandelier from your pet’s ceiling to add sophistication and sparkle!", [inventoryItemImageKey]: ChandelierOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]:  "Chandelier", [inventoryItemDescriptionKey]: "Hang this charming brown chandelier from your pet’s ceiling to add warmth and coziness!", [inventoryItemImageKey]: ChandelierTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]:  "Chandelier", [inventoryItemDescriptionKey]: "Hang this charming brown chandelier from your pet’s ceiling to add timelessness and elegance!", [inventoryItemImageKey]: ChandelierThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeCeilingDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Painting", [inventoryItemDescriptionKey]: "Hang this dreamy starry night scene in your pet’s room for a touch of magic and wonder!", [inventoryItemImageKey]: PaintingOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Painting", [inventoryItemDescriptionKey]: "Hang this peaceful mountain scene on your pet’s wall for a touch of serenity and adventure!", [inventoryItemImageKey]: PaintingTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Painting", [inventoryItemDescriptionKey]: "Hang this seaside sunset on your pet’s wall for a touch of tranquility and relaxation.", [inventoryItemImageKey]: PaintingThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeWallDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]:  "Statue", [inventoryItemDescriptionKey]: "Stand this weathered shipwreck in your aquarium for mysterious underwater adventures!",  [inventoryItemImageKey]: Statue, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]:  "Castle", [inventoryItemDescriptionKey]: "Stand this charming underwater castle in your aquarium for a grand aquatic centerpiece!", [inventoryItemImageKey]: Castle, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]:  "Kelp", [inventoryItemDescriptionKey]: "Stand this swaying kelp forest in your aquarium for a peaceful underwater retreat!", [inventoryItemImageKey]: Kelp, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Coat Stand", [inventoryItemDescriptionKey]: "Stand this charming coat stand in your pet’s room for a cozy place to hang coats, hats, and accessories!", [inventoryItemImageKey]: CoatStand, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Tree", [inventoryItemDescriptionKey]: "Stand this leafy potted tree in your pet’s room for a fresh, natural atmosphere!", [inventoryItemImageKey]: Tree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Lamp", [inventoryItemDescriptionKey]: "Stand this charming lamp in your pet’s room for a soft, cozy glow!", [inventoryItemImageKey]: Lamp, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeRoomDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Shell", [inventoryItemDescriptionKey]: "Place this charming shell on your aquarium floor as a charming seaside ornament!", [inventoryItemImageKey]: Shell, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Pearl", [inventoryItemDescriptionKey]: "Place this beautiful pearl on your aquarium floor as a magical ocean gem!", [inventoryItemImageKey]: Pearl, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Starfish", [inventoryItemDescriptionKey]: "Place this cheerful starfish on your aquarium floor as a playful aquatic character!", [inventoryItemImageKey]: Starfish, [inventoryItemSpeciesAcceptedKey]: [petSpeciesFishKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Rug", [inventoryItemDescriptionKey]: "Place this bright red rug in your pet’s room as a bold and vibrant floor accent!", [inventoryItemImageKey]: RugOne, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Rug", [inventoryItemDescriptionKey]: "Place this vibrant orange rug in your pet’s room as a fun and energetic play area!", [inventoryItemImageKey]: RugTwo, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""},
+                            {[inventoryItemNameKey]: "Rug", [inventoryItemDescriptionKey]: "Place this cheerful yellow rug in your pet’s room as a sunny and bright relaxation spot!", [inventoryItemImageKey]: RugThree, [inventoryItemSpeciesAcceptedKey]: [petSpeciesDogKey, petSpeciesCatKey], [inventoryItemTypeKey]: inventoryItemTypeFloorDecorationKey, [inventoryItemOwnerKey]: ""}
+                        ]);
 
         }
 
@@ -135,13 +135,17 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Restart Petopia:</h1>
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                        <h1>Restart Game?</h1>
+                    </div>
+                </div>
 
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick Quit" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {() => restart_GameRestarter()}> Confirm <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> Quit <br/> [esc]</button>
             </div>
 
         </div>

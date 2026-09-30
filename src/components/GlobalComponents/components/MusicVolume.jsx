@@ -27,35 +27,6 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
     );
 
 
-    useKeyboardShortcut("ArrowLeft", () => {
-
-        setVolume(prev => {
-
-            return Number(Math.max(0, prev - 0.01).toFixed(2));
-
-        })
-
-
-    },
-        ".Slider"
-    );
-
-    
-    useKeyboardShortcut("ArrowRight", () => {
-
-        setVolume(prev => {
-
-            return Number(Math.min(1, prev + 0.01).toFixed(2));
-
-        })
-
-
-    },
-        ".Slider"
-    );
-
-
-
 
 
     const musicVolume_VolumeShifter = (musicVolume_VolumeShifter_E) => {
@@ -73,18 +44,15 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
         <div className="UIStapleElements_Background-Template--FloatingFlag">
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-                <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Adjust the slider:</h1>
                 <div className="UIStapleElements_ComponentFrame-Template--Global MusicVolume_ComponentContainer-Structure--Widget">
-                    <div className="MusicVolume_ComponentContainer-Structure--WidgetImage">
-                        <img src = {VolumeSpeaker}/>
-                    </div>
-                    <div className="MusicVolume_ComponentContainer-Structure--Slider">
-                        <h2>[&#x2B05;] [&#x2B95;]</h2>
+                    <div className="MusicVolume_ComponentContainer-Structure--Content">
+                        <img className="MusicVolume_ComponentContainer-Structure--WidgetImage" src = {VolumeSpeaker}/>
                         <input
+                            className="MusicVolume_ComponentContainer-Structure--Slider"
                             type="range"
                             min="0"
                             max="1"
-                            step = "0.01"
+                            step = "0.05"
                             value={Volume}
                             onChange={musicVolume_VolumeShifter}
                         />
@@ -94,7 +62,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
                 
             </div>
 

@@ -10,6 +10,7 @@ import { useInventory } from "../../../providers/InventoryProvider.jsx";
 import { useAchievements } from "../../../providers/AchievementsProvider.jsx";
 import { useNotifications } from "../../../providers/NotificationsProvider.jsx";
 import { useRevivers } from "../../../providers/ReviversProvider.jsx";
+import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 import { backgroundMusic_Context } from '../../../providers/BackgroundMusicProvider.jsx';
@@ -21,7 +22,7 @@ import ClearPetsComponent from "./HomescreenComponents/ClearPets.jsx";
 import RearrangePetsComponent from "./HomescreenComponents/RearrangePets.jsx";
 import ReadMeComponent from "./HomescreenComponents/ReadMe.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
-import RevivePetsComponent from "./HomescreenComponents/RevivePets.jsx";
+import ReviveAPetComponent from "./HomescreenComponents/RevivePets.jsx";
 
 
 import { petSpeciesHealthCapList, petSpeciesImagePortraitList, petHealthKey, petSpeciesKey, petStageKey, audioPillButtonPressKey, audioCircleButtonPressKey, inventoryItemTypeKey, inventoryItemOwnerKey, achievementStatusKey, audioRectangleButtonPressKey, inventoryItemImageKey, audioConfirmedKey } from "../../../constants/Constants.js";
@@ -31,7 +32,7 @@ import NoPetPortrait from "../../../images/NoPetPortrait.png";
 
 
 import "../../../App.css";
-import { useGlobalTimer } from "../../../providers/GlobalTimerProvider.jsx";
+
 
 
 
@@ -55,7 +56,7 @@ function Home (){
     const [home_InventoryOpenFlag, set_Home_InventoryOpenFlag] = useState(false);
     const [home_ClearPetsOpenFlag, set_Home_ClearPetsOpenFlag] = useState(false);
     const [home_RearrangePetsOpenFlag, set_Home_RearrangePetsOpenFlag] = useState(false);
-    const [home_RevivePetsOpenFlag, set_Home_RevivePetsOpenFlag] = useState(false);
+    const [home_ReviveAPetOpenFlag, set_Home_RevivePetsOpenFlag] = useState(false);
     const [home_ReadMeOpenFlag, set_Home_ReadMeOpenFlag] = useState(false);
     const [home_UserSelection, set_Home_UserSelection] = useState(-1);
     const [home_Greeting, set_Home_Greeting] = useState("");
@@ -76,7 +77,7 @@ function Home (){
 
     useKeyboardShortcut("v", () => {
         
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1);
 
@@ -89,7 +90,7 @@ function Home (){
 
     useKeyboardShortcut("i", () => {
         
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1);
 
@@ -102,7 +103,7 @@ function Home (){
 
     useKeyboardShortcut("Enter", () => {
 
-        if (home_UserSelection !== -1 && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_UserSelection !== -1 && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             GoToSelection();
 
@@ -116,7 +117,7 @@ function Home (){
 
     useKeyboardShortcut("1", () => {
 
-        if (home_CanRestart && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_CanRestart && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_RestartOpenFlag, 0);
 
@@ -130,7 +131,7 @@ function Home (){
 
     useKeyboardShortcut("2", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0);
 
@@ -143,7 +144,7 @@ function Home (){
 
     useKeyboardShortcut("3", () => {
 
-        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (home_MinPetsAdopted && !home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0);
 
@@ -155,7 +156,7 @@ function Home (){
 
     useKeyboardShortcut("4", () => {
 
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             if (Revivers > 0) {
 
@@ -166,14 +167,14 @@ function Home (){
         }
 
     },
-        ".RevivePets"
+        ".ReviveAPet"
     );
 
 
     
     useKeyboardShortcut("5", () => {
 
-        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_RevivePetsOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
+        if (!home_RestartOpenFlag && !home_ClearPetsOpenFlag && !home_RearrangePetsOpenFlag && !home_ReviveAPetOpenFlag && !home_ReadMeOpenFlag && !home_MusicVolumeOpenFlag && !home_InventoryOpenFlag){
 
             helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0);
 
@@ -283,8 +284,8 @@ function Home (){
                 set_ClearPets_OpenFlag={set_Home_ClearPetsOpenFlag}
             />}
 
-            {home_RevivePetsOpenFlag &&
-            <RevivePetsComponent
+            {home_ReviveAPetOpenFlag &&
+            <ReviveAPetComponent
                 set_RevivePets_OpenFlag={set_Home_RevivePetsOpenFlag}
             />}
 
@@ -308,11 +309,11 @@ function Home (){
 
                 {home_CanRestart ? (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> Restart <br/> [1]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Restart <br/> [1]</button>
+                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Restart <br/> [1]</button>
 
                 )}
                 
@@ -320,16 +321,16 @@ function Home (){
                 {home_MinPetsAdopted ? (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton RearrangePets" onClick = {() => helpers_Opener_Flags(set_Home_RearrangePetsOpenFlag, 0)}> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> Clear Pets <br/> [3]</button>
 
                         {Revivers > 0 ? (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick RevivePets" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive Pets <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReviveAPet" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> Revive A Pet <br/> [4]</button>
 
                         ) : (
 
-                            <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Revive A Pet <br/> [4]</button>
 
                         )}
 
@@ -338,14 +339,14 @@ function Home (){
                 ) : (
 
                     <>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Rearrange Pets <br/> [2]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Clear Pets <br/> [3]</button>
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Revive Pets <br/> [4]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Rearrange Pets <br/> [2]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Clear Pets <br/> [3]</button>
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Revive A Pet <br/> [4]</button>
                     </>
 
                 )}
 
-                <button className="UIStapleElements_ComponentButtonPill-Template--GlobalClick ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> Read Me <br/> [5]</button>
                 
             </div>
 
@@ -354,7 +355,11 @@ function Home (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview"> Select a room: </h1>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                            <h1> Home: </h1>
+                        </div>
+                    </div>
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
@@ -367,7 +372,7 @@ function Home (){
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortrait}/>
@@ -376,7 +381,7 @@ function Home (){
                                     ) : (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global homePetButton MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {NoPetPortrait}/>
@@ -384,7 +389,7 @@ function Home (){
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
                                         <h2>&lt;Pet Name&gt;</h2>
                                     </div>
 
@@ -397,7 +402,7 @@ function Home (){
                                     {home_UserSelection === index ? (
 
                                         <button
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
@@ -406,7 +411,7 @@ function Home (){
                                     ) : (
 
                                         <button 
-                                            className="UIStapleElements_ComponentButtonCircle-Structure--Global UIStapleElements_ComponentButtonCircle-Color--Global--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
+                                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
                                             <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
@@ -414,7 +419,7 @@ function Home (){
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalEntry">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
                                         <h2>{petName}</h2>
                                     </div>
                                     
@@ -432,14 +437,14 @@ function Home (){
 
                     {home_UserSelection === -1 ? (
 
-                        <button className="UIStapleElements_ComponentButtonPill-Template--GlobalNonclick">
+                        <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
                             Confirm <br/> [return]
                         </button>
 
                     ) : (
 
                         <button
-                            className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Confirm" 
+                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" 
                             onClick = {() => GoToSelection()}>
                             Confirm <br/> [return]
                         </button>
@@ -455,8 +460,10 @@ function Home (){
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent">
                         <h2>Positive Message:</h2>
                         <p>{home_Greeting}</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -470,13 +477,13 @@ function Home (){
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenToggle">
                 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Volume" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1)}>
                     Volume <br/> [v]
                 </button>
 
                 <button 
-                    className="UIStapleElements_ComponentButtonPill-Template--GlobalClick Inventory" 
+                    className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1)}>
                     Inventory <br/> [I]
                 </button>

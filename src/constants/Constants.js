@@ -27,6 +27,7 @@ export const inventoryItemImageKey = "image";
 export const inventoryItemSpeciesAcceptedKey = "species accepted";
 export const inventoryItemTypeKey = "type";
 export const inventoryItemOwnerKey = "owner";
+export const inventoryItemDescriptionKey = "description";
 
 export const inventoryItemTypeFloorDecorationKey = "floor decoration";
 export const inventoryItemTypeCeilingDecorationKey = "ceiling decoration";

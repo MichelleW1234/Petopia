@@ -199,8 +199,6 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <h1 className="MiscellaneousElements_ComponentText-Template--GlobalDescriptor MiscellaneousElements_ComponentText-Template--GlobalDescriptor--GlobalOverview">Wait for your pet to finish receiving its dose:</h1>
-
                     <ProgressBarComponent
                         progressBar_CurrPercentUntilNextUpdate={Math.min(100, Math.max(0, Math.floor((medicine_CurrNumber/medicine_OptionsTotalNumber) * 100)))}
                         progressBar_ActivitySuccess={medicine_Success}
@@ -223,15 +221,15 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick " onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit <br/> [esc]</button>
 
                 {medicine_OptionsUserSelection === -1 || medicine_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalNonclick "> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButtonPill-Template--GlobalClick  Confirm" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> Confirm <br/> [return]</button>
 
                 )}
 

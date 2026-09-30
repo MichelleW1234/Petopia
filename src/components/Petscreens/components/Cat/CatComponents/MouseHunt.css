@@ -7,7 +7,7 @@
     grid-template-rows: repeat(2, 30%);
     grid-template-columns: repeat(4, 1fr);
 
-    gap: 2rem;
+    gap: 1rem;
     
 }
 
@@ -16,20 +16,18 @@
     height: 100%;
     width: auto;
 
-    filter:
-        drop-shadow(0 0 2px rgb(255, 255, 255))
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 6px rgb(255, 255, 255));
+    filter: 
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
+
 
 }
 
 .MouseHunt_ComponentContainer-Template--GridCell:hover,
 .MouseHunt_ComponentContainer-Template--GridCell.active {
 
-    filter:
-        drop-shadow(0 0 4px rgb(255, 255, 255))
-        drop-shadow(0 0 8px rgb(255, 255, 255))
-        drop-shadow(0 0 12px rgb(255, 255, 255));
-
+    filter: 
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
