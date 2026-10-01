@@ -373,7 +373,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton{
 
-  width: 90%;
+  width: 85%;
   height: auto;
 
   padding: 3rem;
@@ -679,7 +679,7 @@ p {
   height: auto;
   text-align: center;  
   
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 1000px;
 
   color: rgb(255, 255, 255);
@@ -715,7 +715,7 @@ p {
   justify-content: center;
 
   padding: 5rem;
-  gap: 1rem;
+  gap: 5rem;
   border-radius: 25px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);

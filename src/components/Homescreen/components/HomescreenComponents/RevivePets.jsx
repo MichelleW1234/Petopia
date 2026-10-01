@@ -13,7 +13,7 @@ import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags, helpers_Quit } 
 
 import Reviver from "../../../../images/Reviver.png";
 import EmptyReviver from "../../../../images/EmptyReviver.png";
-import NoPets from "../../../../images/PetUnwantedActivity.png";
+import NoPets from "../../../../images/NoPetPortrait.png";
 
 import "../../../../App.css";
 import "./RevivePets.css";
@@ -163,19 +163,22 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
-                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
+                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
+                                <h1>&lt;Pet Name&gt;</h1>
                             </div>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
+                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
+                                <h1>&lt;Pet Name&gt;</h1>
                             </div>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Template--Global imageBox">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
+                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
+                                <h1>&lt;Pet Name&gt;</h1>
                             </div>
                         </div>
                         

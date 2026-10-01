@@ -176,9 +176,9 @@ function Adoption () {
 
             adoption_CurrErrorMessageTimer("A name can only include letters.");
 
-        } else if (adoption_NameManager_CurrPetName.length > 16){
+        } else if (adoption_NameManager_CurrPetName.length > 14){
 
-            adoption_CurrErrorMessageTimer("A name must be under 16 characters.");
+            adoption_CurrErrorMessageTimer("A name must be under 15 characters.");
 
         } else if (adoption_NameManager_CurrPetName in PetList && adoption_NameManager_CurrPetName in PetTimeStamps) {
 
@@ -400,7 +400,7 @@ function Adoption () {
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                                        <h2>{key}</h2>
+                                        <h1>{key}</h1>
                                     </div>
                                     
                                 </div>

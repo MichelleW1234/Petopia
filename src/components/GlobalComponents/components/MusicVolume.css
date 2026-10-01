@@ -1,6 +1,6 @@
 .MusicVolume_ComponentContainer-Structure--Widget{
     
-    width: 48rem;
+    width: 70rem;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -8,8 +8,7 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    padding: 5rem;
-    gap: 5rem;
+    padding: 6rem;
     border-radius: 25px;
 
 }
@@ -24,8 +23,8 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    padding: 4rem;
-    gap: 4rem;
+    padding: 5rem;
+    gap: 5rem;
     border-radius: 25px;
 
     box-shadow: 0 0 20px 10px rgba(255, 255, 255);
@@ -34,7 +33,7 @@
 
 .MusicVolume_ComponentContainer-Structure--WidgetImage{
 
-    width: 25%;
+    width: 20%;
     height: auto;
 
     filter: 
@@ -49,7 +48,7 @@
 
     -webkit-appearance: none;
 
-    width: 60%;       
+    width: 65%;
     height: 2rem;
 
     border-radius: 1000px;
@@ -63,7 +62,7 @@
 
     -webkit-appearance: none;
 
-    height: 8rem;
+    height: 10rem;
     width: 5%;
     
     border-radius: 1000px;

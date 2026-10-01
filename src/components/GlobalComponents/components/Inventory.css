@@ -23,7 +23,7 @@
   align-items: center;
   justify-content: center;
 
-  gap: 2rem;
+  gap: 4rem;
   padding: 4rem;
   border-radius: 25px;
 
@@ -88,6 +88,25 @@
 }
 
 
+.Inventory_ComponentContainer-Structure--ItemPetOwnerName{
+
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 6rem;
+  border-radius: 1000px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
+  
+}
+
+
+
 .Inventory_ComponentImage-Structure--ItemLockContainer{
 
   width: 100%;
@@ -95,7 +114,7 @@
   justify-content: center;
   display: grid;
   grid-template-rows: repeat(1, 1fr);
-  grid-template-columns: repeat(3, 25%);            
+  grid-template-columns: repeat(3, 25%);   
 
 }
 
@@ -120,7 +139,7 @@
   flex-direction: column;
   align-self: start;
   
-  gap: 3rem;
+  gap: 4rem;
 
 }
 
@@ -137,12 +156,7 @@
 
 }
 
-.Inventory_ComponentContainer-Structure--PossiblePetOwnerName{
 
-  width: 50%;
-  height: auto;
-
-}
 
 .Inventory_ComponentButton-Structure--PossiblePetOwner{
 
@@ -153,25 +167,34 @@
 
 }
 
+.Inventory_ComponentContainer-Structure--PossiblePetOwnerName{
 
-
-.Inventory_ComponentContainer-Structure--ItemNoPetOwners{
-
-  width: 100%;
+  width: 45%;
   height: auto;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(1, 20%);
+
+  padding: 1rem 3rem;
+  border-radius: 1000px;
+
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }
 
 
-.Inventory_ComponentImage-Structure--ItemNoPetOwners{
 
-  width: 100%;
+.Inventory_ComponentImage-Structure--ItemNoPetOwner{
+
+  width: 25%;
   height: auto;
 
   filter: 
       drop-shadow(0 0 10px rgb(255, 255, 255))
       drop-shadow(0 0 5px rgb(255, 255, 255));
+
+}
+
+.Inventory_ComponentContainer-Structure--NoPetOwnerName{
+
+  width: 50%;
+  height: auto;
+
 }

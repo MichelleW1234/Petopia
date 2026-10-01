@@ -30,27 +30,91 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                     <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Dog:</h2>
-                            <div>
-                                <p>&bull; Feeding Frequency &rarr; 3 fire </p>
-                                <p>&bull; Cleaning Frequency &rarr; 1 fire </p>
-                                <p>&bull; Playing Frequency &rarr; 2 fire </p>
-                                <p>&bull; Growth Speed &rarr; 3 stars  </p>
+                            <div className="speciesGuideFieldRow">
+                                <p> Feeding Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p> Cleaning Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p> Playing Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p>Growth Speed &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Cat: </h2>
-                            <div>
-                                <p>&bull; Feeding Frequency &rarr; 2 fire </p>
-                                <p>&bull; Playing Frequency &rarr; 1 fire </p>
-                            <p>&bull; Growth Speed &rarr; 1 star </p>
+                            <div className="speciesGuideFieldRow">
+                                <p> Feeding Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p> Playing Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p> Growth Speed &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Fish: </h2>
-                            <div>
-                                <p>&bull; Feeding Frequency &rarr; 1 fire  </p>
-                                <p>&bull; Cleaning Frequency &rarr; 1 fire </p>
-                                <p>&bull; Growth Speed &rarr; 5 stars </p>
+                            <div className="speciesGuideFieldRow">
+                                <p> Feeding Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p>Cleaning Frequency &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                    <div className="speciesGuideFieldRowGridCell"></div>
+                                </div>
+                            </div>
+                            <div className="speciesGuideFieldRow">
+                                <p>Growth Speed &rarr;</p>
+                                <div className="speciesGuideFieldRowGrid">
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                    <img className="speciesGuideFieldRowGridCell" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8JYWHkTOQWGL-CkdCQ2gg55OpB2VSoYJbJoKWowuhZA&s=10"/>
+                                </div>
                             </div>
                         </div>
                     </div>

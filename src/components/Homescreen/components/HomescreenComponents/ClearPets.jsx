@@ -168,7 +168,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
                                 )}
 
                                 <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                                    <h2>{petName}</h2>
+                                    <h1>{petName}</h1>
                                 </div>
                             </div>
 

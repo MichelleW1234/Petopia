@@ -59,7 +59,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
                         )}
 
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                            <h2>{option[petActivityOptionNameKey]}</h2>
+                            <h1>{option[petActivityOptionNameKey]}</h1>
                         </div>
                         
                     </div>

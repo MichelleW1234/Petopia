@@ -7,6 +7,41 @@
     justify-content: center;
     align-items: center;
 
+
+}
+
+
+.speciesGuideFieldRow{
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     gap: 1rem;
 
 }
+
+
+.speciesGuideFieldRowGrid{
+
+    height: auto;
+    width: 20%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 100%);
+
+}
+
+
+.speciesGuideFieldRowGridCell{
+
+    height: auto;
+    width: 100%;
+
+}
+
+
+

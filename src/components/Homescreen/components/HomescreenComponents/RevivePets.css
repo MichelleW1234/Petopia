@@ -41,36 +41,43 @@
 }
 
 
-.imageBox{
+.RevivePets_ComponentImage-Structure--NoPetSlot{
 
     height: auto;
-    width: auto;
+    width: 27rem;
 
-    padding: 2rem;
-    border-radius: 1000px;
+    padding: 3rem;
+    border-radius: 25px;
 
 }
 
 
-.RevivePets_ComponentImage-Structure--NoPetImage{
+.RevivePets_ComponentImage-Structure--NoPetSlotContent{
 
-    height: 14rem;
-    width: 14rem;
+    width: 100%;
+    height: auto;
 
-    padding: 2rem;
-    border-radius: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3rem 1rem;
+    gap: 3rem;
+    border-radius: 25px;
 
     box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
-    img {
+}
 
-        width: auto;
-        height: 100%;
 
-        filter: 
-            drop-shadow(0 0 10px rgb(255, 255, 255))
-            drop-shadow(0 0 5px rgb(255, 255, 255));
-            
-    }
+.RevivePets_ComponentImage-Structure--NoPetImage {
 
+    width: 55%;
+    height: auto;
+
+    filter: 
+        drop-shadow(0 0 10px rgb(255, 255, 255))
+        drop-shadow(0 0 5px rgb(255, 255, 255));
+        
 }

@@ -384,7 +384,7 @@ function Home (){
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                                        <h2>&lt;Pet Name&gt;</h2>
+                                        <h1>&lt;Pet Name&gt;</h1>
                                     </div>
 
                                 </div>
@@ -414,7 +414,7 @@ function Home (){
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                                        <h2>{petName}</h2>
+                                        <h1>{petName}</h1>
                                     </div>
                                     
                                 </div>
