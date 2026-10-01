@@ -33,7 +33,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
         }
 
     },
-        ".Confirm"
+        ".ConfirmClear"
     );
 
 
@@ -42,7 +42,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
         helpers_Quit(set_ClearPets_OpenFlag);
 
     },
-        ".Quit"
+        ".QuitClear"
     );
     
 
@@ -181,15 +181,15 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitClear" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>Quit Clear<br/> [esc]</button>
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm Clear <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => clearPets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClear" onClick={() => clearPets_SelectedEntriesManager()}>Confirm Clear<br/> [return]</button>
 
                 )}
 

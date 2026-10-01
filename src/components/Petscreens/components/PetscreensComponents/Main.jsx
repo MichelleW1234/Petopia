@@ -184,33 +184,35 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
             <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--${PetList[ActivePetName][petSpeciesKey]}`}>
+                    <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
+                        <h1 className="Main_ComponentContainer-Structure--WindowScreenPetStatsName"> {ActivePetName === "" ? null : ActivePetName}</h1>
+                        <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
-                    <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
+                            {Array.from({ length: main_Number_WindowWidth}, (_, i) => i + 1).map(num => (
 
-                        {Array.from({ length: main_Number_WindowWidth}, (_, i) => i + 1).map(num => (
+                                num <= petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]] ? (
 
-                            num <= petSpeciesHealthCapList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]] ? (
+                                    <img 
+                                        key = {num} 
+                                        src = {num <= PetList[ActivePetName][petHealthKey] ? 
+                                                    HealthyPetHeart
+                                                : UnhealthyPetHeart}
+                                        className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
+                                    />
 
-                                <img 
-                                    key = {num} 
-                                    src = {num <= PetList[ActivePetName][petHealthKey] ? 
-                                                HealthyPetHeart
-                                            : UnhealthyPetHeart}
-                                    className = "Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
-                                />
+                                ) : (
 
-                            ) : (
+                                    <div
+                                        key={num}
+                                        className="Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
+                                    >
+                                    </div>
 
-                                <div
-                                    key={num}
-                                    className="Main_ComponentImage-Template--WindowScreenPetStatsHealthCell"
-                                >
-                                </div>
+                                )
 
-                            )
+                            ))}
 
-                        ))}
-
+                        </div>
                     </div>
 
                     {PetList[ActivePetName][petHealthKey] === 0 ? (

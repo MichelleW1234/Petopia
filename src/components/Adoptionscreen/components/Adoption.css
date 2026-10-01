@@ -43,15 +43,16 @@
 
 .Adoption_ComponentContainer-Template--FormContentInput{
 
-    width: 65%;
+    width: 100%;
     height: auto;
     text-align: center;
 
     border-radius: 1000px;
-    padding: 2rem;
+    padding: 2rem 4rem;
     border: none;
 
     background-color: rgb(255, 255, 255, 0.75);
     box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 
 }
+

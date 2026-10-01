@@ -110,7 +110,7 @@ function Home (){
         }
 
     },
-        ".Confirm"
+        ".ConfirmRoom"
     );
 
 
@@ -355,12 +355,6 @@ function Home (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
-                            <h1> Home: </h1>
-                        </div>
-                    </div>
-
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
                         {Room.map((petName, index) => (
@@ -438,15 +432,15 @@ function Home (){
                     {home_UserSelection === -1 ? (
 
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
-                            Confirm <br/> [return]
+                            Confirm Room <br/> [return]
                         </button>
 
                     ) : (
 
                         <button
-                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" 
+                            className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRoom" 
                             onClick = {() => GoToSelection()}>
-                            Confirm <br/> [return]
+                            Confirm Room <br/> [return]
                         </button>
 
                     )}
@@ -459,10 +453,9 @@ function Home (){
            {home_Greeting !== "" ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent">
-                        <h2>Positive Message:</h2>
-                        <p>{home_Greeting}</p>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                            <p>{home_Greeting}</p>
                         </div>
                     </div>
                 </div>

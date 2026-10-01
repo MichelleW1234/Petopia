@@ -41,7 +41,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
         }
 
     },
-        ".Confirm"
+        ".ConfirmRevive"
     );
 
 
@@ -50,7 +50,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
         helpers_Quit(set_RevivePets_OpenFlag);
 
     },
-        ".Quit"
+        ".QuitRevive"
     );
 
 
@@ -227,15 +227,15 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRevive" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>Quit Revive<br/> [esc]</button>
 
                 {RevivePets_UserSelection === "" ? (
 
-                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm Revive <br/> [return]</button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRevive" onClick={() => RevivePets_SelectedEntriesManager()}>Confirm Revive <br/> [return]</button>
 
                 )}
 

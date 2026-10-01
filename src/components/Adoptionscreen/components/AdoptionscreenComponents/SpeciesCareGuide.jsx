@@ -29,28 +29,28 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                 <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Dog &rarr; High Maintenance Pet</h2>
+                            <h2>Dog:</h2>
                             <div>
-                                <p>&bull; Feeding Frequency: 3 fire </p>
-                                <p>&bull; Cleaning Frequency: 1 fire </p>
-                                <p>&bull; Playing Frequency: 2 fire </p>
-                                <p>&bull; Growth Speed: 3 stars  </p>
+                                <p>&bull; Feeding Frequency &rarr; 3 fire </p>
+                                <p>&bull; Cleaning Frequency &rarr; 1 fire </p>
+                                <p>&bull; Playing Frequency &rarr; 2 fire </p>
+                                <p>&bull; Growth Speed &rarr; 3 stars  </p>
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Cat &rarr; Medium Maintenance Pet </h2>
+                            <h2>Cat: </h2>
                             <div>
-                                <p>&bull; Feeding Frequency: 2 fire </p>
-                                <p>&bull; Playing Frequency: 1 fire </p>
-                            <p>&bull; Growth Speed: 1 star </p>
+                                <p>&bull; Feeding Frequency &rarr; 2 fire </p>
+                                <p>&bull; Playing Frequency &rarr; 1 fire </p>
+                            <p>&bull; Growth Speed &rarr; 1 star </p>
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Fish &rarr; Low Maintenance Pet </h2>
+                            <h2>Fish: </h2>
                             <div>
-                                <p>&bull; Feeding Frequency: 1 fire  </p>
-                                <p>&bull; Cleaning Frequency: 1 fire </p>
-                                <p>&bull; Growth Speed: 5 stars </p>
+                                <p>&bull; Feeding Frequency &rarr; 1 fire  </p>
+                                <p>&bull; Cleaning Frequency &rarr; 1 fire </p>
+                                <p>&bull; Growth Speed &rarr; 5 stars </p>
                             </div>
                         </div>
                     </div>

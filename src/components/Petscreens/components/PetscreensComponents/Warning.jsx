@@ -22,9 +22,8 @@ function Warning({warning_types}) {
 
                 type !== null ? (
 
-                    <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent">
-                        <h2>Pet Activity Alert:</h2>
+                    <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
+                        <div className="notificationsFrameContent">
                         <div className="Warning_image">
                             <img className="Warning_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
                             <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Warning_ComponentContainer-Structure--PetThoughtDesiredOption">

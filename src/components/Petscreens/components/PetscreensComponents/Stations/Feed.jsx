@@ -14,6 +14,8 @@ import { petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, pe
 import { helpers_Closer_Flags } from "../../../../../helpers/helpers.js";
 import { petScreensHelpers_Canceller_PetImmersionSounds, petScreensHelpers_Canceller_Activities, petScreensHelpers_Manager_PetHealth, optionSelectionManager} from "../../../helpers/helpers.js";
 
+import Clock from "../../../../../images/clockplaceholder.cur";
+
 import Feeding from "../../../../../Music/PetImmersionSounds/Feeding.mp3";
 
 import "../../../../../App.css";
@@ -47,7 +49,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
         }
 
     },
-        ".Confirm"
+        ".ConfirmFeed"
     );
 
 
@@ -56,7 +58,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
         petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag);
 
     },
-        ".Quit"
+        ".QuitFeed"
     );
 
 
@@ -150,7 +152,11 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                     <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">  
 
-                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Feed">
+                        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Feed"
+                            style={{
+                                cursor: `url('${Clock}'), auto`
+                            }}
+                        >
 
                             <img src = {feed_CurrStageAnimationImage} />
 
@@ -164,15 +170,15 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
             
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitFeed" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit Feed <br/> [esc]</button>
 
                 {feed_OptionsUserSelection === -1 || feed_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm Feed <br/> [return]</button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> Confirm <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmFeed" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> Confirm Feed <br/> [return]</button>
 
                 )}
 

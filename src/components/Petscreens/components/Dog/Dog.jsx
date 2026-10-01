@@ -70,8 +70,8 @@ import Soap from "../../../../images/Dog/Clean/Options/Soap.png";
 import Brush from "../../../../images/Dog/Clean/Options/Brush.png";
 import CursorSoap from "../../../../images/Dog/Clean/Options/Soap.cur";
 import CursorBrush from "../../../../images/Dog/Clean/Options/Brush.cur";
-import Leash from "../../../../images/Dog/Play/Options/Leash.png";
-import Mask from "../../../../images/Dog/Play/Options/Mask.png";
+import Ball from "../../../../images/Dog/Play/Games/StrollPatrol/Ball.png";
+import A from "../../../../images/Dog/Play/Games/Pawformer/A.png";
 import Pill from "../../../../images/Dog/Medicine/Options/Pill.png";
 import Chew from "../../../../images/Dog/Medicine/Options/Chew.png";
 
@@ -189,7 +189,7 @@ function Dog (){
 
     const dog_FeedOptionsList = [{[petActivityOptionNameKey]: "Beef", [petActivityOptionImageKey]: Beef}, {[petActivityOptionNameKey]: "Turkey", [petActivityOptionImageKey]: Turkey}, {[petActivityOptionNameKey]: "Lamb", [petActivityOptionImageKey]: Lamb}]; 
     const dog_CleanOptionsList = [{[petActivityOptionNameKey]: "Soap", [petActivityOptionImageKey]: Soap, [petActivityOptionCursorKey]: CursorSoap}, {[petActivityOptionNameKey]: "Brush", [petActivityOptionImageKey]: Brush, [petActivityOptionCursorKey]: CursorBrush}];
-    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Balls", [petActivityOptionImageKey]: Leash, [petActivityOptionGameKey]: StrollPatrolComponent}, {[petActivityOptionNameKey]: "Match the Letter", [petActivityOptionImageKey]: Mask, [petActivityOptionGameKey]: PawformerComponent}];
+    const dog_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Balls", [petActivityOptionImageKey]: Ball, [petActivityOptionGameKey]: StrollPatrolComponent}, {[petActivityOptionNameKey]: "Match the Letter", [petActivityOptionImageKey]: A, [petActivityOptionGameKey]: PawformerComponent}];
     const dog_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Chew", [petActivityOptionImageKey]: Chew}];
 
     const dog_needs = [dog_FeedOptionsCurrDesiredOption !== -1 ? dog_FeedOptionsList[dog_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -498,12 +498,6 @@ function Dog (){
             <div className = "UIStapleElements_Background-Template--Screen">
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-                    
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
-                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
-                        </div>
-                    </div>
                     
                     <MainComponent
                         main_Sequence_StageAnimationImages={dog_MainCurrStageAnimationImages}

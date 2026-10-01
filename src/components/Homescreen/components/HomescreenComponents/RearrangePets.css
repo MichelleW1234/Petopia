@@ -1,6 +1,6 @@
 .RearrangePets_ComponentContainer-Structure--Slot{
 
-    width: 28rem;
+    width: auto;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
 
 .RearrangePets_ComponentContainer-Template--Slot{
 
-    width: 100%;
+    width: 28rem;
     height: auto;
 
     padding: 3rem;    
@@ -67,15 +67,15 @@
 
 .RearrangePets_ComponentContainer-Structure--SlotButton{
 
-  width: 10rem;
+  width: auto;
   height: auto;
   
-  padding: 2rem;
+  padding: 1rem;
 
   img {
 
-    width: 100%;
-    height: auto;
+        width: 7rem;
+        height: auto;
         
   }
 

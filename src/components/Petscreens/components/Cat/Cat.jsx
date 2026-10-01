@@ -60,8 +60,8 @@ import NullPlaceholder from "../../../../images/NullPlaceholder.png";
 import Tuna from "../../../../images/Cat/Feed/Options/Tuna.png";
 import Chicken from "../../../../images/Cat/Feed/Options/Chicken.png";
 import Salmon from "../../../../images/Cat/Feed/Options/Salmon.png";
-import Magnifier from "../../../../images/Cat/Play/Options/Magnifier.png";
-import Rod from "../../../../images/Cat/Play/Options/Rod.png";
+import Mouse from "../../../../images/Cat/Play/Games/MouseHunt/Mouse.png";
+import Feather from "../../../../images/Cat/Play/Games/FeatherFishing/FeatherHead.png";
 import Pill from "../../../../images/Cat/Medicine/Options/Pill.png";
 import Tablet from "../../../../images/Cat/Medicine/Options/Tablet.png";
 
@@ -168,7 +168,7 @@ function Cat (){
 
 
     const cat_FeedOptionsList = [{[petActivityOptionNameKey]: "Tuna", [petActivityOptionImageKey]: Tuna}, {[petActivityOptionNameKey]: "Chicken", [petActivityOptionImageKey]: Chicken}, {[petActivityOptionNameKey]: "Salmon", [petActivityOptionImageKey]: Salmon}];
-    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Mice", [petActivityOptionImageKey]: Magnifier, [petActivityOptionGameKey]: MouseHuntComponent}, {[petActivityOptionNameKey]: "Hit the Feather", [petActivityOptionImageKey]: Rod, [petActivityOptionGameKey]: FeatherFishingComponent}];
+    const cat_PlayOptionsList = [{[petActivityOptionNameKey]: "Catch the Mice", [petActivityOptionImageKey]: Mouse, [petActivityOptionGameKey]: MouseHuntComponent}, {[petActivityOptionNameKey]: "Hit the Feather", [petActivityOptionImageKey]: Feather, [petActivityOptionGameKey]: FeatherFishingComponent}];
     const cat_MedicineOptionsList = [{[petActivityOptionNameKey]: "Pill", [petActivityOptionImageKey]: Pill}, {[petActivityOptionNameKey]: "Tablet", [petActivityOptionImageKey]: Tablet}];
 
     const cat_needs = [cat_FeedOptionsCurrDesiredOption !== -1 ? cat_FeedOptionsList[cat_FeedOptionsCurrDesiredOption][petActivityOptionImageKey] : null, 
@@ -448,11 +448,6 @@ function Cat (){
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
-                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
-                        </div>
-                    </div>
                     <MainComponent
                         main_Sequence_StageAnimationImages={cat_MainCurrStageAnimationImages}
                         main_Image_StageSleepAnimation = {cat_MainCurrStageSleepAnimationImage}

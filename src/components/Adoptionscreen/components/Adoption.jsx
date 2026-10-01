@@ -170,15 +170,15 @@ function Adoption () {
 
         if (adoption_NameManager_CurrPetName === "") {
 
-            adoption_CurrErrorMessageTimer("Enter a name for your pet.");
+            adoption_CurrErrorMessageTimer("A name is missing.");
 
-        } else if (/[^\p{L}\p{N} .'-]/u.test(adoption_NameManager_CurrPetName)) {
+        } else if (/[^a-zA-Z]/.test(adoption_NameManager_CurrPetName)) {
 
-            adoption_CurrErrorMessageTimer("Please enter a name that doesn't contain symbols excluding periods, dashes, and single quotes.");
+            adoption_CurrErrorMessageTimer("A name can only include letters.");
 
         } else if (adoption_NameManager_CurrPetName.length > 16){
 
-            adoption_CurrErrorMessageTimer("Shorten the name to 16 characters max.");
+            adoption_CurrErrorMessageTimer("A name must be under 16 characters.");
 
         } else if (adoption_NameManager_CurrPetName in PetList && adoption_NameManager_CurrPetName in PetTimeStamps) {
 
@@ -378,67 +378,54 @@ function Adoption () {
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
-                            <h1> Adoption:</h1>
-                        </div>
-                    </div>
-
                     {adoption_PetGender === "" ? (
-
-                        <>
                             
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
-                
-                                {Object.keys(petSpeciesImagePortraitList).map((key) => (
-                
-                                    <div key = {key} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                                        {key === adoption_UserSelection ? (
-                
-                                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
-                                                <img src = {petSpeciesImagePortraitList[key][0]}/>
-                                            </button>
+                        <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
+            
+                            {Object.keys(petSpeciesImagePortraitList).map((key) => (
+            
+                                <div key = {key} className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                                    {key === adoption_UserSelection ? (
+            
+                                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
+                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                        </button>
 
-                                        ) : (
-                
-                                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
-                                                <img src = {petSpeciesImagePortraitList[key][0]}/>
-                                            </button>
-                
-                                        )}
+                                    ) : (
+            
+                                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
+                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                        </button>
+            
+                                    )}
 
-                                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
-                                            <h2>{key}</h2>
-                                        </div>
-                                        
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                        <h2>{key}</h2>
                                     </div>
-                
-                                ))}
-                
-                            </div>
-
-                        </>
+                                    
+                                </div>
+            
+                            ))}
+            
+                        </div>
 
                     ) : (
 
-                        <>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global Adoption_ComponentContainer-Template--Form"> 
 
-                            <div className="UIStapleElements_ComponentFrame-Template--Global Adoption_ComponentContainer-Template--Form"> 
-
-                                <div className="adoptioncontent">
-                                    <h2>Introduction: </h2>
-                                    <input 
-                                        className="Adoption_ComponentContainer-Template--FormContentInput"
-                                        type="text"
-                                        value={adoption_UserInput}
-                                        onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                        placeholder="&lt;Pet Name&gt;"
-                                    />
-                                    <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} will be welcomed into your family! </p>
-                                </div>
+                            <div className="adoptioncontent">
+                                <p>Congratulations! You are about to welcome</p>
+                                <input 
+                                    className="Adoption_ComponentContainer-Template--FormContentInput"
+                                    type="text"
+                                    value={adoption_UserInput}
+                                    onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
+                                    placeholder="&lt;Pet Name&gt;"
+                                />
+                                <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} into your family! </p>
                             </div>
 
-                        </>
+                        </div>
 
                     )} 
 
@@ -450,15 +437,15 @@ function Adoption () {
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                         
-                        <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Quit <br/> [esc]</button>
+                        <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Quit Species<br/> [esc]</button>
 
                         {adoption_UserSelection === "" ? (
 
-                            <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm Species <br/> [return]</button>
 
                         ) : (
 
-                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm <br/> [return]</button>
+                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {() => adoption_PetGenderGenerator()}> Confirm Species<br/> [return]</button>
 
                         )}
                         
@@ -467,8 +454,8 @@ function Adoption () {
                 ) : (
     
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit <br/> [esc]</button>
-                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm <br/> [return]</button>
+                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => adoption_SpeciesDeselector()}> Quit Species<br/> [esc]</button>
+                        <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {(e) => adoption_NameManager(e)}> Confirm Adoption <br/> [return]</button>
                     </div>
     
                 )} 
@@ -484,9 +471,8 @@ function Adoption () {
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntry">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlagEntryContent">
-                            <h2>Name Input Error: </h2>
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
                             <p>{adoption_CurrErrorMessage}</p>
                         </div>
                     </div>

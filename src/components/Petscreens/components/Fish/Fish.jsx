@@ -457,12 +457,6 @@ function Fish (){
             <div className = "UIStapleElements_Background-Template--Screen">
 
                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
-                    
-                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
-                            <h1> {ActivePetName === "" ? null : ActivePetName}</h1>
-                        </div>
-                    </div>
 
                     <MainComponent
                         main_Sequence_StageAnimationImages={fish_MainCurrStageAnimationImages}

@@ -134,7 +134,11 @@ function MouseHunt({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef }) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--MouseHunt">
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--MouseHunt"
+            style={{
+                cursor: `pointer`
+            }}
+        >
 
             <div className="MouseHunt_ComponentContainer-Structure--Grid">
 
