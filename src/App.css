@@ -85,11 +85,21 @@ h1 {
 
   font-size: calc(1rem*2.20);
 
+      filter: 
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
+
 }
 
 h2 {
 
   font-size: calc(1rem*1.80);
+
+      filter: 
+      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
+      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+
 
 }
 
@@ -699,7 +709,6 @@ p {
   justify-content: center;
 
   padding: 6rem;
-  gap: 2rem;
   border-radius: 25px;
   
 }
@@ -849,7 +858,6 @@ p {
   flex-wrap: wrap;
 
   padding: 2rem 4rem;
-  gap: 2rem;
   border-radius: 25px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);

@@ -167,19 +167,25 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
+                            <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                            <h1>&lt;Pet Name&gt;</h1>
+                            </div>
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
+                            <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                <h1>&lt;Pet Name&gt;</h1>
+                            </div>
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                             <div className="RevivePets_ComponentImage-Structure--NoPetImage">
                                 <img src = {NoPets}/>
                             </div>
-                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
+                            <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                <h1>&lt;Pet Name&gt;</h1>
+                            </div>
                         </div>
                         
                     </div>
