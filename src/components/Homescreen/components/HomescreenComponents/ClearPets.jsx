@@ -167,7 +167,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                                 )}
 
-                                <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                     <h1>{petName}</h1>
                                 </div>
                             </div>

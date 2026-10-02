@@ -163,23 +163,23 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
-                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
-                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
-                                <h1>&lt;Pet Name&gt;</h1>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
+                                <img src = {NoPets}/>
                             </div>
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
-                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
-                                <h1>&lt;Pet Name&gt;</h1>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
+                                <img src = {NoPets}/>
                             </div>
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
                         </div>
-                        <div className="UIStapleElements_ComponentFrame-Template--Global RevivePets_ComponentImage-Structure--NoPetSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetSlotContent">
-                                <img className = "RevivePets_ComponentImage-Structure--NoPetImage" src = {NoPets}/>
-                                <h1>&lt;Pet Name&gt;</h1>
+                        <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
+                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
+                                <img src = {NoPets}/>
                             </div>
+                            <h1 className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">&lt;Pet Name&gt;</h1>
                         </div>
                         
                     </div>
@@ -212,7 +212,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                         <h2>{petName}</h2>
                                     </div>
 

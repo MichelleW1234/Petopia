@@ -184,7 +184,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
 
             <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalWindowFrame">
                 <div className = {`MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--${PetList[ActivePetName][petSpeciesKey]}`}>
-                    <div className = "Main_ComponentContainer-Structure--WindowScreenPetStats">
+
                         <h1 className="Main_ComponentContainer-Structure--WindowScreenPetStatsName"> {ActivePetName === "" ? null : ActivePetName}</h1>
                         <div className = "Main_ComponentContainer-Structure--WindowScreenPetStatsHealth">
 
@@ -213,7 +213,7 @@ function Main ({main_Sequence_StageAnimationImages, main_Image_StageSleepAnimati
                             ))}
 
                         </div>
-                    </div>
+
 
                     {PetList[ActivePetName][petHealthKey] === 0 ? (
 

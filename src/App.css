@@ -152,7 +152,7 @@ p {
 
 ::-webkit-scrollbar-thumb {
 
-  border-radius: 1000px;
+  border-radius: 10000px;
 
   background-color: rgb(255, 255, 255, 0.75);
 
@@ -225,7 +225,7 @@ p {
 
 .UIStapleElements_ComponentButton-Structure--GlobalClick {
 
-  border-radius: 1000px;
+  border-radius: 10000px;
   border-style: solid;
   border-left-width: 5px;
   border-bottom-width: 5px;
@@ -252,7 +252,7 @@ p {
 
 .UIStapleElements_ComponentButton-Template--GlobalNonclick {
 
-  border-radius: 1000px;
+  border-radius: 10000px;
   border-style: solid;
 
   border-left-width: 5px;
@@ -453,6 +453,22 @@ p {
   border-radius: 25px;
 
 }
+
+
+.MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName{
+
+  width: 100%;
+  height: auto;
+  text-align: center;  
+  
+  padding: 1rem;
+  border-radius: 10000px;
+
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
+
+}
+
 
 
 
@@ -673,22 +689,6 @@ p {
 
 
 
-.MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor{
-
-  width: 100%;
-  height: auto;
-  text-align: center;  
-  
-  padding: 1rem;
-  border-radius: 1000px;
-
-  color: rgb(255, 255, 255);
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-}
-
-
-
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
   width: 60rem;
@@ -868,7 +868,7 @@ p {
   align-items: center;
 
   padding: 3rem;
-  border-radius: 1000px;
+  border-radius: 10000px;
 
 }
 
@@ -883,7 +883,7 @@ p {
   justify-content: center;
 
   padding: 2rem 6rem;
-  border-radius: 1000px;
+  border-radius: 10000px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 

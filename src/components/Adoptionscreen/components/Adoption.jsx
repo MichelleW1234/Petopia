@@ -399,7 +399,7 @@ function Adoption () {
             
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                         <h1>{key}</h1>
                                     </div>
                                     

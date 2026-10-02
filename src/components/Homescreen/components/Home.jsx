@@ -383,7 +383,7 @@ function Home (){
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                         <h1>&lt;Pet Name&gt;</h1>
                                     </div>
 
@@ -413,7 +413,7 @@ function Home (){
 
                                     )}
 
-                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                                    <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                         <h1>{petName}</h1>
                                     </div>
                                     

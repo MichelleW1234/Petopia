@@ -58,7 +58,7 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
 
                         )}
 
-                        <div className="MiscellaneousElements_ComponentText-Template--GlobalEntryDescriptor">
+                        <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                             <h1>{option[petActivityOptionNameKey]}</h1>
                         </div>
                         

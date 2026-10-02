@@ -194,36 +194,9 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 </>
 
-                            ): (
+                            ) : (
 
-                                !Object.values(PetList).some(pet => item[inventoryItemSpeciesAcceptedKey].includes(pet[petSpeciesKey])) ? (
-                                
-                                    <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
-                                    
-                                        <h2>Item Owner:</h2>
-
-                                        <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
-                                            <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                                <img className="Inventory_ComponentImage-Structure--ItemNoPetOwner" src = {PetUnwantedActivity}/>
-                                                <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
-                                            </div>
-                                            <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                                <img className="Inventory_ComponentImage-Structure--ItemNoPetOwner" src = {PetUnwantedActivity}/>
-                                                <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
-                                            </div>
-                                            <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                                <img className="Inventory_ComponentImage-Structure--ItemNoPetOwner" src = {PetUnwantedActivity}/>
-                                                <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                ) : (
-
-                                    null
-
-                                )
+                                null
 
                             )}
 
@@ -283,7 +256,33 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 </div>
 
                             ) : (
-                                null
+                                
+                                <div className="Inventory_ComponentContainer-Structure--ItemDescriptionContentField">
+                                
+                                    <h2 className="Inventory_ComponentContainer-Structure--ItemPetOwnerName">Item Owner:</h2>
+
+                                    <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
+                                        <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
+                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                                <img src = {PetUnwantedActivity}/>
+                                            </div>
+                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                        </div>
+                                        <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
+                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                                <img src = {PetUnwantedActivity}/>
+                                            </div>
+                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                        </div>
+                                        <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
+                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                                <img src = {PetUnwantedActivity}/>
+                                            </div>
+                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                             )
 
