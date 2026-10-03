@@ -42,14 +42,14 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  gap: 2rem;
+  gap: 3rem;
 
 }
 
 
 .Inventory_ComponentContainer-Structure--ItemDescriptionImage{
 
-  width: 50%;
+  width: 45%;
   height: auto;
 
   filter: 
@@ -98,7 +98,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 1rem 6rem;
+  padding: 1rem 4rem;
   border-radius: 10000px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
@@ -171,25 +171,12 @@
 
   width: 45%;
   height: auto;
+  text-align: center;
 
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   border-radius: 10000px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-}
-
-
-
-.Inventory_ComponentContainer-Structure--PossiblePetOwner{
-
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  gap: 4rem;
 
 }
 
@@ -216,16 +203,4 @@
 
   }
 
-}
-
-.Inventory_ComponentContainer-Structure--NoPetOwnerName{
-
-  width: 50%;
-  height: auto;
-
-
-  padding: 1rem 3rem;
-  border-radius: 10000px;
-
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 }

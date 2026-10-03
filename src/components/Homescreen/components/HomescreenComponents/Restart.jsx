@@ -135,8 +135,9 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSign">
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent">
+                <div className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
+                    <div className="notificationsFrameContent">
+                        <h2> Warning: </h2>
                         <p>You are about to restart Petopia.</p>
                     </div>
                 </div>
@@ -144,8 +145,16 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRestart" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> Quit Restart <br/> [esc]</button>
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRestart" onClick = {() => restart_GameRestarter()}> Confirm Restart <br/> [return]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRestart" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> 
+                    <div>
+                        Quit Restart <br/> [esc]
+                    </div>
+                </button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRestart" onClick = {() => restart_GameRestarter()}> 
+                    <div>
+                        Confirm Restart <br/> [return]
+                    </div>
+                </button>
             </div>
 
         </div>

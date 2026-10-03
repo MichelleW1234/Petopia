@@ -24,13 +24,14 @@ function Warning({warning_types}) {
 
                     <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
                         <div className="notificationsFrameContent">
-                        <div className="Warning_image">
-                            <img className="Warning_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
-                            <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Warning_ComponentContainer-Structure--PetThoughtDesiredOption">
-                                <img className="Warning_ComponentImage-Template--PetThoughtDesiredOptionBubble" src = {PetThoughtBubble}/>
-                                <img className = "MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Warning_ComponentImage-Template--PetThoughtDesiredOptionObject" src = {warning_types[index]} /> 
+                            <h2>Pet Activity Alert:</h2>
+                            <div className="Warning_image">
+                                <img className="Warning_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
+                                <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Warning_ComponentContainer-Structure--PetThoughtDesiredOption">
+                                    <img className="Warning_ComponentImage-Template--PetThoughtDesiredOptionBubble" src = {PetThoughtBubble}/>
+                                    <img className = "MiscellaneousElements_ComponentImage-Structure--GlobalImageOverlayLayer Warning_ComponentImage-Template--PetThoughtDesiredOptionObject" src = {warning_types[index]} /> 
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 

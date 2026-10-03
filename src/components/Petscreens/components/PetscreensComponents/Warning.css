@@ -9,7 +9,7 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    gap: 1rem;
+    gap: 3rem;
 
 }
 
@@ -30,7 +30,7 @@
 .Warning_ComponentContainer-Structure--PetThoughtDesiredOption {
 
     height: auto;
-    width: 60%;
+    width: 50%;
 
     img {
 

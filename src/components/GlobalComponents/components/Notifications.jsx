@@ -37,10 +37,13 @@ function Notifications() {
 
                 <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Notifications_HeadingRowButton" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
-                        Clear  
+                        <div>
+                            Clear  
+                        </div>
                     </button>
 
                     <div className="notificationsFrameContent">
+                        <h2>Achievement Alert:</h2>
                         <p>Congratulations! You unlocked "{entry[notificationsDescriptionKey]}" on {entry[notificationsDateKey]}.</p>
                     </div>
                 </div>

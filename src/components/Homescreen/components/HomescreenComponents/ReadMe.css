@@ -1,9 +1,10 @@
-.Records_ComponentContainer-Structure--DocumentField{
+.ReadMeContent{
 
-    width: 100%;
     height: auto;
+    width: 100%;
+
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 

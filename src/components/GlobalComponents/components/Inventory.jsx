@@ -210,7 +210,9 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                 <>
 
-                                    <h2 className="Inventory_ComponentContainer-Structure--ItemPetOwnerName">Item Owner:</h2>
+                                    <div  className="Inventory_ComponentContainer-Structure--ItemPetOwnerName">
+                                        <h2>Item Owner:</h2>
+                                    </div>
 
                                     <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
 
@@ -258,26 +260,28 @@ function Inventory({set_Inventory_OpenFlag}) {
                                 
                                 <>
                                 
-                                    <h2 className="Inventory_ComponentContainer-Structure--ItemPetOwnerName">Item Owner:</h2>
+                                    <div  className="Inventory_ComponentContainer-Structure--ItemPetOwnerName">
+                                        <h2>Item Owner:</h2>
+                                    </div>
 
                                     <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
                                             <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
                                                 <img src = {PetUnwantedActivity}/>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
                                             <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
                                                 <img src = {PetUnwantedActivity}/>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
                                             <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
                                                 <img src = {PetUnwantedActivity}/>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--NoPetOwnerName">&lt;Pet Name&gt;</p>
+                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
                                         </div>
                                     </div>
 
@@ -299,7 +303,11 @@ function Inventory({set_Inventory_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> Done <br/> [return]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> 
+                    <div>
+                        Done <br/> [return]
+                    </div>
+                </button>
 
             </div>
             

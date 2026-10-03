@@ -181,15 +181,27 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitClear" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>Quit Clear<br/> [esc]</button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitClear" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>
+                    <div>
+                        Quit Clear<br/> [esc]
+                    </div>
+                </button>
 
                 {clearPets_CurrSelectedEntries.length === 0 ? (
 
-                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">Confirm Clear <br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
+                        <div>
+                            Confirm Clear <br/> [return]
+                        </div>
+                    </button>
 
                 ) : (
 
-                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClear" onClick={() => clearPets_SelectedEntriesManager()}>Confirm Clear<br/> [return]</button>
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClear" onClick={() => clearPets_SelectedEntriesManager()}>
+                        <div>
+                            Confirm Clear<br/> [return]
+                        </div>
+                    </button>
 
                 )}
 

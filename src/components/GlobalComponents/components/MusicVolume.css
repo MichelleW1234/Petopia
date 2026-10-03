@@ -8,7 +8,7 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    padding: 6rem;
+    padding: 4rem 8rem;
     border-radius: 25px;
 
 }
@@ -23,8 +23,8 @@
     justify-content: center;
     flex-wrap: wrap;
 
-    padding: 5rem;
-    gap: 5rem;
+    padding: 3rem 6rem;
+    gap: 6rem;
     border-radius: 25px;
 
     box-shadow: 0 0 20px 10px rgba(255, 255, 255);

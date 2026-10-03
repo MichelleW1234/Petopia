@@ -29,7 +29,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                 <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
                     <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Dog:</h2>
+                            <h2>Dog Care & Development:</h2>
                             <div className="speciesGuideFieldRow">
                                 <p> Feeding Frequency &rarr;</p>
                                 <div className="speciesGuideFieldRowGrid">
@@ -64,7 +64,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Cat: </h2>
+                            <h2>Cat Care & Development: </h2>
                             <div className="speciesGuideFieldRow">
                                 <p> Feeding Frequency &rarr;</p>
                                 <div className="speciesGuideFieldRowGrid">
@@ -91,7 +91,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
                             </div>
                         </div>
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
-                            <h2>Fish: </h2>
+                            <h2>Fish Care & Development: </h2>
                             <div className="speciesGuideFieldRow">
                                 <p> Feeding Frequency &rarr;</p>
                                 <div className="speciesGuideFieldRowGrid">
@@ -122,7 +122,11 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
             </div>
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> Close <br/> [2]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> 
+                    <div>
+                        Close <br/> [2]
+                    </div>
+                </button>
             </div>
             
         </div>

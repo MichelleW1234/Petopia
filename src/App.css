@@ -136,6 +136,7 @@ a:active {
 }
 
 
+input,
 p {
 
   font-family: monospace;
@@ -251,6 +252,13 @@ p {
 
   }
 
+  div{
+
+    height: auto;
+    width: auto;
+
+  }
+
 }
 
 .UIStapleElements_ComponentButton-Structure--GlobalClick:hover,
@@ -279,9 +287,12 @@ p {
     width: 100%;
     height: auto;
 
-    filter: 
-      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
+  }
+
+  div {
+
+    width: auto;
+    height: auto;
 
   }
 
@@ -295,7 +306,7 @@ p {
   background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
   box-shadow: 0 0 20px 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
-  img{
+  * {
 
     filter: 
       drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
@@ -310,7 +321,7 @@ p {
 
   box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
-  img{
+  * {
 
     filter: 
       drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
@@ -326,7 +337,7 @@ p {
   background: radial-gradient(ellipse, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundFirst)) 0%, hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorBackgroundSecond)) 100%);
   box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
-  img{
+  * {
 
     filter: 
       drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
@@ -341,7 +352,7 @@ p {
 
   box-shadow: 0 0 40px 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow));
 
-  img{
+  * {
 
     filter: 
       drop-shadow(0 0 20px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
@@ -471,7 +482,7 @@ p {
   height: auto;
   text-align: center;  
   
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 10000px;
 
   color: rgb(255, 255, 255);
@@ -487,8 +498,8 @@ p {
 
   height: auto;
   width: auto;
-  padding: 4rem;
 
+  padding: 4rem;
   border-radius: 25px;
 
 }
@@ -701,7 +712,7 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
 
-  width: 60rem;
+  width: 59rem;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -834,12 +845,11 @@ p {
 
 .notificationsFrame {
 
-  width: 38rem;
+  width: 37rem;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
 
   gap: 4rem;
   padding: 4rem;
@@ -857,41 +867,9 @@ p {
   justify-content: center;
   flex-wrap: wrap;
 
-  padding: 2rem 4rem;
-  border-radius: 25px;
-
-  box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-}
- 
-
-
-.MiscellaneousElements_ComponentContainer-Structure--GlobalSign {
-
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  gap: 3rem;
   padding: 3rem;
-  border-radius: 10000px;
-
-}
-
-
-.MiscellaneousElements_ComponentContainer-Structure--GlobalSignContent {
-
-  width: auto;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  padding: 2rem 6rem;
-  border-radius: 10000px;
+  border-radius: 25px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
 

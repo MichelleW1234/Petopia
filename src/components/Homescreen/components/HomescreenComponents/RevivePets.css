@@ -1,7 +1,7 @@
 .potionBar{
 
-    height: 20rem;
-    width: 40rem;
+    height: auto;
+    width: auto;
 
     padding: 3rem;
     border-radius: 25px;
@@ -11,8 +11,8 @@
 
 .potionImageContainer{
 
-    width: 100%;
-    height: 100%;
+    width: 28rem;
+    height: 14rem;
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -21,8 +21,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 100%);
 
-    padding: 2rem;
-    gap: 1rem;
+    padding: 3rem;
     border-radius: 25px;
 
     box-shadow: 0 0 20px 10px rgba(255, 255, 255);

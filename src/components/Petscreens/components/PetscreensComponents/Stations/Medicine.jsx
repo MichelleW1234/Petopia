@@ -227,15 +227,27 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitMedicine" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>Quit Medicine <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitMedicine" onClick = {() => petScreensHelpers_Canceller_Activities(medicine_AudioRef, set_Medicine_OpenFlag)}>
+                    <div>
+                        Quit Medicine <br/> [esc]
+                    </div>
+                </button>
 
                 {medicine_OptionsUserSelection === -1 || medicine_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm Medicine <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
+                        <div>
+                            Confirm Medicine <br/> [return]
+                        </div>
+                    </button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmMedicine" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> Confirm Medicine <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmMedicine" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> 
+                        <div>
+                            Confirm Medicine <br/> [return]
+                        </div>
+                    </button>
 
                 )}
 

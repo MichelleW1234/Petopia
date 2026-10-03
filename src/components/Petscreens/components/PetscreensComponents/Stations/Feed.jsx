@@ -170,15 +170,27 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
             
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitFeed" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>Quit Feed <br/> [esc]</button>
+                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitFeed" onClick = {() => petScreensHelpers_Canceller_Activities(feed_AudioRef, set_Feed_OpenFlag)}>
+                    <div>
+                        Quit Feed <br/> [esc]
+                    </div>
+                </button>
 
                 {feed_OptionsUserSelection === -1 || feed_Confirmed ? (
 
-                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> Confirm Feed <br/> [return]</button>                    
+                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
+                        <div>
+                            Confirm Feed <br/> [return]
+                        </div>
+                    </button>                    
 
                 ) : (
 
-                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmFeed" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> Confirm Feed <br/> [return]</button>
+                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmFeed" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> 
+                        <div>
+                            Confirm Feed <br/> [return]
+                        </div>
+                    </button>
 
                 )}
 

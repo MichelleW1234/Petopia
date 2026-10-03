@@ -55,7 +55,11 @@ function Schedule({set_Schedule_OpenFlag}) {
             </div>
             
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}> Close <br/> [3] </button>
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick={() => helpers_Closer_Flags(set_Schedule_OpenFlag)}> 
+                    <div>
+                        Close <br/> [3] 
+                    </div>
+                </button>
             </div>
 
         </div>

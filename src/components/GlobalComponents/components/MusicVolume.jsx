@@ -62,8 +62,12 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
 
-                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> Done <br/> [return]</button>
-                
+                <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> 
+                    <div>
+                        Done <br/> [return]
+                    </div>
+                </button>
+                    
             </div>
 
         </div>
