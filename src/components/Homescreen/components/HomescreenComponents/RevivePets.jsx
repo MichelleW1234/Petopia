@@ -164,27 +164,30 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                     <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
-                            </div>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
+                                Select
+                            </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
-                            <h1>&lt;Pet Name&gt;</h1>
+                                <img src = {NoPets}/>
+                                <h1>&lt;Name&gt;</h1>
                             </div>
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
-                            </div>
+                           <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
+                                Select
+                            </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
-                                <h1>&lt;Pet Name&gt;</h1>
+                                <img src = {NoPets}/>
+                                <h1>&lt;Name&gt;</h1>
                             </div>
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
-                            <div className="RevivePets_ComponentImage-Structure--NoPetImage">
-                                <img src = {NoPets}/>
-                            </div>
+                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
+                                Select
+                            </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
-                                <h1>&lt;Pet Name&gt;</h1>
+                                <img src = {NoPets}/>
+                                <h1>&lt;Name&gt;</h1>
                             </div>
                         </div>
                         
@@ -207,18 +210,19 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                                     {RevivePets_UserSelection === petName ? (
 
                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
-                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                            Select
                                         </button>
 
                                     ) : (
 
                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
-                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                            Select
                                         </button>
 
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         <h2>{petName}</h2>
                                     </div>
 

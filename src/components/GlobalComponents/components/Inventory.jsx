@@ -227,19 +227,28 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                 item[inventoryItemOwnerKey] === inventory_EntryOwnerSelector_UserSelection ? (
 
                                                     <div key = {indexInner} className="Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                                        <button  className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerDeselector(index)}> 
+                                                         <div className="testing"> 
                                                             <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
+                                                            <p>{inventory_EntryOwnerSelector_UserSelection}</p>
+                                                        </div>
+                                                        
+                                                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerDeselector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                            Go
                                                         </button>
-                                                        <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">{inventory_EntryOwnerSelector_UserSelection}</p>
                                                     </div>
 
                                                 ) : item[inventoryItemSpeciesAcceptedKey].includes(PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]) ? (
 
                                                     <div key = {indexInner} className="Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                        <div className="testing"> 
                                                             <img src = {petSpeciesImagePortraitList[PetList[inventory_EntryOwnerSelector_UserSelection][petSpeciesKey]][PetList[inventory_EntryOwnerSelector_UserSelection][petStageKey]]}/>
+                                                            <p>{inventory_EntryOwnerSelector_UserSelection}</p>
+                                                        </div>
+                                                        
+                                                        <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                            Go
                                                         </button>
-                                                        <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">{inventory_EntryOwnerSelector_UserSelection}</p>
+                                                       
                                                     </div>
 
                                                 ) : (
@@ -266,22 +275,31 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                                     <div className="Inventory_ComponentContainer-Structure--PossiblePetOwners">
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                            <div className="testing"> 
                                                 <img src = {PetUnwantedActivity}/>
+                                                <p>&lt;Name&gt;</p>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
+                                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                Select
+                                            </button>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                            <div className="testing"> 
                                                 <img src = {PetUnwantedActivity}/>
+                                                <p>&lt;Name&gt;</p>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
+                                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                Select
+                                            </button>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
-                                            <div className="Inventory_ComponentImage-Structure--ItemNoPetOwner">
+                                            <div className="testing"> 
                                                 <img src = {PetUnwantedActivity}/>
+                                                <p>&lt;Name&gt;</p>
                                             </div>
-                                            <p className="Inventory_ComponentContainer-Structure--PossiblePetOwnerName">&lt;Pet Name&gt;</p>
+                                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
+                                                Select
+                                            </button>
                                         </div>
                                     </div>
 

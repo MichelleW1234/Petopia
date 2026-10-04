@@ -424,7 +424,7 @@ function Home (){
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
-                                        <h1>&lt;Pet Name&gt;</h1>
+                                        <h1>&lt;Name&gt;</h1>
                                     </div>
 
                                 </div>
@@ -439,7 +439,7 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                            Select
                                         </button>
 
                                     ) : (
@@ -448,12 +448,13 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
+                                            Select
                                         </button>
 
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                        <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
                                         <h1>{petName}</h1>
                                     </div>
                                     

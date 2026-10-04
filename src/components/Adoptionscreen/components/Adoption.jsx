@@ -396,18 +396,19 @@ function Adoption () {
                                     {key === adoption_UserSelection ? (
             
                                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
-                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                            Select
                                         </button>
 
                                     ) : (
             
                                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
-                                            <img src = {petSpeciesImagePortraitList[key][0]}/>
+                                            Select
                                         </button>
             
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                        <img src = {petSpeciesImagePortraitList[key][0]}/>
                                         <h1>{key}</h1>
                                     </div>
                                     
@@ -431,7 +432,7 @@ function Adoption () {
                                         type="text"
                                         value={adoption_UserInput}
                                         onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                        placeholder="&lt;Pet Name&gt;"
+                                        placeholder="&lt;Name&gt;"
                                     />
                                     <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} into your family! </p>
                                 </div>
@@ -505,7 +506,7 @@ function Adoption () {
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
                     <div className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
                         <div className="notificationsFrameContent">
-                            <h2>Pet Name Alert:</h2>
+                            <h2>Name Alert:</h2>
                             <p>{adoption_CurrErrorMessage}</p>
                         </div>
                     </div>

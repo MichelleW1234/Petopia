@@ -38,7 +38,7 @@ function Notifications() {
                 <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Notifications_HeadingRowButton" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
                         <div>
-                            Clear  
+                            X  
                         </div>
                     </button>
 

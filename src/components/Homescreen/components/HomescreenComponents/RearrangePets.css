@@ -1,83 +1,23 @@
-.RearrangePets_ComponentContainer-Structure--Slot{
-
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-
-    gap: 3rem;
-    
-}
-
-.RearrangePets_ComponentContainer-Template--Slot{
-
-    width: 28rem;
-    height: auto;
-    text-align: center;
-
-    padding: 3rem;    
-    border-radius: 25px;
-
-}
-
-.rearrangepetsslot{
+.RearrangePets_ComponentContainer-Structure--SlotButtonRow {
 
     width: 100%;
     height: auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 3rem;
-    padding: 3rem;
-    border-radius: 25px;
-  
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-}
-
-
-.RearrangePets_ComponentContainer-Structure--SlotImage{
-
-    width: 65%;
-    height: auto;
-
-    filter: 
-        drop-shadow(0 0 10px rgb(255, 255, 255))
-        drop-shadow(0 0 5px rgb(255, 255, 255));
-
-}
-
-
-.RearrangePets_ComponentContainer-Structure--SlotButtonRow {
-
-    width: auto;
-    height: auto;
-
-    display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: center;
 
-    gap: 3rem;
+    gap: 2rem;
 
 }
 
 
 .RearrangePets_ComponentContainer-Structure--SlotButton{
 
-  width: auto;
+  width: 40%;
   height: auto;
   
-  padding: 1rem;
-
-    img {
-
-        width: 5rem;
-        height: auto;
-        
-    }
+  padding: 1rem 2rem;
 
 }
 

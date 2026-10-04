@@ -65,7 +65,6 @@ body{
 
   flex-shrink: 0;
   
-
 }
 
 
@@ -394,10 +393,10 @@ p {
 
 .MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton{
 
-  width: 85%;
+  width: 100%;
   height: auto;
 
-  padding: 3rem;
+  padding: 2rem 4rem;
 
 }
 
@@ -480,13 +479,34 @@ p {
 
   width: 100%;
   height: auto;
-  text-align: center;  
+  text-align: center; 
   
-  padding: 1rem 2rem;
-  border-radius: 10000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  
+  padding: 2rem;
+  border-radius: 25px;
+  gap: 2rem;
 
   color: rgb(255, 255, 255);
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
+
+  margin-top: auto;
+  margin-bottom: auto;
+
+  img {
+
+    height: auto;
+    width: 75%;
+
+    filter: 
+      drop-shadow(0 0 10px rgb(255, 255, 255))
+      drop-shadow(0 0 5px rgb(255, 255, 255));
+
+  }
 
 }
 
