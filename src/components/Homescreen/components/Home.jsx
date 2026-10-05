@@ -409,7 +409,9 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {NoPetPortrait}/>
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     ) : (
@@ -418,12 +420,15 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            <img src = {NoPetPortrait}/>
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     )}
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
+                                        <img src = {NoPetPortrait}/>
                                         <h1>&lt;Name&gt;</h1>
                                     </div>
 
@@ -439,7 +444,9 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     ) : (
@@ -448,7 +455,9 @@ function Home (){
                                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton"
                                             onClick = {() => home_Selection(index)}
                                         >
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     )}

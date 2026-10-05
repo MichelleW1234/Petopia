@@ -396,13 +396,17 @@ function Adoption () {
                                     {key === adoption_UserSelection ? (
             
                                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector("")}>
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     ) : (
             
                                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => adoption_SpeciesSelector(key)}>
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
             
                                     )}

@@ -47,13 +47,17 @@ function Options({options_CurrDesiredOption, options_CurrSpeciesList, options_Us
                         {options_UserSelection === index ? (
 
                             <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
-                                Select
+                                <div>
+                                    Select
+                                </div>
                             </button>
 
                         ) : (
 
                             <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => options_SelectionManager(index)}>
-                                Select
+                                <div>
+                                    Select
+                                </div>
                             </button>
 
                         )}

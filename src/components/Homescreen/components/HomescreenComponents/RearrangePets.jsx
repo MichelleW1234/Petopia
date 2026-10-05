@@ -88,11 +88,15 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
                             {rearrangePets_ForwardShifter_UserSelection === 0 ? (
 
                                 <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
-                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}> 
-                                        &#11013;
+                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton"> 
+                                        <div>
+                                            &#9664;
+                                        </div>
                                     </button>
                                      <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        &#11157;
+                                        <div>
+                                            &#9654;
+                                        </div>
                                     </button>
                                 </div>
 
@@ -100,10 +104,14 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
                                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        &#11013;
+                                        <div>
+                                            &#9664;
+                                        </div>
                                     </button>
                                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        &#11157;
+                                        <div>
+                                            &#9654;
+                                        </div>
                                     </button>
                                 </div>
 
@@ -111,10 +119,14 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                                 <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
                                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        &#11013;
+                                        <div>
+                                            &#9664;
+                                        </div>
                                     </button>
-                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        &#11157;
+                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton">
+                                        <div>
+                                            &#9654;
+                                        </div>
                                     </button>
                                 </div>
 

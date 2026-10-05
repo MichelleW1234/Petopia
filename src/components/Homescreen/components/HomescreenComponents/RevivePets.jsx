@@ -165,7 +165,9 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
-                                Select
+                                <div>
+                                    Select
+                                </div>
                             </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                 <img src = {NoPets}/>
@@ -174,7 +176,9 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                            <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
-                                Select
+                                <div>
+                                    Select
+                                </div>
                             </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                 <img src = {NoPets}/>
@@ -183,7 +187,9 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                         </div>
                         <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton">
-                                Select
+                                <div>
+                                    Select
+                                </div>
                             </button>
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                 <img src = {NoPets}/>
@@ -210,13 +216,17 @@ function RevivePets({set_RevivePets_OpenFlag}) {
                                     {RevivePets_UserSelection === petName ? (
 
                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntryDeselector()}> 
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     ) : (
 
                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalSlotButton" onClick = {() => RevivePets_EntrySelector(petName)}> 
-                                            Select
+                                            <div>
+                                                Select
+                                            </div>
                                         </button>
 
                                     )}

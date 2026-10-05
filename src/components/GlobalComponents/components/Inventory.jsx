@@ -233,7 +233,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                         </div>
                                                         
                                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalSelected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerDeselector(index, inventory_EntryOwnerSelector_UserSelection)}> 
-                                                            Go
+                                                            <div>
+                                                                Select
+                                                            </div>
                                                         </button>
                                                     </div>
 
@@ -246,7 +248,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                         </div>
                                                         
                                                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
-                                                            Go
+                                                            <div>
+                                                                Select
+                                                            </div>
                                                         </button>
                                                        
                                                     </div>
@@ -280,7 +284,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                 <p>&lt;Name&gt;</p>
                                             </div>
                                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
-                                                Select
+                                                <div>
+                                                    Select
+                                                </div>
                                             </button>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
@@ -289,7 +295,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                 <p>&lt;Name&gt;</p>
                                             </div>
                                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
-                                                Select
+                                                <div>
+                                                    Select
+                                                </div>
                                             </button>
                                         </div>
                                         <div className = "Inventory_ComponentContainer-Structure--PossiblePetOwner">
@@ -298,7 +306,9 @@ function Inventory({set_Inventory_OpenFlag}) {
                                                 <p>&lt;Name&gt;</p>
                                             </div>
                                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick Inventory_ComponentButton-Structure--PossiblePetOwner" onClick = {() => inventory_EntryOwnerSelector(index, inventory_EntryOwnerSelector_UserSelection)}> 
-                                                Select
+                                                <div>
+                                                    Select
+                                                </div>
                                             </button>
                                         </div>
                                     </div>
