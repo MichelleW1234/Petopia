@@ -11,6 +11,7 @@ import { audioCircleButtonPressKey, audioClearPetsKey, petSpeciesImagePortraitLi
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags, helpers_Quit } from "../../../../helpers/helpers.js";
 
 import "../../../../App.css";
+import "./ClearPets.css";
 
 
 function ClearPets({set_ClearPets_OpenFlag}) {
@@ -141,6 +142,17 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
+                <div className="UIStapleElements_ComponentFrame-Template--Global clearPetsFrame">
+
+                    <div className="clearPetsFrameContent">
+
+                        <h2>Clear Pets Warning: </h2>
+                        <p>You cannot restore pets after clearing them.</p>
+
+                    </div>
+
+                </div>
+
                 <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalRow--GlobalSelectionSlotRow">
 
                     {Room.map((petName, index) => (
@@ -188,7 +200,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitClear" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>
                     <div>
-                        Quit Clear<br/> [esc]
+                        Quit<br/> [esc]
                     </div>
                 </button>
 
@@ -196,7 +208,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                     <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
                         <div>
-                            Confirm Clear <br/> [return]
+                            Confirm <br/> [return]
                         </div>
                     </button>
 
@@ -204,7 +216,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClear" onClick={() => clearPets_SelectedEntriesManager()}>
                         <div>
-                            Confirm Clear<br/> [return]
+                            Confirm Clear Pet<br/> [return]
                         </div>
                     </button>
 

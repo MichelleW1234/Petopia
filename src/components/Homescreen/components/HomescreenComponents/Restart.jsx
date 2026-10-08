@@ -135,10 +135,10 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <div className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
-                    <div className="notificationsFrameContent">
-                        <h2> Warning: </h2>
-                        <p>You are about to restart Petopia.</p>
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                        <h2> Restart Game Warning: </h2>
+                        <p>You are about to restart Petopia. This means that all of your progress will be erased, including any of your achievements. </p>
                     </div>
                 </div>
 
@@ -147,12 +147,12 @@ function Restart({set_Restart_OpenFlag, restart_MinPetsAdopted, restart_Inventor
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                 <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRestart" onClick = {() => helpers_Quit(set_Restart_OpenFlag)}> 
                     <div>
-                        Quit Restart <br/> [esc]
+                        Quit <br/> [esc]
                     </div>
                 </button>
                 <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRestart" onClick = {() => restart_GameRestarter()}> 
                     <div>
-                        Confirm Restart <br/> [return]
+                        Confirm <br/> [return]
                     </div>
                 </button>
             </div>

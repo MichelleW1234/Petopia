@@ -1,23 +1,9 @@
-.RearrangePets_ComponentContainer-Structure--SlotButtonRow {
-
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    gap: 2rem;
-
-}
-
-
 .RearrangePets_ComponentContainer-Structure--SlotButton{
 
-  width: 40%;
+  width: 100%;
   height: auto;
   
-  padding: 1rem 2rem;
+  padding: 2rem 4rem;
 
 }
 

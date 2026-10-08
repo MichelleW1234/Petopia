@@ -1,16 +1,3 @@
-.Main_ComponentContainer-Structure--WindowScreenPetStatsName{
-
-    height: auto;
-    width: 100%;
-
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    z-index: 5;
-
-}
-
-
 .Main_ComponentContainer-Structure--WindowScreenPetStatsHealth{
 
     height: 20%;
@@ -19,7 +6,7 @@
     grid-template-rows: repeat(2, 50%);
     grid-template-columns: repeat(10, 1fr);
     position: absolute;
-    top: 15%;
+    top: 5%;
     left: 5%;
     z-index: 5;
 

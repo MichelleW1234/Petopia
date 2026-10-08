@@ -36,40 +36,37 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
         helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
         helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
 
-        setRoom(prev => {
+        if (rearrangePets_ForwardShifter_UserSelection === 2) {
 
-            let rearrangePets_ForwardShifter_CurrCopy = [...prev];
+            setRoom(prev => {
 
-            const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1];
-            rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
-            rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
+                let rearrangePets_ForwardShifter_CurrCopy = [...prev];
 
-            return rearrangePets_ForwardShifter_CurrCopy;
+                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[0];
+                rearrangePets_ForwardShifter_CurrCopy[0] = rearrangePets_ForwardShifter_CurrCopy[2];
+                rearrangePets_ForwardShifter_CurrCopy[2] = rearrangePets_ForwardShifter_CurrSuccessor;
 
-        });
+                return rearrangePets_ForwardShifter_CurrCopy;
+
+            });
+
+        } else {
+
+            setRoom(prev => {
+
+                let rearrangePets_ForwardShifter_CurrCopy = [...prev];
+
+                const rearrangePets_ForwardShifter_CurrSuccessor = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1];
+                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection+1] = rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection];
+                rearrangePets_ForwardShifter_CurrCopy[rearrangePets_ForwardShifter_UserSelection] = rearrangePets_ForwardShifter_CurrSuccessor;
+
+                return rearrangePets_ForwardShifter_CurrCopy;
+
+            });
+
+        }
 
     };
-
-
-
-    const rearrangePets_BackwardsShifter = (rearrangePets_BackwardsShifter_UserSelection) => {
-
-        helpers_Player_UIIndicatorSounds(audioSwapPetSpaceKey);
-        helpers_Player_UIIndicatorSounds(audioRectangleButtonPressKey);
-
-        setRoom(prev => {
-
-            let rearrangePets_BackwardsShifter_CurrCopy = [...prev];
-
-            const rearrangePets_BackwardsShifter_CurrSuccessor = rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection-1];
-            rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection-1] = rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection];
-            rearrangePets_BackwardsShifter_CurrCopy[rearrangePets_BackwardsShifter_UserSelection] = rearrangePets_BackwardsShifter_CurrSuccessor;
-
-            return rearrangePets_BackwardsShifter_CurrCopy;
-
-        });
-
-    }
 
 
 
@@ -85,52 +82,11 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                         <div key = {rearrangePets_ForwardShifter_UserSelection} className = "UIStapleElements_ComponentFrame-Template--Global  MiscellaneousElements_ComponentContainer-Structure--GlobalSelectionSlot">
 
-                            {rearrangePets_ForwardShifter_UserSelection === 0 ? (
-
-                                <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
-                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton"> 
-                                        <div>
-                                            &#9664;
-                                        </div>
-                                    </button>
-                                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        <div>
-                                            &#9654;
-                                        </div>
-                                    </button>
+                            <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
+                                <div>
+                                    Swap With Next
                                 </div>
-
-                            ) : rearrangePets_ForwardShifter_UserSelection === 1 ? (
-
-                                <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
-                                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        <div>
-                                            &#9664;
-                                        </div>
-                                    </button>
-                                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_ForwardShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        <div>
-                                            &#9654;
-                                        </div>
-                                    </button>
-                                </div>
-
-                            ) : (
-
-                                <div className="RearrangePets_ComponentContainer-Structure--SlotButtonRow">
-                                    <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected RearrangePets_ComponentContainer-Structure--SlotButton" onClick = {() => rearrangePets_BackwardsShifter(rearrangePets_ForwardShifter_UserSelection)}>
-                                        <div>
-                                            &#9664;
-                                        </div>
-                                    </button>
-                                    <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick RearrangePets_ComponentContainer-Structure--SlotButton">
-                                        <div>
-                                            &#9654;
-                                        </div>
-                                    </button>
-                                </div>
-
-                            )}
+                            </button>
 
                             <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
 
@@ -168,7 +124,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick={() => helpers_Closer_Flags(set_RearrangePets_OpenFlag)}> 
                     <div>
-                        Done <br/> [return]
+                        Close <br/> [return]
                     </div>
                 </button>
 

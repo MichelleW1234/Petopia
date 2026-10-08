@@ -9,7 +9,7 @@ import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvid
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import SpeciesCareGuideComponent from "./AdoptionscreenComponents/SpeciesCareGuide.jsx";
+import SpeciesCareGuideComponent from "../../../trash/SpeciesCareGuide.jsx";
 import MusicVolumeComponent from "../../GlobalComponents/components/MusicVolume.jsx";
 import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
@@ -84,19 +84,6 @@ function Adoption () {
 
     },
         ".Home"
-    );
-
-    
-    useKeyboardShortcut("2", () => {
-        
-        if (!adoption_SpeciesCareGuideOpenFlag && !adoption_MusicVolumeOpenFlag && !adoption_InventoryOpenFlag){
-
-            helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0);
-
-        }
-
-    },
-        ".SpeciesCareGuide"
     );
 
 
@@ -351,24 +338,14 @@ function Adoption () {
             <InventoryComponent
                 set_Inventory_OpenFlag={set_Adoption_InventoryOpenFlag}
             />}
-
-            {adoption_SpeciesCareGuideOpenFlag &&
-            <SpeciesCareGuideComponent
-                set_SpeciesCareGuide_OpenFlag = {set_Adoption_SpeciesCareGuideOpenFlag}
-            />}
             
             
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
                 <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => adoption_HomeNavigator()}> 
                     <div>
-                        Home <br/> [1]
+                        Navigate to Home <br/> [1]
                     </div>
                 </Link>
-                <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton SpeciesCareGuide" onClick = {() => helpers_Opener_Flags(set_Adoption_SpeciesCareGuideOpenFlag, 0)}> 
-                    <div>
-                        Species Care Guide <br/> [2]
-                    </div>
-                </button>
             </div>
             
             {Notifications.length > 0 ? (
@@ -456,7 +433,7 @@ function Adoption () {
                         
                         <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Quit Species<br/> [esc]
+                                Quit Species <br/> [esc]
                             </div>
                         </button>
 
@@ -485,12 +462,12 @@ function Adoption () {
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => adoption_SpeciesDeselector()}> 
                             <div>
-                                Quit Species<br/> [esc]
+                                Quit Species <br/> [esc]
                             </div>
                         </button>
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {(e) => adoption_NameManager(e)}> 
                             <div>
-                                Confirm Adoption <br/> [return]
+                                Confirm Adoption<br/> [return]
                             </div>
                         </button>
                     </div>
@@ -524,7 +501,7 @@ function Adoption () {
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>
                     <div>
-                        Volume <br/> [v]
+                        Adjust Music Volume <br/> [v]
                     </div>
                 </button>
 

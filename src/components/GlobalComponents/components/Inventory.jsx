@@ -333,7 +333,7 @@ function Inventory({set_Inventory_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_Inventory_OpenFlag)}> 
                     <div>
-                        Done <br/> [return]
+                        Close <br/> [return]
                     </div>
                 </button>
 

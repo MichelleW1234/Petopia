@@ -1,9 +1,9 @@
-import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
+import useKeyboardShortcut from "../hooks/useKeyboardShortcut.js";
 
-import { audioPillButtonPressKey } from "../../../../constants/Constants.js";
-import { helpers_Closer_Flags } from "../../../../helpers/helpers.js";
+import { audioPillButtonPressKey } from "../constants/Constants.js";
+import { helpers_Closer_Flags } from "../helpers/helpers.js";
 
-import "../../../../App.css";
+import "../App.css";
 import "./SpeciesCareGuide.css";
 
 

@@ -252,7 +252,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRevive" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>
                     <div>
-                        Quit Revive<br/> [esc]
+                        Quit<br/> [esc]
                     </div>
                 </button>
 
@@ -260,7 +260,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                     <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
                         <div>
-                            Confirm Revive <br/> [return]
+                            Confirm <br/> [return]
                         </div>
                     </button>
 
@@ -268,7 +268,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRevive" onClick={() => RevivePets_SelectedEntriesManager()}>
                         <div>
-                            Confirm Revive <br/> [return]
+                            Confirm <br/> [return]
                         </div>
                     </button>
 

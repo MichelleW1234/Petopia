@@ -24,7 +24,6 @@ function Warning({warning_types}) {
 
                     <div key = {index} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
                         <div className="notificationsFrameContent">
-                            <h2>Pet Activity Alert:</h2>
                             <div className="Warning_image">
                                 <img className="Warning_ComponentImage-Template--PetThoughtPet" src = {petSpeciesImagePortraitList[PetList[ActivePetName][petSpeciesKey]][PetList[ActivePetName][petStageKey]]}/>
                                 <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalImageOverlay Warning_ComponentContainer-Structure--PetThoughtDesiredOption">

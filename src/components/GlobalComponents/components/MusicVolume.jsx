@@ -46,7 +46,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <div className="UIStapleElements_ComponentFrame-Template--Global MusicVolume_ComponentContainer-Structure--Widget">
                     <div className="MusicVolume_ComponentContainer-Structure--Content">
-                        <img className="MusicVolume_ComponentContainer-Structure--WidgetImage" src = {VolumeSpeaker}/>
+                        {/*<img className="MusicVolume_ComponentContainer-Structure--WidgetImage" src = {VolumeSpeaker}/>*/}
                         <input
                             className="MusicVolume_ComponentContainer-Structure--Slider"
                             type="range"
@@ -64,7 +64,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> 
                     <div>
-                        Done <br/> [return]
+                        Close  <br/> [return]
                     </div>
                 </button>
                     

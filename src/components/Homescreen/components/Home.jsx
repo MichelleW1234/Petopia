@@ -311,7 +311,7 @@ function Home (){
 
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Restart" onClick = {() => helpers_Opener_Flags(set_Home_RestartOpenFlag, 0)}> 
                         <div className="MiscellaneousElements_ComponentText-Template--GlobalButtonWords">
-                            Restart <br/> [1]
+                            Restart Game <br/> [1]
                         </div>
                     </button>
 
@@ -344,7 +344,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReviveAPet" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> 
                                 <div>
-                                    Revive A Pet <br/> [4]
+                                    Revive Pet <br/> [4]
                                 </div>
                             </button>
 
@@ -352,7 +352,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Revive A Pet <br/> [4]
+                                    Revive Pet <br/> [4]
                                 </div>
                             </button>
 
@@ -375,7 +375,7 @@ function Home (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Revive A Pet <br/> [4]
+                                Revive Pet <br/> [4]
                             </div>
                         </button>
                     </>
@@ -384,7 +384,7 @@ function Home (){
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> 
                     <div>
-                        Read Me <br/> [5]
+                        Game Instructions <br/> [5]
                     </div>
                 </button>
                 
@@ -483,7 +483,7 @@ function Home (){
 
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
                             <div>
-                                Confirm Room <br/> [return]
+                                Confirm & Navigate to Room <br/> [return]
                             </div>
                         </button>
 
@@ -493,7 +493,7 @@ function Home (){
                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRoom" 
                             onClick = {() => GoToSelection()}>
                             <div>
-                                Confirm Room <br/> [return]
+                                Confirm & Navigate to Room <br/> [return]
                             </div>
                         </button>
 
@@ -528,7 +528,7 @@ function Home (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1)}>
                     <div>
-                        Volume <br/> [v]
+                        Adjust Music Volume <br/> [v]
                     </div>
                 </button>
 
