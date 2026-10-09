@@ -433,7 +433,7 @@ function Adoption () {
                         
                         <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Quit Species <br/> [esc]
+                                Quit Selection <br/> [esc]
                             </div>
                         </button>
 
@@ -441,7 +441,7 @@ function Adoption () {
 
                             <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Confirm Species <br/> [return]
+                                    Confirm Selection <br/> [return]
                                 </div>
                             </button>
 
@@ -449,7 +449,7 @@ function Adoption () {
 
                             <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {() => adoption_PetGenderGenerator()}> 
                                 <div>
-                                    Confirm Species<br/> [return]
+                                    Confirm Selection<br/> [return]
                                 </div>
                             </button>
 
@@ -462,12 +462,12 @@ function Adoption () {
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => adoption_SpeciesDeselector()}> 
                             <div>
-                                Quit Species <br/> [esc]
+                                Quit Selection <br/> [esc]
                             </div>
                         </button>
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {(e) => adoption_NameManager(e)}> 
                             <div>
-                                Confirm Adoption<br/> [return]
+                                Confirm Adoption & Navigate to Home<br/> [return]
                             </div>
                         </button>
                     </div>

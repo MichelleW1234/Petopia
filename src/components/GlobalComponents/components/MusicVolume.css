@@ -13,25 +13,6 @@
 
 }
 
-
-.MusicVolume_ComponentContainer-Structure--Content{
-     
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    padding: 6rem;
-    gap: 6rem;
-    border-radius: 25px;
-
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-}
-
 .MusicVolume_ComponentContainer-Structure--WidgetImage{
 
     width: 20%;

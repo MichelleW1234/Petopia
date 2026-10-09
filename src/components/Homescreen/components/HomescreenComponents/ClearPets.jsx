@@ -216,7 +216,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                     <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClear" onClick={() => clearPets_SelectedEntriesManager()}>
                         <div>
-                            Confirm Clear Pet<br/> [return]
+                            Confirm <br/> [return]
                         </div>
                     </button>
 

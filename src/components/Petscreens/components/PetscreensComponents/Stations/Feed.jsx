@@ -180,7 +180,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                     <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>                    
 
@@ -188,7 +188,7 @@ function Feed ({feed_CurrStageAnimationImage, feed_OptionsCurrSpeciesList, feed_
 
                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmFeed" onClick={() => optionSelectionManager(feed_OptionsCurrDesiredOption, feed_OptionsUserSelection, set_Feed_OptionsTotalNumber, set_Feed_Confirmed, set_Feed_Success)}> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>
 

@@ -237,7 +237,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                     <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>                    
 
@@ -245,7 +245,7 @@ function Medicine ({medicine_CurrStageAnimationImage, medicine_OptionsCurrSpecie
 
                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmMedicine" onClick={() => optionSelectionManager(medicine_OptionsCurrDesiredOption, medicine_OptionsUserSelection, set_Medicine_OptionsTotalNumber, set_Medicine_Confirmed, set_Medicine_Success)}> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>
 

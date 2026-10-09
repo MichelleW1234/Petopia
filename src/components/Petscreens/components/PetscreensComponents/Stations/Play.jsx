@@ -137,7 +137,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                     <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>                    
 
@@ -145,7 +145,7 @@ function Play ({play_OptionsCurrSpeciesList, play_OptionsCurrDesiredOption, set_
 
                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmPlay" onClick={() => optionSelectionManager(play_OptionsCurrDesiredOption, play_OptionsUserSelection, set_Play_OptionsTotalNumber, set_Play_Confirmed, set_Play_Success)}> 
                         <div>
-                            Confirm <br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>
 

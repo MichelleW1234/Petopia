@@ -198,7 +198,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
                     <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                         <div>
-                            Confirm<br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>                    
 
@@ -206,7 +206,7 @@ function Clean ({clean_CurrStageAnimationImage, clean_OptionsCurrSpeciesList, cl
 
                     <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmClean" onClick={() => optionSelectionManager(clean_OptionsCurrDesiredOption, clean_OptionsUserSelection, set_Clean_OptionsTotalNumber, set_Clean_Confirmed, set_Clean_Success)}> 
                         <div>
-                            Confirm<br/> [return]
+                            Confirm Selection<br/> [return]
                         </div>
                     </button>
 

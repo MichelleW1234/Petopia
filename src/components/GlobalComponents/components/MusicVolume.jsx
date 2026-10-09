@@ -45,7 +45,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 <div className="UIStapleElements_ComponentFrame-Template--Global MusicVolume_ComponentContainer-Structure--Widget">
-                    <div className="MusicVolume_ComponentContainer-Structure--Content">
+                    
                         {/*<img className="MusicVolume_ComponentContainer-Structure--WidgetImage" src = {VolumeSpeaker}/>*/}
                         <input
                             className="MusicVolume_ComponentContainer-Structure--Slider"
@@ -56,7 +56,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
                             value={Volume}
                             onChange={musicVolume_VolumeShifter}
                         />
-                    </div>
+             
                 </div>
             </div>
 
