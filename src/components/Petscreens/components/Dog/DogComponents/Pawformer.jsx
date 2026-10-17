@@ -17,8 +17,8 @@ import "./Pawformer.css";
 
 function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
-    const pawformer_WindowWidth = 9;
-    const pawformer_TargetCol = 4;
+    const pawformer_WindowWidth = 7;
+    const pawformer_TargetCol = 3;
 
     const pawformer_ColKey = "col";
     const pawformer_TypeKey = "type";
@@ -144,11 +144,7 @@ function Pawformer({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Pawformer"
-            style={{
-                cursor: `pointer`
-            }}
-        >
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Pawformer">
           
             <img className="Pawformer_ComponentImage-Template--CorrectMove" src = {pawformer_CurrMoveTarget === 0 ? w
                         : pawformer_CurrMoveTarget === 1 ? a

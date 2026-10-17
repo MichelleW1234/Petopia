@@ -19,6 +19,8 @@
       drop-shadow(0 0 10px rgb(255, 255, 255))
       drop-shadow(0 0 5px rgb(255, 255, 255));
 
+    transition: transform 0.3s ease;
+
 }
 
 
@@ -26,8 +28,10 @@
 .FeatherFishing_ComponentContainer-Template--GridCell:active{
 
     filter: 
-      drop-shadow(0 0 10px rgb(255, 255, 255))
-      drop-shadow(0 0 5px rgb(255, 255, 255));
+      drop-shadow(0 0 20px rgb(255, 255, 255))
+      drop-shadow(0 0 10px rgb(255, 255, 255));
+
+    transform: scale(1.10);
 
 }
 

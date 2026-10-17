@@ -26,8 +26,8 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument"> 
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText"> 
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent">
                         <div className="SpeciesCareGuide_ComponentContainer-Structure--Category">
                             <h2>Dog Care & Development:</h2>
                             <div className="speciesGuideFieldRow">
@@ -124,7 +124,7 @@ function SpeciesCareGuide({set_SpeciesCareGuide_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                 <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_SpeciesCareGuide_OpenFlag)}> 
                     <div>
-                        Close <br/> [2]
+                        Exit <br/> [2]
                     </div>
                 </button>
             </div>

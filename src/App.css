@@ -84,21 +84,19 @@ h1 {
 
   font-size: calc(1rem*1.60);
 
-      filter: 
-      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
+  filter: 
+      drop-shadow(0 0 10px rgb(255,255,255))
+      drop-shadow(0 0 5px rgb(255,255,255));
 
 }
 
 h2 {
 
-  font-size: calc(1rem*1.40);
+  font-size: calc(1rem*1.30);
 
       filter: 
-      drop-shadow(0 0 10px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)))
-      drop-shadow(0 0 5px hsl(var(--UIStapleElements_-Hue--GlobalColorBase) var(--UIStapleElements_-Saturation--GlobalColor) var(--UIStapleElements_ComponentButton-Light--GlobalColorShadow)));
-
+      drop-shadow(0 0 10px rgb(255,255,255))
+      drop-shadow(0 0 5px rgb(255,255,255));
 
 }
 
@@ -108,7 +106,7 @@ button,
 input,
 p {
 
-  font-size: calc(1rem*1.20);
+  font-size: calc(1rem*1.10);
 
 }
 
@@ -116,6 +114,7 @@ a,
 button {
 
   text-align: center;
+  cursor: pointer;
 
 }
 
@@ -594,6 +593,7 @@ p {
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
+  cursor: wait;
 
   img {
 
@@ -617,6 +617,7 @@ p {
   background-size: cover, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
+  cursor: wait;
 
   img {
 
@@ -653,6 +654,13 @@ p {
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
+    cursor: grab;
+
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--StrollPatrol:active{
+
+  cursor: grabbing;
 
 }
 
@@ -666,7 +674,14 @@ p {
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
+    cursor: grab;
 
+}
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--Pawformer:active{
+
+  cursor: grabbing;
+    
 }
 
 
@@ -679,8 +694,16 @@ p {
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
+    cursor: grab;
 
 }
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--MouseHunt:active{
+
+  cursor: grabbing;
+
+}
+
 
 .MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing{
 
@@ -691,9 +714,16 @@ p {
     background-size: cover, cover;
     background-position: center, center;
     background-repeat: no-repeat, no-repeat;
+    cursor: grab;
 
 }
 
+
+.MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing:active{
+
+  cursor: grabbing;
+
+}
 
 
 
@@ -716,37 +746,36 @@ p {
 
 
 
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument{
+.MiscellaneousElements_ComponentContainer-Structure--GlobalText{
 
-  width: 59rem;
   height: auto;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 6rem;
   border-radius: 25px;
   
 }
 
 
-.MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent{
+.MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent{
 
-  width: 100%;
+  width: auto;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 5rem;
-  gap: 5rem;
   border-radius: 25px;
 
   box-shadow: 0 0 20px 10px rgba(255, 255, 255);
   
 }
+
+
 
 
 .MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow {
@@ -776,6 +805,37 @@ p {
 
 }
 
+.largeFrame {
+
+  padding: 5rem;
+
+}
+
+.largeFrameContent {
+
+  padding: 4rem;
+  gap: 4rem;
+
+}
+
+
+
+.smallFlag {
+
+  padding: 3rem;
+
+}
+
+
+
+.smallFlagContent {
+
+  gap: 3rem;
+  padding: 3rem;
+
+}
+
+
 
 
 
@@ -792,10 +852,17 @@ p {
   flex-wrap: wrap;
   position: absolute;
   z-index: 6;
+  pointer-events: none;
 
   margin: 3rem;
   gap: 3rem;
 
+}
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons * {
+
+  pointer-events: auto;
+  
 }
 
 
@@ -832,6 +899,13 @@ p {
   padding: 3rem;
 
   mask-image: linear-gradient(to bottom, transparent 0%, rgb(0, 0, 0) 5%, rgb(0, 0, 0) 95%, transparent 100%);
+  
+}
+
+
+.MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags * {
+
+  pointer-events: auto;
   
 }
 

@@ -8,7 +8,7 @@ import { useGlobalTimer } from "../../../../providers/GlobalTimerProvider.jsx";
 
 import useKeyboardShortcut from "../../../../hooks/useKeyboardShortcut.js";
 
-import { audioCircleButtonPressKey, audioRevivePetKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, petHealthKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, petSpeciesHealthCapList, petActivityTimeStampFeedingKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, audioConfirmedKey } from "../../../../constants/Constants.js";
+import { audioCircleButtonPressKey, audioRevivePetKey, petSpeciesImagePortraitList, petSpeciesKey, petStageKey, inventoryItemOwnerKey, petHealthKey, petSpeciesDogKey, petSpeciesCatKey, petSpeciesFishKey, petSpeciesHealthCapList, petActivityTimeStampFeedingKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, audioConfirmedKey, petLifeSpanKey, petLifeSpanBaseLineKey } from "../../../../constants/Constants.js";
 import { helpers_Player_UIIndicatorSounds, helpers_Closer_Flags, helpers_Quit } from "../../../../helpers/helpers.js";
 
 import Reviver from "../../../../images/Reviver.png";
@@ -73,9 +73,10 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
     const RevivePets_SelectedEntriesManager = () => {
 
-
         helpers_Player_UIIndicatorSounds(audioRevivePetKey);        
         helpers_Player_UIIndicatorSounds(audioConfirmedKey);
+
+        const currDate = GlobalTimer;
 
         setPetList(prev => {
 
@@ -95,6 +96,8 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             }
 
+            revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petLifeSpanKey][petLifeSpanBaseLineKey] = currDate;
+
             return revivePets_EntryOwnerSelector_CurrCopy;
 
         });
@@ -105,19 +108,19 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
             if (petActivityTimeStampFeedingKey in revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection]){
 
-                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampFeedingKey][petActivityTimeStampLastPerformedKey] = currDate;
 
             }
             
             if (petActivityTimeStampCleaningKey in revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection]){
 
-                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampCleaningKey][petActivityTimeStampLastPerformedKey] = currDate;
 
             }
 
             if (petActivityTimeStampPlayingKey in revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection]){
 
-                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = GlobalTimer;
+                revivePets_EntryOwnerSelector_CurrCopy[RevivePets_UserSelection][petActivityTimeStampPlayingKey][petActivityTimeStampLastPerformedKey] = currDate;
 
             }
 
@@ -252,7 +255,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitRevive" onClick={() => helpers_Quit(set_RevivePets_OpenFlag)}>
                     <div>
-                        Quit<br/> [esc]
+                        Cancel<br/> [esc]
                     </div>
                 </button>
 

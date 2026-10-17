@@ -9,12 +9,11 @@ import {useActiveCheckoutRoom} from "../../../providers/ActiveCheckoutRoomProvid
 
 import useKeyboardShortcut from "../../../hooks/useKeyboardShortcut.js";
 
-import SpeciesCareGuideComponent from "../../../trash/SpeciesCareGuide.jsx";
 import MusicVolumeComponent from "../../GlobalComponents/components/MusicVolume.jsx";
 import InventoryComponent from "../../GlobalComponents/components/Inventory.jsx";
 import NotificationsComponent from "../../GlobalComponents/components/Notifications.jsx";
 
-import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioCircleButtonPressKey, audioPillButtonPressKey, audioAdoptionSuccessKey, audioRectangleButtonPressKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey, audioQuitActivityKey, audioConfirmedKey } from "../../../constants/Constants.js";
+import { petSpeciesImagePortraitList, petActivityTimeStampCleaningKey, petBirthDateKey, petSpeciesCatKey, petSpeciesDogKey, petActivityTimeStampFeedingKey, petSpeciesFishKey, petHealthKey, petMedicineKey, petActivityTimeStampPlayingKey, petSpeciesKey, petStageKey, petGenderKey, petGenderMaleKey, petGenderFemaleKey, petSpeciesHealthCapList, audioCircleButtonPressKey, audioPillButtonPressKey, audioAdoptionSuccessKey, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, audioAdoptionConfirmationErrorKey, audioQuitActivityKey, audioConfirmedKey, petLifeSpanKey, petLifeSpanAmountKey, petLifeSpanBaseLineKey } from "../../../constants/Constants.js";
 import { helpers_Opener_Flags, helpers_Player_UIIndicatorSounds } from "../../../helpers/helpers.js";
 
 import "../../../App.css";
@@ -157,7 +156,7 @@ function Adoption () {
 
         if (adoption_NameManager_CurrPetName === "") {
 
-            adoption_CurrErrorMessageTimer("A name is missing.");
+            adoption_CurrErrorMessageTimer("No name has been entered.");
 
         } else if (/[^a-zA-Z]/.test(adoption_NameManager_CurrPetName)) {
 
@@ -188,6 +187,7 @@ function Adoption () {
                             [petStageKey]: 0,
                             [petHealthKey]: petSpeciesHealthCapList[petSpeciesDogKey][0],
                             [petBirthDateKey]: adoption_NameManager_CurrDate,
+                            [petLifeSpanKey]: {[petLifeSpanAmountKey] : 0, [petLifeSpanBaseLineKey] : adoption_NameManager_CurrDate},
                             [petGenderKey]: adoption_PetGender,
                             [petMedicineKey]: 0
                         }
@@ -213,6 +213,7 @@ function Adoption () {
                             [petStageKey]: 0,
                             [petHealthKey]: petSpeciesHealthCapList[petSpeciesCatKey][0],
                             [petBirthDateKey]: adoption_NameManager_CurrDate,
+                            [petLifeSpanKey]: {[petLifeSpanAmountKey] : 0, [petLifeSpanBaseLineKey] : adoption_NameManager_CurrDate},
                             [petGenderKey]: adoption_PetGender,
                             [petMedicineKey]: 0
                         }
@@ -237,6 +238,7 @@ function Adoption () {
                             [petStageKey]: 0,
                             [petHealthKey]: petSpeciesHealthCapList[petSpeciesFishKey][0],
                             [petBirthDateKey]: adoption_NameManager_CurrDate,
+                            [petLifeSpanKey]: {[petLifeSpanAmountKey] : 0, [petLifeSpanBaseLineKey] : adoption_NameManager_CurrDate},
                             [petGenderKey]: adoption_PetGender,
                             [petMedicineKey]: 0
                         }
@@ -343,7 +345,7 @@ function Adoption () {
             <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons MiscellaneousElements_ComponentContainer-Structure--ScreenFixedButtons--ScreenMenu">
                 <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => adoption_HomeNavigator()}> 
                     <div>
-                        Navigate to Home <br/> [1]
+                        Navigate Home <br/> [1]
                     </div>
                 </Link>
             </div>
@@ -430,18 +432,12 @@ function Adoption () {
                 {adoption_PetGender === "" ? (
 
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
-                        
-                        <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
-                            <div>
-                                Quit Selection <br/> [esc]
-                            </div>
-                        </button>
 
                         {adoption_UserSelection === "" ? (
 
                             <button className = "UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Confirm Selection <br/> [return]
+                                    Confirm <br/> [return]
                                 </div>
                             </button>
 
@@ -449,7 +445,7 @@ function Adoption () {
 
                             <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {() => adoption_PetGenderGenerator()}> 
                                 <div>
-                                    Confirm Selection<br/> [return]
+                                    Confirm <br/> [return]
                                 </div>
                             </button>
 
@@ -462,12 +458,12 @@ function Adoption () {
                     <div className = "MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Quit" onClick = {() => adoption_SpeciesDeselector()}> 
                             <div>
-                                Quit Selection <br/> [esc]
+                                Cancel <br/> [esc]
                             </div>
                         </button>
                         <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Confirm" onClick = {(e) => adoption_NameManager(e)}> 
                             <div>
-                                Confirm Adoption & Navigate to Home<br/> [return]
+                                Proceed to Home<br/> [return]
                             </div>
                         </button>
                     </div>
@@ -485,8 +481,8 @@ function Adoption () {
             ) : (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
-                    <div className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
-                        <div className="notificationsFrameContent">
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText smallFlag">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent smallFlagContent">
                             <h2>Name Alert:</h2>
                             <p>{adoption_CurrErrorMessage}</p>
                         </div>
@@ -501,7 +497,7 @@ function Adoption () {
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_MusicVolumeOpenFlag, 1)}>
                     <div>
-                        Adjust Music Volume <br/> [v]
+                        Adjust Music Volume<br/> [v]
                     </div>
                 </button>
 
@@ -509,7 +505,7 @@ function Adoption () {
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Adoption_InventoryOpenFlag, 1)}>
                     <div>
-                        Inventory <br/> [I]
+                        Manage Inventory <br/> [I]
                     </div>
                 </button>
 

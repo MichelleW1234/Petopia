@@ -319,7 +319,7 @@ function Home (){
 
                     <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                         <div>
-                            Restart <br/> [1]
+                            Restart Game <br/> [1]
                         </div>
                     </button>
 
@@ -336,7 +336,7 @@ function Home (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ClearPets" onClick = {() => helpers_Opener_Flags(set_Home_ClearPetsOpenFlag, 0)}> 
                             <div>
-                                Clear Pets <br/> [3]
+                                Remove Pets <br/> [3]
                             </div>
                         </button>
 
@@ -344,7 +344,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReviveAPet" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> 
                                 <div>
-                                    Revive Pet <br/> [4]
+                                    Revive Pets <br/> [4]
                                 </div>
                             </button>
 
@@ -352,7 +352,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Revive Pet <br/> [4]
+                                    Revive Pets <br/> [4]
                                 </div>
                             </button>
 
@@ -370,12 +370,12 @@ function Home (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Clear Pets <br/> [3]
+                                Remove Pets <br/> [3]
                             </div>
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Revive Pet <br/> [4]
+                                Revive Pets <br/> [4]
                             </div>
                         </button>
                     </>
@@ -384,7 +384,7 @@ function Home (){
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReadMe" onClick = {() => helpers_Opener_Flags(set_Home_ReadMeOpenFlag, 0)}> 
                     <div>
-                        Game Instructions <br/> [5]
+                        Read Game Instructions <br/> [5]
                     </div>
                 </button>
                 
@@ -483,7 +483,7 @@ function Home (){
 
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton">
                             <div>
-                                Confirm & Navigate to Room <br/> [return]
+                                Proceed to Selection <br/> [return]
                             </div>
                         </button>
 
@@ -493,7 +493,7 @@ function Home (){
                             className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ConfirmRoom" 
                             onClick = {() => GoToSelection()}>
                             <div>
-                                Confirm & Navigate to Room <br/> [return]
+                                Proceed to Selection <br/> [return]
                             </div>
                         </button>
 
@@ -507,8 +507,8 @@ function Home (){
            {home_Greeting !== "" ? (
 
                 <div className="MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags MiscellaneousElements_ComponentContainer-Structure--ScreenFixedFlags--Alerts">
-                    <div className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
-                        <div className="notificationsFrameContent">
+                    <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText smallFlag">
+                        <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent smallFlagContent">
                             <h2>Positive Message:</h2>
                             <p>{home_Greeting}</p>
                         </div>
@@ -528,7 +528,7 @@ function Home (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Home_MusicVolumeOpenFlag, 1)}>
                     <div>
-                        Adjust Music Volume <br/> [v]
+                        Adjust Music Volume<br/> [v]
                     </div>
                 </button>
 
@@ -536,7 +536,7 @@ function Home (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Home_InventoryOpenFlag, 1)}>
                     <div>
-                        Inventory <br/> [I]
+                        Manage Inventory <br/> [I]
                     </div>
                 </button>
                

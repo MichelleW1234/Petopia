@@ -1,11 +1,9 @@
 .Records_ComponentContainer-Structure--DocumentField{
 
-    width: 100%;
+    width: auto;
     height: auto;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
 
     gap: 4rem;
 

@@ -460,17 +460,17 @@ function Dog (){
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> 
                     <div>
-                        Navigate to Home <br/> [1]
+                        Navigate Home<br/> [1]
                     </div>
                 </Link>
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Records" onClick = {() => helpers_Opener_Flags(set_Dog_RecordsOpenFlag, 0)}> 
                     <div>
-                        Details <br/> [2]
+                        Read Details<br/> [2]
                     </div>
                 </button>
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Dog_ScheduleOpenFlag, 0)}> 
                     <div>
-                        Care Log <br/> [3]
+                        Read Care Log<br/> [3]
                     </div>
                 </button>
 
@@ -479,7 +479,7 @@ function Dog (){
                     <>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Feed" onClick = {(e) => helpers_Opener_Flags(set_Dog_FeedOpenFlag, 0)}> 
                             <div>
-                                Feed <br/> [4] 
+                                Feed <br/> [4]
                             </div>
                         </button>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Clean" onClick = {() => helpers_Opener_Flags(set_Dog_CleanOpenFlag, 0)}> 
@@ -571,7 +571,7 @@ function Dog (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Volume" 
                     onClick = {() => helpers_Opener_Flags(set_Dog_MusicVolumeOpenFlag, 1)}>
                     <div>
-                        Adjust Music Volume <br/> [v]
+                        Adjust Music Volume<br/> [v]
                     </div>
                 </button>
 
@@ -579,7 +579,7 @@ function Dog (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Dog_InventoryOpenFlag, 1)}>
                     <div>
-                        Inventory <br/> [I]
+                        Manage Inventory <br/> [I]
                     </div>
                 </button>
             </div>

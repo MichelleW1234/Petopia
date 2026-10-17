@@ -22,8 +22,8 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 
-                <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                <div className = "UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText largeFrame">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent largeFrameContent">
                         <h2>Game Instructions:</h2>
                         <div className="ReadMeContent">
                             <p> &bull; Complete an activity when its alert flag pops up in the bottom right corner of a pet's screen. As you spend more time taking care of a species, you can begin to predict the time range for when this occurs. </p> 
@@ -45,7 +45,7 @@ function ReadMe({set_ReadMe_OpenFlag}) {
 
                 <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_ReadMe_OpenFlag)}> 
                     <div>
-                        Close <br/> [5]
+                        Exit <br/> [5]
                     </div>
                 </button>
 

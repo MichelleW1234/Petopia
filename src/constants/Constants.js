@@ -81,6 +81,9 @@ export const petSpeciesKey = "species";
 export const petStageKey = "stage";
 export const petHealthKey = "health";
 export const petBirthDateKey = "birth date";
+export const petLifeSpanKey = "life span";
+export const petLifeSpanAmountKey = "life span amount";
+export const petLifeSpanBaseLineKey = "life span baseline";
 export const petGenderKey = "gender"
 export const petMedicineKey = "medicine";
 

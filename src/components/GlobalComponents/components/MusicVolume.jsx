@@ -64,7 +64,7 @@ function MusicVolume({set_MusicVolume_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick = {() => helpers_Closer_Flags(set_MusicVolume_OpenFlag)}> 
                     <div>
-                        Close  <br/> [return]
+                        Exit  <br/> [return]
                     </div>
                 </button>
                     

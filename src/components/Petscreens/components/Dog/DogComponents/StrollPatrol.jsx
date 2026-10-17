@@ -119,11 +119,7 @@ function StrollPatrol({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef}) {
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--StrollPatrol"
-            style={{
-                cursor: `pointer`
-            }}
-        >
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--StrollPatrol">
 
             <div className="StrollPatrol_ComponentContainer-Structure--Grid">
 

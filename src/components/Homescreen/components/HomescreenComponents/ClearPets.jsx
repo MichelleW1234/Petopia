@@ -142,9 +142,9 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
 
-                <div className="UIStapleElements_ComponentFrame-Template--Global clearPetsFrame">
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText smallFlag">
 
-                    <div className="clearPetsFrameContent">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent smallFlagContent">
 
                         <h2>Clear Pets Warning: </h2>
                         <p>You cannot restore pets after clearing them.</p>
@@ -200,7 +200,7 @@ function ClearPets({set_ClearPets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton QuitClear" onClick={() => helpers_Quit(set_ClearPets_OpenFlag)}>
                     <div>
-                        Quit<br/> [esc]
+                        Cancel <br/> [esc]
                     </div>
                 </button>
 

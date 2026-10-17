@@ -124,7 +124,7 @@ function RearrangePets({set_RearrangePets_OpenFlag}) {
 
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Done" onClick={() => helpers_Closer_Flags(set_RearrangePets_OpenFlag)}> 
                     <div>
-                        Close <br/> [return]
+                        Exit <br/> [return]
                     </div>
                 </button>
 

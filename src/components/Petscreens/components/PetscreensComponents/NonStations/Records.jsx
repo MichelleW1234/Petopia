@@ -41,8 +41,8 @@ function Records({set_Records_OpenFlag}) {
 
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalContent">
                 
-                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocument">
-                    <div className="MiscellaneousElements_ComponentContainer-Structure--FloatingFlagDocumentContent">
+                <div className="UIStapleElements_ComponentFrame-Template--Global MiscellaneousElements_ComponentContainer-Structure--GlobalText largeFrame">
+                    <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalTextContent largeFrameContent">
                         <div className="Records_ComponentContainer-Structure--DocumentField">
                             <h2> Name: </h2>
                             <p> {ActivePetName}</p>
@@ -62,7 +62,7 @@ function Records({set_Records_OpenFlag}) {
             <div className="MiscellaneousElements_ComponentContainer-Structure--GlobalButtonRow">
                 <button className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Close" onClick = {() => helpers_Closer_Flags(set_Records_OpenFlag)}> 
                     <div>
-                        Close <br/> [2]
+                        Exit <br/> [2]
                     </div>
                 </button>
             </div>

@@ -94,11 +94,7 @@ function FeatherFishing({ play_CurrNumber, set_Play_CurrNumber, play_AudioRef })
 
     return (
 
-        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing"
-            style={{
-                cursor: `pointer`
-            }}
-        >
+        <div className="MiscellaneousElements_ComponentContainer-Template--GlobalWindowScreen MiscellaneousElements_ComponentContainer-Color--GlobalWindowScreen--FeatherFishing">
             
             <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Top" src = {arrow}/>
             <img className = "MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow MiscellaneousElements_ComponentImage-Template--FloatingFlagGameTargetArrow--Bottom" src = {arrow}/>

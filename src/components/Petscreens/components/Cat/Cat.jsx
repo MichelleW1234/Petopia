@@ -411,17 +411,17 @@ function Cat (){
 
                 <Link to = "/home" className = "UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Home" onClick = {() => petScreensHelpers_Navigator_Home(setActivePetName)}> 
                     <div>
-                        Navigate to Home <br/> [1]
+                        Navigate Home <br/> [1]
                     </div>
                 </Link>
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Records" onClick = {() => helpers_Opener_Flags(set_Cat_RecordsOpenFlag, 0)}> 
                     <div>
-                        Details <br/> [2]
+                        Read Details <br/> [2]
                     </div>
                 </button>
                 <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ActivityTracker" onClick = {() => helpers_Opener_Flags(set_Cat_ScheduleOpenFlag, 0)}> 
                     <div>
-                        Care Log <br/> [3]
+                        Read Care Log <br/> [3]
                     </div>
                 </button>
 
@@ -521,7 +521,7 @@ function Cat (){
                     className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Inventory" 
                     onClick = {() => helpers_Opener_Flags(set_Cat_InventoryOpenFlag, 1)}>
                     <div>
-                        Inventory <br/> [I]
+                        Manage Inventory <br/> [I]
                     </div>
                 </button>
             </div>

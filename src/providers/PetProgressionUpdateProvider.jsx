@@ -4,7 +4,7 @@ import { useGlobalTimer } from "./GlobalTimerProvider.jsx";
 import { usePetList } from "./PetListProvider.jsx";
 import { usePetTimeStamps } from "./PetTimeStampsProvider.jsx";
 
-import {petHealthKey, petStageKey, petBirthDateKey, petSpeciesKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesActivityTimeStampTimeLimitList, petActivityTimeStampDamageList, petSpeciesHealthCapList, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey} from "../constants/Constants.js";
+import {petHealthKey, petStageKey, petBirthDateKey, petSpeciesKey, petActivityTimeStampFeedingKey, petActivityTimeStampCleaningKey, petActivityTimeStampPlayingKey, petSpeciesCatKey, petSpeciesDogKey, petSpeciesFishKey, petSpeciesActivityTimeStampTimeLimitList, petActivityTimeStampDamageList, petSpeciesHealthCapList, petActivityTimeStampLastPerformedKey, petActivityTimeStampLastDamagedKey, petLifeSpanKey, petLifeSpanAmountKey, petLifeSpanBaseLineKey} from "../constants/Constants.js";
 
 
 export function PetProgressionUpdateProvider({ children }) {
@@ -47,6 +47,9 @@ export function PetProgressionUpdateProvider({ children }) {
 
             // Checking for if pet is alive:
             if (bound_Copy_CurrPetList[bound_Key_CurrPetList][petHealthKey] > 0) {
+
+                bound_Copy_CurrPetList[bound_Key_CurrPetList][petLifeSpanKey][petLifeSpanAmountKey] += parameter_Number_GlobalTimer - bound_Copy_CurrPetList[bound_Key_CurrPetList][petLifeSpanKey][petLifeSpanBaseLineKey];
+                bound_Copy_CurrPetList[bound_Key_CurrPetList][petLifeSpanKey][petLifeSpanBaseLineKey] = parameter_Number_GlobalTimer;
 
                 petProgressionUpdate_Checker_PetHealth(bound_Copy_CurrPetList[bound_Key_CurrPetList], parameter_Number_GlobalTimer, bound_Copy_CurrPetTimeStamps[bound_Key_CurrPetList]);
                 
@@ -152,6 +155,16 @@ export function PetProgressionUpdateProvider({ children }) {
         }
 
 
+        const bound_Number_PetNewStage = Math.min(Math.floor(parameter_Entry_PetList[petLifeSpanKey][petLifeSpanAmountKey] / bound_Number_SpeciesGrowthRate), 2);
+        if (bound_Number_PetNewStage > parameter_Entry_PetList[petStageKey]){
+
+            parameter_Entry_PetList[petHealthKey] += (petSpeciesHealthCapList[parameter_Entry_PetList[petSpeciesKey]][bound_Number_PetNewStage] - petSpeciesHealthCapList[parameter_Entry_PetList[petSpeciesKey]][parameter_Entry_PetList[petStageKey]]);
+            parameter_Entry_PetList[petStageKey] = bound_Number_PetNewStage; 
+
+        }
+
+
+        /*
         const bound_Number_PetNewStage = Math.min(Math.floor((parameter_Number_GlobalTimer - parameter_Entry_PetList[petBirthDateKey]) / bound_Number_SpeciesGrowthRate), 2);
         if (bound_Number_PetNewStage > parameter_Entry_PetList[petStageKey]){
 
@@ -159,6 +172,7 @@ export function PetProgressionUpdateProvider({ children }) {
             parameter_Entry_PetList[petStageKey] = bound_Number_PetNewStage; 
 
         }
+        */
 
     }
 

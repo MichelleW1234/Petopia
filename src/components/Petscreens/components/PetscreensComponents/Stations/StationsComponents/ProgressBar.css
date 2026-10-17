@@ -16,8 +16,8 @@
 
 .ProgressBar_ComponentContainer-Template--Progressionbar {
 
-  width: 36rem;
-  height: 3rem;
+  width: 30rem;
+  height: 1rem;
 
   display: flex;
   flex-direction: row;
