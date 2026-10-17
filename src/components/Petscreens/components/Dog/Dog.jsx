@@ -489,7 +489,7 @@ function Dog (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Play" onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> 
                             <div>
-                                Play <br/> [6]
+                                Entertain <br/> [6]
                             </div>
                         </button>
 
@@ -497,7 +497,7 @@ function Dog (){
 
                             <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Medicine" onClick = {() => helpers_Opener_Flags(set_Dog_MedicineOpenFlag, 0)}> 
                                 <div>
-                                    Heal <br/> [7]
+                                    Medicate <br/> [7]
                                 </div>
                             </button>
 
@@ -505,7 +505,7 @@ function Dog (){
 
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Heal <br/> [7]
+                                    Medicate <br/> [7]
                                 </div>
                             </button>
 
@@ -528,12 +528,12 @@ function Dog (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Play <br/> [6]
+                                Entertain <br/> [6]
                             </div>
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Heal <br/> [7] 
+                                Medicate <br/> [7] 
                             </div>
                         </button>
                     </>

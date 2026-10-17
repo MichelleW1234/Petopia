@@ -344,7 +344,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton ReviveAPet" onClick = {() => helpers_Opener_Flags(set_Home_RevivePetsOpenFlag, 0)}> 
                                 <div>
-                                    Revive Pets <br/> [4]
+                                    Revive Pet <br/> [4]
                                 </div>
                             </button>
 
@@ -352,7 +352,7 @@ function Home (){
 
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Revive Pets <br/> [4]
+                                    Revive Pet <br/> [4]
                                 </div>
                             </button>
 
@@ -375,7 +375,7 @@ function Home (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Revive Pets <br/> [4]
+                                Revive Pet <br/> [4]
                             </div>
                         </button>
                     </>

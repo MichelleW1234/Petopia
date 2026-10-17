@@ -236,7 +236,7 @@ function RevivePets({set_RevivePets_OpenFlag}) {
 
                                     <div className="MiscellaneousElements_ComponentText-Template--GlobalSelectionSlotName">
                                         <img src = {petSpeciesImagePortraitList[PetList[petName][petSpeciesKey]][PetList[petName][petStageKey]]}/>
-                                        <h2>{petName}</h2>
+                                        <h1>{petName}</h1>
                                     </div>
 
                                 </div>

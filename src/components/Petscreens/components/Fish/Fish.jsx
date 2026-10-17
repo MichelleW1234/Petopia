@@ -453,7 +453,7 @@ function Fish (){
 
                             <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Medicine" onClick = {() => helpers_Opener_Flags(set_Fish_MedicineOpenFlag, 0)}> 
                                 <div>
-                                    Heal <br/> [6]
+                                    Medicate <br/> [6]
                                 </div>
                             </button>
 
@@ -461,7 +461,7 @@ function Fish (){
 
                             <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                                 <div>
-                                    Heal <br/> [6]
+                                    Medicate <br/> [6]
                                 </div>
                             </button>
 
@@ -484,7 +484,7 @@ function Fish (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Heal <br/> [6]
+                                Medicate <br/> [6]
                             </div>
                         </button>
                     </>

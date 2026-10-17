@@ -84,7 +84,7 @@ h1 {
 
   font-size: calc(1rem*1.60);
 
-  filter: 
+  filter:
       drop-shadow(0 0 10px rgb(255,255,255))
       drop-shadow(0 0 5px rgb(255,255,255));
 
@@ -485,7 +485,7 @@ p {
   img {
 
     height: auto;
-    width: 70%;
+    width: 60%;
 
     filter: 
       drop-shadow(0 0 10px rgb(255, 255, 255))
