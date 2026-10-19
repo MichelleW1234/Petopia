@@ -435,7 +435,7 @@ function Cat (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Play" onClick = {() => helpers_Opener_Flags(set_Cat_PlayOpenFlag, 0)}> 
                             <div>
-                                Entertain <br/> [5] 
+                                Exercise <br/> [5] 
                             </div>
                         </button>
 
@@ -469,7 +469,7 @@ function Cat (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Entertain <br/> [5]
+                                Exercise <br/> [5]
                             </div>
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 

@@ -411,11 +411,11 @@ function Adoption () {
                                 <div className="adoptionStuff">
                                     <p>Congratulations! You are about to welcome</p>
                                     <input 
-                                        className="Adoption_ComponentContainer-Template--FormContentInput"
+                                        className="UIStapleElements_ComponentInput-Structure--Global Adoption_ComponentContainer-Template--FormContentInput"
                                         type="text"
                                         value={adoption_UserInput}
                                         onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                        placeholder="&lt;Name&gt;"
+                                        placeholder="Enter &lt;Name&gt; Here"
                                     />
                                     <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} into your family! </p>
                                 </div>

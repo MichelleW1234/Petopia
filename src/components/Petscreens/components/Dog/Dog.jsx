@@ -489,7 +489,7 @@ function Dog (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton Play" onClick = {() => helpers_Opener_Flags(set_Dog_PlayOpenFlag, 0)}> 
                             <div>
-                                Entertain <br/> [6]
+                                Exercise <br/> [6]
                             </div>
                         </button>
 
@@ -528,7 +528,7 @@ function Dog (){
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
                             <div>
-                                Entertain <br/> [6]
+                                Exercise <br/> [6]
                             </div>
                         </button>
                         <button className="UIStapleElements_ComponentButton-Template--GlobalNonclick MiscellaneousElements_ComponentContainer-Structure--GlobalFreeButton"> 
