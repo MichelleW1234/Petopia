@@ -415,7 +415,7 @@ function Adoption () {
                                         type="text"
                                         value={adoption_UserInput}
                                         onChange={(e) => {set_Adoption_UserInput(e.target.value)}}
-                                        placeholder="Enter &lt;Name&gt; Here"
+                                        placeholder="Enter a &lt;Name&gt;"
                                     />
                                     <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} into your family! </p>
                                 </div>
