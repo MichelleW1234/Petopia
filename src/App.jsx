@@ -11,8 +11,6 @@ import Fishscreen from "./components/Petscreens/components/Fish/Fish.jsx";
 import NoPage from "./components/NoPage.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 
-import { petSpeciesImagePortraitList } from "./constants/Constants.js";
-
 import "./App.css";
 
 
