@@ -33,35 +33,14 @@
 }
 
 
-.Adoption_ComponentContainer-Template--FormWords {
-
-    width: 10%;
-    height: auto;
-
-}
-
-
 .Adoption_ComponentContainer-Template--FormContentInput{
 
-    width: 100%;
+    width: 90%;
     height: auto;
     text-align: center;
 
-    padding: 2rem 4rem;  
+    padding: 2rem 4rem;
 
 }
 
 
-.adoptionStuff{
-
-    height: auto;
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 3rem;
-
-}

@@ -408,7 +408,7 @@ function Adoption () {
                             <div className="adoptioncontent">
                                 <h2>Introduction:</h2>
 
-                                <div className="adoptionStuff">
+
                                     <p>Congratulations! You are about to welcome</p>
                                     <input 
                                         className="UIStapleElements_ComponentInput-Structure--Global Adoption_ComponentContainer-Template--FormContentInput"
@@ -418,7 +418,7 @@ function Adoption () {
                                         placeholder="Enter a &lt;Name&gt;"
                                     />
                                     <p> the {adoption_PetGender} {adoption_UserSelection === petSpeciesDogKey ? "puppy" : adoption_UserSelection === petSpeciesCatKey ? "kitten" : "fry"} into your family! </p>
-                                </div>
+                     
                             </div>
 
                         </div>

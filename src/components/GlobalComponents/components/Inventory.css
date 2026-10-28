@@ -37,7 +37,7 @@
   width: 100%;
   height: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -49,7 +49,7 @@
 
 .Inventory_ComponentContainer-Structure--ItemDescriptionImage{
 
-  width: 45%;
+  width: 50%;
   height: auto;
 
   filter: 
@@ -61,7 +61,7 @@
 
 .Inventory_ComponentContainer-Structure--ItemDescriptionContent{
 
-  width: 40%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@
   justify-content: center;
   text-align: center;
 
-  gap: 2rem;
+  gap: 3rem;
 
 }
 

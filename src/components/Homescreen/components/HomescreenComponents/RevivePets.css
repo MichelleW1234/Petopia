@@ -38,26 +38,3 @@
       drop-shadow(0 0 5px rgb(255, 255, 255));
 
 }
-
-.RevivePets_ComponentImage-Structure--NoPetImage {
-
-    width: 85%;
-    height: auto;
-
-    padding: 3rem;
-    border-radius: 10000px;
-
-    box-shadow: 0 0 20px 10px rgba(255, 255, 255);
-
-    img {
-
-        height: auto;
-        width: 100%;
-
-        filter: 
-            drop-shadow(0 0 10px rgb(255, 255, 255))
-            drop-shadow(0 0 5px rgb(255, 255, 255));
-
-    }
-        
-}

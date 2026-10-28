@@ -36,7 +36,7 @@ function Notifications() {
             {Notifications.map((entry, notifications_EntryRemover_UserSelection) => (
 
                 <div key = {notifications_EntryRemover_UserSelection} className="UIStapleElements_ComponentFrame-Template--Global notificationsFrame">
-                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected Notifications_HeadingRowButton" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
+                    <button className="UIStapleElements_ComponentButton-Structure--GlobalClick UIStapleElements_ComponentButton-Color--GlobalClick--GlobalNonselected" onClick = {() => notifications_EntryRemover(notifications_EntryRemover_UserSelection)}> 
                         <div>
                             clear
                         </div>
